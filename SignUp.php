@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Student Sign Up</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-     
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -16,10 +17,11 @@
       max-width: 900px;
       margin: 0 auto;
       padding: 40px;
-       background-color: #008374;
+      background-color: #008374;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center; /* Center align the content inside the container */
+      text-align: center;
+      /* Center align the content inside the container */
     }
 
     .container h2 {
@@ -28,13 +30,16 @@
 
     .logo {
       display: flex;
-      align-items: center; /* Align logo and text vertically */
-      justify-content: center; /* Center align the logo and text horizontally */
+      align-items: center;
+      /* Align logo and text vertically */
+      justify-content: center;
+      /* Center align the logo and text horizontally */
       margin-bottom: 20px;
     }
 
     .logo img {
-      margin-right: 10px; /* Add some spacing between the logos */
+      margin-right: 10px;
+      /* Add some spacing between the logos */
     }
 
     .form-row {
@@ -75,7 +80,8 @@
 
     .form-group .buttons {
       display: flex;
-      justify-content: center; /* Updated alignment property */
+      justify-content: center;
+      /* Updated alignment property */
     }
 
     .form-group input[type="submit"],
@@ -99,69 +105,60 @@
       margin-top: 15px;
       grid-column: span 2;
     }
-    
+
     .container .login a {
       font-style: bold;
       color: yellow;
       text-decoration: none;
     }
-    
+
     .container .login a:hover {
       color: #333;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="logo">
-     
+
       <img src="assets/img/GCU.png" alt="Logo" width="90" height="90">
     </div>
     <h2>Sign Up</h2>
     <form action="" method="POST">
-      
-
       <div class="form-group">
         <input type="text" id="idno" placeholder="Student ID No:" name="idno" required>
       </div>
       <br>
-
-     
-
       <div class="form-row">
         <div class="form-group">
           <input type="text" id="first-name" placeholder="First Name" name="first-name" required>
         </div>
-
         <div class="form-group">
           <input type="text" id="last-name" placeholder="Last Name" name="last-name" required>
         </div>
-
       </div>
-
       <div class="form-row">
         <div class="form-group">
           <input type="text" id="middle" placeholder="Middle Name" name="middle" required>
         </div>
-
         <div class="form-group">
           <input type="text" id="gender" placeholder="Gender" name="gender" required>
         </div>
-
       </div>
 
-     <div class="form-row">
+      <div class="form-row">
         <div class="form-group">
           <input type="text" id="year" placeholder="Year" name="year" required>
         </div>
 
         <div class="form-group">
-          <input type="text" id="course"  placeholder="Course"name="course" required>
+          <input type="text" id="course" placeholder="Course" name="course" required>
         </div>
 
       </div>
 
-       <div class="form-row">
+      <div class="form-row">
         <div class="form-group">
           <input type="text" id="birthdate" placeholder="Birthdate" name="birthdate" required>
         </div>
@@ -171,9 +168,6 @@
         </div>
 
       </div>
-
-    
-
       <div class="form-row">
         <div class="form-group">
           <input type="text" id="username" placeholder="Username" name="username" required>
@@ -191,7 +185,7 @@
         </div>
 
         <div class="login">
-          Already have an account? <a href="login.html">Log in</a>
+          Already have an account? <a href="login.php">Log in</a>
         </div>
 
       </div>
@@ -199,6 +193,5 @@
     </form>
   </div>
 </body>
-</html>
 
-  
+</html>
