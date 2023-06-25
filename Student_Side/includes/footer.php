@@ -10,10 +10,12 @@
 
     <div class="container">
       <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-info">
+        <div class="col-lg-5 col-md-12 footer-info" id="titlefooter">
+          <div title="footertitle">
           <a href="index.html" class="logo d-flex align-items-center">
             <span>Guidance and Counseling Unit</span>
           </a>
+          </div>
           <p>Benguet State University</p>
           <div class="social-links d-flex mt-4">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -23,7 +25,7 @@
           </div>
         </div>
 
-        <div class="col-lg-2 col-6 footer-links">
+        <div class="col-lg-2 col-6 footer-links" id="footerlinks">
           <h4>Useful Links</h4>
           <ul>
             <li><a href="#">Home</a></li>
@@ -34,7 +36,7 @@
           </ul>
         </div>
 
-        <div class="col-lg-2 col-6 footer-links">
+        <div class="col-lg-2 col-6 footer-links" id="footerservices">
           <h4>Our Services</h4>
           <ul>
             <li><a href="#">Forms</a></li>
@@ -45,7 +47,7 @@
           </ul>
         </div>
 
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start" id="footercontacts">
           <h4>Contact Us</h4>
           <p>
             A108 Adam Street <br>
@@ -60,7 +62,7 @@
       </div>
     </div>
 
-    <div class="container mt-4">
+    <div class="container mt-4" id="footercopyright">
       <div class="copyright">
         <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
       </div>
@@ -77,7 +79,80 @@
   <!-- End Footer -->
 
 
+  <style>
+ @media (min-width: 1199px) and (max-width: 1399px)
+  {
+    #titlefooter span{
+     font-size: 1.6rem;
+    }
 
+    #titlefooter p,#footerlinks a, #footerservices a, #footercontacts p, #footercopyright .copyright
+    {
+      font-size: 1vw;
+    }
+
+    #footercopyright .credits{
+      font-size: .9vw;
+    }
+
+    #titlefooter a{
+      font-size: .8vw;
+    }
+    #footerlinks h4, #footerservices h4, #footercontacts h4{
+      font-size: 1vw;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1199px)
+  {
+    #titlefooter span{
+     font-size: 1.35rem;
+    }
+
+    #titlefooter p,#footerlinks a, #footerservices a, #footercontacts p, #footercopyright .copyright
+    {
+      font-size: 1vw;
+    }
+
+    #footercopyright .credits{
+      font-size: .9vw;
+    }
+
+    #titlefooter a{
+      font-size: .8vw;
+    }
+    #footerlinks h4, #footerservices h4, #footercontacts h4{
+      font-size: 1vw;
+    }
+  }
+  @media (max-width: 530px)
+  {
+    #titlefooter span{
+     font-size: 1.7rem;
+    } 
+  
+  }
+  @media (max-width: 486px)
+  {
+    #titlefooter span{
+     font-size: 1.6rem;
+    } 
+  
+  }
+  @media (max-width: 460px)
+  {
+    #titlefooter span{
+     font-size: 1.5rem;
+    } 
+  
+  }
+  @media (max-width: 434px)
+  {
+    #titlefooter span{
+     font-size: 1.4rem;
+    } 
+  
+  }
+  </style>
 </body>
 
 </html>

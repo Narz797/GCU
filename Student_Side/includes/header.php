@@ -44,16 +44,11 @@
   <!-- End Header -->
 
 
-<div style="background-image: url('assets/img/bg.png'); background-repeat: no-repeat; background-size: cover; padding-bottom: 50px;">
-  <br>
-  <img src="assets/img/GCU.png" alt="" height="200px" width="200px" style="display: inline-block; vertical-align: middle; margin-left: 300px;">
-  <div style="display: inline-block; vertical-align: middle;">
-    <h5 style="font-family: 'Georgia', serif; ">REPUBLIC OF THE PHILIPPINES</h5>
-    <hr class="line" style="width: 100%;  margin-bottom: 0;">
-    <h1 style="font-family: 'Times New Roman', serif; font-weight: bold; color:black;"><span>BENGUET STATE UNIVERSITY</span></h1>
-    <h3 style="font-family: 'Garamond', serif; ">GUIDANCE AND COUNSELING UNIT</h3>
-  </div>
-</div>
+  <?php 
+
+include 'includes/banner.php';
+
+?>
 
 
 <style>
