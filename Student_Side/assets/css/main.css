@@ -500,8 +500,11 @@ section {
     bottom: 0;
     transition: 0.3s;
     z-index: 9997;
+    
   }
-
+  #navbar ul li form {
+    margin-top: 10px;
+  }
   .navbar ul {
     position: absolute;
     inset: 0;
@@ -511,6 +514,7 @@ section {
     overflow-y: auto;
     transition: 0.3s;
     z-index: 9998;
+    
   }
 
   .navbar a,

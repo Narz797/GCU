@@ -15,7 +15,7 @@
       </a>
 <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
   <ul>
-    <img src="assets/img/bsu.png" alt="" style="width:5.5%; height:auto;">
+    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
     <li><a href="index.php">HOME</a></li>
     <li><a href="about.php">ABOUT</a></li>
     <li><a href="services.php">SERVICES</a></li>
@@ -25,12 +25,12 @@
 
             <li class="search-bar">
       <form action="search.html" method="GET">
-        <input type="text" name="query" placeholder="Search">
+        <input type="text" name="query" placeholder="Search" id="srchbar">
         <button type="submit">Search</button>
       </form>
     </li>
 
-    <div class="containerA">
+<div class="containerA">
 
 <div class="account-icon">
   <div class="dropdown">
@@ -99,7 +99,7 @@
       background-color: #fff;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin-left: 10%;
+      
     }
 .dropdown-content {
       display: none;
@@ -139,7 +139,10 @@
   /* Remove the margin from each list item */
   #navbar ul li {
     margin: 0;
+    
   }
+
+  
 
   /* Remove the left margin from the first list item */
   #navbar ul li:first-child {
@@ -155,12 +158,44 @@
     border-radius: 4px;
     transition: background-color 0.3s ease;
     font-size: 16px;
+    width: 100%;
+    border-radius: 0;
+    text-align: center;
+    margin-top: 10px;
   }
 
   #navbar ul li a:hover {
     background-color: goldenrod;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
+  #spacer{
+    width: 10%;
+  }
+  @media (max-width: 1279px) {
+    #spacer{
+      width: 10px;
+    }
+    button{
+      visibility: hidden;
+    }
+    input{
+      width: 100%;
+    }
+    .account-idon{
+      width: auto;
+    }
+    /* #navbar ul{
+      margin-top: 2%;
+    } */
+    #navbar ul .bsu{
+     margin-top: 10%;
+     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    }
+  }
+
 </style>
 
 </section>
