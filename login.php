@@ -99,6 +99,7 @@
       margin-right: 10px; /* Add some spacing between the logo and text */
     }
   </style>
+  <script></script>
 </head>
 <body>
   <div class="container">
@@ -106,7 +107,7 @@
       <img src="assets/img/GCU.png" alt="Logo" width="90" height="90">
     </div>
     <h2>Login</h2>
-    <form action="login.php" method="post">
+    <form action="backend/validate_student_user.php" method="post">
       <input type="text" id="username" placeholder="Username" name="username" required>
       <input type="password" id="password" placeholder="Password" name="password" required>
       
