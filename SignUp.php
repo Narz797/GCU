@@ -61,8 +61,6 @@
       margin-left: 20px;
     }
 
-
-
     .form-group label {
       display: block;
       margin-bottom: 5px;
@@ -116,12 +114,12 @@
       color: #333;
     }
   </style>
+  <script type="text/javascript" src="js/jquery-1.11.3-jquery.min.js"></script>
 </head>
 
 <body>
   <div class="container">
     <div class="logo">
-
       <img src="assets/img/GCU.png" alt="Logo" width="90" height="90">
     </div>
     <h2>Sign Up</h2>
@@ -143,7 +141,13 @@
           <input type="text" id="middle" placeholder="Middle Name" name="middle" required>
         </div>
         <div class="form-group">
-          <input type="text" id="gender" placeholder="Gender" name="gender" required>
+          <input type="text" id="gender" placeholder="Gender" name="gender" list="gender" required />
+          <datalist id="gender">
+            <option selected value="">-</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </datalist>
+
         </div>
       </div>
 
@@ -180,16 +184,14 @@
 
       <div class="form-group">
         <div class="buttons">
-          <input type="submit" value="Sign Up">
+          <input type="submit" id="submit" value="Sign Up">
           <input type="button" value="Cancel">
         </div>
 
         <div class="login">
           Already have an account? <a href="login.php">Log in</a>
         </div>
-
       </div>
-
     </form>
   </div>
 </body>
