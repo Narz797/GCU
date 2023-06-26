@@ -1,4 +1,4 @@
-
+ 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Rock+Salt&display=swap');
 
@@ -85,7 +85,6 @@ i{
 
 /* Reusable classes */
 .container{
-    max-width: 134rem;
     margin: 0 auto;
     padding: 0 1.5rem;
 }

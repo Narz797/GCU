@@ -31,7 +31,7 @@
 
     <div class="logreg-box">
         <div class="form-box login">
-            <form action="index.php">
+            <form action="index.html">
                 <h2>WELCOME</h2>
 
                 <div class="input-box">
@@ -49,7 +49,7 @@
                     <label><input type="checkbox" name="">Remember Me</label>
                     <a href="#">Forget password?</a>
                 </div>
-                <a href="index.php"><button class="btn1" type="submit">SIGN IN</button></a>
+                <a href="index.html"><button class="btn1" type="submit">SIGN IN</button></a>
 
                 <div class="sua">
                     <p>No Account?</p><a href="#" class="su-link">Sign Up</a>
