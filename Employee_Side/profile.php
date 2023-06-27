@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Profiles</title>
+    <title>Student Profile</title>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/profile.css">
-
+    <link rel="stylesheet" href="./assets/css/profile.css">
 </head>
 
 <body>
@@ -21,17 +20,17 @@
     <!-- Header -->
 <header class="header">
     <nav class="nav container"> 
-        <a href="./index.php" class="logo">GCU</a>
+        <a href="./index.html" class="logo">GCU</a> 
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="index.php" class="list-link current">Home</a>
+                    <a href="index.html" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="form.php" class="list-link">Requested Forms</a>
+                    <a href="form.html" class="list-link">Requested Forms</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="appointment.php" class="list-link">Appointment Schedules</a>
+                    <a href="appointment.html" class="list-link">Appointment Schedules</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -59,46 +58,47 @@
 <section class="welcome-message">
     <div class="container">
         <br>
-        <h2 class="title independent-title">STUDENT PROFILES</h2>
-       
+        <h2 class="title independent-title">STUDENT PROFILE</h2>
+        <div class="card">
+
  <main class="table" id="customers_table">
-        <section class="table__header">
-            <h1>Customer's Orders</h1>
+        <section class="table-header">
+            <h1>List of Students</h1>
             <div class="input-group">
                 <input type="search" placeholder="Search Data...">
-                <img src="images/search.png" alt="">
+                <img src="assets/images/search.png" alt="">
             </div>
-            <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"></label>
+            <div class="export-file">
+                <label for="export-file" class="export-file-btn" title="Export File"></label>
                 <input type="checkbox" id="export-file">
-                <div class="export__file-options">
+                <div class="export-file-options">
                     <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF" onclick="window.print()">PDF <img src="images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
-                    <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
+                    <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
+                    <label for="export-file" id="toJSON">JSON <img src="assets/images/json.png" alt=""></label>
+                    <label for="export-file" id="toCSV">CSV <img src="assets/images/csv.png" alt=""></label>
+                    <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
                 </div>
             </div>
         </section>
-        <section class="table__body">
+        <section class="table-body">
             <table>
                 <thead>
                     <tr>
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Student <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Department <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> College <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Time <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Date <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Action </th>
+                        <th> Action <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td> 1 </td>
-                        <td> <img src="assets/images/pfp.jpg" alt="">Zinzu Chan Lee</td>
-                        <td> Seoul </td>
-                        <td> Architecture </td>
+                        <td> <img src="assets/images/sp.jpg" alt="">Zinzu Chan Lee</td>
+                        <td> CHET </td>
+                        <td> Psychology </td>
                         <td> 17 Dec, 2022 </td>
                         <td>
                             <p class="status delivered">Delivered</p>
@@ -107,9 +107,9 @@
                     </tr>
                     <tr>
                         <td> 2 </td>
-                        <td><img src="assets/images/pfp.jpg" alt=""> Jeet Saru </td>
-                        <td> Kathmandu </td>
-                        <td> Political Science </td>
+                        <td><img src="assets/images/sp.jpg" alt=""> Jeet Saru </td>
+                         <td> CIS </td>
+                        <td> Computer Science </td>
                         <td> 27 Aug, 2023 </td>
                         <td>
                             <p class="status cancelled">Cancelled</p>
@@ -117,13 +117,13 @@
                         <td> <button>View</button> </td>
                     </tr>
                     <tr>
-                        <td> 3</td>
-                        <td><img src="assets/images/pfp.jpg" alt=""> Sonal Gharti </td>
-                        <td> Tokyo </td>
-                        <td> Communication </td>
-                        <td> 14 Mar, 2023 </td>
+                        <td> 3 </td>
+                        <td><img src="assets/images/sp.jpg" alt=""> Sarita Limbu </td>
+                        <td> CAS </td>
+                        <td> Architecture </td>
+                        <td> 23 Apr, 2023 </td>
                         <td>
-                            <p class="status shipped">Rejected</p>
+                            <p class="status pending">Pending</p>
                         </td>
                         <td> <button>View</button> </td>
                     </tr>
@@ -132,8 +132,17 @@
             </table>
         </section>
     </main>
+
+        </div>
     </div>
+
+
 </section>
+<br>
+
+
+
+
 <br>
 
     <!-- Footer -->
@@ -153,6 +162,7 @@
     </footer>
 
 <!-- Script     -->
-<script src="assets/main.js"></script>    
+<script src="./assets/main.js"></script>
+ <script src="assets/js/table.js"></script>   
 </body>
 </html>

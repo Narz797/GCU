@@ -84,7 +84,6 @@ i{
 
 /* Reusable classes */
 .container{
-    max-width: 134rem;
     margin: 0 auto;
     padding: 0 1.5rem;
 }
@@ -248,7 +247,7 @@ i{
 }
 .container-calendar {
   position: relative;
-  width: 1200px;
+  width: 100%;
   min-height: 850px;
   margin: 0 auto;
   padding: 5px;
@@ -476,11 +475,11 @@ i{
   text-transform: capitalize;
 }
 .right .today-date .event-day {
-  font-size: 12px;
+  font-size: 20px;
   font-weight: 500;
 }
 .right .today-date .event-date {
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 400;
   color: #878895;
 }
