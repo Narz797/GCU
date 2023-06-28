@@ -20,6 +20,10 @@
     <li><a href="about.php">ABOUT</a></li>
     <li><a href="services.php">SERVICES</a></li>
     <li><a href="contact.php">CONTACT</a></li>
+
+    <!-- Show when Mobile view -->
+    <li class="for-mobile-view"><a href="transaction.php">TRANSACTION</a></li>
+    <li class="for-mobile-view"><a href="appointment.php">APPOINTMENT</a></li>
     <li class="spacer" ></li>
 
 
@@ -73,7 +77,7 @@
   <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 250px;">
 
 
-<nav id="navbar" class="navbar">
+<nav id="navbar1" class="navbar">
   <ul>
     
     <li><a href="transaction.php">TRANSACTION</a></li>
@@ -92,7 +96,9 @@
 </div>
 </section>
 <style>
-
+  .for-mobile-view{
+    visibility: hidden;
+  }
   .containerA {
       max-width: 500px;
       margin: 0 auto;
@@ -148,7 +154,7 @@
   #navbar ul li:first-child {
     margin-left: 0%;
   }
-
+ 
   #navbar ul li a {
     display: inline-block;
     padding: 10px 20px;
@@ -172,6 +178,12 @@
     width: 10%;
   }
   @media (max-width: 1279px) {
+    .for-mobile-view{
+      visibility: visible;
+  }
+    #navbar1{
+      visibility: hidden;
+  }
     #spacer{
       width: 10px;
     }
@@ -187,7 +199,7 @@
     /* #navbar ul{
       margin-top: 2%;
     } */
-    #navbar ul .bsu{
+    #navbar1 ul .bsu{
      margin-top: 10%;
      display: block;
     margin-left: auto;
