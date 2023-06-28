@@ -22,8 +22,8 @@
     <li><a href="contact.php">CONTACT</a></li>
 
     <!-- Show when Mobile view -->
-    <li class="for-mobile-view"><a href="transaction.php">TRANSACTION</a></li>
-    <li class="for-mobile-view"><a href="appointment.php">APPOINTMENT</a></li>
+    <li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
+    <li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li>
     <li class="spacer" ></li>
 
 
@@ -96,7 +96,7 @@
 </div>
 </section>
 <style>
-  .for-mobile-view{
+  .for-mobile{
     visibility: hidden;
   }
   .containerA {
@@ -178,7 +178,7 @@
     width: 10%;
   }
   @media (max-width: 1279px) {
-    .for-mobile-view{
+    .for-mobile{
       visibility: visible;
   }
     #navbar1{
@@ -199,13 +199,8 @@
     /* #navbar ul{
       margin-top: 2%;
     } */
-    #navbar1 ul .bsu{
-     margin-top: 10%;
-     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    }
+  
+   
   }
 
 </style>

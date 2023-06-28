@@ -13,15 +13,13 @@
         <!--  <img src="/GCU.png" alt="">  -->
         <!-- <h1>Impact<span>.</span></h1> -->
       </a>
-<nav id="navbar" class="navbar" style="margin-right: 3000px">
+      <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
   <ul>
-    <img src="assets/img/bsu.png" alt="" height="50px" width="50px">
+    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
     <li><a href="index.php">HOME</a></li>
     <li><a href="about.php">ABOUT</a></li>
     <li><a href="services.php">SERVICES</a></li>
     <li><a href="contact.php">CONTACT</a></li>
-    <li class="spacer" style="margin-left:200px;"></li>
-
     <li class="login-register"><a href="login.html">LOGIN</a></li>
     <li class="login-register"><a href="SignUp.html">REGISTER</a></li>
         <li class="search-bar">
@@ -87,6 +85,9 @@ include 'includes/banner.php';
     border-radius: 4px;
     transition: background-color 0.3s ease;
     font-size: 16px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
   }
 
   #navbar ul li a:hover {
