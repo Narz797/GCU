@@ -138,8 +138,8 @@ include 'includes/banner.php';
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon" "><i class="bi bi-clock-history"></i></div>
-              <h4 class="title"><a href="history.php" class="stretched-link">HISTORY</a></h4>
+              <div class="icon" ><i class="bi bi-clock-history"></i></div>
+              <h4 class="title"><a href="#history" class="stretched-link">HISTORY</a></h4>
 
             
             </div>
@@ -148,7 +148,7 @@ include 'includes/banner.php';
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-flag"></i></div>
-              <h4 class="title"><a href="mission.php" class="stretched-link">MISSION</a></h4>
+              <h4 class="title"><a href="#mission" class="stretched-link">MISSION</a></h4>
        
             </div>
           </div><!--End Icon Box -->
@@ -156,7 +156,7 @@ include 'includes/banner.php';
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-eye"></i></div>
-              <h4 class="title"><a href="vision.php" class="stretched-link">VISION</a></h4>
+              <h4 class="title"><a href="#vision" class="stretched-link">VISION</a></h4>
           
             </div>
           </div><!--End Icon Box -->
@@ -164,7 +164,7 @@ include 'includes/banner.php';
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-tools"></i></div>
-              <h4 class="title"><a href="services.php" class="stretched-link">SERVICES</a></h4>
+              <h4 class="title"><a href="#servicesss" class="stretched-link">SERVICES</a></h4>
            
             </div>
           </div><!--End Icon Box -->
