@@ -6,10 +6,8 @@
     body {
       font-family: Arial, sans-serif;
       background-color:#084603;
-     
       display: flex;
       justify-content: center;
-     
       align-items: center;
       height: 100vh;
     }
