@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Class Admission Slip</title>
+<title>Class Admission slip</title>
 <style type="text/css">
 	#Title{
 		text-align: center;

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Withdrawal/Dropping/Shifting Slip</title>
+<title>Withdrawal/Dropping/Shifting slip</title>
 <style>
 		.hidden{
 			display: none;

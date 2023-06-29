@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Class Admission Slip(ES)</title>
+<title>Class Admission Slip(es)</title>
 	<style>
 		.hidden{
 			display: none;
