@@ -13,7 +13,7 @@
     }
 
     .container {
-      max-width: 900px;
+      width: 60%;
       margin: 0 auto;
       padding: 40px;
        background-color: #008374;
@@ -67,7 +67,7 @@
     .form-group input[type="text"],
     .form-group input[type="email"],
     .form-group input[type="password"] {
-      width: 100%;
+      width: 90%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -115,7 +115,7 @@
   <div class="container">
     <div class="logo">
      
-      <img src="assets/img/GCU.png" alt="Logo" width="90" height="90">
+      <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
     <h2>Sign Up</h2>
     <form action="" method="POST">
