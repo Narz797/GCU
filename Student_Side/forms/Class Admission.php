@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Class Admission Slip</title>
 <style type="text/css">
 	#Title{
 		text-align: center;
@@ -60,16 +60,14 @@
       <option value="h">others</option>
     </select>
   </p>
-  <p>
   <div id="others" class="hidden1">
-		<label for="textfield5">Others:</label>
+	<label for="textfield5">Others:</label>
 		<input type="text" name="textfield5" id="textfield5">
 	</div>
 	<div id="extra-cur" class="hidden2">
 		<label for="textfield4">official co/extra-curricular activity:</label>
 		<input type="text" name="textfield4" id="textfield4">
 	</div>
-  </p>
   <p>
     <input type="submit" name="submit" id="submit" value="Submit">
   </p>

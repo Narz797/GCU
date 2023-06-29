@@ -2,15 +2,19 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Class Admission Slip(ES)</title>
 	<style>
 		.hidden{
 			display: none;
 		}
+		#Title{
+		text-align: center;
+	}
 	</style>
 </head>
 	
 <body>
+<h1 id="Title">Class Admission Slip</h1>
 <form id="form1" name="form1" method="post">
   <p>
     <label for="select">Actions Taken:</label>
