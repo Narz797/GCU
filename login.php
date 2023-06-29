@@ -90,8 +90,7 @@
       text-decoration: none;
     }
 
-    .login input[type="submit"]:hover,
-    .login input[type="button"]:hover {
+    .login input[type="submit"]:hover {
       background-color: rgb(179, 188, 6);
       color:black;
     }
