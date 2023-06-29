@@ -126,11 +126,11 @@
       </div>
       
       <div class="forgot-password">
-        <a href="ForgotPassword.html">Forgot Password?</a>
+        <a href="ForgotPassword.php">Forgot Password?</a>
       </div>
       
       <div class="signup">
-        Don't have an account? <a href="signup.html">Sign Up</a>
+        Don't have an account? <a href="signup.php">Sign Up</a>
       </div>
     </form>
 
