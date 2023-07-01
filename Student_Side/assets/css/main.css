@@ -339,7 +339,9 @@ section {
 # Desktop Navigation
 --------------------------------------------------------------*/
 @media (min-width: 1280px) {
-  
+  /* .for-mobile-view{
+    visibility: hidden;
+  } */
   .navbar {
     padding: 0;
   }
@@ -491,6 +493,12 @@ section {
 # Mobile Navigation
 --------------------------------------------------------------*/
 @media (max-width: 1279px) {
+  /* .for-mobile-view{
+    visibility: visible;
+}
+  #navbar1{
+    visibility: hidden;
+} */
   .navbar {
     position: fixed;
     top: 0;

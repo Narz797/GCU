@@ -5,7 +5,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-     
+      background-color:#084603;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -13,10 +13,10 @@
     }
 
     .container {
-      max-width: 900px;
+      width: 60%;
       margin: 0 auto;
       padding: 40px;
-       background-color: #008374;
+      background-color: #04680c;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       text-align: center; /* Center align the content inside the container */
@@ -67,7 +67,7 @@
     .form-group input[type="text"],
     .form-group input[type="email"],
     .form-group input[type="password"] {
-      width: 100%;
+      width: 90%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -82,8 +82,8 @@
     .form-group input[type="button"] {
       margin-left: 10px;
       padding: 10px;
-      background-color: black;
-      color: #ffffff;
+      background-color: #13a110;
+      color: #bcedb0;
       border: none;
       border-radius: 4px;
       cursor: pointer;
@@ -91,13 +91,16 @@
 
     .form-group input[type="submit"]:hover,
     .form-group input[type="button"]:hover {
-      background-color: red;
+      background-color: rgb(179, 188, 6);
+      color:black;
     }
 
     .container .login {
       text-align: center;
       margin-top: 15px;
       grid-column: span 2;
+      color:#56eb31;
+    
     }
     
     .container .login a {
@@ -109,13 +112,20 @@
     .container .login a:hover {
       color: #333;
     }
+
+    .container h2 {
+      text-align:center;
+      color: #d7d70f;
+      margin-bottom: 30px;
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
     <div class="logo">
      
-      <img src="assets/img/GCU.png" alt="Logo" width="90" height="90">
+      <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
     <h2>Sign Up</h2>
     <form action="" method="POST">
@@ -189,9 +199,10 @@
           <input type="submit" value="Sign Up">
           <input type="button" value="Cancel">
         </div>
+      </div>
 
         <div class="login">
-          Already have an account? <a href="login.html">Log in</a>
+          Already have an account? <a href="login.php">Log in</a>
         </div>
 
       </div>

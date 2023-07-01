@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Login Page</title>
+  <title>Student Login Page</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -14,9 +14,10 @@
     }
 
     .container {
-      width: 350px;
+      width: 380px;
       padding: 40px;
-      background-color: #008374;
+      padding-right:60px;
+      background-color: #04680c;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       text-align: center;
@@ -25,7 +26,7 @@
 
     .container h2 {
       text-align: center;
-      color: #333;
+      color: #d7d70f;
       margin-bottom: 30px;
     }
 
@@ -33,6 +34,7 @@
       display: block;
       color: #555;
       margin-bottom: 8px;
+      text-align:center;
     }
 
     .container input[type="text"],
@@ -42,17 +44,19 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       margin-bottom: 20px;
+    
     }
 
     .container input[type="submit"] {
-      width: 100%;
-      background-color: #3498db;
-      color: #fff;
+      width: 40%;
+      background-color: #13a110;
+      color: #bcedb0;
       padding: 12px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
       font-weight: bold;
+      
     }
 
     .container .forgot-password,
@@ -70,13 +74,15 @@
 
     .container .forgot-password a:hover,
     .container .signup a:hover {
-      color: #333;
+      
+      text-decoration: underline;
     }
 
     .container .login {
       text-align: center;
       margin-top: 15px;
       grid-column: span 2;
+      
     }
 
     .container .login a {
@@ -98,8 +104,8 @@
     }
 
     .container .logo img {
-      margin-right: 10px;
-      /* Add some spacing between the logo and text */
+      margin-right: 10px; /* Add some spacing between the logo and text */
+      align-items:center;
     }
   </style>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -109,13 +115,24 @@
 <body>
   <div class="container">
     <div class="logo">
-      <img src="assets/img/GCU.png" alt="Logo" width="90" height="90">
+      <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
     <h2>Login</h2>
     <form id="Login_Student_User" method="POST">
       <input type="text" id="username" placeholder="Username" name="username" required>
       <input type="password" id="password" placeholder="Password" name="password" required>
+      
+      <div class="login">
       <input type="submit" value="Login">
+      </div>
+      
+      <div class="forgot-password">
+        <a href="ForgotPassword.php">Forgot Password?</a>
+      </div>
+      
+      <div class="signup">
+        Don't have an account? <a href="signup.php">Sign Up</a>
+      </div>
     </form>
     <div class="forgot-password">
       <a href="ForgotPassword.php">Forgot Password?</a>

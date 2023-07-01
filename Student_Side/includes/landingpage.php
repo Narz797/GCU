@@ -13,15 +13,13 @@
         <!--  <img src="/GCU.png" alt="">  -->
         <!-- <h1>Impact<span>.</span></h1> -->
       </a>
-<nav id="navbar" class="navbar" style="margin-right: 3000px">
+      <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
   <ul>
-    <img src="assets/img/bsu.png" alt="" height="50px" width="50px">
+    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
     <li><a href="index.php">HOME</a></li>
     <li><a href="about.php">ABOUT</a></li>
     <li><a href="services.php">SERVICES</a></li>
     <li><a href="contact.php">CONTACT</a></li>
-    <li class="spacer" style="margin-left:200px;"></li>
-
     <li class="login-register"><a href="login.html">LOGIN</a></li>
     <li class="login-register"><a href="SignUp.html">REGISTER</a></li>
         <li class="search-bar">
@@ -87,6 +85,9 @@ include 'includes/banner.php';
     border-radius: 4px;
     transition: background-color 0.3s ease;
     font-size: 16px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
   }
 
   #navbar ul li a:hover {
@@ -137,8 +138,8 @@ include 'includes/banner.php';
 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon" "><i class="bi bi-clock-history"></i></div>
-              <h4 class="title"><a href="history.php" class="stretched-link">HISTORY</a></h4>
+              <div class="icon" ><i class="bi bi-clock-history"></i></div>
+              <h4 class="title"><a href="#history" class="stretched-link">HISTORY</a></h4>
 
             
             </div>
@@ -147,7 +148,7 @@ include 'includes/banner.php';
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-flag"></i></div>
-              <h4 class="title"><a href="mission.php" class="stretched-link">MISSION</a></h4>
+              <h4 class="title"><a href="#mission" class="stretched-link">MISSION</a></h4>
        
             </div>
           </div><!--End Icon Box -->
@@ -155,7 +156,7 @@ include 'includes/banner.php';
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-eye"></i></div>
-              <h4 class="title"><a href="vision.php" class="stretched-link">VISION</a></h4>
+              <h4 class="title"><a href="#vision" class="stretched-link">VISION</a></h4>
           
             </div>
           </div><!--End Icon Box -->
@@ -163,7 +164,7 @@ include 'includes/banner.php';
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-tools"></i></div>
-              <h4 class="title"><a href="services.php" class="stretched-link">SERVICES</a></h4>
+              <h4 class="title"><a href="#servicesss" class="stretched-link">SERVICES</a></h4>
            
             </div>
           </div><!--End Icon Box -->
