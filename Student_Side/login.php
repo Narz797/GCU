@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login Page</title>
+  <title>Student Login Page</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -122,7 +122,7 @@
       <input type="password" id="password" placeholder="Password" name="password" required>
       
       <div class="login">
-        <a href="landingpage.php"><input type="submit" value="Login"></a>
+      <input type="submit" value="Login">
       </div>
       
       <div class="forgot-password">
