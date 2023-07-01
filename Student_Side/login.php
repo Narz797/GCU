@@ -1,3 +1,8 @@
+<?php
+include '../backend/validate_user.php';
+include '../backend/connect_database.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -109,7 +114,6 @@
     }
   </style>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -119,7 +123,7 @@
     </div>
     <h2>Login</h2>
     <form id="Login_Student_User" method="POST">
-      <input type="text" id="username" placeholder="Username" name="username" required>
+      <input type="text" id="email" placeholder="Email" name="email" required>
       <input type="password" id="password" placeholder="Password" name="password" required>
       
       <div class="login">
@@ -144,27 +148,24 @@
   </div>
   <script>
     $("#Login_Student_User").on("submit", function (event) {
-      $form = $("form").serializeArray();
-      $form.push({
-        name: "source",
-        value: "student"
-      });
-      
-      //Sending to validate user
-      var request = $.ajax({
-        url: "/backend/validate.user",
-        type: "POST",
+      console.log('check');
+      var source = "student_side_login";
+      event.preventDefault();
+
+      $.ajax({
+        type: 'POST',
+        url: '../backend/validate_user.php',
         data: {
-          form:$form;
+          email:$("#email").val(),
+          password:$("#password").val(),
+          source: source
         },
-        dataType: "JSON",
-        success: function (data) {
-          console.log('success');
+        success: function(data) {
+          alert(data);
+          event.preventDefault()
         }
       });
-      event.preventDefault();
     });
   </script>
 </body>
-
 </html>
