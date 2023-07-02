@@ -22,8 +22,8 @@
     <li><a href="contact.php">CONTACT</a></li>
     <li class="spacer" style="margin-left:200px;"></li>
 
-    <li class="login-register"><a href="login.html">LOGIN</a></li>
-    <li class="login-register"><a href="SignUp.html">REGISTER</a></li>
+    <li class="login-register"><a href="login.php">LOGIN</a></li>
+    <li class="login-register"><a href="SignUp.php">REGISTER</a></li>
         <li class="search-bar">
       <form action="search.php" method="GET">
         <input type="text" name="query" placeholder="Search">
