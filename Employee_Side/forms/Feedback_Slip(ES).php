@@ -8,9 +8,7 @@
 		text-align: center;
     font-family: Arial, sans-serif;
 	}
-	.hidden1, .hidden2{
-		display: none;
-	}
+
   body{
     background-color:#E8E4C9;
     
@@ -39,28 +37,42 @@
 <form id="form1" name="form1" method="post">
   <p>
     <label for="select">Intervention/s or Assistance Provided:</label>
-    <select name="select" id="select">
-      <option value = "a">Interview</option>
-      <option value = "b">Counseling</option>
-      <option value = "c">Psychological Testing</option>
-      <option value = "d">Referred to Scholarship sponsors</option>
-      <option value = "e">Referred to..</option>
-      <option value = "f">Others</option>
-    </select>
-    
+   
   </p>
-	<div class="hidden1" id="refer">Refered to
+  <p>  
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
+      interview</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_1">
+      counseling</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
+      psychological testing</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_3">
+      preferred to scholarship sponsors</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="refer" onclick="myFunction()">
+      referred to</label>
+    <div class="hidden1" id="ref" style="display: none;">Refered to
     <label for="textfield">:</label>
     <input type="text" name="textfield" id="textfield">
     for interventions
   </div>
-  <div class="hidden2" id="oth">
-	  <p>
-    Others
-      <label for="textfield2">:</label>
-    <input type="text" name="textfield2" id="textfield2">
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="others" onclick="myFunction()">
+      others</label>
+    <input type="text" name="textfield3" id="oth" style="display: none">
+    <br>
   </p>
-	</div>
+	
+
   <p>
     Remarks
       <label for="textarea">:<br>
@@ -73,22 +85,22 @@
 </form>
 </div>
 	<script>
-		const dropdown = document.getElementById('select');
-		const textfield1 = document.getElementById('refer');
-		const textfield2 = document.getElementById('oth');
-
-		dropdown.addEventListener('change', function() {
-		  if (dropdown.value === 'e') {
-			textfield1.classList.remove('hidden1');
-			  textfield2.classList.add('hidden2');
-		  } else if (dropdown.value === 'f') {
-			textfield2.classList.remove('hidden2');
-			  textfield1.classList.add('hidden1');
-		  } else {
-			textfield1.classList.add('hidden1');
-			textfield2.classList.add('hidden2');
-		  }
-		});
+		function myFunction() {
+  var checkBox1 = document.getElementById("refer");
+  var text1 = document.getElementById("ref");
+  var checkBox2 = document.getElementById("others");
+  var text2 = document.getElementById("oth");
+  if (checkBox1.checked == true){
+    text1.style.display = "block";
+  } else {
+     text1.style.display = "none";
+  }
+	if (checkBox2.checked == true){
+    text2.style.display = "block";
+  } else {
+     text2.style.display = "none";
+  }
+}
 	</script>
 </body>
 </html>

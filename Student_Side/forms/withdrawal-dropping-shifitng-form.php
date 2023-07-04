@@ -68,6 +68,11 @@
     </select>
   </p>
   <p>
+    <label for="textarea2">State your Reason:<br>
+    </label>
+    <textarea name="textarea2" id="textarea2" style="width: 50%"></textarea>
+  </p>
+  <p>
     Reason/s for withdrawing enrollment/ dropping subject/s / shifting
       <label for="textarea">:<br>
     </label>
