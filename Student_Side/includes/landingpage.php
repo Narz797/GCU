@@ -20,8 +20,8 @@
     <li><a href="about.php">ABOUT</a></li>
     <li><a href="services.php">SERVICES</a></li>
     <li><a href="contact.php">CONTACT</a></li>
-    <li class="login-register"><a href="login.html">LOGIN</a></li>
-    <li class="login-register"><a href="SignUp.html">REGISTER</a></li>
+    <li class="login-register"><a href="login.php">LOGIN</a></li>
+    <li class="login-register"><a href="SignUp.php">REGISTER</a></li>
         <li class="search-bar">
       <form action="search.php" method="GET">
         <input type="text" name="query" placeholder="Search">
@@ -79,7 +79,7 @@ include 'includes/banner.php';
   #navbar ul li a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: black;
+    background-color: green;
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -176,7 +176,7 @@ include 'includes/banner.php';
 
   <style>
   .icon-box:hover {
-     background-color: goldenrod !important;
+     background-color: green !important;
   }
 </style>
 
