@@ -4,8 +4,8 @@
   <div id="RBG" style="display: inline-block; vertical-align: middle;">
     <h5 style="font-family: 'Georgia', serif;">REPUBLIC OF THE PHILIPPINES</h5>
     <hr class="line" style="width: 100%; border-color: black; margin-bottom: 0;">
-    <h1 style="font-family: 'Times New Roman', serif; font-weight: bold;"><span>BENGUET STATE UNIVERSITY</span></h1>
-    <h3 style="font-family: 'Garamond', serif;">GUIDANCE AND COUNSELING UNIT</h3>
+    <h1 style="font-family: 'Times New Roman', serif;"><span>BENGUET STATE UNIVERSITY</span></h1>
+    <h1 style="font-family: 'Garamond', serif; font-weight: bold;">GUIDANCE AND COUNSELING UNIT</h1>
   </div>
 </div>
 
