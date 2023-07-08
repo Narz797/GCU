@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
@@ -20,7 +21,7 @@
     <!-- Header -->
 <header class="header">
     <nav class="nav container">
-        <a href="./index.html" class="logo">GCU</a>
+        <a href="./index.php" class="logo">GCU</a>
         <div class="align-right">
             <button class="icon-btn theme-toggle-btn place-items-center">
                 <i class="ri-sun-line theme-light-icon"></i>
@@ -73,16 +74,16 @@
             </header>
             <hr>
             <div class="card-body1">
-                <a href="form.html" class="card-body-link">
+                <a href="form.php" class="card-body-link">
                     <i class="ri-folder-line"></i>Requested Forms
                 </a>
-                <a href="profile.html" class="card-body-link">
+                <a href="profile.php" class="card-body-link">
                     <i class="ri-server-line"></i>Student Profiles
                 </a>
-                 <a href="appointment.html" class="card-body-link">
+                 <a href="appointment.php" class="card-body-link">
                     <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
-                <a href="sisu.html" class="card-body-link">
+                <a href="sisu.php" class="card-body-link">
                     <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>

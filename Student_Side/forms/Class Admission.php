@@ -6,29 +6,8 @@
 <style type="text/css">
 	#Title{
 		text-align: center;
-    font-family: Arial, sans-serif;
 	}
-	.hidden1, .hidden2{
-		display: none;
-	}
-  body{
-    background-color:#E8E4C9;
-    
-  }
-  .form {
-      width: 90%;
-      padding: 60px;
-      padding-right:60px;
-      background-color: cream;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      
-    }
-  .form label{
-    color:black;
-    font-size:20px;
-    font-family: Arial, sans-serif;
-  }
+
 	
 </style>
 	
@@ -36,7 +15,6 @@
 
 <body>
 <h1 id="Title">Class Admission Slip</h1>
-<div class="form">
 <form id="form1" name="form1" method="post">
   <p>
     <label for="number">Student ID No.:</label>
@@ -69,49 +47,67 @@
   </p>
   <p>
     <label for="select2">Cause/s of absences:</label>
-    <select name="select2" id="coa">
-      <option value="a">health-related concerns</option>
-      <option value="b">filial responsibilities</option>
-      <option value="c">environmental</option>
-      <option value="d">official co/extra-curricularactivites</option>
-      <option value="e">personal concerns</option>
-      <option value="f">socio-cultural concerns</option>
-      <option value="g">behavioral</option>
-      <option value="h">others</option>
-    </select>
   </p>
-  <div id="others" class="hidden1">
-	<label for="textfield5">Others:</label>
-		<input type="text" name="textfield5" id="textfield5">
-	</div>
-	<div id="extra-cur" class="hidden2">
-		<label for="textfield4">official co/extra-curricular activity:</label>
-		<input type="text" name="textfield4" id="textfield4">
-	</div>
-  <div class="button">
+  <p>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
+      health-related concerns</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_1">
+      filial responsibilites</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
+      environmental</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_3">
+      personal concerns</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_4">
+      socio-cultural concerns</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_5">
+      behavioral</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="official" onclick="myFunction()">
+      official co/extra-curricular activity</label>
+    <input type="text" name="textfield6" id="extra" style="display: none">
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="others" onclick="myFunction()">
+      others</label>
+    <input type="text" name="textfield6" id="oth" style="display: none">
+    <br>
+  </p>
+ 
+	
   <p>
     <input type="submit" name="submit" id="submit" value="Submit">
   </p>
-  </div>
 </form>
-</div>
-	<script>
-		const dropdown = document.getElementById('coa');
-		const textfield1 = document.getElementById('others');
-		const textfield2 = document.getElementById('extra-cur');
 
-		dropdown.addEventListener('change', function() {
-		  if (dropdown.value === 'd') {
-			textfield2.classList.remove('hidden2');
-			  textfield1.classList.add('hidden1');
-		  } else if (dropdown.value === 'h') {
-			textfield1.classList.remove('hidden1');
-			  textfield2.classList.add('hidden2');
-		  } else {
-			textfield1.classList.add('hidden1');
-			textfield2.classList.add('hidden2');
-		  }
-		});
-	</script>
 </body>
+	<script>
+function myFunction() {
+  var checkBox1 = document.getElementById("official");
+  var text1 = document.getElementById("extra");
+  var checkBox2 = document.getElementById("others");
+  var text2 = document.getElementById("oth");
+  if (checkBox1.checked == true){
+    text1.style.display = "block";
+  } else {
+     text1.style.display = "none";
+  }
+	if (checkBox2.checked == true){
+    text2.style.display = "block";
+  } else {
+     text2.style.display = "none";
+  }
+}
+</script>
 </html>

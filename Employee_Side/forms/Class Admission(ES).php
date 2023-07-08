@@ -18,18 +18,33 @@
 <form id="form1" name="form1" method="post">
   <p>
     <label for="select">Actions Taken:</label>
-    <select name="select" id="action">
-      <option value="a">Verified supporting documents</option>
-      <option value="b">Interviewed with guidance</option>
-      <option value="c">Life coaching</option>
-      <option value="d">Parent conference</option>
-      <option value="e">Counseling</option>
-      <option value="f">Others</option>
-    </select>
-	<div class="hidden" id="others">
-		<label for="textfield3">Others:</label>
-		<input type="text" name="textfield3" id="textfield3">
-	</div>
+  </p>
+  <p>  
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
+      verified supporting document/s</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_1">
+      interviewed with guidance</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
+      life coaching</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_3">
+      parent conference</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_4">
+      counseling</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="others" onclick="myFunction()">
+      others</label>
+    <input type="text" name="textfield3" id="oth" style="display: none">
+    <br>
   </p>
   <p>
     <label>
@@ -50,18 +65,15 @@
   </p>
 </form>
 	<script>
-		const dropdown = document.getElementById('action');
-		const textfield = document.getElementById('others');
-
-		dropdown.addEventListener('change', function() {
-		  if (dropdown.value === 'f') {
-			textfield.classList.remove('hidden');
-
-		  }  else {
-			textfield.classList.add('hidden');
-
-		  }
-		});
-	</script>
+function myFunction() {
+  var checkBox = document.getElementById("others");
+  var text = document.getElementById("oth");
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>

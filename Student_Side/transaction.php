@@ -31,9 +31,9 @@ include 'includes/main.php';
               <div class="icon">
                <i class="bi bi-file-text"></i>
               </div>
-              <h3>Name ng Forms</h3>
+              <h3>Class Admission</h3>
               <p>Description</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/Class Admission.php" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -42,9 +42,9 @@ include 'includes/main.php';
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
-              <h3>Name ng Forms</h3>
+              <h3>Withdrawal/Dropping/Shifting Form</h3>
               <p>Description</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/withdrawal-dropping-shifitng-form.php" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -53,9 +53,9 @@ include 'includes/main.php';
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
-              <h3>Name ng Foms</h3>
+              <h3>Feedback Slip</h3>
               <p>Description</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/Feedback_Slip.php" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
