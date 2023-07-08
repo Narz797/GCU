@@ -27,6 +27,7 @@ function student_login()
 
     $student_user = mysqli_query($conn, "SELECT * FROM student_user WHERE email = '$email'");
 
+    // testing
     if (mysqli_num_rows($student_user) > 0) {
         $row = mysqli_fetch_assoc($student_user);
         if ($password == $row['password']) {
