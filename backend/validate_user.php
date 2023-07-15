@@ -8,38 +8,38 @@ $password = "";
 //trial
 //sie
  $conn = mysqli_connect($servername, $username, $password, $database);
-session_start();
 
-if (isset($_POST["source"])) {
 
-    if ($_POST["source"] == "student_side_login") {
-        student_login();
-    } else if ($_POST["source"] == "employee_side") {
-        employee_login();
-    }
-}
 
-//Student Side
-function student_login()
-{
-    global $conn;
+ 
+ // Check connection
+ if (!$conn) {
+     die("Connection failed: " . mysqli_connect_error());
+ }
+ 
+ // Retrieve user input from the login form
+ if (isset($_POST['email']) && isset($_POST['password'])) {
+     $username = $_POST['email'];
+     $password = $_POST['password'];
+ 
+     // Query the database for user credentials
+     $query = "SELECT * FROM student_user WHERE email='$username' AND password='$password'";
+     $result = mysqli_query($conn, $query);
+ 
+     if (mysqli_num_rows($result) == 1) {
+         // Login successful, redirect to the home page or perform desired actions
+         header("Location: ../Student_Side/index.php");
+         exit();
 
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+     } else {
+         // Login failed, display an error message or redirect back to the login page
+         echo "Invalid username or password.";
+     }
+ } 
+ 
+ // Close the database connection
+ mysqli_close($conn);
 
-    $student_user = mysqli_query($conn, "SELECT * FROM student_user WHERE email = '$email'");
-
-    // testing
-    if (mysqli_num_rows($student_user) > 0) {
-        $row = mysqli_fetch_assoc($student_user);
-        if ($password == $row['password']) {
-            
-        } else {
-            exit;
-        }
-    } else {
-        exit;
-    }
-}
+ 
 
 ?>

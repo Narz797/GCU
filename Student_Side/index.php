@@ -3,10 +3,10 @@
 // New Comment
 include 'includes/landingpage.php';
 
-if(isset($_SESSION["id"])){
-  $id = $_SESSION["id"];
-  $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM tb_user WHERE id = $id"));
-}
+// if(isset($_SESSION["id"])){
+//   $id = $_SESSION["id"];
+//   $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM tb_user WHERE id = $id"));
+// }
 
 ?>
 

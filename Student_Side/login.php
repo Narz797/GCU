@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../backend/validate_user.php';
 include '../backend/connect_database.php';
 ?>
@@ -138,15 +139,10 @@ include '../backend/connect_database.php';
         Don't have an account? <a href="signup.php">Sign Up</a>
       </div>
     </form>
-    <div class="forgot-password">
-      <a href="ForgotPassword.php">Forgot Password?</a>
-    </div>
-    <div class="signup">
-      Don't have an account? <a href="signup.php">Sign Up</a>
-    </div>
+    
     <!-- Rest of the code -->
   </div>
-  <script>
+  <!-- <script>
     $("#Login_Student_User").on("submit", function (event) {
       console.log('check');
       var source = "student_side_login";
@@ -166,6 +162,6 @@ include '../backend/connect_database.php';
         }
       });
     });
-  </script>
+  </script> -->
 </body>
 </html>
