@@ -5,14 +5,37 @@
 <title>Follow-up Appointment Slip</title>
 </head>
 <style type="text/css">
-	#Title{
+#Title{
 		text-align: center;
+    font-family: Arial, sans-serif;
+    color:white;
 	}
-
+	.hidden1, .hidden2{
+		display: none;
+	}
+  body{
+    background-color:green;
+  }
+  .form {
+      width: 90%;
+      padding: 60px;
+      padding-right:60px;
+      background-color: darkgreen;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      
+    }
+  .form label{
+    color: white;
+    font-size:20px;
+    font-family: Arial, sans-serif;
+  }
 	
+
 </style>
 <body>
 	<h1 id="Title">Follow-up Appointment Slip</h1>
+<div class="form">
 <form id="form1" name="form1" method="post">
   <p>
     <label for="number">Student ID No.:</label>
@@ -37,17 +60,17 @@
       <option>Female</option>
     </select>
   </p>
-  <p>Please report to the undersigned on:</p>
+  <label>Please report to the undersigned on:</label>
   <p>
     <label for="date2">Date:</label>
     <input type="date" name="date2" id="date2">
     <label for="time">Time:</label>
     <input type="time" name="time" id="time">
-    Place
+    <label>Place</label>
     <label for="textfield4">:</label>
     <input type="text" name="textfield4" id="textfield4">
   </p>
-  <p>to undertake the following:</p>
+  <label>to undertake the following:</label>
   <p>
     <label>
       <input type="checkbox" name="CheckboxGroup1" value="Follow-up" id="CheckboxGroup1_0">
@@ -81,7 +104,9 @@
     <textarea name="textarea" id="textarea" style="width: 50%"></textarea>
     <br>
   </p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
+  <p>
+    <input type="submit" name="submit" id="submit" value="Submit">
+  </p>
+</div>
 </body>
 </html>
