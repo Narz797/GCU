@@ -4,29 +4,32 @@
 <meta charset="utf-8">
 <title>Feedback Slip</title>
 <style type="text/css">
-	#Title{
+		#Title{
 		text-align: center;
     font-family: Arial, sans-serif;
+    color:white;
 	}
-
+	.hidden1, .hidden2{
+		display: none;
+	}
   body{
-    background-color:#E8E4C9;
-    
+    background-color:green;
   }
   .form {
       width: 90%;
       padding: 60px;
       padding-right:60px;
-      background-color: cream;
+      background-color: darkgreen;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       
     }
   .form label{
-    color:black;
+    color: white;
     font-size:20px;
     font-family: Arial, sans-serif;
   }
+	
 </style>
 	
 </head>
@@ -58,11 +61,12 @@
     <br>
     <label>
       <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="refer" onclick="myFunction()">
-      referred to</label>
-    <div class="hidden1" id="ref" style="display: none;">Refered to
+      <label>referred to</label>
+    <div class="hidden1" id="ref" style="display: none;">
+    <label>Referred to</label>
     <label for="textfield">:</label>
     <input type="text" name="textfield" id="textfield">
-    for interventions
+    <label>for interventions</label>
   </div>
     <br>
     <label>
@@ -74,7 +78,7 @@
 	
 
   <p>
-    Remarks
+    <label>Remarks</label>
       <label for="textarea">:<br>
       </label>
     <textarea name="textarea" id="textarea" style="width: 50%"></textarea>
