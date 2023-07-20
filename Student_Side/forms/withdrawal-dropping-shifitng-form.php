@@ -7,27 +7,33 @@
 		.hidden{
 			display: none;
 		}
-			#Title{
+    #Title{
 		text-align: center;
     font-family: Arial, sans-serif;
+    color:white;
+	}
+	.hidden1, .hidden2{
+		display: none;
 	}
   body{
-    background-color:#E8E4C9;
+    background-color:green;
+   
   }
   .form {
       width: 90%;
       padding: 60px;
       padding-right:60px;
-      background-color: cream;
+      background-color: darkgreen;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       
     }
   .form label{
-    color:black;
+    color: white;
     font-size:20px;
     font-family: Arial, sans-serif;
   }
+	
 </style>
 </head>
 
@@ -59,7 +65,7 @@
     </select>
   </p>
   <p>
-   Reason
+   <label>Reason</label>
      <label for="select2">:</label>
     <select name="select2" id="action">
       <option value = "a">Withdrawing Enrollment</option>
@@ -73,16 +79,16 @@
     <textarea name="textarea2" id="textarea2" style="width: 50%"></textarea>
   </p>
   <p>
-    Reason/s for withdrawing enrollment/ dropping subject/s / shifting
+    <label>Reason/s for withdrawing enrollment/ dropping subject/s / shifting</label>
       <label for="textarea">:<br>
     </label>
     <textarea name="textarea" style="width: 40%;" id="textarea"></textarea>
   </p>
   <div class="hidden" id="for-shift">
-    Shifting from
+    <label>Shifting from</label>
     <label for="textfield4">:</label>
     <input type="text" name="textfield4" id="textfield4">
-    to
+    <label>to</label>
     <label for="textfield5">:</label>
     <input type="text" name="textfield5" id="textfield5">
   </div>

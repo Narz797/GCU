@@ -5,24 +5,27 @@
 <title>Readmission Slip</title>
 <style type="text/css">
 	#Title{
-	text-align: center;
+		text-align: center;
     font-family: Arial, sans-serif;
+    color:white;
+	}
+	.hidden1, .hidden2{
+		display: none;
 	}
   body{
-    background-color:#E8E4C9;
-    
+    background-color:green;
   }
   .form {
       width: 90%;
       padding: 60px;
       padding-right:60px;
-      background-color: cream;
+      background-color: darkgreen;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       
     }
   .form label{
-    color:black;
+    color: white;
     font-size:20px;
     font-family: Arial, sans-serif;
   }
