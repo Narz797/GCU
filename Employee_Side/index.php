@@ -154,6 +154,8 @@
     </footer>
 
 <!-- Script     -->
-<script src="./assets/index.js"></script>    
+<script src="./assets/index.js">
+    
+</script>    
 </body>
 </html>

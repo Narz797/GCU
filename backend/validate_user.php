@@ -28,6 +28,16 @@ $result = $conn->query($sql);
 if ($result->num_rows === 1) {
     header("Location: ../Student_Side/transaction.php");
     exit();
+} elseif ($result->num_rows === 0){
+    $sql2 = "SELECT * FROM admin_user WHERE email='$username' AND password='$password'";
+
+    $result2 = $conn->query($sql2);
+    if ($result2->num_rows === 1) {
+        header("Location: ../Employee_Side/index.php");
+        exit();
+    } else {
+        echo "Invalid username or password.";
+    }
 } else {
     echo "Invalid username or password.";
 }
