@@ -160,3 +160,39 @@ include 'includes/main.php';
     </section><!-- End Blog Details Section -->
   </body>
 <?php include 'includes/footer.php' ?>
+<script>
+  //  $(document).ready(function () {
+  //       // Login form submission
+  //       $("#Login_Student_User").submit(function (event) {
+  //           event.preventDefault();
+  //           $.ajax({
+  //               type: "POST",
+  //               url: "login.php",
+  //               data: $(this).serialize(),
+  //               success: function (response) {
+  //                   $("#message").html(response);
+  //               }
+  //           });
+  //       });
+  //     });
+
+  $("#Login_Student_User").on("submit", function (event) {
+      console.log('check');
+      var source = "student_side_login";
+      event.preventDefault();
+
+      $.ajax({
+        type: 'POST',
+        url: '../backend/validate_user.php',
+        data: {
+          email:$("#email").val(),
+          password:$("#password").val(),
+          source: source
+        },
+        success: function(data) {
+          alert(data);
+          event.preventDefault()
+        }
+      });
+    });
+</script>

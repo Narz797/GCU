@@ -114,7 +114,8 @@ include '../backend/connect_database.php';
       align-items:center;
     }
   </style>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -142,26 +143,29 @@ include '../backend/connect_database.php';
     
     <!-- Rest of the code -->
   </div>
-  <!-- <script>
-    $("#Login_Student_User").on("submit", function (event) {
-      console.log('check');
-      var source = "student_side_login";
-      event.preventDefault();
+  <script>
+    // $("#Login_Student_User").on("submit", function (event) {
+    //   console.log('check');
+    //   var source = "student_side_login";
+    //   event.preventDefault();
 
-      $.ajax({
-        type: 'POST',
-        url: '../backend/validate_user.php',
-        data: {
-          email:$("#email").val(),
-          password:$("#password").val(),
-          source: source
-        },
-        success: function(data) {
-          alert(data);
-          event.preventDefault()
-        }
-      });
-    });
-  </script> -->
+    //   $.ajax({
+    //     type: 'POST',
+    //     url: '../backend/validate_user.php',
+    //     data: {
+    //       email:$("#email").val(),
+    //       password:$("#password").val(),
+    //       source: source
+    //     },
+    //     success: function(data) {
+    //       alert(data);
+    //       event.preventDefault()
+    //     }
+    //   });
+    // });
+
+   
+    
+  </script>
 </body>
 </html>
