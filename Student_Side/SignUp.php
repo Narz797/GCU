@@ -96,11 +96,10 @@
     }
 
     .container .login {
-      text-align: center;
-      margin-top: 15px;
-      grid-column: span 2;
-      color:#56eb31;
-    
+    text-align: center;
+    margin-top: 15px;
+    grid-column: span 2;
+    color: #000000;
     }
     
     .container .login a {
@@ -132,7 +131,7 @@
       
 
       <div class="form-group">
-        <input type="text" id="idno" placeholder="Student ID No:" name="idno" required>
+        <input type="number" id="idno" placeholder="Student ID No:" name="idno" required>
       </div>
       <br>
 
@@ -155,14 +154,18 @@
         </div>
 
         <div class="form-group">
-          <input type="text" id="gender" placeholder="Gender" name="gender" required>
+			<label for="select">Gender</label>
+              <select name="select" id="select">
+				  <option>Male</option>
+				  <option>Female</option>
+    			</select>
         </div>
 
       </div>
 
      <div class="form-row">
         <div class="form-group">
-          <input type="text" id="year" placeholder="Year" name="year" required>
+          <input type="number" placeholder="Year (YYYY)" min="1999" max="2020" required>
         </div>
 
         <div class="form-group">
@@ -173,11 +176,12 @@
 
        <div class="form-row">
         <div class="form-group">
-          <input type="text" id="birthdate" placeholder="Birthdate" name="birthdate" required>
+          <label for="date">Birthdate:</label>
+    	  <input type="date" name="date" id="date">
         </div>
 
         <div class="form-group">
-          <input type="text" id="email" placeholder="Email" name="email" required>
+          <input type="email" id="email" placeholder="Email" name="email" required>
         </div>
 
       </div>
