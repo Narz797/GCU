@@ -1,27 +1,60 @@
-/*
-SQLyog Community v13.2.0 (64 bit)
-MySQL - 10.4.14-MariaDB : Database - db_gcu
-*********************************************************************
-*/
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 25, 2023 at 12:51 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
-/*!40101 SET NAMES utf8 */;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-/*!40101 SET SQL_MODE=''*/;
 
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_gcu` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-USE `db_gcu`;
+--
+-- Database: `db_gcu`
+--
 
-/*Table structure for table `student_user` */
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `student_user`;
+--
+-- Table structure for table `admin_user`
+--
+
+CREATE TABLE `admin_user` (
+  `user_id` int(11) NOT NULL,
+  `admin_user_id` int(11) NOT NULL,
+  `first_ name` text NOT NULL,
+  `last_name` text NOT NULL,
+  `middle_name` text NOT NULL,
+  `gender` text NOT NULL,
+  `position` text NOT NULL,
+  `email` text NOT NULL,
+  `username` text NOT NULL,
+  `password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin_user`
+--
+
+INSERT INTO `admin_user` (`user_id`, `admin_user_id`, `first_ name`, `last_name`, `middle_name`, `gender`, `position`, `email`, `username`, `password`) VALUES
+(1, 2002129, 'Narz Josef', 'Taquio', 'Ligawad', 'Male', 'Admin', 'narz@gmail.com', 'Narz', 'password');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_user`
+--
 
 CREATE TABLE `student_user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `stud_user_id` int(11) DEFAULT NULL,
   `first_name` text DEFAULT NULL,
   `last_name` text DEFAULT NULL,
@@ -32,16 +65,49 @@ CREATE TABLE `student_user` (
   `birth_date` date DEFAULT NULL,
   `email` text DEFAULT NULL,
   `username` text DEFAULT NULL,
-  `password` text DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  `password` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-/*Data for the table `student_user` */
+--
+-- Dumping data for table `student_user`
+--
 
-insert  into `student_user`(`user_id`,`stud_user_id`,`first_name`,`last_name`,`middle_name`,`gender`,`year_enrolled`,`course`,`birth_date`,`email`,`username`,`password`) values 
-(1,2001518,'Jonray','Tacudog','Bernard','Male',NULL,NULL,NULL,'tacudog.jonray@gmail.com','spellarj','12345');
+INSERT INTO `student_user` (`user_id`, `stud_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `year_enrolled`, `course`, `birth_date`, `email`, `username`, `password`) VALUES
+(1, 2001518, 'Jonray', 'Tacudog', 'Bernard', 'Male', NULL, NULL, NULL, 'tacudog.jonray@gmail.com', 'spellarj', '12345');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin_user`
+--
+ALTER TABLE `admin_user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `student_user`
+--
+ALTER TABLE `student_user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin_user`
+--
+ALTER TABLE `admin_user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `student_user`
+--
+ALTER TABLE `student_user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
