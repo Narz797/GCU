@@ -1,21 +1,5 @@
 <?php
-$servername = "localhost";
-$database = "db_gcu";
-$username = "root";
-$password = "";
-
-// Create connection
-//trial
-//sie
-
- $conn = mysqli_connect($servername, $username, $password, $database);
-
-
-
-
- if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include '../backend/connect_database.php';
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
 $username = $_POST['email'];
