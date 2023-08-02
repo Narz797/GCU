@@ -1,7 +1,7 @@
 <?php
 session_start();
-include '../backend/validate_user.php';
-include '../backend/connect_database.php';
+// include '../backend/validate_user.php';
+// include '../backend/connect_database.php';
 ?>
 
 <!DOCTYPE html>
@@ -129,7 +129,7 @@ include '../backend/connect_database.php';
       <input type="password" id="password" placeholder="Password" name="password" required>
       
       <div class="login">
-      <input type="submit" value="Login">
+      <input type="submit" value="Login" id="submitButton">
       </div>
       
       <div class="forgot-password">
@@ -163,6 +163,33 @@ include '../backend/connect_database.php';
     //     }
     //   });
     // });
+
+    $("#Login_Student_User").on("submit", function (event) {
+    var source = "student_side_login";
+    event.preventDefault();
+
+    $.ajax({
+        type: 'POST',
+        url: '../backend/validate_user.php',
+        data: {
+            email: $("#email").val(),
+            password: $("#password").val(),
+            source: source
+        },
+        success: function (data) {
+     
+            if (data === "success_student") {
+                window.location.href = "../Student_Side/transaction.php";
+            } else if (data === "success_admin") {
+                window.location.href = "../Employee_Side/index.php";
+            } else {
+              alert("Invalid username or password.");
+            }
+          
+        }
+    });
+});
+
 
    
     
