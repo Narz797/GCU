@@ -121,10 +121,10 @@ session_start();
 <body>
   <div class="container">
     <div class="logo">
-      <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
+      <img src="assets/images/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
     <h2>Login</h2>
-    <form id="Login_Student_User" method="POST">
+    <form id="Login_Student_Employee" method="POST">
       <input type="text" id="email" placeholder="Email" name="email" required>
       <input type="password" id="password" placeholder="Password" name="password" required>
       
@@ -136,11 +136,11 @@ session_start();
         <a href="ForgotPassword.php">Forgot Password?</a>
       </div>
       <div class="switch-user">
-        <a href="../Employee_side/login_Employee.php">LOGIN as Employee</a>
+        <a href="../Student_side/login.php">LOGIN as Student</a>
       </div>
       
       <div class="signup">
-        Don't have an account? <a href="signup.php">Sign Up</a>
+        Don't have an account? <a href="SignUp_Employee.php">Sign Up</a>
       </div>
     </form>
     
@@ -167,8 +167,8 @@ session_start();
     //   });
     // });
 
-    $("#Login_Student_User").on("submit", function (event) {
-    var source = "student_side_login";
+    $("#Login_Student_Employee").on("submit", function (event) {
+    var source = "employee_side_login";
     event.preventDefault();
 
     $.ajax({
@@ -181,8 +181,8 @@ session_start();
         },
         success: function (data) {
      
-            if (data === "success_student") {
-                window.location.href = "../Student_Side/transaction.php";
+            if  (data === "success_admin") {
+                window.location.href = "../Employee_Side/index.php";
             } else {
               alert("Invalid username or password.");
             }
