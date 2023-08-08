@@ -2,6 +2,7 @@
 session_start();
 // include '../backend/validate_user.php';
 // include '../backend/connect_database.php';
+$_SESSION['origin'] = 'Student';
 ?>
 
 <!DOCTYPE html>

@@ -2,6 +2,7 @@
 session_start();
 // include '../backend/validate_user.php';
 // include '../backend/connect_database.php';
+$_SESSION['origin'] = 'Employee';
 ?>
 
 <!DOCTYPE html>
@@ -181,7 +182,7 @@ session_start();
         },
         success: function (data) {
      
-            if  (data === "success_admin") {
+            if  (data === "success_employee") {
                 window.location.href = "../Employee_Side/index.php";
             } else {
               alert("Invalid username or password.");
