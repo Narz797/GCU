@@ -19,10 +19,19 @@ if (isset($_SESSION['origin'])) {
             $password = $_POST['password'];
     
             
+            $query = "SELECT * FROM `student_user` WHERE `stud_user_id` = '$idno' AND `first_name` = '$firstname' AND `last_name` = '$lastname' AND `middle_name` = '$middlename' AND `gender` = '$select' AND `year_enrolled` = '$year' AND `course` = '$course' AND `birth_date` = '$date' AND `email` = '$email' AND `username` = '$username' AND `password` = '$password'";
+
+            $result = $conn->query($query);
+
+            if ($result->num_rows === 1) {
+                echo"User Already Registered";
+            } else {
+                
             $sql = "INSERT INTO `student_user`(`stud_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `year_enrolled`, `course`, `birth_date`, `email`, `username`, `password`) VALUES ('$idno','$firstname','$lastname','$middlename','$select','$year','$course','$date','$email','$username','$password')";
             
             $result = $conn->query($sql);
             echo"success_student";
+            }
 
         } else {
             echo "Missing data fields.";
@@ -42,17 +51,26 @@ if (isset($_SESSION['origin'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
             
+            $query = "SELECT * FROM `admin_user` WHERE `admin_user_id` = '$Employee_idno' AND `first_ name` = '$firstname' AND `last_name` = '$lastname' AND `middle_name` = '$middlename' AND `gender` = '$select' AND `position` = '$position' AND `email` = '$email' AND `username` = '$username' AND `password` = '$password'";
+
+            $result = $conn->query($query);
+
+            if ($result->num_rows === 1) {
+                echo"User Already Registered";
+            } else {
+
             $sql = "INSERT INTO `admin_user`(`admin_user_id`, `first_ name`, `last_name`, `middle_name`, `gender`, `position`, `email`, `username`, `password`) VALUES ('$Employee_idno','$firstname','$lastname','$middlename','$select','$position','$email','$username','$password')";
             
-            $result = $conn->query($sql);
-            
-            
+            $result = $conn->query($sql);           
             
             mysqli_query($conn, $sql);
             echo"success_employee";
+
+            }
         } else {
             echo "Missing data fields.";
         }
+        
     }
     else{
         echo "Error";
