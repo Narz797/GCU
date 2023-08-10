@@ -10,16 +10,28 @@ if (isset($_SESSION['origin'])) {
             $username = $_POST['email'];
             $password = $_POST['password'];
             
-            $sql = "SELECT * FROM student_user WHERE email='$username' AND password='$password'";
+            $sql = "SELECT * FROM student_user WHERE email='$username'";
             
             $result = $conn->query($sql);
             
             
             
             if ($result->num_rows === 1) {
-                echo"success_student";
+                $row = $result->fetch_assoc();
+                $storedHashedPassword = $row['password'];
+
+                // Verify the password
+                if (password_verify($password, $storedHashedPassword)) {
+                    // Password is correct
+                    echo"success_student";
+                } else {
+                    // Password is incorrect
+                    echo "Invalid username or password.";
+                }
+
+                
             } else {
-                echo "Invalid username or password.";
+                echo "Error";
             }
             }
     }
@@ -29,16 +41,27 @@ if (isset($_SESSION['origin'])) {
             $username = $_POST['email'];
             $password = $_POST['password'];
             
-            $sql = "SELECT * FROM admin_user WHERE email='$username' AND password='$password'";
+            $sql = "SELECT * FROM admin_user WHERE email='$username'";
             
             $result = $conn->query($sql);
             
             
             
             if ($result->num_rows === 1) {
-                echo"success_employee";
+                $row = $result->fetch_assoc();
+                $storedHashedPassword = $row['password'];
+
+                // Verify the password
+                if (password_verify($password, $storedHashedPassword)) {
+                    // Password is correct
+                    echo"success_employee";
+                } else {
+                    // Password is incorrect
+                    echo "Invalid username or password.";
+                }
+                
             } else {
-                echo "Invalid username or password.";
+                echo "Error";
             }
         }
     }
