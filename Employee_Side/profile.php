@@ -67,7 +67,7 @@
         <section class="table-header">
             <h1>List of Students</h1>
             <div class="input-group">
-                <input type="search" id="searchBox" placeholder="Search Data...">
+                <input type="text" id="searchInput" placeholder="Search Data...">
                 <img src="assets/images/search.png" alt="">
             </div>
             <div class="export-file">
@@ -83,6 +83,23 @@
             </div>
         </section>
         <section class="table-body">
+        <table border="1">
+                <thead>
+                    <tr>
+                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> First Name <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Lastname <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Grnder <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Year Enrolled <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Course <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Birthdate <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                 </tbody>
+             
+            </table>
             <table border="1" id="data-table">
                 <thead>
                     <tr>
@@ -96,42 +113,9 @@
                         <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
-                <!-- <tbody>
-                    <tr>
-                        <td> 1 </td>
-                        <td> <img src="assets/images/sp.jpg" alt="">Zinzu Chan Lee</td>
-                        <td> CHET </td>
-                        <td> Psychology </td>
-                        <td> 17 Dec, 2022 </td>
-                        <td>
-                            <p class="status delivered">Delivered</p>
-                        </td>
-                        <td> <button>View</button></td>
-                    </tr>
-                    <tr>
-                        <td> 2 </td>
-                        <td><img src="assets/images/sp.jpg" alt=""> Jeet Saru </td>
-                         <td> CIS </td>
-                        <td> Computer Science </td>
-                        <td> 27 Aug, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <button>View</button> </td>
-                    </tr>
-                    <tr>
-                        <td> 3 </td>
-                        <td><img src="assets/images/sp.jpg" alt=""> Sarita Limbu </td>
-                        <td> CAS </td>
-                        <td> Architecture </td>
-                        <td> 23 Apr, 2023 </td>
-                        <td>
-                            <p class="status pending">Pending</p>
-                        </td>
-                        <td> <button>View</button> </td>
-                    </tr>
-                   
-                </tbody> -->
+                <tbody>
+                 </tbody>
+             
             </table>
         </section>
     </main>
@@ -166,18 +150,31 @@
 
 <!-- Script     -->
 <script src="./assets/main.js"></script>
+
+
 <script>
-    $(document).ready(function() {
-                // Fetch data using $.ajax
-                $.ajax({
-                    url: '../backend/search_student.php',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        const table = document.getElementById('data-table');
+        $(document).ready(function() {
+            // Fetch data using $.ajax
+            $.ajax({
+                url: '../backend/search_student.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    const table = document.getElementById('data-table');
+                    const searchInput = document.getElementById('searchInput');
+
+                    function filterData() {
+                        const searchTerm = searchInput.value.toLowerCase();
+
+                        table.innerHTML = ''; // Clear existing table rows
 
                         data.forEach(row => {
-                            const newRow = table.insertRow();
+                            if (
+                                row.stud_user_id.toString().includes(searchTerm) ||
+                                row.first_name.toLowerCase().includes(searchTerm) ||
+                                row.last_name.toLowerCase().includes(searchTerm)
+                            ) {
+                                const newRow = table.insertRow();
                             newRow.insertCell().textContent = row.stud_user_id;
                             newRow.insertCell().textContent = row.first_name;
                             newRow.insertCell().textContent = row.last_name;
@@ -186,14 +183,25 @@
                             newRow.insertCell().textContent = row.course;
                             newRow.insertCell().textContent = row.birth_date;
                             newRow.insertCell().textContent = row.email;
+                            }
                         });
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error fetching data:', error);
                     }
-                });
+
+                    searchInput.addEventListener('input', filterData);
+
+                    // Initial table population
+                    filterData();
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching data:', error);
+                }
             });
-</script>
+        });
+    </script>
+
+
+
+
  <!-- <script src="assets/js/table.js"></script>    -->
 </body>
 </html>
