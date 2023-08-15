@@ -85,12 +85,13 @@
                 <thead>
                     <tr>
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Student <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> College <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> First Name <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Lastname <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Grnder <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Year Enrolled <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Date <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Action <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Birthdate <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -163,6 +164,6 @@
 
 <!-- Script     -->
 <script src="./assets/main.js"></script>
- <script src="assets/js/table.js"></script>   
+ <!-- <script src="assets/js/table.js"></script>    -->
 </body>
 </html>
