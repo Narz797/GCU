@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="./assets/css/profile.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 </head>
 
 <body>
@@ -65,7 +67,7 @@
         <section class="table-header">
             <h1>List of Students</h1>
             <div class="input-group">
-                <input type="search" placeholder="Search Data...">
+                <input type="search" id="searchBox" placeholder="Search Data...">
                 <img src="assets/images/search.png" alt="">
             </div>
             <div class="export-file">
@@ -81,7 +83,7 @@
             </div>
         </section>
         <section class="table-body">
-            <table>
+            <table border="1" id="data-table">
                 <thead>
                     <tr>
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
@@ -94,7 +96,7 @@
                         <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
-                <tbody>
+                <!-- <tbody>
                     <tr>
                         <td> 1 </td>
                         <td> <img src="assets/images/sp.jpg" alt="">Zinzu Chan Lee</td>
@@ -129,7 +131,7 @@
                         <td> <button>View</button> </td>
                     </tr>
                    
-                </tbody>
+                </tbody> -->
             </table>
         </section>
     </main>
@@ -164,6 +166,34 @@
 
 <!-- Script     -->
 <script src="./assets/main.js"></script>
+<script>
+    $(document).ready(function() {
+                // Fetch data using $.ajax
+                $.ajax({
+                    url: '../backend/search_student.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        const table = document.getElementById('data-table');
+
+                        data.forEach(row => {
+                            const newRow = table.insertRow();
+                            newRow.insertCell().textContent = row.stud_user_id;
+                            newRow.insertCell().textContent = row.first_name;
+                            newRow.insertCell().textContent = row.last_name;
+                            newRow.insertCell().textContent = row.gender;
+                            newRow.insertCell().textContent = row.year_enrolled;
+                            newRow.insertCell().textContent = row.course;
+                            newRow.insertCell().textContent = row.birth_date;
+                            newRow.insertCell().textContent = row.email;
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching data:', error);
+                    }
+                });
+            });
+</script>
  <!-- <script src="assets/js/table.js"></script>    -->
 </body>
 </html>
