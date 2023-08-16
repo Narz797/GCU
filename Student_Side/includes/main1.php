@@ -24,12 +24,7 @@
 
     <li class="login-register"><a href="login.html">LOGIN</a></li>
     <li class="login-register"><a href="SignUp.html">REGISTER</a></li>
-        <li class="search-bar">
-      <form action="search.php" method="GET">
-        <input type="text" name="query" placeholder="Search">
-        <button type="submit">Search</button>
-      </form>
-    </li>
+ 
 
   </ul>
 </nav><!-- .navbar -->
