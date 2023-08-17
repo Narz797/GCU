@@ -124,7 +124,7 @@ $_SESSION['origin'] = 'Student';
     <div class="logo">
       <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
-    <h2>Login</h2>
+    <h2>Student Login</h2>
     <form id="Login_Student_User" method="POST">
       <input type="text" id="email" placeholder="Email" name="email" required>
       <input type="password" id="password" placeholder="Password" name="password" required>
@@ -135,9 +135,6 @@ $_SESSION['origin'] = 'Student';
       
       <div class="forgot-password">
         <a href="ForgotPassword.php">Forgot Password?</a>
-      </div>
-      <div class="switch-user">
-        <a href="../Employee_side/login_Employee.php">LOGIN as Employee</a>
       </div>
       
       <div class="signup">
