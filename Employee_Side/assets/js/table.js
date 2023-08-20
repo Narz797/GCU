@@ -2,22 +2,22 @@ const search = document.querySelector('.input-group input'),
     table_rows = document.querySelectorAll('tbody tr'),
     table_headings = document.querySelectorAll('thead th');
 
-// 1. Searching for specific data of HTML table
-search.addEventListener('input', searchTable);
+// // 1. Searching for specific data of HTML table
+// search.addEventListener('input', searchTable);
 
-function searchTable() {
-    table_rows.forEach((row, i) => {
-        let table_data = row.textContent.toLowerCase(),
-            search_data = search.value.toLowerCase();
+// function searchTable() {
+//     table_rows.forEach((row, i) => {
+//         let table_data = row.textContent.toLowerCase(),
+//             search_data = search.value.toLowerCase();
 
-        row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
-        row.style.setProperty('--delay', i / 25 + 's');
-    })
+//         row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
+//         row.style.setProperty('--delay', i / 25 + 's');
+//     })
 
-    document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
-        visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
-    });
-}
+//     document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
+//         visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
+//     });
+// }
 
 // 2. Sorting | Ordering data of HTML table
 
@@ -53,7 +53,7 @@ function sortTable(column, sort_asc) {
 // 3. Converting HTML table to PDF
 
 const pdf_btn = document.querySelector('#toPDF');
-const customers_table = document.querySelector('#customers_table');
+const customers_table = document.querySelector('#data-table');
 
 const toPDF = function (customers_table) {
     const html_code = `
