@@ -1,7 +1,5 @@
 <?php
 session_start();
-// include '../backend/register_user.php';
-// include '../backend/connect_database.php';
 $_SESSION['origin'] = 'Student_Register';
 ?>
 
