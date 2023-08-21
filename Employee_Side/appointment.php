@@ -18,6 +18,8 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/apmt.css">
+
+    <link rel="icon" href="assets/images/GCU_logo.png">
 </head>
 
 <body>
