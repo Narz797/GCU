@@ -1,7 +1,8 @@
 <?php
 session_start();
-include '../backend/validate_user.php';
-include '../backend/connect_database.php';
+// include '../backend/validate_user.php';
+// include '../backend/connect_database.php';
+$_SESSION['origin'] = 'Student';
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +54,7 @@ include '../backend/connect_database.php';
     
     }
 
-    .container input[type="submit"] {
+    .container input[type="submit"], .home {
       width: 40%;
       background-color: #13a110;
       color: #bcedb0;
@@ -63,6 +64,11 @@ include '../backend/connect_database.php';
       cursor: pointer;
       font-weight: bold;
       
+    }
+
+    .home{
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .container .forgot-password,
@@ -123,13 +129,13 @@ include '../backend/connect_database.php';
     <div class="logo">
       <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
-    <h2>Login</h2>
+    <h2>Student Login</h2>
     <form id="Login_Student_User" method="POST">
       <input type="text" id="email" placeholder="Email" name="email" required>
       <input type="password" id="password" placeholder="Password" name="password" required>
       
       <div class="login">
-      <input type="submit" value="Login">
+      <input type="submit" value="Login" id="submitButton">
       </div>
       
       <div class="forgot-password">
@@ -139,30 +145,41 @@ include '../backend/connect_database.php';
       <div class="signup">
         Don't have an account? <a href="signup.php">Sign Up</a>
       </div>
+
+      <div class="home" id="home">
+        <a href="index.php">Home</a>
+      </div>
     </form>
     
     <!-- Rest of the code -->
   </div>
   <script>
-    // $("#Login_Student_User").on("submit", function (event) {
-    //   console.log('check');
-    //   var source = "student_side_login";
-    //   event.preventDefault();
 
-    //   $.ajax({
-    //     type: 'POST',
-    //     url: '../backend/validate_user.php',
-    //     data: {
-    //       email:$("#email").val(),
-    //       password:$("#password").val(),
-    //       source: source
-    //     },
-    //     success: function(data) {
-    //       alert(data);
-    //       event.preventDefault()
-    //     }
-    //   });
-    // });
+
+    $("#Login_Student_User").on("submit", function (event) {
+    var source = "student_side_login";
+    event.preventDefault();
+
+    $.ajax({
+        type: 'POST',
+        url: '../backend/validate_user.php',
+        data: {
+            email: $("#email").val(),
+            password: $("#password").val(),
+            source: source
+        },
+        success: function (data) {
+     
+            if (data === "success_student") {
+                window.location.href = "../Student_Side/transaction.php";
+            } else {
+              alert("Invalid username or password.");
+            }
+          
+        }
+    });
+});
+
 
    
     

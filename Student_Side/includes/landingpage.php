@@ -19,15 +19,18 @@
     <li><a href="index.php">HOME</a></li>
     <li><a href="about.php">ABOUT</a></li>
     <li><a href="services.php">SERVICES</a></li>
-    <li><a href="contact.php">CONTACT</a></li>
-    <li class="login-register"><a href="login.php">LOGIN</a></li>
+
+    <space style = "width: 300px"> </space>
+    <!-- <li class="login-register"><a href="login.php">LOGIN</a></li> -->
+    <div class="dropdown">
+      <button class="dropbtn">Login</button>
+      <div class="dropdown-content">
+        <a href="../Student_Side/login.php">As Student</a>
+        <a href="../Employee_Side/login_Employee.php">As Employee</a>
+      </div>
+  </div>
     <li class="login-register"><a href="SignUp.php">REGISTER</a></li>
-        <li class="search-bar">
-      <form action="search.php" method="GET">
-        <input type="text" name="query" placeholder="Search">
-        <button type="submit">Search</button>
-      </form>
-    </li>
+
 
   </ul>
 </nav><!-- .navbar -->
@@ -49,7 +52,7 @@ include 'includes/banner.php';
 
 
 <!-- Header section -->
-<section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 50px; ">
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: auto; ">
 
   <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 1400px;">
 
@@ -76,10 +79,10 @@ include 'includes/banner.php';
     margin-left: 0%;
   }
 
-  #navbar ul li a {
+  #navbar ul li a, .dropbtn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: green;
+    background-color: black;
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -94,6 +97,41 @@ include 'includes/banner.php';
     background-color: goldenrod;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
+
+  .dropbtn {
+  /* background-color: #04AA6D; */
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 </style>
 
 
@@ -164,7 +202,7 @@ include 'includes/banner.php';
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-tools"></i></div>
-              <h4 class="title"><a href="#servicesss" class="stretched-link">SERVICES</a></h4>
+              <h4 class="title"><a href="#Contacts" class="stretched-link">CONCTACTS</a></h4>
            
             </div>
           </div><!--End Icon Box -->

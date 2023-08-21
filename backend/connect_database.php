@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $database = "db_gcu";
 $username = "root";

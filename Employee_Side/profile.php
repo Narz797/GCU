@@ -4,23 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Student Profile</title>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="icon" href="assets/images/GCU_logo.png">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="./assets/css/profile.css">
-</head>
+    <link rel="stylesheet" href="assets/profile.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
+    <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+</head>
+<style>
+        /* Hide the sorting arrow icons */
+        .dataTables_wrapper .sorting,
+        .dataTables_wrapper .sorting_asc,
+        .dataTables_wrapper .sorting_desc {
+            background-image: none !important; /* Remove background image */
+            padding-right: 0.5em; /* Add some padding to column headers */
+        }
+
+        /* Define other custom styles if needed */
+    </style>
 <body>
-    <!-- Floating-background-image -->
-    <div class="floating-background-image">
-        <img src="./assets/images/b.png" alt="">
-    </div> 
 
     <!-- Header -->
 <header class="header">
     <nav class="nav container"> 
-        <a href="./index.php" class="logo">GCU</a> 
+        <img src="assets/images/bsu.png" alt="" style="width:5.5%; height:auto; padding:2px"> 
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
@@ -65,12 +95,13 @@
         <section class="table-header">
             <h1>List of Students</h1>
             <div class="input-group">
-                <input type="search" placeholder="Search Data...">
-                <img src="assets/images/search.png" alt="">
+                <input type="text" id="searchInput" placeholder="Search Data...">
+                
             </div>
             <div class="export-file">
-                <label for="export-file" class="export-file-btn" title="Export File"></label>
+                <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/export.png" alt=""></label>
                 <input type="checkbox" id="export-file">
+
                 <div class="export-file-options">
                     <label>Export As &nbsp; &#10140;</label>
                     <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
@@ -78,57 +109,30 @@
                     <label for="export-file" id="toCSV">CSV <img src="assets/images/csv.png" alt=""></label>
                     <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
                 </div>
+
+
             </div>
         </section>
-        <section class="table-body">
-            <table>
+
+       
+
+        <section class="table-body" >
+            <table border="1" id="table">
                 <thead>
                     <tr>
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Student <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> College <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> First Name <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Lastname <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Gender <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Year Enrolled <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Date <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Action <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Birthdate <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td> 1 </td>
-                        <td> <img src="assets/images/sp.jpg" alt="">Zinzu Chan Lee</td>
-                        <td> CHET </td>
-                        <td> Psychology </td>
-                        <td> 17 Dec, 2022 </td>
-                        <td>
-                            <p class="status delivered">Delivered</p>
-                        </td>
-                        <td> <button>View</button></td>
-                    </tr>
-                    <tr>
-                        <td> 2 </td>
-                        <td><img src="assets/images/sp.jpg" alt=""> Jeet Saru </td>
-                         <td> CIS </td>
-                        <td> Computer Science </td>
-                        <td> 27 Aug, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <button>View</button> </td>
-                    </tr>
-                    <tr>
-                        <td> 3 </td>
-                        <td><img src="assets/images/sp.jpg" alt=""> Sarita Limbu </td>
-                        <td> CAS </td>
-                        <td> Architecture </td>
-                        <td> 23 Apr, 2023 </td>
-                        <td>
-                            <p class="status pending">Pending</p>
-                        </td>
-                        <td> <button>View</button> </td>
-                    </tr>
-                   
-                </tbody>
+                <tbody id="data-table">
+                 </tbody>
+             
             </table>
         </section>
     </main>
@@ -145,24 +149,81 @@
 
 <br>
 
-    <!-- Footer -->
-        <footer class="footer">
-        <div class="footer-container container">
-            <span class="copyright-information">&copy;2023 BSIT3B Group3. All rights reserved.</span>
-            <ul class="list">
-                <li class="list-item">
-                    <a href="#">Terms and Conditions</a>
-                </li>
-                <li class="list-item">
-                    <a href="#">Privacy Policy</a>
-                </li>
-            </ul>
-            <p><i>UI developed by Dulagan, Nichole I.</i></p>
-        </div>
-    </footer>
+       <!-- Footer -->
+<footer id="footer" class="footer">
+
+<div class="container">
+  <div class="row gy-4">
+    <div class="col-lg-5 col-md-12 footer-info" id="titlefooter">
+      <div title="footertitle">
+      <a href="index.php" class="logo d-flex align-items-center">
+        <span>Guidance and Counseling Unit</span>
+      </a>
+      </div>
+      <p>Benguet State University</p>
+      <div class="social-links d-flex mt-4">
+        <a href="#" class="twitter"><i class="ri-twitter-line"></i></a>
+        <a href="#" class="facebook"><i class="ri-facebook-fill"></i></a>
+        <a href="#" class="instagram"><i class="ri-instagram-line"></i></a>
+        <a href="#" class="linkedin"><i class="ri-linkedin-fill"></i></a>
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-6 footer-links" id="footerlinks">
+      <h4>Useful Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Terms of service</a></li>
+        <li><a href="#">Privacy policy</a></li>
+      </ul>
+    </div>
+
+    <div class="col-lg-2 col-6 footer-links" id="footerservices">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#">Forms</a></li>
+        <li><a href="#">Forms</a></li>
+        <li><a href="#">Forms</a></li>
+        <li><a href="#">Forms</a></li>
+        <li><a href="#">Forms</a></li>
+      </ul>
+    </div>
+
+    <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start" id="footercontacts">
+      <h4>Contact Us</h4>
+      <p>
+        A108 Adam Street <br>
+        New York, NY 535022<br>
+        United States <br><br>
+        <strong>Phone:</strong> +1 5589 55488 55<br>
+        <strong>Email:</strong> info@example.com<br>
+      </p>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="container mt-4" id="footercopyright">
+  <div class="copyright">
+    <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
+  </div>
+  <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
+    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div>
+</div>
+
+</footer>
 
 <!-- Script     -->
 <script src="./assets/main.js"></script>
+
  <script src="assets/js/table.js"></script>   
 </body>
 </html>
