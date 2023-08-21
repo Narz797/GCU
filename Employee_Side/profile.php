@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Student Profile</title>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -13,11 +14,37 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="icon" href="assets/images/GCU_logo.png">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/profile.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
+    <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+</head>
+<style>
+        /* Hide the sorting arrow icons */
+        .dataTables_wrapper .sorting,
+        .dataTables_wrapper .sorting_asc,
+        .dataTables_wrapper .sorting_desc {
+            background-image: none !important; /* Remove background image */
+            padding-right: 0.5em; /* Add some padding to column headers */
+        }
+
+        /* Define other custom styles if needed */
+    </style>
 <body>
 
     <!-- Header -->
@@ -69,11 +96,12 @@
             <h1>List of Students</h1>
             <div class="input-group">
                 <input type="text" id="searchInput" placeholder="Search Data...">
-                <img src="assets/images/search.png" alt="">
+                
             </div>
             <div class="export-file">
-                <label for="export-file" class="export-file-btn" title="Export File"></label>
+                <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/export.png" alt=""></label>
                 <input type="checkbox" id="export-file">
+
                 <div class="export-file-options">
                     <label>Export As &nbsp; &#10140;</label>
                     <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
@@ -81,40 +109,28 @@
                     <label for="export-file" id="toCSV">CSV <img src="assets/images/csv.png" alt=""></label>
                     <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
                 </div>
+
+
             </div>
         </section>
-        <section class="table-body">
-        <table border="1">
+
+       
+
+        <section class="table-body" >
+            <table border="1" id="table">
                 <thead>
                     <tr>
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
                         <th> First Name <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Lastname <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Grnder <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Year Enrolled <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> xCourse <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Birthdate <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                 </tbody>
-             
-            </table>
-            <table border="1" id="data-table">
-                <thead>
-                    <tr>
-                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> First Name <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Lastname <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Grnder <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Gender <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Year Enrolled <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Course <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Birthdate <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="data-table">
                  </tbody>
              
             </table>
@@ -208,57 +224,6 @@
 <!-- Script     -->
 <script src="./assets/main.js"></script>
 
-
-<script>
-        $(document).ready(function() {
-            // Fetch data using $.ajax
-            $.ajax({
-                url: '../backend/search_student.php',
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                    const table = document.getElementById('data-table');
-                    const searchInput = document.getElementById('searchInput');
-
-                    function filterData() {
-                        const searchTerm = searchInput.value.toLowerCase();
-
-                        table.innerHTML = ''; // Clear existing table rows
-
-                        data.forEach(row => {
-                            if (
-                                row.stud_user_id.toString().includes(searchTerm) ||
-                                row.first_name.toLowerCase().includes(searchTerm) ||
-                                row.last_name.toLowerCase().includes(searchTerm)
-                            ) {
-                                const newRow = table.insertRow();
-                            newRow.insertCell().textContent = row.stud_user_id;
-                            newRow.insertCell().textContent = row.first_name;
-                            newRow.insertCell().textContent = row.last_name;
-                            newRow.insertCell().textContent = row.gender;
-                            newRow.insertCell().textContent = row.year_enrolled;
-                            newRow.insertCell().textContent = row.course;
-                            newRow.insertCell().textContent = row.birth_date;
-                            newRow.insertCell().textContent = row.email;
-                            }
-                        });
-                    }
-
-                    searchInput.addEventListener('input', filterData);
-
-                    // Initial table population
-                    filterData();
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching data:', error);
-                }
-            });
-        });
-    </script>
-
-
-
-
- <!-- <script src="assets/js/table.js"></script>    -->
+ <script src="assets/js/table.js"></script>   
 </body>
 </html>

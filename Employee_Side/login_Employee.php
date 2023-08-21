@@ -54,7 +54,7 @@ $_SESSION['origin'] = 'Employee';
     
     }
 
-    .container input[type="submit"] {
+    .container input[type="submit"], .home {
       width: 40%;
       background-color: #13a110;
       color: #bcedb0;
@@ -66,6 +66,10 @@ $_SESSION['origin'] = 'Employee';
       
     }
 
+    .home{
+      margin-left: auto;
+      margin-right: auto;
+    }
     .container .forgot-password,
     .container .signup {
       text-align: center;
@@ -117,6 +121,8 @@ $_SESSION['origin'] = 'Employee';
   </style>
   <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <link rel="icon" href="assets/images/GCU_logo.png">
 </head>
 
 <body>
@@ -140,14 +146,20 @@ $_SESSION['origin'] = 'Employee';
       <div class="signup">
         Don't have an account? <a href="SignUp_Employee.php">Sign Up</a>
       </div>
+      <div class="home" id="home">
+        <a href="../Student_Side/index.php">Home</a>
+      </div>
     </form>
     
     <!-- Rest of the code -->
   </div>
   <script>
-
-    $("#Login_Student_Employee").on("submit", function (event) {
-    var source = "employee_side_login";
+      function goHome() {
+                  // Redirect to the desired page
+                  window.location.href = '../Student_Side/index.php';
+              }
+          $("#Login_Student_Employee").on("submit", function (event) {
+          var source = "employee_side_login";
     event.preventDefault();
 
     $.ajax({

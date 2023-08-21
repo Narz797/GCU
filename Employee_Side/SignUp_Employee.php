@@ -127,6 +127,7 @@ $_SESSION['origin'] = 'Employee_Register';
 
   </style>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <link rel="icon" href="assets/images/GCU_logo.png">
 </head>
 <body>
   <div class="container">

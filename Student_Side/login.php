@@ -54,7 +54,7 @@ $_SESSION['origin'] = 'Student';
     
     }
 
-    .container input[type="submit"] {
+    .container input[type="submit"], .home {
       width: 40%;
       background-color: #13a110;
       color: #bcedb0;
@@ -64,6 +64,11 @@ $_SESSION['origin'] = 'Student';
       cursor: pointer;
       font-weight: bold;
       
+    }
+
+    .home{
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .container .forgot-password,
@@ -139,6 +144,10 @@ $_SESSION['origin'] = 'Student';
       
       <div class="signup">
         Don't have an account? <a href="signup.php">Sign Up</a>
+      </div>
+
+      <div class="home" id="home">
+        <a href="index.php">Home</a>
       </div>
     </form>
     

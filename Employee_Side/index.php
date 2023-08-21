@@ -15,6 +15,8 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/styles.css">
+
+    <link rel="icon" href="assets/images/GCU_logo.png">
 </head>
 
 <body>
@@ -111,7 +113,7 @@
                  <a href="appointment.php" class="card-body-link">
                     <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
-                <a href="sisu.php" class="card-body-link">
+                <a href="login_Employee.php" class="card-body-link">
                     <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>
