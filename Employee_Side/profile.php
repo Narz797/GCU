@@ -97,7 +97,7 @@
                 
             </div>
             <div class="export-file">
-                <label for="export-file" class="export-file-btn" title="Export File"></label>
+                <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/export.png" alt=""></label>
                 <input type="checkbox" id="export-file">
 
                 <div class="export-file-options">
