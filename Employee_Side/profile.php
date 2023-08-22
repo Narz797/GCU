@@ -35,15 +35,7 @@
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 </head>
 <style>
-        /* Hide the sorting arrow icons */
-        .dataTables_wrapper .sorting,
-        .dataTables_wrapper .sorting_asc,
-        .dataTables_wrapper .sorting_desc {
-            background-image: none !important; /* Remove background image */
-            padding-right: 0.5em; /* Add some padding to column headers */
-        }
 
-        /* Define other custom styles if needed */
     </style>
 <body>
 

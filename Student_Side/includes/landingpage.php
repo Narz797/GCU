@@ -15,7 +15,7 @@
       </a>
       <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
   <ul>
-    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
+    <img src="../assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
     <li><a href="index.php">HOME</a></li>
     <li><a href="about.php">ABOUT</a></li>
     <li><a href="services.php">SERVICES</a></li>
@@ -25,7 +25,7 @@
     <div class="dropdown">
       <button class="dropbtn">Login</button>
       <div class="dropdown-content">
-        <a href="../Student_Side/login.php">As Student</a>
+        <a href="login.php">As Student</a>
         <a href="../Employee_Side/login_Employee.php">As Employee</a>
       </div>
   </div>
@@ -234,6 +234,7 @@ include 'includes/banner.php';
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

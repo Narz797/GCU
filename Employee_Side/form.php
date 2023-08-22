@@ -60,24 +60,6 @@
     </nav>
 </header>
 
-    <!-- Header -->
-    <?php
- 
-    include 'includes/head.php';
-    
-    ?>
-<style>
-
-#RBG h5{
-  font-size: 1vw;
- }
- #RBG h3{
-  font-size: 1.8vw;
- }
- #RBG h1{
-  font-size: 2vw;
- }
- </style>
 </section>
   <div style="background-color: black; height:50px;">
 </div>
