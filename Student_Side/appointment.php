@@ -55,7 +55,7 @@ include 'includes/main.php';
   </div>
 </div>
 <style>
-  * {
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -154,4 +154,4 @@ include 'includes/main.php';
 
 
   </body>
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>

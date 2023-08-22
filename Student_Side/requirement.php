@@ -6,37 +6,6 @@ include 'includes/main.php';
 
   <body>
   	<style>
-  		form {
-  width: 300px;
-  margin: 0 auto;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-input[type="file"] {
-  display: block;
-  margin-bottom: 10px;
-}
-
-input[type="submit"] {
-  width: 10%;
-  padding: 10px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 800px;
-}
-
-
-input[type="submit"]:hover {
-  background-color:goldenrod;
-}
-
   	</style>
         <!-- ======= Our Services Section ======= -->
     <section id="services" class="services sections-bg">
@@ -149,4 +118,4 @@ input[type="submit"]:hover {
 
 
   </body>
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>

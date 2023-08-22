@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include 'head.php'; ?>
+<?php include '../includes/head.php'; ?>
 
 <body>
 
@@ -16,10 +16,9 @@
 <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
   <ul>
     <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
-    <li><a href="index.php">HOME</a></li>
-    <li><a href="about.php">ABOUT</a></li>
-    <li><a href="services.php">SERVICES</a></li>
-    <li><a href="contact.php">CONTACT</a></li>
+    <li><a href="../index.php">HOME</a></li>
+    <li><a href="../about.php">ABOUT</a></li>
+
 
     <!-- Show when Mobile view -->
     <li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
@@ -42,7 +41,7 @@
     <div class="dropdown-content">
       <!-- Dropdown content goes here -->
       <a href="#">Profile</a>
-      <a href="#">Logout</a>
+      <a href="../index.php">Logout</a>
     </div>
   </div>
 </div>
@@ -65,7 +64,7 @@
 
     <?php 
 
-  include 'includes/banner.php';
+  include '../includes/banner.php';
 
   ?>
 
