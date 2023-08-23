@@ -1,6 +1,9 @@
 <!doctype html>
 
+<head>
+<link href="../assets/img/GCU_logo.png" rel="icon">
 <title>GCU Admin</title>
+</head>
 
 <body>
     <link rel="stylesheet" href="main.css">
@@ -26,7 +29,7 @@
 
 <div>
     <br>
-    <img src="assets/img/GCU.png" alt="" height="100px" width="100px" style="display: inline-block; vertical-align: middle; margin-left: 80px;">
+    <img src="../assets/img/GCU_logo.png" alt="" height="100px" width="100px" style="display: inline-block; vertical-align: middle; margin-left: 80px;">
     <div style="display: inline-block; vertical-align: middle;">
       <h3 style="font-family: 'Times New Roman', serif; color:black; font-weight: 300;">BENGUET STATE UNIVERSITY</h1>
       <h2 style="font-family: 'Garamond', serif; font-weight: 900; ">GUIDANCE AND COUNSELING UNIT</h3>
