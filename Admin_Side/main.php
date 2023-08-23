@@ -41,10 +41,11 @@
         <li><a class="active" href="#">Form Request Page</a></li>
         <li><a class="aboutus" href="#">Student Profile</a></li>
         <li><a class="contactus" href="#">Appointment Page</a></li>
+        <li><a class="contactus" href="#">Pending Employees</a></li>
+        <li><a class="contactus" href="#">Statistics Page</a></li>
     
     </ul>
 </div>
-  
 
 </body>
 
