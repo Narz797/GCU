@@ -1,7 +1,5 @@
 <?php
 include 'landingpage.php';
-
-
 ?>
 
 <body>

@@ -13,6 +13,8 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/form.css">
 
@@ -66,6 +68,7 @@
 
     <div class="container">
         <h2 class="title independent-title">REQUESTED FORMS</h2>
+        <!-- <div id="dynamicContent"></div> -->
         <div class="card">
             <header class="card-header">
                 <small>The following are the requested forms for today</small>
@@ -73,68 +76,10 @@
             </header>
             <hr>
           <div class=" gallery">
-            <div class="content1">
-                <img src="./assets/images/a.jpg">
-                <h4>DUEL FORMS</h4>
-                <p>For Graduation purposes.</p>
-                <h5>Sasuke Uchiha</h5>
-                <br>
-                <h5><i class="ri-mail-unread-line"></i></h5>
-                <br>
-                <a href="./form/pop.html">
-                <button class="buy-1">READ MORE</button></a>
-            </div>
-                <div class="content1">
-                <img src="./assets/images/pfp.jpg">
-                <h4>DUEL FORMS</h4>
-                <p>For Admission purposes.</p>
-                <h5>Sasuke Uchiha</h5>
-                <br>
-                <h5><i class="ri-mail-open-line"></i></h5>
-                <br>
-                <a href="#">
-                <button class="buy-2">READ MORE</button></a>
-            </div>
-          </div>
+              <div id="dynamicContent"></div>
 
         </div>
     </div>
-
-    <div class="container">
-        <br>
-        <h2 class="title independent-title"></h2>
-        <div class="card">
-            <header class="card-header">
-                <h4>HISTORY</h4>
-                <p>&nbsp&nbsp The following are the previous requested forms</p>
-            </header>
-            <hr>
-          <div class=" gallery">
-            <div class="content1">
-                <img src="./assets/images/a.jpg">
-                <h4>DUEL FORMS</h4>
-                <p>For Graduation purposes.</p>
-                <h5>Sasuke Uchiha</h5>
-                <br>
-                <h5><i class="ri-mail-unread-line"></i></h5>
-                <br>
-                <a href="#">
-                <button class="buy-1">READ MORE</button></a>
-            </div>
-                <div class="content1">
-                <img src="./assets/images/pfp.jpg">
-                <h4>DUEL FORMS</h4>
-                <p>For Admission purposes.</p>
-                <h5>Sasuke Uchiha</h5>
-                <br>
-                <h5><i class="ri-mail-open-line"></i></h5>
-                <br>
-                <a href="#">
-                <button class="buy-2">READ MORE</button></a>
-            </div>
-          </div>
-
-        </div>
     </div>
 </section>
 <br>
@@ -212,6 +157,43 @@
   </footer>
 
 <!-- Script     -->
-<script src="./assets/main.js"></script>    
+ 
+<script>
+   $(document).ready(function() {
+    $.ajax({
+        url: "../backend/check_transaction.php",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            var contentTemplate = '';
+
+            for (var i = 0; i < data.length; i++) {
+                var entry = data[i];
+                
+                contentTemplate += ` 
+                    <div class="content1">
+                        <img src="./assets/images/${entry.status === 0 ? 'a.jpg' : 'pfp.jpg'}"> 
+                        <h4>${entry.transaction}</h4>
+                        <p>${entry.name}</p>
+                        <h5>${entry.status}</h5>
+                        <br>
+                        ${entry.status === 0 ? '<h5><i class="ri-mail-unread-line"></i></h5>' : '<h5><i class="ri-mail-open-line"></i></h5>'}
+                        <br>
+                        ${entry.status === 0 ? '<a href="./form/pop.html">' : '<a href="#">'}
+                            <button class="buy-${entry.status === 0 ? 1 : 2}">READ MORE</button>
+                        </a>
+                    </div>
+                `; // the img will be as is for now
+            }
+
+            $("#dynamicContent").html(contentTemplate);
+        },
+        error: function(xhr, status, error) {
+            console.error("Request failed with status: " + status);
+        }
+    });
+});
+</script>  
+<script src="./assets/main.js"></script> 
 </body>
 </html>

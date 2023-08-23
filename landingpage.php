@@ -7,22 +7,23 @@
 
   <header id="header" class="header d-flex align-items-center" style="background-color: black; ">
 
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between"  style="background-color: black;">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!--  <img src="/GCU.png" alt="">  -->
         <!-- <h1>Impact<span>.</span></h1> -->
       </a>
-      <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
+      <nav id="navbar" class="navbar" style="margin: auto;">
   <ul>
     <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
     <li><a href="index.php">HOME</a></li>
     <li><a href="about.php">ABOUT</a></li>
+    <li><a href="#">SERVICES</a></li>
 
     <space style = "width: 300px"> </space>
     <!-- <li class="login-register"><a href="login.php">LOGIN</a></li> -->
     <div class="dropdown">
-      <button class="dropbtn">Login</button>
+    <li class="login-register"><a>LOGIN</a></li>
       <div class="dropdown-content">
         <a href="Student_Side/login.php">As Student</a>
         <a href="Employee_Side/login_Employee.php">As Employee</a>
@@ -51,7 +52,7 @@ include 'includes/banner.php';
 
 
 <!-- Header section -->
-<section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: auto; ">
+<section id="topbar" class="topbar d-flex align-items-center" style="height: auto; ">
 
   <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 1400px;">
 

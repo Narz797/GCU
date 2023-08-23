@@ -7,7 +7,7 @@
 
   <header id="header" class="header d-flex align-items-center" style="background-color: black; ">
 
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between"  style="background-color: black;">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between" >
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!--  <img src="/GCU.png" alt="">  -->
@@ -23,17 +23,9 @@
     <!-- Show when Mobile view -->
     <li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
     <li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li>
-    <li class="spacer" ></li>
 
 
-            <li class="search-bar">
-      <form action="search.html" method="GET">
-        <input type="text" name="query" placeholder="Search" id="srchbar">
-        <button type="submit">Search</button>
-      </form>
-    </li>
-
-<div class="containerA">
+<div class="containerA" style="margin-right:3%; background-color:black;">
 
 <div class="account-icon">
   <div class="dropdown">
@@ -48,11 +40,8 @@
 
 </div>
 
-
   </ul>
 </nav><!-- .navbar -->
-
-
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
@@ -68,15 +57,13 @@
 
   ?>
 
-
-
 <!-- Header section -->
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 50px; ">
 
   <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 250px;">
 
 
-<nav id="navbar1" class="navbar">
+<nav id="navbar" class="navbar">
   <ul>
     
     <li><a href="transaction.php">TRANSACTION</a></li>
@@ -87,9 +74,6 @@
        <li class="spacer" style="margin-left:500px;"></li>
 
     
-
-
-
   </ul>
 </nav><!-- .navbar -->
 </div>
