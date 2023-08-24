@@ -18,7 +18,7 @@
     <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
     <li><a href="index.php">HOME</a></li>
     <li><a href="about.php">ABOUT</a></li>
-    <li><a href="#">SERVICES</a></li>
+    <li><a href="services.php">SERVICES</a></li>
 
     <space style = "width: 300px"> </space>
     <!-- <li class="login-register"><a href="login.php">LOGIN</a></li> -->

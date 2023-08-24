@@ -397,6 +397,7 @@ h6 {
   font-weight: 700;
   color: #fff;
   font-family: inherit;
+  margin-left: 78%;
 }
 
 .btn--radius {
@@ -438,7 +439,7 @@ h6 {
 }
 
 .btn--red:hover {
-  background: #eb3746;
+  background: #f09000;
 }
 
 /* ==========================================================================
@@ -770,9 +771,16 @@ input {
 }
 
   .center-container {
-    display: flex;
-    justify-content: center; /* Horizontally center */
+    
+    justify-content: right; /* Horizontally center */
     align-items: center; /* Vertically center */
     
   }
 
+   .checkbox-container {
+   
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+ 
