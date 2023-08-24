@@ -124,6 +124,7 @@
                         <th> Email <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Service Requested <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Reason <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Action <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody id="data-table">
