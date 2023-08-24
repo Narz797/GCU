@@ -122,6 +122,16 @@
   max-width: 25%;
 }
 
+.col-33 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 25%;
+  -moz-box-flex: 0;
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  max-width: 500%;
+}
+
+
 @media (max-width: 767px) {
   .col-3 {
     -webkit-box-flex: 0;
@@ -587,6 +597,18 @@ input {
   color: #555;
 }
 
+.input--style-56 {
+  background: #e5e5e5;
+  line-height: 50px;
+  width: 80%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0 22px;
+  font-size: 16px;
+  color: #555;
+}
+
 .input-group-desc {
   position: relative;
 }
@@ -622,6 +644,9 @@ input {
   margin-top: 7px;
   left: 0;
 }
+
+
+
 
 /* ==========================================================================
    #SELECT2
@@ -783,4 +808,4 @@ input {
     margin-bottom: 5px;
   }
 
- 
+  
