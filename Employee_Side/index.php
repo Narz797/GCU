@@ -37,19 +37,7 @@
     include 'includes/head.php';
     
     ?>
-    
-<style>
 
-#RBG h5{
-  font-size: 1vw;
- }
- #RBG h3{
-  font-size: 1.8vw;
- }
- #RBG h1{
-  font-size: 2vw;
- }
- </style>
 </section>
 
   <div style="background-color: black; height:50px;">
@@ -102,7 +90,7 @@
                  <a href="appointment.php" class="card-body-link">
                     <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
-                <a href="login_Employee.php" class="card-body-link">
+                <a href="../index.php" class="card-body-link">
                     <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>

@@ -159,7 +159,7 @@ include 'includes/main.php';
       </div>
     </section><!-- End Blog Details Section -->
   </body>
-<?php include 'includes/footer.php' ?>
+<?php include '../includes/footer.php' ?>
 <script>
    $(document).ready(function () {
         // Login form submission

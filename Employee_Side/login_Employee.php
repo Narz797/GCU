@@ -15,13 +15,13 @@ $_SESSION['origin'] = 'Employee';
   <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <link rel="icon" href="assets/images/GCU_logo.png">
+  <link href="../assets/img/GCU_logo.png" rel="icon">
 </head>
 
 <body>
   <div class="container">
     <div class="logo">
-      <img src="assets/images/GCU_logo.png" alt="Logo" width="90" height="90">
+      <img src="../assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
     <h2>Employee Login</h2>
     <form id="Login_Student_Employee" method="POST">
@@ -40,7 +40,7 @@ $_SESSION['origin'] = 'Employee';
         Don't have an account? <a href="SignUp_Employee.php">Sign Up</a>
       </div>
       <div class="home" id="home">
-        <a href="../Student_Side/index.php">Home</a>
+        <a href="../index.php">Home</a>
       </div>
     </form>
     

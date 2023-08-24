@@ -18,23 +18,59 @@ const search = document.querySelector('.input-group input'),
                     table.innerHTML = ''; // Clear existing table rows
 
                     data.forEach(row => {
+
                         if (
                             row.stud_user_id.toString().includes(searchTerm) ||
                             row.first_name.toLowerCase().includes(searchTerm) ||
                             row.last_name.toLowerCase().includes(searchTerm)
                         ) 
                         {
-                            const newRow = table.insertRow();
+                        const newRow = table.insertRow();
+    
+                        // Create cells for other data fields
                         newRow.insertCell().textContent = row.stud_user_id;
                         newRow.insertCell().textContent = row.first_name;
                         newRow.insertCell().textContent = row.last_name;
-                        newRow.insertCell().textContent = row.gender;
                         newRow.insertCell().textContent = row.year_enrolled;
                         newRow.insertCell().textContent = row.course;
-                        newRow.insertCell().textContent = row.birth_date;
+                        newRow.insertCell().textContent = row.gender;
+                        newRow.insertCell().textContent = row.contact_no;
                         newRow.insertCell().textContent = row.email;
-                        }
+                        newRow.insertCell().textContent = row.service_requested;
+                        newRow.insertCell().textContent = row.reason;
+                        
+                        // Create a cell for the action button
+                        const actionCell = newRow.insertCell();
+                        const actionButton = document.createElement('button');
+                        actionButton.textContent = 'View Details';
+                        actionButton.addEventListener('click', () => {
+                            window.location.href = 'new_page.php?id=' + row.stud_user_id;
+                        });
+                        actionCell.appendChild(actionButton);
+                    }
                     });
+
+                    // data.forEach(row => {
+                        
+                    //     if (
+                    //         row.stud_user_id.toString().includes(searchTerm) ||
+                    //         row.first_name.toLowerCase().includes(searchTerm) ||
+                    //         row.last_name.toLowerCase().includes(searchTerm)
+                    //     ) 
+                    //     {
+                    //         const newRow = table.insertRow();
+                    //     newRow.insertCell().textContent = row.stud_user_id;
+                    //     newRow.insertCell().textContent = row.first_name;
+                    //     newRow.insertCell().textContent = row.last_name;
+                    //     newRow.insertCell().textContent = row.year_enrolled;
+                    //     newRow.insertCell().textContent = row.course;
+                    //     newRow.insertCell().textContent = row.gender;
+                    //     newRow.insertCell().textContent = row.contact_no;
+                    //     newRow.insertCell().textContent = row.email;
+                    //     newRow.insertCell().textContent = row.service_requested;
+                    //     newRow.insertCell().textContent = row.reason;
+                    //     }
+                    // });
                 }
 
                 searchInput.addEventListener('input', filterData);
@@ -50,7 +86,7 @@ const search = document.querySelector('.input-group input'),
                             orientation: 'landscape',
                             title: 'Student data',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
                             }
                         },
                         {
@@ -58,7 +94,7 @@ const search = document.querySelector('.input-group input'),
                             orientation: 'landscape',
                             title: 'Student data',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
                             }
                         },
                         {
@@ -66,7 +102,7 @@ const search = document.querySelector('.input-group input'),
                             orientation: 'landscape',
                             title: 'Student data',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
                             }
                         },
                         // JSON export doesn't have a built-in button, you can implement it manually

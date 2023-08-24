@@ -1,6 +1,7 @@
 <?php
 include '../backend/connect_database.php';
-$sql = "SELECT `stud_user_id`, `first_name`, `last_name`, `gender`, `year_enrolled`, `course`, `birth_date`, `email` FROM student_user";
+$sql = "SELECT `stud_user_id`, `first_name`, `last_name`,  `year_enrolled`, `course`, `gender`, `contact_no`, `email`, `service_requested`, `reason` FROM student_user";
+
 
 $result = $conn->query($sql);
 $data = array();

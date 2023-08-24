@@ -13,6 +13,8 @@
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/form.css">
 
@@ -60,30 +62,13 @@
     </nav>
 </header>
 
-    <!-- Header -->
-    <?php
- 
-    include 'includes/head.php';
-    
-    ?>
-<style>
-
-#RBG h5{
-  font-size: 1vw;
- }
- #RBG h3{
-  font-size: 1.8vw;
- }
- #RBG h1{
-  font-size: 2vw;
- }
- </style>
 </section>
   <div style="background-color: black; height:50px;">
 </div>
 
     <div class="container">
         <h2 class="title independent-title">REQUESTED FORMS</h2>
+        <!-- <div id="dynamicContent"></div> -->
         <div class="card">
             <header class="card-header">
                 <small>The following are the requested forms for today</small>
@@ -91,68 +76,10 @@
             </header>
             <hr>
           <div class=" gallery">
-            <div class="content1">
-                <img src="./assets/images/a.jpg">
-                <h4>DUEL FORMS</h4>
-                <p>For Graduation purposes.</p>
-                <h5>Sasuke Uchiha</h5>
-                <br>
-                <h5><i class="ri-mail-unread-line"></i></h5>
-                <br>
-                <a href="./form/pop.html">
-                <button class="buy-1">READ MORE</button></a>
-            </div>
-                <div class="content1">
-                <img src="./assets/images/pfp.jpg">
-                <h4>DUEL FORMS</h4>
-                <p>For Admission purposes.</p>
-                <h5>Sasuke Uchiha</h5>
-                <br>
-                <h5><i class="ri-mail-open-line"></i></h5>
-                <br>
-                <a href="#">
-                <button class="buy-2">READ MORE</button></a>
-            </div>
-          </div>
+              <div id="dynamicContent"></div>
 
         </div>
     </div>
-
-    <div class="container">
-        <br>
-        <h2 class="title independent-title"></h2>
-        <div class="card">
-            <header class="card-header">
-                <h4>HISTORY</h4>
-                <p>&nbsp&nbsp The following are the previous requested forms</p>
-            </header>
-            <hr>
-          <div class=" gallery">
-            <div class="content1">
-                <img src="./assets/images/a.jpg">
-                <h4>DUEL FORMS</h4>
-                <p>For Graduation purposes.</p>
-                <h5>Sasuke Uchiha</h5>
-                <br>
-                <h5><i class="ri-mail-unread-line"></i></h5>
-                <br>
-                <a href="#">
-                <button class="buy-1">READ MORE</button></a>
-            </div>
-                <div class="content1">
-                <img src="./assets/images/pfp.jpg">
-                <h4>DUEL FORMS</h4>
-                <p>For Admission purposes.</p>
-                <h5>Sasuke Uchiha</h5>
-                <br>
-                <h5><i class="ri-mail-open-line"></i></h5>
-                <br>
-                <a href="#">
-                <button class="buy-2">READ MORE</button></a>
-            </div>
-          </div>
-
-        </div>
     </div>
 </section>
 <br>
@@ -230,6 +157,68 @@
   </footer>
 
 <!-- Script     -->
-<script src="./assets/main.js"></script>    
+ 
+<script>
+ $(document).ready(function() {
+    $.ajax({
+        url: "../backend/check_transaction.php",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+          
+            var contentTemplate = '';
+
+            for (var i = 0; i < data.length; i++) {
+                var entry = data[i];
+                var status = entry.status; // Store the status in a variable
+
+                contentTemplate += `
+                    <div class="content1" data-stud-user-id="${entry.stud_user_id}">
+                        <img src="./assets/images/${status === 0 ? 'a.jpg' : 'pfp.jpg'}">
+                        <h4>${entry.service_requested}</h4>
+                        <p>${entry.last_name}</p>
+                        <h5>${entry.stud_user_id}</h5>
+                        <br>
+                        <h5 class="status-icon">
+                            <i class="${status === 0 ? 'ri-mail-unread-line' : 'ri-mail-open-line'}"></i>
+                        </h5>
+                        <br>
+                        ${status === 0 ? '<a href="#">' : '<a href="#">'}
+                            <button class="buy-${status === 0 ? 1 : 2}" ${status === 1 ? 'disabled' : ''}>READ MORE</button>
+                        </a>
+                    </div>
+                `;
+            }
+
+            $("#dynamicContent").html(contentTemplate);
+
+            $(".content1 button").click(function() {
+    var contentElement = $(this).closest(".content1");
+    var studUserId = contentElement.data("stud-user-id"); // Extract stud_user_id from content1
+
+    // Make an AJAX request to update the status
+    $.ajax({
+        url: "../backend/update_status.php",
+        type: "POST",
+        data: { stud_user_id: studUserId },
+        success: function(response) {
+          console.log(response); // Log the response from the server
+    console.log("Status updated in the database");
+        },
+        error: function(xhr, status, error) {
+            console.error("Request failed with status: " + status);
+        }
+    });
+});
+
+        },
+        error: function(xhr, status, error) {
+            console.error("Request failed with status: " + status);
+        }
+    });
+});
+
+</script>  
+<script src="./assets/main.js"></script> 
 </body>
 </html>

@@ -33,17 +33,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    
 </head>
 <style>
-        /* Hide the sorting arrow icons */
-        .dataTables_wrapper .sorting,
-        .dataTables_wrapper .sorting_asc,
-        .dataTables_wrapper .sorting_desc {
-            background-image: none !important; /* Remove background image */
-            padding-right: 0.5em; /* Add some padding to column headers */
-        }
 
-        /* Define other custom styles if needed */
     </style>
 <body>
 
@@ -124,14 +117,18 @@
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
                         <th> First Name <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Lastname <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Gender <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Year Enrolled <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Birthdate <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Gender <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Contact no. <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Service Requested <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Reason <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Action <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody id="data-table">
+                  
                  </tbody>
              
             </table>
@@ -145,10 +142,6 @@
 </section>
 <br>
 
-
-
-
-<br>
 
        <!-- Footer -->
 <footer id="footer" class="footer">

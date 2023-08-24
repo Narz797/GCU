@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include 'head.php'; ?>
+<?php include '../includes/head.php'; ?>
 
 <body>
 
   <header id="header" class="header d-flex align-items-center" style="background-color: black; ">
 
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between"  style="background-color: black;">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between" >
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!--  <img src="/GCU.png" alt="">  -->
@@ -16,25 +16,18 @@
 <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
   <ul>
     <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
-    <li><a href="index.php">HOME</a></li>
-    <li><a href="about.php">ABOUT</a></li>
-    <li><a href="services.php">SERVICES</a></li>
-    <li><a href="contact.php">CONTACT</a></li>
+    <li><a href="../index.php">HOME</a></li>
+    <li><a href="../about.php">ABOUT</a></li>
+    <li><a href="../services.php">SERVICES</a></li>
+
+
 
     <!-- Show when Mobile view -->
     <li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
     <li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li>
-    <li class="spacer" ></li>
 
 
-            <li class="search-bar">
-      <form action="search.html" method="GET">
-        <input type="text" name="query" placeholder="Search" id="srchbar">
-        <button type="submit">Search</button>
-      </form>
-    </li>
-
-<div class="containerA">
+<div class="containerA" style="margin-right:3%; background-color:black;">
 
 <div class="account-icon">
   <div class="dropdown">
@@ -42,18 +35,15 @@
     <div class="dropdown-content">
       <!-- Dropdown content goes here -->
       <a href="#">Profile</a>
-      <a href="#">Logout</a>
+      <a href="../index.php">Logout</a>
     </div>
   </div>
 </div>
 
 </div>
 
-
   </ul>
 </nav><!-- .navbar -->
-
-
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
@@ -65,11 +55,9 @@
 
     <?php 
 
-  include 'includes/banner.php';
+  include '../includes/banner.php';
 
   ?>
-
-
 
 <!-- Header section -->
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 50px; ">
@@ -77,7 +65,7 @@
   <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 250px;">
 
 
-<nav id="navbar1" class="navbar">
+<nav id="navbar" class="navbar">
   <ul>
     
     <li><a href="transaction.php">TRANSACTION</a></li>
@@ -88,9 +76,6 @@
        <li class="spacer" style="margin-left:500px;"></li>
 
     
-
-
-
   </ul>
 </nav><!-- .navbar -->
 </div>
