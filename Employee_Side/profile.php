@@ -33,6 +33,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    
 </head>
 <style>
 
@@ -116,11 +117,13 @@
                         <th> Id <span class="icon-arrow">&UpArrow;</span></th>
                         <th> First Name <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Lastname <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Gender <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Year Enrolled <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Birthdate <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Gender <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Contact no. <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Service Requested <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Reason <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody id="data-table">
@@ -138,10 +141,6 @@
 </section>
 <br>
 
-
-
-
-<br>
 
        <!-- Footer -->
 <footer id="footer" class="footer">

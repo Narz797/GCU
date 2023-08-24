@@ -28,11 +28,13 @@ const search = document.querySelector('.input-group input'),
                         newRow.insertCell().textContent = row.stud_user_id;
                         newRow.insertCell().textContent = row.first_name;
                         newRow.insertCell().textContent = row.last_name;
-                        newRow.insertCell().textContent = row.gender;
                         newRow.insertCell().textContent = row.year_enrolled;
                         newRow.insertCell().textContent = row.course;
-                        newRow.insertCell().textContent = row.birth_date;
+                        newRow.insertCell().textContent = row.gender;
+                        newRow.insertCell().textContent = row.contact_no;
                         newRow.insertCell().textContent = row.email;
+                        newRow.insertCell().textContent = row.service_requested;
+                        newRow.insertCell().textContent = row.reason;
                         }
                     });
                 }
@@ -50,7 +52,7 @@ const search = document.querySelector('.input-group input'),
                             orientation: 'landscape',
                             title: 'Student data',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
                             }
                         },
                         {
@@ -58,7 +60,7 @@ const search = document.querySelector('.input-group input'),
                             orientation: 'landscape',
                             title: 'Student data',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
                             }
                         },
                         {
@@ -66,7 +68,7 @@ const search = document.querySelector('.input-group input'),
                             orientation: 'landscape',
                             title: 'Student data',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
                             }
                         },
                         // JSON export doesn't have a built-in button, you can implement it manually

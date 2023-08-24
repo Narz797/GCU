@@ -159,40 +159,65 @@
 <!-- Script     -->
  
 <script>
-   $(document).ready(function() {
+ $(document).ready(function() {
     $.ajax({
         url: "../backend/check_transaction.php",
         type: "GET",
         dataType: "json",
         success: function(data) {
+          
             var contentTemplate = '';
 
             for (var i = 0; i < data.length; i++) {
                 var entry = data[i];
-                
-                contentTemplate += ` 
-                    <div class="content1">
-                        <img src="./assets/images/${entry.status === 0 ? 'a.jpg' : 'pfp.jpg'}"> 
-                        <h4>${entry.transaction}</h4>
-                        <p>${entry.name}</p>
-                        <h5>${entry.status}</h5>
+                var status = entry.status; // Store the status in a variable
+
+                contentTemplate += `
+                    <div class="content1" data-stud-user-id="${entry.stud_user_id}">
+                        <img src="./assets/images/${status === 0 ? 'a.jpg' : 'pfp.jpg'}">
+                        <h4>${entry.service_requested}</h4>
+                        <p>${entry.last_name}</p>
+                        <h5>${entry.stud_user_id}</h5>
                         <br>
-                        ${entry.status === 0 ? '<h5><i class="ri-mail-unread-line"></i></h5>' : '<h5><i class="ri-mail-open-line"></i></h5>'}
+                        <h5 class="status-icon">
+                            <i class="${status === 0 ? 'ri-mail-unread-line' : 'ri-mail-open-line'}"></i>
+                        </h5>
                         <br>
-                        ${entry.status === 0 ? '<a href="./form/pop.html">' : '<a href="#">'}
-                            <button class="buy-${entry.status === 0 ? 1 : 2}">READ MORE</button>
+                        ${status === 0 ? '<a href="#">' : '<a href="#">'}
+                            <button class="buy-${status === 0 ? 1 : 2}" ${status === 1 ? 'disabled' : ''}>READ MORE</button>
                         </a>
                     </div>
-                `; // the img will be as is for now
+                `;
             }
 
             $("#dynamicContent").html(contentTemplate);
+
+            $(".content1 button").click(function() {
+    var contentElement = $(this).closest(".content1");
+    var studUserId = contentElement.data("stud-user-id"); // Extract stud_user_id from content1
+
+    // Make an AJAX request to update the status
+    $.ajax({
+        url: "../backend/update_status.php",
+        type: "POST",
+        data: { stud_user_id: studUserId },
+        success: function(response) {
+          console.log(response); // Log the response from the server
+    console.log("Status updated in the database");
         },
         error: function(xhr, status, error) {
             console.error("Request failed with status: " + status);
         }
     });
 });
+
+        },
+        error: function(xhr, status, error) {
+            console.error("Request failed with status: " + status);
+        }
+    });
+});
+
 </script>  
 <script src="./assets/main.js"></script> 
 </body>
