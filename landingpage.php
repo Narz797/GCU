@@ -29,7 +29,7 @@
         <a href="Employee_Side/login_Employee.php">As Employee</a>
       </div>
   </div>
-    <li class="login-register"><a href="Student_Side/SignUp.php">REGISTER</a></li>
+    <li class="login-register"><a href="./Student_Side/stud_registration/index.html">REGISTER</a></li>
 
 
   </ul>
