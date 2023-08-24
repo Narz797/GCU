@@ -74,10 +74,6 @@ $_SESSION['origin'] = 'Employee';
         }
     });
 });
-
-
-   
-    
   </script>
 </body>
 </html>
