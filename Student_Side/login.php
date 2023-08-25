@@ -1,7 +1,5 @@
 <?php
 session_start();
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
 $_SESSION['origin'] = 'Student';
 ?>
 
@@ -12,7 +10,6 @@ $_SESSION['origin'] = 'Student';
   <title>Student Login Page</title>
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../Css/login_style.css">
-  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="assets/img/GCU_logo.png" rel="icon">
 </head>
