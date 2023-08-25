@@ -33,18 +33,20 @@ const search = document.querySelector('.input-group input'),
                 
                             newRow.insertCell().textContent = row.stud_user_id;
                 
-                            // Insert the image below the first_name
-                            const firstNameCell = newRow.insertCell();
-                            firstNameCell.textContent = row.first_name;
-                            const image = document.createElement('img');//
-                            image.style.display = 'block'; // Display the image below the text
+                           // Create an image element based on gender
+                            const image = document.createElement('img');
+                            image.style.display = 'block'; // Display the image above the text
                             if (row.gender === 'male') {
                                 image.src = genderImageMap['male'];
                             } else if (row.gender === 'female') {
                                 image.src = genderImageMap['female'];
                             }
+
+                            // Insert the image above the first_name
+                            const firstNameCell = newRow.insertCell();
                             firstNameCell.appendChild(image);
-                
+                            firstNameCell.appendChild(document.createTextNode(row.first_name));
+
                             newRow.insertCell().textContent = row.last_name;
                             newRow.insertCell().textContent = row.year_enrolled;
                             newRow.insertCell().textContent = row.course;
