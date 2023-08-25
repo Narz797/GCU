@@ -56,7 +56,7 @@ const search = document.querySelector('.input-group input'),
                 
                             const actionCell = newRow.insertCell();
                             const actionButton = document.createElement('button');
-                            actionButton.textContent = 'View Details';
+                            actionButton.textContent = 'View';
                             actionButton.addEventListener('click', () => {
                                 window.location.href = 'new_page.php?id=' + row.stud_user_id;
                             });
