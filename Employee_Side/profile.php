@@ -129,17 +129,15 @@
             <table  id="table" >
                 <thead>
                     <tr>
-                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> First Name <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Lastname <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Year Enrolled <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Gender <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Contact no. <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Service Requested <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Reason <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Action Taken<span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Id <br> <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Last &nbspName <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Year Enrolled <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Course <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Service Requested <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Action Taken<br><span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody id="data-table">
