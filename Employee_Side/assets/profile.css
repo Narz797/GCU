@@ -1,18 +1,6 @@
+ 
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Rock+Salt&display=swap');
- 
- 
- 
- /*arrow icons remove on table  */
-         /* Hide the sorting arrow icons */
-         .dataTables_wrapper .sorting,
-         .dataTables_wrapper .sorting_asc,
-         .dataTables_wrapper .sorting_desc {
-             background-image: none !important; /* Remove background image */
-             padding-right: 0.5em; /* Add some padding to column headers */
-         }
- 
-         /* Define other custom styles if needed */
 
 
 /* Custom properties */
@@ -463,7 +451,7 @@ tbody td.active {
     display: inline-block;
     width: 4rem;
     height: 4rem;
-   
+    background: #fff6 url(../images/export.png) center / 80% no-repeat;
     border-radius: 50%;
     transition: .2s ease-in-out;
 }
@@ -736,8 +724,7 @@ tbody td.active {
         margin-left: 4rem;
     }
     .list-link{
-        transition: color .25s; 
-        background-color: .25s;
+        transition: color .25s; background-color: .25s;
     }
     .nav-mobile .list-link{
         border-radius: .4rem;
@@ -778,4 +765,3 @@ tbody td.active {
         min-width: 12.1rem;
     }
 }
-
