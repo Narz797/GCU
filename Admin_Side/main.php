@@ -89,11 +89,17 @@
                 <a href="form.php" class="card-body-link">
                 <i class="ri-folder-line"></i>Requested Forms
                 </a>
-                <a href="profile.php" class="card-body-link">
+                <a href="studentprofile.php" class="card-body-link">
                 <i class="ri-server-line"></i>Student Profiles
+                </a>
+                <a href="EmployeeProfiles.php" class="card-body-link">
+                <i class="ri-server-line"></i>Employee Profiles
                 </a>
                 <a href="appointment.php" class="card-body-link">
                 <i class="ri-calendar-line"></i>Appointment Schedules
+                </a>
+                <a href="form.php" class="card-body-link">
+                <i class="ri-folder-line"></i>Statistics
                 </a>
                 <a href="../index.php" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
