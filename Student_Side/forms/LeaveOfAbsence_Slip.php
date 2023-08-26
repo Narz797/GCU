@@ -4,8 +4,6 @@
 
 <head>
   <title>Leave Of Absence Slip</title>
-
-
 </head>
 
 <body>
@@ -15,29 +13,29 @@
       <h1 id="Title">Leave Of Absence Slip</h1>
     </div>
     <div class="card-body">
-      <form id="form1" name="form1" method="post">
+      <form id="form_transact" method="post">
         <p>
           <label for="select2">Semester and School Year Intended to Come Back:</label>
-          <select name="select2" id="coa">
+          <select name="select2" id="semester">
             <option value="a">First Semester</option>
             <option value="b">Second Semester</option>
           </select>
-          <label for="month">Year:</label>
-          <input type="number" placeholder="YYYY" min="1999" max="2030">
+          <label>Year:</label>
+          <input type="number" placeholder="YYYY" id="start_year" class="year_yield">
           <label> - </label>
-          <input type="number" placeholder="YYYY" min="1999" max="2030">
+          <input type="number" placeholder="YYYY" id="end_year" class="year_yield">
         </p>
         <p>
           <label for="textarea">Reason/s for stopping/filing a leave:</label>
         </p>
         <p>
-          <textarea name="textarea" id="textarea" style="width: 50%"></textarea>
+          <textarea name="textarea" class="textarea" id="reason_leave"></textarea>
         </p>
         <p>
           <label for="textarea">What to do when on-leave:</label>
         </p>
         <p>
-          <textarea name="textarea" id="textarea" style="width: 50%"></textarea>
+          <textarea name="textarea" class="textarea" id="do_leave"></textarea>
         </p>
         <div class="button">
           <p>
@@ -48,6 +46,33 @@
     </div>
 
   </div>
+
+  <script>
+
+    $("#form_transact").on("submit", function (event) {
+      event.preventDefault();
+      var student_id = <?php echo $_SESSION['session_id'] ?>;
+      var transact_type = "Leave of Absence"
+
+      $.ajax({
+        type: 'POST',
+        url: '../backend/create_transaction.php',
+        data: {
+          id: student_id,
+          transact: transact_type,
+          semester: $("#semester").val(),
+          start_year: $("#start_year").val(),
+          end_year: $("#end_year").val(),
+          reason_leave: $("#reason_leave").val(),
+          do_leave: $("#do_leave").value()
+        },
+        success: function (data) {
+          alert('Successfull');
+
+        }
+      });
+    }); 
+  </script>
 
 </body>
 
