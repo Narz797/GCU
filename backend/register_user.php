@@ -40,42 +40,7 @@ if (isset($_SESSION['origin'])) {
             echo "Missing data fields.";
         
             }
-    }
-
-    elseif ($origin === 'Employee_Register') {
-        if (isset($_POST['Employee_idno']) && isset($_POST['firstname'])&& isset($_POST['lastname'])&& isset($_POST['middlename'])&& isset($_POST['select'])&& isset($_POST['position']) && isset($_POST['email'])&& isset($_POST['username'])&& isset($_POST['password'])) {
-            $Employee_idno = $_POST['Employee_idno'];
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
-            $middlename = $_POST['middlename'];
-            $select = $_POST['select'];
-            $position = $_POST['position'];
-            $email = $_POST['email'];
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            
-            $query = "SELECT * FROM `admin_user` WHERE `admin_user_id` = '$Employee_idno'";
-
-            $result = $conn->query($query);
-
-            if ($result->num_rows === 1) {
-                echo"User Already Registered";
-            } else {
-
-            $sql = "INSERT INTO `admin_user`(`admin_user_id`, `first_ name`, `last_name`, `middle_name`, `gender`, `position`, `email`, `username`, `password`) VALUES ('$Employee_idno','$firstname','$lastname','$middlename','$select','$position','$email','$username','$hashedPassword')";
-            
-            $result = $conn->query($sql);           
-            echo"success_employee";
-
-            }
-        } else {
-            echo "Missing data fields.";
-        }
-        
-    }
-    else{
+    }else{
         echo "Error";
     }
 } 
