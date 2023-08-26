@@ -14,8 +14,6 @@ if (isset($_SESSION['origin'])) {
             
             $result = $conn->query($sql);
             
-            
-            
             if ($result->num_rows === 1) {
                 $row = $result->fetch_assoc();
                 $storedHashedPassword = $row['password'];
@@ -68,7 +66,4 @@ if (isset($_SESSION['origin'])) {
 
 }
     $conn->close();
-
- 
-
 ?>
