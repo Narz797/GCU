@@ -46,7 +46,7 @@
   <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
+            <a href="./main.php" ><img src="assets/images/bsu.png" alt=""></a>
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -54,7 +54,7 @@
                     <a href="main.php" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="profile.php" class="list-link current1">Student Profiles</a>
+                    <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
                 </li>
                 <li class="list-item hov">
                     <a href="appointment.php" class="list-link current1">Appointment Schedules</a>
