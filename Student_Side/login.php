@@ -47,7 +47,6 @@ $_SESSION['origin'] = 'Student';
 
 
     $("#Login_Student_User").on("submit", function (event) {
-    var source = "student_side_login";
     event.preventDefault();
 
     $.ajax({
@@ -56,7 +55,6 @@ $_SESSION['origin'] = 'Student';
         data: {
             email: $("#email").val(),
             password: $("#password").val(),
-            source: source
         },
         success: function (data) {
      
@@ -65,7 +63,6 @@ $_SESSION['origin'] = 'Student';
             } else {
               alert("Invalid username or password.");
             }
-          
         }
     });
 });

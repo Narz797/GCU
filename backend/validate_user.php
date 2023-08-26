@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include '../backend/connect_database.php';
 
 
@@ -14,8 +16,6 @@ if (isset($_SESSION['origin'])) {
             
             $result = $conn->query($sql);
             
-            
-            
             if ($result->num_rows === 1) {
                 $row = $result->fetch_assoc();
                 $storedHashedPassword = $row['password'];
@@ -23,7 +23,12 @@ if (isset($_SESSION['origin'])) {
                 // Verify the password
                 if (password_verify($password, $storedHashedPassword)) {
                     // Password is correct
-                    echo"success_student";
+                    $get_id = "SELECT user_id FROM student_user WHERE email='$username'";
+                    $id = $conn->query($get_id);
+
+                    $_SESSION['session_id'] = $id;
+
+                    echo"Successfully logged in";
                 } else {
                     // Password is incorrect
                     echo "Invalid username or password.";
