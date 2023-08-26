@@ -73,7 +73,4 @@ if (isset($_SESSION['origin'])) {
 
 }
     $conn->close();
-
- 
-
 ?>
