@@ -35,13 +35,13 @@ include 'formstyle.php';
         <p>
           <label for="textarea2">State your Reason/s:
           </label><br>
-          <textarea name="textarea2" class="textarea"></textarea>
+          <textarea name="textarea2" class="textarea" id="reason_state"></textarea>
         </p>
         <p>
           <label>Reason/s for withdrawing enrollment/ dropping subject/s / shifting</label>
           <label for="textarea">:<br>
           </label>
-          <textarea name="textarea" class="textarea"></textarea>
+          <textarea name="textarea" class="textarea" id="reason_explain"></textarea>
         </p>
         <div class="hidden" id="for-shift">
           <label>Shifting from</label>
@@ -66,8 +66,30 @@ include 'formstyle.php';
         textfield.classList.remove('hidden');
       } else {
         textfield.classList.add('hidden');
-
       }
+    });
+  </script>
+  <script>
+    $("#form_transact").on("submit", function (event) {
+      event.preventDefault();
+      var student_id = <?php echo $_SESSION['session_id'] ?>;
+      var transact_type = "readmission"
+
+      $.ajax({
+        type: 'POST',
+        url: '../backend/create_transaction.php',
+        data: {
+          id: student_id,
+          transact: transact_type,
+          reason: $('#action').find(":selected").val();
+          statement: $('#reason_state').val(),
+          explain: $("#reason_explain").val()
+        },
+        success: function (data) {
+          alert('Successfull');
+
+        }
+      });
     });
   </script>
 </body>

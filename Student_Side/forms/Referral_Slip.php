@@ -1,5 +1,6 @@
 <!doctype html>
 <?php
+session_start();
 include 'formstyle.php';
 ?>
 <html>
@@ -7,6 +8,7 @@ include 'formstyle.php';
 <head>
   <meta charset="utf-8">
   <title>Feedback Slip</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 
@@ -65,7 +67,8 @@ include 'formstyle.php';
         text2.style.display = "none";
       }
     }
-
+  </script>
+  <script>
     $("#form_transact").on("submit", function (event) {
       event.preventDefault();
       var student_id = <?php echo $_SESSION['session_id'] ?>;
@@ -77,8 +80,11 @@ include 'formstyle.php';
         data: {
           id: student_id,
           transact: transact_type,
-          reason: $("#reason_stop").val(),
-          motivation: $("#motivation").val(),
+          interview: $("#interview").val(),
+          counsel: $("#counseling").val(),
+          test: $("#psychological_test").val(),
+          others: $("#others").val(),
+          content: $("#oth").val()
         },
         success: function (data) {
           alert('Successfull');
@@ -86,7 +92,6 @@ include 'formstyle.php';
         }
       });
     });
-
   </script>
 </body>
 
