@@ -98,19 +98,31 @@
         <h2>REQUESTED FORMS</h2>
     </div>
 
-    <div class="container">
-        <div class="card">
-           <header class="card-header">
-                <small>The following are the requested forms for today,</small>
-                <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
-            </header>
-            <hr>
-          <div class=" gallery">
-              <div id="dynamicContent"></div>
+            <div class="container">
+            <div class="card">
+                <header class="card-header">
+                    <small>The following are the requested forms for today,</small>
+                    <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
+                </header>
+                <hr>
+                <div class="gallery">
+                    <table id="dynamicTable">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Service Requested</th>
+                                <th>Last Name</th>
+                                <th>Student User ID</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-        </div>
-        </div>
-    </div>
 
     <!-- History of transaction -->
     <div class="container">
@@ -215,65 +227,72 @@
 <!-- Script     -->
  
 <script>
- $(document).ready(function() {
-    $.ajax({
-        url: "../backend/check_transaction.php",
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-          
-            var contentTemplate = '';
+  $(document).ready(function () {
+        $.ajax({
+            url: "../backend/check_transaction.php",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                // if (data.status===0){
+                var tableBody = $("#dynamicTable tbody");
 
-            for (var i = 0; i < data.length; i++) {
-                var entry = data[i];
-                var status = entry.status; // Store the status in a variable
+                for (var i = 0; i < data.length; i++) {
+                    var entry = data[i];
+                    var status = entry.status;
 
-                contentTemplate += `
-                    <div class="content1" data-stud-user-id="${entry.stud_user_id}">
-                        <img src="./assets/images/${status === 0 ? 'a.jpg' : 'pfp.jpg'}">
-                        <h4>${entry.service_requested}</h4>
-                        <p>${entry.last_name}</p>
-                        <h5>${entry.stud_user_id}</h5>
-                        <br>
-                        <h5 class="status-icon">
-                            <i class="${status === 0 ? 'ri-mail-unread-line' : 'ri-mail-open-line'}"></i>
-                        </h5>
-                        <br>
-                        ${status === 0 ? '<a href="#">' : '<a href="#">'}
-                            <button class="buy-${status === 0 ? 1 : 2}" ${status === 1 ? 'disabled' : ''}>READ MORE</button>
-                        </a>
-                    </div>
-                `;
+                    var row = $("<tr></tr>");
+                    row.data("stud-user-id", entry.stud_user_id);
+
+                    var imageSrc = `./assets/images/${status === 0 ? 'a.jpg' : 'pfp.jpg'}`;
+                    var statusIconClass = status === 0 ? 'ri-mail-unread-line' : 'ri-mail-open-line';
+                    var buttonDisabled = status === 1 ? 'disabled' : '';
+
+                    var rowData = `
+                        <td><img src="${imageSrc}" alt="Image"></td>
+                        <td>${entry.service_requested}</td>
+                        <td>${entry.last_name}</td>
+                        <td>${entry.stud_user_id}</td>
+                        <td><i class="${statusIconClass}"></i></td>
+                        <td><a href="#"><button class="buy-${status === 0 ? 1 : 2}" ${buttonDisabled}>READ MORE</button></a></td>
+                    `;
+
+                    row.html(rowData);
+                                    // Append or prepend based on status
+                                    if (status === 1) {
+                                    tableBody.append(row);
+                                } else if (status === 0) {
+                                    tableBody.prepend(row);
+                                }
+                }
+
+                $("td button").click(function () {
+                    var contentElement = $(this).closest("tr");
+                    var studUserId = contentElement.data("stud-user-id");
+
+                    $.ajax({
+                        url: "../backend/update_status.php",
+                        type: "POST",
+                        data: { stud_user_id: studUserId },
+                        success: function (response) {
+                            console.log(response);
+                            console.log("Status updated in the database");
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("Request failed with status: " + status);
+                        }
+                    });
+                    location.reload();
+                });
+            // }
+            // else if(data.status===1){
+            //     document.querySelector('#table tbody').appendChild(row);
+            // }
+        },
+            error: function (xhr, status, error) {
+                console.error("Request failed with status: " + status);
             }
-
-            $("#dynamicContent").html(contentTemplate);
-
-            $(".content1 button").click(function() {
-    var contentElement = $(this).closest(".content1");
-    var studUserId = contentElement.data("stud-user-id"); // Extract stud_user_id from content1
-
-    // Make an AJAX request to update the status
-    $.ajax({
-        url: "../backend/update_status.php",
-        type: "POST",
-        data: { stud_user_id: studUserId },
-        success: function(response) {
-          console.log(response); // Log the response from the server
-    console.log("Status updated in the database");
-        },
-        error: function(xhr, status, error) {
-            console.error("Request failed with status: " + status);
-        }
+        });
     });
-});
-
-        },
-        error: function(xhr, status, error) {
-            console.error("Request failed with status: " + status);
-        }
-    });
-});
-
 </script>  
 <script src="./assets/main.js"></script> 
 </body>
