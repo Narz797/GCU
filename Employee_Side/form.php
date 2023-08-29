@@ -80,7 +80,7 @@
 </header>
     <!-- Welcome-message -->
 <section>
-<section class="banner">
+    <section class="banner">
         <div class="banner-container">
     <br>
             <img src="assets/images/GCU_logo.png" alt="">
@@ -98,31 +98,41 @@
         <h2>REQUESTED FORMS</h2>
     </div>
 
-            <div class="container">
-            <div class="card">
-                <header class="card-header">
-                    <small>The following are the requested forms for today,</small>
-                    <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
-                </header>
-                <hr>
-                <div class="gallery">
+    
+    <div class="container">
+        <br>
+        <h2 class="title"></h2>
+        <div class="card">
+            <hr>
+            <div class=" gallery">
+            <main class="table" id="customers_table">
+            <section class="table-header">
+                <h1>The following are the requested forms for today</h1>
+                <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
+            </section>
+            <section class="table-body">               
                     <table id="dynamicTable">
                         <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Service Requested</th>
-                                <th>Last Name</th>
-                                <th>Student User ID</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Student ID<span class="icon-arrow">&UpArrow;</span></th>                            
+                                <th>Student<span class="icon-arrow">&UpArrow;</span></th>
+                                <th> College <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Course <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Date <span class="icon-arrow">&UpArrow;</span></th>
+                                <th>Service Requested<span class="icon-arrow">&UpArrow;</span></th>
+                                <th>Status<span class="icon-arrow">&UpArrow;</span></th>
+                                <th>Action<span class="icon-arrow">&UpArrow;</span></th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+                        <tbody>
 
+                        </tbody>
+                    </table>
+               
+            
+                </div>
+            </section>
+    </div>
 
     <!-- History of transaction -->
     <div class="container">
@@ -152,7 +162,7 @@
                 </div>
             </section>
             <section class="table-body">
-                <table>
+                <table id="historyTableBody">
                     <thead>
                         <tr>
                             <th> Id <span class="icon-arrow">&UpArrow;</span></th>
@@ -164,46 +174,8 @@
                             <th> Action <span class="icon-arrow">&UpArrow;</span></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td> 1 </td>
-                            <td> Zinzu Chan Lee</td>
-                            <td> CHET </td>
-                            <td> Psychology </td>
-                            <td> 17 Dec, 2022 </td>
-                            <td>
-                                <p class="status delivered">Delivered</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 2 </td>
-                            <td> Jeet Saru </td>
-                            <td> CIS </td>
-                            <td> BSIT</td>
-                            <td> 27 Aug, 2023 </td>
-                            <td>
-                                <p class="status cancelled">Cancelled</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Sarita Limbu </td>
-                            <td> CAS </td>
-                            <td> Architecture </td>
-                            <td> 23 Apr, 2023 </td>
-                            <td>
-                                <p class="status pending">Pending</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td>
-                        </tr>
+                    <tbody >
+            <!-- History data will be populated here -->
                     </tbody>
                 </table>
             </section>
@@ -235,6 +207,7 @@
             success: function (data) {
                 // if (data.status===0){
                 var tableBody = $("#dynamicTable tbody");
+                var historyTableBody = $("#historyTableBody tbody");
 
                 for (var i = 0; i < data.length; i++) {
                     var entry = data[i];
@@ -242,30 +215,40 @@
 
                     var row = $("<tr></tr>");
                     row.data("stud-user-id", entry.stud_user_id);
+                    
+                    if (status === 0) {
+                        tableBody.append(row);
+                    } else if (status === 1) {
+                        historyTableBody.append(row); // Append row to history table body
+                    }
 
                     var imageSrc = `./assets/images/${status === 0 ? 'a.jpg' : 'pfp.jpg'}`;
                     var statusIconClass = status === 0 ? 'ri-mail-unread-line' : 'ri-mail-open-line';
                     var buttonDisabled = status === 1 ? 'disabled' : '';
+                    var btn = status === 0 ? 'ri-mail-unread-line' : 'ri-mail-open-line';
 
                     var rowData = `
-                        <td><img src="${imageSrc}" alt="Image"></td>
-                        <td>${entry.service_requested}</td>
-                        <td>${entry.last_name}</td>
                         <td>${entry.stud_user_id}</td>
-                        <td><i class="${statusIconClass}"></i></td>
-                        <td><a href="#"><button class="buy-${status === 0 ? 1 : 2}" ${buttonDisabled}>READ MORE</button></a></td>
+                        <td>${entry.first_name} ${entry.last_name}</td>
+                        <td>${entry.college}</td>
+                        <td>${entry.course}</td>
+                        <td></td>
+                        <td>${entry.service_requested}</td>
+                        <td><a href="#" class="${status === 0 ? 'status delivered' : 'status cancelled'}">${status === 0 ? 'Unread' : 'Read'}</a></td>
+                        <td> <a href="#"> <i class="ri-delete-bin-6-line"></i></a></td>
+                        
                     `;
-
+                    // <td><a href="#"><button class="buy-${status === 0 ? 1 : 2}" ${buttonDisabled}>READ MORE</button></a></td>
                     row.html(rowData);
                                     // Append or prepend based on status
-                                    if (status === 1) {
-                                    tableBody.append(row);
-                                } else if (status === 0) {
-                                    tableBody.prepend(row);
-                                }
+                                //     if (status === 1) {
+                                //     tableBody.append(row);
+                                // } else if (status === 0) {
+                                //     tableBody.prepend(row);
+                                // }
                 }
 
-                $("td button").click(function () {
+                $("td a").click(function () {
                     var contentElement = $(this).closest("tr");
                     var studUserId = contentElement.data("stud-user-id");
 
