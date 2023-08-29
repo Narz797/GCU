@@ -125,10 +125,10 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                                
                         </tbody>
                     </table>
-               
+                    <p id="noHistoryMessage1">No items available.</p>
             
                 </div>
             </section>
@@ -147,7 +147,7 @@
             <div class=" gallery">
             <main class="table" id="customers_table">
             <section class="table-header">
-                <h1>List of Requested Forms</h1>
+                <h1>History of Requested Forms</h1>
                 <div class="input-group">
                     <input type="search" placeholder="Search Data...">
                 </div>
@@ -165,19 +165,23 @@
                 <table id="historyTableBody">
                     <thead>
                         <tr>
-                            <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Student <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> College <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Date <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Action <span class="icon-arrow">&UpArrow;</span></th>
+                                <th>Student ID<span class="icon-arrow">&UpArrow;</span></th>                            
+                                <th>Student<span class="icon-arrow">&UpArrow;</span></th>
+                                <th> College <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Course <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Date <span class="icon-arrow">&UpArrow;</span></th>
+                                <th>Service Requested<span class="icon-arrow">&UpArrow;</span></th>
+                                <th>Status<span class="icon-arrow">&UpArrow;</span></th>
+                                <th>Action<span class="icon-arrow">&UpArrow;</span></th>
+                            
                         </tr>
                     </thead>
                     <tbody >
             <!-- History data will be populated here -->
                     </tbody>
                 </table>
+                <p id="noHistoryMessage2">No items available.</p>
+                
             </section>
             </main>
             </div>
@@ -208,6 +212,10 @@
                 // if (data.status===0){
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
+                var noHistoryMessage1 = $("#noHistoryMessage1"); 
+                var noHistoryMessage2 = $("#noHistoryMessage2"); 
+                
+
 
                 for (var i = 0; i < data.length; i++) {
                     var entry = data[i];
@@ -238,15 +246,24 @@
                         <td> <a href="#"> <i class="ri-delete-bin-6-line"></i></a></td>
                         
                     `;
-                    // <td><a href="#"><button class="buy-${status === 0 ? 1 : 2}" ${buttonDisabled}>READ MORE</button></a></td>
+                    
                     row.html(rowData);
-                                    // Append or prepend based on status
-                                //     if (status === 1) {
-                                //     tableBody.append(row);
-                                // } else if (status === 0) {
-                                //     tableBody.prepend(row);
-                                // }
+
                 }
+                var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
+                var dynamicTableRowCount2 = $("#historyTableBody tbody tr").length;
+
+                    if (dynamicTableRowCount1 > 0) {
+                    noHistoryMessage1.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage1.show(); // Show the no history message if no data
+                    }
+
+                    if (dynamicTableRowCount2 > 0) {
+                    noHistoryMessage2.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage2.show(); // Show the no history message if no data
+                    }
 
                 $("td a").click(function () {
                     var contentElement = $(this).closest("tr");
@@ -266,10 +283,6 @@
                     });
                     location.reload();
                 });
-            // }
-            // else if(data.status===1){
-            //     document.querySelector('#table tbody').appendChild(row);
-            // }
         },
             error: function (xhr, status, error) {
                 console.error("Request failed with status: " + status);
