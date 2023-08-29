@@ -1,5 +1,6 @@
 <!doctype html>
 <?php
+session_start();
 include 'formstyle.php';
 ?>
 <html>
@@ -7,7 +8,7 @@ include 'formstyle.php';
 <head>
   <meta charset="utf-8">
   <title>Feedback Slip</title>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 
@@ -17,26 +18,25 @@ include 'formstyle.php';
       <h1 id="Title">Referral Slip</h1>
     </div>
     <div class="card-body">
-      <form id="form1" name="form1" method="post">
+      <form id="form_transact" name="form1" method="post">
         <p>
           <label for="select">Reason For Referral:</label>
-
         </p>
         <p>
           <label>
-            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
+            <input type="checkbox" name="interview" value="1" id="interview">
             interview</label>
           <br>
           <label>
-            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_1">
+            <input type="checkbox" name="counseling" value="2" id="counseling">
             counseling</label>
           <br>
           <label>
-            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
+            <input type="checkbox" name="psychological testing" value="3" id="psychological_test">
             psychological testing</label>
           <br>
           <label>
-            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="others" onclick="myFunction()">
+            <input type="checkbox" name="others" value="4" id="others" onclick="myFunction()">
             others</label>
           <input type="text" name="textfield3" id="oth" style="display: none">
         </p>
@@ -67,6 +67,31 @@ include 'formstyle.php';
         text2.style.display = "none";
       }
     }
+  </script>
+  <script>
+    $("#form_transact").on("submit", function (event) {
+      event.preventDefault();
+      var student_id = <?php echo $_SESSION['session_id'] ?>;
+      var transact_type = "referral"
+
+      $.ajax({
+        type: 'POST',
+        url: '../backend/create_transaction.php',
+        data: {
+          id: student_id,
+          transact: transact_type,
+          interview: $("#interview").val(),
+          counsel: $("#counseling").val(),
+          test: $("#psychological_test").val(),
+          others: $("#others").val(),
+          content: $("#oth").val()
+        },
+        success: function (data) {
+          alert('Successfull');
+
+        }
+      });
+    });
   </script>
 </body>
 
