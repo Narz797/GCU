@@ -23,7 +23,7 @@
     <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="css/main.css" rel="stylesheet" media="all"> 
 </head>
 
 <body>
@@ -42,8 +42,7 @@
                     <h2 class="title">Registration Form</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="page3.html">
-                       
+                    
 
                      <p><b>In view of the Indigenous People's Act (RA 8371), Magna Carta for Persons with Disability (RA 727, as amended by RA 9442),
                         the (c) Solo Parents Welfare Act of 2000 (RA 8972), and CHED Memorandum Order 9 s. 2013, please answer the following items.
@@ -99,90 +98,68 @@
                             </label>
                         </div>
                     </div>
+                    
+                    <form >
+                        <h4><b>Source of Financial Support</b></h4>
+                        <br>
+                        <label> 
+                            <input type="checkbox" id="parent" name="parent" value="parent">
+                             Parents
+                        </label><br>
+                        <label> 
+                            <input type="checkbox" id="parent" name="parent" value="parent">
+                            Self-supporting
+                        </label><br>
+                        <label> 
+                            <input type="checkbox" id="parent" name="parent" value="parent">
+                            Relatives and/or Guardian
+                        </label><br>
+                        <label> 
+                            <input type="checkbox" id="parent" name="parent" value="parent">
+                            Scholarship; Specify: <input type="text" class="text-field" >
+                        </label><br>
+                        <label> 
+                            <input type="checkbox" id="parent" name="parent" value="parent">
+                            Others; Specify: <input type="text" class="text-field" >
+                        </label><br>
 
-                    <div class="form-row p-t-20">
-                        <label class="label label--block">Sources of Financial Support:</label>
-                        <div class="p-t-15 checkbox-group">
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_parents">
-                                <span class="checkmark"></span>
-                                Parents
-                            </label>
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_self">
-                                <span class="checkmark"></span>
-                                Self-supporting
-                            </label>
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_relatives">
-                                <span class="checkmark"></span>
-                                Relatives and/or Guardian
-                            </label>
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_scholarship">
-                                <span class="checkmark"></span>
-                                Scholarship; 
-                                <input   class="input--style-5" type="text"name="scholarship_details" placeholder="Specify" class="specify-textbox">
-                            </label>
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_others">
-                                <span class="checkmark"></span>
-                                Others;
-                                <br>
-                                <input  class="input--style-5" type="text" name="others_details" placeholder="Specify">
-                                
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-row p-t-20">
-                        <label class="label label--block">Marital Status of Parents: </label>
-                        <div class="p-t-15 checkbox-group">
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_parents">
-                                <span class="checkmark"></span>
-                                Parents are married
-                            </label>
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_self">
-                                <span class="checkmark"></span>
-                                Marriage is annually annulled
-                            </label>
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_relatives">
-                                <span class="checkmark"></span>
-                               Parent are not married but are living together
-                            </label>
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_scholarship">
-                                <span class="checkmark"></span>
-                                Single Parent
-                                
-                            </label>
-
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_scholarship">
-                                <span class="checkmark"></span>
-                                Parents are separated(one or both have other partners)
-                                
-                            </label>
-
-                            <label class="checkbox-container">
-                                <input type="checkbox" name="exist_scholarship">
-                                <span class="checkmark"></span>
-                               Widow/Widower
-                                
-                            </label>
-                            
-                        </div>
-                    </div>
-
-                    <div>
+                      </form>
+                      <br>
+                      <form method="POST" action="page3.html">
+                        <h4><b>Marital Status of Parents</b></h4>
+                        <br>
+                        <label> 
+                          <input type="radio" name="parent" value="married">
+                          Parents are married
+                        </label><br>
+                        <label> 
+                          <input type="radio" name="parent" value="annulled">
+                          Marriage is legally annulled
+                        </label><br>
+                        <label> 
+                          <input type="radio" name="parent" value="living_together">
+                          Parents are not married but are living together
+                        </label><br>
+                        <label> 
+                          <input type="radio" name="parent" value="single_parent">
+                          Single Parent
+                        </label><br>
+                        <label> 
+                          <input type="radio" name="parent" value="separated">
+                          Parents are separated (one or both have other partners)
+                        </label><br>
+                        <label> 
+                          <input type="radio" name="parent" value="widow_widower">
+                          Widow / Widower
+                        </label><br>
+                        <br>
+                        <div>
                         
-                        <button class="btn btn--radius-2 btn--red" type="submit"><a href="./page3.html"></a>Next</button>
-                    </div>
-                     
-                    </form>
+                            <button class="btn btn--radius-2 btn--red" type="submit"><a href="./page3.html"></a>Next</button>
+                        </div>
+                      </form>
+                    
+                   
                 </div>
             </div>
         </div>

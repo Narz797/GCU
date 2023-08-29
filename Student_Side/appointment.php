@@ -29,17 +29,37 @@ include 'includes/main.php';
   <div class="container">
       <br>
       <h2 class="title independent-title">APPOINTMENT SCHEDULE</h2>
+
+   
+
+  
       <div class="card">
           <hr>
       <div class="body-calendar">
        <div class="container-calendar">
     <div class="left">
+
+  
+
       <div class="calendar">
+
+      
+   
+      <div class="profile-icon">
+      <img src="../assets/img/dp.png" alt="Logo" width="90" height="90">
+      <img src="../assets/img/dp.png" alt="Logo" width="90" height="90">
+      <img src="../assets/img/dp.png" alt="Logo" width="90" height="90">
+
+      </div>
+
         <div class="month">
           <i class="fas fa-angle-left prev"></i>
           <div class="date">month,year</div>
           <i class="fas fa-angle-right next"></i>
         </div>
+
+ 
+        
         <div class="weekdays">
           <div>Sun</div>
           <div>Mon</div>
