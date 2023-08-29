@@ -17,14 +17,10 @@ if (isset($_SESSION['origin'])) {
             $email = $_POST['email'];
             $username = $_POST['username'];
             $password = $_POST['password'];
-    
-            
 
             $query = "SELECT * FROM `student_user` WHERE `stud_user_id` = '$idno'";
 
             $result = $conn->query($query);
-
-            
 
             if ($result->num_rows === 1) {
                 echo"User Already Registered";

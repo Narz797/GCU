@@ -73,7 +73,7 @@ include 'formstyle.php';
     $("#form_transact").on("submit", function (event) {
       event.preventDefault();
       var student_id = <?php echo $_SESSION['session_id'] ?>;
-      var transact_type = "readmission"
+      var transact_type = "withdrawal"
 
       $.ajax({
         type: 'POST',
@@ -81,7 +81,7 @@ include 'formstyle.php';
         data: {
           id: student_id,
           transact: transact_type,
-          reason: $('#action').find(":selected").val();
+          reason: $('#action').find(":selected").val(),
           statement: $('#reason_state').val(),
           explain: $("#reason_explain").val()
         },

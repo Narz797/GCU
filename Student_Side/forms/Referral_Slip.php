@@ -72,7 +72,7 @@ include 'formstyle.php';
     $("#form_transact").on("submit", function (event) {
       event.preventDefault();
       var student_id = <?php echo $_SESSION['session_id'] ?>;
-      var transact_type = "readmission"
+      var transact_type = "referral"
 
       $.ajax({
         type: 'POST',
