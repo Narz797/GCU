@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Get the stud_user_id parameter
     $studUserId = $_POST["stud_user_id"];
 
-
     // Update the status in the database
     $sql = "UPDATE `student_user` SET `status` = 1 WHERE `stud_user_id` = ?";
     $stmt = $conn->prepare($sql);

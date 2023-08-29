@@ -5,46 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointment Schedule</title>
-    <!-- icons -->
+    <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-        <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-          <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/apmt.css">
-
-    <link rel="icon" href="assets/images/GCU_logo.png">
+    <link rel="stylesheet" href="assets/css/apmt.css">
 </head>
 
 <body>
-
     <!-- Header -->
 <header class="header">
-    <nav class="nav container"> 
-        <img src="assets/images/bsu.png" alt="" style="width:5.5%; height:auto; padding:2px">
+    <nav class="nav"> 
+        <div class="logo">
+            <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
+        </div>
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
                     <a href="index.php" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="form.php" class="list-link">Requested Forms</a>
+                    <a href="form.php" class="list-link current1">Requested Forms</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="profile.php" class="list-link">Student Profiles</a>
+                    <a href="appointment.php" class="list-link current1">Appointment Schedules</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
                 <i class="ri-close-line"></i>
             </button>
         </div>
-
         <div class="align-right">
             <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
                 <i class="ri-function-line"></i>
@@ -56,25 +52,30 @@
             <button class="icon-btn place-items-center">
                 <i class="ri-user-3-line"></i>
             </button>
-
         </div>
-
     </nav>
 </header>
-    <!-- Header -->
-    <?php
- 
-    include 'includes/head.php';
-    
-    ?>
-
-</section>
-
-  <div style="background-color: black; height:50px;">
-</div>
+    <!-- Welcome-message -->
+<section>
+    <section class="banner">
+        <div class="banner-container">
+    <br>
+            <img src="assets/images/GCU_logo.png" alt="">
+            <div class="banner-text">
+                <h5>REPUBLIC OF THE PHILIPPINES</h5>
+                <hr class="banner-line">
+                <h2><span>BENGUET STATE UNIVERSITY</span></h2>
+                <h1>GUIDANCE AND COUNSELING UNIT</h1>
+            </div>
+        </div>
+    </section>
+    <div class="block"> 
+    </div>
+    <div class="title independent-title">
+        <h2>APPOINTMENT SCHEDULE</h2>
+    </div>
     <div class="container">
         <br>
-        <h2 class="title independent-title">APPOINTMENT SCHEDULE</h2>
         <div class="card">
             <hr>
         <div class="body-calendar">
@@ -113,30 +114,27 @@
         <div class="events"></div>
         <div class="add-event-wrapper">
           <div class="add-event-header">
-            <div class="title">Add Event</div>
+            <div class="title">Add Availability</div>
             <i class="fas fa-times close"></i>
           </div>
           <div class="add-event-body">
             <div class="add-event-input">
-              <input type="text" placeholder="Event Name" class="event-name" />
-            </div>
-            <div class="add-event-input">
               <input
                 type="text"
-                placeholder="Event Time From: 00:00"
+                placeholder="Availability Time From: 00:00"
                 class="event-time-from"
               />
             </div>
             <div class="add-event-input">
               <input
                 type="text"
-                placeholder="Event Time To: 00:00"
+                placeholder="Availability Time To: 00:00"
                 class="event-time-to"
               />
             </div>
           </div>
           <div class="add-event-footer">
-            <button class="add-event-btn">Add Event</button>
+            <button class="add-event-btn">Add Availability</button>
           </div>
         </div>
       </div>
@@ -149,80 +147,16 @@
     </div>
 </section>
 <br>
-
     <!-- Footer -->
 <footer id="footer" class="footer">
-
-    <div class="container">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-info" id="titlefooter">
-          <div title="footertitle">
-          <a href="index.php" class="logo d-flex align-items-center">
-            <span>Guidance and Counseling Unit</span>
-          </a>
-          </div>
-          <p>Benguet State University</p>
-          <div class="social-links d-flex mt-4">
-            <a href="#" class="twitter"><i class="ri-twitter-line"></i></a>
-            <a href="#" class="facebook"><i class="ri-facebook-fill"></i></a>
-            <a href="#" class="instagram"><i class="ri-instagram-line"></i></a>
-            <a href="#" class="linkedin"><i class="ri-linkedin-fill"></i></a>
-          </div>
+    <div class="container" id="footercopyright">
+        <div class="copyright">
+            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
         </div>
-
-        <div class="col-lg-2 col-6 footer-links" id="footerlinks">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-6 footer-links" id="footerservices">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">Forms</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start" id="footercontacts">
-          <h4>Contact Us</h4>
-          <p>
-            A108 Adam Street <br>
-            New York, NY 535022<br>
-            United States <br><br>
-            <strong>Phone:</strong> +1 5589 55488 55<br>
-            <strong>Email:</strong> info@example.com<br>
-          </p>
-
-        </div>
-
-      </div>
+        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
     </div>
-
-    <div class="container mt-4" id="footercopyright">
-      <div class="copyright">
-        <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
-
-<!-- Script     -->
+</footer>
+    <!-- Script -->
 <script src="assets/main.js"></script>   
 <script src="assets/js/calendar.js"></script>    
 </body>

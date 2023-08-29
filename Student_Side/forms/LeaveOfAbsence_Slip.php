@@ -1,93 +1,79 @@
-<title>Leave Of Absence Slip</title>
-<style type="text/css">
-#Title{
-		text-align: center;
-    font-family: Arial, sans-serif;
-    color:white;
-	}
-	.hidden1, .hidden2{
-		display: none;
-	}
-  body{
-    background-color:green;
-  }
-  .form {
-      width: 90%;
-      padding: 60px;
-      padding-right:60px;
-      background-color: darkgreen;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      
-    }
-  .form label{
-    color: white;
-    font-size:20px;
-    font-family: Arial, sans-serif;
-  }
-	
-	
-</style>
-	
+<!doctype html>
+<?php include 'formstyle.php' ?>
+<html>
+
+<head>
+  <title>Leave Of Absence Slip</title>
 </head>
 
 <body>
-<h1 id="Title">Leave Of Absence Slip</h1>
-<div class="form">
-<form id="form1" name="form1" method="post">
-  <p>
-    <label for="number">Student ID No.:</label>
-    <input type="number" name="number" id="number">
-    <label for="date">Date:</label>
-    <input type="date" name="date" id="date">
-  </p>
-  <p>
-    <label for="textfield">First Name:</label>
-    <input type="text" name="textfield" id="textfield">
-    <label for="textfield2">Middle Name:</label>
-    <input type="text" name="textfield2" id="textfield2">
-    <label for="textfield3">Last Name:</label>
-    <input type="text" name="textfield3" id="textfield3">
-  </p>
-  <p>
-    <label for="month">Year:</label>
-    <input type="number" placeholder="YYYY" min="1999" max="2020">
-    <label for="select">Sex:</label>
-    <select name="select" id="select">
-      <option>Male</option>
-      <option>Female</option>
-    </select>
-  </p>
-  <p>
-    <label for="select2">Semester and School Year Intended to Come Back:</label>
-    <select name="select2" id="coa">
-      <option value="a">First Semester</option>
-      <option value="b">Second Semester</option>
-    </select>
-    <label for="month">Year:</label>
-    <input type="number" placeholder="YYYY" min="1999" max="2030">
-    <label> - </label>
-    <input type="number" placeholder="YYYY" min="1999" max="2030">
-  </p>
-  <p>
-    <label for="textarea">Reason/s for stopping/filing a leave:</label>
-  </p>
-  <p>
-    <textarea name="textarea" id="textarea" style="width: 50%"></textarea>
-  </p>
-  <p>
-    <label for="textarea">What to do when on-leave:</label>
-  </p>
-  <p>
-    <textarea name="textarea" id="textarea" style="width: 50%"></textarea>
-  </p>
-  <div class="button">
-  <p>
-    <input type="submit" name="submit" id="submit" value="Submit">
-  </p>
+
+  <div class="card">
+    <div class="card-header">
+      <h1 id="Title">Leave Of Absence Slip</h1>
+    </div>
+    <div class="card-body">
+      <form id="form_transact" method="post">
+        <p>
+          <label for="select2">Semester and School Year Intended to Come Back:</label>
+          <select name="select2" id="semester">
+            <option value="a">First Semester</option>
+            <option value="b">Second Semester</option>
+          </select>
+          <label>Year:</label>
+          <input type="number" placeholder="YYYY" id="start_year" class="year_yield">
+          <label> - </label>
+          <input type="number" placeholder="YYYY" id="end_year" class="year_yield">
+        </p>
+        <p>
+          <label for="textarea">Reason/s for stopping/filing a leave:</label>
+        </p>
+        <p>
+          <textarea name="textarea" class="textarea" id="reason_leave"></textarea>
+        </p>
+        <p>
+          <label for="textarea">What to do when on-leave:</label>
+        </p>
+        <p>
+          <textarea name="textarea" class="textarea" id="do_leave"></textarea>
+        </p>
+        <div class="button">
+          <p>
+            <input type="submit" name="submit" id="submit" value="Submit">
+          </p>
+        </div>
+      </form>
+    </div>
+
   </div>
-</form>
-</div>
-	
+
+  <script>
+
+    $("#form_transact").on("submit", function (event) {
+      event.preventDefault();
+      var student_id = <?php echo $_SESSION['session_id'] ?>;
+      var transact_type = "leave_of_absence"
+
+      $.ajax({
+        type: 'POST',
+        url: '../backend/create_transaction.php',
+        data: {
+          id: student_id,
+          transact: transact_type,
+          semester: $("#semester").val(),
+          start_year: $("#start_year").val(),
+          end_year: $("#end_year").val(),
+          reason_leave: $("#reason_leave").val(),
+          do_leave: $("#do_leave").value()
+        },
+        success: function (data) {
+          alert('Successfull');
+
+        }
+      });
+    }); 
+  </script>
+
 </body>
+
 </html>
