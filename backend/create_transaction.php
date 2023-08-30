@@ -8,6 +8,8 @@
         $reason = $_POST['reason'];
         $motivation = $_POST['motivation'];
 
+        
+
     }
     else if($transact == 'withdrawal'){
         $reason = $_POST['reason'];
@@ -30,5 +32,6 @@
         $content = $_POST['content'];
 
     }
+
 
 ?>
