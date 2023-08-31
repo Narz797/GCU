@@ -46,9 +46,8 @@ include 'includes/main.php';
       
    
       <div class="profile-icon">
-      <img src="../assets/img/dp.png" alt="Logo" width="90" height="90">
-      <img src="../assets/img/dp.png" alt="Logo" width="90" height="90">
-      <img src="../assets/img/dp.png" alt="Logo" width="90" height="90">
+      <img src="../assets/img/vmn.webp" alt="Logo" width="90" height="90">
+      
 
       </div>
 
