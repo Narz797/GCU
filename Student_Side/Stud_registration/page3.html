@@ -182,6 +182,22 @@
     margin-bottom: 10px; /* Adjust the margin as needed */
 }
 
+
+
+.checkbox-group label {
+    display: block;
+    margin: 5px 0;
+}
+
+
+
+.underline-input {
+    border: none;
+    border-bottom: 1px solid #000000; /* Add an underline to the text input */
+    padding: 2px;
+    width: 50%; /* Adjust the width as needed */
+    background: none; /* Remove the white background */
+}
 .underline-input1 {
     border: none;
     border-bottom: 1px solid #000000; /* Add an underline to the text input */
@@ -189,6 +205,7 @@
     width: 57%; /* Adjust the width as needed */
     background: none; /* Remove the white background */
 }
+
 
 
 
@@ -206,74 +223,82 @@
 
         <div class="right-column">
             <h2>Registration Form </h2>
-            <br>
+            
             <form id="page2-form">
-                <p><b>In view of the Indigenous People's Act (RA 8371), Magna Carta for Persons with Disability (RA 7277, as amended
-                    by RA 9442), the (c) Solo Parents Welfare Act of 2000 (RA 8972), and CHED Memorandum Order 9 s.2013, please answer the following items:
-                </b></p>
-                
-                <br>
                 <fieldset>
-                    <legend><b>Are you a member of Indigenous group?</b></legend>
-                    <br>
-                    <div>
-                      <input type="radio" id="contactChoice1" name="contact" value="email" />
-                      <label for="contactChoice1">Yes</label>
-                
-                      <input type="radio" id="contactChoice2" name="contact" value="phone" />
-                      <label for="contactChoice2">No</label>
-                
-                     
-                    </div>
-                    <br>
-             
-                    <div class="form-group">
-                        <p>If yes,specify:</p>  <input type="text" class="underline-input1">
-                    </div>
-                    
-                  </fieldset>
-                  <br>
-                
-                  <fieldset>
-                    <legend><b>Are you a person with disability (PWD) ?</b></legend>
-                    <br>
-                    <div>
-                      <input type="radio" id="contactChoice1" name="contact" value="email" />
-                      <label for="contactChoice1">Yes</label>
-                
-                      <input type="radio" id="contactChoice2" name="contact" value="phone" />
-                      <label for="contactChoice2">No</label>
-                    
-                
-                     
-                    </div>
-                    <br>
-                   
-             
-                   
-                  </fieldset>
-                  <br>
-
+                    <legend><h3><b>Sources of Financial Support</b></h3></legend>
                   
-                  <fieldset>
-                    <legend><b>Are you a student parent ?</b></legend>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="contactChoice1" name="contact" value="email" />
+                            Parents
+                        </label>
+                        <label>
+                            <input type="checkbox" id="contactChoice2" name="contact" value="phone" />
+                            Self-supporting
+                        </label>
+                        <label>
+                            <input type="checkbox" id="contactChoice1" name="contact" value="email" />
+                            Relatives and/or Guardian
+                        </label>
+                        <label>
+                            <input type="checkbox" id="contactChoice2" name="contact" value="phone" />
+                            Scholarship; specify:  <input type="text" class="underline-input">
+                        </label>
+                        <label>
+                            <input type="checkbox" id="contactChoice2" name="contact" value="phone" />
+                           Others; specify:  <input type="text" class="underline-input1">
+                        </label>
+                        
+
+                    </div>
                     <br>
-                    <div>
-                      <input type="radio" id="contactChoice1" name="contact" value="email" />
-                      <label for="contactChoice1">Yes</label>
+                </fieldset>
+
+                <br>
+                <br>
                 
-                      <input type="radio" id="contactChoice2" name="contact" value="phone" />
-                      <label for="contactChoice2">No</label>
-                    
                 
-                     
+                
+                  <fieldset>
+                    <legend><b>Marital Status of Parents</b></legend>
+                    <br>
+                  
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="radio" id="contactChoice1" name="contact" value="email" />
+                            Parents are married
+                        </label>
+                        <label>
+                            <input type="radio" id="contactChoice2" name="contact" value="phone" />
+                           Marriage is legally annulled
+                        </label>
+                        <label>
+                            <input type="radio" id="contactChoice1" name="contact" value="email" />
+                            Parents are not married but are living together
+                        </label>
+                        <label>
+                            <input type="radio" id="contactChoice2" name="contact" value="phone" />
+                            Single Parent 
+                        <label>
+                            <input type="radio" id="contactChoice2" name="contact" value="phone" />
+                           Parents are separated (one or both have other partners)
+                        </label>
+                        <label>
+                            <input type="radio" id="contactChoice2" name="contact" value="phone" />
+                          Widow/widower
+                        </label>
+                        
+
                     </div>
                     <br>
                    
              
                    
                   </fieldset>
+                  <br>
 
+                
                
 
              
@@ -289,8 +314,7 @@
                 <!-- Add a "Previous" button to go back to Page 1 -->
 
                 <button type="button" class="prev-button" onclick="prevPage()">Previous</button>
-                <button type="button" class="next-button" onclick="nextPage()">Next</button>
-
+                <button type="buttont" class="next-button">Next</button>
             </form>
         </div>
     </div>
@@ -299,17 +323,8 @@
     <script>
         function prevPage() {
             // Go back to Page 1 (page1.html)
-            window.location.href = 'page1.html';
+            window.location.href = 'page2.html';
         }
     </script>
-
-     <!-- JavaScript for Page 2 -->
-     <script>
-        function nextPage() {
-            // Go to Page 3 (page3.html)
-            window.location.href = 'page3.html';
-        }
-    </script>
-
 </body>
 </html>
