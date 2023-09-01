@@ -8,7 +8,8 @@
         $reason = $_POST['reason'];
         $motivation = $_POST['motivation'];
 
-        
+        $query = "SELECT * FROM `student_user` WHERE `stud_user_id` = '$idno'";
+        $result = $conn->query($query);
 
     }
     else if($transact == 'withdrawal'){
