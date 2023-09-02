@@ -58,9 +58,9 @@ $_SESSION['origin'] = 'Student';
         success: function (data) {
 
           if (data === "success_student") {
-            window.location.href = "../Student_Side/transaction.php";
+            window.location.href = "transaction.php";
           } else {
-            alert("Invalid username or password.");
+            alert("Cant connect");
           }
         }
       });

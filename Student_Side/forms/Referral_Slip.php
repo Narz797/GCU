@@ -2,6 +2,7 @@
 <?php
 session_start();
 include 'formstyle.php';
+$_SESSION['transact_type']='referral';//asign value to transact_type
 ?>
 <html>
 
@@ -9,6 +10,7 @@ include 'formstyle.php';
   <meta charset="utf-8">
   <title>Feedback Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="../assets/img/GCU_logo.png" rel="icon">
 
 </head>
 
@@ -24,19 +26,19 @@ include 'formstyle.php';
         </p>
         <p>
           <label>
-            <input type="checkbox" name="interview" value="1" id="interview">
+            <input type="checkbox" name="reasons[]" value="1" id="interview">
             interview</label>
           <br>
           <label>
-            <input type="checkbox" name="counseling" value="2" id="counseling">
+            <input type="checkbox" name="reasons[]" value="2" id="counseling">
             counseling</label>
           <br>
           <label>
-            <input type="checkbox" name="late" value="3" id="late">
+            <input type="checkbox" name="reasons[]" value="3" id="late">
             late</label>
           <br>
           <label>
-            <input type="checkbox" name="absent" value="4" id="absent">
+            <input type="checkbox" name="reasons[]" value="4" id="absent">
             absent</label>
           <br>
           <label>
@@ -77,22 +79,29 @@ include 'formstyle.php';
       event.preventDefault();
       var student_id = <?php echo $_SESSION['session_id'] ?>;
       var transact_type = "referral"
+      var selectedReasons = $("input[name='reasons[]']:checked").map(function(){
+        return $(this).val();
+      }).get();
+
+      
+      var othersText = $("#oth").val();
+
+      // Add othersText to the selectedReasons array if it's not empty
+      if (othersText.trim() !== "") {
+        selectedReasons.push(othersText);
+      }
 
       $.ajax({
         type: 'POST',
-        url: '../backend/create_transaction.php',
+        url: '../../backend/create_transaction.php',
         data: {
           id: student_id,
           transact: transact_type,
-          interview: $("#interview").val(),
-          counsel: $("#counseling").val(),
-          late: $('#late').val(),
-          absent: $('#absent').val(),
-          others: $("#others").val(),
-          content: $("#oth").val()
+          reasons: selectedReasons,
+          refer: $('#refer').find(":selected").val()
         },
         success: function (data) {
-          alert('Successfull');
+          alert(data);
 
         }
       });

@@ -68,7 +68,7 @@ $_SESSION['origin'] = 'Employee';
             if  (data === "success_employee") {
                 window.location.href = "../Employee_Side/index.php";
             } else {
-              alert("Invalid username or password.");
+              alert("Cant connect");
             }
           
         }
