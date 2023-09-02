@@ -109,7 +109,7 @@
 
         .form-group input {
             flex: 2;
-            font-style: italic;
+            
             font-size: 12px;
         }
 
@@ -132,6 +132,21 @@
                 transform: translateY(-20px);
             }
         }
+        
+        .prev-button {
+            margin-top: auto; /* Push the button to the bottom of the container */
+            align-self: flex-end; /* Align the button to the right */
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .prev-button:hover {
+    background-color: #1294a0;
+}
 
         .next-button {
             margin-top: auto; /* Push the button to the bottom of the container */
@@ -147,6 +162,25 @@
 .next-button:hover {
     background-color: #1294a0;
 }
+
+.submit-button {
+   
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    
+   text-align: right;
+}
+
+
+        .submit-button:hover {
+    background-color: #1294a0;
+}
+
 
 .text-box::placeholder {
         font-family: 'Roboto', sans-serif;
@@ -199,23 +233,46 @@
             text-align: right; /* Align the content within the div to the right */
         }
 
-        .text-box1 {
-            text-align: left; /* Align the text within the input field to the left */
-            width: 100%; /* Adjust the width as needed */
-        }
+     
 
-        /* Style for dividing the input into three sections */
-        .name-input {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
+ 
 
-        .name-input input {
-            flex-grow: 1;
-            margin-right: 10px;
-        }
-       
+        .text-box12 {
+    border: none; /* Remove the default border */
+    border-bottom: 1px solid #000; /* Add an underline-style border */
+    background: none; /* Remove the background */
+    padding: 0; /* Remove any default padding */
+    outline: none; /* Remove the default focus outline */
+    display: inline-block; /* Display the inputs in a line */
+    margin-right: 10px; /* Optional: Add some spacing between the inputs */
+    width: 20%;
+}
+
+    
+.text-box13 {
+    border: none; /* Remove the default border */
+    border-bottom: 1px solid #000; /* Add an underline-style border */
+    background: none; /* Remove the background */
+    padding: 0; /* Remove any default padding */
+    outline: none; /* Remove the default focus outline */
+    display: inline-block; /* Display the inputs in a line */
+    margin-right: 10px; /* Optional: Add some spacing between the inputs */
+   
+}
+
+.text-box14 {
+    border: none; /* Remove the default border */
+    border-bottom: 1px solid #000; /* Add an underline-style border */
+    background: none; /* Remove the background */
+    padding: 0; /* Remove any default padding */
+    outline: none; /* Remove the default focus outline */
+    display: inline-block; /* Display the inputs in a line */
+    margin-right: 10px; /* Optional: Add some spacing between the inputs */
+    width: 25%;
+}
+
+
+
 
 
     </style>
@@ -223,210 +280,88 @@
 <body>
     <fieldset class="field">
     <div class="container">
-        <div class="left-column">
+        <!-- <div class="left-column">
             <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
-        </div>
+        </div> -->
 
+
+        
         <div class="right-column">
-           <h2>Family Information </h2>
+           <h2>More about Me </h2>
+            <br>
             <form>
 
-                <p><b>Living Situation</b></p>
-                <div class="radio-group">
-                  <label>
-                    <input type="radio" name="living_situation" value="with_parents" onclick="showParentsFields()">
-                    <i>With Parents</i>
-                  </label>
-                  <label>
-                    <input type="radio" name="living_situation" value="with_guardian" onclick="showGuardianFields()">
-                    <i>With Guardian </i>
-                  </label>
-               
-                </div>
-
-                <fieldset id="parentsFields" style="display: none;">
-                    <legend><h3><b>Parents</b></h3></legend>
-                    <legend><h3><b>Father</b></h3></legend>
-                
-                    <div class="form-group">
-                        <div class="name-input">
-                            <input type="text" id="lastname" name="father_lastname" placeholder="Lastname" class="text-box1" required>
-                            <input type="text" id="firstname" name="father_firstname" placeholder="Firstname" class="text-box1" required>
-                            <input type="text" id="middlename" name="father_middlename" placeholder="Middle Name" class="text-box1" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="name-input">
-                            <input type="text" id="lastname" name="father_lastname" placeholder="Age" class="text-box1" required>
-                            <input type="text" id="firstname" name="father_firstname" placeholder="Contact No." class="text-box1" required>
-                            <input type="text" id="middlename" name="father_middlename" placeholder="Highest Educational Attainment" class="text-box1" required>
-                        </div>
-                    </div>
-
-                    <legend><h3><b>Mother</b></h3></legend>
-
-                    <div class="form-group">
-                        <div class="name-input">
-                            <input type="text" id="lastname" name="father_lastname" placeholder="Lastname" class="text-box1" required>
-                            <input type="text" id="firstname" name="father_firstname" placeholder="Firstname" class="text-box1" required>
-                            <input type="text" id="middlename" name="father_middlename" placeholder="Middle Name" class="text-box1" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="name-input">
-                            <input type="text" id="lastname" name="father_lastname" placeholder="Age" class="text-box1" required>
-                            <input type="text" id="firstname" name="father_firstname" placeholder="Contact No." class="text-box1" required>
-                            <input type="text" id="middlename" name="father_middlename" placeholder="Highest Educational Attainment" class="text-box1" required>
-                        </div>
-                    </div>
-                
-                   
-                
-                    <br>
-                </fieldset>
-
-                <fieldset id="guardianFields" style="display: none;">
-                    <legend><h3><b>Guardian</b></h3></legend>
-                   
-                    <div class="form-group">
-                        <div class="name-input">
-                            <input type="text" id="lastname" name="father_lastname" placeholder="Lastname" class="text-box1" required>
-                            <input type="text" id="firstname" name="father_firstname" placeholder="Firstname" class="text-box1" required>
-                            <input type="text" id="middlename" name="father_middlename" placeholder="Middle Name" class="text-box1" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="name-input">
-                            <input type="text" id="lastname" name="father_lastname" placeholder="Age" class="text-box1" required>
-                            <input type="text" id="firstname" name="father_firstname" placeholder="Contact No." class="text-box1" required>
-                            <input type="text" id="middlename" name="father_middlename" placeholder="Highest Educational Attainment" class="text-box1" required>
-                        </div>
-                    </div>
-                
-                
-                   
-                
-                    <br>
-
-                </fieldset>
-                <br>
-
-                <p><b>List the names of your siblings (brothers & sisters) including yourself, arranged from the eldest to the youngest.</b></p>
-               
-                    <label for="total_number">Your total number: </label>
-                    <select id="total_number" name="total_number">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    <br>
-                    <br>
-                <div class="fieldset-container">
-                    <fieldset>
-                        <legend><b>Are you a member of Indigenous group?</b></legend>
-                        <div class="radio-group">
-                            <input type="radio" id="contactChoice1" name="contact" value="yes" />
-                            <label for="contactChoice1">Yes</label>
-                            
-            
-                            <input type="radio" id="contactChoice2" name="contact" value="no" />
-                            <label for="contactChoice2">No</label>
-                        </div>
-                        <br>
-            
-                        <div class="form-group">
-                            <p>If yes, specify:</p>
-                            <input type="text" class="underline-input1">
-                        </div>
-                    </fieldset>
-            
-                    <fieldset>
-                        <legend><b>Are you a person with a disability (PWD)?</b></legend>
-                        <div class="radio-group">
-                            <input type="radio" id="contactChoice3" name="contact2" value="yes" />
-                            <label for="contactChoice3">Yes</label>
-            
-                            <input type="radio" id="contactChoice4" name="contact2" value="no" />
-                            <label for="contactChoice4">No</label>
-                        </div>
-                    </fieldset>
-            
-                    <fieldset>
-                        <legend><b>Are you a student parent?</b></legend>
-                        <div class="radio-group">
-                            <input type="radio" id="contactChoice5" name="contact3" value="yes" />
-                            <label for="contactChoice5">Yes</label>
-            
-                            <input type="radio" id="contactChoice6" name="contact3" value="no" />
-                            <label for="contactChoice6">No</label>
-                        </div>
-                    </fieldset>
-                </div>
-           
-                
-            
-
+             
               
+                    <p>1. The three words that describe me are 
+                        <input type="text" id="word1" name="word1" class="text-box12" required>
+                        <input type="text" id="word2" name="word2" class="text-box12" required>
+                        <input type="text" id="word3" name="word3" class="text-box12" style="width:24%"required>
+                    </p>
 
-           
+                    <p>2. My father is
+                        <input type="text" id="word1" name="word4" class="text-box13" style="width:80%"required>
+                       
+                    </p>
 
-       
+                    <p>3. My mother is
+                        <input type="text" id="word1" name="word4" class="text-box13" style="width:79%" required>
+                    </p>
+                    <p>4. The sibling (kapatid) I am closest to is my
+                        <input type="text" id="word1" name="word4" class="text-box13" style="width:24%" required>
+                        because<input type="text" id="word1" name="word4" class="text-box13" style="width:35%" required>
+                    </p>
+                    <p>5. When I think about my family I feel
+                        <input type="text" id="word1" name="word4" class="text-box13" style="width:68%" required>
+                        
+                    </p>
+                    <p>6. When I was a child, I
+                        <input type="text" id="word1" name="word4" class="text-box13" style="width:76%" required>
+                        
+                    </p>
+                    <p>7. In school, my teachers are
+                        <input type="text" id="word1" name="word4" class="text-box13" style="width:73%" required>
+                        
+                    </p>
+                    <p>8. My friends don't know that
+                        <input type="text" id="word1" name="word4" class="text-box13"  style="width:73%" required>
+                        
+                    </p>
+                    <p>9. When I think about the future, I
+                        <input type="text" id="word1" name="word4" class="text-box13" style="width:71%" required>
+                        
+                    </p>
 
-     
-
+                    <p>10. My greatest goal is
+                        <input type="text" id="word1" name="word4" class="text-box13"style="width:76%" required>
+                        
+                    </p>
+                    
+         
         </div>
     </div>
 
-
         
-  
-   
-    
-     
-        
-
-        <br>
-        <br>
-
-        <!-- Add a "Previous" button to go back to Page 1 -->
 
        
-        <button type="button" class="next-button" onclick="nextPage()">Next</button>
+        <!-- Add a "Previous" button to go back to Page 1 -->
 
-        <!-- JavaScript for Page 2 -->
-        <script>
+        <button type="button" class="prev-button" onclick="prevPage()">Previous</button>
+        <button type="submit" class="submit-button" onclick="nextPage()">Submit</button>
+
+         <!-- JavaScript for Page 2 -->
+         <script>
             function prevPage() {
                 // Go back to Page 1 (page1.html)
-                window.location.href = 'page1.html';
+                window.location.href = 'page2.html';
             }
     
-            function nextPage() {
-                // Go to Page 3 (page3.html)
-                window.location.href = 'page3.html';
-            }
+           
     
-            function showParentsFields() {
-                document.getElementById("parentsFields").style.display = "block";
-                document.getElementById("guardianFields").style.display = "none";
-            }
-    
-            function showGuardianFields() {
-                document.getElementById("parentsFields").style.display = "none";
-                document.getElementById("guardianFields").style.display = "block";
-            }
         </script>
+
+
+     
     </form>
 
     
