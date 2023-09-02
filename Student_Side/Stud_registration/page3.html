@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Your CSS and style definitions here -->
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');
 
         body {
             font-family: 'Roboto', sans-serif;
-            background: -webkit-linear-gradient(left, #fefefe, #96ded8);
+            background: -webkit-linear-gradient(left, #eee6e6, #2c2e2e);
             display: flex;
-            justify-content: center;
-            align-items: center;
+            /* justify-content: center;
+            align-items: center; */
             font-size: 15px;
+        }
+
+        .field{
+            
+            background: -webkit-linear-gradient(left, #fefefe, #61c6be);
+         
         }
 
         .left-column img {
@@ -50,16 +55,16 @@
         }
 
         .text-box1{
-            width: 80%;
+            /* width: 80%; */
             padding: 5px;
             border: none;
             border-radius: 0;
             background: none;
             font-size: 15px;
             line-height: 30px;
-            border-bottom: 2px solid #007bff;
+            border-bottom: 1px solid #060607;
             /* text-align: left; */
-             padding-left: 400px;
+             padding-left: auto;
              
         }
 
@@ -67,20 +72,6 @@
 
             background-color: -webkit-linear-gradient(left, #21bbee, #96ded8);
            
-        }
-
-        .text-box2{
-            width: 50%;
-            padding: 5px;
-            border: none;
-            border-radius: 0;
-            background: none;
-            font-size: 15px;
-            line-height: 30px;
-            border-bottom: 2px solid #007bff;
-            /* text-align: left; */
-             padding-left: 400px;
-             
         }
 
         
@@ -92,7 +83,7 @@
             background: none;
             font-size: 18px;
             line-height: 30px;
-            border-bottom: 2px solid #007bff;
+            border-bottom: 1px solid #101113;
         }
 
         .text-box:hover{
@@ -107,6 +98,8 @@
             flex-wrap: wrap;
             display: flex; 
             align-items: center;
+
+         
         }
 
         .form-group label {
@@ -116,6 +109,8 @@
 
         .form-group input {
             flex: 2;
+            font-style: italic;
+            font-size: 12px;
         }
 
         @-webkit-keyframes mover {
@@ -159,172 +154,282 @@
         font-size: 15px; /* Adjust the font size as needed */
         text-align: center;
     }
+    
 
-    .prev-button {
-    margin-top: auto;
-    align-self: flex-end;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
+ /* Add your existing styles here */
 
-.prev-button:hover {
-    background-color: #1294a0;
-}
+ .fieldset-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Distribute fieldsets evenly */
+        }
 
-/* Style the radio buttons and labels */
-.radio-label {
-    display:block;
-    margin-bottom: 10px; /* Adjust the margin as needed */
-}
+        fieldset {
+            flex: 1; /* Equal size for all fieldsets */
+            border: 1px solid #000000;
+           
+            padding: 10px;
+            margin-right: 10px; /* Add some spacing between fieldsets */
+        }
 
+        legend {
+            font-weight: bold;
+        }
 
+       
 
-.checkbox-group label {
-    display: block;
-    margin: 5px 0;
-}
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
 
-
-
-.underline-input {
-    border: none;
-    border-bottom: 1px solid #000000; /* Add an underline to the text input */
-    padding: 2px;
-    width: 50%; /* Adjust the width as needed */
-    background: none; /* Remove the white background */
-}
-.underline-input1 {
-    border: none;
-    border-bottom: 1px solid #000000; /* Add an underline to the text input */
-    padding: 2px;
-    width: 57%; /* Adjust the width as needed */
-    background: none; /* Remove the white background */
-}
+        .underline-input1 {
+            border: none;
+            background-color: none;
+            
+            border-bottom: 1px solid #0e141a;
+        }
 
 
+        .fieldset-column {
+            flex: 1;
+            margin-right: 20px; /* Adjust the margin as needed for spacing between columns */
+        }
 
+        .form-group {
+            text-align: right; /* Align the content within the div to the right */
+        }
 
+        .text-box1 {
+            text-align: left; /* Align the text within the input field to the left */
+            width: 100%; /* Adjust the width as needed */
+        }
 
+        /* Style for dividing the input into three sections */
+        .name-input {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
 
+        .name-input input {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+       
 
 
     </style>
 </head>
 <body>
+    <fieldset class="field">
     <div class="container">
         <div class="left-column">
             <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
         </div>
 
         <div class="right-column">
-            <h2>Registration Form </h2>
-            
-            <form id="page2-form">
-                <fieldset>
-                    <legend><h3><b>Sources of Financial Support</b></h3></legend>
-                  
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="checkbox" id="contactChoice1" name="contact" value="email" />
-                            Parents
-                        </label>
-                        <label>
-                            <input type="checkbox" id="contactChoice2" name="contact" value="phone" />
-                            Self-supporting
-                        </label>
-                        <label>
-                            <input type="checkbox" id="contactChoice1" name="contact" value="email" />
-                            Relatives and/or Guardian
-                        </label>
-                        <label>
-                            <input type="checkbox" id="contactChoice2" name="contact" value="phone" />
-                            Scholarship; specify:  <input type="text" class="underline-input">
-                        </label>
-                        <label>
-                            <input type="checkbox" id="contactChoice2" name="contact" value="phone" />
-                           Others; specify:  <input type="text" class="underline-input1">
-                        </label>
-                        
+           <h2>Family Information </h2>
+            <form>
 
+                <p><b>Living Situation</b></p>
+                <div class="radio-group">
+                  <label>
+                    <input type="radio" name="living_situation" value="with_parents" onclick="showParentsFields()">
+                    <i>With Parents</i>
+                  </label>
+                  <label>
+                    <input type="radio" name="living_situation" value="with_guardian" onclick="showGuardianFields()">
+                    <i>With Guardian </i>
+                  </label>
+               
+                </div>
+
+                <fieldset id="parentsFields" style="display: none;">
+                    <legend><h3><b>Parents</b></h3></legend>
+                    <legend><h3><b>Father</b></h3></legend>
+                
+                    <div class="form-group">
+                        <div class="name-input">
+                            <input type="text" id="lastname" name="father_lastname" placeholder="Lastname" class="text-box1" required>
+                            <input type="text" id="firstname" name="father_firstname" placeholder="Firstname" class="text-box1" required>
+                            <input type="text" id="middlename" name="father_middlename" placeholder="Middle Name" class="text-box1" required>
+                        </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="name-input">
+                            <input type="text" id="lastname" name="father_lastname" placeholder="Age" class="text-box1" required>
+                            <input type="text" id="firstname" name="father_firstname" placeholder="Contact No." class="text-box1" required>
+                            <input type="text" id="middlename" name="father_middlename" placeholder="Highest Educational Attainment" class="text-box1" required>
+                        </div>
+                    </div>
+
+                    <legend><h3><b>Mother</b></h3></legend>
+
+                    <div class="form-group">
+                        <div class="name-input">
+                            <input type="text" id="lastname" name="father_lastname" placeholder="Lastname" class="text-box1" required>
+                            <input type="text" id="firstname" name="father_firstname" placeholder="Firstname" class="text-box1" required>
+                            <input type="text" id="middlename" name="father_middlename" placeholder="Middle Name" class="text-box1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="name-input">
+                            <input type="text" id="lastname" name="father_lastname" placeholder="Age" class="text-box1" required>
+                            <input type="text" id="firstname" name="father_firstname" placeholder="Contact No." class="text-box1" required>
+                            <input type="text" id="middlename" name="father_middlename" placeholder="Highest Educational Attainment" class="text-box1" required>
+                        </div>
+                    </div>
+                
+                   
+                
                     <br>
                 </fieldset>
 
-                <br>
-                <br>
-                
-                
-                
-                  <fieldset>
-                    <legend><b>Marital Status of Parents</b></legend>
-                    <br>
-                  
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="radio" id="contactChoice1" name="contact" value="email" />
-                            Parents are married
-                        </label>
-                        <label>
-                            <input type="radio" id="contactChoice2" name="contact" value="phone" />
-                           Marriage is legally annulled
-                        </label>
-                        <label>
-                            <input type="radio" id="contactChoice1" name="contact" value="email" />
-                            Parents are not married but are living together
-                        </label>
-                        <label>
-                            <input type="radio" id="contactChoice2" name="contact" value="phone" />
-                            Single Parent 
-                        <label>
-                            <input type="radio" id="contactChoice2" name="contact" value="phone" />
-                           Parents are separated (one or both have other partners)
-                        </label>
-                        <label>
-                            <input type="radio" id="contactChoice2" name="contact" value="phone" />
-                          Widow/widower
-                        </label>
-                        
-
+                <fieldset id="guardianFields" style="display: none;">
+                    <legend><h3><b>Guardian</b></h3></legend>
+                   
+                    <div class="form-group">
+                        <div class="name-input">
+                            <input type="text" id="lastname" name="father_lastname" placeholder="Lastname" class="text-box1" required>
+                            <input type="text" id="firstname" name="father_firstname" placeholder="Firstname" class="text-box1" required>
+                            <input type="text" id="middlename" name="father_middlename" placeholder="Middle Name" class="text-box1" required>
+                        </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="name-input">
+                            <input type="text" id="lastname" name="father_lastname" placeholder="Age" class="text-box1" required>
+                            <input type="text" id="firstname" name="father_firstname" placeholder="Contact No." class="text-box1" required>
+                            <input type="text" id="middlename" name="father_middlename" placeholder="Highest Educational Attainment" class="text-box1" required>
+                        </div>
+                    </div>
+                
+                
+                   
+                
                     <br>
-                   
-             
-                   
-                  </fieldset>
-                  <br>
 
-                
-               
-
-             
-                
-                
-
-               
-
-               
-                <br>
+                </fieldset>
                 <br>
 
-                <!-- Add a "Previous" button to go back to Page 1 -->
+                <p><b>List the names of your siblings (brothers & sisters) including yourself, arranged from the eldest to the youngest.</b></p>
+               
+                    <label for="total_number">Your total number: </label>
+                    <select id="total_number" name="total_number">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <br>
+                    <br>
+                <div class="fieldset-container">
+                    <fieldset>
+                        <legend><b>Are you a member of Indigenous group?</b></legend>
+                        <div class="radio-group">
+                            <input type="radio" id="contactChoice1" name="contact" value="yes" />
+                            <label for="contactChoice1">Yes</label>
+                            
+            
+                            <input type="radio" id="contactChoice2" name="contact" value="no" />
+                            <label for="contactChoice2">No</label>
+                        </div>
+                        <br>
+            
+                        <div class="form-group">
+                            <p>If yes, specify:</p>
+                            <input type="text" class="underline-input1">
+                        </div>
+                    </fieldset>
+            
+                    <fieldset>
+                        <legend><b>Are you a person with a disability (PWD)?</b></legend>
+                        <div class="radio-group">
+                            <input type="radio" id="contactChoice3" name="contact2" value="yes" />
+                            <label for="contactChoice3">Yes</label>
+            
+                            <input type="radio" id="contactChoice4" name="contact2" value="no" />
+                            <label for="contactChoice4">No</label>
+                        </div>
+                    </fieldset>
+            
+                    <fieldset>
+                        <legend><b>Are you a student parent?</b></legend>
+                        <div class="radio-group">
+                            <input type="radio" id="contactChoice5" name="contact3" value="yes" />
+                            <label for="contactChoice5">Yes</label>
+            
+                            <input type="radio" id="contactChoice6" name="contact3" value="no" />
+                            <label for="contactChoice6">No</label>
+                        </div>
+                    </fieldset>
+                </div>
+           
+                
+            
 
-                <button type="button" class="prev-button" onclick="prevPage()">Previous</button>
-                <button type="buttont" class="next-button">Next</button>
-            </form>
+              
+
+           
+
+       
+
+     
+
         </div>
     </div>
 
-    <!-- JavaScript for Page 2 -->
-    <script>
-        function prevPage() {
-            // Go back to Page 1 (page1.html)
-            window.location.href = 'page2.html';
-        }
-    </script>
+
+        
+  
+   
+    
+     
+        
+
+        <br>
+        <br>
+
+        <!-- Add a "Previous" button to go back to Page 1 -->
+
+       
+        <button type="button" class="next-button" onclick="nextPage()">Next</button>
+
+        <!-- JavaScript for Page 2 -->
+        <script>
+            function prevPage() {
+                // Go back to Page 1 (page1.html)
+                window.location.href = 'page1.html';
+            }
+    
+            function nextPage() {
+                // Go to Page 3 (page3.html)
+                window.location.href = 'page3.html';
+            }
+    
+            function showParentsFields() {
+                document.getElementById("parentsFields").style.display = "block";
+                document.getElementById("guardianFields").style.display = "none";
+            }
+    
+            function showGuardianFields() {
+                document.getElementById("parentsFields").style.display = "none";
+                document.getElementById("guardianFields").style.display = "block";
+            }
+        </script>
+    </form>
+
+    
+</fieldset>
 </body>
 </html>

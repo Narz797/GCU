@@ -6,11 +6,17 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background: -webkit-linear-gradient(left, #fefefe, #96ded8);
+            background: -webkit-linear-gradient(left, #eee6e6, #2c2e2e);
             display: flex;
-            justify-content: center;
-            align-items: center;
+            /* justify-content: center;
+            align-items: center; */
             font-size: 15px;
+        }
+
+        .field{
+            
+            background: -webkit-linear-gradient(left, #fefefe, #61c6be);
+         
         }
 
         .left-column img {
@@ -49,16 +55,16 @@
         }
 
         .text-box1{
-            width: 80%;
+            /* width: 80%; */
             padding: 5px;
             border: none;
             border-radius: 0;
             background: none;
             font-size: 15px;
             line-height: 30px;
-            border-bottom: 2px solid #007bff;
+            border-bottom: 1px solid #060607;
             /* text-align: left; */
-             padding-left: 400px;
+             padding-left: auto;
              
         }
 
@@ -77,7 +83,7 @@
             background: none;
             font-size: 18px;
             line-height: 30px;
-            border-bottom: 2px solid #007bff;
+            border-bottom: 1px solid #101113;
         }
 
         .text-box:hover{
@@ -92,6 +98,8 @@
             flex-wrap: wrap;
             display: flex; 
             align-items: center;
+
+         
         }
 
         .form-group label {
@@ -101,6 +109,8 @@
 
         .form-group input {
             flex: 2;
+            font-style: italic;
+            font-size: 12px;
         }
 
         @-webkit-keyframes mover {
@@ -144,96 +154,277 @@
         font-size: 15px; /* Adjust the font size as needed */
         text-align: center;
     }
+    
+
+ /* Add your existing styles here */
+
+ .fieldset-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Distribute fieldsets evenly */
+        }
+
+        fieldset {
+            flex: 1; /* Equal size for all fieldsets */
+            border: 1px solid #000000;
+           
+            padding: 10px;
+            margin-right: 10px; /* Add some spacing between fieldsets */
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+       
+
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .underline-input1 {
+            border: none;
+            background-color: none;
+            
+            border-bottom: 1px solid #0e141a;
+        }
 
 
+        .fieldset-column {
+            flex: 1;
+            margin-right: 20px; /* Adjust the margin as needed for spacing between columns */
+        }
+
+        .form-group {
+            text-align: right; /* Align the content within the div to the right */
+        }
+
+        .text-box1 {
+            text-align: left; /* Align the text within the input field to the left */
+            width: 100%; /* Adjust the width as needed */
+        }
+
+        /* Style for dividing the input into three sections */
+        .name-input {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .name-input input {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
 
 
     </style>
 </head>
 <body>
+    <fieldset class="field">
     <div class="container">
         <div class="left-column">
             <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
         </div>
 
         <div class="right-column">
-            <h2>Registration Form </h2>
+           <h2>REGISTRATION FORM </h2>
             <br>
             <form>
-                
+           
                 <div class="form-group">
-                    <label for="idno">ID No:</label>
-                    <input type="text" id="idno" name="idno" class="text-box1" required style="flex: 2;">
+                    <div class="name-input">
+                        <input type="text" id="lastname" name="father_lastname" placeholder="Lastname" class="text-box1" required>
+                        <input type="text" id="firstname" name="father_firstname" placeholder="Firstname" class="text-box1" required>
+                        <input type="text" id="middlename" name="father_middlename" placeholder="Middle Name" class="text-box1" required>
+                    </div>
                 </div>
                 
-
                 <div class="form-group">
-                    <label for="lastname">Last Name:</label>
-                    <input type="text" id="lastname" name="lastname" class="text-box1" required>
+                    <div class="name-input">
+                        <input type="text" id="lastname" name="father_lastname" placeholder="ID No" class="text-box1" required>
+                        <input type="text" id="course" name="father_lastname" placeholder="Course" class="text-box1" required>
+                        
+                        <input type="text" id="lastname" name="father_lastname" placeholder="Year" class="text-box1" required>
+                      
+                    </div>
                 </div>
 
+              
+
+           
+
+                
                 <div class="form-group">
-                    <label for="firstname">First Name:</label>
-                    <input type="text" id="firstname" name="firstname" class="text-box1" required>
+                    <div class="name-input">
+                        <input type="text" id="lastname" name="father_lastname" placeholder="Contact No." class="text-box1" required>
+                        <input type="text" id="firstname" name="father_firstname" placeholder="Email Address" class="text-box1" required>
+                        <input type="text" id="firstname" name="father_firstname" placeholder="Civil Status" class="text-box1" required>
+                      
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="middlename">Middle Name:</label>
-                    <input type="text" id="middlename" name="middlename" class="text-box1">
-                </div>
-
-                <div class="form-group">
-                    <label for="middlename">Contact Number:</label>
-                    <input type="text" id="contactno" name="contactno" class="text-box1">
-                </div>
-
-                <div class="form-group">
-                    <label for="birthdate">Birthdate:</label>
-                    <input type="date" id="birthdate" name="birthdate" class="text-box1" required>
                    
+                <div class="form-group">
+                    <div class="name-input">
+                        <input type="date" id="birthdate" name="birthdate" placeholder="Birthdate" class="text-box1" required>
+                        <input type="text" id="birthplace" name="birthplace" placeholder="Birthplace" class="text-box1" required>
+                        <input type="text" id="nationality" name="ationality" placeholder="Nationality" class="text-box1" required>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="middlename">Email Address:</label>
-                    <input type="text" id="email" name="email" class="text-box1">
+                    <div class="name-input">
+                        <input type="text" id="lastname" name="father_lastname" placeholder="Languages/Dialects youu can read, write, and understand:" class="text-box1" required>
+                      
+                    </div>
                 </div>
-                <br>
-                <br>
-                
-        
-                <label for="lang">Languages/Dialects youu can read, write, and understand:</label>
-                <input type="lang" id="lang" name="lang" class="text-box" required>
-                <br>
-                <br>
-        
-                <label for="address">Address while studying in BSU:</label>
-                <input type="text" id="address" name="address" class="text-box"  placeholder="House Number/Street/Barangay/Municipality/Province/Zip Code">
 
-                <br>
-                <br>
-
-               
-                <button type="submit" class="next-button">Next</button>
-
-
-                <script>
-                    document.getElementById('calendar-trigger').addEventListener('click', function() {
-                        document.getElementById('birthdate').click();
-                    });
-                </script>
-
-                <!-- JavaScript for Page 1 -->
-                <script>
-                    function nextPage() {
-                        // Validate form fields if needed
-                        // You can add validation logic here before proceeding to the next page
-
-                        // Redirect to Page 2 (page2.html)
-                        window.location.href = 'page2.html';
-                    }
-                </script>
-            </form>
+                <div class="form-group">
+                    <div class="name-input">
+                        <input type="text" id="lastname" name="father_lastname" placeholder="House Number/Street/Barangay/Municipality/Province/Zip Code" class="text-box1" required>
+                      
+                    </div>
+                </div>
+          
         </div>
     </div>
+
+
+        <p><b>In view of the Indigenous People's Act (RA 8371), Magna Carta for Persons with Disability (RA 7277, as amended
+            by RA 9442), the (c) Solo Parents Welfare Act of 2000 (RA 8972), and CHED Memorandum Order 9 s.2013, please answer the following items:
+        </b></p>
+        
+        <br>
+        <div class="fieldset-container">
+            <fieldset>
+                <legend><b>Are you a member of Indigenous group?</b></legend>
+                <div class="radio-group">
+                    <input type="radio" id="contactChoice1" name="contact" value="yes" />
+                    <label for="contactChoice1">Yes</label>
+                    
+    
+                    <input type="radio" id="contactChoice2" name="contact" value="no" />
+                    <label for="contactChoice2">No</label>
+                </div>
+                <br>
+    
+                <div class="form-group">
+                    <p>If yes, specify:</p>
+                    <input type="text" class="underline-input1">
+                </div>
+            </fieldset>
+    
+            <fieldset>
+                <legend><b>Are you a person with a disability (PWD)?</b></legend>
+                <div class="radio-group">
+                    <input type="radio" id="contactChoice3" name="contact2" value="yes" />
+                    <label for="contactChoice3">Yes</label>
+    
+                    <input type="radio" id="contactChoice4" name="contact2" value="no" />
+                    <label for="contactChoice4">No</label>
+                </div>
+            </fieldset>
+    
+            <fieldset>
+                <legend><b>Are you a student parent?</b></legend>
+                <div class="radio-group">
+                    <input type="radio" id="contactChoice5" name="contact3" value="yes" />
+                    <label for="contactChoice5">Yes</label>
+    
+                    <input type="radio" id="contactChoice6" name="contact3" value="no" />
+                    <label for="contactChoice6">No</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <fieldset>
+            <legend><h3><b>Sources of Financial Support</b></h3></legend>
+          
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="contactChoice1" name="contact" value="email" />
+                    Parents
+                </label>
+                <label>
+                    <input type="checkbox" id="contactChoice2" name="contact" value="phone" />
+                    Self-supporting
+                </label>
+                <label>
+                    <input type="checkbox" id="contactChoice1" name="contact" value="email" />
+                    Relatives and/or Guardian
+                </label>
+                <label>
+                    <input type="checkbox" id="contactChoice2" name="contact" value="phone" />
+                    Scholarship; specify:  <input type="text" class="underline-input1">
+                </label>
+                <label>
+                    <input type="checkbox" id="contactChoice2" name="contact" value="phone" />
+                   Others; specify:  <input type="text" class="underline-input1">
+                </label>
+                
+            </div>
+            <br>
+        </fieldset>
+        <br>
+    
+        <fieldset>
+            <legend><b>Marital Status of Parents</b></legend>
+            <div class="fieldset-container">
+                <div class="fieldset-column">
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="contactChoice1" name="maritalStatus" value="married" />
+                            <label for="contactChoice1">Parents are married</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="contactChoice2" name="maritalStatus" value="annulled" />
+                            <label for="contactChoice2">Marriage is legally annulled</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="contactChoice3" name="maritalStatus" value="livingTogether" />
+                            <label for="contactChoice3">Parents are not married but are living together</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fieldset-column">
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="contactChoice4" name="maritalStatus" value="singleParent" />
+                            <label for="contactChoice4">Single Parent</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="contactChoice5" name="maritalStatus" value="separated" />
+                            <label for="contactChoice5">Parents are separated (one or both have other partners)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="contactChoice6" name="maritalStatus" value="widowWidower" />
+                            <label for="contactChoice6">Widow/widower</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        
+
+        <br>
+        <br>
+
+        <!-- Add a "Previous" button to go back to Page 1 -->
+
+       
+        <button type="button" class="next-button" onclick="nextPage()">Next</button>
+
+        <!-- JavaScript for Page 2 -->
+     <script>
+        function nextPage() {
+            // Go to Page 3 (page3.html)
+            window.location.href = 'page2.html';
+        }
+    </script>
+    </form>
+
+    
+</fieldset>
 </body>
 </html>

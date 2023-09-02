@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Your CSS and style definitions here -->
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');
 
         body {
             font-family: 'Roboto', sans-serif;
-            background: -webkit-linear-gradient(left, #fefefe, #96ded8);
+            background: -webkit-linear-gradient(left, #eee6e6, #2c2e2e);
             display: flex;
-            justify-content: center;
-            align-items: center;
+            /* justify-content: center;
+            align-items: center; */
             font-size: 15px;
+        }
+
+        
+        fieldset {
+            flex: 1; /* Equal size for all fieldsets */
+            border: 1px solid #000000;
+           
+            padding: 10px;
+            margin-right: 10px; /* Add some spacing between fieldsets */
+        }
+
+        .field{
+            
+            background: -webkit-linear-gradient(left, #fefefe, #61c6be);
+         
         }
 
         .left-column img {
@@ -57,9 +71,9 @@
             background: none;
             font-size: 15px;
             line-height: 30px;
-            border-bottom: 2px solid #007bff;
+            border-bottom: 1px solid #060607;
             /* text-align: left; */
-             padding-left: 400px;
+             padding-left: auto;
              
         }
 
@@ -67,20 +81,6 @@
 
             background-color: -webkit-linear-gradient(left, #21bbee, #96ded8);
            
-        }
-
-        .text-box2{
-            width: 50%;
-            padding: 5px;
-            border: none;
-            border-radius: 0;
-            background: none;
-            font-size: 15px;
-            line-height: 30px;
-            border-bottom: 2px solid #007bff;
-            /* text-align: left; */
-             padding-left: 400px;
-             
         }
 
         
@@ -92,7 +92,7 @@
             background: none;
             font-size: 18px;
             line-height: 30px;
-            border-bottom: 2px solid #007bff;
+            border-bottom: 1px solid #101113;
         }
 
         .text-box:hover{
@@ -103,11 +103,18 @@
 
         .form-group {
             margin-bottom: 5px;
-            display: flex;
+            display:flex;
             flex-wrap: wrap;
             display: flex; 
             align-items: center;
         }
+
+        .form-group2 {
+       
+         
+            margin-left: 2%;;
+        }
+
 
         .form-group label {
             flex: 1;
@@ -160,35 +167,51 @@
         text-align: center;
     }
 
-    .prev-button {
-    margin-top: auto;
-    align-self: flex-end;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
+    
+    
 
-.prev-button:hover {
-    background-color: #1294a0;
-}
+ /* Add your existing styles here */
 
-/* Style the radio buttons and labels */
-.radio-label {
-    display:block;
-    margin-bottom: 10px; /* Adjust the margin as needed */
-}
+ .fieldset-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Distribute fieldsets evenly */
+        }
 
-.underline-input1 {
-    border: none;
-    border-bottom: 1px solid #000000; /* Add an underline to the text input */
-    padding: 2px;
-    width: 57%; /* Adjust the width as needed */
-    background: none; /* Remove the white background */
-}
+        fieldset {
+            flex: 1; /* Equal size for all fieldsets */
+            border: 1px solid #000000;
+           
+            padding: 10px;
+            margin-right: 10px; /* Add some spacing between fieldsets */
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+       
+
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .underline-input1 {
+            border: none;
+            background-color: none;
+            
+            border-bottom: 1px solid #0e141a;
+        }
+
+
+        .fieldset-column {
+            flex: 1;
+            margin-right: 20px; /* Adjust the margin as needed for spacing between columns */
+        }
+
+        p {
+          margin-right: 20%; /* You can adjust the margin value as needed */
+        }
 
 
 
@@ -199,117 +222,153 @@
     </style>
 </head>
 <body>
+    <fieldset class="field">
     <div class="container">
-        <div class="left-column">
-            <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
-        </div>
+       
 
         <div class="right-column">
-            <h2>Registration Form </h2>
+           <h2>FAMILY BACKGROUND </h2>
             <br>
-            <form id="page2-form">
-                <p><b>In view of the Indigenous People's Act (RA 8371), Magna Carta for Persons with Disability (RA 7277, as amended
-                    by RA 9442), the (c) Solo Parents Welfare Act of 2000 (RA 8972), and CHED Memorandum Order 9 s.2013, please answer the following items:
-                </b></p>
-                
+
+            
+            <form>
+
+                <p><b>Living Situation</b></p>
+                <div class="radio-group">
+                  <label>
+                    <input type="radio" name="living_situation" value="with_parents" onclick="showParentsFields()">
+                    With Parents
+                  </label>
+                  <label>
+                    <input type="radio" name="living_situation" value="with_guardian" onclick="showGuardianFields()">
+                    With Guardian
+                  </label>
+               
+                </div>
                 <br>
-                <fieldset>
-                    <legend><b>Are you a member of Indigenous group?</b></legend>
+                <fieldset id="parentsFields" style="display: none;">
+                    <legend><h3><b>Parents</b></h3></legend>
+                    <legend><h3><b>Father</b></h3></legend>
+                
+                
+                   <p><b><i>Lastname</i></b></p>
+                   <p><b><i>Firstname</i></b></p>
+                   <p><b><i>Middlename</i></b></p>
+                
                     <br>
-                    <div>
-                      <input type="radio" id="contactChoice1" name="contact" value="email" />
-                      <label for="contactChoice1">Yes</label>
+
+                    <legend><h3><b>Mother</b></h3></legend>
                 
-                      <input type="radio" id="contactChoice2" name="contact" value="phone" />
-                      <label for="contactChoice2">No</label>
-                
-                     
-                    </div>
-                    <br>
-             
-                    <div class="form-group">
-                        <p>If yes,specify:</p>  <input type="text" class="underline-input1">
-                    </div>
-                    
-                  </fieldset>
-                  <br>
-                
-                  <fieldset>
-                    <legend><b>Are you a person with disability (PWD) ?</b></legend>
-                    <br>
-                    <div>
-                      <input type="radio" id="contactChoice1" name="contact" value="email" />
-                      <label for="contactChoice1">Yes</label>
-                
-                      <input type="radio" id="contactChoice2" name="contact" value="phone" />
-                      <label for="contactChoice2">No</label>
-                    
-                
-                     
-                    </div>
-                    <br>
                    
-             
-                   
-                  </fieldset>
-                  <br>
-
-                  
-                  <fieldset>
-                    <legend><b>Are you a student parent ?</b></legend>
+                
                     <br>
-                    <div>
-                      <input type="radio" id="contactChoice1" name="contact" value="email" />
-                      <label for="contactChoice1">Yes</label>
+                </fieldset>
+
+                <fieldset id="guardianFields" style="display: none;">
+                    <legend><h3><b>Guardian</b></h3></legend>
+                   
                 
-                      <input type="radio" id="contactChoice2" name="contact" value="phone" />
-                      <label for="contactChoice2">No</label>
-                    
                 
-                     
-                    </div>
+                   
+                
                     <br>
-                   
-             
-                   
-                  </fieldset>
 
-               
+                </fieldset>
 
-             
-                
-                
-
-               
-
-               
+                <p><b><i>List the names of your siblings (brothers & sisters) including yourself, arranged from the eldest to the youngest.</i></b</p>
                 <br>
                 <br>
+                    <label for="total_number">Your total number: </label>
+                    <select id="total_number" name="total_number">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <fieldset>
+                        <legend></legend>
 
-                <!-- Add a "Previous" button to go back to Page 1 -->
+                        <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Middle Name</th>
+                <th>Age</th>
+                <th>Highest Educational Attainment</th>
+                <th>Civil Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" name="firstName"></td>
+                <td><input type="text" name="lastName"></td>
+                <td><input type="text" name="middleName"></td>
+                <td><input type="number" name="age"></td>
+                <td><input type="text" name="education"></td>
+                <td><input type="text" name="civilStatus"></td>
+            </tr>
+            <!-- You can add more rows like the one above for additional entries -->
+        </tbody>
+    </table>
+                    </fieldset>
+                
+                
+            
 
-                <button type="button" class="prev-button" onclick="prevPage()">Previous</button>
-                <button type="button" class="next-button" onclick="nextPage()">Next</button>
 
-            </form>
+            
+
+        
+
+           
+            <!-- </form> -->
         </div>
     </div>
 
-    <!-- JavaScript for Page 2 -->
-    <script>
-        function prevPage() {
-            // Go back to Page 1 (page1.html)
-            window.location.href = 'page1.html';
-        }
-    </script>
 
-     <!-- JavaScript for Page 2 -->
-     <script>
-        function nextPage() {
-            // Go to Page 3 (page3.html)
-            window.location.href = 'page3.html';
-        }
-    </script>
 
+        <br>
+        <br>
+
+        <!-- Add a "Previous" button to go back to Page 1 -->
+
+        <button type="button" class="prev-button" onclick="prevPage()">Previous</button>
+        <button type="button" class="next-button" onclick="nextPage()">Next</button>
+
+        <!-- JavaScript for Page 2 -->
+        <script>
+            function prevPage() {
+                // Go back to Page 1 (page1.html)
+                window.location.href = 'page1.html';
+            }
+    
+            function nextPage() {
+                // Go to Page 3 (page3.html)
+                window.location.href = 'page3.html';
+            }
+    
+            function showParentsFields() {
+                document.getElementById("parentsFields").style.display = "block";
+                document.getElementById("guardianFields").style.display = "none";
+            }
+    
+            function showGuardianFields() {
+                document.getElementById("parentsFields").style.display = "none";
+                document.getElementById("guardianFields").style.display = "block";
+            }
+        </script>
+    </form>
+
+    
+</fieldset>
 </body>
 </html>

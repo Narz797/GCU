@@ -1,232 +1,185 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        
-        <!------ Include the above in your HEAD tag ---------->
-    </head>
-    <style>/*custom font*/
-        .register{
-    background: -webkit-linear-gradient(left, #057c76, #96ded8);
-    margin-top: 3%;
-    padding: 3%;
-}
-.register-left{
-    text-align: center;
-    color: #fff;
-    margin-top: 4%;
-}
-.register-left input{
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    width: 60%;
-    background: #f8f9fa;
-    font-weight: bold;
-    color: #383d41;
-    margin-top: 30%;
-    margin-bottom: 3%;
-    cursor: pointer;
-}
-.register-right{
-    background: #f8f9fa;
-    border-top-left-radius: 10% 50%;
-    border-bottom-left-radius: 10% 50%;
-}
-.register-left img{
-    margin-top: 15%;
-    margin-bottom: 5%;
-    width: 25%;
-    -webkit-animation: mover 2s infinite  alternate;
-    animation: mover 1s infinite  alternate;
-}
-@-webkit-keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-@keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-.register-left p{
-    font-weight: lighter;
-    padding: 12%;
-    margin-top: -9%;
-}
-.register .register-form{
-    padding: 10%;
-    margin-top: 10%;
-}
-.btnRegister{
-    float: right;
-    margin-top: 10%;
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    background: #088e7e;
-    color: #fff;
-    font-weight: 600;
-    width: 50%;
-    cursor: pointer;
-}
-.register .nav-tabs{
-    margin-top: 3%;
-    border: none;
-    background: #037a70a9;
-    border-radius: 1.5rem;
-    width: 28%;
-    float: right;
-}
-.register .nav-tabs .nav-link{
-    padding: 2%;
-    height: 34px;
-    font-weight: 600;
-    color: #fff;
-    border-top-right-radius: 1.5rem;
-    border-bottom-right-radius: 1.5rem;
-}
-.register .nav-tabs .nav-link:hover{
-    border: none;
-}
-.register .nav-tabs .nav-link.active{
-    width: 100px;
-    color: #0062cc;
-    border: 2px solid #0062cc;
-    border-top-left-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
-}
-.register-heading{
-    text-align: center;
-    margin-top: 8%;
-    margin-bottom: -15%;
-    color: #495057;
-}
-        
-        </style>
-    <!-- MultiStep Form -->
-    <body>
- <form id="msform">
-       
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-<div class="container register">
-                <div class="row">
-                    <div class="col-md-3 register-left">
-                       
-                        <!-- <img src="assets/img/guidance.png" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 3000px; height: auto;"> -->
-        
-                        <h3>Welcome</h3>
-                        
-                        <img src="../assets/img/GCU_logo.png" alt="Logo" width="89000%" height="20%">
-                        <p>Benguet State University Guidance and Counseling Unit</p>
-                        
-                        <input type="submit" name="" value="Login"/><br/>
-                    </div>
-                    <div class="col-md-9 register-right">
-                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="index.php" role="tab" aria-controls="home" aria-selected="true">Student</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Emloyee</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                               
-                                <h3 class="register-heading">Personal Information</h3>
-                               
-                                <div class="row register-form">
-                                    
-                                    <div class="col-md-6">
-                                   
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="E-mail Address*" value="" />
-                                        </div>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #fefefe, #96ded8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            margin: 0;
+            height: 100vh;
+        }
 
-                                        <div class="form-group">
-                                           
-                                            <input type="text" class="form-control" placeholder="Nationality *" value="" />
-                                        </div>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
 
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Language/Dialects*" value="" />
-                                        </div>
+        .left-column img {
+            width: 100px;
+            margin-bottom: 20px;
+            animation: mover 1s infinite alternate;
+        }
 
-                                       
-                                        
-                                     
-                                    </div>
-                                    <div class="col-md-6">
+        .right-column {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
 
-                                       
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
 
-                                  
-                                        
-                                  
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option value="" selected disabled>Civil Status</option>
-                                                <option value="single">Single</option>
-                                                <option value="married">Married</option>
-                                                
+        .text-box1 {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 15px;
+            line-height: 30px;
+            border-bottom: 1px solid #007bff;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
 
-                                                <!-- Add more options as needed -->
-                                            </select>
-                                        </div>
+        .text-box1:hover {
+            background-color: #fff;
+            border-color: #007bff;
+        }
 
-                                        
+        .text-box {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 15px;
+            line-height: 30px;
+            border-bottom: 1px solid #007bff;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
 
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Address while studying in BSU*" value="" />
-                                        </div>
-                                        
+        .text-box:hover {
+            background-color: #fff;
+            border-color: #007bff;
+        }
 
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-                                        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #007bff;
+        }
 
-                                        
-                                        <input type="submit" class="btnRegister"  value="Next"/>
-                                    </div>
-                                </div>
-                            </div>
+        .next-button {
+            margin-top: 20px;
+            align-self: flex-end;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
 
-                      
+        .next-button:hover {
+            background-color: #0056b3;
+        }
 
-                                        
-                                            <!-- Your form fields here -->
-                                        
-                                            <!-- <input type="submit" class="btnRegister" value="Next"/> -->
+        .text-box::placeholder {
+            font-family: 'Roboto', sans-serif;
+            font-style: italic;
+            font-size: 15px;
+            text-align: center;
+        }
 
-                                            <script>
-                                                document.getElementById("msform").addEventListener("submit", function(event) {
-                                                    event.preventDefault(); // Prevent the form from submitting normally
-                                            
-                                                    // Here you can add code to navigate to the next page
-                                                    // For example, you can use window.location.href to redirect:
-                                                    window.location.href = "page2.html";
-                                                });
-                                            </script>
-                                            
-                                   
-                                            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-                                            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                                      
-                                        
-                                        <!-- <input type="submit" class="btnRegister"  value="Register"/> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        @keyframes mover {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
+        </div>
+
+        <div class="right-column">
+            <h2>Registration Form</h2>
+            <form onsubmit="return nextPage()">
+                <div class="form-group">
+                    <label for="idno">ID No:</label>
+                    <input type="text" id="idno" name="idno" class="text-box1" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" class="text-box1" required>
+                </div>
+                <!-- Add more form fields here -->
+                <div class="form-group">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" class="text-box1" required>
                 </div>
 
-            </div>
-        </form>   
-    </body>
-    
-   
+                <div class="form-group">
+                    <label for="middlename">Middle Name:</label>
+                    <input type="text" id="middlename" name="middlename" class="text-box1">
+                </div>
 
+                <div class="form-group">
+                    <label for="middlename">Contact Number:</label>
+                    <input type="text" id="contactno" name="contactno" class="text-box1">
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Birthdate:</label>
+                    <input type="date" id="birthdate" name="birthdate" class="text-box1" required>
+                   
+                </div>
+
+                <div class="form-group">
+                    <label for="middlename">Email Address:</label>
+                    <input type="text" id="email" name="email" class="text-box1">
+                </div>
+                <br>
+                <br>
+                
+        
+                <label for="lang">Languages/Dialects youu can read, write, and understand:</label>
+                <input type="lang" id="lang" name="lang" class="text-box" required>
+                <br>
+                <br>
+        
+                <label for="address">Address while studying in BSU:</label>
+                <input type="text" id="address" name="address" class="text-box"  placeholder="House Number/Street/Barangay/Municipality/Province/Zip Code">
+
+                <br>
+                <br>
+
+                <button type="submit" class="next-button">Next</button>
+            </form>
+        </div>
+    </div>
+</body>
 </html>
