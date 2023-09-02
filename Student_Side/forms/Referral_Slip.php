@@ -32,11 +32,15 @@ include 'formstyle.php';
             counseling</label>
           <br>
           <label>
-            <input type="checkbox" name="psychological testing" value="3" id="psychological_test">
-            psychological testing</label>
+            <input type="checkbox" name="late" value="3" id="late">
+            late</label>
           <br>
           <label>
-            <input type="checkbox" name="others" value="4" id="others" onclick="myFunction()">
+            <input type="checkbox" name="absent" value="4" id="absent">
+            absent</label>
+          <br>
+          <label>
+            <input type="checkbox" name="others" value="5" id="others" onclick="myFunction()">
             others</label>
           <input type="text" name="textfield3" id="oth" style="display: none">
         </p>
@@ -82,7 +86,8 @@ include 'formstyle.php';
           transact: transact_type,
           interview: $("#interview").val(),
           counsel: $("#counseling").val(),
-          test: $("#psychological_test").val(),
+          late: $('#late').val(),
+          absent: $('#absent').val(),
           others: $("#others").val(),
           content: $("#oth").val()
         },
