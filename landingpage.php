@@ -3,6 +3,8 @@
 
 <?php include 'includes/head.php'; ?>
 
+
+
 <body>
 
   <header id="header" class="header d-flex align-items-center" style="background-color: black; ">
@@ -22,13 +24,22 @@
 
     <space style = "width: 300px"> </space>
     <!-- <li class="login-register"><a href="login.php">LOGIN</a></li> -->
-    <div class="dropdown">
+    <!-- <div class="dropdown">
     <li class="login-register"><a>LOGIN</a></li>
       <div class="dropdown-content">
         <a href="Student_Side/login.php">As Student</a>
         <a href="Employee_Side/login_Employee.php">As Employee</a>
       </div>
-  </div>
+  </div> -->
+
+  <li class="dropdown"><a href="login.php"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="login.php">STUDENT</a></li>
+              <li><a href="#">EMPLOYEE</a></li>
+          
+             
+            </ul>
+          </li>
     <li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">REGISTER</a></li>
 
 

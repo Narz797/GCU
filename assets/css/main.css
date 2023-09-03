@@ -69,10 +69,10 @@ background-color: #009786;
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: goldenrod;}
 
 .icon-box:hover {
-  background-color: green !important;
+  background-color: goldenrod !important;
 }
 
 /* ----------End of landing page------------ */
