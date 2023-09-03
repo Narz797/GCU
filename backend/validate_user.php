@@ -44,10 +44,12 @@ if (isset($_SESSION['origin'])) {
             if ($stmt->rowCount() === 1) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 $storedHashedPassword = $row['password'];
+                $user_id = $row['admin_user_id']; // Retrieve user_id
 
                 // Verify the password
                 if (password_verify($password, $storedHashedPassword)) {
                     // Password is correct
+                    $_SESSION['session_id'] = $user_id;
                     echo "success_employee";
                 } else {
                     // Password is incorrect
