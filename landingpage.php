@@ -81,15 +81,6 @@ include 'includes/banner.php';
 
 
 </section>
-
-
-
-
-
-
-
-
-
 <!-- End Top Bar -->
 
 
