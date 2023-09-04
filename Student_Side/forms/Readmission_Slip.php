@@ -2,7 +2,7 @@
 <?php
 session_start();
 include 'formstyle.php';
-// $_SESSION['session_id']=10;
+$_SESSION['transact_type']='readmission';//asign value to transact_type
 
 ?>
 <html>
@@ -10,6 +10,7 @@ include 'formstyle.php';
 <head>
   <meta charset="utf-8">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="../assets/img/GCU_logo.png" rel="icon">
   <title>Readmission Slip</title>
 </head>
 
@@ -48,16 +49,16 @@ include 'formstyle.php';
 
           $.ajax({
             type: 'POST',
-            url: '../backend/create_transaction.php',
+            url: '../../backend/create_transaction.php',
             data: {
               id: student_id,
               transact:transact_type,
               reason: $("#reason_stop").val(),
-              motivation: $("#motivation").val(),
+              motivation: $("#motivation_enroll").val(),
             },
             success: function (data) {
-              alert('Successfull');
-
+              //alert('Successfull');
+              alert(data);
             }
           });
         }); 

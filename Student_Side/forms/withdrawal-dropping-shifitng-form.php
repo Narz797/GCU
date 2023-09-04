@@ -1,12 +1,16 @@
 <!doctype html>
 <?php
+session_start();
 include 'formstyle.php';
+$_SESSION['transact_type']='withdrawal';//asign value to transact_type
 ?>
 <html>
 
 <head>
   <meta charset="utf-8">
   <title>Withdrawal/Dropping/Shifting slip</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="../assets/img/GCU_logo.png" rel="icon">
   <style>
     .hidden {
       display: none;
@@ -22,7 +26,7 @@ include 'formstyle.php';
       <h1 id="Title">Withdrawal/Dropping/Shifting Slip</h1>
     </div>
     <div class="card-body">
-      <form id="form1" name="form1" method="post">
+      <form id="form_transact" name="form1" method="post">
         <p>
           <label>Reason</label>
           <label for="select2">:</label>
@@ -77,7 +81,7 @@ include 'formstyle.php';
 
       $.ajax({
         type: 'POST',
-        url: '../backend/create_transaction.php',
+        url: '../../backend/create_transaction.php',
         data: {
           id: student_id,
           transact: transact_type,
@@ -86,7 +90,7 @@ include 'formstyle.php';
           explain: $("#reason_explain").val()
         },
         success: function (data) {
-          alert('Successfull');
+          alert(data);
 
         }
       });

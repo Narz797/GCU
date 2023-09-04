@@ -24,16 +24,16 @@ include 'includes/main.php';
          
         </div>
 
-        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100" ">
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100" >
 
           <div class="col-lg-4 col-md-6">
             <div class="service-item  position-relative">
               <div class="icon">
                <i class="bi bi-file-text"></i>
               </div>
-              <h3>Class Admission</h3>
+              <h3>Readmission Slip</h3>
               <p>Description</p>
-              <a href="./forms/Class Admission.php" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/Readmission_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -44,7 +44,7 @@ include 'includes/main.php';
               </div>
               <h3>Withdrawal/Dropping/Shifting Form</h3>
               <p>Description</p>
-              <a href="./forms/withdrawal-dropping-shifitng-form.php" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/withdrawal-dropping-shifitng-form.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -53,9 +53,9 @@ include 'includes/main.php';
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
-              <h3>Feedback Slip</h3>
+              <h3>Referral Slip</h3>
               <p>Description</p>
-              <a href="./forms/Feedback_Slip.php" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/Referral_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -64,33 +64,12 @@ include 'includes/main.php';
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
-              <h3>Name ng Forms</h3>
+              <h3>Leave Of Absence</h3>
               <p>Description</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/LeaveOfAbsence_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-file-text"></i>
-              </div>
-              <h3>Name ng Forms</h3>
-              <p>Description</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div><!-- End Service Item -->
-
-         <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-                <div class="icon">
-                    <i class="bi bi-file-text"></i>
-                </div>
-               <h3>Name ng Forms</h3>
-                <p>Description</p>
-                <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-            </div>
-        </div><!-- End Service Item -->
 
 
         </div>
@@ -160,21 +139,4 @@ include 'includes/main.php';
     </section><!-- End Blog Details Section -->
   </body>
 <?php include '../includes/footer.php' ?>
-<script>
-   $(document).ready(function () {
-        // Login form submission
-        $("#Login_Student_User").submit(function (event) {
-            event.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: "login.php",
-                data: $(this).serialize(),
-                success: function (response) {
-                    $("#message").html(response);
-                }
-            });
-        });
-      });
 
-
-</script>

@@ -35,7 +35,7 @@
     <div class="dropdown-content">
       <!-- Dropdown content goes here -->
       <a href="#">Profile</a>
-      <a href="../index.php">Logout</a>
+      <a href="../index.php?logout=true">Logout</a>
     </div>
   </div>
 </div>

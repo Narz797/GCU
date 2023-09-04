@@ -1,8 +1,6 @@
 <?php
 session_start();
-
 include '../backend/connect_database.php';
-
 
 if (isset($_SESSION['origin'])) {
     $origin = $_SESSION['origin'];
@@ -12,23 +10,20 @@ if (isset($_SESSION['origin'])) {
             $username = $_POST['email'];
             $password = $_POST['password'];
 
-            $sql = "SELECT * FROM student_user WHERE email='$username'";
+            $sql = "SELECT * FROM student_user WHERE email=?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$username]);
 
-            $result = $conn->query($sql);
-
-            if ($result->num_rows === 1) {
-                $row = $result->fetch_assoc();
+            if ($stmt->rowCount() === 1) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 $storedHashedPassword = $row['password'];
+                $user_id = $row['stud_user_id']; // Retrieve user_id
 
                 // Verify the password
                 if (password_verify($password, $storedHashedPassword)) {
                     // Password is correct
-                    $get_id = "SELECT user_id FROM student_user WHERE email='$username'";
-                    $id = $conn->query($get_id);
-
-                    $_SESSION['session_id'] = $id;
-
-                    echo "Successfully logged in";
+                    $_SESSION['session_id'] = $user_id;
+                    echo "success_student";
                 } else {
                     // Password is incorrect
                     echo "Invalid username or password.";
@@ -42,29 +37,30 @@ if (isset($_SESSION['origin'])) {
             $username = $_POST['email'];
             $password = $_POST['password'];
 
-            $sql = "SELECT * FROM admin_user WHERE email='$username'";
+            $sql = "SELECT * FROM admin_user WHERE email=?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$username]);
 
-            $result = $conn->query($sql);
-
-            if ($result->num_rows === 1) {
-                $row = $result->fetch_assoc();
+            if ($stmt->rowCount() === 1) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 $storedHashedPassword = $row['password'];
+                $user_id = $row['admin_user_id']; // Retrieve user_id
 
                 // Verify the password
                 if (password_verify($password, $storedHashedPassword)) {
                     // Password is correct
+                    $_SESSION['session_id'] = $user_id;
                     echo "success_employee";
                 } else {
                     // Password is incorrect
                     echo "Invalid username or password.";
                 }
-
             } else {
                 echo "Error";
             }
         }
     }
-
 }
-$conn->close();
+
+$pdo = null; // Close the database connection
 ?>

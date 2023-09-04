@@ -1,9 +1,15 @@
 <!doctype html>
-<?php include 'formstyle.php' ?>
+<?php 
+session_start();
+include 'formstyle.php';
+$_SESSION['transact_type']='leave_of_absence';//asign value to transact_type 
+?>
 <html>
 
 <head>
   <title>Leave Of Absence Slip</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="assets/img/GCU_logo.png" rel="icon">
 </head>
 
 <body>
@@ -56,7 +62,7 @@
 
       $.ajax({
         type: 'POST',
-        url: '../backend/create_transaction.php',
+        url: '../../backend/create_transaction.php',
         data: {
           id: student_id,
           transact: transact_type,
@@ -64,10 +70,10 @@
           start_year: $("#start_year").val(),
           end_year: $("#end_year").val(),
           reason_leave: $("#reason_leave").val(),
-          do_leave: $("#do_leave").value()
+          do_leave: $("#do_leave").val()
         },
         success: function (data) {
-          alert('Successfull');
+          alert(data);
 
         }
       });

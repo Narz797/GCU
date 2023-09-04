@@ -25,8 +25,9 @@
   <!-- Template Main CSS File -->
 
   <!-- ↓↓↓↓↓↓↓  Needs to be fixed  ↓↓↓↓↓↓↓ -->
+  
   <!-- for files inside Student_Folder -->
-  <link href="../assets/css/main.css" rel="stylesheet">  
+  <link href="../assets/css/main.css" rel="stylesheet">   
 
 
   <!-- For index -->

@@ -1,5 +1,26 @@
 <?php
+session_start();
 include 'landingpage.php';
+
+if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
+  // Clear session variables
+  session_unset();
+  
+  // Destroy the session
+  session_destroy();
+
+  // Check if the session is cleared
+  if (session_status() === PHP_SESSION_NONE) {
+      $message = "Session is cleared.";
+  } else {
+      $message = "Session is not cleared.";
+  }
+
+  // Log the message in the browser's console
+  echo '<script>console.log("' . $message . '");</script>';
+
+}
+
 ?>
 <!-- test -->
 
