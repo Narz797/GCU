@@ -34,8 +34,8 @@
 
   <li class="dropdown"><a href="login.php"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="login.php">STUDENT</a></li>
-              <li><a href="#">EMPLOYEE</a></li>
+              <li><a href="Student_Side/login.php">STUDENT</a></li>
+              <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
           
              
             </ul>
