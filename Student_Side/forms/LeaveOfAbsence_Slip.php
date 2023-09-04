@@ -57,15 +57,11 @@ $_SESSION['transact_type']='leave_of_absence';//asign value to transact_type
 
     $("#form_transact").on("submit", function (event) {
       event.preventDefault();
-      var student_id = <?php echo $_SESSION['session_id'] ?>;
-      var transact_type = "leave_of_absence"
 
       $.ajax({
         type: 'POST',
         url: '../../backend/create_transaction.php',
         data: {
-          id: student_id,
-          transact: transact_type,
           semester: $("#semester").val(),
           start_year: $("#start_year").val(),
           end_year: $("#end_year").val(),

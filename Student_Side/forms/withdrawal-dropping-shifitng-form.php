@@ -83,8 +83,6 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
         type: 'POST',
         url: '../../backend/create_transaction.php',
         data: {
-          id: student_id,
-          transact: transact_type,
           reason: $('#action').find(":selected").val(),
           statement: $('#reason_state').val(),
           explain: $("#reason_explain").val()

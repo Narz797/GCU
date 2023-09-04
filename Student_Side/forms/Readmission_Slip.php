@@ -44,15 +44,11 @@ $_SESSION['transact_type']='readmission';//asign value to transact_type
 
         $("#form_transact").on("submit", function (event) {
           event.preventDefault();
-          var student_id = <?php echo $_SESSION['session_id'] ?>;
-          var transact_type = "readmission"
 
           $.ajax({
             type: 'POST',
             url: '../../backend/create_transaction.php',
             data: {
-              id: student_id,
-              transact:transact_type,
               reason: $("#reason_stop").val(),
               motivation: $("#motivation_enroll").val(),
             },

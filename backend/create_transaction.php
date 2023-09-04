@@ -11,8 +11,6 @@ if ($transact == 'readmission') {
     $datetime = new DateTime();
     $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
 
-
-
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created) VALUES (:student_id, :transact_type, :date_created)';
     $sql_2 = 'INSERT INTO readmission(transact_id, motivation, reason) VALUES (:transact_id, :motivation, :reason)';
     try {
