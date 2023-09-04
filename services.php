@@ -7,16 +7,16 @@ include 'landingpage.php';
 
  ?>
  <style>
-    @import url('https://fonts.googleapis.com/css?family=Roboto');
+    /* @import url('https://fonts.googleapis.com/css?family=Roboto'); */
 
 
-        .text-box b {
-            font-weight: bold; /* Make text bold */
+        /* .text-box b {
+            font-weight: bold;
         }
 
         .text-box i {
-            font-style: italic; /* Make text italic */
-        }
+            font-style: italic; 
+        } */
 
   </style>
 
@@ -512,13 +512,13 @@ include 'landingpage.php';
 
             <div class="stats-item d-flex align-items-center">
              
-            <p style="text-align: justify; color: black;"><strong>RESEARCH</strong>We do researches in our effort to enhance or improve our services to students.
+            <p style="text-align: justify; color: black;"><strong>RESEARCH: </strong>We do researches in our effort to enhance or improve our services to students.
             </p>
             </div><!-- End Stats Item -->
 
              <div class="stats-item d-flex align-items-center">
              
-             <p style="text-align: justify; color: black;"><strong>EVALUATION</strong>We evaluate the various student services we offer so as to
+             <p style="text-align: justify; color: black;"><strong>EVALUATION: </strong>We evaluate the various student services we offer so as to
              implement more responsive programs and other employees.
               
               <p>
@@ -531,7 +531,7 @@ include 'landingpage.php';
              <div class="stats-item d-flex align-items-center">
              
               
-             <p style="text-align: justify; color: black;"><strong>Extension and Outreach</strong>We extend to other organizations our 
+             <p style="text-align: justify; color: black;"><strong>EXTENSION AND OUTREACH: </strong>We extend to other organizations our 
              services and programs to strengthen linkages and partnership in the community
               
               <p>

@@ -80,7 +80,7 @@ include 'landingpage.php';
             <br>
                
            
-            <p style="text-align:justify; font-size:20px; font-family:times new roman;">The Guidance Counselors are trained and experienced to organize and 
+            <p style="text-align:justify; font-size:16px; font-family: var(--font-primary)">The Guidance Counselors are trained and experienced to organize and 
               conduct personality development, academic survival and other seminars/
                workshops for students aside from the topic mentioned above. The Guidance Counselors 
                can also be invited as a resource speakers for the above topics.</p>
@@ -109,13 +109,13 @@ include 'landingpage.php';
 <div class="right-column">
    
    
-    <p style="text-align:justify; font-size:20px; font-family:times new roman;">Responding to the call for social involvement (or action), these programs 
+    <p style="text-align:justify; font-size:16px; font-family: var(--font-primary)">Responding to the call for social involvement (or action), these programs 
     are also extended to high schools and other organizations, upon request.</p>
 
-    <p style="text-align:justify; font-size:20px; font-family:times new roman;">More Importantly, these programs are constantly modified to meet the evolving 
+    <p style="text-align:justify; font-size:16px; font-family: var(--font-primary)">More Importantly, these programs are constantly modified to meet the evolving 
     needs of the students and other clients.</p>
 
-    <p style="text-align:justify; font-size:20px; font-family:times new roman;">Changes or improvements of the programs are based from feedbacks from teachers, parents, students, 
+    <p style="text-align:justify; font-size:16px;font-family: var(--font-primary)">Changes or improvements of the programs are based from feedbacks from teachers, parents, students, 
     and other clients. Guidance and counseling is a service profession that ultimately aims to assist people develop a well-rounded personality and live a fulfilling Life, maximizing his or her God-given 
     potentials. As such, the BSU-OSS-GCU gratefully welcomes comments and suggestions from the same clients.</p>
 

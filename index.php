@@ -4,6 +4,8 @@ include 'landingpage.php';
 <!-- test -->
 
 <style>
+   @import url('https://fonts.googleapis.com/css?family=Roboto');
+
    .left-column img {
             margin-top: 15%;
             margin-bottom: 5%;
@@ -118,14 +120,14 @@ include 'landingpage.php';
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2 style="font-family: 'Roboto', sans-serif;">What is Guidance and Counseling Unit?</h2>
-          <div class="text-box" style="text-align:justify;">
-        <b><i>Republic Act No. 9258 Act of 2004 Guidance and Counseling is a profession that involves the use 
+          <h2 >What is Guidance and Counseling Unit?</h2>
+          <div class="text-box" style="text-align:justify;  font-family: var(--font-primary)">
+        Republic Act No. 9258 Act of 2004 Guidance and Counseling is a profession that involves the use 
           of an integrated approach to the development of a well-functioning individual primarily by helping him/her
            potentials to the fullest and plan him/her to utilize his/her potentials to the fullest and plan his/her
             future in accordance with his/her abilities, interests and needs. It includes functions such as counseling subjects, 
             particularly subjects given in the licensure examinations, and other human development services.
-        </i></b>
+        
         </div>
         </div>
 
@@ -136,17 +138,12 @@ include 'landingpage.php';
               <div class="icon" >
               <i class="bi bi-people"></i>
               </div>
-              <h3>Our Principle</h3>
+              <h3 >Our Principle</h3>
                <!-- <p style="font-size:16px;"><b>TUTUKK: "Kalinga"</b></p> -->
-              <p style="font-size:16px;">A service-oriented partner for the development of competitive and empowered students.
+              <p style="font-size:16px;  font-family: var(--font-primary) ">A service-oriented partner for the development of competitive and empowered students.
               </p>
 
-              <!-- <p style="font-size:16px;"><b>TUTUKK: "Kalinga"</b></p>
-              <p>The word "Kalinga" means "care" hence this program aims to provide care to students via counseling and life-coaching.The
-                objective program is to aid students come up with necessary coping and decision-making skills they can use when faced
-                 with difficult circumtances.
-              </p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
+              
             </div>
           </div><!-- End Service Item -->
 
@@ -157,18 +154,11 @@ include 'landingpage.php';
               </div>
               <h3>Our Mandate</h3>
 
-              <p style="font-size:16px;">Advocate quality and relevant student-wellness-services and programs that 
+              <p style="font-size:16px;   font-family: var(--font-primary)  ">Advocate quality and relevant student-wellness-services and programs that 
               are responsive to the emerging needs of the times..
               </p>
 
-              <!-- <p C><b>TUTUKK: "Dap-ay"</b></p> -->
-              <!-- <p style="text-align:justify;"><b>TUTUKK: "Kalinga"</b></p> 
-                "Dap-ay" means a place where there is a gathering of two or more people to talk about stories and insight about life.
-                In the same manner, TUTUKK Dap-ay scheme is to assist the student with his/her concern,collabration with the parents is done 
-                through parent conference.The Counselor, student, parent/s come together in the dap-ay to work together for the well-being 
-                of the student.
-              </p> -->
-              <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
+              
             </div>
           </div><!-- End Service Item -->
 
@@ -178,7 +168,7 @@ include 'landingpage.php';
                 <i class="bi bi-easel"></i>
               </div>
               <h3>Our Aim</h3>
-              <p>Equip students with essential Life skills to prepare them to become productive citizens of the local and international society.</p>
+              <p style="font-size:16px;  font-family: var(--font-primary)  " >Equip students with essential Life skills to prepare them to become productive citizens of the local and international society.</p>
               <!-- <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a> -->
             </div>
           </div><!-- End Service Item -->
@@ -197,11 +187,11 @@ include 'landingpage.php';
         <h3><b>Why visit the Office of the Student Wellness Services - Guidance and Counseling Unit</b></h3>
         <br>
 
-        <div class="text-box" style="text-align:justify;">
-        <b><i>We want to assist students' academic, vocational, social, moral and personal growth and development.
+        <div class="text-box" style="text-align:justify; font-family: var(--font-primary)">
+       We want to assist students' academic, vocational, social, moral and personal growth and development.
            A comprehensive component serving the entire university campus population, the guidance and counselling unit 
            is vital to the personal growth and development of the student body.
-        </i></b>
+        
         </div>
 
     </div>
@@ -216,79 +206,6 @@ include 'landingpage.php';
 
 
   
-
-    <!-- <div id="history">
-    <section id="services" class="services sections-bg">
-    <div class="container" data-aos="fade-up">
-      <div class="container">
-
-        <main >
-          <section>
-           <h2>WHAT IS GUIDANCE AND COUNSELING?</h2>
-              <hr>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique ultrices est ac fermentum.</p>
-            </fieldset>
-          </section> -->
-
-          <!-- Add more sections for different years -->
-        <!-- </main> -->
-         
-      <!-- </div>
-      <div class="row gy-4" data-aos="fade-up" data-aos-delay="100"> -->
-        <!-- Additional content for the section -->
-      <!-- </div>
-    </div> -->
-  <!-- </section> -->
-  <!-- End Our Services Section -->
-    <!-- </div> -->
-
-    <!-- <div id="mission">
-    <section id="services" class="services sections-bg">
-    <div class="container" data-aos="fade-up">
-      <div class="container">
-
-        <main>
-          <section>
-            <h2>MISSION</h2>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique ultrices est ac fermentum.</p>
-          </section> -->
-
-          <!-- Add more sections for different years -->
-        <!-- </main> -->
-
-      <!-- </div>
-      <div class="row gy-4" data-aos="fade-up" data-aos-delay="100"> -->
-        <!-- Additional content for the section -->
-      <!-- </div>
-    </div> -->
-  <!-- </section> -->
-  <!-- End Our Services Section -->
-    <!-- </div> -->
-
-    <!-- <div id="vision">
-          <section id="services" class="services sections-bg">
-          <div class="container" data-aos="fade-up">
-            <div class="container">
-
-              <main>
-                <section>
-                  <h2>VISION</h2>
-                  <hr>
-                  <p>Provides assistance to students on matters related to personal, social, academic, psychological, emotional, spiritual vocational and career concerns</p>
-                </section> -->
-            
-                <!-- Add more sections for different years -->
-              <!-- </main> -->
-
-            <!-- </div>
-            <div class="row gy-4" data-aos="fade-up" data-aos-delay="100"> -->
-              <!-- Additional content for the section -->
-            <!-- </div>
-          </div> -->
-        <!-- </section> -->
-        <!-- End Our Services Section -->
-    <!-- </div> -->
 
     <div id="Contacts">
       <!-- ======= Contact Section ======= -->
