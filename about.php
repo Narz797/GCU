@@ -68,6 +68,52 @@ include 'landingpage.php';
             100% {
                 transform: translateY(-20px);
             }
+
+            
+        }
+
+         /* Media query for screens smaller than 576px (e.g., smartphones) */
+         @media (max-width: 576px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .left-column img,
+            .right-column {
+                width: 100%;
+            }
+
+            /* Modify other styles as needed for small screens */
+        }
+
+        /* Media query for screens between 576px and 768px (e.g., tablets) */
+        @media (min-width: 577px) and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .left-column img,
+            .right-column {
+                width: 80%;
+            }
+
+            /* Modify other styles as needed for medium-sized screens */
+        }
+
+        /* Media query for screens between 769px and 992px */
+        @media (min-width: 769px) and (max-width: 992px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .left-column img,
+            .right-column {
+                width: 50%;
+            }
+
+            /* Modify other styles as needed for larger screens */
         }
 
     </style>
