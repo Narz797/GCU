@@ -14,15 +14,9 @@
       <img src="../Assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
     <h2>Sign Up</h2>
-    <form id="Signup_Employee_User" method="POST">
+    <form id="Signup_Admin_User" method="POST">
       
 
-      <div class="form-group">
-        <input type="number" id="Employee_idno" placeholder="Employee ID No:" name="Employee_idno" required>
-      </div>
-      <br>
-
-     
 
       <div class="form-row">
         <div class="form-group">
@@ -41,11 +35,11 @@
         </div>
 
         <div class="form-group">
-			<label for="select">Gender</label>
+      <label for="select">Gender</label>
               <select name="select" id="select">
-				  <option>Male</option>
-				  <option>Female</option>
-    			</select>
+          <option>Male</option>
+          <option>Female</option>
+          </select>
         </div>
 
       </div>
@@ -93,3 +87,4 @@
 
     </form>
   </div>
+
