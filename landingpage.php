@@ -3,8 +3,6 @@
 
 <?php include 'includes/head.php'; ?>
 
-
-
 <body>
 
   <header id="header" class="header d-flex align-items-center" style="background-color: black; ">
@@ -16,15 +14,15 @@
         <!-- <h1>Impact<span>.</span></h1> -->
       </a>
       <nav id="navbar" class="navbar" style="margin: auto;">
-  <ul>
-    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
-    <li><a href="index.php">HOME</a></li>
-    <li><a href="about.php">ABOUT</a></li>
-    <li><a href="services.php">SERVICES</a></li>
+        <ul>
+          <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;">
+          <li><a href="index.php">HOME</a></li>
+          <li><a href="about.php">ABOUT</a></li>
+          <li><a href="services.php">SERVICES</a></li>
 
-    <space style = "width: 300px"> </space>
-    <!-- <li class="login-register"><a href="login.php">LOGIN</a></li> -->
-    <!-- <div class="dropdown">
+          <space style="width: 300px"> </space>
+          <!-- <li class="login-register"><a href="login.php">LOGIN</a></li> -->
+          <!-- <div class="dropdown">
     <li class="login-register"><a>LOGIN</a></li>
       <div class="dropdown-content">
         <a href="Student_Side/login.php">As Student</a>
@@ -32,19 +30,20 @@
       </div>
   </div> -->
 
-  <li class="dropdown"><a href="login.php"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="login.php"><span>LOGIN</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="Student_Side/login.php">STUDENT</a></li>
               <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
-          
-             
+
+
             </ul>
           </li>
-    <li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">REGISTER</a></li>
+          <li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">REGISTER</a></li>
 
 
-  </ul>
-</nav><!-- .navbar -->
+        </ul>
+      </nav><!-- .navbar -->
 
 
 
@@ -55,46 +54,36 @@
   </header><!-- End Header -->
   <!-- End Header -->
 
-  <?php 
+  <?php
 
-include 'includes/banner.php';
+  include 'includes/banner.php';
 
-?>
-
-
-<!-- Header section -->
-<section id="topbar" class="topbar d-flex align-items-center" style="height: auto; ">
-
-  <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 1400px;">
+  ?>
 
 
+  <!-- Header section -->
+  <section id="topbar" class="topbar d-flex align-items-center" style="height: auto; ">
 
-
-
-<style>
-
-
- 
-</style>
-
-
-
-
-</section>
-<!-- End Top Bar -->
-
-
-
- 
-  <style>
-
-</style>
+    <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 1400px;">
 
 
 
 
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+      <style>
+
+
+
+      </style>
+
+
+
+
+  </section>
+  <!-- End Top Bar -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>
 
@@ -106,7 +95,7 @@ include 'includes/banner.php';
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-  
+
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
