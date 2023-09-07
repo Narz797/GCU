@@ -21,27 +21,30 @@
     <li><a href="index.php">HOME</a></li>
     <li><a href="about.php">ABOUT</a></li>
     <li><a href="services.php">SERVICES</a></li>
-
+   
     <space style = "width: 300px"> </space>
-    <!-- <li class="login-register"><a href="login.php">LOGIN</a></li> -->
-    <!-- <div class="dropdown">
-    <li class="login-register"><a>LOGIN</a></li>
-      <div class="dropdown-content">
-        <a href="Student_Side/login.php">As Student</a>
-        <a href="Employee_Side/login_Employee.php">As Employee</a>
-      </div>
-  </div> -->
+
 
   <li class="dropdown"><a href="login.php"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="Student_Side/login.php">STUDENT</a></li>
               <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
+              <li><a href="Student_Side/tlogin.html">TEACHER</a></li>
           
              
             </ul>
           </li>
-    <li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">REGISTER</a></li>
-
+          <!-- <li class="dropdown"><li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">
+            REGISTER</a></li> -->
+            <li class="dropdown"><a href="./Student_Side/Stud_registration/page1.html"><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="./Student_Side/Stud_registration/page1.html">STUDENT</a></li>
+              
+              <li><a href="teacher.html">TEACHER</a></li>
+          
+             
+            </ul>
+          </li>
 
   </ul>
 </nav><!-- .navbar -->
