@@ -31,9 +31,9 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
           <label>Reason</label>
           <label for="select2">:</label>
           <select name="select2" id="action">
-            <option value="a">Withdrawing Enrollment</option>
-            <option value="b">Dropping Subjects</option>
-            <option value="c">Shifting</option>
+            <option value="Withdrawing Enrollment">Withdrawing Enrollment</option>
+            <option value="Dropping Subjects">Dropping Subjects</option>
+            <option value="Shifting">Shifting</option>
           </select>
         </p>
         <p>
@@ -66,7 +66,7 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
     const textfield = document.getElementById('for-shift');
 
     dropdown.addEventListener('change', function () {
-      if (dropdown.value === 'c') {
+      if (dropdown.value === 'Shifting') {
         textfield.classList.remove('hidden');
       } else {
         textfield.classList.add('hidden');
