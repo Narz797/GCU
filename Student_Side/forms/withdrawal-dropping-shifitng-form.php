@@ -56,7 +56,7 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
           <input type="text" name="textfield5" id="textfield5">
         </div>
         <p>
-          <input type="submit" name="submit" id="submit" value="Submit">
+          <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
         </p>
       </form>
     </div>

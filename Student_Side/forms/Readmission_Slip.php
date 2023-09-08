@@ -33,7 +33,7 @@ $_SESSION['transact_type']='readmission';//asign value to transact_type
         </p>
         <div class="button">
           <p>
-            <input type="submit" name="submit" id="submit" value="Submit">
+            <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
           </p>
         </div>
       </form>

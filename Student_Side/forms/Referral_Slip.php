@@ -2,7 +2,7 @@
 <?php
 session_start();
 include 'formstyle.php';
-$_SESSION['transact_type']='referral';//asign value to transact_type
+$_SESSION['transact_type'] = 'referral'; //asign value to transact_type
 ?>
 <html>
 
@@ -15,6 +15,7 @@ $_SESSION['transact_type']='referral';//asign value to transact_type
 </head>
 
 <body>
+  <button type="button" class="btn btn-dark">Dark</button>
   <div class="card">
     <div class="card-header">
       <h1 id="Title">Referral Slip</h1>
@@ -50,14 +51,14 @@ $_SESSION['transact_type']='referral';//asign value to transact_type
           Referred By:
           <label for="textfield"></label>
           <select name="textfield" id="refer">
-            <option value="1">Myself</option>
-            <option value="2">Instructor</option>
-            <option value="3">College Dean</option>
+            <option value="Myself">Myself</option>
+            <option value="Instructor">Instructor</option>
+            <option value="College Dean">College Dean</option>
           </select>
           <br>
         </p>
         <p>
-          <input type="submit" name="submit" id="submit" value="Submit">
+          <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
         </p>
       </form>
 
@@ -79,11 +80,11 @@ $_SESSION['transact_type']='referral';//asign value to transact_type
       event.preventDefault();
       var student_id = <?php echo $_SESSION['session_id'] ?>;
       var transact_type = "withdrawal"
-      var selectedReasons = $("input[name='reasons[]']:checked").map(function(){
+      var selectedReasons = $("input[name='reasons[]']:checked").map(function () {
         return $(this).val();
       }).get();
 
-      
+
       var othersText = $("#oth").val();
 
       // Add othersText to the selectedReasons array if it's not empty
