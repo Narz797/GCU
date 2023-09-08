@@ -6,27 +6,23 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background: -webkit-linear-gradient(left, #eee6e6, #2c2e2e);
-            display: flex;
+            /* background: -webkit-linear-gradient(left, #eee6e6, #2c2e2e);
+            display: flex; */
             /* justify-content: center;
             align-items: center; */
             font-size: 15px;
+            background: -webkit-linear-gradient(left, #136302, #ebeeeb)
         }
 
         
-        fieldset {
-            flex: 1; /* Equal size for all fieldsets */
-            border: 1px solid #000000;
-           
-            padding: 10px;
-            margin-right: 10px; /* Add some spacing between fieldsets */
-        }
+        .field {
+    background: -webkit-linear-gradient(left, #136302, #ebeeeb);
+    border: none; /* Remove the border */
+    padding: 0; /* Remove padding if needed */
+    /* Other styles for your .field class */
+}
 
-        .field{
-            
-            background: -webkit-linear-gradient(left, #fefefe, #61c6be);
-         
-        }
+       
 
         .left-column img {
             margin-top: 15%;
@@ -155,6 +151,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease-in-out;
+           
         }
 
         .prev-button {
@@ -165,7 +162,7 @@
             color: #fff;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
+            cursor: pointer; 
             transition: background-color 0.3s ease-in-out;
         }
 
@@ -372,7 +369,7 @@
        
 
         <div class="right-column">
-           <h3>Family Background</h3>
+           <h2>Family Background</h2>
             <br>
 
             

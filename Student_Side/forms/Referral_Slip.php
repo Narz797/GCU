@@ -26,19 +26,19 @@ $_SESSION['transact_type']='referral';//asign value to transact_type
         </p>
         <p>
           <label>
-            <input type="checkbox" name="reasons[]" value="1" id="interview">
+            <input type="checkbox" name="reasons[]" value="Interview" id="interview">
             interview</label>
           <br>
           <label>
-            <input type="checkbox" name="reasons[]" value="2" id="counseling">
+            <input type="checkbox" name="reasons[]" value="Counseling" id="counseling">
             counseling</label>
           <br>
           <label>
-            <input type="checkbox" name="reasons[]" value="3" id="late">
+            <input type="checkbox" name="reasons[]" value="Late" id="late">
             late</label>
           <br>
           <label>
-            <input type="checkbox" name="reasons[]" value="4" id="absent">
+            <input type="checkbox" name="reasons[]" value="Absent" id="absent">
             absent</label>
           <br>
           <label>
@@ -77,6 +77,8 @@ $_SESSION['transact_type']='referral';//asign value to transact_type
   <script>
     $("#form_transact").on("submit", function (event) {
       event.preventDefault();
+      var student_id = <?php echo $_SESSION['session_id'] ?>;
+      var transact_type = "withdrawal"
       var selectedReasons = $("input[name='reasons[]']:checked").map(function(){
         return $(this).val();
       }).get();
@@ -93,8 +95,6 @@ $_SESSION['transact_type']='referral';//asign value to transact_type
         type: 'POST',
         url: '../../backend/create_transaction.php',
         data: {
-          id: student_id,
-          transact: transact_type,
           reasons: selectedReasons,
           refer: $('#refer').find(":selected").val()
         },

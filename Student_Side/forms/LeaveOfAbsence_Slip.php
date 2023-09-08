@@ -23,8 +23,8 @@ $_SESSION['transact_type']='leave_of_absence';//asign value to transact_type
         <p>
           <label for="select2">Semester and School Year Intended to Come Back:</label>
           <select name="select2" id="semester">
-            <option value="a">First Semester</option>
-            <option value="b">Second Semester</option>
+            <option value="1">First Semester</option>
+            <option value="2">Second Semester</option>
           </select>
           <label>Year:</label>
           <input type="number" placeholder="YYYY" id="start_year" class="year_yield">

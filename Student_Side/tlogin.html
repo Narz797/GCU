@@ -9,7 +9,8 @@
         body {
   /* background: #2980b9; */
   font-family: 'Roboto', sans-serif;
-  background: -webkit-linear-gradient(left, #eee6e6, #045f5f);
+  /* background: -webkit-linear-gradient(left, #c2a629, #055a09); */
+    background: -webkit-linear-gradient(left, #0c4401, #ebeeeb); 
 display: flex;
   height: 100vh;
   display: flex;
@@ -19,14 +20,15 @@ display: flex;
 
         .field{
             
-            background: -webkit-linear-gradient(left, #fefefe, #61c6be);
+            /* background: -webkit-linear-gradient(left, #fefefe, #61c6be); */
          
         }
 
         .left-column img {
             margin-top: 15%;
             margin-bottom: 5%;
-            width: 50%;
+            margin-left: 5%;
+            width: 60%;
             -webkit-animation: mover 2s infinite alternate;
             animation: mover 1s infinite alternate;
         }
@@ -38,25 +40,26 @@ display: flex;
         }
 
         .left-column {
-            flex: 1;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: auto;
+            /* flex: 1; */
+             padding: 5px; 
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center; */
+            /* width: auto;
+            margin-left:auto; */
         }
 
         .right-column {
-            margin-top: 2%;
-            flex: 2;
-            background-color: -webkit-linear-gradient(left, #fefefe, #96ded8);
-            padding: 20px;
-            border-radius: 10px;
+            /* margin-top: 2%; */
+            /* flex: 2; */
+            /* background-color: -webkit-linear-gradient(left, #fefefe, #96ded8); */
+            padding: 5px;
+            /* border-radius: 10px; */
         }
 
         .logo {
-            width: 100px;
-            height: auto;
+            /* width: 100px;
+            height: auto; */
         }
 
 
@@ -87,7 +90,7 @@ display: flex;
 
  /* Add your existing styles here */
 
- .center {
+ /* .center {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -97,23 +100,23 @@ display: flex;
   background: white;
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-}
-.center h1 {
+} */
+/* .center h1 {
   text-align: center;
   padding: 20px 0;
   border-bottom: 1px solid silver;
-}
-.center form {
+} */
+/* .center form {
   padding: 0 40px;
   box-sizing: border-box;
-}
+} */
 form .txt_field {
   position: relative;
-  border-bottom: 2px solid #adadad;
+  border-bottom: 2px solid #050505;
   margin: 30px 0;
 }
 .txt_field input {
-  width: 100%;
+  width: auto;
   padding: 0 5px;
   height: 40px;
   font-size: 16px;
@@ -136,15 +139,15 @@ form .txt_field {
   position: absolute;
   top: 40px;
   left: 0;
-  width: 0%;
+  width: auto;
   height: 2px;
-  background: #2691d9;
+  background: #004e0d;
   transition: 0.5s;
 }
 .txt_field input:focus ~ label,
 .txt_field input:valid ~ label {
   top: -5px;
-  color: #2691d9;
+  color: #000000;
 }
 .txt_field input:focus ~ span::before,
 .txt_field input:valid ~ span::before {
@@ -157,22 +160,30 @@ form .txt_field {
 }
 .pass:hover {
   text-decoration: underline;
+  /* color: goldenrod; */
+
+  
 }
 input[type="submit"] {
   width: 100%;
   height: 50px;
-  background: #2691d9;
+  background: #e7a10b;
   border-radius: 25px;
   font-size: 18px;
-  color: #e9f4fb;
+  color: #000000;
   font-weight: 700;
   cursor: pointer;
   outline: none;
   transition: 0.5s;
   border: none;
+  /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
+
+    /* background: -webkit-linear-gradient(left, #e7e7e2 , #0c4401); */
 }
 input[type="submit"]:hover {
-  border-color: #2691d9;
+  /* border-color:#065e0a; */
+  background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5);
+
 }
 .signup_link {
   margin: 30px 0;
@@ -181,7 +192,7 @@ input[type="submit"]:hover {
   color: #131212;
 }
 .signup_link a {
-  color: #2691d9;
+  color: #105c06;
   text-decoration: none;
 }
 .signup_link a:hover {
@@ -200,14 +211,18 @@ input[type="submit"]:hover {
 </head>
 <body>
   
-    <div class="container">
+    <div class="container" style="width: 90%; margin-left: 2%;">
         <div class="left-column">
             <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
         </div>
 
         
+        
+        <form method="post" style="width: 50%;">
+          <h1>LOGIN FORM</h1>
+        <br>
+        
 
-        <form method="post">
             <div class="txt_field">
               <input type="text" required />
               <span></span>
@@ -218,9 +233,9 @@ input[type="submit"]:hover {
               <span></span>
               <label>Password</label>
             </div>
-            <div class="pass">Forgot Password?</div>
+            <div class="pass"><b>Forgot Password?</b></div>
             <input type="submit" value="Login" />
-            <div class="signup_link">Not a member? <a href="#">Signup</a></div>
+            <div class="signup_link">Not a member? <a href="#"><b>Signup</b></a></div>
           </form>
     </div>
 

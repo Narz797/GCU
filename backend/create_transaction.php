@@ -4,6 +4,7 @@ include '../backend/connect_database.php';
 
 $id = $_SESSION['session_id'];// gets stud id from session
 $transact = $_SESSION['transact_type'];//gets value of transact_type
+$status = 'pending';
 
 if ($transact == 'readmission') {
     $reason = $_POST['reason'];
@@ -12,7 +13,7 @@ if ($transact == 'readmission') {
     $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
 
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created) VALUES (:student_id, :transact_type, :date_created)';
-    $sql_2 = 'INSERT INTO readmission(transact_id, motivation, reason) VALUES (:transact_id, :motivation, :reason)';
+    $sql_2 = 'INSERT INTO readmission(`transact_id`, `motivation`, `reason`, `status`) VALUES (:transact_id, :motivation, :reason, :statuss)';
     try {
         $code = $pdo->prepare($sql_1);
         $code->bindParam(':student_id', $id);
@@ -26,6 +27,7 @@ if ($transact == 'readmission') {
         $code->bindParam(':transact_id',$transact_id);
         $code->bindParam(':motivation', $reason);
         $code->bindParam(':reason',$motivation);
+        $code->bindParam(':statuss',$status);
         $code->execute();
 
         echo "Data inserted successfully";
@@ -42,7 +44,7 @@ if ($transact == 'readmission') {
 
 
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created) VALUES (:student_id, :transact_type, :date_created)';
-    $sql_2 = 'INSERT INTO withdrawal(`transact_id`, `reason`, `statement`, `explain`) VALUES (:transact_id, :reason, :statementt, :explain)';
+    $sql_2 = 'INSERT INTO withdrawal(`transact_id`, `reason`, `statement`, `explain`, `status`) VALUES (:transact_id, :reason, :statementt, :explain, :statuss)';
     try {
         $code = $pdo->prepare($sql_1);
         $code->bindParam(':student_id', $id);
@@ -57,6 +59,7 @@ if ($transact == 'readmission') {
         $code->bindParam(':reason', $reason);
         $code->bindParam(':statementt',$statement);
         $code->bindParam(':explain',$explain);
+        $code->bindParam(':statuss',$status);
         $code->execute();
 
         echo "Data inserted successfully";
@@ -74,7 +77,7 @@ if ($transact == 'readmission') {
     $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
 
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created) VALUES (:student_id, :transact_type, :date_created)';
-    $sql_2 = 'INSERT INTO absence(`transact_id`, `semester`, `start_year`, `end_year`, `reason`, `leave`) VALUES (:transact_id, :semester, :startt, :endd, :reason, :do)';
+    $sql_2 = 'INSERT INTO absence(`transact_id`, `semester`, `start_year`, `end_year`, `reason`, `leave`, `status`) VALUES (:transact_id, :semester, :startt, :endd, :reason, :do, :statuss)';
     try {
         $code = $pdo->prepare($sql_1);
         $code->bindParam(':student_id', $id);
@@ -91,6 +94,7 @@ if ($transact == 'readmission') {
         $code->bindParam(':endd', $end_year);
         $code->bindParam(':reason', $reason_leave);
         $code->bindParam(':do',$do_leave);
+        $code->bindParam(':statuss',$status);
         $code->execute();
 
         echo "Data inserted successfully";
@@ -106,7 +110,7 @@ if ($transact == 'readmission') {
     $reasonsString = implode(',', $reasons);// Convert the array of reasons to a comma-separated string
 
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created) VALUES (:student_id, :transact_type, :date_created)';
-    $sql_2 = 'INSERT INTO referral(`transact_id`, `reason`, `referred`) VALUES (:transact_id, :reasons, :refer)';
+    $sql_2 = 'INSERT INTO referral(`transact_id`, `reason`, `referred`, `status`) VALUES (:transact_id, :reasons, :refer, :statuss)';
     try {
         $code = $pdo->prepare($sql_1);
         $code->bindParam(':student_id', $id);
@@ -120,6 +124,7 @@ if ($transact == 'readmission') {
         $code->bindParam(':transact_id',$transact_id);
         $code->bindParam(':reasons', $reasonsString);
         $code->bindParam(':refer', $refer);
+        $code->bindParam(':statuss',$status);
         $code->execute();
 
         echo "Data inserted successfully";
