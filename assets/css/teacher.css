@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<!-- Coding By CodingNepal - codingnepalweb.com -->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="style.css">
-     
-    <!----===== Iconscout CSS ===== -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
-   <title>Responsive Regisration Form </title>
-</head>
-<style>/* ===== Google Font Import - Poppins ===== */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
     *{
         margin: 0;
         padding: 0;
@@ -25,8 +8,8 @@
     body{
         min-height: 100vh;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        /* align-items: center;
+        justify-content: center; */
         background-color: #fafffe;
     }
     .container{
@@ -59,10 +42,12 @@
     .container form{
         position: relative;
         margin-top: 16px;
-        min-height: 2000px;
+        min-height: 600px;
         /* background-color: #fff; */
         overflow: hidden;
     }
+
+    
     .container form .form{
         position: absolute;
         /* background-color: #fff; */
@@ -240,7 +225,7 @@
     }
     .left-column img {
              
-            
+            margin-top: 30%;
             margin-left: 20%;
             width: 50%;
             -webkit-animation: mover 2s infinite alternate;
@@ -248,8 +233,8 @@
         }
 
     .logo {
-            width: 80%;
-            height: 80%;
+            width: 10%;
+            height: 30%;
         }
 
         @-webkit-keyframes mover {
@@ -271,27 +256,15 @@
                 transform: translateY(-20px);
             }
         }
-        /* .fieldset-column {
-            flex: 1;
-            margin-right: 20px; 
-        } */
+       
 
         fieldset {
-            flex: 1; 
-            /* Equal size for all fieldsets */
-            /* border: 1px solid #000000; */
-           
-            /* padding: 10px; */
-            /* margin-right: 10px; */
-             /* Add some spacing between fieldsets */
+            flex: 1;  
         }
       
 
         .fieldset-container {
-            /* display: flex; */
-            /* flex-wrap: wrap; */
-            /* justify-content: space-between; */
-             /* Distribute fieldsets evenly */
+           
              display: block;
   position: relative;
   padding-left: 35px;
@@ -484,163 +457,4 @@
 
 
         
-    </style>
-<body>
-
-    <!-- <div class="left-column">
-        <img src="assets/img/GCU_logo.png" alt="Logo" class="logo">
-    </div>
-     -->
-    <div class="container">
-        <header>REGISTRATION FORM</header>
-
-        <form action="#">
-            <div class="form first">
-            <div class="details personal">
-            <span class="title">Personal Details</span>
-            <!-- <h2>Personal Details</h2>
-            <hr> -->
-
-            <div class="fields">
-
-                <div class="input-field">
-                    <label>Employee Number</label>
-                    <input type="text"  >
-                </div>
-
-                <div class="input-field">
-                    <label>College</label>
-                    <select required>
-                        <option disabled selected>Select gender</option>
-                        <option>BS- Information Technology</option>
-                        <option>BS-Biology</option>
-                        <option>BS-Library</option>
-                    </select>
-                </div>
-
-                <div class="input-field">
-                    <label>Gender</label>
-                    <select required>
-                        <option disabled selected>Select gender</option>
-                        <option>BS- Information Technology</option>
-                        <option>BS-Biology</option>
-                        <option>BS-Library</option>
-                    </select>
-                </div>
-
-
-
-
-                <div class="input-field">
-                    <label>Last Name</label>
-                    <input type="text" >
-                </div>
-              
-                <div class="input-field">
-                    <label>First Name</label>
-                    <input type="text"  >
-                </div>
-
-                <div class="input-field">
-                    <label>Middle Name</label>
-                    <input type="text" >
-                </div>
-
-                
-
-                <div class="input-field">
-                    <label>Contact Number</label>
-                    <input type="text"  >
-                </div>
-
-                <div class="input-field">
-                    <label>Email</label>
-                    <input type="text" >
-                </div>
-
-                <div class="input-field">
-                    <label>Civil Status</label>
-                    <select required>
-                        <option disabled selected>Select</option>
-                        <option>Single</option>
-                        <option>Married</option>
-                        <option>Others</option>
-                    </select>
-                </div>
-
-
-
-            
-
-              
-                
-                
-
-              
-
-                <!-- <button class="nextBtn">
-                    <span class="btnText">Next</span>
-                    <i class="uil uil-navigator"></i>
-                </button> -->
-                <button class="sumbit">
-                    <span class="btnText">Submit</span>
-                    <i class="uil uil-navigator"></i>
-                </button>
-            </div>
-            </div>
-        </div>
-
-                
-           
-            </div>
-           
-
-         
-
-            
-
-  
-     
-           
-
-
-        </form>  
-    </div>
-
     
-
-\
-
-
-    
-
-
-    
-    
-
-   
-
-   
-
-
-    
-    
-
-  
-
-
-
-
-    
-
-
-
-
-
-    
-
-
-
-
-</body>
-</html>
