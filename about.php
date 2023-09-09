@@ -118,7 +118,7 @@ include 'landingpage.php';
 
     </style>
 <body  >
- <section id="recent-posts" class="recent-posts sections-bg" style=" background: -webkit-linear-gradient(left, #eee6e6, #008374);" >
+ <section id="recent-posts" class="recent-posts sections-bg"  >
         <div class="container">
 
         <div class="right-column">

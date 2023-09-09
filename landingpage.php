@@ -25,7 +25,7 @@
 
           <li class="dropdown"><a href="login.php"><span>LOGIN</span> <i
                 class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
+            <ul  style="background-color: transparent; ">
               <li><a href="Student_Side/login.php">STUDENT</a></li>
               <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
               <li><a href="Student_Side/tlogin.html">TEACHER</a></li>
@@ -36,7 +36,7 @@
           <!-- <li class="dropdown"><li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">
             REGISTER</a></li> -->
             <li class="dropdown"><a href="./Student_Side/Stud_registration/page1.html"><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
+            <ul  style="background-color: transparent; ">
               <li><a href="./Student_Side/Stud_registration/page1.html">STUDENT</a></li>
               
               <li><a href="teacher.html">TEACHER</a></li>

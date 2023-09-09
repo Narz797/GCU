@@ -24,7 +24,7 @@ include 'landingpage.php';
 <body>
 
   <!-- ======= Our Services Section ======= -->
-  <section id="services" class="services sections-bg"  style=" background: -webkit-linear-gradient(left, #eee6e6, #008374);">
+  <section id="services" class="services sections-bg" >
       <div class="container" data-aos="fade-up">
       <h2 style="font-family:fantasy; ">SERVICES WE OFFER </h2>
       <br>
