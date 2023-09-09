@@ -453,7 +453,7 @@ section {
 /*--------------------------------------------------------------
 # Desktop Navigation
 --------------------------------------------------------------*/
-@media (min-width: 1280px) {
+@media (min-width: 1020px) {
   /* .for-mobile-view{
     visibility: hidden;
   } */
@@ -607,7 +607,7 @@ section {
 /*--------------------------------------------------------------
 # Mobile Navigation
 --------------------------------------------------------------*/
-@media (max-width: 1200px) {
+@media (max-width: 1020px) {
   /* .for-mobile-view{
     visibility: visible;
 }
