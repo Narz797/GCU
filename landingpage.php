@@ -39,7 +39,7 @@
             <ul  style="background-color: transparent; ">
               <li><a href="./Student_Side/Stud_registration/page1.html">STUDENT</a></li>
               
-              <li><a href="teacher.html">TEACHER</a></li>
+              <li><a href="teacher.php">TEACHER</a></li>
           
              
             </ul>
