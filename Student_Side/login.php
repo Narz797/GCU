@@ -1,447 +1,260 @@
 <!DOCTYPE html>
 <html>
-
 <head>
- 
-</head>
-<style>
-  @import "compass";
-@import url(https://fonts.googleapis.com/css?family=Dancing+Script|Roboto);
-*, *:after, *:before{
-  @include box-sizing(border-box);
-}
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-$primary : #FF4081;
-
-body{
-  background: $primary/ 1.25;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-}
-.panda{
-  position: relative;
-  width: 200px;
-  margin: 50px auto;
-  
-}
-
-.face{
-  width: 200px;
-  height: 200px;
-  background: #fff;
-  @include border-radius(100%);
-  margin: 50px auto;
-  @include box-shadow(0 10px 15px rgba(0,0,0,.15));
-  z-index: 50;
-  position: relative;
-  
-}
-.ear{
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  background: #000;
-  z-index: 5;
-  border:10px solid #fff;
-  left: -15px;
-  top: -15px;
-  @include border-radius(100%);
-  &:after{
-    content: '';
-    @extend .ear;
-    left: 125px;
-  }
-}
-.eye-shade{
-  background: #000;
-  width: 50px;
-  height: 80px;
-  margin: 10px;
-  position: absolute;
-  top: 35px;
-  left: 25px;
-  @include rotate(220deg);
-  @include border-radius(25px / 20px 30px 35px 40px);
-  
-   &.rgt{
-        @include rotate(140deg);
-        left: 105px;
-    }
-}
-
-  .eye-white{
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    @include border-radius(100%);
-    background: #fff;
-    z-index: 500;
-    left: 40px;
-    top: 80px;
-    overflow: hidden;
-    
-     &.rgt{
-        right: 40px;
-        left: auto;
-    }
-  }
-  .eye-ball{
-        position: absolute;
-        width: 0px;
-        height: 0px;
-        left: 20px;
-        top: 20px;
-        max-width: 10px;
-        max-height: 10px;
-      @include transition(.1s);
-      
-
-          &:after{
-              content: '';
-              background: #000;
-              position: absolute;
-              @include border-radius(100%);
-              right: 0;
-              bottom: 0px;
-              width: 20px;
-              height: 20px;
-          }
-      
-    }
-  
    
-  
 
-.nose{
-  position: absolute;
-  height: 20px;
-  width: 35px;
-  bottom: 40px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  @include border-radius(50px  20px/ 30px 15px);
-   @include rotate(15deg);
-  background: #000;
+        body {
+  /* background: #2980b9; */
+  font-family: 'Roboto', sans-serif;
+  /* background: rgb(51, 138, 11); */
+  /* background: rgb(51, 138, 11); */
+    /* background: -webkit-linear-gradient(left, #0c4401, #ebeeeb);  */
+display: flex;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.body{
-  background: #fff;
-  position: absolute;
-  top: 200px;
-  left: -20px;
-  @include border-radius(100px 100px 100px 100px / 126px 126px 96px 96px);
-  width: 250px; 
-  height: 282px;
-  @include box-shadow(0 5px 10px rgba(0,0,0,.3));
-}
-.hand{
-  width: 40px;
-  height: 30px;
-  @include border-radius(50px);
-  @include box-shadow(0 2px 3px rgba(0,0,0,.15));
-  background: #000;
-  margin: 5px;
-  position: absolute;
-  top: 70px;
-  left: -25px;
-  &:after, &:before{
-    content: '';
-    @extend .hand;
-    left: -5px;
-    top: 11px;
-  }
-  &:before{
-    top: 26px;
-  }
-  
-  &.rgt{
-    left: auto;
-    right: -25px;
-    &:after, &:before{
-      left: auto;
-      right: -5px;
-    }
-  }
-}
-.foot{
-  top: 360px;
-  left: -80px;
-  position: absolute;
-  background: #000;
-  z-index: 1400;
-  @include box-shadow(0 5px 5px rgba(0,0,0,.2));
-@include  border-radius(40px 40px 39px 40px / 26px 26px 63px 63px);
-  width: 82px; 
-  height: 120px;
-  &:after{
-    content: '';
-    width: 55px;
-    height: 65px;
-    background: #222;
-    @include  border-radius(100%);
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    margin: auto;
-  }
-  
-  
-  .finger{
-    position: absolute;
-    width: 25px;
-    height: 35px;
-    background: #222;
-    @include  border-radius(100%);
-    top: 10px;
-    right: 5px;
-    &:after, &:before{
-      content: '';
-      @extend .finger;
-      right: 30px;
-      width: 20px;
-      top: 0;
-    }
-    &:before{
-      right: 55px;
-      top: 5px;
-    }
-  }
-  
-  
-  &.rgt{
-    left: auto;
-    right: -80px;
-    .finger{
-      left: 5px;
-      right: auto;
-      &:after{
-        left: 30px;
-        right: auto;
-        
-      }
-       &:before{
-          left: 55px;
-          right: auto;
+
+        /* .field{ */
+            
+            /* background: -webkit-linear-gradient(left, #fefefe, #61c6be); */
+         
+        /* } */
+
+        .left-column img {
+            margin-top: 15%;
+            margin-bottom: 5%;
+            margin-left: 5%;
+            width: 60%;
+            -webkit-animation: mover 2s infinite alternate;
+            animation: mover 1s infinite alternate;
         }
-    }
-  }
-  
-  
-}
+
+        .container {
+          
+            display: flex;
+            /* flex-direction: row; */
+        }
+
+        .left-column {
+            /* flex: 1; */
+             padding: 5px; 
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center; */
+            /* width: auto;
+            margin-left:auto; */
+        }
+
+        .right-column {
+            /* margin-top: 2%; */
+            /* flex: 2; */
+            /* background-color: -webkit-linear-gradient(left, #fefefe, #96ded8); */
+            padding: 5px;
+            /* border-radius: 10px; */
+        }
+
+        .logo {
+            /* width: 100px;
+            height: auto; */
+        }
 
 
-form{
-  display: none;
-  max-width: 400px;
-  padding: 20px 40px;
-  background: #fff;
-  height: 300px;
-  margin: auto;
-  display: block;
-  @include box-shadow(0 10px 15px rgba(0,0,0,.15));
-  @include transition(.3s);
-  position: relative;
-  @include translateY(-100px);
-  z-index: 500;
-  border:1px solid #eee;
-  
-  &.up{
-      @include translateY(-180px);
-  }
-}
-
-h1{
-  color: $primary;
-  font-family: 'Dancing Script', cursive;
-}
-.btn{
-  background: #fff;
-  padding: 5px;
-  width: 150px;
-  height: 35px;
-  border:1px solid $primary;
-  margin-top: 25px;
-  cursor: pointer;
-  @include transition(.3s);
-  @include box-shadow(0 50px $primary inset);
-  color: #fff;
-  
-    &:hover{
-        @include box-shadow(0 0 $primary inset);
-        color: $primary;
-    }
-    &:focus{
-      outline: none;
-    }
-}
-.form-group{
+      
+        
  
-  position: relative;
-  font-size: 15px;
-  color: #666;
-  &+&{
-    margin-top: 30px;
-  }
-  
-  .form-label{
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    top: 5px;
-    @include transition(.3s);
-    
-  }
-  
-  .form-control{
-    width: 100%;
-    position: relative;
-    z-index: 3;
-    height: 35px;
-    background: none;
-    border:none;
-    padding: 5px 0;
-    @include transition(.3s);
-    border-bottom: 1px solid #777;
-    color: #555;
-    &:invalid{outline: none;}
-    
-    &:focus , &:valid{
-      outline: none;
+        @-webkit-keyframes mover {
+            0% {
+                transform: translateY(0);
+            }
 
-      @include box-shadow(0 1px $primary);
-      border-color:$primary;
-      + .form-label{
-        font-size: 12px;
-        color: $primary;
-        @include translateY(-15px);
-      }
-    }
-  }
-  
-}
-.alert{
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes mover {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+
+   
+
+ /* Add your existing styles here */
+
+ .center {
   position: absolute;
-  color: #f00;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 420px;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+.center h1 {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid silver;
+}
+.center form {
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+form .txt_field {
+  position: relative;
+  /* border-bottom: 2px solid #050505; */
+  margin: 30px 0;
+}
+.txt_field input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
   font-size: 16px;
-  right: -180px;
-  top: -300px;
-  z-index: 200;
-  padding: 30px 25px;
-  background: #fff;
-  @include box-shadow(0 3px 5px rgba(0,0,0,.2));
-   @include  border-radius(50%);
-  opacity: 0;
-  @include scale(0);
-  @include transition(.4s .6s linear);
-  &:after, &:before{
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background: #fff;
-    left: -19px;
-    bottom: -8px;
-    @include box-shadow(0 2px 5px rgba(0,0,0,.2));
-    @include  border-radius(50%);
-  }
-  &:before{
-     width: 15px;
-    height: 15px;
-    left: -35px;
-    bottom: -25px;
-  }
+  border: 1px solid #ccc; /* Add a border around the input */
+  border-radius: 5px; /* Add rounded corners to the border */
+  outline: none;
 }
 
-.wrong-entry {
- @include animation( wrong-log 0.3s);
- 
-  .alert{
-    opacity: 1;
-    @include scale(1);
-  }
+.txt_field label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #0f0909;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.5s;
 }
-
-@include keyframes (eye-blink) {
-  to { height: 30px;}
+.txt_field span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: auto;
+  height: 2px;
+  background: #004e0d;
+  transition: 0.5s;
 }
-@include keyframes (wrong-log) {
-  0%, 100% { left: 0px;}
-  20% , 60%{left: 20px;}
-  40% , 80%{left: -20px;}
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label {
+  top: -10px;
+  
+  /* color: #000000; */
 }
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before {
+  width: 100%;
+}
+.pass {
+  margin: -5px 0 20px 5px;
+  color: #0e0b0b;
+  cursor: pointer;
+}
+.pass:hover {
+  text-decoration: underline;
+  color: rgb(17, 13, 2);
 
-  </style>
+  
+}
+input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  background: #e7a10b;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #000000;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  transition: 0.5s;
+  border: none;
+  /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
 
+    /* background: -webkit-linear-gradient(left, #e7e7e2 , #0c4401); */
+}
+input[type="submit"]:hover {
+  border-color:#17f522;
+  /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
+
+}
+.signup_link {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #131212;
+}
+.signup_link a {
+  color: #105c06;
+  text-decoration: none;
+}
+.signup_link a:hover {
+  text-decoration: underline;
+}
+      
+
+
+
+
+       
+
+
+   
+    
+
+    </style>
+</head>
 <body>
-<div class="panda">
-  <div class="ear"></div>
-  <div class="face">
-    <div class="eye-shade"></div>
-    <div class="eye-white">
-      <div class="eye-ball"></div>
+   <!-- <fieldset style="width:80%;"> -->
+    <div class="container" style="width: 90%; margin-left: 2%;">
+        <div class="left-column">
+            <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
+        </div>
+
+        
+        
+        <form method="post" style="width: 50%;">
+          <h1>LOGIN FORM</h1>
+        <br>
+        
+
+            <div class="txt_field">
+              <input type="text" required />
+              <span></span>
+              <label>Username</label>
+            </div>
+            <div class="txt_field">
+              <input type="password" required />
+              <span></span>
+              <label>Password</label>
+            </div>
+            <div class="pass"><b>Forgot Password?</b></div>
+            <input type="submit" value="Login" />
+            <div class="signup_link">Not a member? <a href="#"><b>Signup</b></a></div>
+          </form>
+
+       
     </div>
-    <div class="eye-shade rgt"></div>
-    <div class="eye-white rgt">
-      <div class="eye-ball"></div>
-    </div>
-    <div class="nose"></div>
-    <div class="mouth"></div>
-  </div>
-  <div class="body"> </div>
-  <div class="foot">
-    <div class="finger"></div>
-  </div>
-  <div class="foot rgt">
-    <div class="finger"></div>
-  </div>
-</div>
-<form>
-  <div class="hand"></div>
-  <div class="hand rgt"></div>
-  <h1>Panda Login</h1>
-  <div class="form-group">
-    <input required="required" class="form-control"/>
-    <label class="form-label">Username    </label>
-  </div>
-  <div class="form-group">
-    <input id="password" type="password" required="required" class="form-control"/>
-    <label class="form-label">Password</label>
-    <p class="alert">Invalid Credentials..!!</p>
-    <button class="btn">Login </button>
-  </div>
-</form>
-
-<script>
-  $('#password').focusin(function(){
-  $('form').addClass('up')
-});
-$('#password').focusout(function(){
-  $('form').removeClass('up')
-});
-
-// Panda Eye move
-$(document).on( "mousemove", function( event ) {
-  var dw = $(document).width() / 15;
-  var dh = $(document).height() / 15;
-  var x = event.pageX/ dw;
-  var y = event.pageY/ dh;
-  $('.eye-ball').css({
-    width : x,
-    height : y
-  });
-});
-
-// validation
 
 
-$('.btn').click(function(){
-  $('form').addClass('wrong-entry');
-    setTimeout(function(){ 
-       $('form').removeClass('wrong-entry');
-     },3000 );
-});
-</script>
+        
+
+
+    
+
+ 
+
+  
 </body>
-
 </html>
