@@ -12,7 +12,7 @@
      
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+    <link href="./assets/css/main.css" rel="stylesheet"> 
    
 
    <title>Responsive Regisration Form </title>
@@ -486,6 +486,42 @@
     
     <div class="container">
         <header>REGISTRATION FORM</header>
+       
+      <nav id="navbar" class="navbar" style="margin: auto;">
+  <ul>
+    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
+    <li><a href="index.php">HOME</a></li>
+    <li><a href="about.php">ABOUT</a></li>
+    <li><a href="services.php">SERVICES</a></li>
+   
+    <space style = "width: 300px"> </space>
+
+
+          <li class="dropdown"><a href="login.php"><span>LOGIN</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul  style="background-color: transparent; ">
+              <li><a href="Student_Side/login.php">STUDENT</a></li>
+              <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
+              <li><a href="Student_Side/tlogin.html">TEACHER</a></li>
+          
+             
+            </ul>
+          </li>
+          <!-- <li class="dropdown"><li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">
+            REGISTER</a></li> -->
+            <li class="dropdown"><a href="./Student_Side/Stud_registration/page1.html"><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul  style="background-color: transparent; ">
+              <li><a href="./Student_Side/Stud_registration/page1.html">STUDENT</a></li>
+              
+              <li><a href="teacher.php">TEACHER</a></li>
+          
+             
+            </ul>
+          </li>
+
+        </ul>
+      </nav><!-- .navbar -->
+
 
         <form action="#">
             <div class="form first">
