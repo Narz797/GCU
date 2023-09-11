@@ -1,15 +1,18 @@
 <?php
 include '../backend/connect_database.php';
 
-// Get user input from the query parameter
-$userInput = $_GET['query'];
-
+$input = $_GET['input'];
 // Query the database for suggestions
-$stmt = $db->prepare("SELECT `Acronym` FROM `courses` WHERE `Acronym` LIKE :input LIMIT 10");
-$stmt->bindValue(':input', '%' . $userInput . '%', PDO::PARAM_STR);
+$sql = "SELECT `Acronym` FROM `courses` WHERE `Acronym` LIKE :input";
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':input', '%' . $input . '%', PDO::PARAM_STR);
 $stmt->execute();
 
-// Fetch and return suggestions as JSON
-$suggestions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-echo json_encode($suggestions);
+if ($stmt->rowCount() > 0) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo "<div>" . $row['Acronym'] . "</div>";
+    }
+} else {
+    echo "No suggestions found";
+}
 ?>

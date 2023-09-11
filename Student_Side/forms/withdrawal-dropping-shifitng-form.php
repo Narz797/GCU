@@ -48,24 +48,26 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
           <textarea name="textarea" class="textarea" id="reason_explain"></textarea>
         </p>
         <div class="hidden" id="for-shift">
-          <label>Shifting from</label>
-          <label for="textfield4">:</label>
-          <input type="text" name="textfield4" id="textfield4" id="autocomplete1" class="autocomplete" autocomplete="off">
+            <label>Shifting from</label>
+            <label for="textfield4">:</label>
+            <input type="text" name="textfield4" id="textfield4" onkeyup="showSuggestions('textfield4')">
             <!-- Create a container to display autocomplete suggestions for the first input -->
-          <div id="autocomplete-suggestions1"></div>
+            <div id="autocomplete-suggestions1"></div>
 
-          <label>to</label>
-          <label for="textfield5">:</label>
-          <input type="text" name="textfield5" id="textfield5" id="autocomplete2" class="autocomplete" autocomplete="off">
-            <!-- Create a container to display autocomplete suggestions for the first input -->
-          <div id="autocomplete-suggestions2"></div>
-
+            <label>to</label>
+            <label for="textfield5">:</label>
+            <input type="text" name="textfield5" id="textfield5" onkeyup="showSuggestions('textfield5')">
+            <!-- Create a container to display autocomplete suggestions for the second input -->
+            <div id="autocomplete-suggestions2"></div>
+            
         </div>
         <p>
           <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
         </p>
       </form>
       
+      <div id="suggestions"></div>
+
     </div>
   </div>
   <script>
@@ -83,7 +85,7 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
   <script>
     $("#form_transact").on("submit", function (event) {
       event.preventDefault();
-      var student_id = <?php echo $_SESSION['session_id'] ?>;
+      var student_id = <?php echo $_SESSION['session_id']?>;
       var transact_type = "withdrawal"
 
       $.ajax({
@@ -101,60 +103,33 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
       });
     });
 
-    // autcomplete
- document.addEventListener('DOMContentLoaded', function () {
- // Attach an event listener to the first autocomplete input
-document.getElementById('autocomplete1').addEventListener('input', function () {
-  // Get user input
-  const userInput = this.value;
+   
+  </script>
 
-  // Retrieve previously stored suggestions for the first input
-  const storedSuggestions = JSON.parse(localStorage.getItem('autocompleteSuggestions1')) || [];
+  <script>
+     // autcomplete
+     function showSuggestions(inputId) {
+    var input = document.getElementById(inputId);
+    var inputValue = input.value;
+    var suggestionsDiv = document.getElementById("suggestions");
 
-  // Filter stored suggestions based on the current user input
-  const filteredSuggestions = storedSuggestions.filter(suggestion => suggestion.startsWith(userInput));
+    if (inputValue.length === 0) {
+        suggestionsDiv.innerHTML = "";
+        return;
+    }
 
-  // Display filtered suggestions
-  displaySuggestions(filteredSuggestions, 'autocomplete-suggestions1');
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            suggestionsDiv.innerHTML = xmlhttp.responseText;
+        }
+    };
 
-  // Make an AJAX request to fetch additional suggestions if needed
-  fetch('../../backend/autocomplete.php?query=' + userInput) // Updated URL here
-    .then(response => response.json())
-    .then(data => {
-      // Merge and deduplicate suggestions from the server with the stored suggestions
-      const combinedSuggestions = [...new Set([...filteredSuggestions, ...data])];
 
-      // Update and store the combined suggestions
-      localStorage.setItem('autocompleteSuggestions1', JSON.stringify(combinedSuggestions));
-    });
-});
+        xmlhttp.open("GET", "../../backend/autocomplete.php?input=" + inputValue, true); // Adjust the path to autocomplete.php
+        xmlhttp.send();
+    }
 
-// Attach an event listener to the second autocomplete input (similar to the first one)
-document.getElementById('autocomplete2').addEventListener('input', function () {
-  // Get user input
-  const userInput = this.value;
-
-  // Retrieve previously stored suggestions for the second input
-  const storedSuggestions = JSON.parse(localStorage.getItem('autocompleteSuggestions2')) || [];
-
-  // Filter stored suggestions based on the current user input
-  const filteredSuggestions = storedSuggestions.filter(suggestion => suggestion.startsWith(userInput));
-
-  // Display filtered suggestions
-  displaySuggestions(filteredSuggestions, 'autocomplete-suggestions2');
-
-  // Make an AJAX request to fetch additional suggestions if needed
-  fetch('../../backend/autocomplete.php?query=' + userInput) // Updated URL here
-    .then(response => response.json())
-    .then(data => {
-      // Merge and deduplicate suggestions from the server with the stored suggestions
-      const combinedSuggestions = [...new Set([...filteredSuggestions, ...data])];
-
-      // Update and store the combined suggestions
-      localStorage.setItem('autocompleteSuggestions2', JSON.stringify(combinedSuggestions));
-    });
-});
- });
 
   </script>
 </body>

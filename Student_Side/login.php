@@ -230,7 +230,7 @@ input[type="submit"]:hover {
         
 
             <div class="txt_field">
-              <input type="text" required />
+              <input type="email" required />
               <span></span>
               <label>Username</label>
             </div>
