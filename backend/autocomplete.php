@@ -3,6 +3,8 @@ include '../backend/connect_database.php';
 
 $input = $_GET['input'];
 
+$suggestions = array(); // Initialize an empty array for suggestions
+
 try {
     $sql = "SELECT `Acronym` FROM `courses` WHERE `Acronym` LIKE :input";
     $stmt = $pdo->prepare($sql);
@@ -11,13 +13,17 @@ try {
 
     if ($stmt->rowCount() > 0) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo "<div>" . htmlspecialchars($row['Acronym']) . "</div>";
+            // Add each suggestion to the array
+            $suggestions[] = htmlspecialchars($row['Acronym']);
         }
     } else {
-        echo "No suggestions found";
+        $suggestions[] = "No suggestions found";
     }
+
+    // Convert the array to JSON format and send it as the response
+    echo json_encode($suggestions);
 } catch (PDOException $e) {
     // Handle database errors here
-    echo "Error: " . $e->getMessage();
+    echo json_encode(array("error" => "Database error: " . $e->getMessage()));
 }
 ?>

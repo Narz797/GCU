@@ -98,7 +98,6 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
         </div>
 
 
-
         <p>
           <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
         </p>
@@ -159,8 +158,8 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            suggestionsDiv.innerHTML = xmlhttp.responseText;
-            suggestionsDiv.style.display = "block";
+            var suggestions = JSON.parse(xmlhttp.responseText); // Assuming your suggestions are returned as a JSON array
+            displaySuggestions(suggestions, suggestionsDiv, input);
         }
     };
 
@@ -168,16 +167,39 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
     xmlhttp.send();
 }
 
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Tab") {
-        var activeSuggestion = document.querySelector(".autocomplete-popup li:hover");
-        if (activeSuggestion) {
-            var inputId = activeSuggestion.parentElement.id.replace("autocomplete-suggestions", "textfield");
-            var suggestionText = activeSuggestion.innerText;
-            document.getElementById(inputId).value = suggestionText;
-            event.preventDefault(); // Prevent the default tab behavior
-        }
+function displaySuggestions(suggestions, suggestionsDiv, input) {
+    if (suggestions.length === 0) {
+        suggestionsDiv.style.display = "none";
+        return;
     }
+
+    suggestionsDiv.innerHTML = ""; // Clear previous suggestions
+
+    var ul = document.createElement("ul");
+    suggestions.forEach(function (suggestion) {
+        var li = document.createElement("li");
+        li.textContent = suggestion;
+        li.addEventListener("click", function () {
+            input.value = suggestion; // Fill in the input field with the selected suggestion
+            suggestionsDiv.style.display = "none"; // Hide the suggestions
+        });
+        ul.appendChild(li);
+    });
+
+    suggestionsDiv.appendChild(ul);
+    suggestionsDiv.style.display = "block"; // Show the suggestions
+}
+
+// Add an event listener to textfield4
+var textfield4 = document.getElementById('textfield4');
+textfield4.addEventListener('input', function () {
+    this.value = this.value.toUpperCase();
+});
+
+// Add an event listener to textfield5
+var textfield5 = document.getElementById('textfield5');
+textfield5.addEventListener('input', function () {
+    this.value = this.value.toUpperCase();
 });
 
 
