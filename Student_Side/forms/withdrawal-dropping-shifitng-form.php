@@ -15,6 +15,38 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
     .hidden {
       display: none;
     }
+
+    .autocomplete-container {
+    position: relative;
+    }
+
+    .autocomplete-popup {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        max-height: 150px;
+        overflow-y: auto;
+        display: none;
+    }
+
+    .autocomplete-popup ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .autocomplete-popup li {
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .autocomplete-popup li:hover {
+        background-color: #f0f0f0;
+    }
+
   </style>
 
 </head>
@@ -50,17 +82,23 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
         <div class="hidden" id="for-shift">
             <label>Shifting from</label>
             <label for="textfield4">:</label>
-            <input type="text" name="textfield4" id="textfield4" onkeyup="showSuggestions('textfield4')">
-            <!-- Create a container to display autocomplete suggestions for the first input -->
-            <div id="autocomplete-suggestions1"></div>
+            <div class="autocomplete-container">
+                <input type="text" name="textfield4" id="textfield4" onkeyup="showSuggestions('textfield4', 'autocomplete-suggestions1')">
+                <!-- Create a container to display autocomplete suggestions for the first input -->
+                <div id="autocomplete-suggestions1" class="autocomplete-popup"></div>
+            </div>
 
             <label>to</label>
             <label for="textfield5">:</label>
-            <input type="text" name="textfield5" id="textfield5" onkeyup="showSuggestions('textfield5')">
-            <!-- Create a container to display autocomplete suggestions for the second input -->
-            <div id="autocomplete-suggestions2"></div>
-            
+            <div class="autocomplete-container">
+                <input type="text" name="textfield5" id="textfield5" onkeyup="showSuggestions('textfield5', 'autocomplete-suggestions2')">
+                <!-- Create a container to display autocomplete suggestions for the second input -->
+                <div id="autocomplete-suggestions2" class="autocomplete-popup"></div>
+            </div>
         </div>
+
+
+
         <p>
           <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
         </p>
@@ -108,13 +146,13 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
 
   <script>
      // autcomplete
-     function showSuggestions(inputId) {
+     function showSuggestions(inputId, suggestionContainerId) {
     var input = document.getElementById(inputId);
     var inputValue = input.value;
-    var suggestionsDiv = document.getElementById("suggestions");
+    var suggestionsDiv = document.getElementById(suggestionContainerId);
 
     if (inputValue.length === 0) {
-        suggestionsDiv.innerHTML = "";
+        suggestionsDiv.style.display = "none";
         return;
     }
 
@@ -122,13 +160,25 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             suggestionsDiv.innerHTML = xmlhttp.responseText;
+            suggestionsDiv.style.display = "block";
         }
     };
 
+    xmlhttp.open("GET", "../../backend/autocomplete.php?input=" + inputValue, true);
+    xmlhttp.send();
+}
 
-        xmlhttp.open("GET", "../../backend/autocomplete.php?input=" + inputValue, true); // Adjust the path to autocomplete.php
-        xmlhttp.send();
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Tab") {
+        var activeSuggestion = document.querySelector(".autocomplete-popup li:hover");
+        if (activeSuggestion) {
+            var inputId = activeSuggestion.parentElement.id.replace("autocomplete-suggestions", "textfield");
+            var suggestionText = activeSuggestion.innerText;
+            document.getElementById(inputId).value = suggestionText;
+            event.preventDefault(); // Prevent the default tab behavior
+        }
     }
+});
 
 
   </script>
