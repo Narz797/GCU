@@ -1,3 +1,10 @@
+<?php
+session_start();
+// include '../backend/validate_user.php';
+// include '../backend/connect_database.php';
+$_SESSION['origin'] = 'Employee';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -202,18 +209,11 @@ input[type="submit"]:hover {
 .signup_link a:hover {
   text-decoration: underline;
 }
-      
-
-
-
-
-       
-
-
-   
-    
 
     </style>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+      <link href="../assets/img/GCU_logo.png" rel="icon">
 </head>
 <body>
    <!-- <fieldset style="width:80%;"> -->
@@ -224,23 +224,23 @@ input[type="submit"]:hover {
 
         
         
-        <form method="post" style="width: 50%;">
+        <form id="Login_Student_Employee" method="post" style="width: 50%;">
           <h1>LOGIN FORM</h1>
         <br>
         
 
             <div class="txt_field">
-              <input type="text" required />
+              <input type="text" id="email" name="email" required />
               <span></span>
               <label>Username</label>
             </div>
             <div class="txt_field">
-              <input type="password" required />
+              <input type="password" id="password" name="password" required />
               <span></span>
               <label>Password</label>
             </div>
-            <div class="pass"><b>Forgot Password?</b></div>
-            <input type="submit" value="Login" />
+            <div class="pass"><a href="ForgotPassword.php"><b>Forgot Password?</b></a></div>
+            <input type="submit" value="Login" id="submitButton" />
             <div class="signup_link">Not a member? <a href="#"><b>Signup</b></a></div>
           </form>
 
@@ -257,4 +257,37 @@ input[type="submit"]:hover {
 
   
 </body>
+<script>
+      function goHome() {
+                  // Redirect to the desired page
+                  window.location.href = '../Student_Side/index.php';
+              }
+          $("#Login_Student_Employee").on("submit", function (event) {
+          var source = "employee_side_login";
+    event.preventDefault();
+
+    $.ajax({
+        type: 'POST',
+        url: '../backend/validate_user.php',
+        data: {
+            email: $("#email").val(),
+            password: $("#password").val(),
+            source: source
+        },
+        success: function (data) {
+     
+            if  (data === "success_employee") {
+                window.location.href = "../Employee_Side/index.php";
+            } else {
+              alert("Invalid username or password.");
+            }
+          
+        }
+    });
+});
+
+
+   
+    
+  </script>
 </html>
