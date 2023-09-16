@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2023 at 12:39 PM
+-- Generation Time: Sep 16, 2023 at 10:22 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -43,7 +43,8 @@ CREATE TABLE `absence` (
 --
 
 INSERT INTO `absence` (`absence_id`, `transact_id`, `semester`, `start_year`, `end_year`, `reason`, `leave`, `status`) VALUES
-(2, 25, '1', '2019', '2020', 'Too lazy', 'Play Games', 'pending');
+(2, 25, '1', '2019', '2020', 'Too lazy', 'Play Games', 'pending'),
+(3, 31, '1', '2002', '2020', 'asdfasd', 'asdfasdfas', '');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,7 @@ CREATE TABLE `courses` (
 
 INSERT INTO `courses` (`id`, `Colleges`, `Course`, `Acronym`) VALUES
 (1, 'College of Agriculture', 'Bachelor of Science in Agribusiness', 'BSAB'),
-(2, 'College of Agriculture', 'Bachelor of Science in Agriculture', '	BSA'),
+(2, 'College of Agriculture', 'Bachelor of Science in Agriculture', 'BSA'),
 (3, 'College of Arts and Humanities', 'Bachelor of Arts in Communication', 'BA Comm'),
 (4, 'College of Arts and Humanities', 'Bachelor of Arts in English Language', 'BAEL'),
 (5, 'College of Arts and Humanities', 'Bachelor of Arts in Filipino Language', 'BAFL'),
@@ -144,7 +145,8 @@ CREATE TABLE `readmission` (
 
 INSERT INTO `readmission` (`readmission_id`, `transact_id`, `motivation`, `reason`, `status`) VALUES
 (3, 17, 'fgsdfgsdfg', 'sdfgsdfgs', 'pending'),
-(4, 18, 'jfgjhfgh', 'fghjfghj', 'pending');
+(4, 18, 'jfgjhfgh', 'fghjfghj', 'pending'),
+(5, 26, 'no reason', 'none', '');
 
 -- --------------------------------------------------------
 
@@ -167,7 +169,8 @@ CREATE TABLE `referral` (
 INSERT INTO `referral` (`referral_id`, `transact_id`, `reason`, `referred`, `status`) VALUES
 (12, 22, 'Interview,Counseling,Late,Absent,fghdfghdf', '1', 'pending'),
 (13, 23, 'Interview,Counseling,Absent,fghdfghdf', '3', 'pending'),
-(14, 24, 'Interview,Counseling,fghdfghdf', '2', 'pending');
+(14, 24, 'Interview,Counseling,fghdfghdf', '2', 'pending'),
+(15, 30, 'Interview,Counseling,Late,Absent,others', 'Instructor', '');
 
 -- --------------------------------------------------------
 
@@ -176,8 +179,7 @@ INSERT INTO `referral` (`referral_id`, `transact_id`, `reason`, `referred`, `sta
 --
 
 CREATE TABLE `student_user` (
-  `user_id` int(11) NOT NULL,
-  `stud_user_id` int(11) DEFAULT NULL,
+  `stud_user_id` int(11) NOT NULL,
   `first_name` text DEFAULT NULL,
   `last_name` text DEFAULT NULL,
   `middle_name` text DEFAULT NULL,
@@ -185,6 +187,7 @@ CREATE TABLE `student_user` (
   `year_enrolled` year(4) DEFAULT NULL,
   `course` text DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
+  `status` int(11) NOT NULL,
   `email` text DEFAULT NULL,
   `username` text DEFAULT NULL,
   `password` text DEFAULT NULL
@@ -194,17 +197,18 @@ CREATE TABLE `student_user` (
 -- Dumping data for table `student_user`
 --
 
-INSERT INTO `student_user` (`user_id`, `stud_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `year_enrolled`, `course`, `birth_date`, `email`, `username`, `password`) VALUES
-(1, 2001518, 'Jonray', 'Tacudog', 'Bernard', 'Male', NULL, NULL, NULL, 'tacudog.jonray@gmail.com', 'spellarj', '12345'),
-(4, 6543, 'test', 'test', 't', 'Male', '2005', 'BSIT', '2023-08-23', 'narz@gmail.com', 'student2', 'pass2'),
-(16, 432, 'Narz Josef', 'Taquio', 'L.', 'Male', '2020', 'BSIT', '0000-00-00', 'josefnarz2011@gmail.com', 'Narz', '$2y$10$Qsu.qwvkZ1ProVhvKXzCceopW3769HusjdHNfgzrouJH43BH0jISy'),
-(17, 111, 'John', 'Doe', 'D', 'Male', '2020', 'BLIS', '2023-08-15', 'user2@gmail.com', 'user2', '$2y$10$SczVZE3o64M8ZhuB1.NtG.AEY38qQFypzZ/FCW2m1sHyIR0eVEeSO'),
-(18, 112, 'Jane', 'D.', 'Doe', 'Female', '2019', 'BSDC', '2023-08-21', 'user3@gmail.com', 'user3', '$2y$10$jU4Y./C62dj97yonb5Wk7u02Spu3cnzv5sjNJXBj.8U1M77T7ScOy'),
-(19, 114, 'Josh', 'Kun', 'S', 'Male', '2020', 'BSIT', '2023-08-11', 'user4@gmail.com', 'user4', '$2y$10$4c3P3QQ2hUkIu8hffGl0ZewQB3ZHzfu1uNV76W9fiy/A/IhELhD5q'),
-(20, 115, 'Shinomiya', 'Kaguya', 'S', 'Female', '2019', 'BSDC', '2023-08-11', 'user5@gmail.com', 'user4', '$2y$10$Bc5xD1fwgVaDhyfodnoRpeWEqq3wys7oO1rEXODkS6bLBFxwxkPH.'),
-(21, 116, 'Miyuki', 'Shirogane', 'S.', 'Male', '2019', 'BSIT', '2023-08-18', 'user6@gmail.com', 'user6', '$2y$10$ijDxvfz1Nwj/W71jek9d1Oi/E3glb8U/HAqoCq9vqCHPwp3/BraT2'),
-(22, 117, 'Luffy', 'Monkey', 'D', 'Male', '2020', 'BLIS', '2023-08-18', 'user7@gmail.com', 'user7', '$2y$10$tu1lLwa.V8I728aNkNnpbuwdBckqpv46jpwAPJpVkwDDdPvqIQYmC'),
-(23, 118, 'test8', 'test', 't', 'Female', '2020', 'qwer', '2023-08-17', 'user8@gmail.com', 'user8', '$2y$10$RKW1IMlG82XCHHjAevPL0e.YPsPzqFv6ibl70MIvXTheK90sQtf0a');
+INSERT INTO `student_user` (`stud_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `year_enrolled`, `course`, `birth_date`, `status`, `email`, `username`, `password`) VALUES
+(111, 'John', 'Doe', 'D', 'Male', '2020', 'BLIS', '2023-08-15', 1, 'user2@gmail.com', 'user2', '$2y$10$SczVZE3o64M8ZhuB1.NtG.AEY38qQFypzZ/FCW2m1sHyIR0eVEeSO'),
+(112, 'Jane', 'D.', 'Doe', 'Female', '2019', 'BSDC', '2023-08-21', 1, 'user3@gmail.com', 'user3', '$2y$10$jU4Y./C62dj97yonb5Wk7u02Spu3cnzv5sjNJXBj.8U1M77T7ScOy'),
+(114, 'Josh', 'Kun', 'S', 'Male', '2020', 'BSIT', '2023-08-11', 0, 'user4@gmail.com', 'user4', '$2y$10$4c3P3QQ2hUkIu8hffGl0ZewQB3ZHzfu1uNV76W9fiy/A/IhELhD5q'),
+(115, 'Shinomiya', 'Kaguya', 'S', 'Female', '2019', 'BSDC', '2023-08-11', 0, 'user5@gmail.com', 'user4', '$2y$10$Bc5xD1fwgVaDhyfodnoRpeWEqq3wys7oO1rEXODkS6bLBFxwxkPH.'),
+(116, 'Miyuki', 'Shirogane', 'S.', 'Male', '2019', 'BSIT', '2023-08-18', 0, 'user6@gmail.com', 'user6', '$2y$10$ijDxvfz1Nwj/W71jek9d1Oi/E3glb8U/HAqoCq9vqCHPwp3/BraT2'),
+(117, 'Luffy', 'Monkey', 'D', 'Male', '2020', 'BLIS', '2023-08-18', 0, 'user7@gmail.com', 'user7', '$2y$10$tu1lLwa.V8I728aNkNnpbuwdBckqpv46jpwAPJpVkwDDdPvqIQYmC'),
+(118, 'test8', 'test', 't', 'Female', '2020', 'qwer', '2023-08-17', 0, 'user8@gmail.com', 'user8', '$2y$10$RKW1IMlG82XCHHjAevPL0e.YPsPzqFv6ibl70MIvXTheK90sQtf0a'),
+(432, 'Narz Josef', 'Taquio', 'L.', 'Male', '2020', 'BSIT', '0000-00-00', 0, 'josefnarz2011@gmail.com', 'Narz', '$2y$10$Qsu.qwvkZ1ProVhvKXzCceopW3769HusjdHNfgzrouJH43BH0jISy'),
+(6543, 'test', 'test', 't', 'Male', '2005', 'BSIT', '2023-08-23', 0, 'narz@gmail.com', 'student2', 'pass2'),
+(2001518, 'Jonray', 'Tacudog', 'Bernard', 'Male', NULL, NULL, NULL, 0, 'tacudog.jonray@gmail.com', 'spellarj', '12345'),
+(2002529, 'asdfasd', 'asdfasd', 'f', 'Female', '2020', 'BSIT', '2023-09-07', 0, 'jo@gmail.com', 'zzz', 'pass');
 
 -- --------------------------------------------------------
 
@@ -227,15 +231,29 @@ CREATE TABLE `transact` (
 --
 
 INSERT INTO `transact` (`transact_id`, `student_id`, `employee_id`, `transact_type`, `date_created`, `date_completed`, `status`) VALUES
-(17, 111, NULL, 'readmission', '2023-09-07 08:51:20', NULL, NULL),
-(18, 111, NULL, 'readmission', '2023-09-07 08:51:34', NULL, NULL),
-(19, 111, NULL, 'withdrawal', '2023-09-07 08:51:53', NULL, NULL),
-(20, 111, NULL, 'withdrawal', '2023-09-07 08:52:18', NULL, NULL),
-(21, 111, NULL, 'withdrawal', '2023-09-07 08:52:42', NULL, NULL),
-(22, 111, NULL, 'referral', '2023-09-07 08:57:14', NULL, NULL),
-(23, 111, NULL, 'referral', '2023-09-07 08:57:21', NULL, NULL),
-(24, 111, NULL, 'referral', '2023-09-07 08:57:26', NULL, NULL),
-(25, 111, NULL, 'leave_of_absence', '2023-09-07 08:57:59', NULL, NULL);
+(17, 111, NULL, 'readmission', '2023-09-07 08:51:20', NULL, 'pending'),
+(18, 111, NULL, 'readmission', '2023-09-07 08:51:34', NULL, 'pending'),
+(19, 111, NULL, 'withdrawal', '2023-09-07 08:51:53', NULL, 'pending'),
+(20, 111, NULL, 'withdrawal', '2023-09-07 08:52:18', NULL, 'pending'),
+(21, 111, NULL, 'withdrawal', '2023-09-07 08:52:42', NULL, 'pending'),
+(22, 111, NULL, 'referral', '2023-09-07 08:57:14', NULL, 'pending'),
+(23, 111, NULL, 'referral', '2023-09-07 08:57:21', NULL, 'pending'),
+(24, 111, NULL, 'referral', '2023-09-07 08:57:26', NULL, 'pending'),
+(25, 111, NULL, 'leave_of_absence', '2023-09-07 08:57:59', NULL, 'pending'),
+(26, 432, NULL, 'readmission', '2023-09-13 14:42:10', NULL, 'recieved'),
+(27, 432, NULL, 'withdrawal', '2023-09-13 14:42:51', NULL, 'recieved'),
+(28, 432, NULL, 'withdrawal', '2023-09-13 14:43:06', NULL, 'recieved'),
+(29, 432, NULL, 'withdrawal', '2023-09-13 14:43:18', NULL, 'recieved'),
+(30, 432, NULL, 'referral', '2023-09-13 14:44:36', NULL, 'recieved'),
+(31, 432, NULL, 'leave_of_absence', '2023-09-13 14:45:05', NULL, 'recieved'),
+(32, 432, NULL, 'withdrawal', '2023-09-14 13:58:40', NULL, 'recieved'),
+(33, 432, NULL, 'withdrawal', '2023-09-14 13:58:51', NULL, 'recieved'),
+(34, 432, NULL, 'withdrawal', '2023-09-14 14:01:56', NULL, 'recieved'),
+(35, 2002529, NULL, 'withdrawal', '2023-09-14 14:14:01', NULL, 'recieved'),
+(36, 2002529, NULL, 'withdrawal', '2023-09-14 14:19:48', NULL, 'pending'),
+(37, 2002529, NULL, 'withdrawal', '2023-09-14 14:21:43', NULL, 'pending'),
+(38, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'pending'),
+(39, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'pending');
 
 -- --------------------------------------------------------
 
@@ -249,17 +267,27 @@ CREATE TABLE `withdrawal` (
   `reason` longtext DEFAULT NULL,
   `statement` longtext DEFAULT NULL,
   `explain` longtext DEFAULT NULL,
-  `status` varchar(255) NOT NULL
+  `status` varchar(255) NOT NULL,
+  `shift_from` int(11) NOT NULL,
+  `shift_to` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `withdrawal`
 --
 
-INSERT INTO `withdrawal` (`withdrawal_id`, `transact_id`, `reason`, `statement`, `explain`, `status`) VALUES
-(3, 19, 'Withdrawing Enrollment', 'Somethin', 'coz I wanna', 'pending'),
-(4, 20, 'Dropping Subjects', 'I have no reason', 'I just want to', 'pending'),
-(5, 21, 'Shifting', 'No reason at all', 'Just for the fun of it', 'pending');
+INSERT INTO `withdrawal` (`withdrawal_id`, `transact_id`, `reason`, `statement`, `explain`, `status`, `shift_from`, `shift_to`) VALUES
+(3, 19, 'Withdrawing Enrollment', 'Somethin', 'coz I wanna', 'pending', 0, 0),
+(4, 20, 'Dropping Subjects', 'I have no reason', 'I just want to', 'pending', 0, 0),
+(5, 21, 'Shifting', 'No reason at all', 'Just for the fun of it', 'pending', 0, 0),
+(6, 27, 'Withdrawing Enrollment', 'hfdghdfg', 'dfghdfghdf', '', 0, 0),
+(7, 28, 'Dropping Subjects', 'xcvbxcvb', 'asdfsadf', '', 0, 0),
+(8, 29, 'Shifting', 'xcvbxcvb', 'asdfsadf', '', 0, 0),
+(9, 35, 'Shifting', 'fsdfgs', 'sdfgsdfg', '', 4, 4),
+(10, 36, 'Shifting', 'ghdfgghd', 'dfghdfghdfgh', '', 18, 18),
+(11, 37, 'Shifting', 'fasdfas', 'asdfasdf', '', 6, 6),
+(12, 38, 'Shifting', 'sdfgsdfg', 'sgfsdg', '', 4, 1),
+(13, 39, 'Shifting', 'sdfgsdfg', 'sgfsdg', '', 4, 1);
 
 --
 -- Indexes for dumped tables
@@ -299,7 +327,7 @@ ALTER TABLE `referral`
 -- Indexes for table `student_user`
 --
 ALTER TABLE `student_user`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`stud_user_id`);
 
 --
 -- Indexes for table `transact`
@@ -321,7 +349,7 @@ ALTER TABLE `withdrawal`
 -- AUTO_INCREMENT for table `absence`
 --
 ALTER TABLE `absence`
-  MODIFY `absence_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `absence_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `admin_user`
@@ -339,31 +367,25 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `readmission`
 --
 ALTER TABLE `readmission`
-  MODIFY `readmission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `readmission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `referral`
 --
 ALTER TABLE `referral`
-  MODIFY `referral_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `student_user`
---
-ALTER TABLE `student_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `referral_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `transact`
 --
 ALTER TABLE `transact`
-  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `withdrawal`
 --
 ALTER TABLE `withdrawal`
-  MODIFY `withdrawal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `withdrawal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

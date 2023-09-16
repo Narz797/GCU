@@ -1,29 +1,25 @@
 <?php
+header('Content-Type: application/json');
+
 include '../backend/connect_database.php';
 
-$sql = "SELECT `stud_user_id`, `first_name`, `last_name`, `college`, `course`, `service_requested`, `status` FROM student_user";
-$stmt = $conn->prepare($sql);
+$sql = "SELECT
+student_user.stud_user_id,
+student_user.first_name,
+student_user.last_name,
+student_user.course,
+transact.status,
+transact.transact_type,
+transact.date_created
+FROM
+student_user
+INNER JOIN
+transact ON student_user.stud_user_id = transact.student_id;
+";
+$stmt = $pdo->prepare($sql);
 $stmt->execute();
-$stmt->bind_result($stud_user_id, $first_name,  $last_name, $college, $course, $service_requested, $status); // Corrected variable names
 
-$data = array(); // Initialize an array to store the data
-
-while ($stmt->fetch()) {
-    $data[] = array(
-        "stud_user_id" => $stud_user_id,
-        "service_requested" => $service_requested,
-        "first_name" => $first_name,
-        "last_name" => $last_name,
-        "college" => $college,
-        "course" => $course,
-        "status" => $status
-    );
-}
-
-$stmt->close();
-
-// Close the database connection
-$conn->close();
+$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Prepare and echo data as JSON
 echo json_encode($data);

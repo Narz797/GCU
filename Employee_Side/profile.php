@@ -134,9 +134,9 @@
                         <th> Last &nbspName <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Year Enrolled <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Course <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <!-- <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Service Requested <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Service Requested <br><span class="icon-arrow">&UpArrow;</span></th> -->
                         <th> Action Taken<br><span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>

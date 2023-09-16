@@ -118,8 +118,7 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
         textfield.classList.add('hidden');
       }
     });
-  </script>
-  <script>
+
     $("#form_transact").on("submit", function (event) {
       event.preventDefault();
       var student_id = <?php echo $_SESSION['session_id']?>;
@@ -131,7 +130,9 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
         data: {
           reason: $('#action').find(":selected").val(),
           statement: $('#reason_state').val(),
-          explain: $("#reason_explain").val()
+          explain: $("#reason_explain").val(),
+          course_frm: $("#textfield4").val(),
+          course_to: $("#textfield5").val()
         },
         success: function (data) {
           alert(data);

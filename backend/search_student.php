@@ -1,19 +1,13 @@
 <?php
 include '../backend/connect_database.php';
-$sql = "SELECT `stud_user_id`, `first_name`, `last_name`,  `year_enrolled`, `course`, `gender`,`contact_no`, `GuardianParents_no`, `service_requested` FROM student_user";
+$sql = "SELECT `stud_user_id`, `first_name`, `last_name`, `year_enrolled`, `course`, `gender` FROM student_user";
 
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 
-$result = $conn->query($sql);
-$data = array();
+$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
-    }
-}
-// Return data as JSON
+// Prepare and echo data as JSON
 echo json_encode($data);
-
-$conn->close();
 
 ?>

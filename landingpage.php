@@ -23,7 +23,7 @@
     <space style = "width: 300px"> </space>
 
 
-          <li class="dropdown"><a href="login.php"><span>LOGIN</span> <i
+          <li class="dropdown"><a href="#"><span>LOGIN</span> <i
                 class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul  style="background-color: transparent; ">
               <li><a href="Student_Side/login.php">STUDENT</a></li>

@@ -41,29 +41,53 @@ if ($transact == 'readmission') {
     $explain = $_POST['explain'];
     $datetime = new DateTime();
     $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
+  // ...
 
+    $course_frm = $_POST['course_frm'];
+    $course_to = $_POST['course_to'];
 
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :transact_type, :date_created, :status)';
-    $sql_2 = 'INSERT INTO withdrawal(`transact_id`, `reason`, `statement`, `explain`) VALUES (:transact_id, :reason, :statement, :explain)';
+    $sql_2 = 'INSERT INTO withdrawal(`transact_id`, `reason`, `statement`, `explain`, `shift_from`, `shift_to`) VALUES (:transact_id, :reason, :statement, :explain, :course_frm, :course_to)';
     try {
         $code = $pdo->prepare($sql_1);
         $code->bindParam(':student_id', $id);
         $code->bindParam(':transact_type', $transact);
-        $code->bindParam(':date_created',$dateCreated);
-        $code->bindParam(':status',$status);
+        $code->bindParam(':date_created', $dateCreated);
+        $code->bindParam(':status', $status);
         $code->execute();
 
         $transact_id = $pdo->lastInsertId();
 
-        $code = $pdo->prepare($sql_2);
-        $code->bindParam(':transact_id',$transact_id);
-        $code->bindParam(':reason', $reason);
-        $code->bindParam(':statement',$statement);
-        $code->bindParam(':explain',$explain);
-        
-        $code->execute();
+        // Retrieve the IDs for course1 and course2 based on their acronyms
+        $sql_course1 = 'SELECT `id` FROM `courses` WHERE `Acronym` = :course_frm';
+        $stmt_course1 = $pdo->prepare($sql_course1);
+        $stmt_course1->bindParam(':course_frm', $course_frm);
+        $stmt_course1->execute();
+        $course_frm_id = $stmt_course1->fetch(PDO::FETCH_COLUMN);
 
-        echo "Data inserted successfully";
+        $sql_course2 = 'SELECT `id` FROM `courses` WHERE `Acronym` = :course_to';
+        $stmt_course2 = $pdo->prepare($sql_course2);
+        $stmt_course2->bindParam(':course_to', $course_to);
+        $stmt_course2->execute();
+        $course_to_id = $stmt_course2->fetch(PDO::FETCH_COLUMN);
+
+        // Check if course_frm_id or course_to_id is null before inserting
+        if ($course_frm_id === false || $course_to_id === false) {
+            echo "Error: One or both course IDs could not be retrieved.";
+        } else {
+            $code = $pdo->prepare($sql_2);
+            $code->bindParam(':transact_id', $transact_id);
+            $code->bindParam(':reason', $reason);
+            $code->bindParam(':statement', $statement);
+            $code->bindParam(':explain', $explain);
+            $code->bindParam(':course_frm', $course_frm_id); // Bind to course_frm_id
+            $code->bindParam(':course_to', $course_to_id);   // Bind to course_to_id
+            
+    $code->execute();
+            
+
+            echo "Data inserted successfully";
+        }
     } catch (PDOException $e) {
         echo "Error inserting data: " . $e->getMessage();
     }
