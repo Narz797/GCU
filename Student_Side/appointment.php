@@ -45,11 +45,11 @@ include 'includes/main.php';
 
       
    
-      <div class="profile-icon">
+      <!-- <div class="profile-icon">
       <img src="../assets/img/vmn.webp" alt="Logo" width="90" height="90">
       
 
-      </div>
+      </div> -->
 
         <div class="month">
           <i class="fas fa-angle-left prev"></i>

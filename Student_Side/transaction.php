@@ -5,6 +5,22 @@ include 'includes/main.php';
 
  ?>
 
+<style>
+        /* Base styles for the text */
+        p {
+            font-size: 16px; /* Set a default font size */
+            line-height: 1.5; /* Set line spacing */
+            /* text-align: justify; */
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            p {
+                font-size: 14px; /* Decrease font size for smaller screens */
+            }
+        }
+    </style>
+
   <body>
 
 
@@ -24,48 +40,53 @@ include 'includes/main.php';
          
         </div>
 
-        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100" >
+        <!-- <div class="row gy-4" data-aos="fade-up" data-aos-delay="100" > -->
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100" style="width:100%;">
 
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6" style="width:100%;">
             <div class="service-item  position-relative">
               <div class="icon">
                <i class="bi bi-file-text"></i>
               </div>
               <h3>Readmission Slip</h3>
-              <p>Description</p>
+              <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
+                bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
               <a href="./forms/Readmission_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6" style="width:100%;">
             <div class="service-item position-relative">
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
               <h3>Withdrawal/Dropping/Shifting Form</h3>
-              <p>Description</p>
+              <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
+                bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
               <a href="./forms/withdrawal-dropping-shifitng-form.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6" style="width:100%;">
             <div class="service-item position-relative">
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
               <h3>Referral Slip</h3>
-              <p>Description</p>
+              <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
+                bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
               <a href="./forms/Referral_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6" style="width:100%;">
             <div class="service-item position-relative">
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
               <h3>Leave Of Absence</h3>
-              <p>Description</p>
+              <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
+                bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
               <a href="./forms/LeaveOfAbsence_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->

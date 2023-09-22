@@ -23,8 +23,8 @@
 
 
     <!-- Show when Mobile view -->
-    <li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
-    <li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li>
+    <!-- <li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
+    <li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li> -->
 
 
 <div class="containerA" style="margin-right:3%; background-color:black;">

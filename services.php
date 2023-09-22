@@ -557,11 +557,6 @@ include 'landingpage.php';
 
 
     </section><!-- End Our Services Section -->
-
-
-    
-    
-
     
 </body>
 

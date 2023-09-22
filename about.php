@@ -164,34 +164,14 @@ include 'landingpage.php';
     <p style="text-align:justify; font-size:16px;font-family: var(--font-primary)">Changes or improvements of the programs are based from feedbacks from teachers, parents, students, 
     and other clients. Guidance and counseling is a service profession that ultimately aims to assist people develop a well-rounded personality and live a fulfilling Life, maximizing his or her God-given 
     potentials. As such, the BSU-OSS-GCU gratefully welcomes comments and suggestions from the same clients.</p>
-
-
-
-  
 </div>
 
-
-
-
-
-
 </div>
-
- 
-    
-
-    
-
-  
-
     </section><!-- End Recent Blog Posts Section -->
 
      <!-- ======= Testimonials Section ======= -->
      <section id="testimonials" class="testimonials">
       <div class="container" data-aos="fade-up">
-
-        
-
         <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
 
