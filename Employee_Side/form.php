@@ -100,37 +100,63 @@
 
     
     <div class="container">
-        <br>
-        <h2 class="title"></h2>
-        <div class="card">
-            <hr>
-            <div class=" gallery">
-            <main class="table" id="customers_table">
-            <section class="table-header">
-                <h1>The following are the requested forms for today</h1>
+    <div class="card">
+            <header class="card-header">
+                <small>The following are the requested forms for today,</small>
                 <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
-            </section>
-            <section class="table-body">               
-                    <table id="dynamicTable">
-                        <thead>
-                            <tr>
-                                <th>Student ID<span class="icon-arrow">&UpArrow;</span></th>                            
-                                <th>Student<span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Date <span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Service Requested<span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Status<span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Action<span class="icon-arrow">&UpArrow;</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                
-                        </tbody>
-                    </table>
-                    <p id="noHistoryMessage1">No items available.</p>
-            
-                </div>
-            </section>
+            </header>
+            <hr>
+          <div class=" gallery">
+            <div class="content1">
+                <img src="./assets/images/portfolio/formtemp.png">
+                <h4>REFERRAL SLIP</h4>
+                <p>10 pending...</p>
+                <h5>QF-OSS-01</h5>
+                <br>
+                <h5><i class="ri-mail-unread-line size"></i></h5>
+                <br>
+                <a href="subpage/rs_page.php">
+                <button class="buy-1">READ MORE</button></a>
+
+            </div>
+                <div class="content1">
+                <img src="./assets/images/portfolio/formtemp.png">
+                <h4>READMISSION SLIP</h4>
+                <p>8 pending...</p>
+                <h5>OSS-GCU-F12</h5>
+                <br>
+                <h5><i class="ri-mail-unread-line"></i></h5>
+                <br>
+                <a href="subpage/ra_page.php">
+                <button class="buy-1">READ MORE</button></a>
+
+            </div>
+                <div class="content1">
+                <img src="./assets/images/portfolio/formtemp.png">
+                <h4>WITHDRAWAL SLIP</h4>
+                <p>11 pending...</p>
+                <h5>OSS-GCU-F13</h5>
+                <br>
+                <h5><i class="ri-mail-unread-line"></i></h5>
+                <br>
+                <a href="subpage/wds_page.php">
+                <button class="buy-1">READ MORE</button></a>
+
+            </div>
+                <div class="content1">
+                <img src="./assets/images/portfolio/formtemp.png">
+                <h4>LEAVE OF ABSENCE SLIP</h4>
+                <p>28 pending...</p>
+                <h5>OSS-GCU-F11</h5>
+                <br>
+                <h5><i class="ri-mail-unread-line"></i></h5>
+                <br>
+                <a href="subpage/la_page.php">
+                <button class="buy-1">READ MORE</button></a>
+
+            </div>
+          </div>
+        </div>
     </div>
 
     <!-- History of transaction -->
