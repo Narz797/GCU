@@ -29,7 +29,7 @@
               <li><a href="Student_Side/login.php">STUDENT</a></li>
               <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
               <li><a href="Student_Side/tlogin.html">TEACHER</a></li>
-          
+              <li><a href="Admin_Side/login.php">ADMIN</a></li>
              
             </ul>
           </li>
