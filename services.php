@@ -553,9 +553,6 @@ include 'landingpage.php';
       </div>
     </section><!-- End Stats Counter Section -->
 
-    
-
-
     </section><!-- End Our Services Section -->
     
 </body>

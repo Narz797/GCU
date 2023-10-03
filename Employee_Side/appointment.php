@@ -161,7 +161,7 @@
   <!-- Script -->
   <script src="assets/main.js"></script>
   <script src="assets/js/calendar.js"></script>
-  <script>
+  <!-- <script>
     function myFunction() {
       alert('first');
       var response = '';
@@ -178,7 +178,7 @@
   <script>
     $("#save_appointment").on("submit", function (event) {
       event.preventDefault();
-      var employee_id = <?php echo $_SESSION['session_id'] ?>;
+      var employee_id = <?php // echo $_SESSION['session_id'] ?>;
       var transact_type = "withdrawal"
 
       $.ajax({
@@ -196,7 +196,7 @@
       });
     });
 
-  </script>
+  </script> -->
 </body>
 
 </html>
