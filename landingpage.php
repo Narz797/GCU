@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- testing -->
 <?php include 'includes/head.php'; ?>
 
 <body>
