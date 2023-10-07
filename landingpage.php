@@ -15,7 +15,7 @@
       </a>
       <nav id="navbar" class="navbar" style="margin: auto;">
   <ul>
-    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
+    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; " >
     <li><a href="index.php">HOME</a></li>
     <li><a href="about.php">ABOUT</a></li>
     <li><a href="services.php">SERVICES</a></li>
@@ -29,7 +29,7 @@
               <li><a href="Student_Side/login.php">STUDENT</a></li>
               <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
               <li><a href="Student_Side/tlogin.html">TEACHER</a></li>
-              <li><a href="Admin_Side/login.php">ADMIN</a></li>
+          
              
             </ul>
           </li>
@@ -39,7 +39,7 @@
             <ul  style="background-color: transparent; ">
               <li><a href="./Student_Side/Stud_registration/page1.html">STUDENT</a></li>
               
-              <li><a href="teacher.html">TEACHER</a></li>
+              <li><a href="teacher.php">TEACHER</a></li>
           
              
             </ul>
