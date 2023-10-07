@@ -15,7 +15,7 @@
     <link href="./assets/css/main.css" rel="stylesheet"> 
    
 
-   <title>Responsive Regisration Form </title>
+   <title>TeacherRegisration Form </title>
 </head>
 <style>/* ===== Google Font Import - Poppins ===== */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
@@ -109,20 +109,20 @@
         margin: 4px 0;
     }
 
-    form .fields .input-field1{
+    form .fields .input-field{
         display: flex;
         width: 100%;
         /* width: calc(100% / 3 - 15px); */
         flex-direction: column;
         margin: 4px 0;
     }
-    .input-field1 label{
+    .input-field label{
         font-size: 16px;
         font-weight: 500;
         color: #2e2e2e;
     }
 
-    form .fields .input-field2{
+    form .fields .input-field{
         display: flex;
         width: 100%;
         /* width: calc(100% / 3 - 15px); */
@@ -130,12 +130,12 @@
         margin: 4px 0;
        
     }
-    .input-field2 label{
+    .input-field label{
         font-size: 16px;
         font-weight: 500;
         color: #2e2e2e;
     }
-    .input-field2 input, select{
+    .input-field input, select{
         outline: none;
         font-size: 14px;
         /* font-style: italic; */
@@ -153,7 +153,7 @@
         font-weight: 500;
         color: #2e2e2e;
     }
-    .input-field1 input, select{
+    .input-field input, select{
         outline: none;
         font-size: 14px;
         /* font-style: italic; */
@@ -302,7 +302,7 @@
 
         
 
-        .container1 {
+        .container {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -316,7 +316,7 @@
 }
 
 /* Hide the browser's default checkbox */
-.container1 input {
+.container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -335,12 +335,12 @@
 }
 
 /* On mouse-over, add a grey background color */
-.container1:hover input ~ .checkmark {
+.container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container1 input:checked ~ .checkmark {
+.container input:checked ~ .checkmark {
   background-color: #2196F3;
 }
 
@@ -352,12 +352,12 @@
 }
 
 /* Show the checkmark when checked */
-.container1 input:checked ~ .checkmark:after {
+.container input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container1 .checkmark:after {
+.container .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -487,40 +487,7 @@
     <div class="container">
         <header>REGISTRATION FORM</header>
        
-      <nav id="navbar" class="navbar" style="margin: auto;">
-  <ul>
-    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
-    <li><a href="index.php">HOME</a></li>
-    <li><a href="about.php">ABOUT</a></li>
-    <li><a href="services.php">SERVICES</a></li>
-   
-    <space style = "width: 300px"> </space>
-
-
-          <li class="dropdown"><a href="login.php"><span>LOGIN</span> <i
-                class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul  style="background-color: transparent; ">
-              <li><a href="Student_Side/login.php">STUDENT</a></li>
-              <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
-              <li><a href="Student_Side/tlogin.html">TEACHER</a></li>
-          
-             
-            </ul>
-          </li>
-          <!-- <li class="dropdown"><li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">
-            REGISTER</a></li> -->
-            <li class="dropdown"><a href="./Student_Side/Stud_registration/page1.html"><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul  style="background-color: transparent; ">
-              <li><a href="./Student_Side/Stud_registration/page1.html">STUDENT</a></li>
-              
-              <li><a href="teacher.php">TEACHER</a></li>
-          
-             
-            </ul>
-          </li>
-
-        </ul>
-      </nav><!-- .navbar -->
+ 
 
 
         <form action="#">
@@ -607,10 +574,7 @@
 
               
 
-                <!-- <button class="nextBtn">
-                    <span class="btnText">Next</span>
-                    <i class="uil uil-navigator"></i>
-                </button> -->
+              
                 <button class="sumbit">
                     <span class="btnText">Submit</span>
                     <i class="uil uil-navigator"></i>

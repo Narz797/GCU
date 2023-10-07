@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2023 at 10:22 AM
+-- Generation Time: Sep 25, 2023 at 04:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -170,7 +170,8 @@ INSERT INTO `referral` (`referral_id`, `transact_id`, `reason`, `referred`, `sta
 (12, 22, 'Interview,Counseling,Late,Absent,fghdfghdf', '1', 'pending'),
 (13, 23, 'Interview,Counseling,Absent,fghdfghdf', '3', 'pending'),
 (14, 24, 'Interview,Counseling,fghdfghdf', '2', 'pending'),
-(15, 30, 'Interview,Counseling,Late,Absent,others', 'Instructor', '');
+(15, 30, 'Interview,Counseling,Late,Absent,others', 'Instructor', ''),
+(16, 40, 'Interview,Counseling', 'College Dean', '');
 
 -- --------------------------------------------------------
 
@@ -253,7 +254,8 @@ INSERT INTO `transact` (`transact_id`, `student_id`, `employee_id`, `transact_ty
 (36, 2002529, NULL, 'withdrawal', '2023-09-14 14:19:48', NULL, 'pending'),
 (37, 2002529, NULL, 'withdrawal', '2023-09-14 14:21:43', NULL, 'pending'),
 (38, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'pending'),
-(39, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'pending');
+(39, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'pending'),
+(40, 432, NULL, 'referral', '2023-09-22 02:22:47', NULL, 'recieved');
 
 -- --------------------------------------------------------
 
@@ -373,13 +375,13 @@ ALTER TABLE `readmission`
 -- AUTO_INCREMENT for table `referral`
 --
 ALTER TABLE `referral`
-  MODIFY `referral_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `referral_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `transact`
 --
 ALTER TABLE `transact`
-  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `withdrawal`
