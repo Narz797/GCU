@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,10 +11,8 @@
      
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link href="./assets/css/main.css" rel="stylesheet"> 
-   
 
-   <title>TeacherRegisration Form </title>
+   <title>Responsive Regisration Form </title>
 </head>
 <style>/* ===== Google Font Import - Poppins ===== */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
@@ -28,8 +25,8 @@
     body{
         min-height: 100vh;
         display: flex;
-        /* align-items: center;
-        justify-content: center; */
+        align-items: center;
+        justify-content: center;
         background-color: #fafffe;
     }
     .container{
@@ -62,12 +59,10 @@
     .container form{
         position: relative;
         margin-top: 16px;
-        min-height: 600px;
+        min-height: 2000px;
         /* background-color: #fff; */
         overflow: hidden;
     }
-
-    
     .container form .form{
         position: absolute;
         /* background-color: #fff; */
@@ -109,20 +104,20 @@
         margin: 4px 0;
     }
 
-    form .fields .input-field{
+    form .fields .input-field1{
         display: flex;
         width: 100%;
         /* width: calc(100% / 3 - 15px); */
         flex-direction: column;
         margin: 4px 0;
     }
-    .input-field label{
+    .input-field1 label{
         font-size: 16px;
         font-weight: 500;
         color: #2e2e2e;
     }
 
-    form .fields .input-field{
+    form .fields .input-field2{
         display: flex;
         width: 100%;
         /* width: calc(100% / 3 - 15px); */
@@ -130,12 +125,12 @@
         margin: 4px 0;
        
     }
-    .input-field label{
+    .input-field2 label{
         font-size: 16px;
         font-weight: 500;
         color: #2e2e2e;
     }
-    .input-field input, select{
+    .input-field2 input, select{
         outline: none;
         font-size: 14px;
         /* font-style: italic; */
@@ -153,7 +148,7 @@
         font-weight: 500;
         color: #2e2e2e;
     }
-    .input-field input, select{
+    .input-field1 input, select{
         outline: none;
         font-size: 14px;
         /* font-style: italic; */
@@ -243,9 +238,9 @@
             width: 100%;
         }
     }
-    .left-column img {
+    /* .left-column img {
              
-            margin-top: 30%;
+            
             margin-left: 20%;
             width: 50%;
             -webkit-animation: mover 2s infinite alternate;
@@ -253,9 +248,11 @@
         }
 
     .logo {
-            width: 10%;
-            height: 30%;
-        }
+            width: 80%;
+            height: 80%;
+        } */
+
+        
 
         @-webkit-keyframes mover {
             0% {
@@ -276,15 +273,27 @@
                 transform: translateY(-20px);
             }
         }
-       
+        /* .fieldset-column {
+            flex: 1;
+            margin-right: 20px; 
+        } */
 
         fieldset {
-            flex: 1;  
+            flex: 1; 
+            /* Equal size for all fieldsets */
+            /* border: 1px solid #000000; */
+           
+            /* padding: 10px; */
+            /* margin-right: 10px; */
+             /* Add some spacing between fieldsets */
         }
       
 
         .fieldset-container {
-           
+            /* display: flex; */
+            /* flex-wrap: wrap; */
+            /* justify-content: space-between; */
+             /* Distribute fieldsets evenly */
              display: block;
   position: relative;
   padding-left: 35px;
@@ -302,7 +311,7 @@
 
         
 
-        .container {
+        .container1 {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -316,7 +325,7 @@
 }
 
 /* Hide the browser's default checkbox */
-.container input {
+.container1 input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -335,12 +344,12 @@
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.container1:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.container1 input:checked ~ .checkmark {
   background-color: #2196F3;
 }
 
@@ -352,12 +361,12 @@
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.container1 input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.container1 .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -415,11 +424,12 @@
     width: 100%;
     box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid #000;
+    /* border-bottom: 1px solid #000; */
     padding: 0;
     margin: 0;
     background-color: transparent;
     outline: none; /* Remove outline */
+    
 }
 
 .aboutme input[type="text"] {
@@ -430,6 +440,7 @@
     background-color: transparent;
     outline: none; 
     font-size: 14px;
+    text-decoration: none;
 }
 
 .hidden {
@@ -468,59 +479,60 @@
     width: 100%;
 }
 
-     
-
-
-
-     
-        
+/* Initially hide the table */
+#siblingsTable {
+    display: none;
+}
 
 
         
     </style>
 <body>
 
-    <div class="left-column">
+    <!-- <div class="left-column">
         <img src="assets/img/GCU_logo.png" alt="Logo" class="logo">
     </div>
-    
+     -->
     <div class="container">
-        <header>REGISTRATION FORM</header>
-       
- 
+        <header>TEACHER REGISTRATION FORM</header>
 
-
-        <form action="#">
+        <form action="#" id="registrationForm">
             <div class="form first">
             <div class="details personal">
-            <span class="title">Personal Details</span>
+            <br>
+           <hr>
+           <hr>
+           <br>
+           
             <!-- <h2>Personal Details</h2>
             <hr> -->
 
             <div class="fields">
 
                 <div class="input-field">
-                    <label>Employee Number</label>
-                    <input type="text"  >
+                    <label for="idNumber">Employee ID Number:</label>
+                    <input type="text" id="idNumber" name="idNumber" required>
                 </div>
+                
 
                 <div class="input-field">
-                    <label>College</label>
+                    <label>Department</label>
                     <select required>
-                        <option disabled selected>Select gender</option>
+                        <option disabled selected>Select Department</option>
                         <option>BS- Information Technology</option>
                         <option>BS-Biology</option>
                         <option>BS-Library</option>
                     </select>
                 </div>
+                
 
                 <div class="input-field">
                     <label>Gender</label>
                     <select required>
                         <option disabled selected>Select gender</option>
-                        <option>BS- Information Technology</option>
-                        <option>BS-Biology</option>
-                        <option>BS-Library</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                       
                     </select>
                 </div>
 
@@ -529,29 +541,29 @@
 
                 <div class="input-field">
                     <label>Last Name</label>
-                    <input type="text" >
+                    <input type="text" required >
                 </div>
               
                 <div class="input-field">
                     <label>First Name</label>
-                    <input type="text"  >
+                    <input type="text" required  >
                 </div>
 
                 <div class="input-field">
                     <label>Middle Name</label>
-                    <input type="text" >
+                    <input type="text" required >
                 </div>
 
                 
 
                 <div class="input-field">
                     <label>Contact Number</label>
-                    <input type="text"  >
+                    <input type="text"  required >
                 </div>
 
                 <div class="input-field">
                     <label>Email</label>
-                    <input type="text" >
+                    <input type="text"  required >
                 </div>
 
                 <div class="input-field">
@@ -565,35 +577,44 @@
                 </div>
 
 
+                <!-- <div class="input-field">
+                    <label>Date of Birth</label>
+                    <input type="date" required >
+                </div> -->
 
-            
+                <!-- <div class="input-field">
+                    <label>Birth Place</label>
+                    <input type="text" required >
+                </div> -->
 
-              
-                
-                
+                <!-- <div class="input-field">
+                    <label>Nationality</label>
+                    <input type="text"  required >
+                </div> -->
 
-              
+                <!-- <div class="input-field1">
+                    <label>Languages/Dialects youu can read, write, and understand:</label>
+                    <input type="text" required >
+                </div> -->
+<!-- 
+                <div class="input-field1">
+                    <label>House Number/Street/Barangay/Municipality/Province/Zip Code</label>
+                    <input type="text" required >
+                </div> -->
 
-              
-                <button class="sumbit">
-                    <span class="btnText">Submit</span>
+               
+
+
+                <button class="submit" id="submitButton" type="button">
+                    <span class="btnText">SUBMIT</span>
                     <i class="uil uil-navigator"></i>
                 </button>
-            </div>
             </div>
         </div>
 
                 
            
             </div>
-           
-
-         
-
-            
-
-  
-     
            
 
 
@@ -605,15 +626,15 @@
 
 
 
+
     
 
 
-    
+
     
 
    
 
-   
 
 
     
@@ -635,6 +656,8 @@
 
 
 
+
+
+
 </body>
 </html>
-

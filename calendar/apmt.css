@@ -796,7 +796,8 @@ i{
         margin-left: 4rem;
     }
     .list-link{
-        transition: color .25s, background-color: .25s;
+        transition: color .25s;
+        background-color: .25s;
     }
     .nav-mobile .list-link{
         border-radius: .4rem;

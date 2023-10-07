@@ -20,7 +20,7 @@
     <li><a href="about.php">ABOUT</a></li>
     <li><a href="services.php">SERVICES</a></li>
    
-    <space style = "width: 300px"> </space>
+    <space style = "width: 400px"> </space>
 
 
           <li class="dropdown"><a href="#"><span>LOGIN</span> <i

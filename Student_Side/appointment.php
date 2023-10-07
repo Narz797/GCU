@@ -19,7 +19,7 @@ include 'includes/main.php';
   <link href="../Employee_Side/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../Employee_Side/assets/apmt.css">
-    <link rel="icon" href="assets/images/GCU_logo.png">
+  
 </head>
   <body>
        
@@ -43,13 +43,7 @@ include 'includes/main.php';
 
       <div class="calendar">
 
-      
-   
-      <!-- <div class="profile-icon">
-      <img src="../assets/img/vmn.webp" alt="Logo" width="90" height="90">
-      
-
-      </div> -->
+ 
 
         <div class="month">
           <i class="fas fa-angle-left prev"></i>
