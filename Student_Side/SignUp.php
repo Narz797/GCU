@@ -84,6 +84,43 @@ $_SESSION['origin'] = 'Student_Register';
 
 
     </div>
+
+    <script>
+  $("#Signup_Student_User").on("submit", function (event) {
+  var source = "student_side_signup";
+  event.preventDefault();
+  $.ajax({
+      type: 'POST',
+      url: '../backend/register_user.php',
+      data: {
+        idno: $("#idno").val(),
+        firstname: $("#firstname").val(),
+        lastname: $("#lastname").val(),
+        middlename: $("#middlename").val(),
+        select: $("#select").val(),
+          year: $("#year").val(),
+          course: $("#course").val(),
+          date: $("#date").val(),
+          email: $("#email").val(),
+          username: $("#username").val(),
+          password: $("#password").val(),
+          source: source
+      },
+      success: function (data) {
+  
+          if (data === "success_student") {
+              window.location.href = "../Student_Side/login.php";
+              alert("Sign up successful");
+          } else {
+            alert(data);
+          }
+        
+      }, error: function (data) {
+        alert("Connection error");
+      }
+  });
+  });
+</script>
 </body>
 </html>
   

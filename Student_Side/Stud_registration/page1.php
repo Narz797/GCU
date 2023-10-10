@@ -919,7 +919,7 @@
                         
 
 
-                <form action="#" method="POST">
+             
                     <fieldset class="container1">
                         <legend><h3><b>Sources of Financial Support</b></h3></legend>
                   
@@ -969,7 +969,7 @@
                     </fieldset>
     
                         <!-- Your submit button and other form sections here -->
-                </form>
+            
 
                 
 
