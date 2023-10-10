@@ -135,6 +135,7 @@ function addListner() {
       getActiveDay(e.target.innerHTML);
       updateEvents(Number(e.target.innerHTML));
       activeDay = Number(e.target.innerHTML);
+      
       //remove active
       days.forEach((day) => {
         day.classList.remove("active");
@@ -420,6 +421,7 @@ eventsContainer.addEventListener("click", (e) => {
 //function to save events in local storage
 function saveEvents() {
   localStorage.setItem("events", JSON.stringify(eventsArr));
+
 }
 
 //function to get events from local storage
