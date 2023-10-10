@@ -520,24 +520,18 @@
                 
 
                 <div class="input-field">
-                    <label>Course</label>
-                    <select required>
-                        <option disabled selected>Select gender</option>
-                        <option>BS- Information Technology</option>
-                        <option>BS-Biology</option>
-                        <option>BS-Library</option>
-                    </select>
+                    <label for="crse">Course</label>
+                    <div class="autocomplete-container">
+                        <input type="text" name="crse" id="crse" onkeyup="showSuggestions('crse', 'autocomplete-suggestions1')">
+                        <!-- Create a container to display autocomplete suggestions for the first input -->
+                        <div id="autocomplete-suggestions1" class="autocomplete-popup"></div>
+                    </div>
                 </div>
                 
 
                 <div class="input-field">
                     <label>Year Level</label>
-                    <select required>
-                        <option disabled selected>Select gender</option>
-                        <option>BS- Information Technology</option>
-                        <option>BS-Biology</option>
-                        <option>BS-Library</option>
-                    </select>
+                    <input type="number" id="yrlvl" name="yrlvl" required>
                 </div>
 
 
@@ -545,34 +539,34 @@
 
                 <div class="input-field">
                     <label>Last Name</label>
-                    <input type="text" required >
+                    <input type="text" id="lname" name="lname" required >
                 </div>
               
                 <div class="input-field">
                     <label>First Name</label>
-                    <input type="text" required  >
+                    <input type="text" id="fname" name="fname" required  >
                 </div>
 
                 <div class="input-field">
                     <label>Middle Name</label>
-                    <input type="text" required >
+                    <input type="text" id="mname" name="mname" required >
                 </div>
 
                 
 
                 <div class="input-field">
                     <label>Contact Number</label>
-                    <input type="text"  required >
+                    <input type="text" id="cn" name="cn" required >
                 </div>
 
                 <div class="input-field">
                     <label>Email</label>
-                    <input type="text"  required >
+                    <input type="text" id="email" name="email" required >
                 </div>
 
                 <div class="input-field">
                     <label>Civil Status</label>
-                    <select required>
+                    <select required id="cs">
                         <option disabled selected>Select</option>
                         <option>Single</option>
                         <option>Married</option>
@@ -583,27 +577,27 @@
 
                 <div class="input-field">
                     <label>Date of Birth</label>
-                    <input type="date" required >
+                    <input type="date" id="dob" name="dob" required >
                 </div>
 
                 <div class="input-field">
                     <label>Birth Place</label>
-                    <input type="text" required >
+                    <input type="text" id="bp" name="bp" required >
                 </div>
 
                 <div class="input-field">
                     <label>Nationality</label>
-                    <input type="text"  required >
+                    <input type="text" id="nationality" name="nationality" required >
                 </div>
 
                 <div class="input-field1">
                     <label>Languages/Dialects youu can read, write, and understand:</label>
-                    <input type="text" required >
+                    <input type="text" id="lang" name="lang" required >
                 </div>
 
                 <div class="input-field1">
                     <label>House Number/Street/Barangay/Municipality/Province/Zip Code</label>
-                    <input type="text" required >
+                    <input type="text" id="address" name="address" required >
                 </div>
 
                
@@ -616,11 +610,11 @@
                     <br>
                     <div class="radio-group">
                         <label>
-                            <input type="radio" id="yesRadio" name="membership" value="yes" onclick="showParentsInput();" required>
+                            <input type="radio" id="yesRadio" name="whom" value="yes" onclick="showParentsInput();" required>
                             Parents
                         </label>
                         <label>
-                            <input type="radio" id="noRadio" name="membership" value="no" onclick="showGuardianInput();" required>
+                            <input type="radio" id="noRadio" name="whom" value="no" onclick="showGuardianInput();" required>
                             Guardian
                         </label>
                     </div>
@@ -635,27 +629,27 @@
                             <div class="fields">
                                 <div class="input-field">
                                     <label>Last Name</label>
-                                    <input type="text" required>
+                                    <input type="text" id="Flname" name="Flname" required>
                                 </div>
                                 <div class="input-field">
                                     <label>First Name</label>
-                                    <input type="text" required >
+                                    <input type="text" id="Ffname" name="Ffname" required >
                                 </div>
                                 <div class="input-field">
                                     <label>Middle Name</label>
-                                    <input type="text" required>
+                                    <input type="text" id="Fmname" name="Fmname" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Age</label>
-                                    <input type="text" required>
+                                    <input type="text" id="Fage" name="Fage" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Occupational</label>
-                                    <input type="text" required>
+                                    <input type="text" id="Focc" name="Focc" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Educational Attainment</label>
-                                    <input type="text" required>
+                                    <input type="text" id="Fedu" name="Fedu" required>
                                 </div>
 
                             </div>
@@ -673,27 +667,27 @@
                             <div class="fields">
                                 <div class="input-field">
                                     <label>Last Name</label>
-                                    <input type="text" required >
+                                    <input type="text" id="Mlname" name="Mlname" required >
                                 </div>
                                 <div class="input-field">
                                     <label>First Name</label>
-                                    <input type="text" required >
+                                    <input type="text" id="Mfname" name="Mfname" required >
                                 </div>
                                 <div class="input-field">
                                     <label>Middle Name</label>
-                                    <input type="text" required >
+                                    <input type="text" id="Mmname" name="Mmname" required >
                                 </div>
                                 <div class="input-field">
                                     <label>Age</label>
-                                    <input type="text" required >
+                                    <input type="text" id="Mage" name="Mage" required >
                                 </div>
                                 <div class="input-field">
                                     <label>Occupational</label>
-                                    <input type="text" required >
+                                    <input type="text" id="Mocc" name="Mocc" required >
                                 </div>
                                 <div class="input-field">
                                     <label>Educational Attainment</label>
-                                    <input type="text" required>
+                                    <input type="text" id="Medu" name="Medu" required>
                                 </div>
 
                             </div>
@@ -711,27 +705,27 @@
                             <div class="fields">
                                 <div class="input-field">
                                     <label>Last Name</label>
-                                    <input type="text" required >
+                                    <input type="text" id="Glname" name="Glname" required >
                                 </div>
                                 <div class="input-field">
                                     <label>First Name</label>
-                                    <input type="text"  required>
+                                    <input type="text"  id="Gfname" name="Gfname" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Middle Name</label>
-                                    <input type="text" required>
+                                    <input type="text" id="Gmname" name="Gmname" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Age</label>
-                                    <input type="text" required>
+                                    <input type="text" id="Gage" name="Gage" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Occupational</label>
-                                    <input type="text" >
+                                    <input type="text" id="Gocc" name="Gocc" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Educational Attainment</label>
-                                    <input type="text"required >
+                                    <input type="text" id="Gedu" name="Gedu" required >
                                 </div>
 
                             </div>
@@ -744,6 +738,8 @@
                     </div>
                 </div>
 
+
+                <!-- Skip for now -->
                 <div style="width: 100%;">
                     <p><b><i>List the names of your siblings (brothers & sisters) 
                         including yourself, arranged from the eldest to the youngest.</i></b></p>
@@ -836,7 +832,7 @@
                     </div>
 
 
-
+<!--  end of Skip for now -->
              
                
                 
@@ -864,11 +860,11 @@
                             <p>Are you a member of an Indigenous group?</p>
         <div class="radio-group">
             <label>
-                <input type="radio" id="yesRadio" name="membership" value="yes" onclick="showInput();" />
+                <input type="radio" id="yesRadio1" name="membership" value="yes" onclick="showInput();" />
                 Yes
             </label>
             <label>
-                <input type="radio" id="noRadio" name="membership" value="no" onclick="hideInput();" />
+                <input type="radio" id="noRadio1" name="membership" value="no" onclick="hideInput();" />
                 No
             </label>
         </div>
@@ -889,11 +885,11 @@
                             Are you a person with a disability (PWD)?</b>
                             <div class="radio-group">
                                 <label>
-                                    <input type="radio" id="yesRadio" name="membership" value="yes" />
+                                    <input type="radio" id="yesRadio2" name="pwd" value="yes" />
                                     Yes
                                 </label>
                                 <label>
-                                    <input type="radio" id="noRadio" name="membership" value="no" />
+                                    <input type="radio" id="noRadio2" name="pwd" value="no" />
                                     No
                                 </label>
                             </div>
@@ -905,11 +901,11 @@
                             Are you a student parent?</b>
                             <div class="radio-group">
                                 <label>
-                                    <input type="radio" id="yesRadio" name="membership" value="yes" />
+                                    <input type="radio" id="yesRadio3" name="studpar" value="yes" />
                                     Yes
                                 </label>
                                 <label>
-                                    <input type="radio" id="noRadio" name="membership" value="no" />
+                                    <input type="radio" id="noRadio3" name="studpar" value="no" />
                                     No
                                 </label>
                             </div>
@@ -927,18 +923,18 @@
                        
 
                             <label class="container1">Parents
-                                <input type="checkbox" >
+                                <input type="checkbox" name="src" value="Parents" id="parentsCheckbox">
                                 <span class="checkmark"></span>
                             </label>
 
                        
                             <label class="container1">Self-supporting
-                                <input type="checkbox"  id="selfSupport">
+                                <input type="checkbox" name="src" value="Self" id="selfCheckbox">
                                 <span class="checkmark"></span>
                             </label>
 
                             <label class="container1">Relatives and/or Guardian
-                                <input type="checkbox"  id="relativeGuardianSupport" >
+                                <input type="checkbox" name="src" value="Relatives" id="relativesCheckbox" >
                                 <span class="checkmark"></span>
                             </label>
                         
@@ -949,15 +945,15 @@
 
                             <label class="container1" onclick="toggleSpecifyBox()">
                                 Scholarship
-                                <input type="checkbox" id="scholarshipCheckbox">
+                                <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox">
                                 <span class="checkmark"></span>
                             </label>
 
                                 <!-- Specify box -->
                                 <div id="specifyBox">
-                                    Specify: <input type="text">
+                                    Specify: <input type="text" id="specify" name="specify">
                                 </div>
-                           
+                           <!-- fix -->
                             <label class="container1">Others; specify: 
                                 <input type="checkbox"  >
                                 <span class="checkmark"></span>
@@ -1020,13 +1016,13 @@
 
                     <h2>More about Me:</h2>
                 <p>1. The three words that describe me are 
-                    <input type="text"   >
-                    <input type="text">
-                    <input type="text"  >
+                    <input type="text" id="first" name="first">
+                    <input type="text" id="second" name="second">
+                    <input type="text" id="third" name="third">
                 </p>
 
                 <p>2. My father is
-                    <input type="text" >
+                    <input type="text" id="Fis" name="Fis">
                    
                 </p>
 
@@ -1034,32 +1030,32 @@
                     <input type="text">
                 </p>
                 <p>4. The sibling (kapatid) I am closest to is my
-                    <input type="text"  >
+                    <input type="text"  id="Mis" name="Mis">
                     because<input type="text" >
                 </p>
                 <p>5. When I think about my family I feel
-                    <input type="text" >
+                    <input type="text" id="abtFam" name="abtFam">
                     
                 </p>
                 <p>6. When I was a child, I
-                    <input type="text" >
+                    <input type="text" id="whenChild" name="whenChild">
                     
                 </p>
                 <p>7. In school, my teachers are
-                    <input type="text" >
+                    <input type="text" id="teachAre" name="teachAre">
                     
                 </p>
                 <p>8. My friends don't know that
-                    <input type="text" >
+                    <input type="text" id="freindsDunno" name="freindsDunno">
                     
                 </p>
                 <p>9. When I think about the future, I
-                    <input type="text" >
+                    <input type="text" id="future" name="future">
                     
                 </p>
 
                 <p>10. My greatest goal is
-                    <input type="text" >
+                    <input type="text" id="goal" name="goal">
                     
                 </p>
                 <br>
@@ -1073,16 +1069,16 @@
 
                     <div class="input-field">
                         <label>email/usernmame</label>
-                        <input type="text"  >
+                        <input type="text" id="eu" name="eu">
                     </div>
 
                     <div class="input-field">
                         <label>Password</label>
-                        <input type="text"  >
+                        <input type="text" id="pass" name="pass">
                     </div>
                     <div class="input-field">
                         <label>Confirm Password</label>
-                        <input type="text"  >
+                        <input type="text" id="conpass" name="conpass">
                     </div>
                     
     
@@ -1104,10 +1100,13 @@
                             <i class="uil uil-navigator"></i>
                         </button> -->
                         
-                        <button class="sumbit">
+                        <!-- <button class="sumbit">
                             <span class="btnText">Submit</span>
                             <i class="uil uil-navigator"></i>
-                        </button>
+                        </button> -->
+
+                        <!-- add design -->
+                        <input type="submit" class="btn btn-primary" name="submit" class="submit" value="Submit">
                     </div>
             </div> 
 
@@ -1292,7 +1291,102 @@ document.getElementById("total_number").addEventListener("click", function () {
 
 </script>
 
+<!-- course auto complete -->
+<script>
+     // autcomplete
+     function showSuggestions(inputId, suggestionContainerId) {
+    var input = document.getElementById(inputId);
+    var inputValue = input.value;
+    var suggestionsDiv = document.getElementById(suggestionContainerId);
 
+    if (inputValue.length === 0) {
+        suggestionsDiv.style.display = "none";
+        return;
+    }
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            var suggestions = JSON.parse(xmlhttp.responseText); // Assuming your suggestions are returned as a JSON array
+            displaySuggestions(suggestions, suggestionsDiv, input);
+        }
+    };
+
+    xmlhttp.open("GET", "../../backend/autocomplete.php?input=" + inputValue, true);
+    xmlhttp.send();
+}
+
+function displaySuggestions(suggestions, suggestionsDiv, input) {
+    if (suggestions.length === 0) {
+        suggestionsDiv.style.display = "none";
+        return;
+    }
+
+    suggestionsDiv.innerHTML = ""; // Clear previous suggestions
+
+    var ul = document.createElement("ul");
+    suggestions.forEach(function (suggestion) {
+        var li = document.createElement("li");
+        li.textContent = suggestion;
+        li.addEventListener("click", function () {
+            input.value = suggestion; // Fill in the input field with the selected suggestion
+            suggestionsDiv.style.display = "none"; // Hide the suggestions
+        });
+        ul.appendChild(li);
+    });
+
+    suggestionsDiv.appendChild(ul);
+    suggestionsDiv.style.display = "block"; // Show the suggestions
+}
+
+
+var textfield4 = document.getElementById('crse');
+textfield4.addEventListener('input', function () {
+    this.value = this.value.toUpperCase();
+});
+
+
+
+  </script>
+
+
+<!-- save to database -->
+<script>
+  $("#registrationForm").on("submit", function (event) {
+  var source = "student_side_signup";
+  event.preventDefault();
+  $.ajax({
+      type: 'POST',
+      url: '../backend/register_user.php',
+      data: {
+        idno: $("#idno").val(),
+        firstname: $("#firstname").val(),
+        lastname: $("#lastname").val(),
+        middlename: $("#middlename").val(),
+        select: $("#select").val(),
+          year: $("#year").val(),
+          course: $("#course").val(),
+          date: $("#date").val(),
+          email: $("#email").val(),
+          username: $("#username").val(),
+          password: $("#password").val(),
+          source: source
+      },
+      success: function (data) {
+  
+          if (data === "success_student") {
+              window.location.href = "../Student_Side/login.php";
+              alert("Sign up successful");
+          } else {
+            alert(data);
+          }
+        
+      }, error: function (data) {
+        alert("Connection error");
+      }
+  });
+  });
+</script>
 
 
 </body>

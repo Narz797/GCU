@@ -35,9 +35,9 @@
           </li>
           <!-- <li class="dropdown"><li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">
             REGISTER</a></li> -->
-            <li class="dropdown"><a href="./Student_Side/Stud_registration/page1.html"><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <li class="dropdown"><a><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul  style="background-color: transparent; ">
-              <li><a href="./Student_Side/Stud_registration/page1.html">STUDENT</a></li>
+              <li><a href="./Student_Side/Stud_registration/page1.php">STUDENT</a></li>
               
               <li><a href="teacher.php">TEACHER</a></li>
           
