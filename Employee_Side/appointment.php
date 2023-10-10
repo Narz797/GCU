@@ -18,8 +18,8 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/apmt.css">
-
     <link rel="icon" href="assets/images/GCU_logo.png">
+  
 </head>
 
 <body>
@@ -132,6 +132,9 @@
               <input type="text" placeholder="Event Name" class="event-name" />
             </div>
             <div class="add-event-input">
+              <input type="text" placeholder="Student Name" class="event-student-name"/>
+            </div>
+            <div class="add-event-input">
               <input
                 type="text"
                 placeholder="Event Time From: 00:00"
@@ -235,6 +238,7 @@
 
 <!-- Script     -->
 <script src="assets/main.js"></script>   
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="assets/js/calendar.js"></script>    
 </body>
 </html>
