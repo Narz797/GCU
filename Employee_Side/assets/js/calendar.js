@@ -15,6 +15,7 @@ const calendar = document.querySelector(".calendar"),
   addEventWrapper = document.querySelector(".add-event-wrapper "),
   addEventCloseBtn = document.querySelector(".close "),
   addEventTitle = document.querySelector(".event-name "),
+  addEventStudentName = document.querySelector(".event-student-name"),
   addEventFrom = document.querySelector(".event-time-from "),
   addEventTo = document.querySelector(".event-time-to "),
   addEventSubmit = document.querySelector(".add-event-btn ");
@@ -42,7 +43,8 @@ const months = [
 
 const eventsArr = [];
 getEvents();
-console.log(eventsArr);
+const prev_eventsArr = [eventsArr];
+// console.log(eventsArr);
 
 //function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
 function initCalendar() {
@@ -274,6 +276,9 @@ addEventTitle.addEventListener("input", (e) => {
   addEventTitle.value = addEventTitle.value.slice(0, 60);
 });
 
+addEventStudentName.addEventListener("input", (e) =>{
+  addEventStudentName.value = addEventStudentName.value.slice(0,60);
+});
 
 
 //allow only time in eventtime from and to
@@ -300,10 +305,11 @@ addEventTo.addEventListener("input", (e) => {
 //function to add event to eventsArr
 addEventSubmit.addEventListener("click", () => {
   const eventTitle = addEventTitle.value;
+  const eventStudentName = addEventStudentName.value;
   const eventTimeFrom = addEventFrom.value;
   const eventTimeTo = addEventTo.value;
   if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "") {
-    alert("Please fill all the fields");
+    alert("Please fill specified fields");
     return;
   }
 
@@ -376,6 +382,7 @@ addEventSubmit.addEventListener("click", () => {
   console.log(eventsArr);
   addEventWrapper.classList.remove("active");
   addEventTitle.value = "";
+  addEventStudentName.value="";
   addEventFrom.value = "";
   addEventTo.value = "";
   updateEvents(activeDay);
@@ -420,8 +427,26 @@ eventsContainer.addEventListener("click", (e) => {
 
 //function to save events in local storage
 function saveEvents() {
-  localStorage.setItem("events", JSON.stringify(eventsArr));
 
+
+let unique1 = eventsArr.filter((o) => prev_eventsArr.indexOf(o) === -1);
+let unique2 = prev_eventsArr.filter((o) => eventsArr.indexOf(o) === -1);
+
+const unique = unique1.concat(unique2);
+console.log(unique);
+
+localStorage.setItem("events", JSON.stringify(unique));
+  
+  $.ajax({
+    type: 'POST',
+    url: '../backend/save_appointment.php',
+    data: {
+      data: unique
+    },
+    success: function (data) {
+      alert(data);
+    }
+  });
 }
 
 //function to get events from local storage
@@ -431,6 +456,10 @@ function getEvents() {
     return;
   }
   eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+
+
+
+
 }
 
 function convertTime(time) {
