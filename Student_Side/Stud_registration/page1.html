@@ -424,11 +424,12 @@
     width: 100%;
     box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid #000;
+    /* border-bottom: 1px solid #000; */
     padding: 0;
     margin: 0;
     background-color: transparent;
     outline: none; /* Remove outline */
+    
 }
 
 .aboutme input[type="text"] {
@@ -439,6 +440,7 @@
     background-color: transparent;
     outline: none; 
     font-size: 14px;
+    text-decoration: none;
 }
 
 .hidden {
@@ -477,12 +479,15 @@
     width: 100%;
 }
 
-     
+/* Initially hide the table */
+#siblingsTable {
+    display: none;
+}
 
+/* .input-field input:required {
+    border: 1px solid red;
+} */
 
-
-     
-        
 
 
         
@@ -494,21 +499,25 @@
     </div>
      -->
     <div class="container">
-        <header>REGISTRATION FORM</header>
+        <header>STUDENT REGISTRATION FORM</header>
 
-        <form action="#">
+        <form action="#" id="registrationForm">
             <div class="form first">
             <div class="details personal">
-            <span class="title">Personal Details</span>
+                <br>
+            <hr>
+            <hr>
+            <br>
             <!-- <h2>Personal Details</h2>
             <hr> -->
 
             <div class="fields">
 
                 <div class="input-field">
-                    <label>ID Number</label>
-                    <input type="text"  >
+                    <label for="idNumber">ID Number</label>
+                    <input type="text" id="idNumber" name="idNumber" required>
                 </div>
+                
 
                 <div class="input-field">
                     <label>Course</label>
@@ -519,6 +528,7 @@
                         <option>BS-Library</option>
                     </select>
                 </div>
+                
 
                 <div class="input-field">
                     <label>Year Level</label>
@@ -535,29 +545,29 @@
 
                 <div class="input-field">
                     <label>Last Name</label>
-                    <input type="text" >
+                    <input type="text" required >
                 </div>
               
                 <div class="input-field">
                     <label>First Name</label>
-                    <input type="text"  >
+                    <input type="text" required  >
                 </div>
 
                 <div class="input-field">
                     <label>Middle Name</label>
-                    <input type="text" >
+                    <input type="text" required >
                 </div>
 
                 
 
                 <div class="input-field">
                     <label>Contact Number</label>
-                    <input type="text"  >
+                    <input type="text"  required >
                 </div>
 
                 <div class="input-field">
                     <label>Email</label>
-                    <input type="text" >
+                    <input type="text"  required >
                 </div>
 
                 <div class="input-field">
@@ -573,27 +583,27 @@
 
                 <div class="input-field">
                     <label>Date of Birth</label>
-                    <input type="date" >
+                    <input type="date" required >
                 </div>
 
                 <div class="input-field">
                     <label>Birth Place</label>
-                    <input type="text" >
+                    <input type="text" required >
                 </div>
 
                 <div class="input-field">
                     <label>Nationality</label>
-                    <input type="text"  >
+                    <input type="text"  required >
                 </div>
 
                 <div class="input-field1">
                     <label>Languages/Dialects youu can read, write, and understand:</label>
-                    <input type="text"  >
+                    <input type="text" required >
                 </div>
 
                 <div class="input-field1">
                     <label>House Number/Street/Barangay/Municipality/Province/Zip Code</label>
-                    <input type="text"  >
+                    <input type="text" required >
                 </div>
 
                
@@ -606,14 +616,15 @@
                     <br>
                     <div class="radio-group">
                         <label>
-                            <input type="radio" id="yesRadio" name="membership" value="yes" onclick="showParentsInput();" />
+                            <input type="radio" id="yesRadio" name="membership" value="yes" onclick="showParentsInput();" required>
                             Parents
                         </label>
                         <label>
-                            <input type="radio" id="noRadio" name="membership" value="no" onclick="showGuardianInput();" />
+                            <input type="radio" id="noRadio" name="membership" value="no" onclick="showGuardianInput();" required>
                             Guardian
                         </label>
                     </div>
+                    
                     <br>
                     <div id="inputContainer" style="display: none;">
                         <h3> Father</h3>
@@ -624,27 +635,27 @@
                             <div class="fields">
                                 <div class="input-field">
                                     <label>Last Name</label>
-                                    <input type="text" >
+                                    <input type="text" required>
                                 </div>
                                 <div class="input-field">
                                     <label>First Name</label>
-                                    <input type="text" >
+                                    <input type="text" required >
                                 </div>
                                 <div class="input-field">
                                     <label>Middle Name</label>
-                                    <input type="text" >
+                                    <input type="text" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Age</label>
-                                    <input type="text" >
+                                    <input type="text" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Occupational</label>
-                                    <input type="text" >
+                                    <input type="text" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Educational Attainment</label>
-                                    <input type="text" >
+                                    <input type="text" required>
                                 </div>
 
                             </div>
@@ -662,27 +673,27 @@
                             <div class="fields">
                                 <div class="input-field">
                                     <label>Last Name</label>
-                                    <input type="text" >
+                                    <input type="text" required >
                                 </div>
                                 <div class="input-field">
                                     <label>First Name</label>
-                                    <input type="text" >
+                                    <input type="text" required >
                                 </div>
                                 <div class="input-field">
                                     <label>Middle Name</label>
-                                    <input type="text" >
+                                    <input type="text" required >
                                 </div>
                                 <div class="input-field">
                                     <label>Age</label>
-                                    <input type="text" >
+                                    <input type="text" required >
                                 </div>
                                 <div class="input-field">
                                     <label>Occupational</label>
-                                    <input type="text" >
+                                    <input type="text" required >
                                 </div>
                                 <div class="input-field">
                                     <label>Educational Attainment</label>
-                                    <input type="text" >
+                                    <input type="text" required>
                                 </div>
 
                             </div>
@@ -700,19 +711,19 @@
                             <div class="fields">
                                 <div class="input-field">
                                     <label>Last Name</label>
-                                    <input type="text" >
+                                    <input type="text" required >
                                 </div>
                                 <div class="input-field">
                                     <label>First Name</label>
-                                    <input type="text" >
+                                    <input type="text"  required>
                                 </div>
                                 <div class="input-field">
                                     <label>Middle Name</label>
-                                    <input type="text" >
+                                    <input type="text" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Age</label>
-                                    <input type="text" >
+                                    <input type="text" required>
                                 </div>
                                 <div class="input-field">
                                     <label>Occupational</label>
@@ -720,7 +731,7 @@
                                 </div>
                                 <div class="input-field">
                                     <label>Educational Attainment</label>
-                                    <input type="text" >
+                                    <input type="text"required >
                                 </div>
 
                             </div>
@@ -740,7 +751,7 @@
                     <br>
                  
                     <label for="total_number"><b>Your total number: </b></label>
-                    <select id="total_number" name="total_number" onchange="createTable()">
+                    <select id="total_number" name="total_number" onchange="createTable()" >
                     
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -780,7 +791,7 @@
 
               
 
-                <button class="nextBtn">
+                <button class="nextBtn" id="nextButton" type="button">
                     <span class="btnText">Next</span>
                     <i class="uil uil-navigator"></i>
                 </button>
@@ -1240,6 +1251,48 @@ function hideInput() {
         form.classList.remove('secActive');
     });
 </script>
+
+<script>
+
+    // Add a click event listener to the button
+document.getElementById("total_number").addEventListener("click", function () {
+    // Get the table element
+    var table = document.getElementById("siblingsTable");
+
+    // Toggle the table's display style between 'none' and 'table'
+    if (table.style.display === "none") {
+        table.style.display = "table";
+    } else {
+        table.style.display = "none";
+    }
+});
+
+
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    // Get references to form elements
+    const form = document.getElementById("registrationForm");
+    const nextButton = document.getElementById("nextButton");
+
+    // Add a click event listener to the "Next" button
+    nextButton.addEventListener("click", function (e) {
+        // Check if the form is valid
+        if (form.checkValidity()) {
+            // Form is valid, move to the next section
+            // You can add your logic here to proceed to the next section
+            alert("Form is valid. You can proceed to the next section.");
+        } else {
+            // Form is not valid, show an error message
+            alert("Please fill out all required fields before proceeding.");
+        }
+    });
+});
+
+</script>
+
+
 
 
 </body>

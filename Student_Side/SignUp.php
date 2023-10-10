@@ -1,6 +1,7 @@
 <?php
 session_start();
 $_SESSION['origin'] = 'Student_Register';
+
 ?>
 
 <!DOCTYPE html>
@@ -41,21 +42,8 @@ $_SESSION['origin'] = 'Student_Register';
           <label for="cs">Civil Status:</label>
           <input type="text" id="cs" name="cs">
 
-          <label for="nationality">Nationality:</label>
-          <input type="text" id="nationality" name="nationality">
-
-          <label for="bp">Birthplace:</label>
-          <input type="text" id="bp" name="bp"> 
-
-          <label for="emailadd">Email Address:</label>
-          <input type="text" id="emailadd" name="emailadd">
-
-
-          <label for="contactNumber">Contact Number:</label>
-          <input type="tel" id="contactNumber" name="contactNumber" required>
           
-          <label for="birthdate">Birthdate:</label>
-          <input type="date" id="birthdate" name="birthdate" required>
+        
           
 
 
@@ -68,6 +56,8 @@ $_SESSION['origin'] = 'Student_Register';
 
         <div class="form-column">
 
+          <label for="birthdate">Birthdate:</label>
+          <input type="date" id="birthdate" name="birthdate" required>
 
           <label for="nationality">Nationality:</label>
           <input type="text" id="nationality" name="nationality">
@@ -82,12 +72,10 @@ $_SESSION['origin'] = 'Student_Register';
           <label for="contactNumber">Contact Number:</label>
           <input type="tel" id="contactNumber" name="contactNumber" required>
           
-          <label for="birthdate">Birthdate:</label>
-          <input type="date" id="birthdate" name="birthdate" required>
+          
 
           <button type="submit">Register</button>
         </div>
-
 
 
         
@@ -98,5 +86,4 @@ $_SESSION['origin'] = 'Student_Register';
     </div>
 </body>
 </html>
-
   
