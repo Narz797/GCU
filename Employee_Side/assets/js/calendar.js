@@ -42,7 +42,7 @@ const months = [
 
 
 const eventsArr = [];
-getEvents();
+// getEvents();
 const prev_eventsArr = [eventsArr];
 // console.log(eventsArr);
 
@@ -67,15 +67,15 @@ function initCalendar() {
   for (let i = 1; i <= lastDate; i++) {
     //check if event is present on that day
     let event = false;
-    eventsArr.forEach((eventObj) => {
-      if (
-        eventObj.day === i &&
-        eventObj.month === month + 1 &&
-        eventObj.year === year
-      ) {
-        event = true;
-      }
-    });
+    // eventsArr.forEach((eventObj) => {
+    //   if (
+    //     eventObj.day === i &&
+    //     eventObj.month === month + 1 &&
+    //     eventObj.year === year
+    //   ) {
+    //     event = true;
+    //   }
+    // });
     if (
       i === new Date().getDate() &&
       year === new Date().getFullYear() &&
@@ -228,32 +228,32 @@ function getActiveDay(date) {
 //function update events when a day is active
 function updateEvents(date) {
   let events = "";
-  eventsArr.forEach((event) => {
-    if (
-      date === event.day &&
-      month + 1 === event.month &&
-      year === event.year
-    ) {
-      event.events.forEach((event) => {
-        events += `<div class="event">
-            <div class="title">
-              <i class="fas fa-circle"></i>
-              <h3 class="event-title">${event.title}</h3>
-            </div>
-            <div class="event-time">
-              <span class="event-time">${event.time}</span>
-            </div>
-        </div>`;
-      });
-    }
-  });
+  // eventsArr.forEach((event) => {
+  //   if (
+  //     date === event.day &&
+  //     month + 1 === event.month &&
+  //     year === event.year
+  //   ) {
+  //     event.events.forEach((event) => {
+  //       events += `<div class="event">
+  //           <div class="title">
+  //             <i class="fas fa-circle"></i>
+  //             <h3 class="event-title">${event.title}</h3>
+  //           </div>
+  //           <div class="event-time">
+  //             <span class="event-time">${event.time}</span>
+  //           </div>
+  //       </div>`;
+  //     });
+  //   }
+  // });
   if (events === "") {
     events = `<div class="no-event">
             <h3>Availability</h3>
         </div>`;
   }
   eventsContainer.innerHTML = events;
-  saveEvents();
+  // saveEvents();
 }
 
 //function to add event
@@ -305,92 +305,31 @@ addEventTo.addEventListener("input", (e) => {
 //function to add event to eventsArr
 addEventSubmit.addEventListener("click", () => {
   const eventTitle = addEventTitle.value;
-  const eventStudentName = addEventStudentName.value;
+  const eventDate = `${year}-${month + 1}-${activeDay}`;
   const eventTimeFrom = addEventFrom.value;
   const eventTimeTo = addEventTo.value;
-  if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "") {
-    alert("Please fill specified fields");
-    return;
-  }
 
-  //check correct time format 24 hour
-  const timeFromArr = eventTimeFrom.split(":");
-  const timeToArr = eventTimeTo.split(":");
-  if (
-    timeFromArr.length !== 2 ||
-    timeToArr.length !== 2 ||
-    timeFromArr[0] > 23 ||
-    timeFromArr[1] > 59 ||
-    timeToArr[0] > 23 ||
-    timeToArr[1] > 59
-  ) {
-    alert("Invalid Time Format");
-    return;
-  }
+  // Validate the event data here.
 
-  const timeFrom = convertTime(eventTimeFrom);
-  const timeTo = convertTime(eventTimeTo);
-
-  //check if event is already added
-  let eventExist = false;
-  eventsArr.forEach((event) => {
-    if (
-      event.day === activeDay &&
-      event.month === month + 1 &&
-      event.year === year
-    ) {
-      event.events.forEach((event) => {
-        if (event.title === eventTitle) {
-          eventExist = true;
-        }
-      });
+  $.ajax({
+    type: 'POST',
+    url: '../backend/add_availablity.php', // Update with the correct path to your PHP script.
+    data: {
+      title: eventTitle,
+      date: eventDate,
+      start_time: eventTimeFrom,
+      end_time: eventTimeTo
+    },
+    success: function (data) {
+      // You can handle the response from the PHP script here, e.g., displaying a success message.
+      alert(data);
+      // Clear the input fields and update the events.
+      addEventTitle.value = "";
+      addEventFrom.value = "";
+      addEventTo.value = "";
+      updateEvents(activeDay);
     }
   });
-  if (eventExist) {
-    alert("Event already added");
-    return;
-  }
-  const newEvent = {
-    title: eventTitle,
-    time: timeFrom + " - " + timeTo,
-  };
-  console.log(newEvent);
-  console.log(activeDay);
-  let eventAdded = false;
-  if (eventsArr.length > 0) {
-    eventsArr.forEach((item) => {
-      if (
-        item.day === activeDay &&
-        item.month === month + 1 &&
-        item.year === year
-      ) {
-        item.events.push(newEvent);
-        eventAdded = true;
-      }
-    });
-  }
-
-  if (!eventAdded) {
-    eventsArr.push({
-      day: activeDay,
-      month: month + 1,
-      year: year,
-      events: [newEvent],
-    });
-  }
-
-  console.log(eventsArr);
-  addEventWrapper.classList.remove("active");
-  addEventTitle.value = "";
-  addEventStudentName.value="";
-  addEventFrom.value = "";
-  addEventTo.value = "";
-  updateEvents(activeDay);
-  //select active day and add event class if not added
-  const activeDayEl = document.querySelector(".day.active");
-  if (!activeDayEl.classList.contains("event")) {
-    activeDayEl.classList.add("event");
-  }
 });
 
 //function to delete event when clicked on event
@@ -398,65 +337,57 @@ eventsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("event")) {
     if (confirm("Are you sure you want to delete this event?")) {
       const eventTitle = e.target.children[0].children[1].innerHTML;
-      eventsArr.forEach((event) => {
-        if (
-          event.day === activeDay &&
-          event.month === month + 1 &&
-          event.year === year
-        ) {
-          event.events.forEach((item, index) => {
-            if (item.title === eventTitle) {
-              event.events.splice(index, 1);
-            }
-          });
-          //if no events left in a day then remove that day from eventsArr
-          if (event.events.length === 0) {
-            eventsArr.splice(eventsArr.indexOf(event), 1);
-            //remove event class from day
-            const activeDayEl = document.querySelector(".day.active");
-            if (activeDayEl.classList.contains("event")) {
-              activeDayEl.classList.remove("event");
-            }
-          }
+      // Use an AJAX request to delete the event from the database
+      $.ajax({
+        type: 'POST',
+        url: 'delete_event.php', // Update with the correct path to your PHP script for deleting events.
+        data: {
+          title: eventTitle,
+          date: `${year}-${month + 1}-${activeDay}`
+        },
+        success: function (data) {
+          // Handle the response from the PHP script.
+          alert(data);
+          // Update the events after deleting the event.
+          updateEvents(activeDay);
         }
       });
-      updateEvents(activeDay);
     }
   }
 });
 
 //function to save events in local storage
-function saveEvents() {
+// function saveEvents() {
 
-let unique1 = eventsArr.filter((o) => prev_eventsArr.indexOf(o) === -1);
-let unique2 = prev_eventsArr.filter((o) => eventsArr.indexOf(o) === -1);
+// let unique1 = eventsArr.filter((o) => prev_eventsArr.indexOf(o) === -1);
+// let unique2 = prev_eventsArr.filter((o) => eventsArr.indexOf(o) === -1);
 
-const unique = unique1.concat(unique2);
-console.log(unique);
+// const unique = unique1.concat(unique2);
+// console.log(unique);
 
-localStorage.setItem("events", JSON.stringify(unique));
+// localStorage.setItem("events", JSON.stringify(unique));
   
-  $.ajax({
-    type: 'POST',
-    url: '../backend/save_appointment.php',
-    data: {
-      data: unique
-    },
-    success: function (data) {
-      alert(data);
-    }
-  });
-}
+//   $.ajax({
+//     type: 'POST',
+//     url: '../backend/save_appointment.php',
+//     data: {
+//       data: unique
+//     },
+//     success: function (data) {
+//       alert(data);
+//     }
+//   });
+// }
 
-//function to get events from local storage
-function getEvents() {
-  //check if events are already saved in local storage then return event else nothing
-  if (localStorage.getItem("events") === null) {
-    return;
-  }
-  eventsArr.push(...JSON.parse(localStorage.getItem("events")));
+// //function to get events from local storage
+// function getEvents() {
+//   //check if events are already saved in local storage then return event else nothing
+//   if (localStorage.getItem("events") === null) {
+//     return;
+//   }
+//   eventsArr.push(...JSON.parse(localStorage.getItem("events")));
 
-}
+// }
 
 function convertTime(time) {
   //convert time to 24 hour format

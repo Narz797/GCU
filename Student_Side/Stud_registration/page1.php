@@ -515,14 +515,14 @@
 
                 <div class="input-field">
                     <label for="idNumber">ID Number</label>
-                    <input type="text" id="idNumber" name="idNumber" required>
+                    <input type="text" id="idno" name="idno" required>
                 </div>
                 
 
                 <div class="input-field">
                     <label for="crse">Course</label>
                     <div class="autocomplete-container">
-                        <input type="text" name="crse" id="crse" onkeyup="showSuggestions('crse', 'autocomplete-suggestions1')">
+                        <input type="text" name="course" id="course" onkeyup="showSuggestions('crse', 'autocomplete-suggestions1')">
                         <!-- Create a container to display autocomplete suggestions for the first input -->
                         <div id="autocomplete-suggestions1" class="autocomplete-popup"></div>
                     </div>
@@ -531,7 +531,7 @@
 
                 <div class="input-field">
                     <label>Year Level</label>
-                    <input type="number" id="yrlvl" name="yrlvl" required>
+                    <input type="number" id="year" name="year" required>
                 </div>
 
 
@@ -539,21 +539,21 @@
 
                 <div class="input-field">
                     <label>Last Name</label>
-                    <input type="text" id="lname" name="lname" required >
+                    <input type="text" id="lastname" name="lastname" required >
                 </div>
               
                 <div class="input-field">
                     <label>First Name</label>
-                    <input type="text" id="fname" name="fname" required  >
+                    <input type="text" id="firstname" name="firstname" required  >
                 </div>
 
                 <div class="input-field">
                     <label>Middle Name</label>
-                    <input type="text" id="mname" name="mname" required >
+                    <input type="text" id="middlename" name="middlename" required >
                 </div>
 
                 
-
+<!-- to be continued -->
                 <div class="input-field">
                     <label>Contact Number</label>
                     <input type="text" id="cn" name="cn" required >
@@ -1359,18 +1359,18 @@ textfield4.addEventListener('input', function () {
       type: 'POST',
       url: '../backend/register_user.php',
       data: {
-        idno: $("#idno").val(),
-        firstname: $("#firstname").val(),
-        lastname: $("#lastname").val(),
-        middlename: $("#middlename").val(),
+        idno: $("#idno").val(),//
+        firstname: $("#firstname").val(),//
+        lastname: $("#lastname").val(),//
+        middlename: $("#middlename").val(),//
         select: $("#select").val(),
-          year: $("#year").val(),
-          course: $("#course").val(),
-          date: $("#date").val(),
-          email: $("#email").val(),
-          username: $("#username").val(),
-          password: $("#password").val(),
-          source: source
+        year: $("#year").val(),//
+        course: $("#course").val(),//
+        date: $("#date").val(),
+        email: $("#email").val(),
+        username: $("#username").val(),
+        password: $("#password").val(),
+        source: source
       },
       success: function (data) {
   
