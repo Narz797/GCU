@@ -308,6 +308,7 @@ addEventSubmit.addEventListener("click", () => {
   const eventDate = `${year}-${month + 1}-${activeDay}`;
   const eventTimeFrom = addEventFrom.value;
   const eventTimeTo = addEventTo.value;
+  const eID = window.sessionID;//value of employee id
 
   // Validate the event data here.
 
@@ -318,7 +319,8 @@ addEventSubmit.addEventListener("click", () => {
       title: eventTitle,
       date: eventDate,
       start_time: eventTimeFrom,
-      end_time: eventTimeTo
+      end_time: eventTimeTo,
+      ID:eID
     },
     success: function (data) {
       // You can handle the response from the PHP script here, e.g., displaying a success message.
@@ -343,7 +345,8 @@ eventsContainer.addEventListener("click", (e) => {
         url: 'delete_event.php', // Update with the correct path to your PHP script for deleting events.
         data: {
           title: eventTitle,
-          date: `${year}-${month + 1}-${activeDay}`
+          date: `${year}-${month + 1}-${activeDay}`,
+          
         },
         success: function (data) {
           // Handle the response from the PHP script.

@@ -7,9 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $date = $_POST["date"];
     $start_time = $_POST["start_time"];
     $end_time = $_POST["end_time"];
+    $ID = $_POST["ID"];
+    $status = 'pending';
   
     // Create a SQL statement to insert the event data into the database
-    $sql = "INSERT INTO `appointment` (`event_title`, `date`, `start_time`, `end_time`) VALUES (:title, :date, :start_time, :end_time)";
+    $sql = "INSERT INTO `appointment` (`employee_id`, `event_title`, `date`, `start_time`, `end_time`, `status`) VALUES (:id, :title, :date, :start_time, :end_time, :status)";
 
     
     $stmt = $pdo->prepare($sql);
@@ -19,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bindParam(":date", $date);
     $stmt->bindParam(":start_time", $start_time);
     $stmt->bindParam(":end_time", $end_time);
+    $stmt->bindParam(":id", $ID);
+    $stmt->bindParam(":status", $status);
   
     if ($stmt->execute()) {
       // Insertion was successful
