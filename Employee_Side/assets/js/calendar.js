@@ -428,7 +428,6 @@ eventsContainer.addEventListener("click", (e) => {
 //function to save events in local storage
 function saveEvents() {
 
-
 let unique1 = eventsArr.filter((o) => prev_eventsArr.indexOf(o) === -1);
 let unique2 = prev_eventsArr.filter((o) => eventsArr.indexOf(o) === -1);
 
@@ -456,9 +455,6 @@ function getEvents() {
     return;
   }
   eventsArr.push(...JSON.parse(localStorage.getItem("events")));
-
-
-
 
 }
 
