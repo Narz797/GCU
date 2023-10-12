@@ -191,69 +191,73 @@ function getAvailability(year, month, date) {
       date: date
     },
     success: function (data) {
-      // Parse the JSON response from get_availability.php
+      //console.log("Raw data received from get_availability.php:", data);
       const availabilityData = JSON.parse(data);
-      const events = [];
+      //console.log(`year: ${year}, month: ${month}, date: ${date}`);
+      console.log(availabilityData); // Verify the structure of the data
+      console.log("Data Length:", availabilityData.length);
+
 
       // Check if there's availability data for the specified date
       if (availabilityData.length > 0) {
+        const events = [];
         availabilityData.forEach((event) => {
           events.push({
             day: date,
             month: month + 1, // Note that JavaScript months are zero-based
             year: year,
-            events: [
-              {
-                title: event.event_title,
-                time: `${event.start_time} - ${event.end_time}`
-              }
-            ]
+            title: event.event_title,
+            time: `${event.start_time} - ${event.end_time}`
           });
         });
+        // Use the events data to update the UI
+        updateEvents(year, month, date, events);
+      } else {
+        updateEvents(year, month, date, []);
       }
-
-      // Use the events data to update the UI
-      updateEvents(year, month, date, events);
     }
   });
 }
 
 
 
-//function update events when a day is active
+
+// Function to update events for the selected day
 function updateEvents(year, month, date, events) {
   let eventsHTML = "";
+  console.log('Data received from get_availability.php:', events);
 
-  if (Array.isArray(events)) {
+  if (Array.isArray(events) && events.length > 0) {
     events.forEach((event) => {
-      if (
-        date === event.day &&
-        month + 1 === event.month &&
-        year === event.year
-      ) {
-        event.events.forEach((event) => {
-          eventsHTML += `<div class="event">
-              <div class="title">
-                <i class="fas fa-circle"></i>
-                <h3 class="event-title">${event.title}</h3>
-              </div>
-              <div class="event-time">
-                <span class="event-time">${event.time}</span>
-              </div>
-          </div>`;
-        });
-      }
+      eventsHTML += `<div class="event">
+        <div class="title">
+          <i class="fas fa-circle"></i>
+          <h3 class="event-title">${event.title}</h3>
+        </div>
+        <div class="event-time">
+          <span class="event-time">${event.time}</span>
+        </div>
+      </div>`;
     });
-  }
-
-  if (eventsHTML === "") {
+  } else {
     eventsHTML = `<div class="no-event">
-            <h3>Availability</h3>
-        </div>`;
+      <h3>No events for this day</h3>
+    </div>`;
   }
 
   eventsContainer.innerHTML = eventsHTML;
 }
+
+// Function to fetch new data and update events
+function refreshEvents() {
+  getAvailability(year, month + 1, activeDay);
+}
+  
+
+
+
+// Call updateEvents when a new day is selected
+addListner();
 
 
 
@@ -314,33 +318,31 @@ addEventSubmit.addEventListener("click", () => {
   const eventDate = `${year}-${month + 1}-${activeDay}`;
   const eventTimeFrom = addEventFrom.value;
   const eventTimeTo = addEventTo.value;
-  const eID = window.sessionID;//value of employee id
+  const eID = window.sessionID; //value of employee id
 
   // Validate the event data here.
 
   $.ajax({
     type: 'POST',
-    url: '../backend/add_availablity.php', // Update with the correct path to your PHP script.
+    url: '../backend/add_availablity.php',
     data: {
       title: eventTitle,
       date: eventDate,
       start_time: eventTimeFrom,
       end_time: eventTimeTo,
-      ID:eID
+      ID: eID
     },
     success: function (data) {
       // You can handle the response from the PHP script here, e.g., displaying a success message.
       alert(data);
-      // Clear the input fields and update the events.
+      // Clear the input fields and refresh events to fetch the new data.
       addEventTitle.value = "";
       addEventFrom.value = "";
       addEventTo.value = "";
-      updateEvents(activeDay);
+      refreshEvents();
     }
   });
 });
-
-
 
 
 function convertTime(time) {

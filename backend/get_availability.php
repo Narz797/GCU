@@ -15,18 +15,20 @@ try {
     // Execute a query to retrieve events from the database for the specified year, month, and date
     $query = "SELECT `event_title`, `date`, `start_time`, `end_time`, `status` 
               FROM `appointment` 
-              WHERE YEAR(`date`) = :year AND MONTH(`date`) = :month";
+              WHERE YEAR(`date`) = :year AND MONTH(`date`) = :month AND DAY(`date`) = :date";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':year', $year, PDO::PARAM_INT);
     $stmt->bindParam(':month', $month, PDO::PARAM_INT);
-    // $stmt->bindParam(':date', $date, PDO::PARAM_INT);
+    $stmt->bindParam(':date', $date, PDO::PARAM_INT);
     $stmt->execute();
-
 
     // Fetch data and return it as JSON
     $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($events);
 } catch (PDOException $e) {
+    error_log('Database query failed: ' . $e->getMessage());
     die('Database query failed: ' . $e->getMessage());
 }
+
+?>
