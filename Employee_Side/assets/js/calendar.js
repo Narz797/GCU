@@ -191,11 +191,14 @@ function getAvailability(year, month, date) {
       date: date
     },
     success: function (data) {
+      if (data === "Already Added!") {
+        alert("data");
+    } else {
       //console.log("Raw data received from get_availability.php:", data);
       const availabilityData = JSON.parse(data);
       //console.log(`year: ${year}, month: ${month}, date: ${date}`);
-      console.log(availabilityData); // Verify the structure of the data
-      console.log("Data Length:", availabilityData.length);
+      // console.log(availabilityData); // Verify the structure of the data
+      // console.log("Data Length:", availabilityData.length);
 
 
       // Check if there's availability data for the specified date
@@ -215,6 +218,7 @@ function getAvailability(year, month, date) {
       } else {
         updateEvents(year, month, date, []);
       }
+    }
     }
   });
 }
