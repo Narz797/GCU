@@ -95,7 +95,7 @@
                 <a href="appointment.php" class="card-body-link">
                 <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
-                <a href="../index.php" class="card-body-link">
+                <a href="../index.php?logout=true" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>
