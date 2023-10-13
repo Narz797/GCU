@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $start_time = $_POST["start_time"];
         $end_time = $_POST["end_time"];
         $ID = $_POST["ID"];
-        $status = 'pending';
+        $status = 'open';
 
         // Create a SQL statement for the selection
         $query = "SELECT * FROM `appointment` WHERE `employee_id` = :id AND `event_title` = :title AND `date` = :date AND `start_time` = :start_time AND `end_time` = :end_time";
