@@ -1,6 +1,7 @@
 <?php 
 
 include 'includes/main.php';
+session_start();
 
  ?>
 
@@ -8,18 +9,18 @@ include 'includes/main.php';
 
     <!-- icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-        <link
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
           <!-- Vendor CSS Files -->
-  <link href="../Employee_Side/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../Employee_Side/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../Employee_Side/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../Employee_Side/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="../Employee_Side/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="../Employee_Side/assets/apmt.css">
-  
+    <link rel="stylesheet" href="assets/apmt.css">
+    <link rel="icon" href="assets/images/GCU_logo.png">
 </head>
   <body>
        
@@ -115,5 +116,6 @@ include 'includes/main.php';
   </body>
 <?php include '../includes/footer.php' ?>
 
-<script src="../Employee_Side/assets/js/calendar.js"></script>    
-<script src="../Employee_Side/assets/main.js"></script> 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="assets/js/calendar.js"></script>    
