@@ -41,6 +41,11 @@ $(document).ready(function () {
   const lastDate = lastDay.getDate();
   const day = firstDay.getDay();
   const nextDays = 7 - lastDay.getDay() - 1;
+  const currentDate = new Date(year, month, 1);
+  const startDate = currentDate.toISOString().slice(0, 10);
+  const endDate = lastDay.toISOString().slice(0, 10);
+  
+
 
   date.innerHTML = months[month] + " " + year;
 
@@ -50,30 +55,32 @@ $(document).ready(function () {
     days += `<div class="day prev-date">${prevDays - x + 1}</div>`;
   }
 
-  for (let i = 1; i <= lastDate; i++) {
-    // Check if event is present on that day
-    let event = false;
-    if (
-      i === new Date().getDate() &&
-      year === new Date().getFullYear() &&
-      month === new Date().getMonth()
-    ) {
-      activeDay = i;
-      getActiveDay(i);
-      updateEvents(activeDay);
-      if (event) {
-        days += `<div class="day today active event">${i}</div>`;
-      } else {
-        days += `<div class="day today active">${i}</div>`;
+  fetchEventsForMonth(startDate, endDate)
+    .then((eventDates) => {
+      for (let i = 1; i <= lastDate; i++) {
+        const isEventDate = eventDates.includes(`${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`);
+
+        if (
+          i === new Date().getDate() &&
+          year === new Date().getFullYear() &&
+          month === new Date().getMonth()
+        ) {
+          activeDay = i;
+          getActiveDay(i);
+          updateEvents(activeDay);
+          if (isEventDate) {
+            days += `<div class="day today active event">${i}</div>`;
+          } else {
+            days += `<div class="day today active">${i}</div>`;
+          }
+        } else {
+          if (isEventDate) {
+            days += `<div class="day event">${i}</div>`;
+          } else {
+            days += `<div class="day">${i}</div>`;
+          }
+        }
       }
-    } else {
-      if (event) {
-        days += `<div class="day event">${i}</div>`;
-      } else {
-        days += `<div class="day">${i}</div>`;
-      }
-    }
-  }
 
   for (let j = 1; j <= nextDays; j++) {
     days += `<div class="day next-date">${j}</div>`;
@@ -81,8 +88,60 @@ $(document).ready(function () {
   daysContainer.innerHTML = days;
   addListner();
   updateEvents(year, month, activeDay);
+
+})
+.catch((error) => {
+  console.error("Error fetching events:", error);
+});
+
 }
 
+function checkEvents(year, month, day) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "../backend/check_events.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          const response = xhr.responseText;
+          console.log(response); // Add this line to see the response
+          if (response === 'true') {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+        } else {
+          reject(new Error("Error checking events"));
+        }
+      }
+    };
+    
+    xhr.send(`year=${year}&month=${month}&day=${day}`);
+  });
+}
+
+function fetchEventsForMonth(startDate, endDate) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "../backend/get_events_for_month.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          const response = xhr.responseText;
+          resolve(response.split("\n").filter(Boolean)); // Split response into an array of event dates
+        } else {
+          reject(new Error("Error fetching events for the month"));
+        }
+      }
+    };
+
+    xhr.send(`start_date=${startDate}&end_date=${endDate}`);
+  });
+}
 
 //function to add month and year on prev and next button
 function prevMonth() {
@@ -344,6 +403,7 @@ addEventSubmit.addEventListener("click", () => {
       addEventFrom.value = "";
       addEventTo.value = "";
       refreshEvents();
+      location.reload();
     }
   });
 });
