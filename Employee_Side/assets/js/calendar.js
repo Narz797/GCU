@@ -96,31 +96,7 @@ $(document).ready(function () {
 
 }
 
-function checkEvents(year, month, day) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "../backend/check_events.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          const response = xhr.responseText;
-          console.log(response); // Add this line to see the response
-          if (response === 'true') {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        } else {
-          reject(new Error("Error checking events"));
-        }
-      }
-    };
-    
-    xhr.send(`year=${year}&month=${month}&day=${day}`);
-  });
-}
+
 
 function fetchEventsForMonth(startDate, endDate) {
   return new Promise((resolve, reject) => {
