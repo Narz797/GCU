@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" href="assets/images/GCU_logo.png">
     <!-- Vendor CSS Files -->
+
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -104,21 +106,21 @@
             <div class="card border one">
                 <div>
                     <h2 class="title">LATEST Requested Forms</h2>
-                    <p class="card-description"><b>Sasuke Uchiha</b> has requested a <b>Readmission</b> form for the 57th times.</p>
+                    <p class="card-description"><b id="studentId"></b> has requested a <b id="transactType"></b> form for the 57th times.</p>
                 </div>
                 <a href="index.php"><button class="list-link">Read More</button></a>
             </div>
             <div class="card border two">
                 <div>
                     <h2 class="title">UNOPENED Requested Forms</h2>
-                    <p class="card-description"> <b>58</b> Forms waiting...</p>
+                    <p class="card-description"> <b id="total"></b> Forms waiting...</p>
                 </div>
                 <a href="form.php"><button class="list-link">Read More</button></a>
             </div>
             <div class="card border three">
                 <div>
                     <h2 class="title">Number of Appointments TODAY</h2>
-                    <p class="card-description"> <b>3</b> Appointments pending...</p>
+                    <p class="card-description"> <b id="totalAppointments"></b> Appointments pending...</p>
                 </div>
                 <a href="appointment.php"><button class="list-link">Read More</button></a>
             </div>
@@ -156,5 +158,51 @@
 </footer>
     <!-- Script -->
 <script src="./assets/index.js"></script>    
+<script>
+    // Function to update the HTML elements
+    function updateValues(studentId, transactType, total, totalAppointments) {
+        $('#studentId').text(studentId);
+        $('#transactType').text(transactType);
+        $('#total').text(total);
+        $('#totalAppointments').text(totalAppointments);
+    }
+
+    // Function to fetch data from get_transaction.php
+    function fetchData() {
+        console.log('AJAX request started');
+        $.ajax({
+            type: 'GET',
+            url: '../backend/get_transaction.php',
+            dataType: 'json',
+            
+            success: function (data) {
+                console.log(data);
+                if (data.latest_data.length > 0) {
+                    var studentId = data.latest_data[0].student_id;
+                    var transactType = data.latest_data[0].transact_type;
+                    var total = data.total_pending_transactions;
+                    var totalAppointments = data.total_appointments; // Define total here
+
+                    console.log(totalAppointments);
+
+                    updateValues(studentId, transactType, total, totalAppointments);
+                } else {
+                    // Handle the case when no results are found
+                    // You can update the UI as needed
+                    console.log('No results found');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error: ' + error);
+                console.error('Status: ' + status);
+                console.error('Response: ' + xhr.responseText);
+            }
+        });
+    }
+
+    // Call the fetchData function when the page loads
+    fetchData();
+</script>
+
 </body>
 </html>
