@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="style.css">
@@ -22,6 +23,37 @@
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
     }
+    .autocomplete-container {
+    position: relative;
+    }
+
+    .autocomplete-popup {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        max-height: 150px;
+        overflow-y: auto;
+        display: none;
+    }
+
+    .autocomplete-popup ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .autocomplete-popup li {
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .autocomplete-popup li:hover {
+        background-color: #f0f0f0;
+    }
+
     body{
         min-height: 100vh;
         display: flex;
@@ -520,9 +552,9 @@
                 
 
                 <div class="input-field">
-                    <label for="crse">Course</label>
+                    <label for="course">Course</label>
                     <div class="autocomplete-container">
-                        <input type="text" name="course" id="course" onkeyup="showSuggestions('crse', 'autocomplete-suggestions1')">
+                        <input type="text" name="course" id="course" onkeyup="showSuggestions('course', 'autocomplete-suggestions1')">
                         <!-- Create a container to display autocomplete suggestions for the first input -->
                         <div id="autocomplete-suggestions1" class="autocomplete-popup"></div>
                     </div>
@@ -553,7 +585,7 @@
                 </div>
 
                 
-<!-- to be continued -->
+
                 <div class="input-field">
                     <label>Contact Number</label>
                     <input type="text" id="cn" name="cn" required >
@@ -606,6 +638,7 @@
                 <br>
                 <br>
                 <div style="width: 100%;">
+                <!--  -->
                     <p><b>Whom do you live?</b></p>
                     <br>
                     <div class="radio-group">
@@ -1340,7 +1373,7 @@ function displaySuggestions(suggestions, suggestionsDiv, input) {
 }
 
 
-var textfield4 = document.getElementById('crse');
+var textfield4 = document.getElementById('course');
 textfield4.addEventListener('input', function () {
     this.value = this.value.toUpperCase();
 });
@@ -1351,23 +1384,110 @@ textfield4.addEventListener('input', function () {
 
 
 <!-- save to database -->
+
 <script>
+  $("#registrationForm").on("submit", function (event) {
+    var source = "student_side_signup";
+    event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '../../backend/register_user.php',
+      data: {
+        idno: $("#idno").val(),
+        firstname: $("#firstname").val(),
+        lastname: $("#lastname").val(),
+        middlename: $("#middlename").val(),
+        course: $("#course").val(),
+        year: $("#year").val(),
+        cn: $("#cn").val(),
+        email: $("#email").val(),
+        cs: $("#cs").val(),
+        select: $("#select").val(),
+        dob: $("#dob").val(),
+        bp: $("#bp").val(),
+        nationality: $("#nationality").val(),
+        lang: $("#lang").val(),
+        address: $("#address").val(),
+        whom: $("#whom").val(),
+        Flname: $("#Flname").val(),
+        Ffname: $("#Ffname").val(),
+        Fmname: $("#Fmname").val(),
+        Fage: $("#Fage").val(),
+        Focc: $("#Focc").val(),
+        Fedu: $("#Fedu").val(),
+        Mlname: $("#Mlname").val(),
+        Mfname: $("#Mfname").val(),
+        Mmname: $("#Mmname").val(),
+        Mage: $("#Mage").val(),
+        Mocc: $("#Mocc").val(),
+        Medu: $("#Medu").val(),
+        Glname: $("#Glname").val(),
+        Gfname: $("#Gfname").val(),
+        Gmname: $("#Gmname").val(),
+        Gage: $("#Gage").val(),
+        Gocc: $("#Gocc").val(),
+        Gedu: $("#Gedu").val(),
+        total_number: $("#total_number").val(),
+        siblings: $("#siblings").val(),
+        membership: $("#membership").val(),
+        indigenousInfo: $("#indigenousInfo").val(),
+        pwd: $("#pwd").val(),
+        studpar: $("#studpar").val(),
+        src: $("#src").val(), // Assuming src is an input element
+        maritalStatus: $("#maritalStatus").val(),
+        first: $("#first").val(),
+        Fis: $("#Fis").val(),
+        Mis: $("#Mis").val(),
+        abtFam: $("#abtFam").val(),
+        whenChild: $("#whenChild").val(),
+        teachAre: $("#teachAre").val(),
+        freindsDunno: $("#freindsDunno").val(),
+        future: $("#future").val(),
+        goal: $("#goal").val(),
+        eu: $("#eu").val(),
+        pass: $("#password").val(),
+        source: source
+      },
+      success: function (data) {
+        if (data === "success_student") {
+          window.location.href = "../Student_Side/login.php";
+          alert("Sign up successful");
+        } else {
+          alert(data);
+        }
+      },
+      error: function (data) {
+        alert("Connection error");
+      }
+    });
+  });
+</script>
+
+
+<!-- <script>
   $("#registrationForm").on("submit", function (event) {
   var source = "student_side_signup";
   event.preventDefault();
   $.ajax({
       type: 'POST',
-      url: '../backend/register_user.php',
+      url: '../../backend/register_user.php',
       data: {
         idno: $("#idno").val(),//
         firstname: $("#firstname").val(),//
         lastname: $("#lastname").val(),//
         middlename: $("#middlename").val(),//
+        contact: $("#cn").val(),
+        email: $("#email").val(),
+        civil: $("#cs").val(),
         select: $("#select").val(),
         year: $("#year").val(),//
         course: $("#course").val(),//
         date: $("#date").val(),
-        email: $("#email").val(),
+        dob: $("#dob").val(),
+        bp: $("#bp").val(),
+        nationality: $("#nationality").val(),
+        lang: $("#lang").val(),
+        address: $("#address").val(),
         username: $("#username").val(),
         password: $("#password").val(),
         source: source
@@ -1386,7 +1506,9 @@ textfield4.addEventListener('input', function () {
       }
   });
   });
-</script>
+</script> -->
+
+
 
 
 </body>
