@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2023 at 03:03 AM
+-- Generation Time: Oct 17, 2023 at 03:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -73,6 +73,26 @@ INSERT INTO `absence` (`absence_id`, `transact_id`, `semester`, `start_year`, `e
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_admin`
+--
+
+CREATE TABLE `admin_admin` (
+  `id` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `uname` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin_admin`
+--
+
+INSERT INTO `admin_admin` (`id`, `admin_id`, `uname`, `pass`) VALUES
+(1, 1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admin_user`
 --
 
@@ -124,29 +144,30 @@ INSERT INTO `appointment` (`appointment_id`, `student_id`, `employee_id`, `event
 (5, NULL, 2002529, 'dfgh', '2023-10-11', '08:00:00', '09:00:00', NULL),
 (6, NULL, 2002529, 'Test 3', '2023-10-31', '13:00:00', '14:00:00', 'pending'),
 (7, NULL, 2002529, '', '2023-10-31', '00:00:00', '00:00:00', 'pending'),
-(8, NULL, 2002529, 'sdfg', '2023-10-01', '08:00:00', '09:00:00', 'pending'),
 (9, NULL, NULL, 'asdf', '2023-10-21', '06:00:00', '08:00:00', 'pending'),
 (10, NULL, 2002529, 'sdfgsdfgsdfgsdfg', '2023-10-18', '05:00:00', '16:00:00', 'pending'),
 (11, NULL, 2002529, 'sdfg', '2024-01-11', '14:00:00', '16:00:00', 'pending'),
 (12, NULL, 2002529, 'Its time', '2023-11-27', '01:00:00', '04:00:00', 'pending'),
 (13, NULL, 2002529, 'Test5', '2023-10-31', '10:00:00', '11:00:00', 'pending'),
-(14, NULL, 2002529, 'hi', '2023-10-01', '12:00:00', '13:00:00', 'pending'),
 (15, NULL, 2002529, 'asdf', '2023-10-25', '09:00:00', '10:00:00', 'pending'),
-(16, NULL, 2002529, 'sdfg', '2023-10-10', '09:00:00', '10:00:00', 'pending'),
+(16, NULL, 2002529, 'sdfg', '2023-10-10', '09:00:00', '10:00:00', 'done'),
 (17, NULL, 2002529, 'erty', '2023-10-01', '08:00:00', '09:00:00', 'pending'),
 (18, NULL, 2002529, 'hi', '2023-10-01', '12:00:00', '13:00:00', 'pending'),
 (19, NULL, 2002529, 'Test 2', '2023-10-29', '08:00:00', '09:00:00', 'pending'),
 (20, NULL, 2002529, '', '2023-10-29', '00:00:00', '00:00:00', 'pending'),
 (21, NULL, 2002529, 'asdf', '2023-10-26', '08:00:00', '09:00:00', 'pending'),
 (22, NULL, 2002529, 'wert', '2023-10-19', '08:00:00', '09:00:00', 'pending'),
-(23, NULL, 2002529, 'wert', '2023-10-17', '08:00:00', '09:00:00', 'open'),
 (24, NULL, 2002529, 'wert', '2023-10-27', '08:00:00', '09:00:00', 'open'),
 (25, NULL, 2002529, 'qwer', '2023-10-20', '08:00:00', '09:00:00', 'open'),
 (26, NULL, 2002529, 'sdfg', '2023-10-24', '08:00:00', '09:00:00', 'open'),
 (27, NULL, 2002529, 'asdf', '2023-11-08', '08:00:00', '09:00:00', 'open'),
 (28, NULL, 2002529, 'zxcv', '2023-10-02', '08:00:00', '09:00:00', 'open'),
 (29, NULL, 2002529, 'asdf', '2023-10-03', '08:00:00', '09:00:00', 'open'),
-(30, NULL, 2002529, 'asdf', '2023-10-23', '08:00:00', '09:00:00', 'open');
+(30, NULL, 2002529, 'asdf', '2023-10-23', '08:00:00', '09:00:00', 'open'),
+(31, NULL, 2002529, 'sdfg', '2023-10-16', '08:00:00', '09:00:00', 'open'),
+(32, NULL, 2002529, 'cvbnvc', '2023-10-16', '10:00:00', '11:00:00', 'open'),
+(34, NULL, 2002529, 'qwer', '2023-10-12', '08:00:00', '09:00:00', 'open'),
+(35, NULL, 2002529, 'sdfg', '2023-11-02', '07:00:00', '09:00:00', 'open');
 
 -- --------------------------------------------------------
 
@@ -223,7 +244,8 @@ INSERT INTO `readmission` (`readmission_id`, `transact_id`, `motivation`, `reaso
 (3, 17, 'fgsdfgsdfg', 'sdfgsdfgs', 'pending'),
 (4, 18, 'jfgjhfgh', 'fghjfghj', 'pending'),
 (5, 26, 'no reason', 'none', ''),
-(6, 40, 'No reason', 'not motivated at all', '');
+(6, 40, 'No reason', 'not motivated at all', ''),
+(7, 44, 'asdf', 'asdf', '');
 
 -- --------------------------------------------------------
 
@@ -368,8 +390,35 @@ INSERT INTO `transact` (`transact_id`, `student_id`, `employee_id`, `transact_ty
 (37, 2002529, NULL, 'withdrawal', '2023-09-14 14:21:43', NULL, 'pending'),
 (38, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'pending'),
 (39, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'pending'),
-(40, 432, NULL, 'readmission', '2023-09-22 09:40:41', NULL, 'pending'),
-(41, 432, NULL, 'withdrawal', '2023-10-10 17:03:56', NULL, 'pending');
+(40, 432, NULL, 'readmission', '2023-09-22 09:40:41', NULL, 'recieved'),
+(41, 432, NULL, 'withdrawal', '2023-10-10 17:03:56', NULL, 'recieved'),
+(42, 432, NULL, 'withdrawal', '2023-10-17 14:31:20', NULL, 'pending'),
+(43, 432, NULL, 'withdrawal', '2023-10-17 14:31:33', NULL, 'pending'),
+(44, 432, NULL, 'readmission', '2023-10-17 14:36:41', NULL, 'pending'),
+(45, 432, NULL, 'withdrawal', '2023-10-17 14:36:48', NULL, 'pending'),
+(46, 432, NULL, 'withdrawal', '2023-10-17 14:37:07', NULL, 'pending'),
+(47, 432, NULL, 'withdrawal', '2023-10-17 14:37:13', NULL, 'pending'),
+(48, 432, NULL, 'withdrawal', '2023-10-17 14:37:20', NULL, 'pending'),
+(49, 432, NULL, 'withdrawal', '2023-10-17 14:37:33', NULL, 'pending'),
+(50, 432, NULL, 'withdrawal', '2023-10-17 14:44:10', NULL, 'pending'),
+(51, 432, NULL, 'withdrawal', '2023-10-17 14:44:24', NULL, 'pending'),
+(52, 432, NULL, 'withdrawal', '2023-10-17 14:44:52', NULL, 'pending'),
+(53, 432, NULL, 'withdrawal', '2023-10-17 14:45:02', NULL, 'pending'),
+(54, 432, NULL, 'withdrawal', '2023-10-17 14:45:08', NULL, 'pending'),
+(55, 432, NULL, 'withdrawal', '2023-10-17 14:46:43', NULL, 'pending'),
+(56, 432, NULL, 'withdrawal', '2023-10-17 14:57:04', NULL, 'pending'),
+(57, 432, NULL, 'withdrawal', '2023-10-17 14:57:15', NULL, 'pending'),
+(58, 432, NULL, 'withdrawal', '2023-10-17 14:57:30', NULL, 'pending'),
+(59, 432, NULL, 'withdrawal', '2023-10-17 15:05:02', NULL, 'pending'),
+(60, 432, NULL, 'withdrawal', '2023-10-17 15:05:59', NULL, 'pending'),
+(61, 432, NULL, 'withdrawal', '2023-10-17 15:09:10', NULL, 'pending'),
+(62, 432, NULL, 'withdrawal', '2023-10-17 15:09:47', NULL, 'pending'),
+(63, 432, NULL, 'withdrawal', '2023-10-17 15:16:56', NULL, 'pending'),
+(64, 432, NULL, 'withdrawal', '2023-10-17 15:17:41', NULL, 'pending'),
+(65, 432, NULL, 'withdrawal', '2023-10-17 15:18:04', NULL, 'pending'),
+(66, 432, NULL, 'withdrawal', '2023-10-17 15:19:47', NULL, 'pending'),
+(67, 432, NULL, 'withdrawal', '2023-10-17 15:22:51', NULL, 'pending'),
+(68, 432, NULL, 'withdrawal', '2023-10-17 15:26:59', NULL, 'pending');
 
 -- --------------------------------------------------------
 
@@ -384,8 +433,8 @@ CREATE TABLE `withdrawal` (
   `statement` longtext DEFAULT NULL,
   `explain` longtext DEFAULT NULL,
   `status` varchar(255) NOT NULL,
-  `shift_from` int(11) NOT NULL,
-  `shift_to` int(11) NOT NULL
+  `shift_from` varchar(255) NOT NULL,
+  `shift_to` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -393,18 +442,8 @@ CREATE TABLE `withdrawal` (
 --
 
 INSERT INTO `withdrawal` (`withdrawal_id`, `transact_id`, `reason`, `statement`, `explain`, `status`, `shift_from`, `shift_to`) VALUES
-(3, 19, 'Withdrawing Enrollment', 'Somethin', 'coz I wanna', 'pending', 0, 0),
-(4, 20, 'Dropping Subjects', 'I have no reason', 'I just want to', 'pending', 0, 0),
-(5, 21, 'Shifting', 'No reason at all', 'Just for the fun of it', 'pending', 0, 0),
-(6, 27, 'Withdrawing Enrollment', 'hfdghdfg', 'dfghdfghdf', '', 0, 0),
-(7, 28, 'Dropping Subjects', 'xcvbxcvb', 'asdfsadf', '', 0, 0),
-(8, 29, 'Shifting', 'xcvbxcvb', 'asdfsadf', '', 0, 0),
-(9, 35, 'Shifting', 'fsdfgs', 'sdfgsdfg', '', 4, 4),
-(10, 36, 'Shifting', 'ghdfgghd', 'dfghdfghdfgh', '', 18, 18),
-(11, 37, 'Shifting', 'fasdfas', 'asdfasdf', '', 6, 6),
-(12, 38, 'Shifting', 'sdfgsdfg', 'sgfsdg', '', 4, 1),
-(13, 39, 'Shifting', 'sdfgsdfg', 'sgfsdg', '', 4, 1),
-(14, 41, 'Shifting', 'fsda', 'fdsa', '', 1, 2);
+(22, 67, 'Withdrawing Enrollment', 'asdf', 'asdf', '', '0', '0'),
+(23, 68, 'Withdrawing Enrollment', 'asdf', 'asdf', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -422,6 +461,12 @@ ALTER TABLE `about_me`
 --
 ALTER TABLE `absence`
   ADD PRIMARY KEY (`absence_id`);
+
+--
+-- Indexes for table `admin_admin`
+--
+ALTER TABLE `admin_admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `admin_user`
@@ -497,10 +542,16 @@ ALTER TABLE `absence`
   MODIFY `absence_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `admin_admin`
+--
+ALTER TABLE `admin_admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -512,7 +563,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `readmission`
 --
 ALTER TABLE `readmission`
-  MODIFY `readmission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `readmission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `referral`
@@ -530,13 +581,13 @@ ALTER TABLE `siblings`
 -- AUTO_INCREMENT for table `transact`
 --
 ALTER TABLE `transact`
-  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `withdrawal`
 --
 ALTER TABLE `withdrawal`
-  MODIFY `withdrawal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `withdrawal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
