@@ -264,7 +264,6 @@ function getAvailability(year, month, date) {
 // Function to update events for the selected day
 function updateEvents(year, month, date, events) {
   let eventsHTML = "";
-  console.log('Data received from get_availability.php:', events);
 
   if (Array.isArray(events) && events.length > 0) {
     events.forEach((event) => {
@@ -276,6 +275,10 @@ function updateEvents(year, month, date, events) {
         <div class="event-time">
           <span class="event-time">${event.time}</span>
         </div>
+        <div class="event-actions">
+          <button class="delete-event">Delete</button>
+          <button class="edit-event">Edit</button>
+        </div>
       </div>`;
     });
   } else {
@@ -285,7 +288,28 @@ function updateEvents(year, month, date, events) {
   }
 
   eventsContainer.innerHTML = eventsHTML;
+
+  // Add event listeners to the "Delete" and "Edit" buttons
+  const deleteButtons = document.querySelectorAll(".delete-event");
+  const editButtons = document.querySelectorAll(".edit-event");
+
+  deleteButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      // Handle delete event logic here using events[index]
+      // You can show a confirmation dialog and then delete the event.
+      console.log("Delete event clicked for event:", events[index]);
+    });
+  });
+
+  editButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      // Handle edit event logic here using events[index]
+      // You can open a modal or form to edit the event details.
+      console.log("Edit event clicked for event:", events[index]);
+    });
+  });
 }
+
 
 // Function to fetch new data and update events
 function refreshEvents() {
