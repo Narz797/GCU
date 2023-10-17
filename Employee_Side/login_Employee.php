@@ -278,9 +278,11 @@ input[type="submit"]:hover {
      
             if  (data === "success_employee") {
                 window.location.href = "../Employee_Side/index.php";
+            } else if  (data === "success_admin") {
+                window.location.href = "../Admin_Side/main.php";
             } else {
               alert("Invalid username or password.");
-            }
+            } 
           
         }
     });

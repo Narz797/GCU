@@ -112,35 +112,35 @@ $_SESSION['transact_type']='withdrawal';//asign value to transact_type
     const textfield = document.getElementById('for-shift');
 
     dropdown.addEventListener('change', function () {
-      if (dropdown.value === 'Shifting') {
-        textfield.classList.remove('hidden');
-      } else {
-        textfield.classList.add('hidden');
-      }
-    });
+  if (dropdown.value === 'Shifting') {
+    textfield.classList.remove('hidden');
+  } else {
+    textfield.classList.add('hidden');
+  }
+});
 
-    $("#form_transact").on("submit", function (event) {
-      event.preventDefault();
-      var student_id = <?php echo $_SESSION['session_id']?>;
-      var transact_type = "withdrawal"
+$("#form_transact").on("submit", function (event) {
+  event.preventDefault();
+  var student_id = <?php echo $_SESSION['session_id']?>;
+  var transact_type = "withdrawal";
+  var course_frm = dropdown.value === 'Shifting' ? textfield4.value : null;
+  var course_to = dropdown.value === 'Shifting' ? textfield5.value : null;
 
-      $.ajax({
-        type: 'POST',
-        url: '../../backend/create_transaction.php',
-        data: {
-          reason: $('#action').find(":selected").val(),
-          statement: $('#reason_state').val(),
-          explain: $("#reason_explain").val(),
-          course_frm: $("#textfield4").val(),
-          course_to: $("#textfield5").val()
-        },
-        success: function (data) {
-          alert(data);
-
-        }
-      });
-    });
-
+  $.ajax({
+    type: 'POST',
+    url: '../../backend/create_transaction.php',
+    data: {
+      reason: $('#action').find(":selected").val(),
+      statement: $('#reason_state').val(),
+      explain: $("#reason_explain").val(),
+      course_frm: course_frm,
+      course_to: course_to
+    },
+    success: function (data) {
+      alert(data);
+    }
+  });
+});
    
   </script>
 

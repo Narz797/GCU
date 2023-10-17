@@ -334,19 +334,37 @@ function updateEvents(year, month, date, events) {
 
   editButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
-      // Handle edit event logic here using events[index]
-      // You can open a modal or form to edit the event details.
       console.log("Edit event clicked for event:", events[index]);
     });
   });
 
+  function markEventAsDone(eventID) {
+    $.ajax({
+      type: 'POST',
+      url: '../backend/mad.php',
+      data: {
+        event_id: eventID,
+      },
+      success: function (data) {
+        console.log("Event marked as done:", data);
+      },
+      error: function (xhr, status, error) {
+        console.error("Error marking event as done:", error);
+        alert("Error marking event as done: " + error);
+      },
+    });
+  }
+
   markAsDoneButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
-      // Handle marking the event as done logic here using events[index]
-      console.log("Marked as Done clicked for event:", events[index]);
-      // You can update the event's status or appearance to indicate it's done.
+      const event = events[index];
+      if (confirm("Mark this event as done?")) {
+        markEventAsDone(event.aID);
+      }
     });
+ 
   });
+  
 }
 
 
