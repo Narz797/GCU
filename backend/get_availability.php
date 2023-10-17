@@ -13,7 +13,7 @@ try {
     $date = isset($_GET['date']) ? $_GET['date'] : date('d');
 
     // Execute a query to retrieve events from the database for the specified year, month, and date
-    $query = "SELECT `event_title`, `date`, `start_time`, `end_time`, `status` 
+    $query = "SELECT `appointment_id`, `employee_id`, `event_title`, `date`, `start_time`, `end_time`, `status` 
               FROM `appointment` 
               WHERE YEAR(`date`) = :year AND MONTH(`date`) = :month AND DAY(`date`) = :date";
 

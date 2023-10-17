@@ -241,11 +241,15 @@ function getAvailability(year, month, date) {
         const events = [];
         availabilityData.forEach((event) => {
           events.push({
+            aID:event.appointment_id,
+            eID:event.employee_id,
             day: date,
             month: month + 1, // Note that JavaScript months are zero-based
             year: year,
             title: event.event_title,
-            time: `${event.start_time} - ${event.end_time}`
+            time: `${event.start_time} - ${event.end_time}`,
+            stime: event.start_time,
+            etime: event.end_time
           });
         });
         // Use the events data to update the UI
@@ -278,6 +282,7 @@ function updateEvents(year, month, date, events) {
         <div class="event-actions">
           <button class="delete-event">Delete</button>
           <button class="edit-event">Edit</button>
+          <button class="mark-as-done">Marked as Done</button>
         </div>
       </div>`;
     });
@@ -289,23 +294,57 @@ function updateEvents(year, month, date, events) {
 
   eventsContainer.innerHTML = eventsHTML;
 
-  // Add event listeners to the "Delete" and "Edit" buttons
+  // Add event listeners to the "Delete," "Edit," and "Marked as Done" buttons
   const deleteButtons = document.querySelectorAll(".delete-event");
   const editButtons = document.querySelectorAll(".edit-event");
+  const markAsDoneButtons = document.querySelectorAll(".mark-as-done");
 
   deleteButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
-      // Handle delete event logic here using events[index]
-      // You can show a confirmation dialog and then delete the event.
-      console.log("Delete event clicked for event:", events[index]);
+      const event = events[index];
+      if (confirm("Are you sure you want to delete this event?")) {
+        console.log(event.aID);
+  
+        $.ajax({
+          type: "POST",
+          url: "../backend/delete_appointment.php",
+          data: {
+            appointment_id: event.aID, // Change key to "appointment_id"
+          },
+          
+          success: function (data) {
+            // Handle the successful delete operation.
+            console.log("Event deleted successfully.");
+            console.log(data);
+  
+            // Remove the event from the UI here.
+            // Example: eventDiv.remove();
+          },
+          error: function (xhr, status, error) {
+            // Handle the error case, e.g., show an error message to the user.
+            console.error("Error deleting event:", error);
+            alert("Error deleting event: " + error);
+          },
+        });
+      }
     });
   });
+  
+  
 
   editButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
       // Handle edit event logic here using events[index]
       // You can open a modal or form to edit the event details.
       console.log("Edit event clicked for event:", events[index]);
+    });
+  });
+
+  markAsDoneButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      // Handle marking the event as done logic here using events[index]
+      console.log("Marked as Done clicked for event:", events[index]);
+      // You can update the event's status or appearance to indicate it's done.
     });
   });
 }
