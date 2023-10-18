@@ -20,7 +20,7 @@ session_start();
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/forms.css">
+    <link rel="stylesheet" href="../assets/slip.css">
 
     <link rel="icon" href="assets/images/GCU_logo.png">
 
@@ -96,28 +96,39 @@ session_start();
     <div class="block"> 
     </div>
     <div class="title independent-title">
-        <h2>Referral Slips</h2>
+    <h2>Leave of Absence Slips</h2>
     </div>
-    <div class="container">
-    <div class="card">
-            <hr>
-            <div class=" gallery">
-            <main class="table" id="customers_table">
-            <section class="table-header">
-                <h1>The following are the requested forms for today</h1>
-                <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
-            </section>
+     <!-- Start of Table -->
+     <div class="container">
+        <div class="card">
+    <main class="table" id="customers_table">
+        <section class="table-header">
+            <h1>List of Tardy Students</h1>
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+            </div>
+            <div class="export-file">
+                <label for="export-file" class="export-file-btn" title="Export File"><img src="../assets/images/export.png" alt=""></label>
+                <input type="checkbox" id="export-file">
+                <div class="export-file-options">
+                    <label>Export as&nbsp; &#10140;</label>
+                    <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/images/excel.png" alt=""></label>
+                </div>
+            </div>
+        </section>
         <section class="table-body">
         <table id="dynamicTable">
-                        <thead>
+                <thead>
                             <tr>
-                                <th>Student ID<span class="icon-arrow">&UpArrow;</span></th>                            
-                                <th>Student<span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Date <span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Service Requested<span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Status<span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Action<span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Student Id <br> <span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
+                                <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Course Taken <br><span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Department / College <br><span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                                <th> Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -137,13 +148,15 @@ session_start();
 <br>
 <br>
     <!-- Footer -->
-<footer id="footer" class="footer">
+    <!-- Footer -->
+    <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
         <div class="copyright">
             <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
         </div>
         <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
     </div>
+</footer>
     <!-- Script     -->
 <script>
       $(document).ready(function () {

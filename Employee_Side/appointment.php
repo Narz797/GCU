@@ -64,42 +64,38 @@
 
     </nav>
 </header>
-    <!-- Header -->
-    <?php
- 
-    include 'includes/head.php';
-    
-    ?>
-<style>
-
-#RBG h5{
-  font-size: 1vw;
- }
- #RBG h3{
-  font-size: 1.8vw;
- }
- #RBG h1{
-  font-size: 2vw;
- }
- </style>
-</section>
-
-  <div style="background-color: black; height:50px;">
-</div>
+      <!-- Welcome-message -->
+<section>
+    <section class="banner">
+        <div class="banner-container">
+    <br>
+            <img src="assets/images/GCU_logo.png" alt="">
+            <div class="banner-text">
+                <h5>REPUBLIC OF THE PHILIPPINES</h5>
+                <hr class="banner-line">
+                <h2><span>BENGUET STATE UNIVERSITY</span></h2>
+                <h1>GUIDANCE AND COUNSELING UNIT</h1>
+            </div>
+        </div>
+    </section>
+    <div class="block"> 
+    </div>
+    <div class="title independent-title">
+        <h2>APPOINTMENT SCHEDULE</h2>
+    </div>
     <div class="container">
         <br>
-        <h2 class="title independent-title">APPOINTMENT SCHEDULE</h2>
         <div class="card">
             <hr>
         <div class="body-calendar">
-         <div class="container-calendar">
-      <div class="left">
+        <div class="container-calendar">
+        <div class="left">
         <div class="calendar">
-          <div class="month">
+        <div class="month">
             <i class="fas fa-angle-left prev"></i>
             <div class="date">month,year</div>
             <i class="fas fa-angle-right next"></i>
-          </div>
+        </div>
           <div class="weekdays">
             <div>Sun</div>
             <div>Mon</div>
@@ -184,9 +180,7 @@
               />
             </div>
           </div>
-          <div class="edit-event-footer">
-            <button class="edit-event-btn">Edit Event</button>
-          </div>
+
         </div>
         <!--  -->
       </div>
@@ -199,78 +193,98 @@
     </div>
 </section>
 <br>
+<div class="container">
+        <br>
+        <h2 class="title"></h2>
+        <div class="card">
+            <header class="card-header">
+                <h1>Appointments</h1>
+                <p>&nbsp&nbsp The following are the requested appointments.</p>
+            </header>
+            <hr>
+            <div class=" gallery">
+            <main class="table" id="customers_table">
+            <section class="table-header">
+                <h1>List of <b>Requested Appointments</b></h1>
+                <div class="input-group">
+                    <input type="search" placeholder="Search Data...">
+                </div>
+                <div class="export-file">
+                    <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/file-transfer-line.png" alt=""></label>
+                    <input type="checkbox" id="export-file">
+                    <div class="export-file-options">
+                        <p>Export as&nbsp; &#10140;</p>
+                        <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
+                    </div>
+                </div>
+            </section>
+            <section class="table-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th> Id <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Student <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> College <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Course <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Contact <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Date of Appointment<br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Time of Appointment<br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Reason<br> <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Action<br><span class="icon-arrow">&UpArrow;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 1 </td>
+                            <td> Zinzu, Chan Lee</td>
+                            <td> CHET </td>
+                            <td> Psychology </td>
+                            <td> 000-000-0000 </td>
+                            <td> 17 Dec, 2022 </td>
+                            <td> 8:00 - 9:00 </td>
+                            <td> Counseling </td>
+                            <td> <a href="#"><button>View</button></a></td>
+                        </tr>
+                        <tr>
+                            <td> 2 </td>
+                            <td> Zinzu, Chan Lee</td>
+                            <td> CHET </td>
+                            <td> Psychology </td>
+                            <td> 000-000-0000 </td>
+                            <td> 17 Dec, 2022 </td>
+                            <td> 10:00 - 11:00 </td>
+                            <td> Counseling </td>
+                            <td> <a href="#"><button>View</button></a></td>
+                        </tr>
+                        <tr>
+                            <td> 3 </td>
+                            <td> Zinzu, Chan Lee</td>
+                            <td> CHET </td>
+                            <td> Psychology </td>
+                            <td> 000-000-0000 </td>
+                            <td> 17 Dec, 2022 </td>
+                            <td> 1:00 - 4:00 </td>
+                            <td> Counseling </td>
+                            <td> <a href="#"><button>View</button></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            </main>
+            </div>
+        </div>
+    </div>
+    <br>
 
     <!-- Footer -->
-<footer id="footer" class="footer">
-
-    <div class="container">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-info" id="titlefooter">
-          <div title="footertitle">
-          <a href="index.php" class="logo d-flex align-items-center">
-            <span>Guidance and Counseling Unit</span>
-          </a>
-          </div>
-          <p>Benguet State University</p>
-          <div class="social-links d-flex mt-4">
-            <a href="#" class="twitter"><i class="ri-twitter-line"></i></a>
-            <a href="#" class="facebook"><i class="ri-facebook-fill"></i></a>
-            <a href="#" class="instagram"><i class="ri-instagram-line"></i></a>
-            <a href="#" class="linkedin"><i class="ri-linkedin-fill"></i></a>
-          </div>
+    <footer id="footer" class="footer">
+    <div class="container" id="footercopyright">
+        <div class="copyright">
+            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
         </div>
-
-        <div class="col-lg-2 col-6 footer-links" id="footerlinks">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-6 footer-links" id="footerservices">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">Forms</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start" id="footercontacts">
-          <h4>Contact Us</h4>
-          <p>
-            A108 Adam Street <br>
-            New York, NY 535022<br>
-            United States <br><br>
-            <strong>Phone:</strong> +1 5589 55488 55<br>
-            <strong>Email:</strong> info@example.com<br>
-          </p>
-
-        </div>
-
-      </div>
+        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
     </div>
-
-    <div class="container mt-4" id="footercopyright">
-      <div class="copyright">
-        <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
+</footer>
 
 <!-- Script     -->
 <script>
@@ -279,7 +293,8 @@
 
 <script src="assets/main.js"></script>   
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="assets/js/calendar.js"></script>    
+<script src="assets/js/calendar.js"></script> 
+<script src="./assets/js/table.js"></script>   
 <style>
   
 </style>

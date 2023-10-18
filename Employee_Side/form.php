@@ -103,62 +103,80 @@
     <div class="card">
             <header class="card-header">
                 <small>The following are the requested forms for today,</small>
-                <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
+                <!-- get current date
+    M/D/Y-->
+
+    <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
             </header>
             <hr>
           <div class=" gallery">
             <div class="content1">
-                <img src="./assets/images/portfolio/formtemp.png">
-                <h4>REFERRAL SLIP</h4>
-                <p>10 pending...</p>
-                <h5>QF-OSS-01</h5>
-                <br>
-                <h5><i class="ri-mail-unread-line size"></i></h5>
-                <br>
-                <a href="subpage/rs_page.php">
-                <button class="buy-1">READ MORE</button></a>
+                <img src="./assets/images/formtemp.png">
+                <h4>LOA SLIP</h4>
 
-            </div>
-                <div class="content1">
-                <img src="./assets/images/portfolio/formtemp.png">
-                <h4>READMISSION SLIP</h4>
-                <p>8 pending...</p>
-                <h5>OSS-GCU-F12</h5>
-                <br>
-                <h5><i class="ri-mail-unread-line"></i></h5>
-                <br>
-                <a href="subpage/ra_page.php">
-                <button class="buy-1">READ MORE</button></a>
+<!--call the numbers 
+    in command p-->
 
-            </div>
-                <div class="content1">
-                <img src="./assets/images/portfolio/formtemp.png">
-                <h4>WITHDRAWAL SLIP</h4>
-                <p>11 pending...</p>
-                <h5>OSS-GCU-F13</h5>
-                <br>
-                <h5><i class="ri-mail-unread-line"></i></h5>
-                <br>
-                <a href="subpage/wds_page.php">
-                <button class="buy-1">READ MORE</button></a>
-
-            </div>
-                <div class="content1">
-                <img src="./assets/images/portfolio/formtemp.png">
-                <h4>LEAVE OF ABSENCE SLIP</h4>
-                <p>28 pending...</p>
+                <p><span class="num" data-val="28">000</span>
+                <span class="text">pending...</span></p>
                 <h5>OSS-GCU-F11</h5>
                 <br>
                 <h5><i class="ri-mail-unread-line"></i></h5>
                 <br>
                 <a href="subpage/la_page.php">
                 <button class="buy-1">READ MORE</button></a>
+            </div>
+            <div class="content1">
+                <img src="./assets/images/formtemp.png">
+                <h4>READMISSION SLIP</h4>
 
+<!--call the numbers 
+    in command p-->
+
+                <p><span class="num" data-val="8">000</span>
+                <span class="text">pending...</span></p>
+                <h5>OSS-GCU-F12</h5>
+                <br>
+                <h5><i class="ri-mail-unread-line"></i></h5>
+                <br>
+                <a href="subpage/ra_page.php">
+                <button class="buy-1">READ MORE</button></a>
+            </div>
+            <div class="content1">
+                <img src="./assets/images/formtemp.png">
+                <h4>REFERRAL SLIP</h4>
+
+<!--call the numbers 
+    in command p-->
+
+                <p><span class="num" data-val="10">000</span>
+                <span class="text">pending...</span></p>
+                <h5>QF-OSS-01</h5>
+                <br>
+                <h5><i class="ri-mail-unread-line size"></i></h5>
+                <br>
+                <a href="subpage/rs_page.php">
+                <button class="buy-1">READ MORE</button></a>
+            </div>
+            <div class="content1">
+                <img src="./assets/images/formtemp.png">
+                <h4>WDS SLIP</h4>
+
+<!--call the numbers 
+    in command p-->
+
+                <p><span class="num" data-val="16">000</span>
+                <span class="text">pending...</span></p>
+                <h5>OSS-GCU-F13</h5>
+                <br>
+                <h5><i class="ri-mail-unread-line"></i></h5>
+                <br>
+                <a href="subpage/wds_page.php">
+                <button class="buy-1">READ MORE</button></a>
             </div>
           </div>
         </div>
     </div>
-
     <!-- History of transaction -->
     <div class="container">
         <br>
@@ -166,38 +184,38 @@
         <div class="card">
             <header class="card-header">
                 <h1>HISTORY</h1>
-                <p>&nbsp&nbsp The following are the previous requested forms.</p>
+                <p>&nbsp&nbsp The following are all the previous transactions.</p>
             </header>
             <hr>
             <div class=" gallery">
             <main class="table" id="customers_table">
             <section class="table-header">
-                <h1>History of Requested Forms</h1>
+                <h1>List of <b>All Transactions</b></h1>
                 <div class="input-group">
                     <input type="search" placeholder="Search Data...">
                 </div>
                 <div class="export-file">
-                    <label for="export-file" class="export-file-btn" title="Export File"></label>
+                    <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/file-transfer-line.png" alt=""></label>
                     <input type="checkbox" id="export-file">
                     <div class="export-file-options">
                         <p>Export as&nbsp; &#10140;</p>
-                        <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
                         <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
                     </div>
                 </div>
             </section>
             <section class="table-body">
                 <table id="historyTableBody">
-                    <thead>
+                <thead>
                         <tr>
-                                <th>Student ID<span class="icon-arrow">&UpArrow;</span></th>                            
-                                <th>Student<span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Date <span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Service Requested<span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Status<span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Action<span class="icon-arrow">&UpArrow;</span></th>
-                            
+                            <th> Id <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Student <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> College <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Course <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Contact <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Date Requested / Appointment<br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Transaction<br> <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Status<br> <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Last Edited<br><span class="icon-arrow">&UpArrow;</span></th>
                         </tr>
                     </thead>
                     <tbody >
@@ -213,7 +231,6 @@
     </div>
 </section>
 <br>
-
     <!-- Footer -->
     <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
@@ -225,7 +242,19 @@
 </footer>
 </body>
 <!-- Script     -->
- 
+<script>
+      const section = document.querySelector(".section"),
+        overlay = document.querySelector(".overlay"),
+        showBtn = document.querySelector(".popup"),
+        closeBtn = document.querySelector(".close");
+      showBtn.addEventListener("click", () => section.classList.add("active"));
+      overlay.addEventListener("click", () =>
+        section.classList.remove("active")
+      );
+      closeBtn.addEventListener("click", () =>
+        section.classList.remove("active")
+      );
+    </script>  
 <script>
   $(document).ready(function () {
         $.ajax({

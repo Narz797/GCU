@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="icon" href="assets/images/GCU_logo.png">
     <!-- Vendor CSS Files -->
-
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
@@ -35,7 +34,7 @@
         </div>
     </nav>
 </header>
-    <!-- Welcome-message -->
+    <!-- Banner -->
 <section>
     <section class="banner">
         <div class="banner-container">
@@ -49,22 +48,30 @@
         </div>
         </div>
     </section>
-    <div class="block"> 
-    </div>
+    <div class="block"></div>
+    <!-- First Section -->
     <div class="title independent-title">
         <h2 > Control Panel</h2>
     </div>
     <div class="card">
         <header class="card-header">
             <small>Profile Account</small>
+
+<!-- call employee id 
+    number or 
+    profession = "Admin"-->
+
             <h2 class="title">Welcome back,&nbspAdmin</h2>
         </header>
         <hr>
         <div class="card-body">
             <div class="card-image">
-                <img src="./assets/images/sp.jpg" alt="">
+                <img src="assets/images/sp.jpg" alt="">
             </div>
             <div class="card-information">
+
+<!-- call employee 
+    registered data -->
                 <h1 class="title main-title"><span class="title-lastname main-title">uchiha,</span> Itachi Verlyn Rizz M.</h1>
                 <p class="card-description1">Joined at <span>January 05, 0000</span><br><br></p>
                 <p class="card-description">
@@ -78,8 +85,8 @@
         </div>
     </div>
 </section>
-    <!-- Management-area -->
-<section class="management-area">
+ <!-- Management-area -->
+ <section class="management-area">
     <div class="management-area-container d-grid">
         <div class="card">
             <header class="card-header header-side">
@@ -97,7 +104,7 @@
                 <a href="appointment.php" class="card-body-link">
                 <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
-                <a href="../index.php?logout=true" class="card-body-link">
+                <a href="#" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>
@@ -105,28 +112,72 @@
         <div class="card-group d-grid">
             <div class="card border one">
                 <div>
+
+<!-- call "b" contents from
+    data-->
                     <h2 class="title">LATEST Requested Forms</h2>
                     <p class="card-description"><b id="studentId"></b> has requested a <b id="transactType"></b> form for the 57th times.</p>
                 </div>
-                <a href="index.php"><button class="list-link">Read More</button></a>
+                <a href="form.php"><button class="list-link">Read More</button></a>
             </div>
             <div class="card border two">
+                <div>
+                    <h2 class="title"><i>UNREAD</i> &nbspForms</h2>
+                    <div class="wrapper">
+                    <a href="form.php"><button class="list-link">Read More</button></a>
+                     <div class="count">
+                        <i class="ri-file-copy-2-line"></i>
+
+<!-- get sum of the 
+    target count = "data-val"-->
+
+                        <span class="num" data-val="315"><b id="total"></b></span>
+                        <span class="text">Forms waiting...</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- <div class="card border two">
                 <div>
                     <h2 class="title">UNOPENED Requested Forms</h2>
                     <p class="card-description"> <b id="total"></b> Forms waiting...</p>
                 </div>
                 <a href="form.php"><button class="list-link">Read More</button></a>
-            </div>
+            </div> -->
             <div class="card border three">
+                <div>
+                    <h2 class="title"><i>TODAY'S</i> &nbspAppointment</h2>
+                    <div class="wrapper">
+                    <a href="appointment.php"><button class="list-link">Read More</button></a>
+                     <div class="count">
+                        <i class="ri-calendar-todo-fill"></i>
+
+<!-- get sum of the 
+    target count = "data-val"-->
+
+                        <span class="num" data-val="10"><b id="totalAppointments"></b></span>
+                        <span class="text">pending...</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- <div class="card border three">
                 <div>
                     <h2 class="title">Number of Appointments TODAY</h2>
                     <p class="card-description"> <b id="totalAppointments"></b> Appointments pending...</p>
                 </div>
                 <a href="appointment.php"><button class="list-link">Read More</button></a>
-            </div>
+            </div> -->
             <div class="card border four">
                 <div>
                     <h2 class="title">HISTORY TRANSACTIONS</h2>
+
+<!-- honestly just copy paste 
+    the database so no need 
+    for it's design, just call
+    the student name and the 
+    action the employee had 
+    taken-->
                     <p class="card-description"> 
                         Sasuke Uchiha..........Duel Form<br>
                         Akatsuki Kisame......Appointment<br>
@@ -157,7 +208,8 @@
     </div>
 </footer>
     <!-- Script -->
-<script src="./assets/index.js"></script>    
+<script src="./assets/index.js"></script>   
+<script src="./assets/js/count.js"></script>     
 <script>
     // Function to update the HTML elements
     function updateValues(studentId, transactType, total, totalAppointments) {
@@ -175,22 +227,29 @@
             url: '../backend/get_transaction.php',
             dataType: 'json',
             
-            success: function (data) {
-                console.log(data);
-                if (data.latest_data.length > 0) {
-                    var studentId = data.latest_data[0].student_id;
-                    var transactType = data.latest_data[0].transact_type;
-                    var total = data.total_pending_transactions;
-                    var totalAppointments = data.total_appointments; // Define total here
+                // ...
+                success: function (data) {
+                    console.log(data);
+                    if (data.latest_data.length > 0) {
+                            var studentId = data.latest_data[0].student_id;
+                            var transactType = data.latest_data[0].transact_type;
+                            var total = data.total_pending_transactions;
+                            var totalAppointments = data.total_appointments; // Define total here
 
-                    console.log(totalAppointments);
+                            console.log(totalAppointments);
 
-                    updateValues(studentId, transactType, total, totalAppointments);
-                } else {
-                    // Handle the case when no results are found
-                    // You can update the UI as needed
-                    console.log('No results found');
-                }
+                            updateValues(studentId, transactType, total, totalAppointments);
+                            console.log(total);
+
+                            // Start both counting animations
+                            countAppointments(totalAppointments);
+                            countForms(total);
+                        } else {
+                        // Handle the case when no results are found
+                        // You can update the UI as needed
+                        console.log('No results found');
+                    }
+
             },
             error: function (xhr, status, error) {
                 console.error('Error: ' + error);

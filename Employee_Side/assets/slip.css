@@ -168,7 +168,7 @@ i{
     display: none;}
 
 
-/* Welcome message */
+/* Banner */
 .banner{
     background-color: var(--banner-color); 
     color:black;}
@@ -224,13 +224,11 @@ i{
     margin: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-
+    align-items: center;}
 
 main.table {
     width: 85vw;
-    height: 100vh;
+    height: 150vh;
     backdrop-filter: blur(7px);
     border-radius: .8rem;
     overflow: hidden;}
@@ -343,7 +341,7 @@ td img {
 table, th, td {
     border-collapse: collapse;
     padding: 1rem;
-    text-align: left;}
+    text-align: center;}
 thead th {
     top: 0;
     left: 0;
@@ -359,7 +357,9 @@ tbody tr.hide {
     opacity: 0;
     transform: translateX(100%);}
 tbody tr:hover {
-    background-color: var(--shadow-color); !important;}
+        background-color: var(--shadow-color) !important;
+   }
+    
 tbody tr td,
 tbody tr td p,
 tbody tr td img {
@@ -379,13 +379,12 @@ thead th span.icon-arrow {
     height: 2rem;
     border-radius: 50%;
     border: 1.4px solid transparent;
-    text-align: center;
     font-size: 1.5rem;
     transition: .2s ease-in-out;}
 thead th:hover span.icon-arrow{
     border: 1px solid var(--hover-color);}
 thead th:hover {
-    color:white;}
+    color:var(--hover-color);}
 thead th.active span.icon-arrow{
     background-color: var(--accent-color);
     color: #fff;}
@@ -394,8 +393,7 @@ thead th.asc span.icon-arrow{
 thead th.active{
     color: black}
 tbody td.active {
-    color: var(--accent-color);
-}
+    color: var(--accent-color);}
 .table-body button{
     text-align: center;
     font-size: 15px;
@@ -411,7 +409,25 @@ tbody td.active {
     background-color: var(--hover-color);}
 .table-body button:hover{
     background-color: var(--accent-color);
-color: var(--banner-color);}
+    color: var(--banner-color);}
+
+/* this is the style 
+of the column Requested Slip 
+supposed to be but it 
+won't read it */
+
+.status {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 2rem;
+    text-align: center;
+    background-color: gold;}
+.status1 {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 2rem;
+    text-align: center;
+    background-color: goldenrod;}
 
 
 /* Footer */
@@ -446,12 +462,10 @@ color: var(--banner-color);}
     .content1{
         width: 45%;}
 }
-
 @media(max-width: 700px){
     .content1{
         width: 100%;}
 }
-
 @media screen and (min-width: 1024px) {
     .menu-toggle-btn{
         display: none !important;}
