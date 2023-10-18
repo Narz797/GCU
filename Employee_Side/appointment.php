@@ -153,7 +153,7 @@
           </div>
         </div>
         <!-- for edit -->
-        <div class="edit-event-wrapper">
+        <!-- <div class="edit-event-wrapper">
           <div class="edit-event-header">
             <div class="title">Add Event</div>
             <i class="fas fa-times close"></i>
@@ -181,7 +181,7 @@
             </div>
           </div>
 
-        </div>
+        </div> -->
         <!--  -->
       </div>
       <button class="add-event">

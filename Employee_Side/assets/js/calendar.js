@@ -282,11 +282,13 @@ function updateEvents(year, month, date, events) {
         </div>
         <div class="event-actions">
           <button class="delete-event">Delete</button>
-          <button class="edit-event">Edit</button>
+          <br>
           <button class="mark-as-done">Marked as Done</button>
         </div>
       </div>`;
     });
+    // temporary remove:
+    // <button class="edit-event">Edit</button>
   } else {
     eventsHTML = `<div class="no-event">
       <h3>No events for this day</h3>
@@ -381,9 +383,9 @@ function refreshEvents() {
 addListner();
 
 // edit
-eventsContainer.addEventListener("click", (e) => {
-  editEventWrapper.classList.toggle("active"); // Toggle an "active" class on eventsContainer
-});
+// eventsContainer.addEventListener("click", (e) => {
+//   editEventWrapper.classList.toggle("active"); // Toggle an "active" class on eventsContainer
+// });
 // 
 
 
