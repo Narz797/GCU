@@ -17,7 +17,8 @@ $(document).ready(function () {
     addEventStudentName = document.querySelector(".event-student-name"),
     addEventFrom = document.querySelector(".event-time-from"),
     addEventTo = document.querySelector(".event-time-to"),
-    addEventSubmit = document.querySelector(".add-event-btn");
+    addEventSubmit = document.querySelector(".add-event-btn"),//
+    editEventWrapper = document.querySelector(".edit-event-wrapper");
 
   let today = new Date();
   let activeDay;
@@ -379,11 +380,11 @@ function refreshEvents() {
 // Call updateEvents when a new day is selected
 addListner();
 
-
-
-
-
-
+// edit
+eventsContainer.addEventListener("click", (e) => {
+  editEventWrapper.classList.toggle("active"); // Toggle an "active" class on eventsContainer
+});
+// 
 
 
 //function to add event

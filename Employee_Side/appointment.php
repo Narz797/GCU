@@ -156,6 +156,39 @@
             <button class="add-event-btn">Add Event</button>
           </div>
         </div>
+        <!-- for edit -->
+        <div class="edit-event-wrapper">
+          <div class="edit-event-header">
+            <div class="title">Add Event</div>
+            <i class="fas fa-times close"></i>
+          </div>
+          <div class="edit-event-body">
+            <div class="edit-event-input">
+              <input type="text" placeholder="Event Name" class="edit-event-name" />
+            </div>
+            <div class="edit-event-input">
+              <input type="text" placeholder="Student Name" class="edit-event-student-name"/>
+            </div>
+            <div class="edit-event-input">
+              <input
+                type="text"
+                placeholder="Event Time From: 00:00"
+                class="edit-event-time-from"
+              />
+            </div>
+            <div class="edit-event-input">
+              <input
+                type="text"
+                placeholder="Event Time To: 00:00"
+                class="edit-event-time-to"
+              />
+            </div>
+          </div>
+          <div class="edit-event-footer">
+            <button class="edit-event-btn">Edit Event</button>
+          </div>
+        </div>
+        <!--  -->
       </div>
       <button class="add-event">
         <i class="fas fa-plus"></i>
