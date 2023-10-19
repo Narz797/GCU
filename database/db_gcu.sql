@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2023 at 03:28 PM
+-- Generation Time: Oct 19, 2023 at 08:56 AM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -103,6 +103,7 @@ CREATE TABLE `admin_user` (
   `middle_name` text NOT NULL,
   `gender` text NOT NULL,
   `position` text NOT NULL,
+  `date_joined` date DEFAULT NULL,
   `email` text NOT NULL,
   `username` text NOT NULL,
   `password` text NOT NULL
@@ -112,8 +113,8 @@ CREATE TABLE `admin_user` (
 -- Dumping data for table `admin_user`
 --
 
-INSERT INTO `admin_user` (`admin_user_id`, `first_ name`, `last_name`, `middle_name`, `gender`, `position`, `email`, `username`, `password`) VALUES
-(2002529, 'Narz Josef', 'Taquio', 'L.', 'Male', 'admin', 'josefnarz2011@gmail.com', 'Narz', '$2y$10$vrzb0bq0qR6EeXUQrWzOielCpmRrMiY246zbJrJz/H01go267FBCW');
+INSERT INTO `admin_user` (`admin_user_id`, `first_ name`, `last_name`, `middle_name`, `gender`, `position`, `date_joined`, `email`, `username`, `password`) VALUES
+(2002529, 'Narz Josef', 'Taquio', 'L.', 'Male', 'admin', '2013-10-17', 'josefnarz2011@gmail.com', 'Narz', '$2y$10$vrzb0bq0qR6EeXUQrWzOielCpmRrMiY246zbJrJz/H01go267FBCW');
 
 -- --------------------------------------------------------
 
@@ -384,14 +385,14 @@ INSERT INTO `transact` (`transact_id`, `student_id`, `employee_id`, `transact_ty
 (31, 432, NULL, 'leave_of_absence', '2023-09-13 14:45:05', NULL, 'recieved'),
 (32, 432, NULL, 'withdrawal', '2023-09-14 13:58:40', NULL, 'recieved'),
 (33, 432, NULL, 'withdrawal', '2023-09-14 13:58:51', NULL, 'recieved'),
-(34, 432, NULL, 'withdrawal', '2023-09-14 14:01:56', NULL, 'recieved'),
-(35, 2002529, NULL, 'withdrawal', '2023-09-14 14:14:01', NULL, 'recieved'),
-(36, 2002529, NULL, 'withdrawal', '2023-09-14 14:19:48', NULL, 'pending'),
+(34, 432, NULL, 'withdrawal', '2023-09-14 14:01:56', NULL, 'done'),
+(35, 2002529, NULL, 'withdrawal', '2023-09-14 14:14:01', NULL, 'done'),
+(36, 2002529, NULL, 'withdrawal', '2023-09-14 14:19:48', NULL, 'done'),
 (37, 2002529, NULL, 'withdrawal', '2023-09-14 14:21:43', NULL, 'pending'),
-(38, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'pending'),
-(39, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'pending'),
-(40, 432, NULL, 'readmission', '2023-09-22 09:40:41', NULL, 'recieved'),
-(41, 432, NULL, 'withdrawal', '2023-10-10 17:03:56', NULL, 'recieved'),
+(38, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'done'),
+(39, 2002529, NULL, 'withdrawal', '2023-09-14 14:26:07', NULL, 'done'),
+(40, 432, NULL, 'readmission', '2023-09-22 09:40:41', NULL, 'done'),
+(41, 432, NULL, 'withdrawal', '2023-10-10 17:03:56', NULL, 'done'),
 (42, 432, NULL, 'withdrawal', '2023-10-17 14:31:20', NULL, 'pending'),
 (43, 432, NULL, 'withdrawal', '2023-10-17 14:31:33', NULL, 'pending'),
 (44, 432, NULL, 'readmission', '2023-10-17 14:36:41', NULL, 'pending'),
