@@ -2,7 +2,7 @@
 <?php
 session_start();
 include 'formstyle.php';
-$_SESSION['transact_type']='withdrawal';//asign value to transact_type
+$_SESSION['transact_type']='WDS';//asign value to transact_type
 ?>
 <html>
 

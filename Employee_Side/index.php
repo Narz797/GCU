@@ -73,10 +73,10 @@
 <!-- call employee 
     registered data -->
                 <h1 class="title main-title"><span class="title-lastname main-title">uchiha,</span> Itachi Verlyn Rizz M.</h1>
-                <p class="card-description1">Joined at <span>January 05, 0000</span><br><br></p>
+                <p class="card-description1">Joined at <b id="date_joined"></b><br><br></p>
                 <p class="card-description">
-                    <span>Email:</span> BSU_Rizz123@gcu.com<br>
-                    <span>Position:</span> Grand Counselor
+                    <span>Email:</span><b id="employee_email"></b><br>
+                    <span>Position:</span><b id="employee_position"></b>
                 </p>
             </div>
             <div class="card-image1">
@@ -104,7 +104,7 @@
                 <a href="appointment.php" class="card-body-link">
                 <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
-                <a href="#" class="card-body-link">
+                <a href="../index.php?logout=true" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>
@@ -116,7 +116,7 @@
 <!-- call "b" contents from
     data-->
                     <h2 class="title">LATEST Requested Forms</h2>
-                    <p class="card-description"><b id="studentId"></b> has requested a <b id="transactType"></b> form for the 57th times.</p>
+                    <p class="card-description2"><b id="studentId"></b> has requested a <b id="transactType"></b> form.</p>
                 </div>
                 <a href="form.php"><button class="list-link">Read More</button></a>
             </div>
@@ -178,21 +178,9 @@
     the student name and the 
     action the employee had 
     taken-->
-                    <p class="card-description"> 
-                        Sasuke Uchiha..........Duel Form<br>
-                        Akatsuki Kisame......Appointment<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Fourth Hokage..........Feedback Form<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Akatsuki Kisame......Appointment<br>
-                        Akatsuki Pain.............Appointment<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Akatsuki Deidara.....Apology Form<br>
-                        Sasuke Uchiha..........Duel Form
-                    </p>
+                    <p class="card-description" id="list-history"> 
+                            <!-- Data will be inserted here dynamically -->
+                        </p>
                 </div>
             </div>
         </div>
@@ -212,11 +200,16 @@
 <script src="./assets/js/count.js"></script>     
 <script>
     // Function to update the HTML elements
-    function updateValues(studentId, transactType, total, totalAppointments) {
+    function updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined) {
         $('#studentId').text(studentId);
         $('#transactType').text(transactType);
         $('#total').text(total);
+        $('#employee_email').text(employee_email);
+        $('#employee_position').text(employee_position);
+        $('#date_joined').text(employee_date_joined);
         $('#totalAppointments').text(totalAppointments);
+   
+
     }
 
     // Function to fetch data from get_transaction.php
@@ -235,10 +228,13 @@
                             var transactType = data.latest_data[0].transact_type;
                             var total = data.total_pending_transactions;
                             var totalAppointments = data.total_appointments; // Define total here
+                            var employee_email = data.adminUserData[0].email;
+                            var employee_position = data.adminUserData[0].position;
+                            var employee_date_joined = data.adminUserData[0].date_joined;
 
                             console.log(totalAppointments);
 
-                            updateValues(studentId, transactType, total, totalAppointments);
+                            updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined);
                             console.log(total);
 
                             // Start both counting animations
@@ -258,6 +254,42 @@
             }
         });
     }
+// Function to update the card description with data
+function updateCardDescription(data) {
+    const cardDescription = $('#list-history');
+    cardDescription.empty(); // Clear existing content
+
+    if (data.length > 0) {
+        data.forEach(item => {
+            cardDescription.append(`${item.student_id}..........${item.transact_type}<br>`);
+        });
+    } else {
+        cardDescription.text('No transactions with status "done" found.');
+    }
+}
+
+// Function to fetch data from get_transaction.php
+function HistoryData() {
+    console.log('AJAX request started');
+    $.ajax({
+        type: 'GET',
+        url: '../backend/get_done_transaction.php',
+        dataType: 'json',
+        // ...
+        success: function (data) {
+            console.log(data);
+            updateCardDescription(data);
+        },
+        error: function (xhr, status, error) {
+            console.error('Error: ' + error);
+            console.error('Status: ' + status);
+            console.error('Response: ' + xhr.responseText);
+        }
+    });
+}
+
+// Call the fetchData function when the page loads
+HistoryData();
 
     // Call the fetchData function when the page loads
     fetchData();

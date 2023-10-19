@@ -1,14 +1,14 @@
-// count.js
 function countAppointments(endValue) {
     let valueDisplay = document.getElementById("totalAppointments");
     let startValue = 0;
     let duration = 50;
 
     let counter = setInterval(function () {
-        startValue += 1;
-        valueDisplay.textContent = startValue;
+        valueDisplay.textContent = startValue; // Update the display immediately
         if (startValue >= endValue) {
             clearInterval(counter);
+        } else {
+            startValue += 1;
         }
     }, duration);
 }
@@ -19,10 +19,11 @@ function countForms(endValue) {
     let duration = 50;
 
     let counter = setInterval(function () {
-        startValue += 1;
-        valueDisplay.textContent = startValue;
+        valueDisplay.textContent = startValue; // Update the display immediately
         if (startValue >= endValue) {
             clearInterval(counter);
+        } else {
+            startValue += 1;
         }
     }, duration);
 }

@@ -35,7 +35,7 @@ if ($transact == 'readmission') {
         echo "Error inserting data: " . $e->getMessage();
     }
 
-} else if ($transact == 'withdrawal') {
+} else if ($transact == 'WDS') {
     $reason = $_POST['reason'];
     $statement = $_POST['statement'];
     $explain = $_POST['explain'];

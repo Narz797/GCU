@@ -5,7 +5,10 @@ include '../backend/connect_database.php';
 
 try {
     // SQL query to fetch the latest data based on the date_created column
-    $latestDataSql = "SELECT `student_id`, `transact_type`, `date_created` FROM transact WHERE `date_created` = (SELECT MAX(`date_created`) FROM transact)";
+    $latestDataSql = "SELECT `student_id`, `transact_type`, `date_created`
+    FROM transact
+    WHERE `status` = 'pending' AND `date_created` = (SELECT MAX(`date_created`) FROM transact WHERE `status` = 'pending');
+    ";
     
     $stmt = $pdo->prepare($latestDataSql); // Use $pdo here
     $stmt->execute();
@@ -22,20 +25,27 @@ try {
     
     // SQL query to count appointments for the current date
     $currentDate = date("Y-m-d"); // Get the current date in the format "YYYY-MM-DD"
-    $countAppointmentsSql = "SELECT COUNT(*) AS total_appointments FROM appointment WHERE DATE(date) = :currentDate";
+    $countAppointmentsSql = "SELECT COUNT(*) AS total_appointments FROM `appointment` WHERE DATE(date) = :currentDate AND `status` = 'pending'";
     $stmt = $pdo->prepare($countAppointmentsSql);
     $stmt->bindParam(':currentDate', $currentDate);
     $stmt->execute();
 
     $countAppointments = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    // SQL query to fetch email, position, and date_joined from the admin_user table
+    $adminUserDataSql = "SELECT `email`, `position`, `date_joined` FROM admin_user";
+    $stmt = $pdo->prepare($adminUserDataSql);
+    $stmt->execute();
+    $adminUserData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     if (!empty($latestData)) {
-        // Combine the latest data and the count of pending transactions
+        // Combine the latest data, count of pending transactions, appointments, and admin user data
         
         $response = [
             'latest_data' => $latestData,
             'total_pending_transactions' => $countPending['total_pending_transactions'],
-            'total_appointments' => $countAppointments['total_appointments']
+            'total_appointments' => $countAppointments['total_appointments'],
+            'adminUserData' => $adminUserData
         ];
 
         // Return data as JSON and set the content type header to JSON
