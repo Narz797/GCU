@@ -1,3 +1,7 @@
+<?php
+session_start();
+    $_SESSION['form_type']='all';//
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

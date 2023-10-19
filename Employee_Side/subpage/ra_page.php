@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REFERRAL SLIPS</title>
      <!-- Stylesheet -->
-     <link rel="stylesheet" href="slip.css">
+     <link rel="stylesheet" href="../assets/slip.css">
  <!-- Remix icons -->
  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -179,37 +179,44 @@ session_start();
                     
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.stud_user_id + "</td>");
-                    row.append("<td>" + entry.first_name + " " + entry.last_name + "</td>");
+                    row.append("<td>" + entry.last_name + "</td>");
+                    row.append("<td>" + entry.first_name +"</td>");
+                    row.append("<td>" + entry.Year_level +"</td>");
                     row.append("<td>" + entry.course + "</td>");
-                    row.append("<td>" + entry.date_created + "</td>");
-                    row.append("<td>" + entry.transact_type + "</td>");
+                    row.append("<td>" + entry.Contact_number + "</td>");
+                    row.append("<td>" + entry.ParentGuardianNumber + "</td>");
 
                     var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
-
+                    
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='#'></a>").addClass(statusClass).text(statusText);
+                    var statusLink = $("<a href='../forms/Readmission_Slip(ES).php'><button>View</button></a>");
                     statusCell.append(statusLink);
                     row.append(statusCell);
 
-                    var deleteCell = $("<td></td>");
-                    var deleteLink = $("<a href='#'></a>").html('<i class="ri-delete-bin-6-line"></i>');
-                    deleteCell.append(deleteLink);
-                    row.append(deleteCell);
+                    // var statusCell = $("<td></td>");
+                    // var statusLink = $("<a href='#'></a>").addClass(statusClass).text(statusText);
+                    // statusCell.append(statusLink);
+                    // row.append(statusCell);
+
+                    // var deleteCell = $("<td></td>");
+                    // var deleteLink = $("<a href='#'></a>").html('<i class="ri-delete-bin-6-line"></i>');
+                    // deleteCell.append(deleteLink);
+                    // row.append(deleteCell);
 
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                     
                     
                     if (status == 'pending') {
                         tableBody.append(row);
-                    } else if (status == 'recieved') {
+                    } else if (status == 'done') {
                         historyTableBody.append(row); // Append row to history table body
                     }
 
                  }
 
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
-                var dynamicTableRowCount2 = $("#historyTableBody tbody tr").length;
+
 
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage1.hide(); // Hide the no history message if there is data
@@ -217,35 +224,31 @@ session_start();
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
 
-                    if (dynamicTableRowCount2 > 0) {
-                    noHistoryMessage2.hide(); // Hide the no history message if there is data
-                    } else {
-                        noHistoryMessage2.show(); // Show the no history message if no data
-                    }
 
-                $("td a").click(function () {
-                    var contentElement = $(this).closest("tr");
-                    // var studUserId = contentElement.data("stud-user-id");
-                    var studUserId = contentElement.find("td:first-child").text();
 
-                    $.ajax({
-                        url: "../backend/update_status.php",
-                        type: "POST",
-                        data: { stud_user_id: studUserId },
-                        success: function (response) {
-                            console.log(response);
-                            console.log("Status updated in the database");
-                        },
-                        error: function (xhr, status, error) {
-                            console.error("AJAX Error:");
-                            console.error("Status: " + status);
-                            console.error("Error: " + error);
-                            console.error("Response Text: " + xhr.responseText);
-                        }
-                    });
+                // $("td a").click(function () {
+                //     var contentElement = $(this).closest("tr");
+                //     // var studUserId = contentElement.data("stud-user-id");
+                //     var studUserId = contentElement.find("td:first-child").text();
+
+                //     $.ajax({
+                //         url: "../backend/update_status.php",
+                //         type: "POST",
+                //         data: { stud_user_id: studUserId },
+                //         success: function (response) {
+                //             console.log(response);
+                //             console.log("Status updated in the database");
+                //         },
+                //         error: function (xhr, status, error) {
+                //             console.error("AJAX Error:");
+                //             console.error("Status: " + status);
+                //             console.error("Error: " + error);
+                //             console.error("Response Text: " + xhr.responseText);
+                //         }
+                //     });
                     
-                    //location.reload();
-                });
+                //     //location.reload();
+                // });
         },
         error: function (xhr, status, error) {
     console.error("AJAX Error:");

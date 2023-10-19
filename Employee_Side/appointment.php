@@ -1,5 +1,6 @@
 <?php
   session_start();
+  $_SESSION['transact_type']='appointment';//asign value to transact_type/
 ?>
 <!DOCTYPE html>
 <html lang="en">
