@@ -208,7 +208,7 @@ session_start();
                 </div>
             </section>
             <section class="table-body">
-                <table id="historyTableBody">
+                <table id="dynamicTable">
                 <thead>
                         <tr>
                             <th> Id <br><span class="icon-arrow">&UpArrow;</span></th>
@@ -283,7 +283,8 @@ session_start();
 
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.stud_user_id + "</td>");
-                    row.append("<td>" + entry.first_name + " " + entry.last_name + "</td>");
+                    row.append("<td>" + entry.last_name + "</td>");
+                    row.append("<td>" + entry.first_name + "</td>");
                     row.append("<td>" + entry.course + "</td>");
                     row.append("<td>" + entry.date_created + "</td>");
                     row.append("<td>" + entry.transact_type + "</td>");
