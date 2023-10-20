@@ -458,12 +458,13 @@ addEventSubmit.addEventListener("click", () => {
     success: function (data) {
       // You can handle the response from the PHP script here, e.g., displaying a success message.
       alert(data);
+      console.log(data);
       // Clear the input fields and refresh events to fetch the new data.
       addEventTitle.value = "";
       addEventFrom.value = "";
       addEventTo.value = "";
-      refreshEvents();
-      location.reload();
+      // refreshEvents();
+      // location.reload();
     }
   });
 });

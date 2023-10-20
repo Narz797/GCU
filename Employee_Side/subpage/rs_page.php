@@ -194,7 +194,7 @@ session_start();
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
 
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='../forms/LeaveOfAbsence_Slip(ES).php'><button>View</button></a>");
+                    var statusLink = $("<a href='../forms/read.php'><button>View</button></a>");
                     statusCell.append(statusLink);
                     row.append(statusCell);
 
