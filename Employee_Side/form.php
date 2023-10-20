@@ -246,19 +246,19 @@ session_start();
 </footer>
 </body>
 <!-- Script     -->
-<script>
-      const section = document.querySelector(".section"),
-        overlay = document.querySelector(".overlay"),
-        showBtn = document.querySelector(".popup"),
-        closeBtn = document.querySelector(".close");
-      showBtn.addEventListener("click", () => section.classList.add("active"));
-      overlay.addEventListener("click", () =>
-        section.classList.remove("active")
-      );
-      closeBtn.addEventListener("click", () =>
-        section.classList.remove("active")
-      );
-    </script>  
+<!-- <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                        const section = document.querySelector(".section");
+                        const overlay = document.querySelector(".overlay");
+                        const showBtn = document.querySelector(".popup");
+                        const closeBtn = document.querySelector(".close");
+
+                        showBtn.addEventListener("click", () => section.classList.add("active"));
+                        overlay.addEventListener("click", () => section.classList.remove("active"));
+                        closeBtn.addEventListener("click", () => section.classList.remove("active"));
+                    });
+    </script> -->
+ 
 <script>
   $(document).ready(function () {
         $.ajax({
@@ -276,10 +276,11 @@ session_start();
  
 
                 for (var i = 0; i < data.length; i++) {
+                    
                     var entry = data[i];
                     var status = entry.status;
                     var tableToAppend = tableBody; // Determine which table to append to
-                    
+
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.stud_user_id + "</td>");
                     row.append("<td>" + entry.first_name + " " + entry.last_name + "</td>");
@@ -291,28 +292,24 @@ session_start();
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
 
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='#'></a>").addClass(statusClass).text(statusText);
+                    var statusLink = $("<span class='overlay'></span><div class='modal-box'><i class='ri-spam-2-fill'></i><h3>Permanently delete the selected form?</h3><div class='buttons'><button class='yes'>Yes</button><button class='close'>No</button></div></div><button class='popup'><i class='ri-delete-bin-6-line'></i></button>");
+
                     statusCell.append(statusLink);
                     row.append(statusCell);
-
-                    var deleteCell = $("<td></td>");
-                    var deleteLink = $("<a href='#'></a>").html('<i class="ri-delete-bin-6-line"></i>');
-                    deleteCell.append(deleteLink);
-                    row.append(deleteCell);
 
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                     
                     
                     if (status == 'pending') {
                         tableBody.append(row);
-                    } else if (status == 'recieved') {
+                    } else if (status == 'done') {
                         historyTableBody.append(row); // Append row to history table body
                     }
 
                  }
-
+                 console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
-                var dynamicTableRowCount2 = $("#historyTableBody tbody tr").length;
+
 
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage1.hide(); // Hide the no history message if there is data
@@ -320,35 +317,32 @@ session_start();
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
 
-                    if (dynamicTableRowCount2 > 0) {
-                    noHistoryMessage2.hide(); // Hide the no history message if there is data
-                    } else {
-                        noHistoryMessage2.show(); // Show the no history message if no data
-                    }
 
-                $("td a").click(function () {
-                    var contentElement = $(this).closest("tr");
-                    // var studUserId = contentElement.data("stud-user-id");
-                    var studUserId = contentElement.find("td:first-child").text();
 
-                    $.ajax({
-                        url: "../backend/update_status.php",
-                        type: "POST",
-                        data: { stud_user_id: studUserId },
-                        success: function (response) {
-                            console.log(response);
-                            console.log("Status updated in the database");
-                        },
-                        error: function (xhr, status, error) {
-                            console.error("AJAX Error:");
-                            console.error("Status: " + status);
-                            console.error("Error: " + error);
-                            console.error("Response Text: " + xhr.responseText);
-                        }
-                    });
+
+                // $("td a").click(function () {
+                //     var contentElement = $(this).closest("tr");
+                //     // var studUserId = contentElement.data("stud-user-id");
+                //     var studUserId = contentElement.find("td:first-child").text();
+
+                //     $.ajax({
+                //         url: "../backend/update_status.php",
+                //         type: "POST",
+                //         data: { stud_user_id: studUserId },
+                //         success: function (response) {
+                //             console.log(response);
+                //             console.log("Status updated in the database");
+                //         },
+                //         error: function (xhr, status, error) {
+                //             console.error("AJAX Error:");
+                //             console.error("Status: " + status);
+                //             console.error("Error: " + error);
+                //             console.error("Response Text: " + xhr.responseText);
+                //         }
+                //     });
                     
-                    //location.reload();
-                });
+                //     //location.reload();
+                // });
         },
         error: function (xhr, status, error) {
     console.error("AJAX Error:");
@@ -361,5 +355,5 @@ session_start();
     });
 </script>  
 <script src="./assets/main.js"></script> 
-
+<!-- <script src="assets/js/table.js"></script>  -->
 </html>

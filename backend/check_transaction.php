@@ -146,8 +146,6 @@ INNER JOIN
     transact ON student_user.stud_user_id = transact.student_id
 INNER JOIN
     courses ON student_user.course = courses.Acronym
-WHERE
-    transact.transact_type = 'leave_of_absence';
 ";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();

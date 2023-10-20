@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Withdrawal Slip</title>
+    <title>Referral Slip</title>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -30,7 +30,7 @@
                     <a href="../index.php" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="../subpage/wds_page.php" class="list-link current1">Back</a>
+                    <a href="../subpage/rs_page.php" class="list-link current1">Back</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -112,13 +112,36 @@
 
 <!--This will be pop-up-->
 
-                 <a href="form.php"><button class="yes">Accepted</button></a>
-                 <a href="form.php"><button class="pending">Pending</button></a>
+                 <a href="#divOne"><button class="yes">Received</button></a>
                  </div>
             </div>
         </div>
     </div>
 </section>
+<!-- This is the pop-up for the three buttons -->
+
+                <div class="overlay" id="divOne">
+                    <div class="wrapper">
+                        <h1>The referred student will be contacted. Clicking send will notify the teacher that the request was received.</h1>
+                        <a href="#" class="close">&times;</a>
+                        <div class="popup">
+                            <div class="popup2">
+                                <form>
+                                    <label>Attending Personnel</label>
+                                    <input type="text" placeholder="Your Name">
+                                    <label>Remarks</label>
+                                    <textarea placeholder="Type here if you have remarks..."></textarea>
+                                    <div class="tsk">
+
+<!-- Add a function here where the data will be stored -->
+
+                                    <input type="submit" value="send">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
 <br>
     <!-- Footer -->
 <footer id="footer" class="footer">

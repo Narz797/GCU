@@ -112,17 +112,83 @@
                 </div>
                 </div>
                 <div class="action">
-
-<!-- This will be a pop-up button -->
-
-                 <a href="form.php"><button class="yes">Accepted</button></a>
-                 <a href="form.php"><button class="no">Reconsider</button></a>
-                 <a href="form.php"><button class="pending">Lacking</button></a>
+                 <a href="#divOne"><button class="yes">Accept</button></a>
+                 <a href="#divTwo"><button class="no">Reconsider</button></a>
+                 <a href="#divThree"><button class="pending">Lacking</button></a>
                  </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- This is the pop-up for the three buttons -->
+
+                <div class="overlay" id="divOne">
+                    <div class="wrapper">
+                        <h1>The student's form for shifting will be <u class="One">ACCEPTED</u> .</h1>
+                        <a href="#" class="close">&times;</a>
+                        <div class="popup">
+                            <div class="popup2">
+                                <form>
+                                    <label>Attending Personnel</label>
+                                    <input type="text" placeholder="Your Name">
+                                    <label>Remarks</label>
+                                    <textarea placeholder="Type here if you have remarks..."></textarea>
+                                    <div class="tsk">
+
+<!-- Add a function here where the data will be stored -->
+
+                                    <input type="submit" value="send">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="overlay" id="divTwo">
+                    <div class="wrapper">
+                        <h1>The student's form for  shifting is being <u class="Two">Reconsidered</u> .</h1>
+                        <a href="#" class="close">&times;</a>
+                        <div class="popup">
+                            <div class="popup2">
+                                <form>
+                                    <label>Attending Personnel</label>
+                                    <input type="text" placeholder="Your Name">
+                                    <label>Remarks</label>
+                                    <textarea placeholder="Type here if you have remarks..."></textarea>
+                                    <div class="tsk">
+
+<!-- Add a function here where the data will be stored -->
+
+                                    <input type="submit" value="send">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="overlay" id="divThree">
+                    <div class="wrapper">
+                        <h1>The student's form for shifting is <u class="Three">LACKING</u> .</h1>
+                        <a href="#" class="close">&times;</a>
+                        <div class="popup">
+                            <div class="popup2">
+                                <form>
+                                    <label>Attending Personnel</label>
+                                    <input type="text" placeholder="Your Name">
+                                    <label>Remarks</label>
+                                    <textarea placeholder="Type here if you have remarks..."></textarea>
+                                    <div class="tsk">
+
+<!-- Add a function here where the data will be stored -->
+
+                                    <input type="submit" value="send">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
 <br>
     <!-- Footer -->
 <footer id="footer" class="footer">
