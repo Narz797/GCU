@@ -35,7 +35,7 @@
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="./employee-home" class="list-link current">Home</a>
+                    <a href="index.php" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
                     <a href="./request-forms" class="list-link">Requested Forms</a>
