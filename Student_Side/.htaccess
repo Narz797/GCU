@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteCond %{THE_REQUEST} /login\.php [NC]
+
+RewriteRule ^ - [F]
+RewriteRule ^student-login/?$ login.php [L]
