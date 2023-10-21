@@ -16,9 +16,9 @@
       <nav id="navbar" class="navbar" style="margin: auto;">
   <ul>
     <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; " >
-    <li><a href="index.php">HOME</a></li>
-    <li><a href="about.php">ABOUT</a></li>
-    <li><a href="services.php">SERVICES</a></li>
+    <li><a href="/gcu/home">HOME</a></li>
+    <li><a href="/gcu/about">ABOUT</a></li>
+    <li><a href="/gcu/services">SERVICES</a></li>
    
     <space style = "width: 400px"> </space>
 
@@ -26,7 +26,7 @@
           <li class="dropdown"><a href="#"><span>LOGIN</span> <i
                 class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul  style="background-color: transparent; ">
-              <li><a href="Student_Side/login.php">STUDENT</a></li>
+              <li><a href="Student_Side/student-login">STUDENT</a></li>
               <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
               <li><a href="Student_Side/tlogin.html">TEACHER</a></li>
           

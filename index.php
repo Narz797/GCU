@@ -66,8 +66,6 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
 
 <body>
 
-
-
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
     <div class="container position-relative">
