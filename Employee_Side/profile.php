@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,7 +130,7 @@
 
         <section class="table-body" >
             <table  id="table" >
-            <table>
+            <table id="dynamicTable">
                 <thead>
                     <tr>
                         <th> Student ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
@@ -141,7 +145,7 @@
                         <th> Action </th>
                     </tr>
                 </thead>
-                <tbody id="data-table">
+                <tbody>
                   
                  </tbody>
              
@@ -166,6 +170,74 @@
     </div>
 </footer>
 <!-- Script     -->
+
+<script>
+        $(document).ready(function() {
+            // Fetch data using $.ajax
+            $.ajax({
+                url: '../backend/search_student.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    const table = document.getElementById('data-table');
+                    const searchInput = document.getElementById('searchInput');
+
+                    
+                console.log(data);
+                // if (data.status===0){
+                var tableBody = $("#dynamicTable tbody");
+                var historyTableBody = $("#historyTableBody tbody");
+                var noHistoryMessage1 = $("#noHistoryMessage1"); 
+                var noHistoryMessage2 = $("#noHistoryMessage2"); 
+ 
+
+                for (var i = 0; i < data.length; i++) {
+                    
+                    var entry = data[i];
+                    var status = entry.status;
+                    var tableToAppend = tableBody; // Determine which table to append to
+
+                    var row = $("<tr></tr>");
+                    row.append("<td>" + entry.stud_user_id + "</td>");
+                    row.append("<td>" + entry.last_name + "</td>");
+                    row.append("<td>" + entry.first_name +"</td>");
+                    row.append("<td>" + entry.Year_level +"</td>");
+                    row.append("<td>" + entry.Colleges + "</td>");
+                    row.append("<td>" + entry.course + "</td>");
+                    row.append("<td>" + entry.Contact_number + "</td>");
+                    row.append("<td>" + entry.ParentGuardianNumber + "</td>");
+
+                    var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
+                    var statusText = status == 'pending' ? 'Unread' : 'Read';
+
+                    var statusCell = $("<td></td>");
+                    var statusLink = $("<a href='subpage/pfp_page.php'><button>View</button></a>");
+                    statusCell.append(statusLink);
+                    row.append(statusCell);
+                    tableBody.append(row);
+            
+                    
+
+                 }
+                 console.log("data",data);
+                var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
+
+
+                    if (dynamicTableRowCount1 > 0) {
+                    noHistoryMessage1.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage1.show(); // Show the no history message if no data
+                    }
+                    // Initial table population
+                    // filterData();
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching data:', error);
+                }
+            });
+        });
+    </script>
+
 <script src="./assets/main.js"></script>
 
  <script src="assets/js/table.js"></script>   

@@ -1,6 +1,18 @@
 <?php
 include '../backend/connect_database.php';
-$sql = "SELECT `stud_user_id`, `first_name`, `last_name`, `year_enrolled`, `course`, `gender` FROM student_user";
+$sql = "SELECT
+student_user.stud_user_id,
+student_user.last_name,
+student_user.first_name,
+student_user.Year_level,
+student_user.course,
+courses.Colleges,
+student_user.Contact_number,
+student_user.ParentGuardianNumber
+FROM
+student_user
+INNER JOIN
+courses ON student_user.course = courses.Acronym";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();

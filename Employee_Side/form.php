@@ -283,11 +283,14 @@ session_start();
 
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.stud_user_id + "</td>");
-                    row.append("<td>" + entry.last_name + "</td>");
-                    row.append("<td>" + entry.first_name + "</td>");
+                    row.append("<td>" + entry.first_name + "" + entry.last_name +"</td>");
+                    row.append("<td>" + entry.Colleges + "</td>");
                     row.append("<td>" + entry.course + "</td>");
+                    row.append("<td>" + entry.Contact_number + "</td>");
                     row.append("<td>" + entry.date_created + "</td>");
                     row.append("<td>" + entry.transact_type + "</td>");
+                    row.append("<td>" + entry.status + "</td>");
+                    row.append("<td>" + entry.date_edit + "</td>");
 
                     var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
