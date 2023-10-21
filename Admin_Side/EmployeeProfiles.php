@@ -132,7 +132,11 @@
                         <th> Employee ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Middle Name <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Sex <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Email Address <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Position <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Action </th>
                     </tr>
                 </thead>

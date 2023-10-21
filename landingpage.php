@@ -38,7 +38,7 @@
             <li class="dropdown"><a><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul  style="background-color: transparent; ">
               <li><a href="./Student_Side/Stud_registration/page1.php">STUDENT</a></li>
-              
+              <li><a href="./Employee_Side/SignUp_Employee.php">EMPLOYEE</a></li>
               <li><a href="teacher.php">TEACHER</a></li>
           
              
