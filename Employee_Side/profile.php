@@ -75,7 +75,7 @@ session_start();
                 <i class="ri-sun-line theme-light-icon"></i>
                 <i class="ri-moon-line theme-dark-icon"></i>
             </button>
-            <button class="icon-btn place-items-center">
+            <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
         </div>
@@ -172,6 +172,9 @@ session_start();
 <!-- Script     -->
 
 <script>
+    function logout() {
+    window.location.href = '../home?logout=true';
+}
         $(document).ready(function() {
             // Fetch data using $.ajax
             $.ajax({
@@ -182,6 +185,10 @@ session_start();
                     const table = document.getElementById('data-table');
                     const searchInput = document.getElementById('searchInput');
 
+                    const genderImageMap = {
+                    'male': './assets/images/male.jpg',
+                    'female': './assets/images/female.jpg'
+                };
                     
                 console.log(data);
                 // if (data.status===0){
@@ -195,10 +202,21 @@ session_start();
                     
                     var entry = data[i];
                     var status = entry.status;
-                    var tableToAppend = tableBody; // Determine which table to append to
-
+                    var tableToAppend = tableBody; 
+                    // Determine which table to append to
+                    // Create an image element based on gender
+                    const image = document.createElement('img');
+                    image.style.display = 'block'; // Display the image above the text
+                            if (entry.gender === 'Male') {
+                                image.src = genderImageMap['male'];
+                            } else if (entry.gender === 'Female') {
+                                image.src = genderImageMap['female'];
+                    }
                     var row = $("<tr></tr>");
-                    row.append("<td>" + entry.stud_user_id + "</td>");
+                    var cell = $("<td></td>");
+                    cell.append(image); // Append the image to the table cell
+                    cell.append("</br>" + entry.stud_user_id);
+                    row.append(cell);
                     row.append("<td>" + entry.last_name + "</td>");
                     row.append("<td>" + entry.first_name +"</td>");
                     row.append("<td>" + entry.Year_level +"</td>");
@@ -206,6 +224,7 @@ session_start();
                     row.append("<td>" + entry.course + "</td>");
                     row.append("<td>" + entry.Contact_number + "</td>");
                     row.append("<td>" + entry.ParentGuardianNumber + "</td>");
+                    row.append("<td>" + entry.ParentGuardianName + "</td>");
 
                     var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
@@ -240,6 +259,6 @@ session_start();
 
 <script src="./assets/main.js"></script>
 
- <script src="assets/js/table.js"></script>   
+ <!-- <script src="assets/js/table.js"></script>    -->
 </body>
 </html>

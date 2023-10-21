@@ -76,7 +76,7 @@ session_start();
                 <i class="ri-sun-line theme-light-icon"></i>
                 <i class="ri-moon-line theme-dark-icon"></i>
             </button>
-            <button class="icon-btn place-items-center">
+            <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
         </div>
@@ -260,6 +260,9 @@ session_start();
     </script> -->
  
 <script>
+    function logout() {
+    window.location.href = '../home?logout=true';
+}
   $(document).ready(function () {
         $.ajax({
             url: "../backend/check_transaction.php",

@@ -6,6 +6,7 @@ student_user.last_name,
 student_user.first_name,
 student_user.Year_level,
 student_user.course,
+student_user.gender,
 courses.Colleges,
 student_user.Contact_number,
 student_user.ParentGuardianNumber

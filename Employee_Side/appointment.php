@@ -35,7 +35,7 @@
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="index.php" class="list-link current">Home</a>
+                    <a href="./employee-home" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
                     <a href="./request-forms" class="list-link">Requested Forms</a>
@@ -57,7 +57,7 @@
                 <i class="ri-sun-line theme-light-icon"></i>
                 <i class="ri-moon-line theme-dark-icon"></i>
             </button>
-            <button class="icon-btn place-items-center">
+            <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
 
@@ -290,12 +290,15 @@
 <!-- Script     -->
 <script>
   var sessionID = <?php echo json_encode($_SESSION['session_id']); ?>;
+  function logout() {
+    window.location.href = '../home?logout=true';
+}
 </script>
 
 <script src="assets/main.js"></script>   
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="assets/js/calendar.js"></script> 
-<script src="./assets/js/table.js"></script>   
+<!-- <script src="./assets/js/table.js"></script>    -->
 <style>
   
 </style>
