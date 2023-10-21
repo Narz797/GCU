@@ -1,10 +1,14 @@
 RewriteEngine On
 
 RewriteCond %{THE_REQUEST} /index\.php [NC]
+RewriteRule ^ - [F]
 RewriteCond %{THE_REQUEST} /about\.php [NC]
+RewriteRule ^ - [F]
 RewriteCond %{THE_REQUEST} /services\.php [NC]
+RewriteRule ^ - [F]
 RewriteCond %{THE_REQUEST} /landingpage\.php [NC]
 RewriteRule ^ - [F]
+
 RewriteRule ^home/?$ index.php [L]
 RewriteRule ^about/?$ about.php [L]
 RewriteRule ^services/?$ services.php [L]

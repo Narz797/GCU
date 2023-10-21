@@ -1,9 +1,9 @@
 <?php 
+header("Cache-Control: no-cache, must-revalidate");
 
 include 'includes/main.php';
+?>
 
-
- ?>
 
 <style>
         /* Base styles for the text */
@@ -51,7 +51,7 @@ include 'includes/main.php';
               <h3>Readmission Slip</h3>
               <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
                 bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
-              <a href="./forms/Readmission_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/readmission-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -63,7 +63,7 @@ include 'includes/main.php';
               <h3>Withdrawal/Dropping/Shifting Form</h3>
               <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
                 bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
-              <a href="./forms/withdrawal-dropping-shifitng-form.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/withdrawal-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -75,7 +75,7 @@ include 'includes/main.php';
               <h3>Referral Slip</h3>
               <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
                 bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
-              <a href="./forms/Referral_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/referral-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -87,7 +87,7 @@ include 'includes/main.php';
               <h3>Leave Of Absence</h3>
               <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
                 bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
-              <a href="./forms/LeaveOfAbsence_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/leave-of-absence-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 

@@ -35,13 +35,13 @@
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="index.php" class="list-link current">Home</a>
+                    <a href="./employee-home" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="form.php" class="list-link">Requested Forms</a>
+                    <a href="./request-forms" class="list-link">Requested Forms</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="profile.php" class="list-link">Student Profiles</a>
+                    <a href="./student-profile" class="list-link">Student Profiles</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">

@@ -10,9 +10,6 @@ $_SESSION['origin'] = 'Employee';
 <head>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');
-
-   
-
         body {
   /* background: #2980b9; */
   font-family: 'Roboto', sans-serif;
@@ -222,13 +219,9 @@ input[type="submit"]:hover {
             <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
         </div>
 
-        
-        
         <form id="Login_Student_Employee" method="post" style="width: 50%;">
           <h1>LOGIN FORM</h1>
         <br>
-        
-
             <div class="txt_field">
               <input type="text" id="email" name="email" required />
               <span></span>
@@ -246,15 +239,6 @@ input[type="submit"]:hover {
 
        
     </div>
-
-
-        
-
-
-    
-
- 
-
   
 </body>
 <script>
@@ -275,9 +259,8 @@ input[type="submit"]:hover {
             source: source
         },
         success: function (data) {
-     
             if  (data === "success_employee") {
-                window.location.href = "../Employee_Side/index.php";
+                window.location.href = "../Employee_Side/employee-home";
             } else if  (data === "success_admin") {
                 window.location.href = "../Admin_Side/main.php";
             } else {

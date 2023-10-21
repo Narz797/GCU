@@ -24,7 +24,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-         <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
+         <a href="./employee-home" ><img src="assets/images/bsu.png" alt=""></a>
         </div>
         <div class="align-right">
         <button class="icon-btn theme-toggle-btn place-items-center">
@@ -95,16 +95,16 @@
             </header>
             <hr>
             <div>
-                <a href="form.php" class="card-body-link">
+                <a href="./request-forms" class="card-body-link">
                 <i class="ri-folder-line"></i>Requested Forms
                 </a>
-                <a href="profile.php" class="card-body-link">
+                <a href="./student-profile" class="card-body-link">
                 <i class="ri-server-line"></i>Student Profiles
                 </a>
-                <a href="appointment.php" class="card-body-link">
+                <a href="./appointment" class="card-body-link">
                 <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
-                <a href="../index.php?logout=true" class="card-body-link">
+                <a href="../home" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>
@@ -118,13 +118,13 @@
                     <h2 class="title">LATEST Requested Forms</h2>
                     <p class="card-description2"><b id="studentId"></b> has requested a <b id="transactType"></b> form.</p>
                 </div>
-                <a href="form.php"><button class="list-link">Read More</button></a>
+                <a href="./request-forms"><button class="list-link">Read More</button></a>
             </div>
             <div class="card border two">
                 <div>
                     <h2 class="title"><i>UNREAD</i> &nbspForms</h2>
                     <div class="wrapper">
-                    <a href="form.php"><button class="list-link">Read More</button></a>
+                    <a href="./request-forms"><button class="list-link">Read More</button></a>
                      <div class="count">
                         <i class="ri-file-copy-2-line"></i>
 
@@ -148,7 +148,7 @@
                 <div>
                     <h2 class="title"><i>TODAY'S</i> &nbspAppointment</h2>
                     <div class="wrapper">
-                    <a href="appointment.php"><button class="list-link">Read More</button></a>
+                    <a href="./appointment"><button class="list-link">Read More</button></a>
                      <div class="count">
                         <i class="ri-calendar-todo-fill"></i>
 

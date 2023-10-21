@@ -1,6 +1,10 @@
 RewriteEngine On
 
 RewriteCond %{THE_REQUEST} /login\.php [NC]
-
 RewriteRule ^ - [F]
+
+RewriteCond %{THE_REQUEST} /transaction\.php [NC]
+RewriteRule ^ - [F]
+
 RewriteRule ^student-login/?$ login.php [L]
+RewriteRule ^student-home/?$ transaction.php [L]

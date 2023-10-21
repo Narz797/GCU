@@ -50,18 +50,18 @@ session_start();
   <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
+            <a href="./employee-home" ><img src="assets/images/bsu.png" alt=""></a>
         </div>
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="index.php" class="list-link current">Home</a>
+                    <a href="./employee-home" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="profile.php" class="list-link current1">Student Profiles</a>
+                    <a href="./student-profile" class="list-link current1">Student Profiles</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="appointment.php" class="list-link current1">Appointment Schedules</a>
+                    <a href="./appointment" class="list-link current1">Appointment Schedules</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
