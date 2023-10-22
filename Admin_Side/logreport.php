@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Requested Forms</title>
+    <title>Log Report</title>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
+    
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -57,7 +57,7 @@
                     <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="appointment.php" class="list-link current1">Appointment Schedules</a>
+                    <a href="EmployeeProfiles.php" class="list-link current1">Employee Profiles</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -95,7 +95,7 @@
     <div class="block"> 
     </div>
     <div class="title independent-title">
-        <h2>REQUESTED FORMS</h2>
+        <h2>LOG REPORT</h2>
     </div>
 
     <div class="container">
@@ -106,7 +106,9 @@
             </header>
             <hr>
           <div class=" gallery">
-              <div id="dynamicContent"></div>
+              <div id="dynamicContent">
+              </div>
+              
 
         </div>
         </div>

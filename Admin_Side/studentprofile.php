@@ -53,10 +53,10 @@
                     <a href="main.php" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="form.php" class="list-link current1">Requested Forms</a>
+                    <a href="EmployeeProfiles.php" class="list-link current1">Employee Profile</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="appointment.php" class="list-link current1">Appointment Schedules</a>
+                    <a href="logreport.php" class="list-link current1">Log Report</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -138,7 +138,7 @@
                         <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Guardian Name<br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Action </th>
+                        <th> Action <button id="view-more-button">View More</button></th>
                     </tr>
                 </thead>
                 <tbody id="data-table">

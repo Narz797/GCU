@@ -76,7 +76,7 @@ session_start();
                 <i class="ri-sun-line theme-light-icon"></i>
                 <i class="ri-moon-line theme-dark-icon"></i>
             </button>
-            <button class="icon-btn place-items-center">
+            <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
         </div>
@@ -260,6 +260,9 @@ session_start();
     </script> -->
  
 <script>
+    function logout() {
+    window.location.href = '../home?logout=true';
+}
   $(document).ready(function () {
         $.ajax({
             url: "../backend/check_transaction.php",
@@ -283,11 +286,14 @@ session_start();
 
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.stud_user_id + "</td>");
-                    row.append("<td>" + entry.last_name + "</td>");
-                    row.append("<td>" + entry.first_name + "</td>");
+                    row.append("<td>" + entry.first_name + "" + entry.last_name +"</td>");
+                    row.append("<td>" + entry.Colleges + "</td>");
                     row.append("<td>" + entry.course + "</td>");
+                    row.append("<td>" + entry.Contact_number + "</td>");
                     row.append("<td>" + entry.date_created + "</td>");
                     row.append("<td>" + entry.transact_type + "</td>");
+                    row.append("<td>" + entry.status + "</td>");
+                    row.append("<td>" + entry.date_edit + "</td>");
 
                     var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     var statusText = status == 'pending' ? 'Unread' : 'Read';

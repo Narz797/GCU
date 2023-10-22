@@ -53,10 +53,10 @@
                     <a href="main.php" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="form.php" class="list-link current1">Requested Forms</a>
+                    <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="appointment.php" class="list-link current1">Appointment Schedules</a>
+                    <a href="logreport.php" class="list-link current1">Log Report</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -137,7 +137,8 @@
                         <th> Email Address <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Position <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Action </th>
+                        <th> Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody id="data-table">
@@ -145,6 +146,7 @@
                  </tbody>
              
             </table>
+            
         </section>
     </main>
     </div>

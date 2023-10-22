@@ -138,8 +138,10 @@ WHERE
     student_user.Contact_number,
     student_user.ParentGuardianNumber,
     transact.status,
+    transact.date_created,
     transact.transact_type,
-    transact.date_created
+    transact.date_created,
+    transact.date_edited
 FROM
     student_user
 INNER JOIN

@@ -7,7 +7,7 @@ try {
     // SQL query to fetch the latest data based on the date_created column
     $latestDataSql = "SELECT `student_id`, `transact_type`, `date_created`
     FROM transact
-    WHERE `status` = 'pending' AND `date_created` = (SELECT MAX(`date_created`) FROM transact WHERE `status` = 'pending');
+    WHERE `status` = 'pending' AND `date_created` = (SELECT MAX(`date_created`) FROM transact);
     ";
     
     $stmt = $pdo->prepare($latestDataSql); // Use $pdo here
