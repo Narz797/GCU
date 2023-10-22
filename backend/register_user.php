@@ -55,6 +55,7 @@ if (isset($_POST['idno'], $_POST['firstname'], $_POST['lastname'], $_POST['middl
     $goal = $_POST['goal'];
     $eu = $_POST['eu'];
     $pass = $_POST['pass'];
+    $signature = $_POST['customFile'];
 
     // Check if the user already exists using prepared statements
     $query = "SELECT * FROM `student_user` WHERE `stud_user_id` = :idno";
