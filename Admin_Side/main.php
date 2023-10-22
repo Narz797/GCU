@@ -120,58 +120,22 @@ $id = $_SESSION['session_id'];
         <div class="card-group d-grid">
             <div class="card border one">
                 <div>
-
-<!-- call "b" contents from
-    data-->
-                    <h2 class="title">LATEST Requested Forms</h2>
-                    <p class="card-description2"><b id="studentId"></b> has requested a <b id="transactType"></b> form.</p>
+                    <h2 class="title">DAILY ATTENDANCE RATE</h2>
+                    
                 </div>
                 <a href="form.php"><button class="list-link">Read More</button></a>
             </div>
-            <div class="card border two">
-                <div>
-                    <h2 class="title"><i>UNREAD</i> &nbspForms</h2>
-                    <div class="wrapper">
-                    <a href="form.php"><button class="list-link">Read More</button></a>
-                     <div class="count">
-                        <i class="ri-file-copy-2-line"></i>
-            <div id="login-chart-container">
-                <canvas id="login-chart"></canvas>
+
+        
+            <div class="card border one">
+            <div>
+            <h2 class="title">TOTAL LOGINS FOR TODAY</h2>
             </div>
 
-<!-- get sum of the 
-    target count = "data-val"-->
-
-                        <span class="num" data-val="315"><b id="total"></b></span>
-                        <span class="text">Forms waiting...</span>
-                    </div>
-                </div>
-                </div>
+               
             </div>
-            <!-- <div class="card border two">
-                <div>
-                    <h2 class="title">UNOPENED Requested Forms</h2>
-                    <p class="card-description"> <b id="total"></b> Forms waiting...</p>
-                </div>
-                <a href="form.php"><button class="list-link">Read More</button></a>
-            </div> -->
-            <div class="card border three">
-                <div>
-                    <h2 class="title"><i>TODAY'S</i> &nbspAppointment</h2>
-                    <div class="wrapper">
-                    <a href="appointment.php"><button class="list-link">Read More</button></a>
-                     <div class="count">
-                        <i class="ri-calendar-todo-fill"></i>
-
-<!-- get sum of the 
-    target count = "data-val"-->
-
-                        <span class="num" data-val="10"><b id="totalAppointments"></b></span>
-                        <span class="text">pending...</span>
-                    </div>
-                </div>
-                </div>
-            </div>
+           
+            
             <!-- <div class="card border three">
                 <div>
                     <h2 class="title">Number of Appointments TODAY</h2>
@@ -179,7 +143,7 @@ $id = $_SESSION['session_id'];
                 </div>
                 <a href="appointment.php"><button class="list-link">Read More</button></a>
             </div> -->
-            <div class="card border four">
+            <div class="card border one">
                 <div>
                     <h2 class="title">HISTORY TRANSACTIONS</h2>
 
@@ -206,104 +170,6 @@ $id = $_SESSION['session_id'];
         <div class="credits">Designed by <a class="dev" href="https://www.facebook.com/">BSIT</a></div>
     </div>
 </footer>
-    <!-- Script -->
-<script src="./assets/index.js"></script>   
-<script src="./assets/js/count.js"></script>     
-<script>
-    // Function to update the HTML elements
-    function updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined) {
-        $('#studentId').text(studentId);
-        $('#transactType').text(transactType);
-        $('#total').text(total);
-        $('#employee_email').text(employee_email);
-        $('#employee_position').text(employee_position);
-        $('#date_joined').text(employee_date_joined);
-        $('#totalAppointments').text(totalAppointments);
    
-
-    }
-
-    // Function to fetch data from get_transaction.php
-    function fetchData() {
-        console.log('AJAX request started');
-        $.ajax({
-            type: 'GET',
-            url: '../backend/get_transaction.php',
-            dataType: 'json',
-            
-                // ...
-                success: function (data) {
-                    console.log(data);
-                    if (data.latest_data.length > 0) {
-                            var studentId = data.latest_data[0].student_id;
-                            var transactType = data.latest_data[0].transact_type;
-                            var total = data.total_pending_transactions;
-                            var totalAppointments = data.total_appointments; // Define total here
-                            var employee_email = data.adminUserData[0].email;
-                            var employee_position = data.adminUserData[0].position;
-                            var employee_date_joined = data.adminUserData[0].date_joined;
-
-                            console.log(totalAppointments);
-
-                            updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined);
-                            console.log(total);
-
-                            // Start both counting animations
-                            countAppointments(totalAppointments);
-                            countForms(total);
-                        } else {
-                        // Handle the case when no results are found
-                        // You can update the UI as needed
-                        console.log('No results found');
-                    }
-
-            },
-            error: function (xhr, status, error) {
-                console.error('Error: ' + error);
-                console.error('Status: ' + status);
-                console.error('Response: ' + xhr.responseText);
-            }
-        });
-    }
-// Function to update the card description with data
-function updateCardDescription(data) {
-    const cardDescription = $('#list-history');
-    cardDescription.empty(); // Clear existing content
-
-    if (data.length > 0) {
-        data.forEach(item => {
-            cardDescription.append(`${item.student_id}..........${item.transact_type}<br>`);
-        });
-    } else {
-        cardDescription.text('No transactions with status "done" found.');
-    }
-}
-
-// Function to fetch data from get_transaction.php
-function HistoryData() {
-    console.log('AJAX request started');
-    $.ajax({
-        type: 'GET',
-        url: '../backend/get_done_transaction.php',
-        dataType: 'json',
-        // ...
-        success: function (data) {
-            console.log(data);
-            updateCardDescription(data);
-        },
-        error: function (xhr, status, error) {
-            console.error('Error: ' + error);
-            console.error('Status: ' + status);
-            console.error('Response: ' + xhr.responseText);
-        }
-    });
-}
-
-// Call the fetchData function when the page loads
-HistoryData();
-
-    // Call the fetchData function when the page loads
-    fetchData();
-</script> 
 </body>
 </html>

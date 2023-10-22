@@ -137,7 +137,8 @@
                         <th> Email Address <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Position <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Action </th>
+                        <th> Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody id="data-table">
@@ -145,6 +146,7 @@
                  </tbody>
              
             </table>
+            
         </section>
     </main>
     </div>
