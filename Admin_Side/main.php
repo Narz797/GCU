@@ -23,6 +23,8 @@ $id = $_SESSION['session_id'];
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -101,17 +103,14 @@ $id = $_SESSION['session_id'];
             </header>
             <hr>
             <div>
-                <a href="form.php" class="card-body-link">
-                <i class="ri-folder-line"></i>Requested Forms
+                <a href="logreport.php" class="card-body-link">
+                <i class="ri-folder-line"></i>Log Report
                 </a>
                 <a href="studentprofile.php" class="card-body-link">
                 <i class="ri-server-line"></i>Student Profiles
                 </a>
                 <a href="EmployeeProfiles.php" class="card-body-link">
                 <i class="ri-server-line"></i>Employee Profiles
-                </a>
-                <a href="appointment.php" class="card-body-link">
-                <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
                 <a href="../index.php?logout=true" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
@@ -136,6 +135,9 @@ $id = $_SESSION['session_id'];
                     <a href="form.php"><button class="list-link">Read More</button></a>
                      <div class="count">
                         <i class="ri-file-copy-2-line"></i>
+            <div id="login-chart-container">
+                <canvas id="login-chart"></canvas>
+            </div>
 
 <!-- get sum of the 
     target count = "data-val"-->
