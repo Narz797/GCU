@@ -1,0 +1,15 @@
+RewriteEngine On
+
+RewriteCond %{THE_REQUEST} /la_page\.php [NC]
+RewriteRule ^ - [F]
+RewriteCond %{THE_REQUEST} /ra_page\.php [NC]
+RewriteRule ^ - [F]
+RewriteCond %{THE_REQUEST} /rs_page\.php [NC]
+RewriteRule ^ - [F]
+RewriteCond %{THE_REQUEST} /wds_page\.php [NC]
+RewriteRule ^ - [F]
+
+RewriteRule ^loa-forms/?$ la_page.php [L]
+RewriteRule ^ra-forms/?$ ra_page.php [L]
+RewriteRule ^rs-forms/?$ rs_page.php [L]
+RewriteRule ^wds-forms/?$ wds_page.php [L]

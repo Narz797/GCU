@@ -127,7 +127,7 @@ session_start();
                 <br>
                 <h5><i class="ri-mail-unread-line"></i></h5>
                 <br>
-                <a href="subpage/la_page.php">
+                <a href="subpage/loa-forms">
                 <button class="buy-1">READ MORE</button></a>
             </div>
             <div class="content1">
@@ -143,7 +143,7 @@ session_start();
                 <br>
                 <h5><i class="ri-mail-unread-line"></i></h5>
                 <br>
-                <a href="subpage/ra_page.php">
+                <a href="subpage/ra-forms">
                 <button class="buy-1">READ MORE</button></a>
             </div>
             <div class="content1">
@@ -159,7 +159,7 @@ session_start();
                 <br>
                 <h5><i class="ri-mail-unread-line size"></i></h5>
                 <br>
-                <a href="subpage/rs_page.php">
+                <a href="subpage/rs-forms">
                 <button class="buy-1">READ MORE</button></a>
             </div>
             <div class="content1">
@@ -175,7 +175,7 @@ session_start();
                 <br>
                 <h5><i class="ri-mail-unread-line"></i></h5>
                 <br>
-                <a href="subpage/wds_page.php">
+                <a href="subpage/wds-forms">
                 <button class="buy-1">READ MORE</button></a>
             </div>
           </div>
