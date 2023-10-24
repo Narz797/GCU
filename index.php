@@ -252,4 +252,4 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
   </script>
 
     <body>
-      <?php include 'includes/footer.php' ?>
+      <?php include 'includes/footer1.php' ?>

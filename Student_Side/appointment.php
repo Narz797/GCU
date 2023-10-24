@@ -1,6 +1,6 @@
 <?php 
 
-include 'includes/main.php';
+include 'includes/main2.php';
 
  ?>
 
@@ -19,16 +19,50 @@ include 'includes/main.php';
   <link href="../Employee_Side/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../Employee_Side/assets/apmt.css">
+    <link rel="stylesheet" href="../Employee_Side/assets/css/forms.css">
   
 </head>
+<style>
+    .column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: auto; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+    </style>
   <body>
+
        
-  </section>
+
+
+
 
 </div>
-  <div class="container">
+
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 50px; "></section> 
+
+
+
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 80px; ">
+<p style="margin-left: 2%; font-size: 30px; font-weight: bold;">APPOINTMENT SCHEDULE</p>
+
+</section> 
+
+
+
+
+
+<div class="row">
+<div class="container">
       <br>
-      <h2 class="title independent-title">APPOINTMENT SCHEDULE</h2>
+     
 
    
 
@@ -111,9 +145,135 @@ include 'includes/main.php';
       </div>
   </div>
 </section>
+<br>
+
+<div>
+  </div>
+
+
+    <div  >
+
+    <!-- <div class="container" > -->
+        <br>
+        <h2 class="title"></h2>
+        <div >
+            <header class="card-header" >
+                <p style="margin-left: 10%; font-size: 30px; font-weight: bold; color:yellowgreen;" > YOUR SCHEDULE OF APPOINTMENT </p>
+               
+            </header>
+            <hr>
+            <div class="gallery">
+            <main class="table" id="customers_table"  style=" height: auto; ">
+    
+            <section class="table-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th> No. <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Title of appointment <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Date <span class="icon-arrow">&UpArrow;</span></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 1 </td>
+                            <td> Counseling</td>
+                            <td> 17 Dec, 2022 </td>
+                            <!-- <td>
+                                <p class="status delivered">Delivered</p>
+                            </td>
+                            <td> 
+                                <i class="ri-delete-bin-6-line"></i>
+                            </td> -->
+                        </tr>
+                        <tr>
+                            <td> 2 </td>
+                            <td> Readmission</td>
+                            <td> 27 Aug, 2023 </td>
+                            <!-- <td>
+                                <p class="status cancelled">Cancelled</p>
+                            </td>
+                            <td> 
+                                <i class="ri-delete-bin-6-line"></i>
+                            </td>
+                        </tr> -->
+                 
+                    </tbody>
+                </table>
+            </section>
+
+
+    </div>
+
+
+
+    <!-- History of transaction -->
+    <div  >
+        <br>
+        <h2 class="title"></h2>
+        <div class="card" >
+         
+            <hr>
+            <div class=" gallery" >
+            <main class="table" id="customers_table" style=" height: auto; ">
+            <section class="table-header">
+                <p style="margin-left: 2%; font-size: 25px; font-weight: bold; color:white;" >HISTORY OF APPOINTMENT</p>
+                <div class="input-group">
+                    <input type="search" placeholder="Search...">
+                </div>
+             
+            </section>
+            <section class="table-body" >
+                <table >
+                    <thead>
+                        <tr>
+                            <th> No. <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Title of appointment <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Date <span class="icon-arrow">&UpArrow;</span></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr>
+                            <td> 1 </td>
+                            <td> Counseling</td>
+                            <td> 17 Dec, 2022 </td>
+                            <!-- <td>
+                                <p class="status delivered">Delivered</p>
+                            </td>
+                            <td> 
+                                <i class="ri-delete-bin-6-line"></i>
+                            </td> -->
+                        </tr>
+                        <tr>
+                            <td> 2 </td>
+                            <td> Readmission</td>
+                            <td> 27 Aug, 2023 </td>
+                            <!-- <td>
+                                <p class="status cancelled">Cancelled</p>
+                            </td>
+                            <td> 
+                                <i class="ri-delete-bin-6-line"></i>
+                            </td>
+                        </tr> -->
+                 
+                    </tbody>
+                </table>
+            </section>
+            </main>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section> 
+
 
   </body>
-<?php include '../includes/footer.php' ?>
+
+
 
 <script src="../Employee_Side/assets/js/calendar.js"></script>    
 <script src="../Employee_Side/assets/main.js"></script> 

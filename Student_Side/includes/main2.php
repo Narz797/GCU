@@ -15,10 +15,11 @@
       </a>
 <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
   <ul>
-    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; height:auto;" >
+    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
     <li><a href="../index.php">HOME</a></li>
-    <li><a href="../about.php">ABOUT</a></li>
-    <li><a href="../services.php">SERVICES</a></li>
+     
+    <li ><a href="transaction.php">TRANSACTION</a></li>
+    <li><a href="appointment.php">APPOINTMENT</a></li>
 
 
 
@@ -59,34 +60,11 @@
 
   ?>
 
-<!-- Header section -->
-<!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 50px; "> -->
- <!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 20px; "></section> -->
-<section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section> 
-<!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 5px; "></section> -->
-
-
-
-
-  <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 250px;">
-
-
-<nav id="navbar" class="navbar">
-  <ul>
-    
-    <li ><a href="transaction1.php">TRANSACTION</a></li>
-    <li><a href="appointment.php">APPOINTMENT</a></li>
-    
-
-    
-  </ul>
-</nav><!-- .navbar -->
 
 
 
 
 
-</div>
 <!-- </section> -->
 <style>
   .for-mobile{

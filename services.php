@@ -557,4 +557,4 @@ include 'landingpage.php';
     
 </body>
 
-<?php include 'includes/footer.php' ?>
+<?php include 'includes/footer1.php' ?>
