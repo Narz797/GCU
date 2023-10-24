@@ -1,3 +1,9 @@
+<?php 
+session_start();
+
+$id = $_SESSION['session_id'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,7 +110,7 @@
                 <a href="./appointment" class="card-body-link">
                 <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
-                <a href="../home" class="card-body-link">
+                <a href="../home?logout=true" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>
@@ -170,7 +176,7 @@
             </div> -->
             <div class="card border four">
                 <div>
-                    <h2 class="title">HISTORY TRANSACTIONS</h2>
+                    <h2 class="title">HISTORY: FINISHED TRANSACTIONS</h2>
 
 <!-- honestly just copy paste 
     the database so no need 
@@ -197,7 +203,7 @@
 </footer>
     <!-- Script -->
 <script src="./assets/index.js"></script>   
-<script src="./assets/js/count.js"></script>     
+    
 <script>
     // Function to update the HTML elements
     function updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined) {
@@ -222,7 +228,7 @@
             
                 // ...
                 success: function (data) {
-                    console.log(data);
+                    console.log(data.latest_data);
                     if (data.latest_data.length > 0) {
                             var studentId = data.latest_data[0].student_id;
                             var transactType = data.latest_data[0].transact_type;
@@ -294,6 +300,6 @@ HistoryData();
     // Call the fetchData function when the page loads
     fetchData();
 </script>
-
+<script src="./assets/js/count.js"></script> 
 </body>
 </html>

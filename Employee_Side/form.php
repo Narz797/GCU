@@ -121,7 +121,7 @@ session_start();
 <!--call the numbers 
     in command p-->
 
-                <p><span class="num" data-val="28">000</span>
+                <p><span class="num" data-val="28" id="LOA"></span>
                 <span class="text">pending...</span></p>
                 <h5>OSS-GCU-F11</h5>
                 <br>
@@ -137,7 +137,7 @@ session_start();
 <!--call the numbers 
     in command p-->
 
-                <p><span class="num" data-val="8">000</span>
+                <p><span class="num" data-val="8" id="RA"></span>
                 <span class="text">pending...</span></p>
                 <h5>OSS-GCU-F12</h5>
                 <br>
@@ -153,7 +153,7 @@ session_start();
 <!--call the numbers 
     in command p-->
 
-                <p><span class="num" data-val="10">000</span>
+                <p><span class="num" data-val="10" id="RS"></span>
                 <span class="text">pending...</span></p>
                 <h5>QF-OSS-01</h5>
                 <br>
@@ -169,7 +169,7 @@ session_start();
 <!--call the numbers 
     in command p-->
 
-                <p><span class="num" data-val="16">000</span>
+                <p><span class="num" data-val="16" id="WDS"></span>
                 <span class="text">pending...</span></p>
                 <h5>OSS-GCU-F13</h5>
                 <br>
@@ -216,10 +216,10 @@ session_start();
                             <th> College <br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Course <br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Contact <br><span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Date Requested / Appointment<br><span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Transaction<br> <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Date<br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Requested<br> <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Status<br> <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Last Edited<br><span class="icon-arrow">&UpArrow;</span></th>
+
                         </tr>
                     </thead>
                     <tbody >
@@ -260,9 +260,60 @@ session_start();
     </script> -->
  
 <script>
+        function updateValues(LOA, RA, RS, WDS) {
+        $('#LOA').text(LOA);
+        $('#RA').text(RA);
+        $('#RS').text(RS);
+        $('#WDS').text(WDS);
+
+   
+
+    }
     function logout() {
     window.location.href = '../home?logout=true';
 }
+function fetchData() {
+        console.log('AJAX request started');
+        $.ajax({
+            type: 'GET',
+            url: '../backend/get_transaction.php',
+            dataType: 'json',
+            
+                // ...
+                success: function (data) {
+                    console.log(data.latest_data);
+                    if (data.latest_data.length > 0) {
+
+                            var totalLOA = data.total_pending_LOA;
+                            var totalRA = data.total_pending_RA;
+                            var totalRS = data.total_pending_RS;
+                            var totalWDS = data.total_pending_WDS;
+
+
+                            console.log("LOA",totalLOA);
+
+                            updateValues(totalLOA, totalRA, totalRS, totalWDS);
+                            console.log(totalLOA);
+
+                            // Start both counting animations
+                            // countLOA(totalLOA);
+                            // countRA(totalRA);
+                            // countRS(totalRS);
+                            // countWDS(totalWDS);
+                        } else {
+                        // Handle the case when no results are found
+                        // You can update the UI as needed
+                        console.log('No results found');
+                    }
+
+            },
+            error: function (xhr, status, error) {
+                console.error('Error: ' + error);
+                console.error('Status: ' + status);
+                console.error('Response: ' + xhr.responseText);
+            }
+        });
+    }
   $(document).ready(function () {
         $.ajax({
             url: "../backend/check_transaction.php",
@@ -274,7 +325,6 @@ session_start();
                 // if (data.status===0){
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
-                var noHistoryMessage1 = $("#noHistoryMessage1"); 
                 var noHistoryMessage2 = $("#noHistoryMessage2"); 
  
 
@@ -292,26 +342,19 @@ session_start();
                     row.append("<td>" + entry.Contact_number + "</td>");
                     row.append("<td>" + entry.date_created + "</td>");
                     row.append("<td>" + entry.transact_type + "</td>");
-                    row.append("<td>" + entry.status + "</td>");
-                    row.append("<td>" + entry.date_edit + "</td>");
+                    // row.append("<td>" + entry.status + "</td>");
+                     // Check the value of entry.status and set the class and text accordingly
+                        if (status == 'done') {
+                            row.append("<td><p class='status delivered'>Done</p></td>");
+                        } else if (status == 'pending') {
+                            row.append("<td><p class='status pending'>Pending</p></td>");
+                        } else {
+                            // Handle other cases, e.g., 'Cancelled' or anything else
+                            row.append("<td><p class='status cancelled'>" + status + "</p></td>");
+                        }
 
-                    var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
-                    var statusText = status == 'pending' ? 'Unread' : 'Read';
-
-                    var statusCell = $("<td></td>");
-                    var statusLink = $("<span class='overlay'></span><div class='modal-box'><i class='ri-spam-2-fill'></i><h3>Permanently delete the selected form?</h3><div class='buttons'><button class='yes'>Yes</button><button class='close'>No</button></div></div><button class='popup'><i class='ri-delete-bin-6-line'></i></button>");
-
-                    statusCell.append(statusLink);
-                    row.append(statusCell);
-
+                    tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
-                    
-                    
-                    if (status == 'pending') {
-                        tableBody.append(row);
-                    } else if (status == 'done') {
-                        historyTableBody.append(row); // Append row to history table body
-                    }
 
                  }
                  console.log("data",data);
@@ -319,9 +362,9 @@ session_start();
 
 
                     if (dynamicTableRowCount1 > 0) {
-                    noHistoryMessage1.hide(); // Hide the no history message if there is data
+                    noHistoryMessage2.hide(); // Hide the no history message if there is data
                     } else {
-                        noHistoryMessage1.show(); // Show the no history message if no data
+                        noHistoryMessage2.show(); // Show the no history message if no data
                     }
 
 
@@ -359,8 +402,13 @@ session_start();
 }
 
         });
+
+    
     });
+    fetchData();
+
 </script>  
 <script src="./assets/main.js"></script> 
 <!-- <script src="assets/js/table.js"></script>  -->
+<script src="./assets/js/count.js"></script> 
 </html>

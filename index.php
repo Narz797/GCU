@@ -62,7 +62,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
 
   }
 </style>
-
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
 <body>
 

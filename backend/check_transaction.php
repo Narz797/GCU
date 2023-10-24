@@ -17,6 +17,7 @@ if ($type == 'readmission') {
     student_user.course,
     student_user.Contact_number,
     student_user.ParentGuardianNumber,
+    student_user.gender,
     transact.status,
     transact.transact_type,
     transact.date_created
@@ -44,6 +45,7 @@ if ($type == 'readmission') {
     courses.Colleges,
     student_user.Contact_number,
     student_user.ParentGuardianNumber,
+    student_user.gender,
     referral.referred,
     transact.status,
     transact.transact_type,
@@ -75,9 +77,10 @@ WHERE
     courses.Colleges,
     student_user.Contact_number,
     student_user.ParentGuardianNumber,
-    withdrawal.	reason,
-    withdrawal.	shift_from,
-    withdrawal.	shift_to,
+    student_user.gender,
+    withdrawal.reason,
+    withdrawal.shift_from,
+    withdrawal.shift_to,
     transact.status,
     transact.transact_type,
     transact.date_created
@@ -108,6 +111,7 @@ WHERE
     courses.Colleges,
     student_user.Contact_number,
     student_user.ParentGuardianNumber,
+    student_user.gender,
     transact.status,
     transact.transact_type,
     transact.date_created
@@ -140,8 +144,7 @@ WHERE
     transact.status,
     transact.date_created,
     transact.transact_type,
-    transact.date_created,
-    transact.date_edited
+    transact.date_created
 FROM
     student_user
 INNER JOIN

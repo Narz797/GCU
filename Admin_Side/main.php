@@ -112,7 +112,7 @@ $id = $_SESSION['session_id'];
                 <a href="EmployeeProfiles.php" class="card-body-link">
                 <i class="ri-server-line"></i>Employee Profiles
                 </a>
-                <a href="../index.php?logout=true" class="card-body-link">
+                <a href="../home?logout=true" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>
