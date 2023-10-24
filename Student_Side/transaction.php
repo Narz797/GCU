@@ -114,6 +114,18 @@ include 'includes/main2.php';
             </div>
           </div><!-- End Service Item -->
 
+          <div class="col-lg-4 col-md-6" style="width:100%;">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-file-text"></i>
+              </div>
+              <h3>Counseling</h3>
+              <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
+                bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
+              <a href="./forms/LeaveOfAbsence_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div><!-- End Service Item -->
+
 
 
         </div>
@@ -184,6 +196,8 @@ include 'includes/main2.php';
                       <time datetime="2020-01-01">March 2023</time>
                     </div>
                   </div><!-- End recent post item-->
+
+                
 
 
                   
