@@ -80,7 +80,7 @@ $id = $_SESSION['session_id'];
 
 <!-- call employee 
     registered data -->
-                <h1 class="title main-title"><span class="title-lastname main-title">uchiha,</span> Itachi Verlyn Rizz M.</h1>
+                <h1 class="title main-title"><span class="title-lastname main-title">Dr. Angeli T. Austria</h1>
                 <p class="card-description1">Joined at <b id="date_joined"></b><br><br></p>
                 <p class="card-description">
                     <span>Email:</span><b id="employee_email"></b><br>

@@ -101,33 +101,17 @@
     <div class="container">
         <div class="card">
            <header class="card-header">
-                <small>The following are the requested forms for today,</small>
-                <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
+                <h1>Today's Total Login Activity Report</h1>
+                
             </header>
-            <hr>
+            
           <div class=" gallery">
               <div id="dynamicContent">
-              </div>
+                </div>
               
-
-        </div>
-        </div>
-    </div>
-
-    <!-- History of transaction -->
-    <div class="container">
-        <br>
-        <h2 class="title"></h2>
-        <div class="card">
-            <header class="card-header">
-                <h1>HISTORY</h1>
-                <p>&nbsp&nbsp The following are the previous requested forms.</p>
-            </header>
-            <hr>
-            <div class=" gallery">
-            <main class="table" id="customers_table">
+            
             <section class="table-header">
-                <h1>List of Requested Forms</h1>
+            <div id="currentDate"></div>
                 <div class="input-group">
                     <input type="search" placeholder="Search Data...">
                 </div>
@@ -145,57 +129,18 @@
                 <table>
                     <thead>
                         <tr>
-                            <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Student <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> College <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> ID Number <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Date/Time Logged In <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Name <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Date <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Phone Number <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Action <span class="icon-arrow">&UpArrow;</span></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td> 1 </td>
-                            <td> Zinzu Chan Lee</td>
-                            <td> CHET </td>
-                            <td> Psychology </td>
-                            <td> 17 Dec, 2022 </td>
-                            <td>
-                                <p class="status delivered">Delivered</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 2 </td>
-                            <td> Jeet Saru </td>
-                            <td> CIS </td>
-                            <td> BSIT</td>
-                            <td> 27 Aug, 2023 </td>
-                            <td>
-                                <p class="status cancelled">Cancelled</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Sarita Limbu </td>
-                            <td> CAS </td>
-                            <td> Architecture </td>
-                            <td> 23 Apr, 2023 </td>
-                            <td>
-                                <p class="status pending">Pending</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td>
-                        </tr>
-                    </tbody>
+                        
                 </table>
+                
             </section>
             </main>
             </div>
@@ -275,6 +220,22 @@
         }
     });
 });
+
+//responsive date
+function updateCurrentDate(){
+    const currentDateElement = document.getElementById("currentDate");
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: 'long', day:'numeric'};
+    const formattedDate = currentDate.toLocaleDateString('en-US',options);
+    currentDateElement.textContent = formattedDate; 
+
+}
+
+updateCurrentDate();
+
+setInterval(updateCurrentDate, 1000);
+
+
 
 </script>  
 <script src="./assets/main.js"></script> 

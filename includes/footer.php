@@ -26,11 +26,10 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="/gcu/home">Home</a></li>
+            <li><a href="/gcu/about">About us</a></li>
+            <li><a href="/gcu/services">Services</a></li>
+            
 
 
 
