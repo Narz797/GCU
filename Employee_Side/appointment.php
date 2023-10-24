@@ -206,7 +206,7 @@
             <div class=" gallery">
             <main class="table" id="customers_table">
             <section class="table-header">
-                <h1>List of <b>Requested Appointments</b></h1>
+                <h1>List of <b>All Requested Appointments</b></h1>
                 <div class="input-group">
                     <input type="search" placeholder="Search Data...">
                 </div>

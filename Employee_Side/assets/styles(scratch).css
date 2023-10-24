@@ -219,6 +219,7 @@ i{
 .card-description1 span{
     color: var(--font-color);}
 .card-description{
+    text-decoration: underline;
     font-size: 17px;
     margin-bottom: var(--margin-small);}
 .card-description span{

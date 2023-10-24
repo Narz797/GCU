@@ -118,9 +118,6 @@ $id = $_SESSION['session_id'];
         <div class="card-group d-grid">
             <div class="card border one">
                 <div>
-
-<!-- call "b" contents from
-    data-->
                     <h2 class="title">LATEST Requested Forms</h2>
                     <p class="card-description2"><b id="studentId"></b> has requested a <b id="transactType"></b> form.</p>
                 </div>
@@ -133,23 +130,12 @@ $id = $_SESSION['session_id'];
                     <a href="./request-forms"><button class="list-link">Read More</button></a>
                      <div class="count">
                         <i class="ri-file-copy-2-line"></i>
-
-<!-- get sum of the 
-    target count = "data-val"-->
-
                         <span class="num" data-val="315"><b id="total"></b></span>
                         <span class="text">Forms waiting...</span>
                     </div>
                 </div>
                 </div>
             </div>
-            <!-- <div class="card border two">
-                <div>
-                    <h2 class="title">UNOPENED Requested Forms</h2>
-                    <p class="card-description"> <b id="total"></b> Forms waiting...</p>
-                </div>
-                <a href="form.php"><button class="list-link">Read More</button></a>
-            </div> -->
             <div class="card border three">
                 <div>
                     <h2 class="title"><i>TODAY'S</i> &nbspAppointment</h2>
@@ -157,50 +143,24 @@ $id = $_SESSION['session_id'];
                     <a href="./appointment"><button class="list-link">Read More</button></a>
                      <div class="count">
                         <i class="ri-calendar-todo-fill"></i>
-
-<!-- get sum of the 
-    target count = "data-val"-->
-
                         <span class="num" data-val="10"><b id="totalAppointments"></b></span>
                         <span class="text">pending...</span>
                     </div>
                 </div>
                 </div>
             </div>
-            <!-- <div class="card border three">
-                <div>
-                    <h2 class="title">Number of Appointments TODAY</h2>
-                    <p class="card-description"> <b id="totalAppointments"></b> Appointments pending...</p>
-                </div>
-                <a href="appointment.php"><button class="list-link">Read More</button></a>
-            </div> -->
             <div class="card border four">
                 <div>
                     <h2 class="title">HISTORY: FINISHED TRANSACTIONS</h2>
-
-<!-- honestly just copy paste 
-    the database so no need 
-    for it's design, just call
-    the student name and the 
-    action the employee had 
-    taken-->
                     <p class="card-description" id="list-history"> 
-                            <!-- Data will be inserted here dynamically -->
+                          
                         </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-    <!-- Footer -->
-<footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-        </div>
-        <div class="credits">Designed by <a class="dev" href="https://www.facebook.com/">BSIT</a></div>
-    </div>
-</footer>
+
     <!-- Script -->
 <script src="./assets/index.js"></script>   
     
@@ -270,7 +230,7 @@ function updateCardDescription(data) {
             cardDescription.append(`${item.student_id}..........${item.transact_type}<br>`);
         });
     } else {
-        cardDescription.text('No transactions with status "done" found.');
+        cardDescription.text('No finished transactions.');
     }
 }
 

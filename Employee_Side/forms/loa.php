@@ -30,7 +30,7 @@
                     <a href="../index.php" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="../subpage/la_page.php" class="list-link current1">Back</a>
+                    <a href="../subpage/loa-forms" class="list-link current1">Back</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -102,13 +102,7 @@
 <!-- Get student fill-up form data -->
 
                   <p class="card-description">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
-                  <div class="center-attached">
-
-<!-- Get any uplaoded file or the real-time image -->
-
-                  <img src="" title="No Attached Document">
-                  <img src="" title="No Attached Document">
-                  </div>
+               
                 </div>
                 </div>
                 <div>
@@ -120,27 +114,20 @@
 <!-- Get student fill-up form data -->
 
                   <p class="card-description">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
-                  <div class="center-attached">
-
-<!-- Get any uplaoded file or the real-time image -->
-
-                  <img src="" title="No Attached Document">
-                  <img src="" title="No Attached Document">
-                  </div>
+                  
                 </div>
+                
                 </div>
                 <div class="action">
                  <a href="#divOne"><button class="yes">Accept</button></a>
                  <a href="#divTwo"><button class="no">Reconsider</button></a>
-                 <a href="#divThree"><button class="pending">Lacking</button></a>
                  </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- This is the pop-up for the three buttons -->
-
+    <!-- This is the pop-up for the three buttons -->
                 <div class="overlay" id="divOne">
                     <div class="wrapper">
                         <h1>The student's form for a leave of absence will be <u class="One">EXCUSED</u> .</h1>

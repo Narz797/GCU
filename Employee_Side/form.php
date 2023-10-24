@@ -118,10 +118,8 @@ session_start();
                 <img src="./assets/images/formtemp.png">
                 <h4>LOA SLIP</h4>
 
-<!--call the numbers 
-    in command p-->
 
-                <p><span class="num" data-val="28" id="LOA"></span>
+                <p><span class="num"  id="LOA"></span>
                 <span class="text">pending...</span></p>
                 <h5>OSS-GCU-F11</h5>
                 <br>
@@ -134,10 +132,7 @@ session_start();
                 <img src="./assets/images/formtemp.png">
                 <h4>READMISSION SLIP</h4>
 
-<!--call the numbers 
-    in command p-->
-
-                <p><span class="num" data-val="8" id="RA"></span>
+                <p><span class="num"  id="RA"></span>
                 <span class="text">pending...</span></p>
                 <h5>OSS-GCU-F12</h5>
                 <br>
@@ -149,11 +144,7 @@ session_start();
             <div class="content1">
                 <img src="./assets/images/formtemp.png">
                 <h4>REFERRAL SLIP</h4>
-
-<!--call the numbers 
-    in command p-->
-
-                <p><span class="num" data-val="10" id="RS"></span>
+                <p><span class="num" id="RS"></span>
                 <span class="text">pending...</span></p>
                 <h5>QF-OSS-01</h5>
                 <br>
@@ -165,11 +156,7 @@ session_start();
             <div class="content1">
                 <img src="./assets/images/formtemp.png">
                 <h4>WDS SLIP</h4>
-
-<!--call the numbers 
-    in command p-->
-
-                <p><span class="num" data-val="16" id="WDS"></span>
+                <p><span class="num" id="WDS"></span>
                 <span class="text">pending...</span></p>
                 <h5>OSS-GCU-F13</h5>
                 <br>
@@ -226,7 +213,7 @@ session_start();
             <!-- History data will be populated here -->
                     </tbody>
                 </table>
-                <p id="noHistoryMessage2">No items available.</p>
+                <p id="noHistoryMessage2">Empty</p>
                 
             </section>
             </main>
@@ -235,29 +222,9 @@ session_start();
     </div>
 </section>
 <br>
-    <!-- Footer -->
-    <footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-        </div>
-        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-    </div>
-</footer>
-</body>
-<!-- Script     -->
-<!-- <script>
-                        document.addEventListener("DOMContentLoaded", function () {
-                        const section = document.querySelector(".section");
-                        const overlay = document.querySelector(".overlay");
-                        const showBtn = document.querySelector(".popup");
-                        const closeBtn = document.querySelector(".close");
 
-                        showBtn.addEventListener("click", () => section.classList.add("active"));
-                        overlay.addEventListener("click", () => section.classList.remove("active"));
-                        closeBtn.addEventListener("click", () => section.classList.remove("active"));
-                    });
-    </script> -->
+</body>
+
  
 <script>
         function updateValues(LOA, RA, RS, WDS) {
@@ -408,6 +375,7 @@ function fetchData() {
     fetchData();
 
 </script>  
+
 <script src="./assets/main.js"></script> 
 <!-- <script src="assets/js/table.js"></script>  -->
 <script src="./assets/js/count.js"></script> 

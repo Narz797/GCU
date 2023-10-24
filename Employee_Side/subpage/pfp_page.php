@@ -28,10 +28,10 @@
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="../index.php" class="list-link current">Home</a>
+                    <a href="../employee-home" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="../profile.php" class="list-link current1">Back</a>
+                    <a href="../student-profile" class="list-link current1">Back</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
