@@ -183,6 +183,7 @@ include 'includes/main2.php';
 
             
             <br>
+            <hr>
                    <div class="post-item mt-3">
                     <img src="assets/img/form.png" alt="" style="height:60px; ">
                     <div>
@@ -193,6 +194,7 @@ include 'includes/main2.php';
 
                     
             <br>
+            <hr>
                    <div class="post-item mt-3">
                     <img src="assets/img/form.png" alt="" style="height:60px; ">
                     <div>
