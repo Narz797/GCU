@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Profile</title>
+    <title>Add Employee Account</title>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" href="assets/images/GCU_logo.png">
@@ -17,10 +17,13 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/profiles.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
     <!-- Export -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -31,10 +34,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
 </head>
 <style>
+
     </style>
 <body>
+
     <!-- Header -->
     <header class="header">
     <nav class="nav"> 
@@ -75,85 +81,45 @@
     
 <section>
   
-      <div class="block"> 
-    </div>
+      
     <div class="title independent-title">
-    <h2>Employee Profiles</h2>
+    <h2>Add Employee Account</h2>
     </div>
      <!-- Section -->
-    <div class="container">
-        <div class="card">
-        <div class="gallery">
- <main class="table" id="customers_table">
-        <section class="table-header">
-            <h1>List of Employees</h1>
-            <div class="input-group">
-                <input type="text" id="searchInput" placeholder="Search Data...">
-                
-            </div>
-            <div class="export-file">
-                <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/export.png" alt=""></label>
-                <input type="checkbox" id="export-file">
-                <div class="export-file-options">
-                    <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
-                </div>
-
-                
-            </div>
-        </section>
-
-       <section class="table-body">
+    <section class="table-body">
+    <section  id="table">
+    <form method="post" action="#">
+        <label for="employeeid">Employee ID Number:</label>
+        <input type="number" name="employeeid" value="" required><br>
+        <br>
+        <label for="lname">Last Name:</label>
+        <input type="text" name="lname" value="" required>
+        <label for="fname">First Name:</label>
+        <input type="text" name="fname" value="" required>
+        <label for="mname">Middle Name:</label>
+        <input type="text" name="mname" value="" required><br>
+        <br>
+        <label for="sex">Sex:</label>
+        <select id="gender" name="sex" value="" required>
+            <option></option>
+            <option>Female</option>
+            <option>Male</option>
+        <select>
+        <label for="email">Email Address:</label>
+        <input type="text" name="email" value="" required>
+        <label for="contactnumber">Contact Number:</label>
+        <input type="number" name="contactnumber" value="" required>
+        <label for="position">Position:</label>
+        <input type="text" name="position" value="" required><br>
+        <br>
         
-            <div>
-                <button><a href="addemployee.php">Add Employee Account</a></button>
-            </div>
-        </section>
+        <button type="submit" value="Add Employee">Add Employee Account</button>
+    </form>
+    </section>
 
-        <section class="table-body">
-            <table  id="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th> Employee ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Middle Name <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Sex <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Email Address <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Position <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Status</th>
-                        <th> Action</th>
-                        
-                    </tr>
-                </thead>
-                <tbody id="data-table">
-                  <td>1</td>
-                  <td>Castro</td>
-                  <td>Liezl</td>
-                  <td>D.</td>
-                  <td>Female</td>
-                  <td>liezlcastro@gmail.com</td>
-                  <td>0987435678</td>
-                  <td>Auditor</td>
-                  <td>Pending</td>
-                  <td>
-                    <button><a href="editemployee.php">Edit</button></a>
-                  </td>
-                  
-                 </tbody>
-             
-            </table>
-            
-        </section>
-    </main>
-    </div>
-        </div>
-    </div>
 </section>
 <br>
+
     <!-- Footer -->
     <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
@@ -165,6 +131,7 @@
 </footer>
 <!-- Script     -->
 <script src="./assets/main.js"></script>
+
  <script src="assets/js/table.js"></script>   
 </body>
 </html>

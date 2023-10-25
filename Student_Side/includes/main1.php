@@ -14,12 +14,17 @@
         <!-- <h1>Impact<span>.</span></h1> -->
       </a>
 <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
-  <ul>
-    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
+  <!-- <ul>
+    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" > -->
   
      
-    <li ><a href="student-home">TRANSACTION</a></li>
-    <li><a href="appointment.php">APPOINTMENT</a></li>
+    <!-- <li ><a href="student-home">TRANSACTION</a></li>
+    <li><a href="appointment.php">APPOINTMENT</a></li> -->
+
+    <!-- <h1>Student Profile</h1>
+
+
+    <i class="fa fa-sign-out-alt fa-2x"></i> -->
 
 
 
@@ -28,20 +33,20 @@
     <li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li> -->
 
 
-<div class="containerA" style="margin-right:3%; background-color:black;">
+<!-- <div class="containerA" style="margin-right:3%; background-color:black;">
 
 <div class="account-icon">
 
 <li class="dropdown"><a href="#"><span> <img src="assets/img/dp.png" alt="" height="40px"  ></span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul  style="background-color: transparent; ">
-              <li><a href="../Student_Side/student-profile.php">PROFILE</a></li>
+              <li><a href="Stud_registration/profile.php">PROFILE</a></li>
               <li><a href="#">LOGOUT</a></li>
             </ul>
           </li>
 
 </div>
 
-</div>
+</div> -->
 
   </ul>
 </nav><!-- .navbar -->

@@ -100,6 +100,7 @@
                     <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
                 </div>
             </div>
+            
         </section>
        
         <section class="table-body" >
@@ -116,11 +117,12 @@
                         <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Guardian Name<br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Action <button id="view-more-button">View More</button></th>
+                       
+                        
                     </tr>
                 </thead>
                 <tbody id="data-table">
-                  
+                
                  </tbody>
              
             </table>

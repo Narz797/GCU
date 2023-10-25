@@ -106,7 +106,7 @@
         <input type="text" name="position" value=""><br>
         <br>
         
-        <button type="submit">Save Changes</button>
+        <button type="submit" value="Save Changes">Save Changes</button>
     </form>
     </section>
 </section>

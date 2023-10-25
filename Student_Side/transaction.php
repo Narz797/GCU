@@ -140,6 +140,7 @@ include 'includes/main2.php';
                   </div><!-- End recent post item-->
             
             <br>
+            <hr>
                    <div class="post-item mt-3">
                     <img src="assets/img/form.png" alt="" style="height:60px; ">
                     <div>
@@ -149,6 +150,7 @@ include 'includes/main2.php';
                   </div><!-- End recent post item-->
                     
             <br>
+            <hr>
                    <div class="post-item mt-3">
                     <img src="assets/img/form.png" alt="" style="height:60px; ">
                     <div>

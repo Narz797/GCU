@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="style.css">
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <title>Responsive Regisration Form </title>
+
+   <title>Teacher Regisration Form </title>
 </head>
 <style>
     /* ===== Google Font Import - Poppins ===== */
