@@ -2,11 +2,8 @@
 <html lang="en">
 <!-- testing -->
 <?php include 'includes/head.php'; ?>
-
 <body>
-
   <header id="header" class="header d-flex align-items-center" style="background-color: black; ">
-
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -21,8 +18,6 @@
     <li><a href="/gcu/services">SERVICES</a></li>
    
     <space style = "width: 400px"> </space>
-
-
           <li class="dropdown"><a href="#"><span>LOGIN</span> <i
                 class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul  style="background-color: transparent; ">
@@ -38,58 +33,31 @@
             <li class="dropdown"><a><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul  style="background-color: transparent; ">
               <li><a href="./Student_Side/Stud_registration/page1.php">STUDENT</a></li>
-              <li><a href="./Employee_Side/SignUp_Employee.php">EMPLOYEE</a></li>
               <li><a href="teacher.php">TEACHER</a></li>
           
              
             </ul>
           </li>
-
         </ul>
       </nav><!-- .navbar -->
-
-
-
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
-
   <?php
-
   include 'includes/banner.php';
-
   ?>
-
-
   <!-- Header section -->
   <section id="topbar" class="topbar d-flex align-items-center" style="height: auto; ">
-
     <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 1400px;">
-
-
-
-
-
       <style>
-
-
-
       </style>
-
-
-
-
   </section>
   <!-- End Top Bar -->
-
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
-
   <div id="preloader"></div>
-
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
@@ -98,11 +66,7 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
-
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
 </body>
-
 </html>

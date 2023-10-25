@@ -5,15 +5,12 @@ include 'formstyle.php';
 $_SESSION['transact_type']='leave_of_absence';//asign value to transact_type 
 ?>
 <html>
-
 <head>
   <title>Leave Of Absence Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="assets/img/GCU_logo.png" rel="icon">
 </head>
-
 <body>
-
   <div class="card">
     <div class="card-header">
       <h1 id="Title">Leave Of Absence Slip</h1>
@@ -50,14 +47,10 @@ $_SESSION['transact_type']='leave_of_absence';//asign value to transact_type
         </div>
       </form>
     </div>
-
   </div>
-
   <script>
-
     $("#form_transact").on("submit", function (event) {
       event.preventDefault();
-
       $.ajax({
         type: 'POST',
         url: '../../backend/create_transaction.php',
@@ -70,12 +63,9 @@ $_SESSION['transact_type']='leave_of_absence';//asign value to transact_type
         },
         success: function (data) {
           alert(data);
-
         }
       });
     }); 
   </script>
-
 </body>
-
 </html>

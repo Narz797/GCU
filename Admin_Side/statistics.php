@@ -15,18 +15,13 @@
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/forms.css">
-
     <link rel="icon" href="assets/images/GCU_logo.png">
-
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-
       <!-- Export -->
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -38,10 +33,7 @@
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 </head>
-
 <body>
-
-
   <!-- Header -->
   <header class="header">
     <nav class="nav"> 
@@ -97,7 +89,6 @@
     <div class="title independent-title">
         <h2>STATISTICS</h2>
     </div>
-
     <div class="container">
         <div class="card">
            <header class="card-header">
@@ -107,11 +98,9 @@
             <hr>
           <div class=" gallery">
               <div id="dynamicContent"></div>
-
         </div>
         </div>
     </div>
-
     <div class="container">
         <div class="card">
            <header class="card-header">
@@ -120,11 +109,9 @@
             <hr>
           <div class=" gallery">
               <div id="dynamicContent"></div>
-
         </div>
         </div>
     </div>
-
     <div class="container">
         <div class="card">
            <header class="card-header">
@@ -133,13 +120,10 @@
             <hr>
           <div class=" gallery">
               <div id="dynamicContent"></div>
-
         </div>
         </div>
     </div>
-
 <br>
-
     <!-- Footer -->
     <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
@@ -149,7 +133,6 @@
         <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
     </div>
 </footer>
-
 <!-- Script     -->
  
 <script>
@@ -161,11 +144,9 @@
         success: function(data) {
           
             var contentTemplate = '';
-
             for (var i = 0; i < data.length; i++) {
                 var entry = data[i];
                 var status = entry.status; // Store the status in a variable
-
                 contentTemplate += `
                     <div class="content1" data-stud-user-id="${entry.stud_user_id}">
                         <img src="./assets/images/${status === 0 ? 'a.jpg' : 'pfp.jpg'}">
@@ -183,13 +164,10 @@
                     </div>
                 `;
             }
-
             $("#dynamicContent").html(contentTemplate);
-
             $(".content1 button").click(function() {
     var contentElement = $(this).closest(".content1");
     var studUserId = contentElement.data("stud-user-id"); // Extract stud_user_id from content1
-
     // Make an AJAX request to update the status
     $.ajax({
         url: "../backend/update_status.php",
@@ -204,14 +182,12 @@
         }
     });
 });
-
         },
         error: function(xhr, status, error) {
             console.error("Request failed with status: " + status);
         }
     });
 });
-
 </script>  
 <script src="./assets/main.js"></script> 
 </body>

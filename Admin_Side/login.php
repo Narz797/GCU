@@ -4,15 +4,12 @@ session_start();
 // include '../backend/connect_database.php';
 $_SESSION['origin'] = 'Student';
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');
-
    
-
         body {
   /* background: #2980b9; */
   font-family: 'Roboto', sans-serif;
@@ -25,13 +22,11 @@ display: flex;
   justify-content: center;
   align-items: center;
 }
-
         /* .field{ */
             
             /* background: -webkit-linear-gradient(left, #fefefe, #61c6be); */
          
         /* } */
-
         .left-column img {
             margin-top: 15%;
             margin-bottom: 5%;
@@ -40,13 +35,11 @@ display: flex;
             -webkit-animation: mover 2s infinite alternate;
             animation: mover 1s infinite alternate;
         }
-
         .container {
           
             display: flex;
             /* flex-direction: row; */
         }
-
         .left-column {
             /* flex: 1; */
              padding: 5px; 
@@ -56,7 +49,6 @@ display: flex;
             /* width: auto;
             margin-left:auto; */
         }
-
         .right-column {
             /* margin-top: 2%; */
             /* flex: 2; */
@@ -64,13 +56,10 @@ display: flex;
             padding: 5px;
             /* border-radius: 10px; */
         }
-
         .logo {
             /* width: 100px;
             height: auto; */
         }
-
-
       
         
  
@@ -78,27 +67,20 @@ display: flex;
             0% {
                 transform: translateY(0);
             }
-
             100% {
                 transform: translateY(-20px);
             }
         }
-
         @keyframes mover {
             0% {
                 transform: translateY(0);
             }
-
             100% {
                 transform: translateY(-20px);
             }
         }
-
-
    
-
  /* Add your existing styles here */
-
  .center {
   position: absolute;
   top: 50%;
@@ -133,7 +115,6 @@ form .txt_field {
   border-radius: 5px; /* Add rounded corners to the border */
   outline: none;
 }
-
 .txt_field label {
   position: absolute;
   top: 50%;
@@ -172,7 +153,6 @@ form .txt_field {
 .pass:hover {
   text-decoration: underline;
   color: rgb(17, 13, 2);
-
   
 }
 input[type="submit"] {
@@ -188,13 +168,11 @@ input[type="submit"] {
   transition: 0.5s;
   border: none;
   /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
-
     /* background: -webkit-linear-gradient(left, #e7e7e2 , #0c4401); */
 }
 input[type="submit"]:hover {
   border-color:#17f522;
   /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
-
 }
 .signup_link {
   margin: 30px 0;
@@ -210,18 +188,10 @@ input[type="submit"]:hover {
   text-decoration: underline;
 }
       
-
-
-
-
        
-
-
    
     
-
     </style>
-
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link href="assets/img/GCU_logo.png" rel="icon">
 </head>
@@ -231,14 +201,12 @@ input[type="submit"]:hover {
         <div class="left-column">
             <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
         </div>
-
         
         
         <form id="Login_Student_User" method="post" style="width: 50%;">
           <h1>LOGIN FORM</h1>
         <br>
         
-
             <div class="txt_field">
               <input type="email" id="email" name="email" required />
               <span></span>
@@ -253,18 +221,13 @@ input[type="submit"]:hover {
             <input type="submit" value="Login" id="submitButton" />
             <div class="signup_link">Not a member? <a href="Admin_SignUp.php"><b>Signup</b></a></div>
           </form>
-
        
     </div>
-
 </body>
 <script>
-
-
     $("#Login_Student_User").on("submit", function (event) {
     var source = "student_side_login";
     event.preventDefault();
-
     $.ajax({
         type: 'POST',
         url: '../backend/validate_user.php',
@@ -284,8 +247,6 @@ input[type="submit"]:hover {
         }
     });
 });
-
-
    
     
   </script>

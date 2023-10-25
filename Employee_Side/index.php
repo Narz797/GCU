@@ -1,8 +1,6 @@
 <?php 
 session_start();
-
 $id = $_SESSION['session_id'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +10,6 @@ $id = $_SESSION['session_id'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -24,7 +21,6 @@ $id = $_SESSION['session_id'];
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
 <body>
     <!-- Header -->
 <header class="header">
@@ -62,11 +58,9 @@ $id = $_SESSION['session_id'];
     <div class="card">
         <header class="card-header">
             <small>Profile Account</small>
-
 <!-- call employee id 
     number or 
     profession = "Admin"-->
-
             <h2 class="title">Welcome back,&nbspAdmin</h2>
         </header>
         <hr>
@@ -75,7 +69,6 @@ $id = $_SESSION['session_id'];
                 <img src="assets/images/sp.jpg" alt="">
             </div>
             <div class="card-information">
-
 <!-- call employee 
     registered data -->
                 <h1 class="title main-title"><span class="title-lastname main-title">uchiha,</span> Itachi Verlyn Rizz M.</h1>
@@ -160,7 +153,6 @@ $id = $_SESSION['session_id'];
         </div>
     </div>
 </section>
-
     <!-- Script -->
 <script src="./assets/index.js"></script>   
     
@@ -175,9 +167,7 @@ $id = $_SESSION['session_id'];
         $('#date_joined').text(employee_date_joined);
         $('#totalAppointments').text(totalAppointments);
    
-
     }
-
     // Function to fetch data from get_transaction.php
     function fetchData() {
         console.log('AJAX request started');
@@ -197,12 +187,9 @@ $id = $_SESSION['session_id'];
                             var employee_email = data.adminUserData[0].email;
                             var employee_position = data.adminUserData[0].position;
                             var employee_date_joined = data.adminUserData[0].date_joined;
-
                             console.log(totalAppointments);
-
                             updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined);
                             console.log(total);
-
                             // Start both counting animations
                             countAppointments(totalAppointments);
                             countForms(total);
@@ -211,7 +198,6 @@ $id = $_SESSION['session_id'];
                         // You can update the UI as needed
                         console.log('No results found');
                     }
-
             },
             error: function (xhr, status, error) {
                 console.error('Error: ' + error);
@@ -224,7 +210,6 @@ $id = $_SESSION['session_id'];
 function updateCardDescription(data) {
     const cardDescription = $('#list-history');
     cardDescription.empty(); // Clear existing content
-
     if (data.length > 0) {
         data.forEach(item => {
             cardDescription.append(`${item.student_id}..........${item.transact_type}<br>`);
@@ -233,7 +218,6 @@ function updateCardDescription(data) {
         cardDescription.text('No finished transactions.');
     }
 }
-
 // Function to fetch data from get_transaction.php
 function HistoryData() {
     console.log('AJAX request started');
@@ -253,10 +237,8 @@ function HistoryData() {
         }
     });
 }
-
 // Call the fetchData function when the page loads
 HistoryData();
-
     // Call the fetchData function when the page loads
     fetchData();
 </script>

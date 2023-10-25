@@ -100,7 +100,7 @@
     .container form {
         position: relative;
         margin-top: 16px;
-        min-height: 2000px;
+        min-height: 1000px;
         /* background-color: #fff; */
         overflow: hidden;
     }

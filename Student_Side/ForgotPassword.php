@@ -3,7 +3,6 @@
 <head>
   <title>Forgot Password</title>
   <link href="../assets/css/forgot_password_style.css" rel="stylesheet">
-
 </head>
 <body>
   <div class="container">

@@ -4,18 +4,15 @@ session_start();
 // include '../backend/connect_database.php';
 $_SESSION['origin'] = 'Employee_Register';
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>Employee Sign Up</title>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="../Css/register_style.css">
 <link href="assets/img/GCU_logo.png" rel="icon">
 <link rel="icon" href="../Assets/img/GCU_logo.png">
 <link href="assets/register_style.css" rel="stylesheet" type="text/css">
-
 </head>
 <body>
 <div class="container">
@@ -36,45 +33,30 @@ $_SESSION['origin'] = 'Employee_Register';
        
        <label for="middleName">Middle Name:</label>
        <input type="text" id="middleName" name="middleName">
-
             
     
      </div>
-
      
-
-
      <div class="form-column">
       
         <label for="sex">Sex:</label>
        <input type="text" id="sex" name="sex">
-
        <label for="emailadd">Email Address:</label>
        <input type="text" id="emailadd" name="emailadd">
-
-
        <label for="contactNumber">Contact Number:</label>
        <input type="tel" id="contactNumber" name="contactNumber" required>
       
        <label for="cs">Position:</label>
        <input type="text" id="cs" name="cs">
        
-
        <button type="submit">Register</button>
      </div>
-
-
-
    </form>
-
-
  </div>
-
 <script>
   $("#Signup_Employee_User").on("submit", function (event) {
   var source = "employee_side_signup";
   event.preventDefault();
-
   $.ajax({
       type: 'POST',
       url: '../backend/register_user.php',
@@ -88,7 +70,6 @@ $_SESSION['origin'] = 'Employee_Register';
           email: $("#email").val(),
           username: $("#username").val(),
           password: $("#password").val(),
-
           source: source
       },
       success: function (data) {
@@ -106,12 +87,7 @@ $_SESSION['origin'] = 'Employee_Register';
       }
   });
   });
-
-
-
-
 </script>
 </body>
 </html>
-
   
