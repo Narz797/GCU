@@ -450,6 +450,11 @@
         transform: rotate(45deg);
     }
 
+    .check-group label {
+        /* display: block; */
+        margin-right: 30px;
+    }
+
 
     .radio-group label {
         /* display: block; */
@@ -588,14 +593,14 @@
                             <input type="text" id="idno" name="idno" required>
                         </div>
 
-
                         <div class="input-field">
-                            <label for="course">Course</label>
-                            <div class="autocomplete-container">
-                                <input type="text" name="course" id="course" onkeyup="showSuggestions('course', 'autocomplete-suggestions1')">
-                                <!-- Create a container to display autocomplete suggestions for the first input -->
-                                <div id="autocomplete-suggestions1" class="autocomplete-popup"></div>
-                            </div>
+                            <label>Course</label>
+                            <select required id="cs">
+                                <option disabled selected>Select Course</option>
+                                <option>BS IT</option>
+                                <option>BS BIO</option>
+                                <option>Others</option>
+                            </select>
                         </div>
 
 
@@ -869,17 +874,54 @@
 
                 <h3>Educational Background</h3>
                 <br>
-                <div class="fields">
 
-                    <div class="input-field">
-                        <label for="yearLevel">Year Level</label>
-                        <select id="yearLevel" name="yearLevel">
-                            <option value="seniorHigh">Senior High </option>
-                            <option value="juniorHigh">Junior High </option>
-                            <option value="juniorHigh"> Elementary</option>
-                            <option value="juniorHigh">Other School Attended/ALS Graduate</option>
-                        </select>
+                <!-- <div class="radio-group">
+                            <label>
+                                <input type="radio" id="senior" name="senior"  onclick="showInput();" />
+                                Sernior High
+                            </label>
+                            <label>
+                                <input type="radio" id="junior" name="junior" onclick="hideInput();" />
+                               Junior High
+                            </label>
+
+                            <label>
+                                <input type="radio" id="elem" name="elem" onclick="hideInput();" />
+                              Elementary
+                            </label>
+                            <label>
+                                <input type="radio" id="other" name="other"  onclick="hideInput();" />
+                               Other School Attended
+                            </label>
+
+                </div> -->
+
+                <div class="check-group">
+                    <label>
+                        <input type="checkbox" id="senior" name="school_type" onclick="showInput('senior');" />
+                        Senior High
+                    </label>
+                    <label>
+                        <input type="checkbox" id="junior" name="school_type" onclick="showInput('junior');" />
+                        Junior High
+                    </label>
+                    <label>
+                        <input type="checkbox" id="elem" name="school_type" onclick="showInput('elementary');" />
+                        Elementary
+                    </label>
+                    <label>
+                        <input type="checkbox" id="other" name="school_type" onclick="showInput('other');" />
+                        Other School Attended
+                    </label>
+                </div>
+
+
+                <div class="fields" id="seniorFields" style="display: none;">
+                    <div>
+                        <br>
+                        <p style="font-weight: bold;">SENIOR HIGHSCHOOL:</p>
                     </div>
+                    <br>
                     <div class="input-field">
                         <label>Name of the School</label>
                         <input type="text">
@@ -893,14 +935,72 @@
                         <label>Awards Received</label>
                         <input type="text">
                     </div>
-
-
                 </div>
 
+                <div class="fields" id="juniorFields" style="display: none;">
+                    <div>
+                        <br>
+                        <p style="font-weight: bold;"> JUNIOR HIGHSCHOOL:</p>
+                    </div>
+                    <br>
+                    <div class="input-field">
+                        <label>Name of the School</label>
+                        <input type="text">
+                    </div>
+                    <div class="input-field">
+                        <label>Year Graduated</label>
+                        <input type="text">
+                    </div>
 
-                <!--  end of Skip for now -->
+                    <div class="input-field2">
+                        <label>Awards Received</label>
+                        <input type="text">
+                    </div>
+                </div>
 
+                <div class="fields" id="elementaryFields" style="display: none;">
+                <div>
+                    <br>
+                    <p style="font-weight: bold;"> ELEMENTARY:</p>
+                </div>
+                <br>
+                <div class="input-field">
+                    <label>Name of the School</label>
+                    <input type="text">
+                </div>
+                <div class="input-field">
+                    <label>Year Graduated</label>
+                    <input type="text">
+                </div>
 
+                <div class="input-field2">
+                    <label>Awards Received</label>
+                    <input type="text">
+                </div>
+            </div>
+
+            <div class="fields" id="otherFields" style="display: none;">
+                <div>
+                <br>
+                    <p style="font-weight: bold;"> OTHER SCHOOL ATTENDED:</p>
+                </div>
+                <br>
+                <div class="input-field">
+                    <label >Name of the School</label>
+                    <input type="text" >
+                </div>
+                <div class="input-field">
+                    <label>Year Graduated</label>
+                    <input type="text">
+                </div>
+
+                <div class="input-field2">
+                    <label>Awards Received</label>
+                    <input type="text">
+                </div>
+            </div>
+
+                <br>
 
                 <p><b><i>In view of the Indigenous People's Act (RA 8371), Magna Carta for
                             Persons with Disability (RA 7277, as amended by RA 9442), the (c) Solo Parents
@@ -910,36 +1010,30 @@
                 <br>
 
                 <p><b>
-                        <!-- Are you a member of Indigenous group?</b>  </p>
-                            <div class="radio-group">
-                                <label>
-                                    <input type="radio" id="yesRadio" name="membership" value="yes" />
-                                    Yes
-                                </label>
-                                <label>
-                                    <input type="radio" id="noRadio" name="membership" value="no" />
-                                    No
-                                </label>
-                            </div>
-                            <br> -->
+                        
 
-                        <p>Are you a member of an Indigenous group?</p>
-                        <div class="radio-group">
-                            <label>
-                                <input type="radio" id="yesRadio1" name="membership" value="yes" onclick="showInput();" />
-                                Yes
-                            </label>
-                            <label>
-                                <input type="radio" id="noRadio1" name="membership" value="no" onclick="hideInput();" />
-                                No
-                            </label>
-                        </div>
+                <p>Are you a member of an Indigenous group?</p>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" id="yesRadio1" name="membership" value="yes" />
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" id="noRadio1" name="membership" value="no" />
+                        No
+                    </label>
+                </div>
 
-                        <div class="underline-input" id="indigenousInput" class="hidden">
-                            <br>
-                            <label for="indigenousInfo">Please specify:</label>
-                            <input type="text" id="indigenousInfo" name="indigenousInfo">
-                        </div>
+                <div class="underline-input" id="indigenousInput">
+                    <br>
+                    <label for="indigenousInfo">Please specify:</label>
+                    <input type="text" id="indigenousInfo" name="indigenousInfo" style="display: none;">
+                </div>
+                        
+
+
+
+                        
 
                         <br>
 
@@ -1182,7 +1276,7 @@
 
     <!-- <script src="script.js"></script> -->
 
-    <script>
+    <!-- <script>
         function showInput() {
             var inputElement = document.getElementById("indigenousInput");
             inputElement.classList.remove("hidden");
@@ -1196,7 +1290,10 @@
             inputElement.classList.add("hidden");
             inputElement.classList.remove("underline"); // Remove the underline class
         }
-    </script>
+    </script> -->
+
+ 
+
     <script>
         function createTable() {
             var totalNumber = document.getElementById("total_number").value;
@@ -1454,49 +1551,39 @@
     </script>
 
 
-    <!-- <script>
-  $("#registrationForm").on("submit", function (event) {
-  var source = "student_side_signup";
-  event.preventDefault();
-  $.ajax({
-      type: 'POST',
-      url: '../../backend/register_user.php',
-      data: {
-        idno: $("#idno").val(),//
-        firstname: $("#firstname").val(),//
-        lastname: $("#lastname").val(),//
-        middlename: $("#middlename").val(),//
-        contact: $("#cn").val(),
-        email: $("#email").val(),
-        civil: $("#cs").val(),
-        select: $("#select").val(),
-        year: $("#year").val(),//
-        course: $("#course").val(),//
-        date: $("#date").val(),
-        dob: $("#dob").val(),
-        bp: $("#bp").val(),
-        nationality: $("#nationality").val(),
-        lang: $("#lang").val(),
-        address: $("#address").val(),
-        username: $("#username").val(),
-        password: $("#password").val(),
-        source: source
-      },
-      success: function (data) {
-  
-          if (data === "success_student") {
-              window.location.href = "../Student_Side/login.php";
-              alert("Sign up successful");
-          } else {
-            alert(data);
-          }
-        
-      }, error: function (data) {
-        alert("Connection error");
-      }
-  });
-  });
-</script> -->
+
+<script>
+function showInput(type) {
+    // Hide all fields
+    document.getElementById('seniorFields').style.display = 'none';
+    document.getElementById('juniorFields').style.display = 'none';
+    document.getElementById('elementaryFields').style.display = 'none';
+    document.getElementById('otherFields').style.display = 'none';
+
+    // Show the fields for the selected type
+    if (type === 'senior') {
+        document.getElementById('seniorFields').style.display = 'block';
+    } else if (type === 'junior') {
+        document.getElementById('juniorFields').style.display = 'block';
+    } else if (type === 'elementary') {
+        document.getElementById('elementaryFields').style.display = 'block';
+    } else if (type === 'other') {
+        document.getElementById('otherFields').style.display = 'block';
+    }
+}
+</script>
+
+<script>
+    document.getElementById("yesRadio1").addEventListener("click", function () {
+        document.getElementById("indigenousInfo").style.display = "block";
+        document.querySelector('label[for="indigenousInfo"]').style.display = "block";
+    });
+
+    document.getElementById("noRadio1").addEventListener("click", function () {
+        document.getElementById("indigenousInfo").style.display = "none";
+        document.querySelector('label[for="indigenousInfo"]').style.display = "none";
+    });
+</script>
 
 
 
