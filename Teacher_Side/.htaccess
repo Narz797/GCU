@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteCond %{THE_REQUEST} /tlogin\.php [NC]
+RewriteRule ^ - [F]
+
+RewriteRule ^teacher-login/?$ tlogin.php [L]
