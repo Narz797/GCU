@@ -107,14 +107,19 @@
                     <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
                 </div>
 
-
+                
             </div>
         </section>
 
-       
+       <section class="table-body">
+        
+            <div>
+                <button><a href="addemployee.php">Add Employee Account</a></button>
+            </div>
+        </section>
 
-        <section class="table-body" >
-            <table  id="table" >
+        <section class="table-body">
+            <table  id="table">
             <table>
                 <thead>
                     <tr>

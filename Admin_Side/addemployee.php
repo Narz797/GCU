@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Employee Profile</title>
+    <title>Add Employee Account</title>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" href="assets/images/GCU_logo.png">
@@ -83,36 +83,37 @@
   
       
     <div class="title independent-title">
-    <h2>Edit Employee Profiles</h2>
+    <h2>Add Employee Account</h2>
     </div>
      <!-- Section -->
     <section class="table-body">
     <section  id="table">
     <form method="post" action="#">
         <label for="employeeid">Employee ID Number:</label>
-        <input type="number" name="employeeid" value=""><br>
+        <input type="number" name="employeeid" value="" required><br>
         <br>
         <label for="lname">Last Name:</label>
-        <input type="text" name="lname" value="">
+        <input type="text" name="lname" value="" required>
         <label for="fname">First Name:</label>
-        <input type="text" name="fname" value="">
+        <input type="text" name="fname" value="" required>
         <label for="mname">Middle Name:</label>
-        <input type="text" name="mname" value=""><br>
+        <input type="text" name="mname" value="" required><br>
         <br>
         <label for="sex">Sex:</label>
-        <select id="gender" name="sex" value="">
+        <select id="gender" name="sex" value="" required>
+            <option></option>
             <option>Female</option>
             <option>Male</option>
         <select>
         <label for="email">Email Address:</label>
-        <input type="text" name="email" value="">
+        <input type="text" name="email" value="" required>
         <label for="contactnumber">Contact Number:</label>
-        <input type="number" name="contactnumber" value="">
+        <input type="number" name="contactnumber" value="" required>
         <label for="position">Position:</label>
-        <input type="text" name="position" value=""><br>
+        <input type="text" name="position" value="" required><br>
         <br>
         
-        <button type="submit" value="Save Changes">Save Changes</button>
+        <button type="submit" value="Add Employee">Add Employee Account</button>
     </form>
     </section>
 
