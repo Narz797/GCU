@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REFERRAL SLIPS</title>
      <!-- Stylesheet -->
-     <link rel="stylesheet" href="slip.css">
+     <link rel="stylesheet" href="../assets/slip.css">
  <!-- Remix icons -->
  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -20,7 +20,7 @@ session_start();
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/forms.css">
+    <link rel="stylesheet" href="../assets/slip.css">
 
     <link rel="icon" href="assets/images/GCU_logo.png">
 
@@ -55,10 +55,10 @@ session_start();
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="../index.php" class="list-link current">Home</a>
+                    <a href="../employee-home" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="../form.php" class="list-link current1">Back</a>
+                    <a href="../request-forms" class="list-link current1">Back</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -96,30 +96,40 @@ session_start();
     <div class="block"> 
     </div>
     <div class="title independent-title">
-        <h2>Referral Slips</h2>
+        <h2>Readmission Slips</h2>
     </div>
+    <!-- Start of Table -->
     <div class="container">
-    <div class="card">
-            <hr>
-            <div class=" gallery">
-            <main class="table" id="customers_table">
-            <section class="table-header">
-                <h1>The following are the requested forms for today</h1>
-                <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
-            </section>
+        <div class="card">
+    <main class="table" id="customers_table">
+        <section class="table-header">
+            <h1>List of Students for Readmission</h1>
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+            </div>
+            <div class="export-file">
+                <label for="export-file" class="export-file-btn" title="Export File"><img src="../assets/images/export.png" alt=""></label>
+                <input type="checkbox" id="export-file">
+                <div class="export-file-options">
+                    <label>Export as&nbsp; &#10140;</label>
+                    <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/images/excel.png" alt=""></label>
+                </div>
+            </div>
+        </section>
         <section class="table-body">
         <table id="dynamicTable">
                         <thead>
-                            <tr>
-                                <th>Student ID<span class="icon-arrow">&UpArrow;</span></th>                            
-                                <th>Student<span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Course <span class="icon-arrow">&UpArrow;</span></th>
-                                <th> Date <span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Service Requested<span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Status<span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Action<span class="icon-arrow">&UpArrow;</span></th>
-                            </tr>
-                        </thead>
+                                    <tr>
+                                        <th> Student Id <br> <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Course Taken <br><span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Action </th>
+                                    </tr>
+                                </thead>
                         <tbody>
                                 
                         </tbody>
@@ -137,13 +147,14 @@ session_start();
 <br>
 <br>
     <!-- Footer -->
-<footer id="footer" class="footer">
+    <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
         <div class="copyright">
             <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
         </div>
         <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
     </div>
+</footer>
     <!-- Script     -->
 <script>
       $(document).ready(function () {
@@ -168,37 +179,44 @@ session_start();
                     
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.stud_user_id + "</td>");
-                    row.append("<td>" + entry.first_name + " " + entry.last_name + "</td>");
+                    row.append("<td>" + entry.last_name + "</td>");
+                    row.append("<td>" + entry.first_name +"</td>");
+                    row.append("<td>" + entry.Year_level +"</td>");
                     row.append("<td>" + entry.course + "</td>");
-                    row.append("<td>" + entry.date_created + "</td>");
-                    row.append("<td>" + entry.transact_type + "</td>");
+                    row.append("<td>" + entry.Contact_number + "</td>");
+                    row.append("<td>" + entry.ParentGuardianNumber + "</td>");
 
                     var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
-
+                    
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='#'></a>").addClass(statusClass).text(statusText);
+                    var statusLink = $("<a href='../forms/read.php'><button>View</button></a>");
                     statusCell.append(statusLink);
                     row.append(statusCell);
 
-                    var deleteCell = $("<td></td>");
-                    var deleteLink = $("<a href='#'></a>").html('<i class="ri-delete-bin-6-line"></i>');
-                    deleteCell.append(deleteLink);
-                    row.append(deleteCell);
+                    // var statusCell = $("<td></td>");
+                    // var statusLink = $("<a href='#'></a>").addClass(statusClass).text(statusText);
+                    // statusCell.append(statusLink);
+                    // row.append(statusCell);
+
+                    // var deleteCell = $("<td></td>");
+                    // var deleteLink = $("<a href='#'></a>").html('<i class="ri-delete-bin-6-line"></i>');
+                    // deleteCell.append(deleteLink);
+                    // row.append(deleteCell);
 
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                     
                     
                     if (status == 'pending') {
                         tableBody.append(row);
-                    } else if (status == 'recieved') {
+                    } else if (status == 'done') {
                         historyTableBody.append(row); // Append row to history table body
                     }
 
                  }
 
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
-                var dynamicTableRowCount2 = $("#historyTableBody tbody tr").length;
+
 
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage1.hide(); // Hide the no history message if there is data
@@ -206,35 +224,31 @@ session_start();
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
 
-                    if (dynamicTableRowCount2 > 0) {
-                    noHistoryMessage2.hide(); // Hide the no history message if there is data
-                    } else {
-                        noHistoryMessage2.show(); // Show the no history message if no data
-                    }
 
-                $("td a").click(function () {
-                    var contentElement = $(this).closest("tr");
-                    // var studUserId = contentElement.data("stud-user-id");
-                    var studUserId = contentElement.find("td:first-child").text();
 
-                    $.ajax({
-                        url: "../backend/update_status.php",
-                        type: "POST",
-                        data: { stud_user_id: studUserId },
-                        success: function (response) {
-                            console.log(response);
-                            console.log("Status updated in the database");
-                        },
-                        error: function (xhr, status, error) {
-                            console.error("AJAX Error:");
-                            console.error("Status: " + status);
-                            console.error("Error: " + error);
-                            console.error("Response Text: " + xhr.responseText);
-                        }
-                    });
+                // $("td a").click(function () {
+                //     var contentElement = $(this).closest("tr");
+                //     // var studUserId = contentElement.data("stud-user-id");
+                //     var studUserId = contentElement.find("td:first-child").text();
+
+                //     $.ajax({
+                //         url: "../backend/update_status.php",
+                //         type: "POST",
+                //         data: { stud_user_id: studUserId },
+                //         success: function (response) {
+                //             console.log(response);
+                //             console.log("Status updated in the database");
+                //         },
+                //         error: function (xhr, status, error) {
+                //             console.error("AJAX Error:");
+                //             console.error("Status: " + status);
+                //             console.error("Error: " + error);
+                //             console.error("Response Text: " + xhr.responseText);
+                //         }
+                //     });
                     
-                    //location.reload();
-                });
+                //     //location.reload();
+                // });
         },
         error: function (xhr, status, error) {
     console.error("AJAX Error:");

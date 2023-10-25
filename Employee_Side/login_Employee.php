@@ -10,9 +10,6 @@ $_SESSION['origin'] = 'Employee';
 <head>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');
-
-   
-
         body {
   /* background: #2980b9; */
   font-family: 'Roboto', sans-serif;
@@ -222,13 +219,9 @@ input[type="submit"]:hover {
             <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
         </div>
 
-        
-        
         <form id="Login_Student_Employee" method="post" style="width: 50%;">
           <h1>LOGIN FORM</h1>
         <br>
-        
-
             <div class="txt_field">
               <input type="text" id="email" name="email" required />
               <span></span>
@@ -241,20 +234,11 @@ input[type="submit"]:hover {
             </div>
             <div class="pass"><a href="ForgotPassword.php"><b>Forgot Password?</b></a></div>
             <input type="submit" value="Login" id="submitButton" />
-            <div class="signup_link">Not a member? <a href="#"><b>Signup</b></a></div>
+            <div class="signup_link">Not a member? <a href="SignUp_Employee.php"><b>Signup</b></a></div>
           </form>
 
        
     </div>
-
-
-        
-
-
-    
-
- 
-
   
 </body>
 <script>
@@ -275,12 +259,13 @@ input[type="submit"]:hover {
             source: source
         },
         success: function (data) {
-     
             if  (data === "success_employee") {
-                window.location.href = "../Employee_Side/index.php";
+                window.location.href = "../Employee_Side/employee-home";
+            } else if  (data === "success_admin") {
+                window.location.href = "../Admin_Side/main.php";
             } else {
               alert("Invalid username or password.");
-            }
+            } 
           
         }
     });

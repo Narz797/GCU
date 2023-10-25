@@ -586,7 +586,7 @@ section {
   
 }
 
-@media (min-width: 1280px) and (max-width: 1366px) {
+/* @media (min-width: 1280px) and (max-width: 1366px) {
   .navbar .dropdown .dropdown ul {
     left: -90%;
   }
@@ -594,15 +594,15 @@ section {
   .navbar .dropdown .dropdown:hover>ul {
     left: -100%;
   }
-}
+} */
 
-@media (min-width: 1280px) {
+/* @media (min-width: 1280px) {
 
   .mobile-nav-show,
   .mobile-nav-hide {
     display: none;
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # Mobile Navigation

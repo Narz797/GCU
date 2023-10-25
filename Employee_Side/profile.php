@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,13 +54,13 @@
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="index.php" class="list-link current">Home</a>
+                    <a href="./employee-home" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="form.php" class="list-link current1">Requested Forms</a>
+                    <a href="./request-forms" class="list-link current1">Requested Forms</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="appointment.php" class="list-link current1">Appointment Schedules</a>
+                    <a href="./appointment" class="list-link current1">Appointment Schedules</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -71,7 +75,7 @@
                 <i class="ri-sun-line theme-light-icon"></i>
                 <i class="ri-moon-line theme-dark-icon"></i>
             </button>
-            <button class="icon-btn place-items-center">
+            <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
         </div>
@@ -79,7 +83,7 @@
 </header>
     <!-- Welcome-message -->
     
-<section class="welcome-message">
+<section>
   <section class="banner">
           <div class="banner-container">
       <br>
@@ -95,11 +99,12 @@
       <div class="block"> 
     </div>
     <div class="title independent-title">
-        <h2>REQUESTED FORMS</h2>
+    <h2>Student Profiles</h2>
     </div>
+     <!-- Section -->
     <div class="container">
         <div class="card">
-
+        <div class="gallery">
  <main class="table" id="customers_table">
         <section class="table-header">
             <h1>List of Students</h1>
@@ -114,8 +119,6 @@
                 <div class="export-file-options">
                     <label>Export As &nbsp; &#10140;</label>
                     <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toJSON">JSON <img src="assets/images/json.png" alt=""></label>
-                    <label for="export-file" id="toCSV">CSV <img src="assets/images/csv.png" alt=""></label>
                     <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
                 </div>
 
@@ -127,27 +130,29 @@
 
         <section class="table-body" >
             <table  id="table" >
+            <table id="dynamicTable">
                 <thead>
                     <tr>
-                        <th> Id <br> <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Student ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Last &nbspName <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Year Enrolled <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Course <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <!-- <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Department / College<br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Course Taken <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Guardian Name<br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Service Requested <br><span class="icon-arrow">&UpArrow;</span></th> -->
-                        <th> Action Taken<br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Action </th>
                     </tr>
                 </thead>
-                <tbody id="data-table">
+                <tbody>
                   
                  </tbody>
              
             </table>
         </section>
     </main>
-
+    </div>
         </div>
     </div>
 
@@ -155,18 +160,105 @@
 </section>
 <br>
 
-  <!-- Footer -->
-  <footer id="footer" class="footer">
+    <!-- Footer -->
+    <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
         <div class="copyright">
             <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
         </div>
         <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
     </div>
-
+</footer>
 <!-- Script     -->
+
+<script>
+    function logout() {
+    window.location.href = '../home?logout=true';
+}
+        $(document).ready(function() {
+            // Fetch data using $.ajax
+            $.ajax({
+                url: '../backend/search_student.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    const table = document.getElementById('data-table');
+                    const searchInput = document.getElementById('searchInput');
+
+                    const genderImageMap = {
+                    'male': './assets/images/male.jpg',
+                    'female': './assets/images/female.jpg'
+                };
+                    
+                console.log(data);
+                // if (data.status===0){
+                var tableBody = $("#dynamicTable tbody");
+                var historyTableBody = $("#historyTableBody tbody");
+                var noHistoryMessage1 = $("#noHistoryMessage1"); 
+                var noHistoryMessage2 = $("#noHistoryMessage2"); 
+ 
+
+                for (var i = 0; i < data.length; i++) {
+                    
+                    var entry = data[i];
+                    var status = entry.status;
+                    var tableToAppend = tableBody; 
+                    // Determine which table to append to
+                    // Create an image element based on gender
+                    const image = document.createElement('img');
+                    image.style.display = 'block'; // Display the image above the text
+                            if (entry.gender === 'Male') {
+                                image.src = genderImageMap['male'];
+                            } else if (entry.gender === 'Female') {
+                                image.src = genderImageMap['female'];
+                    }
+                    var row = $("<tr></tr>");
+                    var cell = $("<td></td>");
+                    cell.append(image); // Append the image to the table cell
+                    cell.append("</br>" + entry.stud_user_id);
+                    row.append(cell);
+                    row.append("<td>" + entry.last_name + "</td>");
+                    row.append("<td>" + entry.first_name +"</td>");
+                    row.append("<td>" + entry.Year_level +"</td>");
+                    row.append("<td>" + entry.Colleges + "</td>");
+                    row.append("<td>" + entry.course + "</td>");
+                    row.append("<td>" + entry.Contact_number + "</td>");
+                    row.append("<td>" + entry.ParentGuardianNumber + "</td>");
+                    row.append("<td>" + entry.ParentGuardianName + "</td>");
+
+                    var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
+                    var statusText = status == 'pending' ? 'Unread' : 'Read';
+
+                    var statusCell = $("<td></td>");
+                    var statusLink = $("<a href='subpage/pfp_page.php'><button>View</button></a>");
+                    statusCell.append(statusLink);
+                    row.append(statusCell);
+                    tableBody.append(row);
+            
+                    
+
+                 }
+                 console.log("data",data);
+                var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
+
+
+                    if (dynamicTableRowCount1 > 0) {
+                    noHistoryMessage1.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage1.show(); // Show the no history message if no data
+                    }
+                    // Initial table population
+                    // filterData();
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching data:', error);
+                }
+            });
+        });
+    </script>
+
 <script src="./assets/main.js"></script>
 
- <script src="assets/js/table.js"></script>   
+ <!-- <script src="assets/js/table.js"></script>    -->
 </body>
 </html>

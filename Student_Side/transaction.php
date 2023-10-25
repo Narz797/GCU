@@ -1,8 +1,10 @@
 <?php 
 
+
 include 'includes/main2.php';
 
  ?>
+
 
 <head>
 
@@ -22,6 +24,8 @@ include 'includes/main2.php';
     <link rel="stylesheet" href="../Employee_Side/assets/css/forms.css">
   
 </head>
+
+
 <style>
     .column {
   float: left;
@@ -74,7 +78,7 @@ include 'includes/main2.php';
               <h3>Readmission Slip</h3>
               <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
                 bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
-              <a href="./forms/Readmission_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/readmission-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -86,7 +90,7 @@ include 'includes/main2.php';
               <h3>Withdrawal/Dropping/Shifting Form</h3>
               <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
                 bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
-              <a href="./forms/withdrawal-dropping-shifitng-form.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/withdrawal-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -98,7 +102,7 @@ include 'includes/main2.php';
               <h3>Referral Slip</h3>
               <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
                 bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
-              <a href="./forms/Referral_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/referral-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 
@@ -110,7 +114,7 @@ include 'includes/main2.php';
               <h3>Leave Of Absence</h3>
               <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
                 bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
-              <a href="./forms/LeaveOfAbsence_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
+              <a href="./forms/leave-of-absence-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
 

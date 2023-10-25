@@ -53,10 +53,10 @@
                     <a href="main.php" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="form.php" class="list-link current1">Requested Forms</a>
+                    <a href="EmployeeProfiles.php" class="list-link current1">Employee Profile</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="appointment.php" class="list-link current1">Appointment Schedules</a>
+                    <a href="logreport.php" class="list-link current1">Log Report</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -79,7 +79,7 @@
 </header>
     <!-- Welcome-message -->
     
-<section class="welcome-message">
+<section>
   <section class="banner">
           <div class="banner-container">
       <br>
@@ -95,11 +95,12 @@
       <div class="block"> 
     </div>
     <div class="title independent-title">
-        <h2>REQUESTED FORMS</h2>
+    <h2>Student Profiles</h2>
     </div>
+     <!-- Section -->
     <div class="container">
         <div class="card">
-
+        <div class="gallery">
  <main class="table" id="customers_table">
         <section class="table-header">
             <h1>List of Students</h1>
@@ -114,8 +115,6 @@
                 <div class="export-file-options">
                     <label>Export As &nbsp; &#10140;</label>
                     <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toJSON">JSON <img src="assets/images/json.png" alt=""></label>
-                    <label for="export-file" id="toCSV">CSV <img src="assets/images/csv.png" alt=""></label>
                     <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
                 </div>
 
@@ -127,17 +126,19 @@
 
         <section class="table-body" >
             <table  id="table" >
+            <table>
                 <thead>
                     <tr>
-                        <th> Id <br> <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Student ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Last &nbspName <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Year Enrolled <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Course <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Department / College<br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Course Taken <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Guardian Name<br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Service Requested <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Action Taken<br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Action <button id="view-more-button">View More</button></th>
                     </tr>
                 </thead>
                 <tbody id="data-table">
@@ -147,7 +148,7 @@
             </table>
         </section>
     </main>
-
+    </div>
         </div>
     </div>
 
@@ -155,15 +156,15 @@
 </section>
 <br>
 
-  <!-- Footer -->
-  <footer id="footer" class="footer">
+    <!-- Footer -->
+    <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
         <div class="copyright">
             <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
         </div>
         <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
     </div>
-
+</footer>
 <!-- Script     -->
 <script src="./assets/main.js"></script>
 

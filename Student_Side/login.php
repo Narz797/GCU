@@ -8,10 +8,9 @@ $_SESSION['origin'] = 'Student';
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');
-
-   
 
         body {
   /* background: #2980b9; */
@@ -70,10 +69,6 @@ display: flex;
             height: auto; */
         }
 
-
-      
-        
- 
         @-webkit-keyframes mover {
             0% {
                 transform: translateY(0);
@@ -209,31 +204,18 @@ input[type="submit"]:hover {
 .signup_link a:hover {
   text-decoration: underline;
 }
-      
-
-
-
-
-       
-
-
-   
-    
-
     </style>
 
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link href="assets/img/GCU_logo.png" rel="icon">
 </head>
 <body>
+<a class="btn btn-primary" href="/gcu/home" role="button">Back</a>
    <!-- <fieldset style="width:80%;"> -->
     <div class="container" style="width: 90%; margin-left: 2%;">
         <div class="left-column">
             <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
         </div>
-
-        
-        
         <form id="Login_Student_User" method="post" style="width: 50%;">
           <h1>LOGIN FORM</h1>
         <br>
@@ -251,7 +233,7 @@ input[type="submit"]:hover {
             </div>
             <div class="pass"><a href="ForgotPassword.php"><b>Forgot Password?</b></a></div>
             <input type="submit" value="Login" id="submitButton" />
-            <div class="signup_link">Not a member? <a href="signup.php"><b>Signup</b></a></div>
+            <div class="signup_link">Not a member? <a href="Stud_registration/page1.php"><b>Signup</b></a></div>
           </form>
 
        
@@ -259,8 +241,6 @@ input[type="submit"]:hover {
 
 </body>
 <script>
-
-
     $("#Login_Student_User").on("submit", function (event) {
     var source = "student_side_login";
     event.preventDefault();
@@ -276,7 +256,7 @@ input[type="submit"]:hover {
         success: function (data) {
      
             if (data === "success_student") {
-                window.location.href = "../Student_Side/transaction.php";
+                window.location.href = "student-home";
             } else {
               alert("Invalid username or password.");
             }

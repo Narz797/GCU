@@ -55,7 +55,22 @@ if (isset($_SESSION['origin'])) {
                     // Password is incorrect
                     echo "Invalid username or password.";
                 }
-            } else {
+            } else if ($stmt->rowCount() === 0) {
+                $sql2 = "SELECT * FROM admin_admin WHERE uname=?";
+                $stmt2 = $pdo->prepare($sql2);
+                $stmt2->execute([$username]);
+        
+                if ($stmt2->rowCount() === 1) {
+                    $row = $stmt2->fetch(PDO::FETCH_ASSOC);
+                    $user_id = $row['admin_id']; // Retrieve user_id
+        
+                    // No password verification for admin
+                    $_SESSION['session_id'] = $user_id;
+                    echo "success_admin";
+                } else {
+                    echo "Invalid username or password.";
+                }
+            }else{
                 echo "Error";
             }
         }

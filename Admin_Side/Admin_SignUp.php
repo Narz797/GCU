@@ -3,88 +3,64 @@
 <head>
   <title>Admin Sign Up</title>
   <!-- Stylesheet -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="../Css/register_style.css">
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <link rel="icon" href="../Assets/img/GCU_logo.png">
+  <link href="assets/img/GCU_logo.png" rel="icon">
+  <link rel="icon" href="../Assets/img/GCU_logo.png">
+  <link href="assets/register_style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <div class="container">
-    <div class="logo">
-     
-      <img src="../Assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
-    </div>
-    <h2>Sign Up</h2>
-    <form id="Signup_Admin_User" method="POST">
-      
+<div class="container">
+<div class="logo">
+   <img src="../assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
+ </div>
+   <h1>Admin Registration</h1>
+   <form class="form-grid">
+     <div class="form-column">
+       <label for="idNumber">ID Number:</label>
+       <input type="text" id="idNumber" name="idNumber" required>
+       
+       <label for="lastName">Last Name:</label>
+       <input type="text" id="lastName" name="lastName" required>
+       
+       <label for="firstName">First Name:</label>
+       <input type="text" id="firstName" name="firstName" required>
+       
+       <label for="middleName">Middle Name:</label>
+       <input type="text" id="middleName" name="middleName">
 
-
-      <div class="form-row">
-        <div class="form-group">
-          <input type="text" id="firstname" placeholder="First Name" name="firstname" required>
-        </div>
-
-        <div class="form-group">
-          <input type="text" id="lastname" placeholder="Last Name" name="lastname" required>
-        </div>
-
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <input type="text" id="middlename" placeholder="Middle Name" name="middlename" required>
-        </div>
-
-        <div class="form-group">
-      <label for="select">Gender</label>
-              <select name="select" id="select">
-          <option>Male</option>
-          <option>Female</option>
-          </select>
-        </div>
-
-      </div>
-
-     <div class="form-row">
-
-        <div class="form-group">
-          <input type="text" id="position"  placeholder="Position"name="position" required>
-        </div>
-
-      </div>
-
-       <div class="form-row">
-
-        <div class="form-group">
-          <input type="email" id="email" placeholder="Email" name="email" required>
-        </div>
-
-      </div>
-
+            
     
+     </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <input type="text" id="username" placeholder="Username" name="username" required>
-        </div>
+     
 
-        <div class="form-group">
-          <input type="password" id="password" placeholder="Password" name="password" required>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <div class="buttons">
-          <input type="submit" value="Sign Up" id="submitButton">
-          <input type="button" value="Cancel">
-        </div>
-      </div>
+     <div class="form-column">
+      
+        <label for="sex">Sex:</label>
+       <input type="text" id="sex" name="sex">
 
-        <div class="login">
-          Already have an account? <a href="login_Employee.php">Log in</a>
-        </div>
+       <label for="emailadd">Email Address:</label>
+       <input type="text" id="emailadd" name="emailadd">
 
-      </div>
 
-    </form>
-  </div>
+       <label for="contactNumber">Contact Number:</label>
+       <input type="tel" id="contactNumber" name="contactNumber" required>
+      
+       <label for="cs">Position:</label>
+       <input type="text" id="cs" name="cs">
+       
+
+       <button type="submit">Register</button>
+     </div>
+
+
+
+   </form>
+
+
+ </div>
+</body>
+</html>
 

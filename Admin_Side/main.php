@@ -1,3 +1,10 @@
+<?php 
+session_start();
+
+$id = $_SESSION['session_id'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,14 +23,16 @@
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/styles.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <!-- Header -->
-<header class="header">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-         <a href="./main.php" ><img src="assets/images/bsu.png" alt=""></a>
+         <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
         </div>
         <div class="align-right">
         <button class="icon-btn theme-toggle-btn place-items-center">
@@ -33,7 +42,7 @@
         </div>
     </nav>
 </header>
-    <!-- Welcome-message -->
+    <!-- Banner -->
 <section>
     <section class="banner">
         <div class="banner-container">
@@ -47,27 +56,35 @@
         </div>
         </div>
     </section>
-    <div class="block"> 
-    </div>
+    <div class="block"></div>
+    <!-- First Section -->
     <div class="title independent-title">
         <h2 > Control Panel</h2>
     </div>
     <div class="card">
         <header class="card-header">
             <small>Profile Account</small>
+
+<!-- call employee id 
+    number or 
+    profession = "Admin"-->
+
             <h2 class="title">Welcome back,&nbspAdmin</h2>
         </header>
         <hr>
         <div class="card-body">
             <div class="card-image">
-                <img src="./assets/images/sp.jpg" alt="">
+                <img src="assets/images/sp.jpg" alt="">
             </div>
             <div class="card-information">
-                <h1 class="title main-title"><span class="title-lastname main-title">uchiha,</span> Itachi Verlyn Rizz M.</h1>
-                <p class="card-description1">Joined at <span>January 05, 0000</span><br><br></p>
+
+<!-- call employee 
+    registered data -->
+                <h1 class="title main-title"><span class="title-lastname main-title">Dr. Angeli T. Austria</h1>
+                <p class="card-description1">Joined at <b id="date_joined"></b><br><br></p>
                 <p class="card-description">
-                    <span>Email:</span> BSU_Rizz123@gcu.com<br>
-                    <span>Position:</span> Grand Counselor
+                    <span>Email:</span><b id="employee_email"></b><br>
+                    <span>Position:</span><b id="employee_position"></b>
                 </p>
             </div>
             <div class="card-image1">
@@ -76,8 +93,8 @@
         </div>
     </div>
 </section>
-    <!-- Management-area -->
-<section class="management-area">
+ <!-- Management-area -->
+ <section class="management-area">
     <div class="management-area-container d-grid">
         <div class="card">
             <header class="card-header header-side">
@@ -86,8 +103,8 @@
             </header>
             <hr>
             <div>
-                <a href="form.php" class="card-body-link">
-                <i class="ri-folder-line"></i>Requested Forms
+                <a href="logreport.php" class="card-body-link">
+                <i class="ri-folder-line"></i>Log Report
                 </a>
                 <a href="studentprofile.php" class="card-body-link">
                 <i class="ri-server-line"></i>Student Profiles
@@ -95,13 +112,7 @@
                 <a href="EmployeeProfiles.php" class="card-body-link">
                 <i class="ri-server-line"></i>Employee Profiles
                 </a>
-                <a href="appointment.php" class="card-body-link">
-                <i class="ri-calendar-line"></i>Appointment Schedules
-                </a>
-                <a href="statistics.php" class="card-body-link">
-                <i class="ri-folder-line"></i>Statistics
-                </a>
-                <a href="../index.php" class="card-body-link">
+                <a href="../home?logout=true" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>
@@ -109,43 +120,42 @@
         <div class="card-group d-grid">
             <div class="card border one">
                 <div>
-                    <h2 class="title">LATEST Requested Forms</h2>
-                    <p class="card-description"><b>Sasuke Uchiha</b> has requested a <b>Readmission</b> form for the 57th times.</p>
-                </div>
-                <a href="index.php"><button class="list-link">Read More</button></a>
-            </div>
-            <div class="card border two">
-                <div>
-                    <h2 class="title">UNOPENED Requested Forms</h2>
-                    <p class="card-description"> <b>58</b> Forms waiting...</p>
+                    <h2 class="title">DAILY ATTENDANCE RATE</h2>
+                    
                 </div>
                 <a href="form.php"><button class="list-link">Read More</button></a>
             </div>
-            <div class="card border three">
+
+        
+            <div class="card border one">
+            <div>
+            <h2 class="title">TOTAL LOGINS FOR TODAY</h2>
+            </div>
+
+               
+            </div>
+           
+            
+            <!-- <div class="card border three">
                 <div>
                     <h2 class="title">Number of Appointments TODAY</h2>
-                    <p class="card-description"> <b>3</b> Appointments pending...</p>
+                    <p class="card-description"> <b id="totalAppointments"></b> Appointments pending...</p>
                 </div>
                 <a href="appointment.php"><button class="list-link">Read More</button></a>
-            </div>
-            <div class="card border four">
+            </div> -->
+            <div class="card border one">
                 <div>
                     <h2 class="title">HISTORY TRANSACTIONS</h2>
-                    <p class="card-description"> 
-                        Sasuke Uchiha..........Duel Form<br>
-                        Akatsuki Kisame......Appointment<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Fourth Hokage..........Feedback Form<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Akatsuki Kisame......Appointment<br>
-                        Akatsuki Pain.............Appointment<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Sasuke Uchiha..........Duel Form<br>
-                        Akatsuki Deidara.....Apology Form<br>
-                        Sasuke Uchiha..........Duel Form
-                    </p>
+
+<!-- honestly just copy paste 
+    the database so no need 
+    for it's design, just call
+    the student name and the 
+    action the employee had 
+    taken-->
+                    <p class="card-description" id="list-history"> 
+                            <!-- Data will be inserted here dynamically -->
+                        </p>
                 </div>
             </div>
         </div>
@@ -160,7 +170,6 @@
         <div class="credits">Designed by <a class="dev" href="https://www.facebook.com/">BSIT</a></div>
     </div>
 </footer>
-    <!-- Script -->
-<script src="./assets/index.js"></script>    
+   
 </body>
 </html>
