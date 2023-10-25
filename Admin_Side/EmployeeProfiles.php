@@ -80,18 +80,7 @@
     <!-- Welcome-message -->
     
 <section>
-  <section class="banner">
-          <div class="banner-container">
-      <br>
-              <img src="assets/images/GCU_logo.png" alt="">
-              <div class="banner-text">
-                  <h5>REPUBLIC OF THE PHILIPPINES</h5>
-                  <hr class="banner-line">
-                  <h2><span>BENGUET STATE UNIVERSITY</span></h2>
-                  <h1>GUIDANCE AND COUNSELING UNIT</h1>
-              </div>
-          </div>
-      </section>
+  
       <div class="block"> 
     </div>
     <div class="title independent-title">
