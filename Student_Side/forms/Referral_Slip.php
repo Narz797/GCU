@@ -11,11 +11,21 @@ $_SESSION['transact_type'] = 'referral'; //asign value to transact_type
   <title>Feedback Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
-
 </head>
+<style>
+  #back_button{
+  padding: 10px 30px;
+  float: left; /* Adjusted the float property */
+  position: fixed; /* Fixed position so it stays in place */
+  top: 10px; /* Positioned at the top */
+  left: 50px; /* Positioned at the left */
+  z-index: 1000;
+  background-color:#105c06;
+}
+</style>
 
 <body>
-  <button type="button" class="btn btn-dark">Dark</button>
+<a id='back_button' class="btn btn-primary" href="/gcu/home" role="button">Back</a>
   <div class="card">
     <div class="card-header">
       <h1 id="Title">Referral Slip</h1>
@@ -27,23 +37,23 @@ $_SESSION['transact_type'] = 'referral'; //asign value to transact_type
         </p>
         <p>
           <label>
-            <input type="checkbox" name="reasons[]" value="Interview" id="interview">
+            <input type="radio" name="reasons[]" value="Interview" id="interview">
             interview</label>
           <br>
           <label>
-            <input type="checkbox" name="reasons[]" value="Counseling" id="counseling">
+            <input type="radio" name="reasons[]" value="Counseling" id="counseling">
             counseling</label>
           <br>
           <label>
-            <input type="checkbox" name="reasons[]" value="Late" id="late">
+            <input type="radio" name="reasons[]" value="Late" id="late">
             late</label>
           <br>
           <label>
-            <input type="checkbox" name="reasons[]" value="Absent" id="absent">
+            <input type="radio" name="reasons[]" value="Absent" id="absent">
             absent</label>
           <br>
           <label>
-            <input type="checkbox" name="others" value="5" id="others" onclick="myFunction()">
+            <input type="radio" name="others" value="5" id="others" onclick="myFunction()">
             others</label>
           <input type="text" name="textfield3" id="oth" style="display: none">
         </p>
