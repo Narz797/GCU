@@ -853,11 +853,6 @@
                             </table>
 
                         </div>
-
-
-
-
-
                         <button class="nextBtn" id="nextButton" type="button">
                             <span class="btnText">Next</span>
                             <i class="uil uil-navigator"></i>
@@ -1151,12 +1146,12 @@
                     </div>
 
                 </div>
-                <h2>Upload Signature</h2>
+                <!-- <h2>Upload Signature</h2>
                 <br>
                 <div class="input-field">
                     <label class="form-label" for="customFile">Select image(jpg or png format only) to upload</label>
-                    <input type="file" class="form-control" id="customFile" />
-                </div>
+                    <input type="file" name = "image" accept="image/*" class="form-control" id="customFile" />
+                </div> -->
 
                 <div class="buttons">
                     <div class="backBtn">
@@ -1440,12 +1435,12 @@
                     goal: $("#goal").val(),
                     eu: $("#eu").val(),
                     pass: $("#password").val(),
-                    signature:$("#customFile").val(),
+                    // signature:$("#customFile").val(),
                     source: source
                 },
                 success: function(data) {
                     if (data === "success_student") {
-                        window.location.href = "../Student_Side/login.php";
+                        window.location.href = "../Student_Side/student-login";
                         alert("Sign up successful");
                     } else {
                         alert(data);

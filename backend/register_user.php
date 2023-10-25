@@ -55,7 +55,7 @@ if (isset($_POST['idno'], $_POST['firstname'], $_POST['lastname'], $_POST['middl
     $goal = $_POST['goal'];
     $eu = $_POST['eu'];
     $pass = $_POST['pass'];
-    $signature = $_POST['customFile'];
+    
 
     // Check if the user already exists using prepared statements
     $query = "SELECT * FROM `student_user` WHERE `stud_user_id` = :idno";
@@ -104,6 +104,42 @@ if (isset($_POST['idno'], $_POST['firstname'], $_POST['lastname'], $_POST['middl
 } else {
     echo "Missing data fields.";
 }
+//upload file
+// if(isset($_FILES['signature'])){
+
+//     $id = $_POST['idno'];
+//     $lastname = $_POST['lastname'];
+
+//     $errors= array();
+//     $file_name = $_FILES['signature']['name'];
+//     $file_size = $_FILES['signature']['size'];
+//     $file_tmp = $_FILES['signature']['tmp_name'];
+//     $file_type = $_FILES['signature']['type'];
+//     $file_ext = strtolower(end(explode('.',$_FILES['signature']['name'])));
+    
+//     $extensions= array("jpeg","jpg","png");
+    
+//     if(in_array($file_ext,$extensions)=== false){
+//         $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+//     }
+    
+//     if($file_size > 5000000) {
+//         $errors[]='File size must be less than 5 MB';
+//     }
+    
+//     if (empty($errors) == true) {
+//         $newFileName = $id."_".$lastname."." . $file_ext; // Change this line to set your desired file name
+//         $uploadDirectory = "C:\Users\Lenovo\OneDrive\Desktop\Student_signature";
+//         if (!is_dir($uploadDirectory)) {
+//             mkdir($uploadDirectory, 0777, true); // Create the directory if it does not exist
+//         }
+//         move_uploaded_file($file_tmp, $uploadDirectory . $newFileName);
+//         echo "File uploaded successfully as $newFileName";
+//     } else {
+//         print_r($errors);
+//     }
+// }
+
 
 $pdo = null; // Close the database connection using PDO
 ?>

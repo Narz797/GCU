@@ -9,7 +9,9 @@ $_SESSION['origin'] = 'Student';
 <html>
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
         @import url('https://fonts.googleapis.com/css?family=Roboto');
 
         body {
@@ -204,15 +206,31 @@ input[type="submit"]:hover {
 .signup_link a:hover {
   text-decoration: underline;
 }
+#back_button{
+  padding: 10px 30px;
+  float: left; /* Adjusted the float property */
+  position: fixed; /* Fixed position so it stays in place */
+  top: 10px; /* Positioned at the top */
+  left: 50px; /* Positioned at the left */
+  z-index: 1000;
+  background-color:#105c06;
+}
+@media (max-width: 768px) {
+      .container {
+        width: 100%;
+      }
+    }
     </style>
 
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <link href="assets/img/GCU_logo.png" rel="icon">
 </head>
 <body>
-<a class="btn btn-primary" href="/gcu/home" role="button">Back</a>
+
    <!-- <fieldset style="width:80%;"> -->
+   <a id='back_button' class="btn btn-primary" href="/gcu/home" role="button">Back</a>
     <div class="container" style="width: 90%; margin-left: 2%;">
+    
         <div class="left-column">
             <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
         </div>
@@ -220,7 +238,6 @@ input[type="submit"]:hover {
           <h1>LOGIN FORM</h1>
         <br>
         
-
             <div class="txt_field">
               <input type="email" id="email" name="email" required />
               <span></span>
