@@ -28,7 +28,7 @@
             <ul  style="background-color: transparent; ">
               <li><a href="Student_Side/student-login">STUDENT</a></li>
               <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
-              <li><a href="Student_Side/tlogin.html">TEACHER</a></li>
+              <li><a href="Teacher_Side/teacher-login">TEACHER</a></li>
           
              
             </ul>
