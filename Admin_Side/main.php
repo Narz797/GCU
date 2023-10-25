@@ -46,7 +46,7 @@ $id = $_SESSION['session_id'];
 <section>
     <section class="banner">
         <div class="banner-container">
-    <br>
+    
         <img src="assets/images/GCU_logo.png" alt="">
         <div class="banner-text">
             <h5>REPUBLIC OF THE PHILIPPINES</h5>
