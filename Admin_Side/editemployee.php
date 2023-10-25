@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Profile</title>
+    <title>Edit Employee Profile</title>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" href="assets/images/GCU_logo.png">
@@ -80,92 +80,41 @@
     <!-- Welcome-message -->
     
 <section>
-  <section class="banner">
-          <div class="banner-container">
-      <br>
-              <img src="assets/images/GCU_logo.png" alt="">
-              <div class="banner-text">
-                  <h5>REPUBLIC OF THE PHILIPPINES</h5>
-                  <hr class="banner-line">
-                  <h2><span>BENGUET STATE UNIVERSITY</span></h2>
-                  <h1>GUIDANCE AND COUNSELING UNIT</h1>
-              </div>
-          </div>
-      </section>
-      <div class="block"> 
-    </div>
+  
+      
     <div class="title independent-title">
-    <h2>Employee Profiles</h2>
+    <h2>Edit Employee Profiles</h2>
     </div>
      <!-- Section -->
-    <div class="container">
-        <div class="card">
-        <div class="gallery">
- <main class="table" id="customers_table">
-        <section class="table-header">
-            <h1>List of Employees</h1>
-            <div class="input-group">
-                <input type="text" id="searchInput" placeholder="Search Data...">
-                
-            </div>
-            <div class="export-file">
-                <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/export.png" alt=""></label>
-                <input type="checkbox" id="export-file">
-
-                <div class="export-file-options">
-                    <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
-                </div>
-
-
-            </div>
-        </section>
-
-       
-
-        <section class="table-body" >
-            <table  id="table" >
-            <table>
-                <thead>
-                    <tr>
-                        <th> Employee ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Middle Name <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Sex <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Email Address <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Position <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Status</th>
-                        <th> Action</th>
-                        
-                    </tr>
-                </thead>
-                <tbody id="data-table">
-                  <td>1</td>
-                  <td>Castro</td>
-                  <td>Liezl</td>
-                  <td>D.</td>
-                  <td>Female</td>
-                  <td>liezlcastro@gmail.com</td>
-                  <td>0987435678</td>
-                  <td>Auditor</td>
-                  <td>Pending</td>
-                  <td>
-                    <button><a href="editemployee.php">Edit</button></a>
-                  </td>
-                  
-                 </tbody>
-             
-            </table>
-            
-        </section>
-    </main>
-    </div>
-        </div>
-    </div>
-
+    <section class="table-body">
+    <section  id="table">
+    <form method="post" action="#">
+        <label for="employeeid">Employee ID Number:</label>
+        <input type="number" name="employeeid" value=""><br>
+        <br>
+        <label for="lname">Last Name:</label>
+        <input type="text" name="lname" value="">
+        <label for="fname">First Name:</label>
+        <input type="text" name="fname" value="">
+        <label for="mname">Middle Name:</label>
+        <input type="text" name="mname" value=""><br>
+        <br>
+        <label for="sex">Sex:</label>
+        <select id="gender" name="sex" value="">
+            <option>Female</option>
+            <option>Male</option>
+        <select>
+        <label for="email">Email Address:</label>
+        <input type="text" name="email" value="">
+        <label for="contactnumber">Contact Number:</label>
+        <input type="number" name="contactnumber" value="">
+        <label for="position">Position:</label>
+        <input type="text" name="position" value=""><br>
+        <br>
+        
+        <button type="submit">Save Changes</button>
+    </form>
+    </section>
 
 </section>
 <br>
