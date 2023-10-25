@@ -18,7 +18,7 @@
     <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
     <li><a href="../index.php">HOME</a></li>
      
-    <li ><a href="transaction.php">TRANSACTION</a></li>
+    <li ><a href="transaction1.php">TRANSACTION</a></li>
     <li><a href="appointment.php">APPOINTMENT</a></li>
 
 

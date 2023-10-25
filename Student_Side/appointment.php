@@ -24,7 +24,7 @@ include 'includes/main2.php';
 <style>
     .column {
   float: left;
-  width: 50%;
+  /* width: 40%; */
   padding: 10px;
   height: auto; /* Should be removed. Only for demonstration */
 }
