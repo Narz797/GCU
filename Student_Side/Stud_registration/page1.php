@@ -565,6 +565,15 @@
     /* .input-field input:required {
     border: 1px solid red;
 } */
+
+#textBox {
+        width: 200px; /* Adjust the width as needed */
+        height: 30px; /* Adjust the height as needed */
+        font-size: 16px; /* Adjust the font size as needed */
+        padding: 5px; /* Adjust the padding as needed */
+        border: 1px solid #ccc; /* Adjust the border style as needed */
+        border-radius: 5px; /* Adjust the border radius as needed */
+    }
 </style>
 
 <body>
@@ -875,27 +884,6 @@
                 <h3>Educational Background</h3>
                 <br>
 
-                <!-- <div class="radio-group">
-                            <label>
-                                <input type="radio" id="senior" name="senior"  onclick="showInput();" />
-                                Sernior High
-                            </label>
-                            <label>
-                                <input type="radio" id="junior" name="junior" onclick="hideInput();" />
-                               Junior High
-                            </label>
-
-                            <label>
-                                <input type="radio" id="elem" name="elem" onclick="hideInput();" />
-                              Elementary
-                            </label>
-                            <label>
-                                <input type="radio" id="other" name="other"  onclick="hideInput();" />
-                               Other School Attended
-                            </label>
-
-                </div> -->
-
                 <div class="check-group">
                     <label>
                         <input type="checkbox" id="senior" name="school_type" onclick="showInput('senior');" />
@@ -1030,11 +1018,6 @@
                     <input type="text" id="indigenousInfo" name="indigenousInfo" style="display: none;">
                 </div>
                         
-
-
-
-                        
-
                         <br>
 
                         <p><b>
@@ -1094,26 +1077,33 @@
                             <span class="checkmark"></span>
                         </label>
 
-                        <!-- <label class="container1">Scholarship; specify: 
-                                <input type="checkbox">
+
+                            <label class="container1">
+                                Scholarship
+                                <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox" onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
                                 <span class="checkmark"></span>
-                            </label> -->
+                            </label>
 
-                        <label class="container1" onclick="toggleSpecifyBox()">
-                            Scholarship
-                            <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox">
-                            <span class="checkmark"></span>
-                        </label>
+                            <!-- Specify box for Scholarship -->
+                            <div id="specifyBoxScholarship" style="display: none">
+                            <label for="specifyScholarship">Specify Scholarship:</label>
+                            <input type="text" >
 
-                        <!-- Specify box -->
-                        <div id="specifyBox">
-                            Specify: <input type="text" id="specify" name="specify">
-                        </div>
-                        <!-- fix -->
-                        <label class="container1">Others; specify:
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
+                                
+                            </div>
+
+                            <!-- Other Checkbox -->
+                            <label class="container1">
+                                Others:
+                                <input type="checkbox" id="otherCheckbox" onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <!-- Specify box for Others -->
+                            <div id="specifyBoxOther" style="display: none">
+    Specify: 
+    <input type="text" id="textBox">
+</div>
 
                     </div>
 
@@ -1240,59 +1230,29 @@
                     </div>
 
                 </div>
-                <!-- <h2>Upload Signature</h2>
-                <br>
-                <div class="input-field">
-                    <label class="form-label" for="customFile">Select image(jpg or png format only) to upload</label>
-                    <input type="file" name = "image" accept="image/*" class="form-control" id="customFile" />
-                </div> -->
+           
 
                 <div class="buttons">
                     <div class="backBtn">
                         <i class="uil uil-navigator"></i>
                         <span class="btnText">Back</span>
                     </div>
+                
 
-                    <!-- <button class="nextBtn">
-                            <span class="btnText">Next</span>
-                            <i class="uil uil-navigator"></i>
-                        </button> -->
-
-                    <!-- <button class="sumbit">
+                    <button class="nextBtn" id="nextButton" type="button">
                             <span class="btnText">Submit</span>
                             <i class="uil uil-navigator"></i>
-                        </button> -->
+                        </button>
+                      
 
-                    <!-- add design -->
-                    <input type="submit" class="btn btn-primary" name="submit" class="submit" value="Submit">
                 </div>
+
+                
             </div>
 
         </form>
     </div>
 
-
-
-
-    <!-- <script src="script.js"></script> -->
-
-    <!-- <script>
-        function showInput() {
-            var inputElement = document.getElementById("indigenousInput");
-            inputElement.classList.remove("hidden");
-            inputElement.classList.add("visible");
-            inputElement.classList.add("underline"); // Add the underline class
-        }
-
-        function hideInput() {
-            var inputElement = document.getElementById("indigenousInput");
-            inputElement.classList.remove("visible");
-            inputElement.classList.add("hidden");
-            inputElement.classList.remove("underline"); // Remove the underline class
-        }
-    </script> -->
-
- 
 
     <script>
         function createTable() {
@@ -1401,14 +1361,7 @@
             // Add a click event listener to the "Next" button
             nextButton.addEventListener("click", function(e) {
                 // Check if the form is valid
-                if (form.checkValidity()) {
-                    // Form is valid, move to the next section
-                    // You can add your logic here to proceed to the next section
-                    alert("Form is valid. You can proceed to the next section.");
-                } else {
-                    // Form is not valid, show an error message
-                    alert("Please fill out all required fields before proceeding.");
-                }
+                if (form.checkValidity()) 
             });
         });
     </script>
@@ -1583,6 +1536,19 @@ function showInput(type) {
         document.getElementById("indigenousInfo").style.display = "none";
         document.querySelector('label[for="indigenousInfo"]').style.display = "none";
     });
+</script>
+
+<script>
+    function toggleSpecifyBox(checkboxId, specifyBoxId) {
+        var checkbox = document.getElementById(checkboxId);
+        var specifyBox = document.getElementById(specifyBoxId);
+
+        if (checkbox.checked) {
+            specifyBox.style.display = "block";
+        } else {
+            specifyBox.style.display = "none";
+        }
+    }
 </script>
 
 

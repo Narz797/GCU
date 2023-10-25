@@ -12,7 +12,7 @@
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-   <title>Responsive Regisration Form </title>
+   <title>Teacher Regisration Form </title>
 </head>
 <style>/* ===== Google Font Import - Poppins ===== */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
@@ -516,12 +516,12 @@
                 
 
                 <div class="input-field">
-                    <label>Department</label>
+                    <label>College</label>
                     <select required>
-                        <option disabled selected>Select Department</option>
-                        <option>BS- Information Technology</option>
-                        <option>BS-Biology</option>
-                        <option>BS-Library</option>
+                        <option disabled selected>Select</option>
+                        <option>College</option>
+                        <option>College</option>
+                        <option>College</option>
                     </select>
                 </div>
                 
