@@ -5,7 +5,6 @@ include 'formstyle.php';
 $_SESSION['transact_type'] = 'referral'; //asign value to transact_type
 ?>
 <html>
-
 <head>
   <meta charset="utf-8">
   <title>Feedback Slip</title>
@@ -23,9 +22,7 @@ $_SESSION['transact_type'] = 'referral'; //asign value to transact_type
   background-color:#105c06;
 }
 </style>
-
 <body>
-<a id='back_button' class="btn btn-primary" href="/gcu/home" role="button">Back</a>
   <div class="card">
     <div class="card-header">
       <h1 id="Title">Referral Slip</h1>
@@ -71,7 +68,6 @@ $_SESSION['transact_type'] = 'referral'; //asign value to transact_type
           <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
         </p>
       </form>
-
     </div>
   </div>
   <script>
@@ -93,15 +89,11 @@ $_SESSION['transact_type'] = 'referral'; //asign value to transact_type
       var selectedReasons = $("input[name='reasons[]']:checked").map(function () {
         return $(this).val();
       }).get();
-
-
       var othersText = $("#oth").val();
-
       // Add othersText to the selectedReasons array if it's not empty
       if (othersText.trim() !== "") {
         selectedReasons.push(othersText);
       }
-
       $.ajax({
         type: 'POST',
         url: '../../backend/create_transaction.php',
@@ -111,11 +103,9 @@ $_SESSION['transact_type'] = 'referral'; //asign value to transact_type
         },
         success: function (data) {
           alert(data);
-
         }
       });
     });
   </script>
 </body>
-
 </html>

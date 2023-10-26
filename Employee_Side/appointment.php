@@ -25,9 +25,7 @@
     <link rel="icon" href="assets/images/GCU_logo.png">
   
 </head>
-
 <body>
-
     <!-- Header -->
 <header class="header">
     <nav class="nav container"> 
@@ -48,7 +46,6 @@
                 <i class="ri-close-line"></i>
             </button>
         </div>
-
         <div class="align-right">
             <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
                 <i class="ri-function-line"></i>
@@ -60,9 +57,7 @@
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
-
         </div>
-
     </nav>
 </header>
       <!-- Welcome-message -->
@@ -181,7 +176,6 @@
               />
             </div>
           </div>
-
         </div> -->
         <!--  -->
       </div>
@@ -276,7 +270,6 @@
         </div>
     </div>
     <br>
-
     <!-- Footer -->
     <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
@@ -286,7 +279,6 @@
         <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
     </div>
 </footer>
-
 <!-- Script     -->
 <script>
   var sessionID = <?php echo json_encode($_SESSION['session_id']); ?>;
@@ -294,7 +286,6 @@
     window.location.href = '../home?logout=true';
 }
 </script>
-
 <script src="assets/main.js"></script>   
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="assets/js/calendar.js"></script> 

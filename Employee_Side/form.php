@@ -20,20 +20,13 @@ session_start();
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/forms.css">
-
     <link rel="icon" href="assets/images/GCU_logo.png">
-
-
-
       <!-- Export -->
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
-
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -42,10 +35,7 @@ session_start();
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 </head>
-
 <body>
-
-
   <!-- Header -->
   <header class="header">
     <nav class="nav"> 
@@ -101,7 +91,6 @@ session_start();
     <div class="title independent-title">
         <h2>REQUESTED FORMS</h2>
     </div>
-
     
     <div class="container">
     <div class="card">
@@ -109,7 +98,6 @@ session_start();
                 <small>The following are the requested forms for today,</small>
                 <!-- get current date
     M/D/Y-->
-
     <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
             </header>
             <hr>
@@ -117,8 +105,6 @@ session_start();
             <div class="content1">
                 <img src="./assets/images/formtemp.png">
                 <h4>LOA SLIP</h4>
-
-
                 <p><span class="num"  id="LOA"></span>
                 <span class="text">pending...</span></p>
                 <h5>OSS-GCU-F11</h5>
@@ -131,7 +117,6 @@ session_start();
             <div class="content1">
                 <img src="./assets/images/formtemp.png">
                 <h4>READMISSION SLIP</h4>
-
                 <p><span class="num"  id="RA"></span>
                 <span class="text">pending...</span></p>
                 <h5>OSS-GCU-F12</h5>
@@ -206,7 +191,6 @@ session_start();
                             <th> Date<br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Requested<br> <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Status<br> <span class="icon-arrow">&UpArrow;</span></th>
-
                         </tr>
                     </thead>
                     <tbody >
@@ -222,9 +206,7 @@ session_start();
     </div>
 </section>
 <br>
-
 </body>
-
  
 <script>
         function updateValues(LOA, RA, RS, WDS) {
@@ -232,9 +214,7 @@ session_start();
         $('#RA').text(RA);
         $('#RS').text(RS);
         $('#WDS').text(WDS);
-
    
-
     }
     function logout() {
     window.location.href = '../home?logout=true';
@@ -250,18 +230,13 @@ function fetchData() {
                 success: function (data) {
                     console.log(data.latest_data);
                     if (data.latest_data.length > 0) {
-
                             var totalLOA = data.total_pending_LOA;
                             var totalRA = data.total_pending_RA;
                             var totalRS = data.total_pending_RS;
                             var totalWDS = data.total_pending_WDS;
-
-
                             console.log("LOA",totalLOA);
-
                             updateValues(totalLOA, totalRA, totalRS, totalWDS);
                             console.log(totalLOA);
-
                             // Start both counting animations
                             // countLOA(totalLOA);
                             // countRA(totalRA);
@@ -272,7 +247,6 @@ function fetchData() {
                         // You can update the UI as needed
                         console.log('No results found');
                     }
-
             },
             error: function (xhr, status, error) {
                 console.error('Error: ' + error);
@@ -287,20 +261,17 @@ function fetchData() {
             type: "GET",
             dataType: "json",
             success: function (data) {
-
                 console.log(data);
                 // if (data.status===0){
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
                 var noHistoryMessage2 = $("#noHistoryMessage2"); 
  
-
                 for (var i = 0; i < data.length; i++) {
                     
                     var entry = data[i];
                     var status = entry.status;
                     var tableToAppend = tableBody; // Determine which table to append to
-
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.stud_user_id + "</td>");
                     row.append("<td>" + entry.first_name + "" + entry.last_name +"</td>");
@@ -319,29 +290,20 @@ function fetchData() {
                             // Handle other cases, e.g., 'Cancelled' or anything else
                             row.append("<td><p class='status cancelled'>" + status + "</p></td>");
                         }
-
                     tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
-
                  }
                  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
-
-
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage2.hide(); // Hide the no history message if there is data
                     } else {
                         noHistoryMessage2.show(); // Show the no history message if no data
                     }
-
-
-
-
                 // $("td a").click(function () {
                 //     var contentElement = $(this).closest("tr");
                 //     // var studUserId = contentElement.data("stud-user-id");
                 //     var studUserId = contentElement.find("td:first-child").text();
-
                 //     $.ajax({
                 //         url: "../backend/update_status.php",
                 //         type: "POST",
@@ -367,15 +329,11 @@ function fetchData() {
     console.error("Error: " + error);
     console.error("Response Text: " + xhr.responseText);
 }
-
         });
-
     
     });
     fetchData();
-
 </script>  
-
 <script src="./assets/main.js"></script> 
 <!-- <script src="assets/js/table.js"></script>  -->
 <script src="./assets/js/count.js"></script> 

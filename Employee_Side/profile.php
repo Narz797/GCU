@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,13 +20,10 @@ session_start();
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/profiles.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-
     <!-- Export -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -38,13 +34,10 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-
 </head>
 <style>
-
     </style>
 <body>
-
     <!-- Header -->
     <header class="header">
     <nav class="nav"> 
@@ -115,19 +108,14 @@ session_start();
             <div class="export-file">
                 <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/export.png" alt=""></label>
                 <input type="checkbox" id="export-file">
-
                 <div class="export-file-options">
                     <label>Export As &nbsp; &#10140;</label>
                     <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
                     <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
                 </div>
-
-
             </div>
         </section>
-
        
-
         <section class="table-body" >
             <table  id="table" >
             <table id="dynamicTable">
@@ -155,11 +143,8 @@ session_start();
     </div>
         </div>
     </div>
-
-
 </section>
 <br>
-
     <!-- Footer -->
     <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
@@ -170,7 +155,6 @@ session_start();
     </div>
 </footer>
 <!-- Script     -->
-
 <script>
     function logout() {
     window.location.href = '../home?logout=true';
@@ -184,7 +168,6 @@ session_start();
                 success: function(data) {
                     const table = document.getElementById('data-table');
                     const searchInput = document.getElementById('searchInput');
-
                     const genderImageMap = {
                     'male': './assets/images/male.jpg',
                     'female': './assets/images/female.jpg'
@@ -197,7 +180,6 @@ session_start();
                 var noHistoryMessage1 = $("#noHistoryMessage1"); 
                 var noHistoryMessage2 = $("#noHistoryMessage2"); 
  
-
                 for (var i = 0; i < data.length; i++) {
                     
                     var entry = data[i];
@@ -225,10 +207,8 @@ session_start();
                     row.append("<td>" + entry.Contact_number + "</td>");
                     row.append("<td>" + entry.ParentGuardianNumber + "</td>");
                     row.append("<td>" + entry.ParentGuardianName + "</td>");
-
                     var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
-
                     var statusCell = $("<td></td>");
                     var statusLink = $("<a href='subpage/pfp_page.php'><button>View</button></a>");
                     statusCell.append(statusLink);
@@ -236,12 +216,9 @@ session_start();
                     tableBody.append(row);
             
                     
-
                  }
                  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
-
-
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage1.hide(); // Hide the no history message if there is data
                     } else {
@@ -256,9 +233,7 @@ session_start();
             });
         });
     </script>
-
 <script src="./assets/main.js"></script>
-
  <!-- <script src="assets/js/table.js"></script>    -->
 </body>
 </html>

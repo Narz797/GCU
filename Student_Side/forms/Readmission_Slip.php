@@ -3,17 +3,14 @@
 session_start();
 include 'formstyle.php';
 $_SESSION['transact_type']='readmission';//asign value to transact_type
-
 ?>
 <html>
-
 <head>
   <meta charset="utf-8">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
   <title>Readmission Slip</title>
 </head>
-
 <body>
   <div class="card">
     <h1 id="Title" class="card-header">Readmission Slip</h1>
@@ -39,12 +36,9 @@ $_SESSION['transact_type']='readmission';//asign value to transact_type
       </form>
       <div>
       </div>
-
       <script>
-
         $("#form_transact").on("submit", function (event) {
           event.preventDefault();
-
           $.ajax({
             type: 'POST',
             url: '../../backend/create_transaction.php',
@@ -59,7 +53,5 @@ $_SESSION['transact_type']='readmission';//asign value to transact_type
           });
         }); 
       </script>
-
 </body>
-
 </html>

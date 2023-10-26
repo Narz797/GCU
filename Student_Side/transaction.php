@@ -1,13 +1,7 @@
 <?php 
-
-
 include 'includes/main2.php';
-
  ?>
-
-
 <head>
-
     <!-- icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
         <link
@@ -22,10 +16,8 @@ include 'includes/main2.php';
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../Employee_Side/assets/apmt.css">
     <link rel="stylesheet" href="../Employee_Side/assets/css/forms.css">
-  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
-
 <style>
     .column {
   float: left;
@@ -33,7 +25,6 @@ include 'includes/main2.php';
   padding: 10px;
   height: auto; /* Should be removed. Only for demonstration */
 }
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -42,34 +33,18 @@ include 'includes/main2.php';
 }
     </style>
   <body>
-
        
-
-
-
-
 </div>
-
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 50px; "></section> 
-
-
-
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 80px; ">
 <p style="margin-left: 2%; font-size: 30px; font-weight: bold;">CHOOSE TRANSACTION</p>
-
 </section> 
-
-
 <div class="row">
   <div class="column" style="background-color:transparent;">
   <section id="services" class="services sections-bg" style="background-color: transparent;">
       <div class="container" data-aos="fade-up">
-
-       
-
         <!-- <div class="row gy-4" data-aos="fade-up" data-aos-delay="100" > -->
         <div class="row gy-4" data-aos="fade-up" data-aos-delay="100" style="width:100%;">
-
           <div class="col-lg-4 col-md-6" style="width:100%;">
             <div class="service-item  position-relative">
               <div class="icon">
@@ -81,7 +56,6 @@ include 'includes/main2.php';
               <a href="./forms/readmission-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
-
           <div class="col-lg-4 col-md-6" style="width:100%;">
             <div class="service-item position-relative">
               <div class="icon">
@@ -93,7 +67,6 @@ include 'includes/main2.php';
               <a href="./forms/withdrawal-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
-
           <div class="col-lg-4 col-md-6" style="width:100%;">
             <div class="service-item position-relative">
               <div class="icon">
@@ -105,7 +78,6 @@ include 'includes/main2.php';
               <a href="./forms/referral-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
-
           <div class="col-lg-4 col-md-6" style="width:100%;">
             <div class="service-item position-relative">
               <div class="icon">
@@ -117,7 +89,6 @@ include 'includes/main2.php';
               <a href="./forms/leave-of-absence-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
-
           <div class="col-lg-4 col-md-6" style="width:100%;">
             <div class="service-item position-relative">
               <div class="icon">
@@ -129,20 +100,12 @@ include 'includes/main2.php';
               <a href="./forms/LeaveOfAbsence_Slip.php" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
-
-
-
         </div>
-
       </div>
-
       
     </section><!-- End Our Services Section -->
   </div>
-
-
     <div class="column" >
-
     <!-- <div class="container" > -->
         <br>
         <h2 class="title"></h2>
@@ -159,16 +122,12 @@ include 'includes/main2.php';
                 <div class="input-group">
                     <input type="search" placeholder="Search.....">
                 </div>
-
                 
             </section>
-
             <section  id="blog" class="blog"  >
     <div class="container" data-aos="fade-up">
           </div>
-
           <div class="col-lg-4" style=" width:auto;" >
-
             <div class="sidebar"  style="background-color:white;">
               <div class="sidebar-item recent-posts" >
                 <div class="mt-3" >
@@ -179,8 +138,6 @@ include 'includes/main2.php';
                       <time datetime="2020-01-01">March 2023</time>
                     </div>
                   </div><!-- End recent post item-->
-
-
             
             <br>
             <hr>
@@ -191,7 +148,6 @@ include 'includes/main2.php';
                       <time datetime="2020-01-01">March 2023</time>
                     </div>
                   </div><!-- End recent post item-->
-
                     
             <br>
             <hr>
@@ -202,49 +158,24 @@ include 'includes/main2.php';
                       <time datetime="2020-01-01">March 2023</time>
                     </div>
                   </div><!-- End recent post item-->
-
                 
-
-
                   
-
-
                 </div>
-
               </div><!-- End sidebar recent posts-->
-
-
-
             </div><!-- End Blog Sidebar -->
-
             
         </div>
-
         
-
           </div>
         </div>
-
       </div>
-
       
-
-
       
             
     </section><!-- End Blog Details Section -->
     
-
-
     </div>
-
-
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section> 
-
-
   </body>
-
-
-
 <script src="../Employee_Side/assets/js/calendar.js"></script>    
 <script src="../Employee_Side/assets/main.js"></script> 

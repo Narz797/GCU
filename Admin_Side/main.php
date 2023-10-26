@@ -1,10 +1,7 @@
 <?php 
 session_start();
-
 $id = $_SESSION['session_id'];
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +20,8 @@ $id = $_SESSION['session_id'];
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/styles.css">
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
     <!-- Header -->
     <header class="header">
@@ -64,11 +59,9 @@ $id = $_SESSION['session_id'];
     <div class="card">
         <header class="card-header">
             <small>Profile Account</small>
-
 <!-- call employee id 
     number or 
     profession = "Admin"-->
-
             <h2 class="title">Welcome back,&nbspAdmin</h2>
         </header>
         <hr>
@@ -77,7 +70,6 @@ $id = $_SESSION['session_id'];
                 <img src="assets/images/sp.jpg" alt="">
             </div>
             <div class="card-information">
-
 <!-- call employee 
     registered data -->
                 <h1 class="title main-title"><span class="title-lastname main-title">Dr. Angeli T. Austria</h1>
@@ -125,13 +117,11 @@ $id = $_SESSION['session_id'];
                 </div>
                 <a href="form.php"><button class="list-link">Read More</button></a>
             </div>
-
         
             <div class="card border one">
             <div>
             <h2 class="title">TOTAL LOGINS FOR TODAY</h2>
             </div>
-
                
             </div>
            
@@ -146,7 +136,6 @@ $id = $_SESSION['session_id'];
             <div class="card border one">
                 <div>
                     <h2 class="title">HISTORY TRANSACTIONS</h2>
-
 <!-- honestly just copy paste 
     the database so no need 
     for it's design, just call

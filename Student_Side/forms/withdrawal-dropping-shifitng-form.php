@@ -5,7 +5,6 @@ include 'formstyle.php';
 $_SESSION['transact_type']='WDS';//asign value to transact_type
 ?>
 <html>
-
 <head>
   <meta charset="utf-8">
   <title>Withdrawal/Dropping/Shifting slip</title>
@@ -15,11 +14,9 @@ $_SESSION['transact_type']='WDS';//asign value to transact_type
     .hidden {
       display: none;
     }
-
     .autocomplete-container {
     position: relative;
     }
-
     .autocomplete-popup {
         position: absolute;
         top: 100%;
@@ -31,28 +28,21 @@ $_SESSION['transact_type']='WDS';//asign value to transact_type
         overflow-y: auto;
         display: none;
     }
-
     .autocomplete-popup ul {
         list-style: none;
         padding: 0;
         margin: 0;
     }
-
     .autocomplete-popup li {
         padding: 5px 10px;
         cursor: pointer;
     }
-
     .autocomplete-popup li:hover {
         background-color: #f0f0f0;
     }
-
   </style>
-
 </head>
-
 <body>
-
   <div class="card">
     <div class="card-header">
       <h1 id="Title">Withdrawal/Dropping/Shifting Slip</h1>
@@ -87,7 +77,6 @@ $_SESSION['transact_type']='WDS';//asign value to transact_type
                 <!-- Create a container to display autocomplete suggestions for the first input -->
                 <div id="autocomplete-suggestions1" class="autocomplete-popup"></div>
             </div>
-
             <label>to</label>
             <label for="textfield5">:</label>
             <div class="autocomplete-container">
@@ -96,21 +85,17 @@ $_SESSION['transact_type']='WDS';//asign value to transact_type
                 <div id="autocomplete-suggestions2" class="autocomplete-popup"></div>
             </div>
         </div>
-
-
         <p>
           <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
         </p>
       </form>
       
       <div id="suggestions"></div>
-
     </div>
   </div>
   <script>
     const dropdown = document.getElementById('action');
     const textfield = document.getElementById('for-shift');
-
     dropdown.addEventListener('change', function () {
   if (dropdown.value === 'Shifting') {
     textfield.classList.remove('hidden');
@@ -118,14 +103,12 @@ $_SESSION['transact_type']='WDS';//asign value to transact_type
     textfield.classList.add('hidden');
   }
 });
-
 $("#form_transact").on("submit", function (event) {
   event.preventDefault();
   var student_id = <?php echo $_SESSION['session_id']?>;
   var transact_type = "withdrawal";
   var course_frm = dropdown.value === 'Shifting' ? textfield4.value : null;
   var course_to = dropdown.value === 'Shifting' ? textfield5.value : null;
-
   $.ajax({
     type: 'POST',
     url: '../../backend/create_transaction.php',
@@ -143,19 +126,16 @@ $("#form_transact").on("submit", function (event) {
 });
    
   </script>
-
   <script>
      // autcomplete
      function showSuggestions(inputId, suggestionContainerId) {
     var input = document.getElementById(inputId);
     var inputValue = input.value;
     var suggestionsDiv = document.getElementById(suggestionContainerId);
-
     if (inputValue.length === 0) {
         suggestionsDiv.style.display = "none";
         return;
     }
-
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -163,19 +143,15 @@ $("#form_transact").on("submit", function (event) {
             displaySuggestions(suggestions, suggestionsDiv, input);
         }
     };
-
     xmlhttp.open("GET", "../../backend/autocomplete.php?input=" + inputValue, true);
     xmlhttp.send();
 }
-
 function displaySuggestions(suggestions, suggestionsDiv, input) {
     if (suggestions.length === 0) {
         suggestionsDiv.style.display = "none";
         return;
     }
-
     suggestionsDiv.innerHTML = ""; // Clear previous suggestions
-
     var ul = document.createElement("ul");
     suggestions.forEach(function (suggestion) {
         var li = document.createElement("li");
@@ -186,25 +162,19 @@ function displaySuggestions(suggestions, suggestionsDiv, input) {
         });
         ul.appendChild(li);
     });
-
     suggestionsDiv.appendChild(ul);
     suggestionsDiv.style.display = "block"; // Show the suggestions
 }
-
 // Add an event listener to textfield4
 var textfield4 = document.getElementById('textfield4');
 textfield4.addEventListener('input', function () {
     this.value = this.value.toUpperCase();
 });
-
 // Add an event listener to textfield5
 var textfield5 = document.getElementById('textfield5');
 textfield5.addEventListener('input', function () {
     this.value = this.value.toUpperCase();
 });
-
-
   </script>
 </body>
-
 </html>

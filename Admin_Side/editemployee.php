@@ -17,13 +17,10 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/profiles.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-
     <!-- Export -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -34,13 +31,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-
 </head>
 <style>
-
     </style>
 <body>
-
     <!-- Header -->
     <header class="header">
     <nav class="nav"> 
@@ -115,10 +109,8 @@
         <button type="submit" value="Save Changes">Save Changes</button>
     </form>
     </section>
-
 </section>
 <br>
-
     <!-- Footer -->
     <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
@@ -130,7 +122,6 @@
 </footer>
 <!-- Script     -->
 <script src="./assets/main.js"></script>
-
  <script src="assets/js/table.js"></script>   
 </body>
 </html>

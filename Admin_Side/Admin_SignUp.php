@@ -28,39 +28,25 @@
        
        <label for="middleName">Middle Name:</label>
        <input type="text" id="middleName" name="middleName">
-
             
     
      </div>
-
      
-
-
      <div class="form-column">
       
         <label for="sex">Sex:</label>
        <input type="text" id="sex" name="sex">
-
        <label for="emailadd">Email Address:</label>
        <input type="text" id="emailadd" name="emailadd">
-
-
        <label for="contactNumber">Contact Number:</label>
        <input type="tel" id="contactNumber" name="contactNumber" required>
       
        <label for="cs">Position:</label>
        <input type="text" id="cs" name="cs">
        
-
        <button type="submit">Register</button>
      </div>
-
-
-
    </form>
-
-
  </div>
 </body>
 </html>
-

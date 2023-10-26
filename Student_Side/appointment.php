@@ -1,10 +1,7 @@
 <?php 
-
 include 'includes/main2.php';
  ?>
-
 <head>
-
     <!-- icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link
@@ -28,7 +25,6 @@ include 'includes/main2.php';
   padding: 10px;
   height: auto; /* Should be removed. Only for demonstration */
 }
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -37,53 +33,31 @@ include 'includes/main2.php';
 }
     </style>
   <body>
-
        
-
-
-
-
 </div>
-
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 50px; "></section> 
-
-
-
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 80px; ">
 <p style="margin-left: 2%; font-size: 30px; font-weight: bold;">APPOINTMENT SCHEDULE</p>
-
 </section> 
-
-
-
-
-
 <div class="row">
 <div class="container">
       <br>
      
-
    
-
   
       <div class="card">
           <hr>
       <div class="body-calendar">
        <div class="container-calendar">
     <div class="left">
-
   
-
       <div class="calendar">
-
  
-
         <div class="month">
           <i class="fas fa-angle-left prev"></i>
           <div class="date">month,year</div>
           <i class="fas fa-angle-right next"></i>
         </div>
-
  
         
         <div class="weekdays">
@@ -138,20 +112,15 @@ include 'includes/main2.php';
        
       </div>
     </div>
-
   </div>
 </div>
       </div>
   </div>
 </section>
 <br>
-
 <div>
   </div>
-
-
     <div  >
-
     <!-- <div class="container" > -->
         <br>
         <h2 class="title"></h2>
@@ -201,12 +170,7 @@ include 'includes/main2.php';
                     </tbody>
                 </table>
             </section>
-
-
     </div>
-
-
-
     <!-- History of transaction -->
     <div  >
         <br>
@@ -265,15 +229,7 @@ include 'includes/main2.php';
         </div>
     </div>
 </section>
-
-
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section> 
-
-
   </body>
-
-
-
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="assets/js/calendar.js"></script>    

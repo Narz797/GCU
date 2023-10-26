@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php 
-
 include 'landingpage.php';
-
  ?>
  <head><meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -16,7 +13,6 @@ include 'landingpage.php';
             background: -webkit-linear-gradient(left, #fefefe, #61c6be);
          
         } */
-
         .left-column img {
             /* margin-top: 15%;
             margin-bottom: 5%; */
@@ -24,13 +20,11 @@ include 'landingpage.php';
             -webkit-animation: mover 2s infinite alternate;
             animation: mover 1s infinite alternate;
         }
-
         .container {
           
             display: flex;
             flex-direction: row;
         }
-
         .left-column {
             flex: 1;
             padding: 10px;
@@ -38,7 +32,6 @@ include 'landingpage.php';
             /* justify-content: center; */
             align-items: center;
         }
-
         .right-column {
             /* margin-top: 2%; */
             flex: 2;
@@ -46,83 +39,66 @@ include 'landingpage.php';
             padding: 20px;
             border-radius: 10px;
         }
-
         .logo {
             width: 100px;
             height: auto;
         }
-
         @-webkit-keyframes mover {
             0% {
                 transform: translateY(0);
             }
-
             100% {
                 transform: translateY(-20px);
             }
         }
-
         @keyframes mover {
             0% {
                 transform: translateY(0);
             }
-
             100% {
                 transform: translateY(-20px);
             }
-
             
         }
-
          /* Media query for screens smaller than 576px (e.g., smartphones) */
          @media (max-width: 576px) {
             .container {
                 flex-direction: column;
                 align-items: center;
             }
-
             .left-column img,
             .right-column {
                 width: 100%;
             }
-
             /* Modify other styles as needed for small screens */
         }
-
         /* Media query for screens between 576px and 768px (e.g., tablets) */
         @media (min-width: 577px) and (max-width: 768px) {
             .container {
                 flex-direction: column;
                 align-items: center;
             }
-
             .left-column img,
             .right-column {
                 width: 80%;
             }
-
             /* Modify other styles as needed for medium-sized screens */
         }
-
         /* Media query for screens between 769px and 992px */
         @media (min-width: 769px) and (max-width: 992px) {
             .container {
                 flex-direction: row;
             }
-
             .left-column img,
             .right-column {
                 width: 50%;
             }
-
             /* Modify other styles as needed for larger screens */
         }
-
     </style>
 <body  >
  <section id="recent-posts" class="recent-posts sections-bg"  >
         <div class="container">
-
         <div class="right-column">
            <h2 style="font-family:fantasy;">About Us </h2>
             <br>
@@ -132,51 +108,38 @@ include 'landingpage.php';
               conduct personality development, academic survival and other seminars/
                workshops for students aside from the topic mentioned above. The Guidance Counselors 
                can also be invited as a resource speakers for the above topics.</p>
-
           
         </div>
-
         <div class="left-column">
             <!-- <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo"> -->
             <img src="assets/img/gg.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 300px; height: 300px;">
         </div>
-
         
-
        
     </div>
-
-
     <div class="container">
-
     <div class="left-column">
     <!-- <img src="../assets/img/GCU_logo.png" alt="Logo" class="logo"> -->
     <img src="assets/img/cl.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 300px; height: 150px;">
 </div>
-
 <div class="right-column">
    
    
     <p style="text-align:justify; font-size:16px; font-family: var(--font-primary)">Responding to the call for social involvement (or action), these programs 
     are also extended to high schools and other organizations, upon request.</p>
-
     <p style="text-align:justify; font-size:16px; font-family: var(--font-primary)">More Importantly, these programs are constantly modified to meet the evolving 
     needs of the students and other clients.</p>
-
     <p style="text-align:justify; font-size:16px;font-family: var(--font-primary)">Changes or improvements of the programs are based from feedbacks from teachers, parents, students, 
     and other clients. Guidance and counseling is a service profession that ultimately aims to assist people develop a well-rounded personality and live a fulfilling Life, maximizing his or her God-given 
     potentials. As such, the BSU-OSS-GCU gratefully welcomes comments and suggestions from the same clients.</p>
 </div>
-
 </div>
     </section><!-- End Recent Blog Posts Section -->
-
      <!-- ======= Testimonials Section ======= -->
      <section id="testimonials" class="testimonials">
       <div class="container" data-aos="fade-up">
         <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
-
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
@@ -198,7 +161,6 @@ include 'landingpage.php';
                 </div>
               </div>
             </div><!-- End testimonial item -->
-
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
@@ -220,7 +182,6 @@ include 'landingpage.php';
                 </div>
               </div>
             </div><!-- End testimonial item -->
-
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
@@ -242,7 +203,6 @@ include 'landingpage.php';
                 </div>
               </div>
             </div><!-- End testimonial item -->
-
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
@@ -264,7 +224,6 @@ include 'landingpage.php';
                 </div>
               </div>
             </div><!-- End testimonial item -->
-
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
@@ -286,14 +245,10 @@ include 'landingpage.php';
                 </div>
               </div>
             </div><!-- End testimonial item -->
-
           </div>
           <div class="swiper-pagination"></div>
         </div>
-
       </div>
     </section><!-- End Testimonials Section -->
-
 </body>
-
 <?php include 'includes/footer1.php' ?>
