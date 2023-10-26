@@ -4,18 +4,7 @@ session_start();
 include '../backend/connect_database.php';
 
 try {
-    // SQL query to fetch the latest data based on the date_created column
-    $latestDataSql = "SELECT `student_id`, `transact_type`, `date_created`
-    FROM transact
-    WHERE `status` = 'pending'
-    ORDER BY `date_created` DESC
-    LIMIT 1; 
-    ";
-    
-    $stmt = $pdo->prepare($latestDataSql); // Use $pdo here
-    $stmt->execute();
 
-    $latestData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // SQL query to count pending transactions
     $countPendingSql = "SELECT COUNT(*) AS total_pending_transactions FROM transact WHERE status = 'pending'";
@@ -75,6 +64,19 @@ try {
     $stmt = $pdo->prepare($adminUserDataSql);
     $stmt->execute();
     $adminUserData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // SQL query to fetch the latest data based on the date_created column
+        $latestDataSql = "SELECT `student_id`, `transact_type`, `date_created`
+        FROM transact
+        WHERE `status` = 'pending'
+        ORDER BY `date_created` DESC
+        LIMIT 1; 
+        ";
+        
+        $stmt = $pdo->prepare($latestDataSql); // Use $pdo here
+        $stmt->execute();
+    
+        $latestData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if (!empty($latestData)) {
         // Combine the latest data, count of pending transactions, appointments, and admin user data

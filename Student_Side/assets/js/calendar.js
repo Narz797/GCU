@@ -233,7 +233,7 @@ function getAvailability(year, month, date) {
       const availabilityData = JSON.parse(data);
       //console.log(`year: ${year}, month: ${month}, date: ${date}`);
       // console.log(availabilityData); // Verify the structure of the data
-      // console.log("Data Length:", availabilityData.length);
+      console.log("Data", data);
 
 
       // Check if there's availability data for the specified date
@@ -245,7 +245,8 @@ function getAvailability(year, month, date) {
             month: month + 1, // Note that JavaScript months are zero-based
             year: year,
             title: event.event_title,
-            time: `${event.start_time} - ${event.end_time}`
+            time: `${event.start_time} - ${event.end_time}`,
+            counselor: event.first_name
           });
         });
         // Use the events data to update the UI
@@ -273,6 +274,9 @@ function updateEvents(year, month, date, events) {
           <i class="fas fa-circle"></i>
           <h3 class="event-title">${event.title}</h3>
         </div>
+        <div class="event-time">
+        <span class="event-time">Counserlor: ${event.counselor}</span>
+      </div>
         <div class="event-time">
           <span class="event-time">${event.time}</span>
         </div>
@@ -306,50 +310,50 @@ addListner();
 
 
 //function to add event
-addEventBtn.addEventListener("click", () => {
-  addEventWrapper.classList.toggle("active");
-});
+// addEventBtn.addEventListener("click", () => {
+//   addEventWrapper.classList.toggle("active");
+// });
 
-addEventCloseBtn.addEventListener("click", () => {
-  addEventWrapper.classList.remove("active");
-});
+// addEventCloseBtn.addEventListener("click", () => {
+//   addEventWrapper.classList.remove("active");
+// });
 
-document.addEventListener("click", (e) => {
-  if (e.target !== addEventBtn && !addEventWrapper.contains(e.target)) {
-    addEventWrapper.classList.remove("active");
-  }
-});
+// document.addEventListener("click", (e) => {
+//   if (e.target !== addEventBtn && !addEventWrapper.contains(e.target)) {
+//     addEventWrapper.classList.remove("active");
+//   }
+// });
 
-//allow 50 chars in eventtitle
-addEventTitle.addEventListener("input", (e) => {
-  addEventTitle.value = addEventTitle.value.slice(0, 60);
-});
+// //allow 50 chars in eventtitle
+// addEventTitle.addEventListener("input", (e) => {
+//   addEventTitle.value = addEventTitle.value.slice(0, 60);
+// });
 
-addEventStudentName.addEventListener("input", (e) =>{
-  addEventStudentName.value = addEventStudentName.value.slice(0,60);
-});
+// addEventStudentName.addEventListener("input", (e) =>{
+//   addEventStudentName.value = addEventStudentName.value.slice(0,60);
+// });
 
 
-//allow only time in eventtime from and to
-addEventFrom.addEventListener("input", (e) => {
-  addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
-  if (addEventFrom.value.length === 2) {
-    addEventFrom.value += ":";
-  }
-  if (addEventFrom.value.length > 5) {
-    addEventFrom.value = addEventFrom.value.slice(0, 5);
-  }
-});
+// //allow only time in eventtime from and to
+// addEventFrom.addEventListener("input", (e) => {
+//   addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
+//   if (addEventFrom.value.length === 2) {
+//     addEventFrom.value += ":";
+//   }
+//   if (addEventFrom.value.length > 5) {
+//     addEventFrom.value = addEventFrom.value.slice(0, 5);
+//   }
+// });
 
-addEventTo.addEventListener("input", (e) => {
-  addEventTo.value = addEventTo.value.replace(/[^0-9:]/g, "");
-  if (addEventTo.value.length === 2) {
-    addEventTo.value += ":";
-  }
-  if (addEventTo.value.length > 5) {
-    addEventTo.value = addEventTo.value.slice(0, 5);
-  }
-});
+// addEventTo.addEventListener("input", (e) => {
+//   addEventTo.value = addEventTo.value.replace(/[^0-9:]/g, "");
+//   if (addEventTo.value.length === 2) {
+//     addEventTo.value += ":";
+//   }
+//   if (addEventTo.value.length > 5) {
+//     addEventTo.value = addEventTo.value.slice(0, 5);
+//   }
+// });
 
 function convertTime(time) {
   const [hour, min] = time.split(":");
