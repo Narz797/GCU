@@ -615,7 +615,15 @@
 
                         <div class="input-field">
                             <label>Year Level</label>
-                            <input type="number" id="year" name="year" required>
+                            <select required id="cs">
+                                <option disabled selected>Select</option>
+                                <option>1 - </option>
+                                <option>2 - </option>
+                                <option>3 - </option>
+                                <option>4 - </option>
+
+                                <option>Others</option>
+                            </select>
                         </div>
 
 
@@ -644,8 +652,8 @@
                         </div>
 
                         <div class="input-field">
-                            <label>Email</label>
-                            <input type="text" id="email" name="email" required>
+                            <label>Section</label>
+                            <input type="text" id="section" name="section" required>
                         </div>
 
                         <div class="input-field">
@@ -675,7 +683,7 @@
                         </div>
 
                         <div class="input-field1">
-                            <label>Languages/Dialects youu can read, write, and understand:</label>
+                            <label>Languages/Dialects you can read, write, and understand:</label>
                             <input type="text" id="lang" name="lang" required>
                         </div>
 
