@@ -235,6 +235,9 @@ function fetchData() {
                             var totalRS = data.total_pending_RS;
                             var totalWDS = data.total_pending_WDS;
                             console.log("LOA",totalLOA);
+                            console.log("RA",totalRA);
+                            console.log("LOA",totalRS);
+                            console.log("RS",totalLOA);
                             updateValues(totalLOA, totalRA, totalRS, totalWDS);
                             console.log(totalLOA);
                             // Start both counting animations

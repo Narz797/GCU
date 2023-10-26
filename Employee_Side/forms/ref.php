@@ -108,19 +108,19 @@
                   <p class="card-description refer">Tardy on October 5, 2025</p>
                 </div>
                 </div>
-                <div class="action">
+                <!-- <div class="action"> -->
 
 <!--This will be pop-up-->
 
-                 <a href="#divOne"><button class="yes">Received</button></a>
+                 <!-- <a href="#divOne"><button class="yes">Received</button></a>
                  </div>
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- This is the pop-up for the three buttons -->
 
-                <div class="overlay" id="divOne">
+                <!-- <div class="overlay" id="divOne">
                     <div class="wrapper">
                         <h1>The referred student will be contacted. Clicking send will notify the teacher that the request was received.</h1>
                         <a href="#" class="close">&times;</a>
@@ -131,26 +131,19 @@
                                     <input type="text" placeholder="Your Name">
                                     <label>Remarks</label>
                                     <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk">
+                                    <div class="tsk"> -->
 
 <!-- Add a function here where the data will be stored -->
-
+<!-- 
                                     <input type="submit" value="send">
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                 </div>
+                 </div> -->
 <br>
-    <!-- Footer -->
-<footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-        </div>
-        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-    </div>
+
     <!-- Script     -->
 <script src="../assets/main.js"></script>
 <script src="../assets/js/table.js"></script>   
