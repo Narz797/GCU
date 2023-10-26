@@ -27,7 +27,7 @@
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="../index.php" class="list-link current">Home</a>
+                    <a href="../employee-home" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
                     <a href="../subpage/loa-forms" class="list-link current1">Back</a>

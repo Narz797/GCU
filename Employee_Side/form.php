@@ -98,7 +98,7 @@ session_start();
                 <small>The following are the requested forms for today,</small>
                 <!-- get current date
     M/D/Y-->
-    <h2 class="title">&nbsp&nbsp August 25, 2023</h2>
+    <h2 class="title"><?php echo date('F j, Y'); ?></h2>
             </header>
             <hr>
           <div class=" gallery">
