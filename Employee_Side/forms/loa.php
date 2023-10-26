@@ -27,7 +27,7 @@
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="../index.php" class="list-link current">Home</a>
+                    <a href="../employee-home" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
                     <a href="../subpage/loa-forms" class="list-link current1">Back</a>
@@ -120,7 +120,7 @@
                 </div>
                 <div class="action">
                  <a href="#divOne"><button class="yes">Accept</button></a>
-                 <a href="#divTwo"><button class="no">Reconsider</button></a>
+                <button class="no" onclick="status_update()">Reconsider</button>
                  </div>
             </div>
         </div>
@@ -195,15 +195,13 @@
                     </div>
                  </div>
 <br>
-    <!-- Footer -->
-<footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-        </div>
-        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-    </div>
+
     <!-- Script     -->
+    <script>
+        function status_update(){
+            // update status to pendig here
+        }
+    </script>
 <script src="../assets/main.js"></script>
 <script src="../assets/js/table.js"></script>   
 </body>

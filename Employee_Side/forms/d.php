@@ -27,7 +27,7 @@
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="../index.php" class="list-link current">Home</a>
+                    <a href="../employee-home" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
                     <a href="../subpage/wds-forms" class="list-link current1">Back</a>
@@ -114,7 +114,7 @@
 
 <!-- This is the pop-up for the three buttons -->
 
-                <div class="overlay" id="divOne">
+                <!-- <div class="overlay" id="divOne">
                     <div class="wrapper">
                         <h1>The student's form for dropping subject/s is <u class="One">ACCEPTED</u> .</h1>
                         <a href="#" class="close">&times;</a>
@@ -125,11 +125,11 @@
                                     <input type="text" placeholder="Your Name">
                                     <label>Remarks</label>
                                     <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk">
+                                    <div class="tsk"> -->
 
 <!-- Add a function here where the data will be stored -->
 
-                                    <input type="submit" value="send">
+                                    <!-- <input type="submit" value="send">
                                     </div>
                                 </form>
                             </div>
@@ -147,11 +147,11 @@
                                     <input type="text" placeholder="Your Name">
                                     <label>Remarks</label>
                                     <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk">
+                                    <div class="tsk"> -->
 
 <!-- Add a function here where the data will be stored -->
 
-                                    <input type="submit" value="send">
+                                    <!-- <input type="submit" value="send">
                                     </div>
                                 </form>
                             </div>
@@ -169,26 +169,19 @@
                                     <input type="text" placeholder="Your Name">
                                     <label>Remarks</label>
                                     <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk">
+                                    <div class="tsk"> -->
 
 <!-- Add a function here where the data will be stored -->
 
-                                    <input type="submit" value="send">
+                                    <!-- <input type="submit" value="send">
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                 </div>
+                 </div> -->
 <br>
-    <!-- Footer -->
-<footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-        </div>
-        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-    </div>
+
     <!-- Script     -->
 <script src="../assets/main.js"></script>
 <script src="../assets/js/table.js"></script>   

@@ -270,15 +270,7 @@
         </div>
     </div>
     <br>
-    <!-- Footer -->
-    <footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-        </div>
-        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-    </div>
-</footer>
+
 <!-- Script     -->
 <script>
   var sessionID = <?php echo json_encode($_SESSION['session_id']); ?>;

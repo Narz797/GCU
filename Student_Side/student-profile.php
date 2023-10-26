@@ -67,14 +67,35 @@ i.fa-sign-out-alt:hover {
         }
 
         .left-column img {
-            margin-top: 5%;
+            margin-top: 50%;
             margin-bottom: 5%;
-            margin-left:100%;
-            width: 15%;
+            margin-left:10%;
+            width: 80%;
             -webkit-animation: mover 2s infinite alternate;
             animation: mover 1s infinite alternate;
             border-radius: 50%;
+
         }
+
+        {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  /* width: 50%; */
+  padding: 10px;
+  height: auto; /* Should be removed. Only for demonstration */
+ 
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 
     </style>
@@ -94,13 +115,179 @@ i.fa-sign-out-alt:hover {
 
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 80px; ">
 <p style="margin-left: 2%; font-size: 30px; font-weight: bold;">STUDENT PROFILE</p> 
-<i style="margin-left: 79%; font-size: 40px; font-weight: bold;" class="fa fa-sign-out-alt fa-2x" ></i>
 
+<a href="javascript:history.back()">
+    <i style="margin-left: 3500%; font-size: 40px; font-weight: bold;" class="fa fa-sign-out-alt fa-2x"></i>
+</a>
 </section> 
 
 
 
+<div class="row" >
+<div class="column" style="width:20%; ">
+  
+  <!-- Your content goes here -->
+   <div class="left-column" style=" display: flex; justify-content: center; align-items: center;">
+       <img src="../assets/img/ab.jpg" alt="Logo" class="logo">
+   </div>
+   <p   style="text-align:center; font-size: 20px; font-weight: bold;align-items: center; color:white;" > ID #: 20015**</p>
+   <p   style="text-align:center;font-size: 20px; font-weight: bold;align-items: center; color:white;" > Lee Min Hoo</p>
+   <p   style="text-align:center;font-size: 20px; font-weight: bold;align-items: center; color:white;" >BS in Information Technology</p>
+   <p   style="text-align:center;font-size: 20px; font-weight: bold;align-items: center; color:white;" >4-B</p>
 
+
+
+ </div>
+
+
+
+  <div class="column" style=" width:80%;  ">
+
+
+        
+        
+
+            <div class="column" style="width:80%;display: flex;">
+    <section class="table-body" style=" background-color:transparent; margin-left:20%;">
+        
+        <!-- Your table content here -->
+        <i class='far fa-edit' style="font-size:36px; margin-left: 90%; background-color:white;"></i>
+
+        <table >
+                    <thead style="color:white;">
+                        <tr>
+                            <th> Contact Number </th>
+                            <th> Civil Status </th>
+                            <th> Birthdate</th>
+                            <th> Birthplace</th>
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody style="background-color: #72A50A;">
+                        <tr>
+                            <td> 09090909090 </td>
+                            <td> Single</td>
+                            <td> Secret </td>
+                            <td> Busan, South </td>
+                            
+
+                            <!-- <td>
+                                <p class="status delivered">Delivered</p>
+                            </td>
+                            <td> 
+                                <i class="ri-delete-bin-6-line"></i>
+                            </td> -->
+                        </tr>
+                        
+                 
+                    </tbody>
+                    <thead style="color:white;">
+                        <tr>
+                            <th> Languages: </th>
+                            <!-- <th> Civil Status </th>
+                            <th> Birthdate</th>
+                            <th> Birtplace</th> -->
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody style="background-color: #72A50A;">
+                        <tr>
+                            <td> English </td>
+                            <td> Japanese</td>
+                            <td> Korean </td>
+                            <td> Tagalog </td>
+                            
+
+                            <!-- <td>
+                                <p class="status delivered">Delivered</p>
+                            </td>
+                            <td> 
+                                <i class="ri-delete-bin-6-line"></i>
+                            </td> -->
+                        </tr>
+                        
+                 
+                    </tbody>
+
+                    </tbody>
+                    <thead style="color:white;">
+                        <tr>
+                            <th> Address: </th>
+                            <!-- <th> Civil Status </th>
+                            <th> Birthdate</th>
+                            <th> Birtplace</th> -->
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody style="background-color: #72A50A;">
+                        <tr>
+                            <td> Busan </td>
+                            <td>South</td>
+                            <td> Korea </td>
+                            <td> 44972</td>
+                            
+
+                            <!-- <td>
+                                <p class="status delivered">Delivered</p>
+                            </td>
+                            <td> 
+                                <i class="ri-delete-bin-6-line"></i>
+                            </td> -->
+                        </tr>
+                        
+                 
+                    </tbody>
+                    </tbody>
+                    <thead style="color:white;">
+                        <tr>
+                            <th> Nationality</th>
+                            <!-- <th> Civil Status </th>
+                            <th> Birthdate</th>
+                            <th> Birtplace</th> -->
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody style="background-color: #72A50A;">
+                        <tr>
+                            <td> Korean</td>
+                            <td> </td>
+                            <td>  </td>
+                            <td> </td>
+                            
+
+                            <!-- <td>
+                                <p class="status delivered">Delivered</p>
+                            </td>
+                            <td> 
+                                <i class="ri-delete-bin-6-line"></i>
+                            </td> -->
+                        </tr>
+                        
+                 
+                    </tbody>
+
+
+                </table>
+
+    </section>
+
+
+
+
+    
+</div>
+
+
+
+
+  </div>
+
+
+</div>
 
 
 <br>
@@ -111,21 +298,22 @@ i.fa-sign-out-alt:hover {
 
     <div  >
 
-    <!-- <div class="container" > -->
-        <br>
-        <h2 class="title"></h2>
-        <div >
-            
-            
+
+                        
+
+                    
+    </div>
 
     <div class="container" style="width: 90%; margin-left: 2%;">
-        <div class="left-column">
+        <!-- <div class="left-column">
             <img src="../assets/img/ab.jpg" alt="Logo" class="logo">
-        </div>
+        </div> -->
 
-        
+        <!-- <h1>Name: </h1> -->
 
-       
+                        
+
+                    
     </div>
        
 
@@ -145,15 +333,17 @@ i.fa-sign-out-alt:hover {
                 <!-- <div class="input-group">
                     <input type="search" placeholder="Search...">
                 </div> -->
+
+               
              
             </section>
             <section class="table-body" >
                 <table >
                     <thead>
                         <tr>
-                            <th> No. <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Title of appointment <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Date <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> No. </th>
+                            <th> Title of appointment </th>
+                            <th> Date</th>
                             
                         </tr>
                     </thead>

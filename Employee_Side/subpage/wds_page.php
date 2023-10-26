@@ -190,15 +190,7 @@ session_start();
 </section>
 <br>
 <br>
-    <!-- Footer -->
-    <footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-        </div>
-        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-    </div>
-</footer>
+
     <!-- Script     -->
 <script>
       $(document).ready(function () {
@@ -220,10 +212,11 @@ session_start();
                 for (var i = 0; i < data.length; i++) {
                     var entry = data[i];
                     var status = entry.status;
-
+                    var reason = entry.reason;
                     
                     if(entry.reason ==="Shifting")
                     {
+                        
                         var tableToAppend = tableBody2; // Determine which table to append to
                         var row = $("<tr></tr>");
                     row.append("<td>" + entry.stud_user_id + "</td>");
@@ -240,7 +233,7 @@ session_start();
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
 
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='../forms/Readmission_Slip(ES).php'><button>View</button></a>");
+                    var statusLink = $("<a href='../forms/s.php'><button>View</button></a>");
                     statusCell.append(statusLink);
                     row.append(statusCell);
                     if (status == 'pending') {
@@ -259,7 +252,12 @@ session_start();
                     row.append("<td>" + entry.course + "</td>");
                     row.append("<td>" + entry.Contact_number + "</td>");
                     row.append("<td>" + entry.ParentGuardianNumber + "</td>");
-                    row.append("<td>" + entry.reason + "</td>");
+                    // row.append("<td>" + entry.reason + "</td>");
+                    if (reason == 'Withdrawing Enrollment') {
+                            row.append("<td><p class='status'>Withdrawing</p></td>");
+                        } else if (reason == 'Dropping Subjects') {
+                            row.append("<td><p class='status1'>Dropping</p></td>");
+                        }
 
                     var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
