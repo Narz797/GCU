@@ -115,7 +115,7 @@ $id = $_SESSION['session_id'];
                     <h2 class="title">DAILY ATTENDANCE RATE</h2>
                     
                 </div>
-                <a href="form.php"><button class="list-link">Read More</button></a>
+                
             </div>
         
             <div class="card border one">
