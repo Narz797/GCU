@@ -322,6 +322,7 @@
             width: 80%;
             height: 80%;
         } */
+        
 
 
 
@@ -566,13 +567,10 @@
     border: 1px solid red;
 } */
 
-#textBox {
-        width: 200px; /* Adjust the width as needed */
-        height: 30px; /* Adjust the height as needed */
-        font-size: 16px; /* Adjust the font size as needed */
-        padding: 5px; /* Adjust the padding as needed */
-        border: 1px solid #ccc; /* Adjust the border style as needed */
-        border-radius: 5px; /* Adjust the border radius as needed */
+
+
+    #specifyBoxScholarship input[type="text"] {
+        border-bottom: 1px solid black; /* You can adjust the color and style as needed */
     }
 </style>
 
@@ -892,7 +890,7 @@
                 <h3>Educational Background</h3>
                 <br>
 
-                <div class="check-group">
+                <!-- <div class="check-group">
                     <label>
                         <input type="checkbox" id="senior" name="school_type" onclick="showInput('senior');" />
                         Senior High
@@ -909,10 +907,10 @@
                         <input type="checkbox" id="other" name="school_type" onclick="showInput('other');" />
                         Other School Attended
                     </label>
-                </div>
+                </div> -->
 
 
-                <div class="fields" id="seniorFields" style="display: none;">
+                <!-- <div class="fields" id="seniorFields" style="display: none;">
                     <div>
                         <br>
                         <p style="font-weight: bold;">SENIOR HIGHSCHOOL:</p>
@@ -931,9 +929,9 @@
                         <label>Awards Received</label>
                         <input type="text">
                     </div>
-                </div>
+                </div> -->
 
-                <div class="fields" id="juniorFields" style="display: none;">
+                <!-- <div class="fields" id="juniorFields" style="display: none;">
                     <div>
                         <br>
                         <p style="font-weight: bold;"> JUNIOR HIGHSCHOOL:</p>
@@ -952,49 +950,38 @@
                         <label>Awards Received</label>
                         <input type="text">
                     </div>
-                </div>
+                </div> -->
 
-                <div class="fields" id="elementaryFields" style="display: none;">
-                <div>
-                    <br>
-                    <p style="font-weight: bold;"> ELEMENTARY:</p>
-                </div>
-                <br>
-                <div class="input-field">
-                    <label>Name of the School</label>
-                    <input type="text">
-                </div>
-                <div class="input-field">
-                    <label>Year Graduated</label>
-                    <input type="text">
-                </div>
+                <!-- <div class="input-field1">
+                            <label>Name of the School</label>
+                        
+                            <input style="width:70%;" type="text" id="address" name="address" required>
+                            <br>
+                            <label>Year Graduated</label>
+                            
+                            <input style="width:70%;" type="text" id="address" name="address" required> <br>
+                            <label>Awards Received</label>
+                           
+                            <input style="width:100%; height:50%;" type="text" id="address" name="address" required>
 
-                <div class="input-field2">
-                    <label>Awards Received</label>
-                    <input type="text">
-                </div>
-            </div>
+                        </div> -->
 
-            <div class="fields" id="otherFields" style="display: none;">
-                <div>
-                <br>
-                    <p style="font-weight: bold;"> OTHER SCHOOL ATTENDED:</p>
-                </div>
-                <br>
-                <div class="input-field">
-                    <label >Name of the School</label>
-                    <input type="text" >
-                </div>
-                <div class="input-field">
-                    <label>Year Graduated</label>
-                    <input type="text">
-                </div>
+                 <!-- <form>
+                    SENIOR HIGHSCHOOL
+                   
+                            <label for="education">Name of School:</label>
+                            <input style="width: 100%;padding: 5px;border: 1px solid #ccc; border-radius: 5px;" type="text" id="education" name="education">
 
-                <div class="input-field2">
-                    <label>Awards Received</label>
-                    <input type="text">
-                </div>
-            </div>
+                            <label for="education">Year Graduated:</label>
+                            <input style="width: 100%;padding: 5px;border: 1px solid #ccc; border-radius: 5px;" type="text" id="education" name="education">
+
+                            <label for="education">Awards Received</label>
+                            <input style="width: 100%;padding: 5px;border: 1px solid #ccc; border-radius: 5px;" type="text" id="education" name="education">
+                    
+                </form> -->
+
+
+    
 
                 <br>
 
@@ -1093,12 +1080,11 @@
                             </label>
 
                             <!-- Specify box for Scholarship -->
-                            <div id="specifyBoxScholarship" style="display: none">
+                            <div id="specifyBoxScholarship" style="display: block;">
                             <label for="specifyScholarship">Specify Scholarship:</label>
-                            <input type="text" >
-
-                                
+                            <input type="text">
                             </div>
+
 
                             <!-- Other Checkbox -->
                             <label class="container1">
@@ -1108,10 +1094,9 @@
                             </label>
 
                             <!-- Specify box for Others -->
-                            <div id="specifyBoxOther" style="display: none">
-    Specify: 
-    <input type="text" id="textBox">
-</div>
+                            <div id="specifyBoxOther" style="display: none"> Specify: 
+                            <input type="text" id="textBox">
+                        </div>
 
                     </div>
 
@@ -1247,10 +1232,15 @@
                     </div>
                 
 
-                    <button class="nextBtn" id="nextButton" type="button">
+                    <button class="nextBtn" id="next" type="button">
+                        <span class="btnText">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                        
+                    <!-- <button class="nextBtn" id="nextButton" type="button">
                             <span class="btnText">Submit</span>
                             <i class="uil uil-navigator"></i>
-                        </button>
+                        </button> -->
                       
 
                 </div>
@@ -1260,6 +1250,14 @@
 
         </form>
     </div>
+    <script>
+    const nextButton = document.getElementById("next");
+
+    nextButton.addEventListener("click", () => {
+        window.location.href = "page2.php";
+    });
+</script>
+
 
 
     <script>
@@ -1513,15 +1511,15 @@
 
 
 
-<script>
+<!-- <script>
 function showInput(type) {
-    // Hide all fields
+   
     document.getElementById('seniorFields').style.display = 'none';
     document.getElementById('juniorFields').style.display = 'none';
     document.getElementById('elementaryFields').style.display = 'none';
     document.getElementById('otherFields').style.display = 'none';
 
-    // Show the fields for the selected type
+   
     if (type === 'senior') {
         document.getElementById('seniorFields').style.display = 'block';
     } else if (type === 'junior') {
@@ -1532,7 +1530,7 @@ function showInput(type) {
         document.getElementById('otherFields').style.display = 'block';
     }
 }
-</script>
+</script> -->
 
 <script>
     document.getElementById("yesRadio1").addEventListener("click", function () {
