@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REFERRAL SLIPS</title>
      <!-- Stylesheet -->
-     <link rel="stylesheet" href="slip.css">
+     <link rel="stylesheet" href="../assets/slip.css">
  <!-- Remix icons -->
  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -43,6 +43,8 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
 </head>
 
 <body>
@@ -105,14 +107,14 @@ session_start();
         <section class="table-header">
             <h1>List of Referred Students</h1>
             <div class="input-group">
-                <input type="search" placeholder="Search Data...">
+            <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
             </div>
             <div class="export-file">
                 <label for="export-file" class="export-file-btn" title="Export File"><img src="../assets/images/export.png" alt=""></label>
                 <input type="checkbox" id="export-file">
                 <div class="export-file-options">
                     <label>Export as&nbsp; &#10140;</label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="../assets/images/excel.png" alt=""></label>
+                    <label for="export-file" id="exportToExcel" onclick="exportToExcel()">EXCEL <img src="assets/images/excel.png" alt=""></label>
                 </div>
             </div>
         </section>
@@ -151,6 +153,30 @@ session_start();
 
     <!-- Script     -->
 <script>
+
+function searchTable() { //searches in all column
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dynamicTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                tr[i].style.display = "none"; // Hide all rows initially
+                for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+                    td = tr[i].getElementsByTagName("td")[j];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = ""; // Display the row if any column matches the search criteria
+                            break; // Break out of the inner loop to avoid hiding the row again
+                        }
+                    }
+                }
+            }
+        }
+
+
       $(document).ready(function () {
         $.ajax({
             url: "../../backend/check_transaction.php",
@@ -254,8 +280,36 @@ session_start();
 
         });
     });
+
+        // export to excel
+        function exportToExcel() {
+    const table = document.getElementById("dynamicTable");
+    const rows = table.getElementsByTagName("tr");
+    const data = [];
+
+    // Iterate through the table rows and collect cell values
+    for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        const rowData = [];
+        for (let j = 0; j < cells.length; j++) {
+            rowData.push(cells[j].textContent.trim());
+        }
+        data.push(rowData);
+    }
+
+    // Create a worksheet
+    const worksheet = XLSX.utils.aoa_to_sheet(data);
+
+    // Create a workbook with the worksheet
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Table Data");
+
+    // Export the workbook to an Excel file
+    XLSX.writeFile(workbook, "List of Referred Students.xlsx");
+}
+
 </script>
 <script src="../assets/main.js"></script>
- <script src="assets/js/table.js"></script>   
+  
 </body>
 </html>

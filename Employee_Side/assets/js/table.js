@@ -71,7 +71,7 @@ const search = document.querySelector('.input-group input'),
                 // Initial table population
                 filterData();
 
-                $('#table').DataTable({
+                $('#dynamicTable').DataTable({
                     dom: 'lrtip',
                     buttons: [
                         {
@@ -87,7 +87,7 @@ const search = document.querySelector('.input-group input'),
                             orientation: 'landscape',
                             title: 'Student data',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4]
+                                columns: [0, 1, 2, 3, 4, 5, 6, 7]
                             }
                         },
                         {
