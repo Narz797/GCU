@@ -1,3 +1,22 @@
+<?php
+$servername = "localhost";
+$dbname = "db_gcu";
+$username = "root";
+$password = "";
+
+$conn = new mysqli($servername,$username,$password,$dbname);
+
+
+if ($conn->connect_error){
+    die("Connection failed: ". $conn->connect_error);
+}
+
+$sql = "SELECT * FROM student_user";
+$result = $conn->query($sql);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,21 +127,43 @@
             <table>
                 <thead>
                     <tr>
-                        <th> Student ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Department / College<br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Course Taken <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Guardian Name<br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Student ID # <br></th>
+                        <th> Last Name <br></th>
+                        <th> First Name <br></th>
+                        <th> Middle Name <br></th>
+                        <th> Gender <br></th>
+                        <th> Year Level <br></th>
+                        <th> Department / College<br></th>
+                        <th> Email <br></th>
+                        
                        
                         
                     </tr>
                 </thead>
-                <tbody id="data-table">
                 
+                <tbody>
+                <?php
+                    if ($result->num_rows > 0){
+                        while ($row = $result->fetch_assoc()){
+                            echo "<tr>";
+                            echo"<td>".$row["stud_user_id"]."</td>";
+                            echo"<td>".$row["last_name"]."</td>";
+                            echo"<td>".$row["first_name"]."</td>";
+                            echo"<td>".$row["middle_name"]."</td>";
+                            echo"<td>".$row["gender"]."</td>";
+                            echo"<td>".$row["Year_level"]."</td>";
+                            echo"<td>".$row["course"]."</td>";
+                            echo"<td>".$row["email"]."</td>";
+                        }
+                    }else{
+                        echo "No data available";
+                    }
+                    $conn->close();
+                    ?>
+
+
+                    
+
                  </tbody>
              
             </table>
@@ -143,7 +184,9 @@
     </div>
 </footer>
 <!-- Script     -->
+
+
 <script src="./assets/main.js"></script>
- <script src="assets/js/table.js"></script>   
+ <script src="./assets/js/table.js"></script>
 </body>
 </html>

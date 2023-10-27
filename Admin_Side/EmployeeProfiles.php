@@ -106,13 +106,12 @@
 
        <section class="table-body">
         
-            <div>
-                <button><a href="addemployee.php">Add Employee Account</a></button>
-            </div>
+                <button type=submit><a href="addemployee.php">Add Employee Account</a>
+            
         </section>
 
         <section class="table-body">
-            <table  id="table">
+            
             <table>
                 <thead>
                     <tr>
@@ -129,7 +128,7 @@
                         
                     </tr>
                 </thead>
-                <tbody id="data-table">
+                <tbody>
                   <td>1</td>
                   <td>Castro</td>
                   <td>Liezl</td>
