@@ -310,8 +310,8 @@
     }
 
     /* .left-column img {
-             
-            
+
+
             margin-left: 20%;
             width: 50%;
             -webkit-animation: mover 2s infinite alternate;
@@ -347,7 +347,7 @@
 
     /* .fieldset-column {
             flex: 1;
-            margin-right: 20px; 
+            margin-right: 20px;
         } */
 
     fieldset {
@@ -566,13 +566,19 @@
     border: 1px solid red;
 } */
 
-#textBox {
-        width: 200px; /* Adjust the width as needed */
-        height: 30px; /* Adjust the height as needed */
-        font-size: 16px; /* Adjust the font size as needed */
-        padding: 5px; /* Adjust the padding as needed */
-        border: 1px solid #ccc; /* Adjust the border style as needed */
-        border-radius: 5px; /* Adjust the border radius as needed */
+    #textBox {
+        width: 200px;
+        /* Adjust the width as needed */
+        height: 30px;
+        /* Adjust the height as needed */
+        font-size: 16px;
+        /* Adjust the font size as needed */
+        padding: 5px;
+        /* Adjust the padding as needed */
+        border: 1px solid #ccc;
+        /* Adjust the border style as needed */
+        border-radius: 5px;
+        /* Adjust the border radius as needed */
     }
 </style>
 
@@ -594,11 +600,10 @@
                     <br>
                     <!-- <h2>Personal Details</h2>
             <hr> -->
-
                     <div class="fields">
 
                         <div class="input-field">
-                            <label for="idNumber">ID Number</label>
+                            <label for="idno">ID Number</label>
                             <input type="text" id="idno" name="idno" required>
                         </div>
 
@@ -606,28 +611,55 @@
                             <label>Course</label>
                             <select required id="cs">
                                 <option disabled selected>Select Course</option>
-                                <option>BS IT</option>
-                                <option>BS BIO</option>
-                                <option>Others</option>
+                                <option value='BSAB'>Bachelor of Science in Agribusiness</option>
+                                <option value='BSA'>Bachelor of Science in Agriculture</option>
+                                <option value='BA Comm'>Bachelor of Arts in Communication</option>
+                                <option value='BAEL'>Bachelor of Arts in English Language</option>
+                                <option value='BAFL'>Bachelor of Arts in Filipino Language</option>
+                                <option value='BSABE'>Bachelor of Science in Agriculture and Biosystems Engineering</option>
+                                <option value='BSCE'>Bachelor of Science in Civil Engineering</option>
+                                <option value='BSEE'>Bachelor of Science in Electrical Engineering</option>
+                                <option value='BSIE'>Bachelor of Science in Industrial Engineering</option>
+                                <option value='BSF'>Bachelor of Science in Forestry</option>
+                                <option value='BSET'>Bachelor of Science in Entrepreneurship</option>
+                                <option value='BSFT'>Bachelor of Science in Food Technology</option>
+                                <option value='BSHM'>Bachelor of Science in Hospitality Management</option>
+                                <option value='BSND'>Bachelor of Science in Nutrition and Dietetics</option>
+                                <option value='BSTM'>Bachelor of Science in Tourism Management</option>
+                                <option value='BPeD'>Bachelor of Physical Education</option>
+                                <option value='BSESS'>Bachelor of Science in Exercise and Sports Sciences</option>
+                                <option value='BLIS'>Bachelor in Library and Information Sciences</option>
+                                <option value='BSDC'>Bachelor of Science in Development Communication</option>
+                                <option value='BSIT'>Bachelor of Science in Information Technology</option>
+                                <option value='BS Bio'>Bachelor of Science in Biology</option>
+                                <option value='BS Chem'>Bachelor of Science in Chemistry</option>
+                                <option value='BSES'>Bachelor of Science in Environmental Science</option>
+                                <option value='BS Math'>Bachelor of Science in Mathematics</option>
+                                <option value='BSS'>Bachelor of Science in Statistics</option>
+                                <option value='BSN'>Bachelor of Science in Nursing</option>
+                                <option value='BPA'>Bachelor of Public Administration</option>
+                                <option value='BS Psych'>Bachelor of Science in Psychology</option>
+                                <option value='BECED'>Bachelor of Early Childhood Education</option>
+                                <option value='BEED'>Bachelor of Elementary Education</option>
+                                <option value='BSED'>Bachelor of Secondary Education</option>
+                                <option value='BTLED'>Bachelor of Technology and Livelihood Education</option>
+                                <option value='DVM'>Doctor of Veterinary Medicine</option>
+                                <option value='BA Hist'>Bachelor of Arts in History</option>
                             </select>
                         </div>
-
 
                         <div class="input-field">
                             <label>Year Level</label>
                             <select required id="cs">
                                 <option disabled selected>Select</option>
-                                <option>1 - </option>
-                                <option>2 - </option>
-                                <option>3 - </option>
-                                <option>4 - </option>
-
-                                <option>Others</option>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                                <option value='6'>6</option>
                             </select>
                         </div>
-
-
-
 
                         <div class="input-field">
                             <label>Last Name</label>
@@ -644,8 +676,6 @@
                             <input type="text" id="middlename" name="middlename" required>
                         </div>
 
-
-
                         <div class="input-field">
                             <label>Contact Number</label>
                             <input type="text" id="cn" name="cn" required>
@@ -660,9 +690,10 @@
                             <label>Civil Status</label>
                             <select required id="cs">
                                 <option disabled selected>Select</option>
-                                <option>Single</option>
-                                <option>Married</option>
-                                <option>Others</option>
+                                <option value='single'>Single</option>
+                                <option value='married'>Married</option>
+                                <option value='separated or divorced'>Separated or Divorced</option>
+                                <option value='widowed'>Widowed</option>
                             </select>
                         </div>
 
@@ -920,16 +951,16 @@
                     <br>
                     <div class="input-field">
                         <label>Name of the School</label>
-                        <input type="text">
+                        <input type="text" id="SenSchool" name="SenSchool" required>
                     </div>
                     <div class="input-field">
                         <label>Year Graduated</label>
-                        <input type="text">
+                        <input type="text" type="text" id="SenSchool" name="SenSchool" required>
                     </div>
 
                     <div class="input-field2">
                         <label>Awards Received</label>
-                        <input type="text">
+                        <input type="text" type="text" id="SenSchool" name="SenSchool">
                     </div>
                 </div>
 
@@ -937,6 +968,27 @@
                     <div>
                         <br>
                         <p style="font-weight: bold;"> JUNIOR HIGHSCHOOL:</p>
+                    </div>
+                    <br>
+                    <div class="input-field">
+                        <label>Name of the School</label>
+                        <input type="text" id="JunSchool" name="JunSchool" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Year Graduated</label>
+                        <input type="text" id="JunYear" name="JunYear" required>
+                    </div>
+
+                    <div class="input-field2">
+                        <label>Awards Received</label>
+                        <input type="text" id="JunAward" name="JunAward">
+                    </div>
+                </div>
+
+                <div class="fields" id="elementaryFields" style="display: none;">
+                    <div>
+                        <br>
+                        <p style="font-weight: bold;"> ELEMENTARY:</p>
                     </div>
                     <br>
                     <div class="input-field">
@@ -954,47 +1006,26 @@
                     </div>
                 </div>
 
-                <div class="fields" id="elementaryFields" style="display: none;">
-                <div>
+                <div class="fields" id="otherFields" style="display: none;">
+                    <div>
+                        <br>
+                        <p style="font-weight: bold;"> OTHER SCHOOL ATTENDED:</p>
+                    </div>
                     <br>
-                    <p style="font-weight: bold;"> ELEMENTARY:</p>
-                </div>
-                <br>
-                <div class="input-field">
-                    <label>Name of the School</label>
-                    <input type="text">
-                </div>
-                <div class="input-field">
-                    <label>Year Graduated</label>
-                    <input type="text">
-                </div>
+                    <div class="input-field">
+                        <label>Name of the School</label>
+                        <input type="text">
+                    </div>
+                    <div class="input-field">
+                        <label>Year Graduated</label>
+                        <input type="text">
+                    </div>
 
-                <div class="input-field2">
-                    <label>Awards Received</label>
-                    <input type="text">
+                    <div class="input-field2">
+                        <label>Awards Received</label>
+                        <input type="text">
+                    </div>
                 </div>
-            </div>
-
-            <div class="fields" id="otherFields" style="display: none;">
-                <div>
-                <br>
-                    <p style="font-weight: bold;"> OTHER SCHOOL ATTENDED:</p>
-                </div>
-                <br>
-                <div class="input-field">
-                    <label >Name of the School</label>
-                    <input type="text" >
-                </div>
-                <div class="input-field">
-                    <label>Year Graduated</label>
-                    <input type="text">
-                </div>
-
-                <div class="input-field2">
-                    <label>Awards Received</label>
-                    <input type="text">
-                </div>
-            </div>
 
                 <br>
 
@@ -1006,26 +1037,26 @@
                 <br>
 
                 <p><b>
-                        
 
-                <p>Are you a member of an Indigenous group?</p>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" id="yesRadio1" name="membership" value="yes" />
-                        Yes
-                    </label>
-                    <label>
-                        <input type="radio" id="noRadio1" name="membership" value="no" />
-                        No
-                    </label>
-                </div>
 
-                <div class="underline-input" id="indigenousInput">
-                    <br>
-                    <label for="indigenousInfo">Please specify:</label>
-                    <input type="text" id="indigenousInfo" name="indigenousInfo" style="display: none;">
-                </div>
-                        
+                        <p>Are you a member of an Indigenous group?</p>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" id="yesRadio1" name="membership" value="yes" />
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" id="noRadio1" name="membership" value="no" />
+                                No
+                            </label>
+                        </div>
+
+                        <div class="underline-input" id="indigenousInput">
+                            <br>
+                            <label for="indigenousInfo">Please specify:</label>
+                            <input type="text" id="indigenousInfo" name="indigenousInfo" style="display: none;">
+                        </div>
+
                         <br>
 
                         <p><b>
@@ -1086,32 +1117,32 @@
                         </label>
 
 
-                            <label class="container1">
-                                Scholarship
-                                <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox" onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
-                                <span class="checkmark"></span>
-                            </label>
+                        <label class="container1">
+                            Scholarship
+                            <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox" onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
+                            <span class="checkmark"></span>
+                        </label>
 
-                            <!-- Specify box for Scholarship -->
-                            <div id="specifyBoxScholarship" style="display: none">
+                        <!-- Specify box for Scholarship -->
+                        <div id="specifyBoxScholarship" style="display: none">
                             <label for="specifyScholarship">Specify Scholarship:</label>
-                            <input type="text" >
+                            <input type="text">
 
-                                
-                            </div>
 
-                            <!-- Other Checkbox -->
-                            <label class="container1">
-                                Others:
-                                <input type="checkbox" id="otherCheckbox" onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
-                                <span class="checkmark"></span>
-                            </label>
+                        </div>
 
-                            <!-- Specify box for Others -->
-                            <div id="specifyBoxOther" style="display: none">
-    Specify: 
-    <input type="text" id="textBox">
-</div>
+                        <!-- Other Checkbox -->
+                        <label class="container1">
+                            Others:
+                            <input type="checkbox" id="otherCheckbox" onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
+                            <span class="checkmark"></span>
+                        </label>
+
+                        <!-- Specify box for Others -->
+                        <div id="specifyBoxOther" style="display: none">
+                            Specify:
+                            <input type="text" id="textBox">
+                        </div>
 
                     </div>
 
@@ -1238,24 +1269,24 @@
                     </div>
 
                 </div>
-           
+
 
                 <div class="buttons">
                     <div class="backBtn">
                         <i class="uil uil-navigator"></i>
                         <span class="btnText">Back</span>
                     </div>
-                
+
 
                     <button class="nextBtn" id="nextButton" type="button">
-                            <span class="btnText">Submit</span>
-                            <i class="uil uil-navigator"></i>
-                        </button>
-                      
+                        <span class="btnText">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+
 
                 </div>
 
-                
+
             </div>
 
         </form>
@@ -1369,7 +1400,7 @@
             // Add a click event listener to the "Next" button
             nextButton.addEventListener("click", function(e) {
                 // Check if the form is valid
-                if (form.checkValidity()) 
+                if (form.checkValidity())
             });
         });
     </script>
@@ -1513,51 +1544,51 @@
 
 
 
-<script>
-function showInput(type) {
-    // Hide all fields
-    document.getElementById('seniorFields').style.display = 'none';
-    document.getElementById('juniorFields').style.display = 'none';
-    document.getElementById('elementaryFields').style.display = 'none';
-    document.getElementById('otherFields').style.display = 'none';
+    <script>
+        function showInput(type) {
+            // Hide all fields
+            document.getElementById('seniorFields').style.display = 'none';
+            document.getElementById('juniorFields').style.display = 'none';
+            document.getElementById('elementaryFields').style.display = 'none';
+            document.getElementById('otherFields').style.display = 'none';
 
-    // Show the fields for the selected type
-    if (type === 'senior') {
-        document.getElementById('seniorFields').style.display = 'block';
-    } else if (type === 'junior') {
-        document.getElementById('juniorFields').style.display = 'block';
-    } else if (type === 'elementary') {
-        document.getElementById('elementaryFields').style.display = 'block';
-    } else if (type === 'other') {
-        document.getElementById('otherFields').style.display = 'block';
-    }
-}
-</script>
-
-<script>
-    document.getElementById("yesRadio1").addEventListener("click", function () {
-        document.getElementById("indigenousInfo").style.display = "block";
-        document.querySelector('label[for="indigenousInfo"]').style.display = "block";
-    });
-
-    document.getElementById("noRadio1").addEventListener("click", function () {
-        document.getElementById("indigenousInfo").style.display = "none";
-        document.querySelector('label[for="indigenousInfo"]').style.display = "none";
-    });
-</script>
-
-<script>
-    function toggleSpecifyBox(checkboxId, specifyBoxId) {
-        var checkbox = document.getElementById(checkboxId);
-        var specifyBox = document.getElementById(specifyBoxId);
-
-        if (checkbox.checked) {
-            specifyBox.style.display = "block";
-        } else {
-            specifyBox.style.display = "none";
+            // Show the fields for the selected type
+            if (type === 'senior') {
+                document.getElementById('seniorFields').style.display = 'block';
+            } else if (type === 'junior') {
+                document.getElementById('juniorFields').style.display = 'block';
+            } else if (type === 'elementary') {
+                document.getElementById('elementaryFields').style.display = 'block';
+            } else if (type === 'other') {
+                document.getElementById('otherFields').style.display = 'block';
+            }
         }
-    }
-</script>
+    </script>
+
+    <script>
+        document.getElementById("yesRadio1").addEventListener("click", function() {
+            document.getElementById("indigenousInfo").style.display = "block";
+            document.querySelector('label[for="indigenousInfo"]').style.display = "block";
+        });
+
+        document.getElementById("noRadio1").addEventListener("click", function() {
+            document.getElementById("indigenousInfo").style.display = "none";
+            document.querySelector('label[for="indigenousInfo"]').style.display = "none";
+        });
+    </script>
+
+    <script>
+        function toggleSpecifyBox(checkboxId, specifyBoxId) {
+            var checkbox = document.getElementById(checkboxId);
+            var specifyBox = document.getElementById(specifyBoxId);
+
+            if (checkbox.checked) {
+                specifyBox.style.display = "block";
+            } else {
+                specifyBox.style.display = "none";
+            }
+        }
+    </script>
 
 
 
