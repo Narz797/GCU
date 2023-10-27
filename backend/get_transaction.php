@@ -12,10 +12,18 @@ try {
     $stmt->execute();
 
     $countPending = $stmt->fetch(PDO::FETCH_ASSOC);
+        // WDS
+        $currentDate = date("Y-m-d"); // Get the current date in the format "YYYY-MM-DD"
+        $countPendingSql4 = "SELECT COUNT(*) AS total_pending_WDS FROM transact WHERE DATE(date_created) = :currentDate OR status = 'pending' AND transact_type = 'WDS'";
+        $stmt = $pdo->prepare($countPendingSql4);
+        $stmt->bindParam(':currentDate', $currentDate);
+        $stmt->execute();
+        
+        $countWDS = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // LOA
     $currentDate = date("Y-m-d"); // Get the current date in the format "YYYY-MM-DD"
-    $countPendingSql1 = "SELECT COUNT(*) AS total_pending_LOA FROM transact WHERE DATE(date_created) = :currentDate AND status = 'pending' AND transact_type = 'leave_of_absence'";
+    $countPendingSql1 = "SELECT COUNT(*) AS total_pending_LOA FROM transact WHERE DATE(date_created) = :currentDate OR status = 'pending' AND transact_type = 'leave_of_absence'";
     $stmt = $pdo->prepare($countPendingSql1);
     $stmt->bindParam(':currentDate', $currentDate);
     $stmt->execute();
@@ -24,7 +32,7 @@ try {
 
         // RA
     $currentDate = date("Y-m-d"); // Get the current date in the format "YYYY-MM-DD"
-    $countPendingSql2 = "SELECT COUNT(*) AS total_pending_RA FROM transact WHERE DATE(date_created) = :currentDate AND status = 'pending' AND transact_type = 'readmission'";
+    $countPendingSql2 = "SELECT COUNT(*) AS total_pending_RA FROM transact WHERE DATE(date_created) = :currentDate OR status = 'pending' AND transact_type = 'readmission'";
     $stmt = $pdo->prepare($countPendingSql2);
     $stmt->bindParam(':currentDate', $currentDate);
     $stmt->execute();
@@ -33,26 +41,17 @@ try {
 
         // RS
         $currentDate = date("Y-m-d"); // Get the current date in the format "YYYY-MM-DD"
-        $countPendingSql3 = "SELECT COUNT(*) AS total_pending_RS FROM transact WHERE DATE(date_created) = :currentDate AND status = 'pending' AND transact_type = 'referral'";
+        $countPendingSql3 = "SELECT COUNT(*) AS total_pending_RS FROM transact WHERE DATE(date_created) = :currentDate OR status = 'pending' AND transact_type = 'referral'";
         $stmt = $pdo->prepare($countPendingSql3);
         $stmt->bindParam(':currentDate', $currentDate);
         $stmt->execute();
         
         $countRS = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // WDS
-    $currentDate = date("Y-m-d"); // Get the current date in the format "YYYY-MM-DD"
-    $countPendingSql4 = "SELECT COUNT(*) AS total_pending_WDS FROM transact WHERE DATE(date_created) = :currentDate AND status = 'pending' AND transact_type = 'WDS'";
-    $stmt = $pdo->prepare($countPendingSql4);
-    $stmt->bindParam(':currentDate', $currentDate);
-    $stmt->execute();
-    
-    $countWDS = $stmt->fetch(PDO::FETCH_ASSOC);
-
     
     // SQL query to count appointments for the current date
     $currentDate = date("Y-m-d"); // Get the current date in the format "YYYY-MM-DD"
-    $countAppointmentsSql = "SELECT COUNT(*) AS total_appointments FROM `appointment` WHERE DATE(date) = :currentDate AND `status` = 'pending'";
+    $countAppointmentsSql = "SELECT COUNT(*) AS total_appointments FROM `appointment` WHERE DATE(date) = :currentDate OR `status` = 'pending'";
     $stmt = $pdo->prepare($countAppointmentsSql);
     $stmt->bindParam(':currentDate', $currentDate);
     $stmt->execute();

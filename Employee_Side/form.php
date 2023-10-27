@@ -103,7 +103,7 @@ session_start();
             <hr>
           <div class=" gallery">
             <div class="content1">
-                <img src="./assets/images/formtemp.png">
+                <img src="./assets/images/loa.jpg">
                 <h4>LOA SLIP</h4>
                 <p><span class="num"  id="LOA"></span>
                 <span class="text">pending...</span></p>
@@ -115,7 +115,7 @@ session_start();
                 <button class="buy-1">READ MORE</button></a>
             </div>
             <div class="content1">
-                <img src="./assets/images/formtemp.png">
+                <img src="./assets/images/read.jpg">
                 <h4>READMISSION SLIP</h4>
                 <p><span class="num"  id="RA"></span>
                 <span class="text">pending...</span></p>
@@ -127,7 +127,7 @@ session_start();
                 <button class="buy-1">READ MORE</button></a>
             </div>
             <div class="content1">
-                <img src="./assets/images/formtemp.png">
+                <img src="./assets/images/ref.jpg">
                 <h4>REFERRAL SLIP</h4>
                 <p><span class="num" id="RS"></span>
                 <span class="text">pending...</span></p>
@@ -139,7 +139,7 @@ session_start();
                 <button class="buy-1">READ MORE</button></a>
             </div>
             <div class="content1">
-                <img src="./assets/images/formtemp.png">
+                <img src="./assets/images/wds.jpg">
                 <h4>WDS SLIP</h4>
                 <p><span class="num" id="WDS"></span>
                 <span class="text">pending...</span></p>

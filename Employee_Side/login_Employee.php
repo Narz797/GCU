@@ -70,10 +70,10 @@ $_SESSION['origin'] = 'Employee';
       padding: 5px;
       /* border-radius: 10px; */
     }
-    .logo {
-      /* width: 100px;
-            height: auto; */
-    }
+    /* .logo {
+      width: 100px;
+            height: auto;
+    } */
     @-webkit-keyframes mover {
       0% {
         transform: translateY(0);

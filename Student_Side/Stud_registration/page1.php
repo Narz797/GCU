@@ -1369,7 +1369,7 @@
             // Add a click event listener to the "Next" button
             nextButton.addEventListener("click", function(e) {
                 // Check if the form is valid
-                if (form.checkValidity()) 
+                if (form.checkValidity());
             });
         });
     </script>
