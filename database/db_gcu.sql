@@ -3,11 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2023 at 08:31 AM
+-- Generation Time: Oct 28, 2023 at 09:31 AM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- PHP Version: 8.2.4
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -68,7 +67,7 @@ CREATE TABLE `absence` (
 --
 
 INSERT INTO `absence` (`absence_id`, `transact_id`, `semester`, `start_year`, `end_year`, `reason`, `leave`, `status`) VALUES
-(4, 75, '1', '2022', '2055', 'loa', 'loa', '');
+(4, 75, '1', '2022', '2055', 'loa', 'loa', 'pending');
 
 -- --------------------------------------------------------
 
@@ -98,7 +97,7 @@ INSERT INTO `admin_admin` (`id`, `admin_id`, `uname`, `pass`) VALUES
 
 CREATE TABLE `admin_user` (
   `admin_user_id` int(11) NOT NULL,
-  `first_ name` text NOT NULL,
+  `first_name` text NOT NULL,
   `last_name` text NOT NULL,
   `middle_name` text NOT NULL,
   `gender` text NOT NULL,
@@ -113,7 +112,8 @@ CREATE TABLE `admin_user` (
 -- Dumping data for table `admin_user`
 --
 
-INSERT INTO `admin_user` (`admin_user_id`, `first_ name`, `last_name`, `middle_name`, `gender`, `position`, `date_joined`, `email`, `username`, `password`) VALUES
+INSERT INTO `admin_user` (`admin_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `position`, `date_joined`, `email`, `username`, `password`) VALUES
+(111122, 'Another', 'Me', 'D', 'Male', 'admin', '2013-10-17', 'employee', 'Employee', '$2y$10$vrzb0bq0qR6EeXUQrWzOielCpmRrMiY246zbJrJz/H01go267FBCW'),
 (2002529, 'Narz Josef', 'Taquio', 'L.', 'Male', 'admin', '2013-10-17', 'josefnarz2011@gmail.com', 'Narz', '$2y$10$vrzb0bq0qR6EeXUQrWzOielCpmRrMiY246zbJrJz/H01go267FBCW');
 
 -- --------------------------------------------------------
@@ -127,6 +127,7 @@ CREATE TABLE `appointment` (
   `student_id` int(11) DEFAULT NULL,
   `employee_id` int(11) DEFAULT NULL,
   `transact_id` int(11) NOT NULL,
+  `Reason` varchar(255) DEFAULT NULL,
   `event_title` text DEFAULT NULL,
   `date` date DEFAULT NULL,
   `start_time` time DEFAULT NULL,
@@ -138,8 +139,10 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`appointment_id`, `student_id`, `employee_id`, `transact_id`, `event_title`, `date`, `start_time`, `end_time`, `status`) VALUES
-(38, NULL, 432, 77, 'dgfh', '2023-10-20', '08:00:00', '09:00:00', 'open');
+INSERT INTO `appointment` (`appointment_id`, `student_id`, `employee_id`, `transact_id`, `Reason`, `event_title`, `date`, `start_time`, `end_time`, `status`) VALUES
+(39, NULL, 2002529, 78, NULL, 'asdf', '2023-10-28', '08:00:00', '09:00:00', 'open'),
+(40, NULL, 2002529, 79, NULL, 'another', '2023-10-28', '11:00:00', '12:00:00', 'open'),
+(41, NULL, 111122, 80, NULL, 'ANother from mw', '2023-10-28', '08:00:00', '09:00:00', 'open');
 
 -- --------------------------------------------------------
 
@@ -278,8 +281,9 @@ CREATE TABLE `student_user` (
   `status` int(11) NOT NULL,
   `email` text DEFAULT NULL,
   `Year_level` int(11) NOT NULL,
-  `Contact_number` int(11) NOT NULL,
-  `ParentGuardianNumber` int(11) NOT NULL,
+  `Contact_number` bigint(255) NOT NULL,
+  `ParentGuardianNumber` bigint(255) NOT NULL,
+  `ParentGuardianName` varchar(255) DEFAULT NULL,
   `Civil_status` varchar(255) NOT NULL,
   `Birth_place` varchar(255) NOT NULL,
   `Nationality` varchar(255) NOT NULL,
@@ -299,18 +303,16 @@ CREATE TABLE `student_user` (
 -- Dumping data for table `student_user`
 --
 
-INSERT INTO `student_user` (`stud_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `year_enrolled`, `course`, `birth_date`, `status`, `email`, `Year_level`, `Contact_number`, `ParentGuardianNumber`, `Civil_status`, `Birth_place`, `Nationality`, `Languages_and_dialects`, `Address`, `Whom_do_you_live`, `IG`, `PWD`, `Student_parent`, `Financial_support`, `Marital_status_of_parents`, `username`, `password`) VALUES
-(111, 'John', 'Doe', 'D', 'Male', '2020', 'BLIS', '2023-08-15', 1, 'user2@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'user2', '$2y$10$SczVZE3o64M8ZhuB1.NtG.AEY38qQFypzZ/FCW2m1sHyIR0eVEeSO'),
-(112, 'Jane', 'D.', 'Doe', 'Female', '2019', 'BSDC', '2023-08-21', 1, 'user3@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'user3', '$2y$10$jU4Y./C62dj97yonb5Wk7u02Spu3cnzv5sjNJXBj.8U1M77T7ScOy'),
-(114, 'Josh', 'Kun', 'S', 'Male', '2020', 'BSIT', '2023-08-11', 0, 'user4@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'user4', '$2y$10$4c3P3QQ2hUkIu8hffGl0ZewQB3ZHzfu1uNV76W9fiy/A/IhELhD5q'),
-(115, 'Shinomiya', 'Kaguya', 'S', 'Female', '2019', 'BSDC', '2023-08-11', 0, 'user5@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'user4', '$2y$10$Bc5xD1fwgVaDhyfodnoRpeWEqq3wys7oO1rEXODkS6bLBFxwxkPH.'),
-(116, 'Miyuki', 'Shirogane', 'S.', 'Male', '2019', 'BSIT', '2023-08-18', 0, 'user6@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'user6', '$2y$10$ijDxvfz1Nwj/W71jek9d1Oi/E3glb8U/HAqoCq9vqCHPwp3/BraT2'),
-(117, 'Luffy', 'Monkey', 'D', 'Male', '2020', 'BLIS', '2023-08-18', 0, 'user7@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'user7', '$2y$10$tu1lLwa.V8I728aNkNnpbuwdBckqpv46jpwAPJpVkwDDdPvqIQYmC'),
-(118, 'test8', 'test', 't', 'Female', '2020', 'qwer', '2023-08-17', 0, 'user8@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'user8', '$2y$10$RKW1IMlG82XCHHjAevPL0e.YPsPzqFv6ibl70MIvXTheK90sQtf0a'),
-(432, 'Narz Josef', 'Taquio', 'L.', 'Male', '2020', 'BSIT', '0000-00-00', 0, 'josefnarz2011@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'Narz', '$2y$10$Qsu.qwvkZ1ProVhvKXzCceopW3769HusjdHNfgzrouJH43BH0jISy'),
-(6543, 'test', 'test', 't', 'Male', '2005', 'BSIT', '2023-08-23', 0, 'narz@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'student2', 'pass2'),
-(2001518, 'Jonray', 'Tacudog', 'Bernard', 'Male', NULL, NULL, NULL, 0, 'tacudog.jonray@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'spellarj', '12345'),
-(2002529, 'asdfasd', 'asdfasd', 'f', 'Female', '2020', 'BSIT', '2023-09-07', 0, 'jo@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 'zzz', 'pass');
+INSERT INTO `student_user` (`stud_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `year_enrolled`, `course`, `birth_date`, `status`, `email`, `Year_level`, `Contact_number`, `ParentGuardianNumber`, `ParentGuardianName`, `Civil_status`, `Birth_place`, `Nationality`, `Languages_and_dialects`, `Address`, `Whom_do_you_live`, `IG`, `PWD`, `Student_parent`, `Financial_support`, `Marital_status_of_parents`, `username`, `password`) VALUES
+(111, 'John', 'Doe', 'D', 'Male', '2020', 'BLIS', '2023-08-15', 1, 'user2@gmail.com', 2, 9898989898, 9998787678, 'Me', 'Single', 'Baguio City', 'Filipino', 'English', 'Baguio', 'asdfasdf', 'asdfasdf', 'asdfasd', 'fdsa', 'fdsa', 'asdf', 'user2', '$2y$10$SczVZE3o64M8ZhuB1.NtG.AEY38qQFypzZ/FCW2m1sHyIR0eVEeSO'),
+(112, 'Jane', 'D.', 'Doe', 'Female', '2019', 'BSDC', '2023-08-21', 1, 'user3@gmail.com', 4, 9989789878, 9998987867, 'Me', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'user3', '$2y$10$jU4Y./C62dj97yonb5Wk7u02Spu3cnzv5sjNJXBj.8U1M77T7ScOy'),
+(114, 'Josh', 'Kun', 'S', 'Male', '2020', 'BSIT', '2023-08-11', 0, 'user4@gmail.com', 1, 9898989898, 9999999999, 'Me', 'tyui', 'tyui', 'tyui', 'jhgf', 'jhgf', 'fghj', 'fghj', 'fghj', 'fghj', 'nbvc', 'sdfg', 'user4', '$2y$10$4c3P3QQ2hUkIu8hffGl0ZewQB3ZHzfu1uNV76W9fiy/A/IhELhD5q'),
+(115, 'Shinomiya', 'Kaguya', 'S', 'Female', '2019', 'BSDC', '2023-08-11', 0, 'user5@gmail.com', 3, 9899098909, 9889787898, 'Me', 'sdfg', 'asdf', 'vcxz', 'xzcv', 'fdsa', 'fdsa', 'asdf', 'asdf', 'rqwe', 'fdsa', 'qwer', 'user4', '$2y$10$Bc5xD1fwgVaDhyfodnoRpeWEqq3wys7oO1rEXODkS6bLBFxwxkPH.'),
+(116, 'Miyuki', 'Shirogane', 'S.', 'Male', '2019', 'BSIT', '2023-08-18', 0, 'user6@gmail.com', 3, 9898989898, 9999999999, 'Me', 'fghdfgh', 'hgfsd', 'dfgh', 'dfgh', 'gfds', 'gfds', 'sdfg', 'sdfg', 'sdfg', 'sdfg', 'sdfg', 'user6', '$2y$10$ijDxvfz1Nwj/W71jek9d1Oi/E3glb8U/HAqoCq9vqCHPwp3/BraT2'),
+(117, 'Luffy', 'Monkey', 'D', 'Male', '2020', 'BLIS', '2023-08-18', 0, 'user7@gmail.com', 4, 9989098909, 9899098909, 'Me', 'sdfg', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'vcxz', 'vcxz', 'sdfg', 'sdfg', 'fdsa', 'user7', ''),
+(432, 'Narz Josef', 'Taquio', 'L.', 'Male', '2020', 'BSIT', '0000-00-00', 0, 'josefnarz2011@gmail.com', 1, 2343234323, 4323432344, 'Me', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'fdsa', 'fdsa', 'asdf', 'asdf', 'asdf', 'Narz', '$2y$10$Qsu.qwvkZ1ProVhvKXzCceopW3769HusjdHNfgzrouJH43BH0jISy'),
+(6543, 'test', 'test', 't', 'Male', '2005', 'BSIT', '2023-08-23', 0, 'narz@gmail.com', 4, 34323432343, 23432343234, 'Me', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'student2', 'pass2'),
+(2002529, 'asdfasd', 'asdfasd', 'f', 'Female', '2020', 'BSIT', '2023-09-07', 0, 'jo@gmail.com', 2, 3432343234, 3432343234, 'Me', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'fdsa', 'fdsa', 'asdf', 'zzz', 'pass');
 
 -- --------------------------------------------------------
 
@@ -339,8 +341,9 @@ INSERT INTO `transact` (`transact_id`, `student_id`, `employee_id`, `transact_ty
 (73, 432, NULL, 'WDS', '2023-10-20 05:50:17', NULL, 'pending'),
 (74, 432, NULL, 'referral', '2023-10-20 05:50:28', NULL, 'pending'),
 (75, 432, NULL, 'leave_of_absence', '2023-10-20 05:50:49', NULL, 'pending'),
-(76, NULL, 432, 'appointment', '2023-10-20 05:51:23', NULL, 'open'),
-(77, NULL, 432, 'appointment', '2023-10-20 05:52:40', NULL, 'open');
+(78, NULL, 2002529, 'appointment', '2023-10-28 06:16:22', NULL, 'open'),
+(79, NULL, 2002529, 'appointment', '2023-10-28 09:21:31', NULL, 'open'),
+(80, NULL, 111122, 'appointment', '2023-10-28 09:23:51', NULL, 'open');
 
 -- --------------------------------------------------------
 
@@ -473,7 +476,7 @@ ALTER TABLE `admin_admin`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -503,7 +506,7 @@ ALTER TABLE `siblings`
 -- AUTO_INCREMENT for table `transact`
 --
 ALTER TABLE `transact`
-  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `withdrawal`
@@ -533,7 +536,6 @@ ALTER TABLE `siblings`
 --
 ALTER TABLE `transact`
   ADD CONSTRAINT `transact_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student_user` (`stud_user_id`);
-SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
