@@ -25,6 +25,7 @@
     <link rel="icon" href="assets/images/GCU_logo.png">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   
 </head>
 <body>
@@ -218,9 +219,23 @@
             <section class="table-body">
                 <table id="dynamicTable">
                     <thead>
-                      
+                        <tr>
+                            <th> Id <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Student <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> College <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Course <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Contact <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Date of Appointment<br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Time of Appointment<br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Reason<br> <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Action<br><span class="icon-arrow">&UpArrow;</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
                     </tbody>
                 </table>
+                <p id="noHistoryMessage2">Empty</p>
             </section>
             </main>
             </div>
@@ -281,84 +296,61 @@ function searchTable() { //searches in all column
     XLSX.utils.book_append_sheet(workbook, worksheet, "Table Data");
 
     // Export the workbook to an Excel file
-    XLSX.writeFile(workbook, "Lists of Students.xlsx");
+    XLSX.writeFile(workbook, "List of All Requested Appointments.xlsx");
 }
 
-// $(document).ready(function() {
-//             // Fetch data using $.ajax
-//             $.ajax({
-//                 url: '../backend/search_student.php',
-//                 type: 'GET',
-//                 dataType: 'json',
-//                 success: function(data) {
-//                     const table = document.getElementById('data-table');
-//                     const searchInput = document.getElementById('searchInput');
-//                     const genderImageMap = {
-//                     'male': './assets/images/male.jpg',
-//                     'female': './assets/images/female.jpg'
-//                 };
-                    
-//                 console.log(data);
-//                 // if (data.status===0){
-//                 var tableBody = $("#dynamicTable tbody");
-//                 var historyTableBody = $("#historyTableBody tbody");
-//                 var noHistoryMessage1 = $("#noHistoryMessage1"); 
-//                 var noHistoryMessage2 = $("#noHistoryMessage2"); 
+$(document).ready(function () {
+        $.ajax({
+            url: "../backend/taken_slot.php",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                // if (data.status===0){
+                var tableBody = $("#dynamicTable tbody");
+                var historyTableBody = $("#historyTableBody tbody");
+                var noHistoryMessage2 = $("#noHistoryMessage2"); 
  
-//                 for (var i = 0; i < data.length; i++) {
+                for (var i = 0; i < data.length; i++) {
                     
-//                     var entry = data[i];
-//                     var status = entry.status;
-//                     var tableToAppend = tableBody; 
-//                     // Determine which table to append to
-//                     // Create an image element based on gender
-//                     const image = document.createElement('img');
-//                     image.style.display = 'block'; // Display the image above the text
-//                             if (entry.gender === 'Male') {
-//                                 image.src = genderImageMap['male'];
-//                             } else if (entry.gender === 'Female') {
-//                                 image.src = genderImageMap['female'];
-//                     }
-//                     var row = $("<tr></tr>");
-//                     var cell = $("<td></td>");
-//                     cell.append(image); // Append the image to the table cell
-//                     cell.append("</br>" + entry.stud_user_id);
-//                     row.append(cell);
-//                     row.append("<td>" + entry.last_name + "</td>");
-//                     row.append("<td>" + entry.first_name +"</td>");
-//                     row.append("<td>" + entry.Year_level +"</td>");
-//                     row.append("<td>" + entry.Colleges + "</td>");
-//                     row.append("<td>" + entry.course + "</td>");
-//                     row.append("<td>" + entry.Contact_number + "</td>");
-//                     row.append("<td>" + entry.ParentGuardianNumber + "</td>");
-//                     row.append("<td>" + entry.ParentGuardianName + "</td>");
-//                     var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
-//                     var statusText = status == 'pending' ? 'Unread' : 'Read';
-//                     var statusCell = $("<td></td>");
-//                     var statusLink = $("<a href='subpage/pfp_page.php'><button>View</button></a>");
-//                     statusCell.append(statusLink);
-//                     row.append(statusCell);
-//                     tableBody.append(row);
-            
-                    
-//                  }
-//                  console.log("data",data);
-//                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
-//                     if (dynamicTableRowCount1 > 0) {
-//                     noHistoryMessage1.hide(); // Hide the no history message if there is data
-//                     } else {
-//                         noHistoryMessage1.show(); // Show the no history message if no data
-//                     }
-//                     // Initial table population
-//                     // filterData();
-//                 },
-//                 error: function(xhr, status, error) {
-//                     console.error('Error fetching data:', error);
-//                 }
-//             });
-//         });
+                    var entry = data[i];
+                    var status = entry.status;
+                    var tableToAppend = tableBody; // Determine which table to append to
+                    var row = $("<tr></tr>");
+                    row.append("<td>" + entry.student_id + "</td>");
+                    row.append("<td>" + entry.first_name + "" + entry.last_name +"</td>");
+                    row.append("<td>" + entry.Colleges + "</td>");
+                    row.append("<td>" + entry.course + "</td>");
+                    row.append("<td>" + entry.Contact_number + "</td>");
+                    row.append("<td>" + entry.date + "</td>");
+                    row.append("<td>" + entry.start_time + " - "+ entry.end_time + "</td>");
+                    row.append("<td>" + entry.Reason + "</td>");
+                    var statusCell = $("<td></td>");
+                    var statusLink = $("<a href='#'><button>View</button></a>");
+                    statusCell.append(statusLink);
+                    row.append(statusCell)
+                    tableBody.append(row);
+                    // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
+                 }
+                 console.log("data",data);
+                var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
+                    if (dynamicTableRowCount1 > 0) {
+                    noHistoryMessage2.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage2.show(); // Show the no history message if no data
+                    }
+        },
+        error: function (xhr, status, error) {
+    console.error("AJAX Error:");
+    console.error("Status: " + status);
+    console.error("Error: " + error);
+    console.error("Response Text: " + xhr.responseText);
+}
+        });
+    
+    });
 
-        
+
 </script>
 <script src="assets/main.js"></script>   
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

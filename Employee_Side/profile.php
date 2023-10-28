@@ -26,7 +26,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -233,8 +233,8 @@ session_start();
                     row.append("<td>" + entry.Contact_number + "</td>");
                     row.append("<td>" + entry.ParentGuardianNumber + "</td>");
                     row.append("<td>" + entry.ParentGuardianName + "</td>");
-                    var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
-                    var statusText = status == 'pending' ? 'Unread' : 'Read';
+                    // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
+                    // var statusText = status == 'pending' ? 'Unread' : 'Read';
                     var statusCell = $("<td></td>");
                     var statusLink = $("<a href='subpage/pfp_page.php'><button>View</button></a>");
                     statusCell.append(statusLink);
@@ -321,7 +321,19 @@ function exportToPDF() {
     doc.save('Lists of Students.pdf');
 }
 
+        //moving arrow
 
+        table_headings.forEach((head, i) => {
+    let sort_asc = true;
+    head.onclick = () => {
+
+
+        head.classList.toggle('asc', sort_asc);
+        sort_asc = head.classList.contains('asc') ? false : true;
+
+        sortTable(i, sort_asc);
+    }
+})
     </script>
 <script src="./assets/main.js"></script>
  <!-- <script src="assets/js/table.js"></script>    -->

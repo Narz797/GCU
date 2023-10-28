@@ -26,7 +26,7 @@ try {
                     appointment
                 INNER JOIN 
                     admin_user ON appointment.employee_id = admin_user.admin_user_id
-              WHERE YEAR(`date`) = :year AND MONTH(`date`) = :month AND DAY(`date`) = :date;";
+              WHERE YEAR(`date`) = :year AND MONTH(`date`) = :month AND DAY(`date`) = :date AND appointment.status = 'open';";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':year', $year, PDO::PARAM_INT);

@@ -246,7 +246,9 @@ function getAvailability(year, month, date) {
             year: year,
             title: event.event_title,
             time: `${event.start_time} - ${event.end_time}`,
-            counselor: event.first_name
+            counselor: event.first_name,
+            appointmentId: event.appointment_id 
+            
           });
         });
         // Use the events data to update the UI
@@ -269,7 +271,7 @@ function updateEvents(year, month, date, events) {
 
   if (Array.isArray(events) && events.length > 0) {
     events.forEach((event) => {
-      eventsHTML += `<div class="event">
+      eventsHTML += `<div class="event" data-appointment-id="${event.appointmentId}">
         <div class="title">
           <i class="fas fa-circle"></i>
           <h3 class="event-title">${event.title}</h3>
@@ -310,17 +312,41 @@ eventsContainer.addEventListener("click", function (e) {
   const clickedEvent = e.target.closest(".event");
   if (clickedEvent) {
     // Get the event data associated with the clicked event
-    const eventTitle = clickedEvent.querySelector(".event-title").textContent;
-    const counselor = clickedEvent.querySelector(".event-time span").textContent;
-    const eventTime = clickedEvent.querySelectorAll(".event-time")[1].textContent;
+    // const eventTitle = clickedEvent.querySelector(".event-title").textContent;
+    // const counselor = clickedEvent.querySelector(".event-time span").textContent;
+    // const eventTime = clickedEvent.querySelectorAll(".event-time")[1].textContent;
+
+    // Get the appointmentId from the clicked event's data attribute
+    const appointmentId = clickedEvent.dataset.appointmentId;//gets value of appointment id from function updateEvents()
 
     // Construct the message to display
-    const eventData = `Event: ${eventTitle}\nCounselor: ${counselor}\nTime: ${eventTime}`;
+    // const eventData = `Event: ${eventTitle}\nCounselor: ${counselor}\nTime: ${eventTime}\nAppointment ID: ${appointmentId}`;
+    if (window.confirm("Do you want to proceed?")) {
+    $.ajax({
+      type: 'POST',
+      url: '../backend/get_slot.php',
+      data: {
+        event_id: appointmentId,
+      },
+      success: function (data) {
+        console.log("slot taken:", data);
+        alert("Slot taken for: ",appointmentId);
+        refreshEvents();
+      },
+      error: function (xhr, status, error) {
+        console.error("Error marking event as done:", error);
+        alert("Error in taking slot: " + error);
+      },
+    });
 
+  }
     // Display the event data in an alert
-    alert(eventData);
+    
+
+
   }
 });
+
 
 
 

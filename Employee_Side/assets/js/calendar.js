@@ -463,7 +463,7 @@ addEventSubmit.addEventListener("click", () => {
       addEventFrom.value = "";
       addEventTo.value = "";
       refreshEvents();
-      location.reload();
+      // location.reload();
     }
   });
 });

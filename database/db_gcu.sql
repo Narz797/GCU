@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2023 at 09:31 AM
+-- Generation Time: Oct 28, 2023 at 12:04 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -140,8 +140,8 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`appointment_id`, `student_id`, `employee_id`, `transact_id`, `Reason`, `event_title`, `date`, `start_time`, `end_time`, `status`) VALUES
-(39, NULL, 2002529, 78, NULL, 'asdf', '2023-10-28', '08:00:00', '09:00:00', 'open'),
-(40, NULL, 2002529, 79, NULL, 'another', '2023-10-28', '11:00:00', '12:00:00', 'open'),
+(39, 432, 2002529, 78, NULL, 'asdf', '2023-10-28', '08:00:00', '09:00:00', 'taken'),
+(40, 432, 2002529, 79, NULL, 'another', '2023-10-28', '11:00:00', '12:00:00', 'taken'),
 (41, NULL, 111122, 80, NULL, 'ANother from mw', '2023-10-28', '08:00:00', '09:00:00', 'open');
 
 -- --------------------------------------------------------
