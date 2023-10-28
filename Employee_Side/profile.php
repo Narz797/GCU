@@ -185,7 +185,10 @@ session_start();
     function logout() {
     window.location.href = '../home?logout=true';
 }
-        $(document).ready(function() {
+
+
+
+ $(document).ready(function() {
             // Fetch data using $.ajax
             $.ajax({
                 url: '../backend/search_student.php',
@@ -252,10 +255,31 @@ session_start();
                     }
                     // Initial table population
                     // filterData();
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching data:', error);
+
+                    // Add Sorting Event Listeners
+                const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
+                const tableHeadings = document.querySelectorAll('#dynamicTable th');
+                tableHeadings.forEach((head, i) => {
+                    let sort_asc = true;
+                    head.onclick = () => {
+                        head.classList.toggle('asc', sort_asc);
+                        sort_asc = head.classList.contains('asc') ? false : true;
+                        sortTable(i, sort_asc);
+                    };
+                });
+                    // Sorting Function
+                function sortTable(column, sort_asc) {
+                    [...table_rows].sort((a, b) => {
+                        let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase();
+                        let second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                        return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+                    })
+                    .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
                 }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching data:', error);
+            }
             });
         });
 
@@ -321,19 +345,8 @@ function exportToPDF() {
     doc.save('Lists of Students.pdf');
 }
 
-        //moving arrow
+    //moving arrow
 
-        table_headings.forEach((head, i) => {
-    let sort_asc = true;
-    head.onclick = () => {
-
-
-        head.classList.toggle('asc', sort_asc);
-        sort_asc = head.classList.contains('asc') ? false : true;
-
-        sortTable(i, sort_asc);
-    }
-})
     </script>
 <script src="./assets/main.js"></script>
  <!-- <script src="assets/js/table.js"></script>    -->

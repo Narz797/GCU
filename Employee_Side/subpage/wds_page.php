@@ -75,7 +75,7 @@ session_start();
                 <i class="ri-sun-line theme-light-icon"></i>
                 <i class="ri-moon-line theme-dark-icon"></i>
             </button>
-            <button class="icon-btn place-items-center">
+            <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
         </div>
@@ -195,7 +195,9 @@ session_start();
 
     <!-- Script     -->
 <script>
-
+    function logout() {
+    window.location.href = '../../home?logout=true';
+}
 function searchTable(tableId, inputId) {
     const input = document.getElementById(inputId);
     const filter = input.value.toUpperCase();
@@ -285,6 +287,27 @@ function exportToExcel(tableId) {
                      } else if (status == 'recieved') {
                          historyTableBody.append(row); // Append row to history table body
                      }
+                     
+                    // Add Sorting Event Listeners
+                const table_rows2 = document.querySelectorAll('#dynamicTable2 tbody tr');
+                const tableHeadings2 = document.querySelectorAll('#dynamicTable2 th');
+                tableHeadings2.forEach((head, i) => {
+                    let sort_asc = true;
+                    head.onclick = () => {
+                        head.classList.toggle('asc', sort_asc);
+                        sort_asc = head.classList.contains('asc') ? false : true;
+                        sortTable(i, sort_asc);
+                    };
+                });
+                    // Sorting Function
+                function sortTable(column, sort_asc) {
+                    [...table_rows2].sort((a, b) => {
+                        let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase();
+                        let second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                        return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+                    })
+                    .map(sorted_row => document.querySelector('#dynamicTable2 tbody').appendChild(sorted_row));
+                }
 
                     }else{
                         var tableToAppend = tableBody; // Determine which table to append to
@@ -317,14 +340,27 @@ function exportToExcel(tableId) {
                          historyTableBody.append(row); // Append row to history table body
                      }
                     
+                    // Add Sorting Event Listeners
+                const table_rows = document.querySelectorAll('#dynamicTable1 tbody tr');
+                const tableHeadings = document.querySelectorAll('#dynamicTable1 th');
+                tableHeadings.forEach((head, i) => {
+                    let sort_asc = true;
+                    head.onclick = () => {
+                        head.classList.toggle('asc', sort_asc);
+                        sort_asc = head.classList.contains('asc') ? false : true;
+                        sortTable(i, sort_asc);
+                    };
+                });
+                    // Sorting Function
+                function sortTable(column, sort_asc) {
+                    [...table_rows].sort((a, b) => {
+                        let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase();
+                        let second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                        return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+                    })
+                    .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+                }
                     }
-
-                    
-                    // if (status == 'pending') {
-                        
-                    // } else if (status == 'recieved') {
-                    //     historyTableBody.append(row); // Append row to history table body
-                    // }
 
                  }
 
