@@ -9,7 +9,8 @@ session_start();
     
     exit; // Make sure to exit the script after a header redirect
   }
-  
+// Retrieve stud_id from the session
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -353,7 +354,12 @@ titled: edit_design.php-->
         </div>
     </section>
     <!-- Footer -->
+<?php 
+// Retrieve stud_id from the session
+$student = $_SESSION['stud_user_id'];
 
+echo "<script>alert('$student')</script>";
+?>
     <!-- Script -->
     <script>
             function logout() {

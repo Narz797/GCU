@@ -249,7 +249,8 @@ session_start();
                     // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     // var statusText = status == 'pending' ? 'Unread' : 'Read';
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='subpage/pfp_page.php'><button>View</button></a>");
+                    var statusLink = $("<button onclick='view_student(" + entry.stud_user_id + ")'>View</button>");
+
                     statusCell.append(statusLink);
                     row.append(statusCell);
                     tableBody.append(row);
@@ -291,7 +292,26 @@ session_start();
                 console.error('Error fetching data:', error);
             }
             });
+
+            
         });
+
+        function view_student(stud_id) {
+            alert(stud_id);
+
+            // Send stud_id to the server using an AJAX request
+            $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../backend/set_session_variable.php',  // PHP script that sets the session variable
+                data: { stud_user_id: stud_id },
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = 'subpage/pfp_page.php';
+                }
+            });
+        }
+
 
         
 // export to excel
