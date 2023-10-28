@@ -1,3 +1,16 @@
+<?php
+session_start();
+// include '../backend/validate_user.php';
+// include '../backend/connect_database.php';
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +58,7 @@
                 <i class="ri-sun-line theme-light-icon"></i>
                 <i class="ri-moon-line theme-dark-icon"></i>
             </button>
-            <button class="icon-btn place-items-center">
+            <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
         </div>
@@ -184,6 +197,10 @@
 
     <!-- Script     -->
 <script src="../assets/main.js"></script>
-<script src="../assets/js/table.js"></script>   
+<script>
+        function logout() {
+    window.location.href = '../../home?logout=true';
+}
+</script>   
 </body>
 </html>

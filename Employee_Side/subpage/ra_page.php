@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <?php
 session_start();
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
+  
     $_SESSION['form_type']='readmission';//
 ?>
 <html lang="en">
@@ -75,7 +83,7 @@ session_start();
                 <i class="ri-sun-line theme-light-icon"></i>
                 <i class="ri-moon-line theme-dark-icon"></i>
             </button>
-            <button class="icon-btn place-items-center">
+            <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
         </div>
@@ -151,7 +159,9 @@ session_start();
 
     <!-- Script     -->
 <script>
-
+    function logout() {
+    window.location.href = '../../home?logout=true';
+}
 function searchTable() { //searches in all column
             var input, filter, table, tr, td, i, j, txtValue;
             input = document.getElementById("searchInput");

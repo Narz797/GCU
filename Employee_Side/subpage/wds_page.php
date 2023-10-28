@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <?php
 session_start();
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
+  
     $_SESSION['form_type']='withdrawal';//
 ?>
 <html lang="en">
