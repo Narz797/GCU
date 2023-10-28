@@ -155,12 +155,12 @@ session_start();
             <div class="input-group">
                 <input type="search" id="searchInput2" placeholder="Search Table 2..." onkeyup="searchTable('dynamicTable2', 'searchInput2')">
             </div>
-            <div class="export-file">
-                <label for="export-file" class="export-file-btn" title="Export File"><img src="../assets/images/export.png" alt=""></label>
-                <input type="checkbox" id="export-file">
-                <div class="export-file-options">
+            <div class="export-file2">
+                <label for="export-file2" class="export-file-btn2" title="Export File"><img src="../assets/images/export.png" alt=""></label>
+                <input type="checkbox" id="export-file2">
+                <div class="export-file-options2">
                     <label>Export as&nbsp; &#10140;</label>
-                    <label for="export-file" id="exportToExcel2" onclick="exportToExcel('dynamicTable2')">EXCEL <img src="../assets/images/excel.png" alt=""></label>
+                    <label for="export-file2" id="exportToExcel2" onclick="exportToExcel('dynamicTable2')">EXCEL <img src="../assets/images/excel.png" alt=""></label>
                 </div>
             </div>
         </section>

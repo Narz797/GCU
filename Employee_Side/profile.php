@@ -30,10 +30,18 @@ session_start();
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
+
+
+
+
+
+
 </head>
 <style>
     </style>
@@ -102,7 +110,7 @@ session_start();
         <section class="table-header">
             <h1>List of Students</h1>
             <div class="input-group">
-                <input type="text" id="searchInput" placeholder="Search Data...">
+                 <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
                 
             </div>
             <div class="export-file">
@@ -110,14 +118,15 @@ session_start();
                 <input type="checkbox" id="export-file">
                 <div class="export-file-options">
                     <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
+                    <label for="export-file" id="exportToExcel" onclick="exportToExcel()">EXCEL <img src="assets/images/excel.png" alt=""></label>
+                    <label for="export-file" id="exportToPDF" onclick="exportToPDF()">PDF <img src="assets/images/pdf.png" alt=""></label>
+
                 </div>
             </div>
         </section>
        
         <section class="table-body" >
-            <table  id="table" >
+
             <table id="dynamicTable">
                 <thead>
                     <tr>
@@ -145,9 +154,34 @@ session_start();
     </div>
 </section>
 <br>
+<script src="../backend/jsPDF-1.3.2/dist/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
+
 
 <!-- Script     -->
 <script>
+            function searchTable() { //searches in all column
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dynamicTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                tr[i].style.display = "none"; // Hide all rows initially
+                for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+                    td = tr[i].getElementsByTagName("td")[j];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = ""; // Display the row if any column matches the search criteria
+                            break; // Break out of the inner loop to avoid hiding the row again
+                        }
+                    }
+                }
+            }
+        }
     function logout() {
     window.location.href = '../home?logout=true';
 }
@@ -224,6 +258,70 @@ session_start();
                 }
             });
         });
+
+        
+// export to excel
+    function exportToExcel() {
+    const table = document.getElementById("dynamicTable");
+    const rows = table.getElementsByTagName("tr");
+    const data = [];
+
+    // Iterate through the table rows and collect cell values
+    for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        const rowData = [];
+        for (let j = 0; j < cells.length; j++) {
+            rowData.push(cells[j].textContent.trim());
+        }
+        data.push(rowData);
+    }
+
+    // Create a worksheet
+    const worksheet = XLSX.utils.aoa_to_sheet(data);
+
+    // Create a workbook with the worksheet
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Table Data");
+
+    // Export the workbook to an Excel file
+    XLSX.writeFile(workbook, "Lists of Students.xlsx");
+}
+
+//export to pdf
+function exportToPDF() {
+    const doc = new jsPDF();
+    const table = document.getElementById('dynamicTable');
+    
+    const columns = [];
+    const rows = [];
+    
+    const headerRow = table.rows[0];
+    for (let i = 0; i < headerRow.cells.length; i++) {
+        columns.push(headerRow.cells[i].textContent.trim());
+    }
+    
+    for (let i = 1; i < table.rows.length; i++) {
+        const row = [];
+        const currentRow = table.rows[i];
+        for (let j = 0; j < currentRow.cells.length; j++) {
+            row.push(currentRow.cells[j].textContent.trim());
+        }
+        rows.push(row);
+    }
+    
+    const tableConfig = {
+        head: [columns],
+        body: rows,
+    };
+    
+    // Create the PDF using jsPDF-AutoTable
+    doc.autoTable(tableConfig);
+
+    // Save the PDF to a file
+    doc.save('Lists of Students.pdf');
+}
+
+
     </script>
 <script src="./assets/main.js"></script>
  <!-- <script src="assets/js/table.js"></script>    -->

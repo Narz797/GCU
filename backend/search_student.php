@@ -9,7 +9,8 @@ student_user.course,
 student_user.gender,
 courses.Colleges,
 student_user.Contact_number,
-student_user.ParentGuardianNumber
+student_user.ParentGuardianNumber,
+student_user.ParentGuardianName
 FROM
 student_user
 INNER JOIN

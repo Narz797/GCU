@@ -260,6 +260,8 @@ main.table {
     background-color: transparent;
     border: none;
     outline: none;}
+
+    
 .export-file {
     margin-left: 10%;
     color: black;}
@@ -311,7 +313,59 @@ main.table {
     width: 2rem;
     height: auto;}
 
-
+    /* for 2nd table of wds */
+    
+    .export-file2 {
+        margin-left: 10%;
+        color: black;}
+    .export-file2 .export-file-btn2 {
+        display: inline-block;
+        width: 4rem;
+        background-color: white;
+        height: 4rem;
+        border-radius: 50%;
+        transition: .2s ease-in-out;}
+    .export-file2 .export-file-btn2:hover { 
+        background-color: var(--accent-color);
+        transform: scale(1.15);
+        cursor: pointer;}
+    .export-file2 input {
+        display: none;}
+    .export-file2 .export-file-options2 {
+        position: absolute;
+        right: 0;
+        width: 12rem;
+        border-radius: .5rem;
+        overflow: hidden;
+        text-align: center;
+        opacity: 0;
+        transform: scale(.8);
+        transform-origin: top right;
+        box-shadow: 0 .5rem .5rem var(--shadow-color);
+        transition: .2s;}
+    .export-file2 input:checked + .export-file-options2 {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 100;}
+    .export-file2 .export-file-options2 label{
+        width: 100%;
+        padding: .6rem 0;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        transition: .2s ease-in-out;}
+    .export-file2 .export-file-options2 label:first-of-type{
+        padding: 1rem 0;
+        background-color: #86e49d !important;}
+    .export-file2 .export-file-options2 label:hover{
+        transform: scale(1.05);
+        background-color: var(--accent-color);
+        cursor: pointer;}
+    .export-file2 .export-file-options2 img{
+        width: 2rem;
+        height: auto;}
+/*  */
 
 .table-body {
     width: 95%;

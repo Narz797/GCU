@@ -303,57 +303,26 @@ function refreshEvents() {
 addListner();
 
 
+// Add this code inside your $(document).ready(function() { ... });
+
+// Event listener for clicking on events
+eventsContainer.addEventListener("click", function (e) {
+  const clickedEvent = e.target.closest(".event");
+  if (clickedEvent) {
+    // Get the event data associated with the clicked event
+    const eventTitle = clickedEvent.querySelector(".event-title").textContent;
+    const counselor = clickedEvent.querySelector(".event-time span").textContent;
+    const eventTime = clickedEvent.querySelectorAll(".event-time")[1].textContent;
+
+    // Construct the message to display
+    const eventData = `Event: ${eventTitle}\nCounselor: ${counselor}\nTime: ${eventTime}`;
+
+    // Display the event data in an alert
+    alert(eventData);
+  }
+});
 
 
-
-
-
-
-//function to add event
-// addEventBtn.addEventListener("click", () => {
-//   addEventWrapper.classList.toggle("active");
-// });
-
-// addEventCloseBtn.addEventListener("click", () => {
-//   addEventWrapper.classList.remove("active");
-// });
-
-// document.addEventListener("click", (e) => {
-//   if (e.target !== addEventBtn && !addEventWrapper.contains(e.target)) {
-//     addEventWrapper.classList.remove("active");
-//   }
-// });
-
-// //allow 50 chars in eventtitle
-// addEventTitle.addEventListener("input", (e) => {
-//   addEventTitle.value = addEventTitle.value.slice(0, 60);
-// });
-
-// addEventStudentName.addEventListener("input", (e) =>{
-//   addEventStudentName.value = addEventStudentName.value.slice(0,60);
-// });
-
-
-// //allow only time in eventtime from and to
-// addEventFrom.addEventListener("input", (e) => {
-//   addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
-//   if (addEventFrom.value.length === 2) {
-//     addEventFrom.value += ":";
-//   }
-//   if (addEventFrom.value.length > 5) {
-//     addEventFrom.value = addEventFrom.value.slice(0, 5);
-//   }
-// });
-
-// addEventTo.addEventListener("input", (e) => {
-//   addEventTo.value = addEventTo.value.replace(/[^0-9:]/g, "");
-//   if (addEventTo.value.length === 2) {
-//     addEventTo.value += ":";
-//   }
-//   if (addEventTo.value.length > 5) {
-//     addEventTo.value = addEventTo.value.slice(0, 5);
-//   }
-// });
 
 function convertTime(time) {
   const [hour, min] = time.split(":");
