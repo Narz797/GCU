@@ -16,6 +16,7 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Profile</title>
@@ -87,24 +88,25 @@ session_start();
     </div>
     <div class="card">
         <div class="card-body">
-            <div class="card-image">
-                <img src="../assets/images/male.jpg" alt="">
-            </div>
+        <div class="card-image" id="gender">
+            <!-- The initial image source should be empty -->
+            <img src="" alt="">
+        </div>
             <div class="card-information">
 
 <!-- call student 
     registered data -->
 
-                <h2>CHET PSYCHOLOGY</h2>
-                <h1 class="title main-title"><span class="title-lastname main-title">Rizzler,</span> Chad Vogn T.</h1>
-                <p class="card-description1"> <span>1st</span> Year Student<br><br></p>
+                <h2><p id="college"></p><p id="course"></p></h2>
+                <h1 class="title main-title"><span class="title-lastname main-title" id="lname">, </span><p id="fname" style="display: inline;"></p></h1>
+                <p class="card-description1"> <span id="year_level">1st</span> Year Student<br><br></p>
                 <p class="card-description">
-                    <span>Email:</span> chad123@gmail.com<br>
-                    <span>Contact Number:</span>&nbsp0987-6543-211
+                    <span>Email:</span id="email"> chad123@gmail.com<br>
+                    <span>Contact Number:</span id="number">&nbsp0987-6543-211
                     <hr>
-					<b>Guardian:</b> Jihyo Rizzler<br>
-					<b>Relation:</b> Sister<br>
-                    <b>Contact Number:</b>&nbsp0912-3456-789<br>
+					<b>Guardian:</b> <p style="display: inline;" id="guardian">Jihyo Rizzler</p><br>
+					<b>Relation:</b><p style="display: inline;" id="relation"> Sister</p><br>
+                    <b>Contact Number:</b><p style="display: inline;" id="guardian_number">&nbsp0912-3456-789</p><br>
                 </p>
             </div>
             <div class="card-image1">
@@ -178,7 +180,7 @@ below if you understand the javascript-->
 <!-- the table header(thead) are the general 
     sortable script-->
 
-        <table class="table-sortable">
+        <table class="table-sortable" id="dynamicTable">
         <thead>
             <tr>
                 <th>Date of Transaction</th>
@@ -195,16 +197,16 @@ titled: remark_design.php-->
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <!-- <tr>
                 <td>January 1, 2020</td>
                 <td>Leave of Absence</td>
                 <td>Something something</td>
                 <td><p class="status delivered">Excused</p></td>
-                <td>January 1, 2020</td>
+                <td>January 1, 2020</td> -->
 
 <!-- None is the default-->
 
-                <td>None</td>
+                <!-- <td>None</td> -->
 
 <!-- You can use this reference:https://www.youtube.com/watch?v=SpyVEbFQ6Bc
     for the modal update ajax of data. I'm referring to d action button btw.
@@ -212,7 +214,7 @@ titled: remark_design.php-->
         ooorrr you can use the same method
         as I did with the notes area above-->
 
-                <td><button class="add"><i class="ri-menu-add-line"></i></button></td>
+                <!-- <td><button class="add" onclick="remarks()"><i class="ri-menu-add-line"></i></button></td>
             </tr>
             <tr>
                 <td>January 1, 2020</td>
@@ -276,7 +278,9 @@ titled: remark_design.php-->
                 <td>January 1, 2020</td>
                 <td>None</td>
                 <td><button class="add"><i class="ri-menu-add-line"></i></button></td>
-            </tr>
+            </tr> -->
+
+
         </tbody>
         </table> 
         </p>
@@ -287,7 +291,7 @@ titled: remark_design.php-->
                     <h2 class="title">ALL &nbspAppointed Counseling</h2>
                     <hr>
                     <p class="card-description">
-        <table class="table-sortable">
+        <table class="table-sortable" id="dynamicTable2">
         <thead>
             <tr>
                 <th>Date of Appointment</th>
@@ -303,16 +307,16 @@ titled: edit_design.php-->
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <!-- <tr>
                 <td>January 1, 2020</td>
                 <td>Something Something Something something</td>
                 <td>Something something Something something Something something Something something</td>
                 <td>Rescheduled</td>
-                <td>January 1, 2020</td>
+                <td>January 1, 2020</td> -->
 
 <!-- Have the same function as the table above-->
 
-                <td><button class="edit"><i class="ri-pencil-line"></i></button></td>
+                <!-- <td><button class="edit"><i class="ri-pencil-line"></i></button></td>
             </tr>
             <tr>
                 <td>October 2, 2023</td>
@@ -345,7 +349,7 @@ titled: edit_design.php-->
                 <td>Cattered</td>
                 <td>January 1, 2020</td>
                 <td><button class="edit"><i class="ri-pencil-line"></i></button></td>
-            </tr>
+            </tr> -->
         </tbody>
         </table>
                 </p>
@@ -365,7 +369,205 @@ echo "<script>alert('$student')</script>";
             function logout() {
     window.location.href = '../../home?logout=true';
 }
+function remarks() {
+
+}
+
+
     </script>
+
+<script>
+    // Function to update the HTML elements
+    function updateValues(fname, lname, email, year_level, course, gender, college, cn, pgn, pgname, relation) {
+
+        const genderImageMap = {
+            'male': '../assets/images/male.jpg',
+            'female': '../assets/images/female.jpg'
+        };
+
+        const image = document.createElement('img');
+        image.style.display = 'block'; // Display the image above the text
+
+        if (gender === 'Male') {
+            image.src = genderImageMap['male'];
+        } else if (gender === 'Female') {
+            image.src = genderImageMap['female'];
+        }
+
+        $('#lname').text(lname+ ', ');
+        $('#fname').text(fname);
+        $('#year_level').text(year_level+ ' ');
+        $('#email').text(' '+email);
+        $('#number').text(' '+cn);
+        $('#guardian').text(' '+pgname);
+        $('#relation').text(' '+relation);
+        $('#guardian_number').text(' '+pgn);
+        $('#college').text(college+ ' ');
+        $('#course').text(course);
+        // Replace the content of the #gender div with the created image
+        const genderElement = document.getElementById('gender');
+        genderElement.innerHTML = ''; // Clear existing content
+        genderElement.appendChild(image);
+   
+    }
+    function fetchData() {
+    console.log('AJAX request started');
+    $.ajax({
+        type: 'GET',
+        url: '../../backend/get_student.php',
+        dataType: 'json',
+        success: function (data) {
+            if (data.length > 0) {
+                var studentData = data[0]; // Assuming you expect a single row
+                var fname = studentData.first_name;
+                var lname = studentData.last_name;
+                var email = studentData.email;
+                var year_level = studentData.Year_level;
+                var course = studentData.course;
+                var gender = studentData.gender;
+                var college = studentData.Colleges;
+                var cn = studentData.Contact_number;
+                var pgn = studentData.ParentGuardianNumber;
+                var pgname = studentData.ParentGuardianName;
+                var relation = studentData.Relation;
+                console.log(fname);
+                updateValues(fname, lname, email, year_level, course, gender, college, cn, pgn, pgname, relation);
+                            
+            } else {
+                // Handle the case when no results are found
+                console.log('No results found');
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error: ' + error);
+            console.error('Status: ' + status);
+            console.error('Response: ' + xhr.responseText);
+        }
+    });
+}
+
+
+    
+    $(document).ready(function() {
+            // Fetch data using $.ajax
+            $.ajax({
+                url: '../../backend/student_transacts.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    const table = document.getElementById('data-table');
+                    const searchInput = document.getElementById('searchInput');
+                    
+                    
+                console.log(data);
+                // if (data.status===0){
+                var tableBody = $("#dynamicTable tbody");
+                var historyTableBody = $("#historyTableBody tbody");
+                var noHistoryMessage1 = $("#noHistoryMessage1"); 
+                var noHistoryMessage2 = $("#noHistoryMessage2"); 
+ 
+                for (var i = 0; i < data.length; i++) {
+                    
+                    var entry = data[i];
+                    var status = entry.status;
+                    var tableToAppend = tableBody; 
+                    var row = $("<tr></tr>");
+                    row.append("<td>" + entry.date_created + "</td>");
+                    row.append("<td>" + entry.transact_type +"</td>");
+                    row.append("<td>" + entry.reason +"</td>");
+                    row.append("<td>" + entry.status + "</td>");
+                    row.append("<td>" + entry.date_edited + "</td>");
+                    row.append("<td>" + entry.remarks + "</td>");
+                    // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
+                    // var statusText = status == 'pending' ? 'Unread' : 'Read';
+                    var statusCell = $("<td></td>");
+                    var statusLink = $("<button class='add' onclick='remarks()'><i class='ri-menu-add-line'></i></button>");
+
+                    statusCell.append(statusLink);
+                    row.append(statusCell);
+                    tableBody.append(row);
+            
+                    
+                 }
+                 console.log("data",data);
+                var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
+                    if (dynamicTableRowCount1 > 0) {
+                    noHistoryMessage1.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage1.show(); // Show the no history message if no data
+                    }
+                    // Initial table population
+                    // filterData();
+
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching data:', error);
+            }
+            });
+
+            
+        });
+
+        $(document).ready(function() {
+            // Fetch data using $.ajax
+            $.ajax({
+                url: '../../backend/student_slot.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    const table = document.getElementById('data-table');
+                    const searchInput = document.getElementById('searchInput');
+                    
+                    
+                console.log(data);
+                // if (data.status===0){
+                var tableBody = $("#dynamicTable2 tbody");
+                var historyTableBody = $("#historyTableBody tbody");
+                var noHistoryMessage1 = $("#noHistoryMessage1"); 
+                var noHistoryMessage2 = $("#noHistoryMessage2"); 
+ 
+                for (var i = 0; i < data.length; i++) {
+                    
+                    var entry = data[i];
+                    var status = entry.status;
+                    var tableToAppend = tableBody; 
+                    var row = $("<tr></tr>");
+                    row.append("<td>" + entry.date + "</td>");
+                    row.append("<td>" + entry.reason +"</td>");
+                    row.append("<td>" + entry.remarks +"</td>");
+                    row.append("<td>" + entry.action_taken+ "</td>");
+                    row.append("<td>" + entry.latest_update + "</td>");
+                    // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
+                    // var statusText = status == 'pending' ? 'Unread' : 'Read';
+                    var statusCell = $("<td></td>");
+                    var statusLink = $("<button class='edit'><i class='ri-pencil-line'></i></button>");
+
+                    statusCell.append(statusLink);
+                    row.append(statusCell);
+                    tableBody.append(row);
+            
+                    
+                 }
+                 console.log("data",data);
+                var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
+                    if (dynamicTableRowCount1 > 0) {
+                    noHistoryMessage1.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage1.show(); // Show the no history message if no data
+                    }
+                    // Initial table population
+                    // filterData();
+
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching data:', error);
+            }
+            });
+
+            
+        });
+    fetchData();
+</script>
 <script src="../assets/main.js"></script>
 <script src="../assets/js/tablesort.js"></script>
 <script src="../assets/js/notes.js"></script>

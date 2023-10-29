@@ -45,7 +45,7 @@ if ($transact == 'readmission') {
     $course_frm = $_POST['course_frm'];
     $course_to = $_POST['course_to'];
 
-    $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :transact_type, :date_created, :status)';
+    $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :reason, :date_created, :status)';
     
     if ($reason == 'Shifting') {
         $sql_2 = 'INSERT INTO withdrawal(`transact_id`, `reason`, `statement`, `explain`, `shift_from`, `shift_to`) VALUES (:transact_id, :reason, :statement, :explain, :course_frm, :course_to)';
@@ -57,8 +57,8 @@ if ($transact == 'readmission') {
     try {
         $code = $pdo->prepare($sql_1);
         $code->bindParam(':student_id', $id);
-        $code->bindParam(':transact_type', $transact);
         $code->bindParam(':date_created', $dateCreated);
+        $code->bindParam(':reason', $reason);
         $code->bindParam(':status', $status);
         $code->execute();
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2023 at 12:04 PM
+-- Generation Time: Oct 29, 2023 at 03:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -216,7 +216,8 @@ CREATE TABLE `readmission` (
 --
 
 INSERT INTO `readmission` (`readmission_id`, `transact_id`, `motivation`, `reason`, `status`) VALUES
-(8, 70, 'read', 'read', '');
+(8, 70, 'read', 'read', ''),
+(9, 82, 'lzxkfjnvhzlxkcjvhxzlkcjvhzxlkjcvhzlxkjchvsdfgnas,.mdfna,.msnf', 'SDFKLGJHSDKLFJGHSDLFKGJHSDLKFGJHSKLDFGJHLKlksdfjhgxcvlkjbhxcmv,bnsd.,mfngs.d,mfng', '');
 
 -- --------------------------------------------------------
 
@@ -284,6 +285,7 @@ CREATE TABLE `student_user` (
   `Contact_number` bigint(255) NOT NULL,
   `ParentGuardianNumber` bigint(255) NOT NULL,
   `ParentGuardianName` varchar(255) DEFAULT NULL,
+  `Relation` varchar(255) NOT NULL,
   `Civil_status` varchar(255) NOT NULL,
   `Birth_place` varchar(255) NOT NULL,
   `Nationality` varchar(255) NOT NULL,
@@ -303,16 +305,16 @@ CREATE TABLE `student_user` (
 -- Dumping data for table `student_user`
 --
 
-INSERT INTO `student_user` (`stud_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `year_enrolled`, `course`, `birth_date`, `status`, `email`, `Year_level`, `Contact_number`, `ParentGuardianNumber`, `ParentGuardianName`, `Civil_status`, `Birth_place`, `Nationality`, `Languages_and_dialects`, `Address`, `Whom_do_you_live`, `IG`, `PWD`, `Student_parent`, `Financial_support`, `Marital_status_of_parents`, `username`, `password`) VALUES
-(111, 'John', 'Doe', 'D', 'Male', '2020', 'BLIS', '2023-08-15', 1, 'user2@gmail.com', 2, 9898989898, 9998787678, 'Me', 'Single', 'Baguio City', 'Filipino', 'English', 'Baguio', 'asdfasdf', 'asdfasdf', 'asdfasd', 'fdsa', 'fdsa', 'asdf', 'user2', '$2y$10$SczVZE3o64M8ZhuB1.NtG.AEY38qQFypzZ/FCW2m1sHyIR0eVEeSO'),
-(112, 'Jane', 'D.', 'Doe', 'Female', '2019', 'BSDC', '2023-08-21', 1, 'user3@gmail.com', 4, 9989789878, 9998987867, 'Me', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'user3', '$2y$10$jU4Y./C62dj97yonb5Wk7u02Spu3cnzv5sjNJXBj.8U1M77T7ScOy'),
-(114, 'Josh', 'Kun', 'S', 'Male', '2020', 'BSIT', '2023-08-11', 0, 'user4@gmail.com', 1, 9898989898, 9999999999, 'Me', 'tyui', 'tyui', 'tyui', 'jhgf', 'jhgf', 'fghj', 'fghj', 'fghj', 'fghj', 'nbvc', 'sdfg', 'user4', '$2y$10$4c3P3QQ2hUkIu8hffGl0ZewQB3ZHzfu1uNV76W9fiy/A/IhELhD5q'),
-(115, 'Shinomiya', 'Kaguya', 'S', 'Female', '2019', 'BSDC', '2023-08-11', 0, 'user5@gmail.com', 3, 9899098909, 9889787898, 'Me', 'sdfg', 'asdf', 'vcxz', 'xzcv', 'fdsa', 'fdsa', 'asdf', 'asdf', 'rqwe', 'fdsa', 'qwer', 'user4', '$2y$10$Bc5xD1fwgVaDhyfodnoRpeWEqq3wys7oO1rEXODkS6bLBFxwxkPH.'),
-(116, 'Miyuki', 'Shirogane', 'S.', 'Male', '2019', 'BSIT', '2023-08-18', 0, 'user6@gmail.com', 3, 9898989898, 9999999999, 'Me', 'fghdfgh', 'hgfsd', 'dfgh', 'dfgh', 'gfds', 'gfds', 'sdfg', 'sdfg', 'sdfg', 'sdfg', 'sdfg', 'user6', '$2y$10$ijDxvfz1Nwj/W71jek9d1Oi/E3glb8U/HAqoCq9vqCHPwp3/BraT2'),
-(117, 'Luffy', 'Monkey', 'D', 'Male', '2020', 'BLIS', '2023-08-18', 0, 'user7@gmail.com', 4, 9989098909, 9899098909, 'Me', 'sdfg', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'vcxz', 'vcxz', 'sdfg', 'sdfg', 'fdsa', 'user7', ''),
-(432, 'Narz Josef', 'Taquio', 'L.', 'Male', '2020', 'BSIT', '0000-00-00', 0, 'josefnarz2011@gmail.com', 1, 2343234323, 4323432344, 'Me', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'fdsa', 'fdsa', 'asdf', 'asdf', 'asdf', 'Narz', '$2y$10$Qsu.qwvkZ1ProVhvKXzCceopW3769HusjdHNfgzrouJH43BH0jISy'),
-(6543, 'test', 'test', 't', 'Male', '2005', 'BSIT', '2023-08-23', 0, 'narz@gmail.com', 4, 34323432343, 23432343234, 'Me', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'student2', 'pass2'),
-(2002529, 'asdfasd', 'asdfasd', 'f', 'Female', '2020', 'BSIT', '2023-09-07', 0, 'jo@gmail.com', 2, 3432343234, 3432343234, 'Me', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'fdsa', 'fdsa', 'asdf', 'zzz', 'pass');
+INSERT INTO `student_user` (`stud_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `year_enrolled`, `course`, `birth_date`, `status`, `email`, `Year_level`, `Contact_number`, `ParentGuardianNumber`, `ParentGuardianName`, `Relation`, `Civil_status`, `Birth_place`, `Nationality`, `Languages_and_dialects`, `Address`, `Whom_do_you_live`, `IG`, `PWD`, `Student_parent`, `Financial_support`, `Marital_status_of_parents`, `username`, `password`) VALUES
+(111, 'John', 'Doe', 'D', 'Male', '2020', 'BLIS', '2023-08-15', 1, 'user2@gmail.com', 2, 9898989898, 9998787678, 'Me', 'mother', 'Single', 'Baguio City', 'Filipino', 'English', 'Baguio', 'asdfasdf', 'asdfasdf', 'asdfasd', 'fdsa', 'fdsa', 'asdf', 'user2', '$2y$10$SczVZE3o64M8ZhuB1.NtG.AEY38qQFypzZ/FCW2m1sHyIR0eVEeSO'),
+(112, 'Jane', 'D.', 'Doe', 'Female', '2019', 'BSDC', '2023-08-21', 1, 'user3@gmail.com', 4, 9989789878, 9998987867, 'Me', 'father', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'dfgh', 'user3', '$2y$10$jU4Y./C62dj97yonb5Wk7u02Spu3cnzv5sjNJXBj.8U1M77T7ScOy'),
+(114, 'Josh', 'Kun', 'S', 'Male', '2020', 'BSIT', '2023-08-11', 0, 'user4@gmail.com', 1, 9898989898, 9999999999, 'Me', 'aunt', 'tyui', 'tyui', 'tyui', 'jhgf', 'jhgf', 'fghj', 'fghj', 'fghj', 'fghj', 'nbvc', 'sdfg', 'user4', '$2y$10$4c3P3QQ2hUkIu8hffGl0ZewQB3ZHzfu1uNV76W9fiy/A/IhELhD5q'),
+(115, 'Shinomiya', 'Kaguya', 'S', 'Female', '2019', 'BSDC', '2023-08-11', 0, 'user5@gmail.com', 3, 9899098909, 9889787898, 'Me', '', 'sdfg', 'asdf', 'vcxz', 'xzcv', 'fdsa', 'fdsa', 'asdf', 'asdf', 'rqwe', 'fdsa', 'qwer', 'user4', '$2y$10$Bc5xD1fwgVaDhyfodnoRpeWEqq3wys7oO1rEXODkS6bLBFxwxkPH.'),
+(116, 'Miyuki', 'Shirogane', 'S.', 'Male', '2019', 'BSIT', '2023-08-18', 0, 'user6@gmail.com', 3, 9898989898, 9999999999, 'Me', 'uncle', 'fghdfgh', 'hgfsd', 'dfgh', 'dfgh', 'gfds', 'gfds', 'sdfg', 'sdfg', 'sdfg', 'sdfg', 'sdfg', 'user6', '$2y$10$ijDxvfz1Nwj/W71jek9d1Oi/E3glb8U/HAqoCq9vqCHPwp3/BraT2'),
+(117, 'Luffy', 'Monkey', 'D', 'Male', '2020', 'BLIS', '2023-08-18', 0, 'user7@gmail.com', 4, 9989098909, 9899098909, 'Me', 'grandfather', 'sdfg', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', '', 'vcxz', 'sdfg', 'sdfg', 'fdsa', 'user7', ''),
+(432, 'Narz Josef', 'Taquio', 'L.', 'Male', '2020', 'BSIT', '0000-00-00', 0, 'josefnarz2011@gmail.com', 1, 2343234323, 4323432344, 'Me', '', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'fdsa', 'fdsa', 'asdf', 'asdf', 'asdf', 'Narz', '$2y$10$Qsu.qwvkZ1ProVhvKXzCceopW3769HusjdHNfgzrouJH43BH0jISy'),
+(6543, 'test', 'test', 't', 'Male', '2005', 'BSIT', '2023-08-23', 0, 'narz@gmail.com', 4, 34323432343, 23432343234, 'Me', '', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'student2', 'pass2'),
+(2002529, 'asdfasd', 'asdfasd', 'f', 'Female', '2020', 'BSIT', '2023-09-07', 0, 'jo@gmail.com', 2, 3432343234, 3432343234, 'Me', '', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'fdsa', 'fdsa', 'asdf', 'zzz', 'pass');
 
 -- --------------------------------------------------------
 
@@ -340,10 +342,16 @@ INSERT INTO `transact` (`transact_id`, `student_id`, `employee_id`, `transact_ty
 (72, 432, NULL, 'WDS', '2023-10-20 05:50:02', NULL, 'pending'),
 (73, 432, NULL, 'WDS', '2023-10-20 05:50:17', NULL, 'pending'),
 (74, 432, NULL, 'referral', '2023-10-20 05:50:28', NULL, 'pending'),
-(75, 432, NULL, 'leave_of_absence', '2023-10-20 05:50:49', NULL, 'pending'),
+(75, 432, NULL, 'leave_of_absence', '2023-10-20 05:50:49', NULL, 'done'),
 (78, NULL, 2002529, 'appointment', '2023-10-28 06:16:22', NULL, 'open'),
 (79, NULL, 2002529, 'appointment', '2023-10-28 09:21:31', NULL, 'open'),
-(80, NULL, 111122, 'appointment', '2023-10-28 09:23:51', NULL, 'open');
+(80, NULL, 111122, 'appointment', '2023-10-28 09:23:51', NULL, 'open'),
+(81, 111, NULL, 'WDS', '2023-10-28 12:56:56', NULL, 'done'),
+(82, 112, NULL, 'readmission', '2023-10-29 14:37:26', NULL, 'pending'),
+(83, 112, NULL, 'WDS', '2023-10-29 14:37:55', NULL, 'pending'),
+(84, 432, NULL, 'Withdrawing Enrollment', '2023-10-29 15:12:36', NULL, 'pending'),
+(85, 432, NULL, 'Dropping Subjects', '2023-10-29 15:12:51', NULL, 'pending'),
+(86, 432, NULL, 'Shifting', '2023-10-29 15:13:01', NULL, 'pending');
 
 -- --------------------------------------------------------
 
@@ -369,7 +377,12 @@ CREATE TABLE `withdrawal` (
 INSERT INTO `withdrawal` (`withdrawal_id`, `transact_id`, `reason`, `statement`, `explain`, `status`, `shift_from`, `shift_to`) VALUES
 (24, 71, 'Withdrawing Enrollment', 'w', 'w', '', '', ''),
 (25, 72, 'Dropping Subjects', 'd', 'd', '', '', ''),
-(26, 73, 'Shifting', 's', 's', '', 'BSA', 'BSIE');
+(26, 73, 'Shifting', 's', 's', '', 'BSA', 'BSIE'),
+(27, 81, 'Shifting', 'asasdfsdf', 'fdfasdfasdfsa', '', 'BAFL', 'BECED'),
+(28, 83, 'Withdrawing Enrollment', 'kcjhbxlckjvhbxckljhvbxklcjvbm,ndg,.msndfg', 'glkcvxbhxcvkjbhxckljvb', '', '', ''),
+(29, 84, 'Withdrawing Enrollment', 'dfasdf', 'asdf', '', '', ''),
+(30, 85, 'Dropping Subjects', 'dfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdf', 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf', '', '', ''),
+(31, 86, 'Shifting', 'dfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdfdfasdf', 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf', '', 'BSABE', 'BSAB');
 
 --
 -- Indexes for dumped tables
@@ -488,7 +501,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `readmission`
 --
 ALTER TABLE `readmission`
-  MODIFY `readmission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `readmission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `referral`
@@ -506,13 +519,13 @@ ALTER TABLE `siblings`
 -- AUTO_INCREMENT for table `transact`
 --
 ALTER TABLE `transact`
-  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `withdrawal`
 --
 ALTER TABLE `withdrawal`
-  MODIFY `withdrawal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `withdrawal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables

@@ -176,7 +176,7 @@ session_start();
             <div class=" gallery">
             <main class="table" id="customers_table">
             <section class="table-header">
-                <h1>List of <b>All Transactions</b></h1>
+                <h1>List of <b>All Unfinished Transactions</b></h1>
                 <div class="input-group">
                     <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
                 </div>
