@@ -334,49 +334,7 @@ titled: edit_design.php-->
             </tr>
         </thead>
         <tbody>
-            <!-- <tr>
-                <td>January 1, 2020</td>
-                <td>Something Something Something something</td>
-                <td>Something something Something something Something something Something something</td>
-                <td>Rescheduled</td>
-                <td>January 1, 2020</td> -->
-
-<!-- Have the same function as the table above-->
-
-                <!-- <td><button class="edit"><i class="ri-pencil-line"></i></button></td>
-            </tr>
-            <tr>
-                <td>October 2, 2023</td>
-                <td>Something Something</td>
-                <td>Something something</td>
-                <td>Endorse to Shift</td>
-                <td>January 1, 2020</td>
-                <td><button class="edit"><i class="ri-pencil-line"></i></button></td>
-            </tr>
-            <tr>
-                <td>January 3, 2020</td>
-                <td>Something Something</td>
-                <td>Something something</td>
-                <td>Endorse to Readmit</td>
-                <td>January 1, 2020</td>
-                <td><button class="edit"><i class="ri-pencil-line"></i></button></td>
-            </tr>
-            <tr>
-                <td>August 4, 2022</td>
-                <td>Something Something</td>
-                <td>Something something</td>
-                <td>Rescheduled</td>
-                <td>January 1, 2020</td>
-                <td><button class="edit"><i class="ri-pencil-line"></i></button></td>
-            </tr>
-            <tr>
-                <td>August 14, 2022</td>
-                <td>Something Something</td>
-                <td>Something something</td>
-                <td>Cattered</td>
-                <td>January 1, 2020</td>
-                <td><button class="edit"><i class="ri-pencil-line"></i></button></td>
-            </tr> -->
+        
         </tbody>
         </table>
         <!-- Edit popup -->
@@ -388,11 +346,11 @@ titled: edit_design.php-->
                     <form>
                     <h1>Edit Data</h1>
                     <div class="id">
-                        <input type="text" placeholder="Action Taken">
+                        <input type="text" placeholder="Action Taken" id="editTextarea">
                     </div>
                     <div class="id">
-                        <textarea cols="20" rows="7" placeholder="Remarks about the appointment..."></textarea>
-                        <button onclick="openModal()"> Edit </button>
+                        <textarea cols="20" rows="7" placeholder="Remarks about the appointment..." id="editTextarea2"></textarea>
+                        <button onclick="edit_remarks()"> Edit </button>
                     </div>
                     </form>
                 </div>
@@ -418,6 +376,7 @@ $student = $_SESSION['stud_user_id'];
     <script>
 
 var trans_id
+var app_id
             function logout() {
     window.location.href = '../../home?logout=true';
 }
@@ -444,8 +403,11 @@ function openModal(id) {
 
 //Edit
 
-function openModal2() {
+function openModal2(id) {
     document.getElementById("modal2").style.display = "block";
+    console.log(id);
+    app_id=id;
+
   }
 
   function closeModal2() {
@@ -463,27 +425,49 @@ function openModal2() {
 
     //appointment
     function edit_remarks(){
-
+        var textareaValue = document.getElementById("editTextarea").value;
+        var textareaValue2 = document.getElementById("editTextarea2").value;
+        console.log("ID:", app_id);
+        console.log("Remarks:", textareaValue);
+        console.log("Remarks:", textareaValue2);
+        $.ajax({
+          type: 'POST',
+          url: '../../backend/appointment_remark.php',
+          data: {
+            id: app_id,
+            action: textareaValue,
+            remark: textareaValue2
+          },
+          success: function (data) {
+            console.log("Remarked:", data);
+          },
+          error: function (xhr, status, error) {
+            console.error("Error marking event as done:", error);
+            alert("Error marking event as done: " + error);
+          },
+        });
+        
     }
   //transact
   function add_remarks() {
     var textareaValue = document.getElementById("remarksTextarea").value;
     console.log("ID:", trans_id);
     console.log("Remarks:", textareaValue);
-        //     $.ajax({
-        //   type: 'POST',
-        //   url: '../backend/student_remark.php',
-        //   data: {
-        //     trans_id: id,
-        //   },
-        //   success: function (data) {
-        //     console.log("Remarked:", data);
-        //   },
-        //   error: function (xhr, status, error) {
-        //     console.error("Error marking event as done:", error);
-        //     alert("Error marking event as done: " + error);
-        //   },
-        // });
+            $.ajax({
+          type: 'POST',
+          url: '../../backend/student_remark.php',
+          data: {
+            id: trans_id,
+            remark: textareaValue
+          },
+          success: function (data) {
+            console.log("Remarked:", data);
+          },
+          error: function (xhr, status, error) {
+            console.error("Error marking event as done:", error);
+            alert("Error marking event as done: " + error);
+          },
+        });
         }
 
     // Function to update the HTML elements
@@ -650,7 +634,7 @@ function openModal2() {
                     // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     // var statusText = status == 'pending' ? 'Unread' : 'Read';
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<button class='edit' onclick='openModal2()'><i class='ri-pencil-line'></i></button>");
+                    var statusLink = $("<button class='edit' onclick='openModal2("+entry.appointment_id+")'><i class='ri-pencil-line'></i></button>");
 
                     statusCell.append(statusLink);
                     row.append(statusCell);

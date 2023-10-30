@@ -3,6 +3,7 @@ session_start(); // Ensure the session is started
 $id = $_SESSION['stud_user_id'];
 include '../backend/connect_database.php';
 $sql = "SELECT
+        appointment.appointment_id,
         appointment.date, 
         appointment.Reason, 
         appointment.remarks, 
