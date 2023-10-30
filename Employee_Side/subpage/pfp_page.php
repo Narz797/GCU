@@ -33,6 +33,97 @@ session_start();
     <link rel="stylesheet" href="../assets/css/view.css">
 </head>
 
+
+<!-- for remarks popup -->
+<style>
+  .body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    width: 500px;
+    background-color: black;
+    box-shadow: 0 0 8px rgba(250, 250, 250, 0.6);
+  }
+  .container form {
+    width: 100%;
+    text-align: center;
+    padding: 25px 20px;
+  }
+  form h1 {
+    padding: 10px 0;
+  }
+  form .id {
+    position: relative;
+  }
+  form input{
+		width: 100%;
+		height: 50px;
+		margin: 4px 0;
+		border-radius: 3px;
+		border: 1px solid gray;
+		background-color: black;
+		padding: 0 15px;
+		font-size: 20px;
+	}
+  form textarea {
+    padding: 5px 15px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    background-color: black;
+    font-size: 20px;
+    width: 100%;
+    margin: 4px 0;
+  }
+  form button {
+    margin-top: 5px;
+    border-radius: none;
+    background-color: #568203;
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  form button:hover {
+    background-color: green;
+  }
+  form input:focus,
+  form textarea:focus {
+    border: 1px solid green;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  form input:focus::placeholder,
+  form textarea:focus::placeholder {
+    padding-left: 4px;
+    color: green;
+    transition: all 0.3s ease;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+
+  .modal_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+</style>
+<!--  -->
 <body>
     <!-- Header -->
 <header class="header">
@@ -197,92 +288,28 @@ titled: remark_design.php-->
             </tr>
         </thead>
         <tbody>
-            <!-- <tr>
-                <td>January 1, 2020</td>
-                <td>Leave of Absence</td>
-                <td>Something something</td>
-                <td><p class="status delivered">Excused</p></td>
-                <td>January 1, 2020</td> -->
-
-<!-- None is the default-->
-
-                <!-- <td>None</td> -->
-
-<!-- You can use this reference:https://www.youtube.com/watch?v=SpyVEbFQ6Bc
-    for the modal update ajax of data. I'm referring to d action button btw.
-    Its a bootstrap function
-        ooorrr you can use the same method
-        as I did with the notes area above-->
-
-                <!-- <td><button class="add" onclick="remarks()"><i class="ri-menu-add-line"></i></button></td>
-            </tr>
-            <tr>
-                <td>January 1, 2020</td>
-                <td>Leave of Absence</td>
-                <td>Something something</td>
-                <td><p class="status cancelled">Unexcused</p></td>
-                <td>January 1, 2020</td>
-                <td>None</td>
-                <td><button class="add"><i class="ri-menu-add-line"></i></button></td>
-            </tr>
-            <tr>
-                <td>October 2, 2023</td>
-                <td>Absent/Tardy</td>
-                <td>Something something</td>
-                <td><p class="status delivered">Excused</p></td>
-                <td>January 1, 2020</td>
-                <td>Something something</td>
-                <td><button class="add"><i class="ri-menu-add-line"></i></button></td>
-            </tr>
-            <tr>
-                <td>January 3, 2020</td>
-                <td>Readmission</td>
-                <td>Something something</td>                
-                <td><p class="status delivered">Processed</p></td>
-                <td>January 1, 2020</td>
-                <td>Something something</td>
-                <td><button class="add"><i class="ri-menu-add-line"></i></button></td>
-            </tr>
-             <tr>
-                <td>January 3, 2020</td>
-                <td>Readmission</td>
-                <td>Something something</td>                
-                <td><p class="status pending">Pending</p></td>
-                <td>January 1, 2020</td>
-                <td>None</td>
-                <td><button class="add"><i class="ri-menu-add-line"></i></button></td>
-            </tr>
-            <tr>
-                <td>August 4, 2022</td>
-                <td>Withdrawal</td>
-                <td>Something something</td>
-                <td><p class="status pending">Pending</p></td>
-                <td>January 1, 2020</td>
-                <td>Something something</td>
-                <td><button class="add"><i class="ri-menu-add-line"></i></button></td>
-            </tr>
-            <tr>
-                <td>August 14, 2022</td>
-                <td>Dropping</td>
-                <td>Something something</td>
-                <td><p class="status delivered">Processed</p></td>
-                <td>January 1, 2020</td>
-                <td>None</td>
-                <td><button class="add"><i class="ri-menu-add-line"></i></button></td>
-            </tr>
-            <tr>
-                <td>August 14, 2022</td>
-                <td>Shifting</td>
-                <td>Something something</td>
-                <td><p class="status delivered">Processed</p></td>
-                <td>January 1, 2020</td>
-                <td>None</td>
-                <td><button class="add"><i class="ri-menu-add-line"></i></button></td>
-            </tr> -->
-
+        
 
         </tbody>
         </table> 
+
+        <!-- Remarks popup -->
+        <div id="modal" class="modal">
+            <div class="modal_content">
+                <div class="body">
+                <div class="container">
+                    <form>
+                    <h1>Add Remarks</h1>
+                    <div class="id">
+                        <textarea cols="20" rows="7" placeholder="Enter your remarks here..." id="remarksTextarea"></textarea>
+                        <button onclick="add_remarks()"> Add </button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+                    <!--  -->
         </p>
                 </div>
             </div>
@@ -352,6 +379,27 @@ titled: edit_design.php-->
             </tr> -->
         </tbody>
         </table>
+        <!-- Edit popup -->
+
+        <div class="modal" id="modal2">
+            <div class="modal_content">
+                <div class="body">
+                <div class="container">
+                    <form>
+                    <h1>Edit Data</h1>
+                    <div class="id">
+                        <input type="text" placeholder="Action Taken">
+                    </div>
+                    <div class="id">
+                        <textarea cols="20" rows="7" placeholder="Remarks about the appointment..."></textarea>
+                        <button onclick="openModal()"> Edit </button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+        <!--  -->
                 </p>
                 </div>
             </div>
@@ -362,21 +410,82 @@ titled: edit_design.php-->
 // Retrieve stud_id from the session
 $student = $_SESSION['stud_user_id'];
 
-echo "<script>alert('$student')</script>";
+// $student_transacts = $_SESSION['ST_id'];
+
+// echo "<script>alert('$student_transacts')</script>";
 ?>
     <!-- Script -->
     <script>
+
+var trans_id
             function logout() {
     window.location.href = '../../home?logout=true';
 }
-function remarks() {
 
-}
+// remarks
+function openModal(id) {
+    document.getElementById("modal").style.display = "block";
+    console.log(id);
+    trans_id = id;
+  }
+
+  function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+
+  // Add an event listener to close the modal when clicking outside of it
+  window.addEventListener("click", function (event) {
+    var modal = document.getElementById("modal");
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
 
 
-    </script>
+//Edit
 
-<script>
+function openModal2() {
+    document.getElementById("modal2").style.display = "block";
+  }
+
+  function closeModal2() {
+    document.getElementById("modal2").style.display = "none";
+  }
+
+  // Add an event listener to close the modal when clicking outside of it
+  window.addEventListener("click", function (event) {
+    var modal2 = document.getElementById("modal2");
+    if (event.target === modal2) {
+      closeModal2();
+    }
+  });
+
+
+    //appointment
+    function edit_remarks(){
+
+    }
+  //transact
+  function add_remarks() {
+    var textareaValue = document.getElementById("remarksTextarea").value;
+    console.log("ID:", trans_id);
+    console.log("Remarks:", textareaValue);
+        //     $.ajax({
+        //   type: 'POST',
+        //   url: '../backend/student_remark.php',
+        //   data: {
+        //     trans_id: id,
+        //   },
+        //   success: function (data) {
+        //     console.log("Remarked:", data);
+        //   },
+        //   error: function (xhr, status, error) {
+        //     console.error("Error marking event as done:", error);
+        //     alert("Error marking event as done: " + error);
+        //   },
+        // });
+        }
+
     // Function to update the HTML elements
     function updateValues(fname, lname, email, year_level, course, gender, college, cn, pgn, pgname, relation) {
 
@@ -471,6 +580,8 @@ function remarks() {
                     var entry = data[i];
                     var status = entry.status;
                     var tableToAppend = tableBody; 
+
+                    // console.log("transact", S_transact);
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.date_created + "</td>");
                     row.append("<td>" + entry.transact_type +"</td>");
@@ -481,8 +592,7 @@ function remarks() {
                     // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     // var statusText = status == 'pending' ? 'Unread' : 'Read';
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<button class='add' onclick='remarks()'><i class='ri-menu-add-line'></i></button>");
-
+                    var statusLink = $("<button class='add' onclick='openModal("+entry.transact_id+")'><i class='ri-menu-add-line'></i></button>");
                     statusCell.append(statusLink);
                     row.append(statusCell);
                     tableBody.append(row);
@@ -505,7 +615,7 @@ function remarks() {
             }
             });
 
-            
+
         });
 
         $(document).ready(function() {
@@ -540,7 +650,7 @@ function remarks() {
                     // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     // var statusText = status == 'pending' ? 'Unread' : 'Read';
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<button class='edit'><i class='ri-pencil-line'></i></button>");
+                    var statusLink = $("<button class='edit' onclick='openModal2()'><i class='ri-pencil-line'></i></button>");
 
                     statusCell.append(statusLink);
                     row.append(statusCell);

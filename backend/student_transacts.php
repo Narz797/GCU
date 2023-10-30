@@ -5,6 +5,7 @@ $id = $_SESSION['stud_user_id'];
 include '../backend/connect_database.php';
 
 $sql = "SELECT
+transact.transact_id,
 transact.date_created,
 transact.transact_type,
 
@@ -37,6 +38,10 @@ $stmt->execute();
 
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// if (!empty($data)) {
+//     // Extract and store the transact_id from the first result in the session
+//     $_SESSION['ST_id'] = $data[0]['transact_id'];
+// }
 // Prepare and echo data as JSON
 echo json_encode($data);
 ?>
