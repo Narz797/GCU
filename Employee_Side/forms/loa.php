@@ -9,6 +9,15 @@ session_start();
     
     exit; // Make sure to exit the script after a header redirect
   }
+
+  $_SESSION['form_type']='loa';
+  $id = $_SESSION['stud_id'];
+  $tran = $_SESSION['tran_id'];
+
+  echo '<script>
+        console.log("clicked, ' . $id . '");
+        console.log("clicked, ' . $tran . '");
+        </script>';
   
 ?>
 
@@ -29,6 +38,8 @@ session_start();
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../assets/css/slips2.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
 
 <body>
@@ -87,26 +98,26 @@ session_start();
         <div class="card">
             <header class="card-header header-side">
                 <h2 class="title">Student Information</h2>
-                <small>Date is <u>October 05, 2025</u></small>
+                <small>Date is <u><?php echo date('F j, Y'); ?></u></small>
             </header>
             <hr>
             <div class="info">
 
 <!-- Get student's data input in h3-->
 
-                <p>Student ID No.</p><h3>20002213</h3>
-                <p>Name of Student</p><h3>Narz Taquio</h3>
-                <p>Course & Year Level</p><h3>BSIT 4th Year</h3>
-                <p>Sex</p><h3>Male</h3>
-                <p>Contact Number</p><h3>0909-0909-090</h3>
-                <p>Guardian/Parent</p><h3>Layla Taquio</h3>
-                <p>Contact Number of Guardian/Parent</p><h3>0909-0909-090</h3>
+                <p>Student ID No.</p><h3 id="id_no">20002213</h3>
+                <p>Name of Student</p><h3 id="name">Narz Taquio</h3>
+                <p>Course & Year Level</p><h3 id="ys">BSIT 4th Year</h3>
+                <p>Sex</p><h3 id="gender">Male</h3>
+                <p>Contact Number</p><h3 id="cn">0909-0909-090</h3>
+                <p>Guardian/Parent</p><h3 id="pgname">Layla Taquio</h3>
+                <p>Contact Number of Guardian/Parent</p><h3 id="pgn">0909-0909-090</h3>
             </div>
         </div>
         <div class="card-group d-grid">
             <div class="card border one">
                 <div>
-                    <p class="title1"> Semester & School Year Intended to Come Back: <u>School Year 2025-2026 2nd Semester</u></p>
+                    <p class="title1"> Semester & School Year Intended to Come Back: <u>School Year <p id="start" style="display: inline;"></p>-<p id="end" style="display: inline;"></p> <p id="sem" style="display: inline;"></p> Semester</u></p>
                     <hr>
                     <h2 class="title"> Reason/s for stopping/filling a leave:</h2>
                 </div>
@@ -115,7 +126,7 @@ session_start();
 
 <!-- Get student fill-up form data -->
 
-                  <p class="card-description">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
+                  <p class="card-description" id="reason">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
                
                 </div>
                 </div>
@@ -127,100 +138,111 @@ session_start();
 
 <!-- Get student fill-up form data -->
 
-                  <p class="card-description">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
+                  <p class="card-description" id="leave">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
                   
                 </div>
                 
                 </div>
                 <div class="action">
-                 <a href="#divOne"><button class="yes">Accept</button></a>
-                <button class="no" onclick="status_update()">Reconsider</button>
+                 <a href="#divOne"><button class="yes" onclick="status_update('done')">Accept</button></a>
+                <button class="no" onclick="status_update('pending')">Reconsider</button>
                  </div>
             </div>
         </div>
     </div>
 </section>
 
-    <!-- This is the pop-up for the three buttons -->
-                <div class="overlay" id="divOne">
-                    <div class="wrapper">
-                        <h1>The student's form for a leave of absence will be <u class="One">EXCUSED</u> .</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk">
-
-<!-- Add a function here where the data will be stored -->
-
-                                    <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="overlay" id="divTwo">
-                    <div class="wrapper">
-                        <h1>The student's form for a leave of absence will be <u class="Two">UNEXCUSED</u> .</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk">
-
-<!-- Add a function here where the data will be stored -->
-
-                                    <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="overlay" id="divThree">
-                    <div class="wrapper">
-                        <h1>The student's form for a leave of absence is <u class="Three">LACKING</u> .</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk">
-
-<!-- Add a function here where the data will be stored -->
-
-                                    <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
 <br>
 
     <!-- Script     -->
-    <script>
-        function status_update(){
-            // update status to pendig here
-        }
-    </script>
+
 <script src="../assets/main.js"></script>
 <script>
+    var sid;
         function logout() {
     window.location.href = '../../home?logout=true';
 }
+
+  // Function to update the HTML elements
+        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, sem, start, end, reason, leave) {
+
+        $('#id_no').text(id);
+        $('#name').text(fname+ ' '+ lname);
+        $('#ys').text(course+ ' '+year_level);
+        $('#gender').text(gender);
+        $('#cn').text(cn);
+        $('#pgname').text(pgname);
+        $('#pgn').text(pgn);
+        $('#start').text(start);
+        $('#end').text(end);
+        $('#sem').text(sem);
+        $('#reason').text(reason);
+        $('#leave').text(leave);
+
+        }
+    function fetchData() {
+    console.log('AJAX request started');
+    $.ajax({
+    type: 'GET',
+    url: '../../backend/get_form.php',
+    dataType: 'json',
+    success: function (data) {
+        if (data.length > 0) {
+            var studentData = data[0]; // Assuming you expect a single row
+            var id = studentData.stud_user_id;
+            sid = studentData.stud_user_id;
+            var fname = studentData.first_name;
+            var lname = studentData.last_name;
+            var email = studentData.email;
+            var year_level = studentData.Year_level;
+            var course = studentData.course;
+            var gender = studentData.gender;
+            var cn = studentData.Contact_number;
+            var pgn = studentData.ParentGuardianNumber;
+            var pgname = studentData.ParentGuardianName;
+            var relation = studentData.Relation;
+            var sem = studentData.semester;
+            var start = studentData.start_year;
+            var end = studentData.end_year;
+            var reason = studentData.reason;
+            var leave = studentData.leave;
+            console.log(fname);
+            updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, sem, start, end, reason, leave);
+                        
+        } else {
+            // Handle the case when no results are found
+            console.log('No results found');
+        }
+    },
+    error: function (xhr, status, error) {
+        console.error('Error: ' + error);
+        console.error('Status: ' + status);
+        console.error('Response: ' + xhr.responseText);
+    }
+    });
+    }
+
+    function status_update(status){
+            // update status to pendig here
+            $.ajax({
+          type: 'POST',
+          url: '../../backend/update_forms/update_loa.php',
+          data: {
+            stat: status,
+            id: sid
+          },
+          success: function (data) {
+            console.log("Remarked:", data);
+            location.reload();// change it to something similar to refresh
+          },
+          error: function (xhr, status, error) {
+            console.error("Error marking event as done:", error);
+            alert("Error marking event as done: " + error);
+          },
+        });
+        }
+
+    fetchData();
 </script>   
 </body>
 </html>

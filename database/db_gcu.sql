@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2023 at 03:13 PM
+-- Generation Time: Oct 30, 2023 at 03:17 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -132,17 +132,20 @@ CREATE TABLE `appointment` (
   `date` date DEFAULT NULL,
   `start_time` time DEFAULT NULL,
   `end_time` time DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL
+  `status` varchar(255) DEFAULT NULL,
+  `remarks` varchar(255) DEFAULT NULL,
+  `action_taken` varchar(255) DEFAULT NULL,
+  `latest_update` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`appointment_id`, `student_id`, `employee_id`, `transact_id`, `Reason`, `event_title`, `date`, `start_time`, `end_time`, `status`) VALUES
-(39, 432, 2002529, 78, NULL, 'asdf', '2023-10-28', '08:00:00', '09:00:00', 'taken'),
-(40, 432, 2002529, 79, NULL, 'another', '2023-10-28', '11:00:00', '12:00:00', 'taken'),
-(41, NULL, 111122, 80, NULL, 'ANother from mw', '2023-10-28', '08:00:00', '09:00:00', 'open');
+INSERT INTO `appointment` (`appointment_id`, `student_id`, `employee_id`, `transact_id`, `Reason`, `event_title`, `date`, `start_time`, `end_time`, `status`, `remarks`, `action_taken`, `latest_update`) VALUES
+(39, 432, 2002529, 78, NULL, 'asdf', '2023-10-28', '08:00:00', '09:00:00', 'taken', NULL, NULL, NULL),
+(40, 432, 2002529, 79, NULL, 'another', '2023-10-28', '11:00:00', '12:00:00', 'taken', 'asdf', 'asdfa', '2023-10-30'),
+(41, NULL, 111122, 80, NULL, 'ANother from mw', '2023-10-28', '08:00:00', '09:00:00', 'open', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -217,7 +220,8 @@ CREATE TABLE `readmission` (
 
 INSERT INTO `readmission` (`readmission_id`, `transact_id`, `motivation`, `reason`, `status`) VALUES
 (8, 70, 'read', 'read', ''),
-(9, 82, 'lzxkfjnvhzlxkcjvhxzlkcjvhzxlkjcvhzlxkjchvsdfgnas,.mdfna,.msnf', 'SDFKLGJHSDKLFJGHSDLFKGJHSDLKFGJHSKLDFGJHLKlksdfjhgxcvlkjbhxcmv,bnsd.,mfngs.d,mfng', '');
+(9, 82, 'lzxkfjnvhzlxkcjvhxzlkcjvhzxlkjcvhzlxkjchvsdfgnas,.mdfna,.msnf', 'SDFKLGJHSDKLFJGHSDLFKGJHSDLKFGJHSKLDFGJHLKlksdfjhgxcvlkjbhxcmv,bnsd.,mfngs.d,mfng', ''),
+(10, 87, 'asdfasdf', 'asdfasdfsa', '');
 
 -- --------------------------------------------------------
 
@@ -238,7 +242,8 @@ CREATE TABLE `referral` (
 --
 
 INSERT INTO `referral` (`referral_id`, `transact_id`, `reason`, `referred`, `status`) VALUES
-(16, 74, 'Interview,Late', 'College Dean', '');
+(16, 74, 'Interview,Late', 'College Dean', ''),
+(17, 88, 'Counseling', 'Myself', '');
 
 -- --------------------------------------------------------
 
@@ -328,30 +333,34 @@ CREATE TABLE `transact` (
   `employee_id` int(11) DEFAULT NULL,
   `transact_type` text DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
+  `date_edited` datetime DEFAULT NULL,
   `date_completed` datetime DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL
+  `status` varchar(255) DEFAULT NULL,
+  `remarks` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `transact`
 --
 
-INSERT INTO `transact` (`transact_id`, `student_id`, `employee_id`, `transact_type`, `date_created`, `date_completed`, `status`) VALUES
-(70, 432, NULL, 'readmission', '2023-10-20 05:49:33', NULL, 'pending'),
-(71, 432, NULL, 'WDS', '2023-10-20 05:49:45', NULL, 'pending'),
-(72, 432, NULL, 'WDS', '2023-10-20 05:50:02', NULL, 'pending'),
-(73, 432, NULL, 'WDS', '2023-10-20 05:50:17', NULL, 'pending'),
-(74, 432, NULL, 'referral', '2023-10-20 05:50:28', NULL, 'pending'),
-(75, 432, NULL, 'leave_of_absence', '2023-10-20 05:50:49', NULL, 'done'),
-(78, NULL, 2002529, 'appointment', '2023-10-28 06:16:22', NULL, 'open'),
-(79, NULL, 2002529, 'appointment', '2023-10-28 09:21:31', NULL, 'open'),
-(80, NULL, 111122, 'appointment', '2023-10-28 09:23:51', NULL, 'open'),
-(81, 111, NULL, 'WDS', '2023-10-28 12:56:56', NULL, 'done'),
-(82, 112, NULL, 'readmission', '2023-10-29 14:37:26', NULL, 'pending'),
-(83, 112, NULL, 'WDS', '2023-10-29 14:37:55', NULL, 'pending'),
-(84, 432, NULL, 'Withdrawing Enrollment', '2023-10-29 15:12:36', NULL, 'pending'),
-(85, 432, NULL, 'Dropping Subjects', '2023-10-29 15:12:51', NULL, 'pending'),
-(86, 432, NULL, 'Shifting', '2023-10-29 15:13:01', NULL, 'pending');
+INSERT INTO `transact` (`transact_id`, `student_id`, `employee_id`, `transact_type`, `date_created`, `date_edited`, `date_completed`, `status`, `remarks`) VALUES
+(70, 432, NULL, 'readmission', '2023-10-20 05:49:33', NULL, NULL, 'done', 'none'),
+(71, 432, NULL, 'WDS', '2023-10-20 05:49:45', NULL, NULL, 'done', 'none'),
+(72, 432, NULL, 'WDS', '2023-10-20 05:50:02', NULL, NULL, 'done', 'none'),
+(73, 432, NULL, 'WDS', '2023-10-20 05:50:17', NULL, NULL, 'done', 'none'),
+(74, 432, NULL, 'referral', '2023-10-20 05:50:28', NULL, NULL, 'done', 'none'),
+(75, 432, NULL, 'leave_of_absence', '2023-10-20 05:50:49', NULL, NULL, 'done', 'none'),
+(78, NULL, 2002529, 'appointment', '2023-10-28 06:16:22', NULL, NULL, 'open', 'none'),
+(79, NULL, 2002529, 'appointment', '2023-10-28 09:21:31', NULL, NULL, 'open', 'none'),
+(80, NULL, 111122, 'appointment', '2023-10-28 09:23:51', NULL, NULL, 'open', 'none'),
+(81, 111, NULL, 'WDS', '2023-10-28 12:56:56', NULL, NULL, 'done', 'none'),
+(82, 112, NULL, 'readmission', '2023-10-29 14:37:26', NULL, NULL, 'pending', 'none'),
+(83, 112, NULL, 'WDS', '2023-10-29 14:37:55', NULL, NULL, 'pending', 'none'),
+(84, 432, NULL, 'Withdrawing Enrollment', '2023-10-29 15:12:36', '0000-00-00 00:00:00', NULL, 'done', 'none'),
+(85, 432, NULL, 'Dropping Subjects', '2023-10-29 15:12:51', NULL, NULL, 'done', 'remarked'),
+(86, 432, NULL, 'Shifting', '2023-10-29 15:13:01', NULL, NULL, 'done', 'none'),
+(87, 432, NULL, 'readmission', '2023-10-30 13:39:32', NULL, NULL, 'done', NULL),
+(88, 432, NULL, 'referral', '2023-10-30 13:40:22', NULL, NULL, 'done', NULL);
 
 -- --------------------------------------------------------
 
@@ -501,13 +510,13 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `readmission`
 --
 ALTER TABLE `readmission`
-  MODIFY `readmission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `readmission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `referral`
 --
 ALTER TABLE `referral`
-  MODIFY `referral_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `referral_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `siblings`
@@ -519,7 +528,7 @@ ALTER TABLE `siblings`
 -- AUTO_INCREMENT for table `transact`
 --
 ALTER TABLE `transact`
-  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `withdrawal`

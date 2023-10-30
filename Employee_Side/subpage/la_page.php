@@ -220,7 +220,7 @@ session_start();
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
 
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='../forms/loa.php'><button>View</button></a>");
+                    var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", "+ entry.stud_user_id +")'>View</button>");
                     statusCell.append(statusLink);
                     row.append(statusCell);
 
@@ -316,6 +316,23 @@ session_start();
 
         });
     });
+
+    function view_form(tid, sid){
+        console.log("student", sid);
+        console.log("transact", tid);
+
+                    // Send stud_id to the server using an AJAX request
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../../backend/session_forms/set_session_loa.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid },
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = '../forms/loa.php';
+                }
+            });
+    }
 
     // export to excel
     function exportToExcel() {

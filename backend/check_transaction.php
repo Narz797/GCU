@@ -114,7 +114,8 @@ WHERE
     student_user.gender,
     transact.status,
     transact.transact_type,
-    transact.date_created
+    transact.date_created,
+    transact.transact_id
 FROM
     student_user
 INNER JOIN
