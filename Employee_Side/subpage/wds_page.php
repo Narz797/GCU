@@ -287,7 +287,8 @@ function exportToExcel(tableId) {
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
 
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='../forms/s.php'><button>View</button></a>");
+                    var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", " + entry.stud_user_id + ", \"" + entry.reason + "\")'>View</button>");
+//reason, id, trans id
                     statusCell.append(statusLink);
                     row.append(statusCell);
                     if (status == 'pending') {
@@ -338,7 +339,8 @@ function exportToExcel(tableId) {
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
 
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='../forms/w.php'><button>View</button></a>");
+                    var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", " + entry.stud_user_id + ", \"" + entry.reason + "\")'>View</button>");
+
                     statusCell.append(statusLink);
                     row.append(statusCell);
                     
@@ -420,6 +422,48 @@ function exportToExcel(tableId) {
 
         });
     });
+    
+    function view_form(tid, sid, type){
+        console.log("student", sid);
+        console.log("transact", tid);
+        console.log("type", type);
+
+                    // Send stud_id to the server using an AJAX request
+        if (type == 'Withdrawing Enrollment'){
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../../backend/session_forms/set_session_w.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid },
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = '../forms/w.php';
+                }
+            });
+        }else if (type == 'Dropping Subjects'){
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../../backend/session_forms/set_session_d.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid },
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = '../forms/d.php';
+                }
+            });
+        }else if (type == 'Shifting'){
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../../backend/session_forms/set_session_s.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid },
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = '../forms/s.php';
+                }
+            });
+        }
+    }
 </script>
 <script src="../assets/main.js"></script>
  <!-- <script src="assets/js/table.js"></script>    -->

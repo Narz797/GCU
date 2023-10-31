@@ -97,20 +97,20 @@ session_start();
         <div class="card">
             <header class="card-header header-side">
                 <h2 class="title">Student Information</h2>
-                <small>Date is <u>October 05, 2025</u></small>
+                <small>Date is <u><?php echo date('F j, Y'); ?></u></small>
             </header>
             <hr>
             <div class="info">
 
 <!-- Get student's data input in h3-->
 
-                <p>Student ID No.</p><h3>20002213</h3>
-                <p>Name of Student</p><h3>Narz Taquio</h3>
-                <p>Course & Year Level</p><h3>BSIT 4th Year</h3>
-                <p>Sex</p><h3>Male</h3>
-                <p>Contact Number</p><h3>0909-0909-090</h3>
-                <p>Guardian/Parent</p><h3>Layla Taquio</h3>
-                <p>Contact Number of Guardian/Parent</p><h3>0909-0909-090</h3>
+                <p>Student ID No.</p><h3 id="id_no">20002213</h3>
+                <p>Name of Student</p><h3 id="name">Narz Taquio</h3>
+                <p>Course & Year Level</p><h3 id="ys">BSIT 4th Year</h3>
+                <p>Sex</p><h3 id="gender">Male</h3>
+                <p>Contact Number</p><h3 id="cn">0909-0909-090</h3>
+                <p>Guardian/Parent</p><h3  id="pgname">Layla Taquio</h3>
+                <p>Contact Number of Guardian/Parent</p><h3 id="pgn">0909-0909-090</h3>
             </div>
         </div>
         <div class="card-group d-grid">
@@ -126,22 +126,23 @@ session_start();
                 <div class="main-box">
                 <div class="box">
                   <h2 class="title">  Reason for refferral:</h2>
-                  <p class="card-description refer">Counseling</p>
+                  <!-- <p class="card-description refer">Counseling</p>
                   <p class="card-description refer">Academic Deficiency/ies</p>
                   <p class="card-description refer">Absent on October 5 - 8, 2025</p>
-                  <p class="card-description refer">Tardy on October 5, 2025</p>
+                  <p class="card-description refer">Tardy on October 5, 2025</p> -->
+                  <p class="card-description refer" id="reason">Counseling</p>
                 </div>
                 </div>
                 <!-- <div class="action"> -->
 
 <!--This will be pop-up-->
 
-                 <!-- <a href="#divOne"><button class="yes">Received</button></a>
+                <a href="#divOne"><button class="yes" onclick="status_update('done')">Received</button></a>
                  </div>
             </div>
         </div>
     </div>
-</section> -->
+</section> 
 <!-- This is the pop-up for the three buttons -->
 
                 <!-- <div class="overlay" id="divOne">
@@ -179,7 +180,7 @@ session_start();
 
 
         // Function to update the HTML elements
-        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, motiv, reason) {
+        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, referred) {
 
             $('#id_no').text(id);
             $('#name').text(fname+ ' '+ lname);
@@ -189,7 +190,7 @@ session_start();
             $('#pgname').text(pgname);
             $('#pgn').text(pgn);
             $('#reason').text(reason);
-            $('#motiv').text(motiv);
+       
 
             }
             function fetchData() {
@@ -215,16 +216,12 @@ session_start();
                 var pgn = studentData.ParentGuardianNumber;
                 var pgname = studentData.ParentGuardianName;
                 var relation = studentData.Relation;
-                var motiv = studentData.motivation;
                 var reason = studentData.reason;
-                var att = studentData.attachment;
-                var doc = studentData.document;
-                console.log(fname);
-                updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, motiv, reason);
+                var referred = studentData.referred;
 
-                // Display the blob data as images
-                displayBlobAsImage(doc, 'document'); // Pass the image data and an element ID
-                displayBlobAsImage(att, 'attachment'); // Pass the image data and an element ID
+                console.log(fname);
+                updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, referred);
+
             
             } else {
                 // Handle the case when no results are found
@@ -244,7 +241,7 @@ session_start();
                 // update status to pendig here
                 $.ajax({
             type: 'POST',
-            url: '../../backend/update_forms/update_read.php',
+            url: '../../backend/update_forms/update_ref.php',
             data: {
                 stat: status,
                 id: sid,

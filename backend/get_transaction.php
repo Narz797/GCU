@@ -13,28 +13,28 @@ try {
     $countPending = $stmt1->fetch(PDO::FETCH_ASSOC);
 
     // Count WDS
-    $countPendingSql4 = "SELECT COUNT(*) AS total_pending_WDS FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND transact_type = 'WDS'";
+    $countPendingSql4 = "SELECT COUNT(*) AS total_pending_WDS FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND transact_type = 'WDS' AND status = 'pending'";
     $stmt4 = $pdo->prepare($countPendingSql4);
     $stmt4->bindParam(':currentDate', $currentDate);
     $stmt4->execute();
     $countWDS = $stmt4->fetch(PDO::FETCH_ASSOC);
 
     // Count LOA
-    $countPendingSql1 = "SELECT COUNT(*) AS total_pending_LOA FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND transact_type = 'leave_of_absence'";
+    $countPendingSql1 = "SELECT COUNT(*) AS total_pending_LOA FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND transact_type = 'leave_of_absence'AND status = 'pending'";
     $stmt2 = $pdo->prepare($countPendingSql1);
     $stmt2->bindParam(':currentDate', $currentDate);
     $stmt2->execute();
     $countLOA = $stmt2->fetch(PDO::FETCH_ASSOC);
 
     // Count RA
-    $countPendingSql2 = "SELECT COUNT(*) AS total_pending_RA FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND transact_type = 'readmission'";
+    $countPendingSql2 = "SELECT COUNT(*) AS total_pending_RA FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND transact_type = 'readmission'AND status = 'pending'";
     $stmt3 = $pdo->prepare($countPendingSql2);
     $stmt3->bindParam(':currentDate', $currentDate);
     $stmt3->execute();
     $countRA = $stmt3->fetch(PDO::FETCH_ASSOC);
 
     // Count RS
-    $countPendingSql3 = "SELECT COUNT(*) AS total_pending_RS FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND transact_type = 'referral'";
+    $countPendingSql3 = "SELECT COUNT(*) AS total_pending_RS FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND transact_type = 'referral' AND status = 'pending'";
     $stmt5 = $pdo->prepare($countPendingSql3);
     $stmt5->bindParam(':currentDate', $currentDate);
     $stmt5->execute();
