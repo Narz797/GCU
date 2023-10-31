@@ -10,7 +10,7 @@ transact.date_created,
 transact.transact_type,
 
 CONCAT(
-    IFNULL(withdrawal.explain, ''),
+    IFNULL(withdrawal.statement, ''),
     IFNULL(referral.reason, ''),
     IFNULL(readmission.reason, ''),
     IFNULL(absence.reason, '')

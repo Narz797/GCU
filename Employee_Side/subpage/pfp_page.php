@@ -155,6 +155,9 @@ session_start();
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
+            <button class="icon-btn place-items-center" onclick="archive()">
+           <i class="ri-archive-drawer-line"></i>
+        </button>
         </div>
     </nav>
 </header>
@@ -380,7 +383,9 @@ var app_id
             function logout() {
     window.location.href = '../../home?logout=true';
 }
-
+function archive() {
+    window.location.href = 'archive.php';
+        }
 // remarks
 function openModal(id) {
     document.getElementById("modal").style.display = "block";

@@ -71,6 +71,9 @@ session_start();
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
+            <button class="icon-btn place-items-center" onclick="archive()">
+           <i class="ri-archive-drawer-line"></i>
+        </button>
         </div>
     </nav>
 </header>
@@ -213,6 +216,9 @@ session_start();
         function logout() {
     window.location.href = '../../home?logout=true';
 }
+function archive() {
+    window.location.href = '../subpage/archive.php';
+        }
 
 
 

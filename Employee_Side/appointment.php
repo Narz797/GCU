@@ -68,6 +68,9 @@
             </button>
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
+            <button class="icon-btn place-items-center" onclick="archive()">
+              <i class="ri-archive-drawer-line"></i>
+            </button>
             </button>
         </div>
     </nav>
@@ -258,6 +261,9 @@
   function logout() {
     window.location.href = '../home?logout=true';
 }
+function archive() {
+    window.location.href = './subpage/archive.php';
+        }
 
 function searchTable() { //searches in all column
             var input, filter, table, tr, td, i, j, txtValue;

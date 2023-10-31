@@ -165,6 +165,40 @@ WHERE transact.status != 'done';
 
     // Prepare and echo data as JSON
     echo json_encode($data);
-}
+}else if ($type == 'done') {
+    $sql = "SELECT
+    student_user.stud_user_id,
+    student_user.last_name,
+    student_user.first_name,
 
+    CONCAT(
+        CASE
+            WHEN transact.transact_type = 'WDS' THEN IFNULL(withdrawal.reason, '')
+            ELSE IFNULL(transact.transact_type, '')
+        END,
+        IFNULL(appointment.Reason, '')
+    ) AS reason,
+    transact.status,
+    transact.date_created,
+    transact.transact_type,
+    transact.date_edited
+FROM
+    student_user
+LEFT JOIN
+    transact ON student_user.stud_user_id = transact.student_id
+LEFT JOIN
+    withdrawal ON transact.transact_id = withdrawal.transact_id
+LEFT JOIN
+    appointment ON transact.transact_id = appointment.transact_id
+WHERE transact.status != 'pending';
+
+";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Prepare and echo data as JSON
+    echo json_encode($data);
+}
 ?>

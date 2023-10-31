@@ -79,6 +79,9 @@ session_start();
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
+            <button class="icon-btn place-items-center" onclick="archive()">
+                <i class="ri-archive-drawer-line"></i>
+                </button>
         </div>
     </nav>
 </header>
@@ -112,6 +115,20 @@ session_start();
             </header>
             <hr>
           <div class=" gallery">
+
+          <div class="content1">
+                <img src="./assets/images/read.jpg">
+                <h4>CLASS ADMISSION SLIP</h4>
+                <p><span class="num" data-val="28">000</span>
+                <span class="text">pending...</span></p>
+                <h5>don't know the serial number</h5>
+                <br>
+                <h5><i class="ri-mail-unread-line"></i></h5>
+                <br>
+                <a href="subpage/ca_page.php">
+                <button class="buy-1">READ MORE</button></a>
+            </div>
+
             <div class="content1">
                 <img src="./assets/images/loa.jpg">
                 <h4>LOA SLIP</h4>
@@ -161,6 +178,7 @@ session_start();
                 <button class="buy-1">READ MORE</button></a>
             </div>
           </div>
+          
         </div>
     </div>
     <!-- History of transaction -->
@@ -253,7 +271,10 @@ session_start();
     function logout() {
     window.location.href = '../home?logout=true';
 }
-function fetchData() {
+function archive() {
+    window.location.href = './subpage/archive.php';
+        }
+function fetchData() { //getting total
         console.log('AJAX request started');
         $.ajax({
             type: 'GET',

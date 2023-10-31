@@ -156,10 +156,6 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 echo json_encode($data);
 
     //code for withdrawal
-}  else if ($form == 'd') {
-    //code for dropping
-}  else if ($form == 's') {
-    //code for shifting
-}
+} 
 
 ?>
