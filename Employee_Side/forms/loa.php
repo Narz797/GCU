@@ -10,7 +10,6 @@ session_start();
     exit; // Make sure to exit the script after a header redirect
   }
 
-  $_SESSION['form_type']='loa';
   $id = $_SESSION['stud_id'];
   $tran = $_SESSION['tran_id'];
 
@@ -159,6 +158,7 @@ session_start();
 <script src="../assets/main.js"></script>
 <script>
     var sid;
+    var tid;
         function logout() {
     window.location.href = '../../home?logout=true';
 }
@@ -191,6 +191,7 @@ session_start();
             var studentData = data[0]; // Assuming you expect a single row
             var id = studentData.stud_user_id;
             sid = studentData.stud_user_id;
+            tid = studentData.transact_id;
             var fname = studentData.first_name;
             var lname = studentData.last_name;
             var email = studentData.email;
@@ -229,7 +230,8 @@ session_start();
           url: '../../backend/update_forms/update_loa.php',
           data: {
             stat: status,
-            id: sid
+            id: sid,
+            tid: tid
           },
           success: function (data) {
             console.log("Remarked:", data);

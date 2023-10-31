@@ -18,6 +18,7 @@ if ($type == 'readmission') {
     student_user.Contact_number,
     student_user.ParentGuardianNumber,
     student_user.gender,
+    transact.transact_id,
     transact.status,
     transact.transact_type,
     transact.date_created
@@ -38,6 +39,7 @@ if ($type == 'readmission') {
 } else if ($type == 'referral') {
     $sql = "SELECT
     student_user.stud_user_id,
+    transact.transact_id,
     student_user.last_name,
     student_user.first_name,
     student_user.Year_level,
@@ -70,6 +72,7 @@ WHERE
 } else if ($type == 'withdrawal') {
     $sql = "SELECT
     student_user.stud_user_id,
+    transact.transact_id,
     student_user.last_name,
     student_user.first_name,
     student_user.Year_level,
@@ -104,6 +107,7 @@ WHERE
 } else if ($type == 'loa') {
     $sql = "SELECT
     student_user.stud_user_id,
+    transact.transact_id,
     student_user.last_name,
     student_user.first_name,
     student_user.Year_level,

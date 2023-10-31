@@ -9,6 +9,11 @@ session_start();
     
     exit; // Make sure to exit the script after a header redirect
   }
+
+  
+  $_SESSION['form_type']='ca';
+  $id = $_SESSION['stud_id'];
+  $tran = $_SESSION['tran_id'];
   
 ?>
 <!DOCTYPE html>

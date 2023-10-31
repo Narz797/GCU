@@ -9,6 +9,15 @@ session_start();
     
     exit; // Make sure to exit the script after a header redirect
   }
+  $id = $_SESSION['stud_id'];
+  $tran = $_SESSION['tran_id'];
+  $form=$_SESSION['form_type'];
+
+  echo '<script>
+        console.log("clicked, ' . $id . '");
+        console.log("clicked, ' . $tran . '");
+        console.log("clicked, ' . $form . '");
+        </script>';
   
 ?>
 <!DOCTYPE html>
@@ -28,6 +37,8 @@ session_start();
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../assets/css/slips3.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
 
 <body>
@@ -160,9 +171,97 @@ session_start();
     <!-- Script     -->
 <script src="../assets/main.js"></script>
 <script>
+            var sid;
+    var tid;
         function logout() {
     window.location.href = '../../home?logout=true';
 }
+
+
+        // Function to update the HTML elements
+        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, motiv, reason) {
+
+            $('#id_no').text(id);
+            $('#name').text(fname+ ' '+ lname);
+            $('#ys').text(course+ ' '+year_level);
+            $('#gender').text(gender);
+            $('#cn').text(cn);
+            $('#pgname').text(pgname);
+            $('#pgn').text(pgn);
+            $('#reason').text(reason);
+            $('#motiv').text(motiv);
+
+            }
+            function fetchData() {
+            console.log('AJAX request started');
+            console.log('<?php echo $form?>');
+            $.ajax({
+            type: 'GET',
+            url: '../../backend/get_form.php',
+            dataType: 'json',
+            success: function (data) {
+            if (data.length > 0) {
+                var studentData = data[0]; // Assuming you expect a single row
+                var id = studentData.stud_user_id;
+                sid = studentData.stud_user_id;
+                tid = studentData.transact_id;
+                var fname = studentData.first_name;
+                var lname = studentData.last_name;
+                var email = studentData.email;
+                var year_level = studentData.Year_level;
+                var course = studentData.course;
+                var gender = studentData.gender;
+                var cn = studentData.Contact_number;
+                var pgn = studentData.ParentGuardianNumber;
+                var pgname = studentData.ParentGuardianName;
+                var relation = studentData.Relation;
+                var motiv = studentData.motivation;
+                var reason = studentData.reason;
+                var att = studentData.attachment;
+                var doc = studentData.document;
+                console.log(fname);
+                updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, motiv, reason);
+
+                // Display the blob data as images
+                displayBlobAsImage(doc, 'document'); // Pass the image data and an element ID
+                displayBlobAsImage(att, 'attachment'); // Pass the image data and an element ID
+            
+            } else {
+                // Handle the case when no results are found
+                console.log('No results found');
+            }
+            },
+            error: function (xhr, status, error) {
+            console.error('Error: ' + error);
+            console.error('Status: ' + status);
+            console.error('Response: ' + xhr.responseText);
+            }
+            });
+
+        }
+
+            function status_update(status){
+                // update status to pendig here
+                $.ajax({
+            type: 'POST',
+            url: '../../backend/update_forms/update_read.php',
+            data: {
+                stat: status,
+                id: sid,
+                tid: tid
+            },
+            success: function (data) {
+                console.log("Remarked:", data);
+                location.reload();// change it to something similar to refresh
+            },
+            error: function (xhr, status, error) {
+                console.error("Error marking event as done:", error);
+                alert("Error marking event as done: " + error);
+            },
+            });
+            }
+            fetchData();
+        
 </script>   
 </body>
 </html>
