@@ -2,6 +2,7 @@
 <html lang="en">
 <!-- testing -->
 <?php include 'includes/head.php'; ?>
+
 <body>
   <header id="header" class="header d-flex align-items-center" style="background-color: black; ">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -11,31 +12,30 @@
         <!-- <h1>Impact<span>.</span></h1> -->
       </a>
       <nav id="navbar" class="navbar" style="margin: auto;">
-  <ul>
-    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; " >
-    <li><a href="/gcu/home">HOME</a></li>
-    <li><a href="/gcu/about">ABOUT</a></li>
-    <li><a href="/gcu/services">SERVICES</a></li>
-   
-    <space style = "width: 400px"> </space>
-          <li class="dropdown"><a href="#"><span>LOGIN</span> <i
-                class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul  style="background-color: transparent; ">
+        <ul>
+          <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; ">
+          <li><a href="/gcu/home">HOME</a></li>
+          <li><a href="/gcu/about">ABOUT</a></li>
+          <li><a href="/gcu/services">SERVICES</a></li>
+
+          <space style="width: 400px"> </space>
+          <li class="dropdown"><a href="#"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul style="background-color: transparent; ">
               <li><a href="Student_Side/student-login">STUDENT</a></li>
-              <li><a href="Employee_Side/login_Employee.php">EMPLOYEE</a></li>
+              <li><a href="Employee_Side/employee-login">EMPLOYEE</a></li>
               <li><a href="Teacher_Side/teacher-login">TEACHER</a></li>
-          
-             
+
+
             </ul>
           </li>
           <!-- <li class="dropdown"><li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">
             REGISTER</a></li> -->
-            <li class="dropdown"><a><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul  style="background-color: transparent; ">
+          <li class="dropdown"><a><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul style="background-color: transparent; ">
               <li><a href="./Student_Side/Stud_registration/page1.php">STUDENT</a></li>
-              <li><a href="teacher.php">TEACHER</a></li>
-          
-             
+              <li><a href="Teacher_Side/teacher-register">TEACHER</a></li>
+
+
             </ul>
           </li>
         </ul>
@@ -55,8 +55,7 @@
       </style>
   </section>
   <!-- End Top Bar -->
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <div id="preloader"></div>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -69,4 +68,5 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 </body>
+
 </html>
