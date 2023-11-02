@@ -29,7 +29,7 @@ include 'includes/main2.php';
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="./assets/apmt.css">
-    <link rel="stylesheet" href="./assets/css/forms.css">
+    <!-- <link rel="stylesheet" href="./assets/css/forms.css"> -->
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../Employee_Side/assets/css/slips2.css">
   
@@ -255,23 +255,77 @@ include 'includes/main2.php';
                                 <form>
                                     <h1>Reason for Appointment?</h1>
                                     <br>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
+                                    <textarea placeholder="Type here your reason" id="reason"></textarea>
                                     <br>
                                     <hr>
                                     <div class="tsk">
-                                    <button class="yes">Yes</button>
-                                    <button class="no">No</button></a>
+                                    <a class="yes" onclick="reason()">Submit</a>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                  </div>
-            <!--  -->
+<!-- 
+                 <div class="overlay" id="divThree">
+                    <div class="wrapper">
+                        <h1>Reason</h1>
+                        <a href="#" class="close">&times;</a>
+                        <div class="popup">
+                            <div class="popup2">
+                                <form>
+                                    <label>Attending Personnel</label>
+                                    <input type="text" placeholder="Your Name">
+                                    <label>Remarks</label>
+                                    <textarea placeholder="Type here if you have remarks..."></textarea>
+                                    <div class="tsk"> 
+
+                                    <input type="submit" value="send">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 </div> -->
+           
   </body>
-  <script>
-        var id = "<?php echo $id; ?>";
-    </script>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="assets/js/calendar.js"></script>    
+<script src="assets/js/calendar.js"></script>   
+<script>
+        var id = "<?php echo $id; ?>";
+        var aid;
+        var reasons;
+        var tid;
+        
+          function reason()
+          {
+            reasons = document.getElementById("reason").value;
+
+            if (window.confirm("Do you want to proceed?")) {
+
+                $.ajax({
+                  type: 'POST',
+                  url: '../backend/get_slot.php',
+                  data: {
+                    event_id: aid,
+                    stud_id: id,
+                    trans_id: tid,
+                    reason: reasons
+                  },
+                  success: function (data) {
+                    console.log("slot taken:", data);
+                    alert("Slot taken for: ",aid);
+                    document.getElementById("divOne").style.display = "none";
+                    window.location.reload();
+                  },
+                  error: function (xhr, status, error) {
+                    console.error("Error marking event as done:", error);
+                    alert("Error in taking slot: " + error);
+                  },
+                });
+              }
+            
+          }
+    </script> 

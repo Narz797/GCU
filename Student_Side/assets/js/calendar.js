@@ -326,35 +326,14 @@ eventsContainer.addEventListener("click", function (e) {
     // Get the appointmentId from the clicked event's data attribute
     const appointmentId = clickedEvent.dataset.appointmentId;
     const transactId = clickedEvent.dataset.transactId;//gets value of appointment id from function updateEvents()
+    aid = appointmentId 
+    tid = transactId
     console.log("tranID", transactId );
     console.log("stud ID",id);
+    window.location.href = '#divOne';
     // Construct the message to display
     // const eventData = `Event: ${eventTitle}\nCounselor: ${counselor}\nTime: ${eventTime}\nAppointment ID: ${appointmentId}`;
-    if (window.confirm("Do you want to proceed?")) {
-      // window.location.href = '#divOne';
-
-      
-
-    $.ajax({
-      type: 'POST',
-      url: '../backend/get_slot.php',
-      data: {
-        event_id: appointmentId,
-        stud_id: id,
-        trans_id: transactId
-      },
-      success: function (data) {
-        console.log("slot taken:", data);
-        alert("Slot taken for: ",appointmentId);
-        refreshEvents();
-      },
-      error: function (xhr, status, error) {
-        console.error("Error marking event as done:", error);
-        alert("Error in taking slot: " + error);
-      },
-    });
-
-  }
+    
     // Display the event data in an alert
     
 
