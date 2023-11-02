@@ -10,7 +10,7 @@ RewriteCond %{THE_REQUEST} /withdrawal-dropping-shifitng-form\.php [NC]
 RewriteRule ^ - [F]
 RewriteCond %{THE_REQUEST} /formstyle.php\.php [NC]
 
-RewriteRule ^leave-of-absence-slip/?$ LeaveOfAbsence_Slip.php [L]
+RewriteRule ^leaveof-absence-slip/?$ LeaveOfAbsence_Slip.php [L]
 RewriteRule ^readmission-slip/?$ Readmission_Slip.php [L]
 RewriteRule ^referral-slip/?$ Referral_Slip.php [L]
 RewriteRule ^withdrawal-slip/?$ withdrawal-dropping-shifitng-form.php [L]

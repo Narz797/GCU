@@ -21,11 +21,14 @@ try {
                     appointment.start_time, 
                     appointment.end_time, 
                     appointment.status, 
-                    admin_user.first_name
+                    admin_user.first_name,
+                    transact.transact_id
                 FROM 
                     appointment
                 INNER JOIN 
                     admin_user ON appointment.employee_id = admin_user.admin_user_id
+                INNER JOIN 
+                    transact ON appointment.transact_id = transact.transact_id
               WHERE YEAR(`date`) = :year AND MONTH(`date`) = :month AND DAY(`date`) = :date AND appointment.status = 'open';";
 
     $stmt = $pdo->prepare($query);

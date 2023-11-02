@@ -255,7 +255,7 @@ function archive() {
             },
             success: function (data) {
                 console.log("Remarked:", data);
-                location.reload();// change it to something similar to refresh
+                window.location.href = "../subpage/rs-forms";
             },
             error: function (xhr, status, error) {
                 console.error("Error marking event as done:", error);

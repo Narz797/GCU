@@ -13,7 +13,7 @@ try {
     $countPending = $stmt1->fetch(PDO::FETCH_ASSOC);
 
     // Count WDS
-    $countPendingSql4 = "SELECT COUNT(*) AS total_pending_WDS FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND transact_type = 'WDS' AND status = 'pending'";
+    $countPendingSql4 = "SELECT COUNT(*) AS total_pending_WDS FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending')  AND status = 'pending' AND (transact_type = 'Withdrawing Enrollment' OR transact_type = 'Dropping Subjects' OR transact_type = 'Shifting')";
     $stmt4 = $pdo->prepare($countPendingSql4);
     $stmt4->bindParam(':currentDate', $currentDate);
     $stmt4->execute();

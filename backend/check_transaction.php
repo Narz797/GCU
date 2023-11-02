@@ -96,7 +96,7 @@ INNER JOIN
 INNER JOIN
     withdrawal ON transact.transact_id = withdrawal.transact_id
 WHERE
-    transact.transact_type = 'WDS';";
+    transact.transact_type = 'Withdrawing Enrollment' OR transact.transact_type = 'Dropping Subjects' OR transact.transact_type = 'Shifting';";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 

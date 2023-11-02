@@ -247,7 +247,8 @@ function getAvailability(year, month, date) {
             title: event.event_title,
             time: `${event.start_time} - ${event.end_time}`,
             counselor: event.first_name,
-            appointmentId: event.appointment_id 
+            appointmentId: event.appointment_id,
+            transactId: event.transact_id
             
           });
         });
@@ -261,7 +262,7 @@ function getAvailability(year, month, date) {
   });
 }
 
-
+ 
 
 
 // Function to update events for the selected day
@@ -271,7 +272,7 @@ function updateEvents(year, month, date, events) {
 
   if (Array.isArray(events) && events.length > 0) {
     events.forEach((event) => {
-      eventsHTML += `<div class="event" data-appointment-id="${event.appointmentId}">
+      eventsHTML += `<div class="event" data-appointment-id="${event.appointmentId}" data-transact-id="${event.transactId}">
         <div class="title">
           <i class="fas fa-circle"></i>
           <h3 class="event-title">${event.title}</h3>
@@ -282,7 +283,7 @@ function updateEvents(year, month, date, events) {
         <div class="event-time">
           <span class="event-time">${event.time}</span>
         </div>
-      </div>`;
+      </div><br>`;
     });
   } else {
     eventsHTML = `<div class="no-event">
@@ -306,7 +307,13 @@ addListner();
 
 
 // Add this code inside your $(document).ready(function() { ... });
+// document.addEventListener("DOMContentLoaded", function() {
+//   // Access the id value passed from the PHP file
+//   var id = JSON.parse(document.querySelector("script").getAttribute("id"));
 
+//   // Now you can use the 'id' variable in your JavaScript code
+//   console.log(id);
+// });
 // Event listener for clicking on events
 eventsContainer.addEventListener("click", function (e) {
   const clickedEvent = e.target.closest(".event");
@@ -317,16 +324,24 @@ eventsContainer.addEventListener("click", function (e) {
     // const eventTime = clickedEvent.querySelectorAll(".event-time")[1].textContent;
 
     // Get the appointmentId from the clicked event's data attribute
-    const appointmentId = clickedEvent.dataset.appointmentId;//gets value of appointment id from function updateEvents()
-
+    const appointmentId = clickedEvent.dataset.appointmentId;
+    const transactId = clickedEvent.dataset.transactId;//gets value of appointment id from function updateEvents()
+    console.log("tranID", transactId );
+    console.log("stud ID",id);
     // Construct the message to display
     // const eventData = `Event: ${eventTitle}\nCounselor: ${counselor}\nTime: ${eventTime}\nAppointment ID: ${appointmentId}`;
     if (window.confirm("Do you want to proceed?")) {
+      // window.location.href = '#divOne';
+
+      
+
     $.ajax({
       type: 'POST',
       url: '../backend/get_slot.php',
       data: {
         event_id: appointmentId,
+        stud_id: id,
+        trans_id: transactId
       },
       success: function (data) {
         console.log("slot taken:", data);

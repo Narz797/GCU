@@ -291,7 +291,7 @@ function archive() {
             },
             success: function (data) {
                 console.log("Remarked:", data);
-                location.reload();// change it to something similar to refresh
+                window.location.href = "../subpage/wds-forms";
                 alert(data);
             },
             error: function (xhr, status, error) {

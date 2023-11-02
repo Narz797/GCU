@@ -10,6 +10,8 @@
   }
 
   $_SESSION['transact_type']='appointment';//asign value to transact_type/
+  $_SESSION['form_type']='appointment';//
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +34,8 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/apmt.css">
     <link rel="icon" href="assets/images/GCU_logo.png">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/css/slips2.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -240,7 +244,8 @@
                             <th> Date of Appointment<br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Time of Appointment<br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Reason<br> <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Action<br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> View<br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Done<br><span class="icon-arrow">&UpArrow;</span></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -250,13 +255,37 @@
                 <p id="noHistoryMessage2">Empty</p>
             </section>
             </main>
+            
             </div>
         </div>
     </div>
     <br>
-
+<!-- popup -->
+<div class="overlay" id="divOne">
+                    <div class="wrapper">
+                        <a href="#" class="close">&times;</a>
+                        <div class="popup">
+                            <div class="popup2">
+                                <form>
+                                    <h1>This Appointment is marked as done</h1>
+                                    <br>
+                                    <textarea placeholder="Type here if you have remarks..." id="remarksTextarea"></textarea>
+                                    <br>
+                                    <hr>
+                                    <div class="tsk">
+                                    <button class="yes" onclick ="app_remarks ()">Yes</button>
+                                    <button class="no">No</button></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            <!--  -->
 <!-- Script     -->
 <script>
+  var trans_id
+var app_id
   var sessionID = <?php echo json_encode($_SESSION['session_id']); ?>;
   function logout() {
     window.location.href = '../home?logout=true';
@@ -341,9 +370,14 @@ $(document).ready(function () {
                     row.append("<td>" + entry.start_time + " - "+ entry.end_time + "</td>");
                     row.append("<td>" + entry.Reason + "</td>");
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='#'><button>View</button></a>");
+                    var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", "+ entry.student_id +")'><i class='ri-eye-fill'></i></button>");//page
+                    
+                    var statusCell2 = $("<td></td>");
+                    var statusLink2 = $("<a href='#divOne'><button onclick='openModal("+entry.transact_id+", "+entry.appointment_id+")'><i class='ri-check-double-line'></i></button></a>");//poppu
+                    statusCell2.append(statusLink2);
                     statusCell.append(statusLink);
                     row.append(statusCell)
+                    row.append(statusCell2)
                     tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                  }
@@ -384,8 +418,58 @@ $(document).ready(function () {
         });
     
     });
+    function view_form(tid, sid){
+        console.log("student", sid);
+        console.log("transact", tid);
 
+                    // Send stud_id to the server using an AJAX request
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../backend/session_forms/set_session_app.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid },
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = 'forms/appt.php';
+                }
+            });
+    }
 
+    function openModal(tid, aid) {
+    //document.getElementById("divOne").style.display = "block";
+
+    trans_id = tid;
+    app_id = aid;
+  }
+
+  function closeModal() {
+  //  document.getElementById("divOne").style.display = "none";
+  }
+
+    
+    function app_remarks() {
+  var textareaValue = document.getElementById("remarksTextarea").value;
+  console.log("TID:", trans_id);
+  console.log("AID:", app_id);
+  console.log("Remarks:", textareaValue);
+    $.ajax({
+      type: 'POST',
+      url: '../backend/mad.php',
+      data: {
+        event_id: app_id,
+        trans_id: trans_id,
+        remark: textareaValue
+      },
+      success: function (data) {
+        console.log("Event marked as done:", data);
+        document.getElementById("divOne").style.display = "none";
+      },
+      error: function (xhr, status, error) {
+        console.error("Error marking event as done:", error);
+        alert("Error marking event as done: " + error);
+      },
+    });
+      }
 </script>
 <script src="assets/main.js"></script>   
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -1,3 +1,4 @@
+var appID;
 $(document).ready(function () {
   const calendar = document.querySelector(".calendar"),
     date = document.querySelector(".date"),
@@ -227,6 +228,7 @@ function getAvailability(year, month, date) {
       date: date
     },
     success: function (data) {
+      console.log("get_availability data:", data);
       if (data === "Already Added!") {
         alert("data");
     } else {
@@ -250,7 +252,8 @@ function getAvailability(year, month, date) {
             title: event.event_title,
             time: `${event.start_time} - ${event.end_time}`,
             stime: event.start_time,
-            etime: event.end_time
+            etime: event.end_time,
+            appointmentId: event.appointment_id 
           });
         });
         // Use the events data to update the UI
@@ -272,20 +275,17 @@ function updateEvents(year, month, date, events) {
 
   if (Array.isArray(events) && events.length > 0) {
     events.forEach((event) => {
-      eventsHTML += `<div class="event">
+      eventsHTML += `<div class="event" data-appointment-id="${event.appointmentId}">
         <div class="title">
           <i class="fas fa-circle"></i>
           <h3 class="event-title">${event.title}</h3>
         </div>
         <div class="event-time">
-          <span class="event-time">${event.time}</span>
+          <span class="eventS-time">${event.time}</span>
         </div>
-        <div class="event-actions">
-          <button class="delete-event">Delete</button>
-          <br>
-          <button class="mark-as-done">Marked as Done</button>
-        </div>
-      </div>`;
+
+      </div> <br>`;
+  
     });
     // temporary remove:
     // <button class="edit-event">Edit</button>
@@ -302,61 +302,61 @@ function updateEvents(year, month, date, events) {
   const editButtons = document.querySelectorAll(".edit-event");
   const markAsDoneButtons = document.querySelectorAll(".mark-as-done");
 
-  deleteButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      const event = events[index];
-      if (confirm("Are you sure you want to delete this event?")) {
-        console.log(event.aID);
+  // deleteButtons.forEach((button, index) => {
+  //   button.addEventListener("click", () => {
+  //     const event = events[index];
+  //     if (confirm("Are you sure you want to delete this event?")) {
+  //       console.log(event.aID);
   
-        $.ajax({
-          type: "POST",
-          url: "../backend/delete_appointment.php",
-          data: {
-            appointment_id: event.aID, // Change key to "appointment_id"
-          },
+  //       $.ajax({
+  //         type: "POST",
+  //         url: "../backend/delete_appointment.php",
+  //         data: {
+  //           appointment_id: event.aID, // Change key to "appointment_id"
+  //         },
           
-          success: function (data) {
-            // Handle the successful delete operation.
-            console.log("Event deleted successfully.");
-            console.log(data);
+  //         success: function (data) {
+  //           // Handle the successful delete operation.
+  //           console.log("Event deleted successfully.");
+  //           console.log(data);
   
-            // Remove the event from the UI here.
-            // Example: eventDiv.remove();
-          },
-          error: function (xhr, status, error) {
-            // Handle the error case, e.g., show an error message to the user.
-            console.error("Error deleting event:", error);
-            alert("Error deleting event: " + error);
-          },
-        });
-      }
-    });
-  });
+  //           // Remove the event from the UI here.
+  //           // Example: eventDiv.remove();
+  //         },
+  //         error: function (xhr, status, error) {
+  //           // Handle the error case, e.g., show an error message to the user.
+  //           console.error("Error deleting event:", error);
+  //           alert("Error deleting event: " + error);
+  //         },
+  //       });
+  //     }
+  //   });
+  // });
   
   
 
-  editButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      console.log("Edit event clicked for event:", events[index]);
-    });
-  });
+  // editButtons.forEach((button, index) => {
+  //   button.addEventListener("click", () => {
+  //     console.log("Edit event clicked for event:", events[index]);
+  //   });
+  // });
 
-  function markEventAsDone(eventID) {
-    $.ajax({
-      type: 'POST',
-      url: '../backend/mad.php',
-      data: {
-        event_id: eventID,
-      },
-      success: function (data) {
-        console.log("Event marked as done:", data);
-      },
-      error: function (xhr, status, error) {
-        console.error("Error marking event as done:", error);
-        alert("Error marking event as done: " + error);
-      },
-    });
-  }
+  // function markEventAsDone(eventID) {
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: '../backend/mad.php',
+  //     data: {
+  //       event_id: eventID,
+  //     },
+  //     success: function (data) {
+  //       console.log("Event marked as done:", data);
+  //     },
+  //     error: function (xhr, status, error) {
+  //       console.error("Error marking event as done:", error);
+  //       alert("Error marking event as done: " + error);
+  //     },
+  //   });
+  // }
 
   markAsDoneButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
@@ -382,12 +382,53 @@ function refreshEvents() {
 // Call updateEvents when a new day is selected
 addListner();
 
-// edit
-// eventsContainer.addEventListener("click", (e) => {
-//   editEventWrapper.classList.toggle("active"); // Toggle an "active" class on eventsContainer
-// });
-// 
+// Event listener for clicking on events
+eventsContainer.addEventListener("click", function (e) {
+  const clickedEvent = e.target.closest(".event");
+  if (clickedEvent) {
+    // Get the event data associated with the clicked event
+    // const eventTitle = clickedEvent.querySelector(".event-title").textContent;
+    // const counselor = clickedEvent.querySelector(".event-time span").textContent;
+    // const eventTime = clickedEvent.querySelectorAll(".event-time")[1].textContent;
 
+    // Get the appointmentId from the clicked event's data attribute
+    const appointmentId = clickedEvent.dataset.appointmentId;//gets value of appointment id from function updateEvents()
+
+    // Construct the message to display
+    // const eventData = `Event: ${eventTitle}\nCounselor: ${counselor}\nTime: ${eventTime}\nAppointment ID: ${appointmentId}`;
+    console.log(appointmentId);
+    if (window.confirm("Do you want to delete?")) {
+   
+      $.ajax({
+        type: "POST",
+        url: "../backend/delete_appointment.php",
+        data: {
+          appointment_id: appointmentId, // Change key to "appointment_id"
+        },
+        
+        success: function (data) {
+
+          // Handle the successful delete operation.
+          console.log("Event deleted successfully.");
+          console.log(data);
+          refreshEvents();
+          // Remove the event from the UI here.
+          // Example: eventDiv.remove();
+        },
+        error: function (xhr, status, error) {
+          // Handle the error case, e.g., show an error message to the user.
+          console.error("Error deleting event:", error);
+          alert("Error deleting event: " + error);
+        },
+      });
+
+  }
+    // Display the event data in an alert
+    
+
+
+  }
+});
 
 //function to add event
 addEventBtn.addEventListener("click", () => {
@@ -467,6 +508,7 @@ addEventSubmit.addEventListener("click", () => {
     }
   });
 });
+
 
 
 function convertTime(time) {

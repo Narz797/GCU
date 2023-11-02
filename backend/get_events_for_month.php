@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $endDate = $_POST["end_date"];
 
         // Create a SQL statement to fetch event dates for the current month
-        $query = "SELECT DISTINCT `date` FROM `appointment` WHERE `date` BETWEEN :start_date AND :end_date";
+        $query = "SELECT DISTINCT `date` FROM `appointment` WHERE `date` BETWEEN :start_date AND :end_date AND status = 'open'";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(":start_date", $startDate);
         $stmt->bindParam(":end_date", $endDate);

@@ -10,7 +10,9 @@ session_start();
     
     exit; // Make sure to exit the script after a header redirect
   }
-  
+$id = $_SESSION['session_id'];
+echo "<script>console.log('$id');</script>";
+
 include 'includes/main2.php';
  ?>
 <head>
@@ -26,8 +28,10 @@ include 'includes/main2.php';
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="../Employee_Side/assets/apmt.css">
-    <link rel="stylesheet" href="../Employee_Side/assets/css/forms.css">
+    <link rel="stylesheet" href="./assets/apmt.css">
+    <link rel="stylesheet" href="./assets/css/forms.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../Employee_Side/assets/css/slips2.css">
   
 </head>
 <style>
@@ -242,6 +246,32 @@ include 'includes/main2.php';
     </div>
 </section>
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section> 
+<!-- popup -->
+<div class="overlay" id="divOne">
+                    <div class="wrapper">
+                        <a href="#" class="close">&times;</a>
+                        <div class="popup">
+                            <div class="popup2">
+                                <form>
+                                    <h1>Reason for Appointment?</h1>
+                                    <br>
+                                    <textarea placeholder="Type here if you have remarks..."></textarea>
+                                    <br>
+                                    <hr>
+                                    <div class="tsk">
+                                    <button class="yes">Yes</button>
+                                    <button class="no">No</button></a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            <!--  -->
   </body>
+  <script>
+        var id = "<?php echo $id; ?>";
+    </script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="assets/js/calendar.js"></script>    

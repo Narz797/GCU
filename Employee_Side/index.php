@@ -113,6 +113,9 @@ $id = $_SESSION['session_id'];
                 <a href="./appointment" class="card-body-link">
                 <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
+                <a href="./subpage/archive.php" class="card-body-link">
+                <i class="ri-calendar-line"></i>Archive
+                </a>
                 <a href="../home?logout=true" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
                 </a>
@@ -168,7 +171,7 @@ $id = $_SESSION['session_id'];
     
 <script>
             function archive() {
-    window.location.href = './subpage/archive.php';
+    window.location.href = '';
         }
     // Function to update the HTML elements
     function updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined) {

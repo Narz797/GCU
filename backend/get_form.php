@@ -142,7 +142,41 @@ echo json_encode($data);
     FROM student_user
     INNER JOIN transact ON student_user.stud_user_id = transact.student_id 
     INNER JOIN withdrawal ON transact.transact_id = withdrawal.transact_id 
-    WHERE student_user.stud_user_id = :id AND transact.transact_type = 'WDS' AND transact.transact_id = :tid;
+    WHERE student_user.stud_user_id = :id  AND transact.transact_id = :tid AND (transact.transact_type = 'Withdrawing Enrollment' OR transact.transact_type = 'Dropping Subjects' OR transact.transact_type = 'Shifting');
+"; // add teacher info when Available
+
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->bindParam(':tid', $tid, PDO::PARAM_INT); // Bind the ID parameter
+
+$stmt->execute();
+
+$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Prepare and echo data as JSON
+echo json_encode($data);
+
+    //code for withdrawal
+}  else if ($form == 'appointment') {
+    $sql = "SELECT
+    student_user.stud_user_id,
+    student_user.last_name,
+    student_user.first_name,
+    student_user.email,
+    student_user.Year_level,
+    student_user.course,
+    student_user.gender,
+    transact.transact_type,
+    transact.transact_id,
+    student_user.Contact_number,
+    student_user.ParentGuardianNumber,
+    student_user.ParentGuardianName,
+    student_user.Relation,
+    appointment.Reason,
+    appointment.appointment_id
+    FROM student_user
+    INNER JOIN transact ON student_user.stud_user_id = transact.student_id 
+    INNER JOIN appointment ON transact.transact_id = appointment.transact_id 
+    WHERE student_user.stud_user_id = :id AND transact.transact_type = 'appointment' AND transact.transact_id = :tid;
 "; // add teacher info when Available
 
 $stmt = $pdo->prepare($sql);
