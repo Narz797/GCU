@@ -604,9 +604,40 @@
                             <label>Course</label>
                             <select required id="cs">
                                 <option disabled selected>Select Course</option>
-                                <option>BS IT</option>
-                                <option>BS BIO</option>
-                                <option>Others</option>
+                                <option value='BSAB'>Bachelor of Science in Agribusiness</option>
+                                <option value='BSA'>Bachelor of Science in Agriculture</option>
+                                <option value='BA Comm'>Bachelor of Arts in Communication</option>
+                                <option value='BAEL'>Bachelor of Arts in English Language</option>
+                                <option value='BAFL'>Bachelor of Arts in Filipino Language</option>
+                                <option value='BSABE'>Bachelor of Science in Agriculture and Biosystems Engineering</option>
+                                <option value='BSCE'>Bachelor of Science in Civil Engineering</option>
+                                <option value='BSEE'>Bachelor of Science in Electrical Engineering</option>
+                                <option value='BSIE'>Bachelor of Science in Industrial Engineering</option>
+                                <option value='BSF'>Bachelor of Science in Forestry</option>
+                                <option value='BSET'>Bachelor of Science in Entrepreneurship</option>
+                                <option value='BSFT'>Bachelor of Science in Food Technology</option>
+                                <option value='BSHM'>Bachelor of Science in Hospitality Management</option>
+                                <option value='BSND'>Bachelor of Science in Nutrition and Dietetics</option>
+                                <option value='BSTM'>Bachelor of Science in Tourism Management</option>
+                                <option value='BPeD'>Bachelor of Physical Education</option>
+                                <option value='BSESS'>Bachelor of Science in Exercise and Sports Sciences</option>
+                                <option value='BLIS'>Bachelor in Library and Information Sciences</option>
+                                <option value='BSDC'>Bachelor of Science in Development Communication</option>
+                                <option value='BSIT'>Bachelor of Science in Information Technology</option>
+                                <option value='BS Bio'>Bachelor of Science in Biology</option>
+                                <option value='BS Chem'>Bachelor of Science in Chemistry</option>
+                                <option value='BSES'>Bachelor of Science in Environmental Science</option>
+                                <option value='BS Math'>Bachelor of Science in Mathematics</option>
+                                <option value='BSS'>Bachelor of Science in Statistics</option>
+                                <option value='BSN'>Bachelor of Science in Nursing</option>
+                                <option value='BPA'>Bachelor of Public Administration</option>
+                                <option value='BS Psych'>Bachelor of Science in Psychology</option>
+                                <option value='BECED'>Bachelor of Early Childhood Education</option>
+                                <option value='BEED'>Bachelor of Elementary Education</option>
+                                <option value='BSED'>Bachelor of Secondary Education</option>
+                                <option value='BTLED'>Bachelor of Technology and Livelihood Education</option>
+                                <option value='DVM'>Doctor of Veterinary Medicine</option>
+                                <option value='BA Hist'>Bachelor of Arts in History</option>
                             </select>
                         </div>
 
@@ -615,12 +646,12 @@
                             <label>Year Level</label>
                             <select required id="cs">
                                 <option disabled selected>Select</option>
-                                <option>1 - </option>
-                                <option>2 - </option>
-                                <option>3 - </option>
-                                <option>4 - </option>
-
-                                <option>Others</option>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                                <option value='6'>6</option>
                             </select>
                         </div>
 
