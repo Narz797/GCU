@@ -8,9 +8,11 @@ RewriteCond %{THE_REQUEST} /profile\.php [NC]
 RewriteRule ^ - [F]
 RewriteCond %{THE_REQUEST} /appointment\.php [NC]
 RewriteRule ^ - [F]
+RewriteCond %{THE_REQUEST} /login_Employee\.php [NC]
+RewriteRule ^ - [F]
 
 RewriteRule ^employee-home/?$ index.php [L]
 RewriteRule ^request-forms/?$ form.php [L]
 RewriteRule ^student-profile/?$ profile.php [L]
 RewriteRule ^appointment/?$ appointment.php [L]
-
+RewriteRule ^employee-login/?$ login_Employee.php [L]

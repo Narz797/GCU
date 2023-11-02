@@ -462,19 +462,19 @@
                                 <option>College of Forestry</option>
                                 <option>College of Nursing</option>
                                 <obtion>College of Veterinary Medicine</option>
-                                    <option>College of Human Kinetics</option>
-                                    <option>College of Public Administration & Governance</option>
-                                    <option>College of Information Sciences</option>
-                                    <option>College of Arts & Humanities</option>
-                                    <option>College of Social Sciences</option>
-                                    <option>College of Numeracy & Applied Sciences</option>
-                                    <option>College of Natural Sciences</option>
+                                <option>College of Human Kinetics</option>
+                                <option>College of Public Administration & Governance</option>
+                                <option>College of Information Sciences</option>
+                                <option>College of Arts & Humanities</option>
+                                <option>College of Social Sciences</option>
+                                <option>College of Numeracy & Applied Sciences</option>
+                                <option>College of Natural Sciences</option>
                             </select>
                         </div>
                         <div class="input-field">
-                            <label>Gender</label>
+                            <label>Sex</label>
                             <select required>
-                                <option disabled selected>Select gender</option>
+                                <option disabled selected>Select Sex</option>
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>
