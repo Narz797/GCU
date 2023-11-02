@@ -190,7 +190,7 @@ LEFT JOIN
     withdrawal ON transact.transact_id = withdrawal.transact_id
 LEFT JOIN
     appointment ON transact.transact_id = appointment.transact_id
-WHERE transact.status != 'pending';
+WHERE transact.status = 'done';
 
 ";
     $stmt = $pdo->prepare($sql);

@@ -15,6 +15,9 @@ $sql = "SELECT
     appointment.status,
     student_user.first_name,
     student_user.last_name,
+    courses.Colleges,
+    student_user.course,
+    student_user.Contact_number,
     transact.transact_id
     FROM 
     appointment
@@ -22,6 +25,8 @@ $sql = "SELECT
     student_user ON appointment.student_id = student_user.stud_user_id
     INNER JOIN
     transact ON appointment.transact_id = transact.transact_id
+    INNER JOIN
+    courses ON student_user.course = courses.Acronym
     WHERE appointment.status != 'done' AND appointment.status != 'open';
 ";
 

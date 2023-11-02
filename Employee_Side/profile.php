@@ -320,19 +320,21 @@ function archive() {
 
         
 // export to excel
-    function exportToExcel() {
+function exportToExcel() {
     const table = document.getElementById("dynamicTable");
     const rows = table.getElementsByTagName("tr");
     const data = [];
 
-    // Iterate through the table rows and collect cell values
+    // Iterate through the visible table rows and collect cell values
     for (let i = 0; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName("td");
-        const rowData = [];
-        for (let j = 0; j < cells.length; j++) {
-            rowData.push(cells[j].textContent.trim());
+        if (rows[i].style.display !== "none") {
+            const cells = rows[i].getElementsByTagName("td");
+            const rowData = [];
+            for (let j = 0; j < cells.length; j++) {
+                rowData.push(cells[j].textContent.trim());
+            }
+            data.push(rowData);
         }
-        data.push(rowData);
     }
 
     // Create a worksheet
@@ -340,11 +342,12 @@ function archive() {
 
     // Create a workbook with the worksheet
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Table Data");
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Filtered Table Data");
 
     // Export the workbook to an Excel file
-    XLSX.writeFile(workbook, "Lists of Students.xlsx");
+    XLSX.writeFile(workbook, "Filtered_Students.xlsx");
 }
+
 
 //export to pdf
 function exportToPDF() {
@@ -360,12 +363,14 @@ function exportToPDF() {
     }
     
     for (let i = 1; i < table.rows.length; i++) {
-        const row = [];
         const currentRow = table.rows[i];
-        for (let j = 0; j < currentRow.cells.length; j++) {
-            row.push(currentRow.cells[j].textContent.trim());
+        if (currentRow.style.display !== "none") {
+            const row = [];
+            for (let j = 0; j < currentRow.cells.length; j++) {
+                row.push(currentRow.cells[j].textContent.trim());
+            }
+            rows.push(row);
         }
-        rows.push(row);
     }
     
     const tableConfig = {
@@ -377,7 +382,7 @@ function exportToPDF() {
     doc.autoTable(tableConfig);
 
     // Save the PDF to a file
-    doc.save('Lists of Students.pdf');
+    doc.save('Filtered_Students.pdf');
 }
 
     //moving arrow

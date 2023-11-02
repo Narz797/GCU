@@ -212,44 +212,56 @@ session_start();
 function archive() {
     window.location.href = 'archive.php';
         }
-function searchTable(tableId, inputId) {
-    const input = document.getElementById(inputId);
-    const filter = input.value.toUpperCase();
-    const table = document.getElementById(tableId);
-    const tr = table.getElementsByTagName("tr");
+        function searchTable(table1, srchinput) {
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById(srchinput); // Get the input element by its ID
+    filter = input.value.toUpperCase();
+    table = document.getElementById(table1); // Get the table element by its ID
+    tr = table.getElementsByTagName("tr");
 
-    for (let i = 0; i < tr.length; i++) {
-        const td = tr[i].getElementsByTagName("td")[1]; // Change 1 to the column index you want to search in
-        if (td) {
-            const txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
+    for (i = 0; i < tr.length; i++) {
+        tr[i].style.display = "none"; // Hide all rows initially
+        for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+            td = tr[i].getElementsByTagName("td")[j];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = ""; // Display the row if any column matches the search criteria
+                    break; // Break out of the inner loop to avoid hiding the row again
+                }
             }
         }
     }
 }
+
 
 function exportToExcel(tableId) {
     const table = document.getElementById(tableId);
     const rows = table.getElementsByTagName("tr");
     const data = [];
 
+    // Iterate through the visible table rows and collect cell values
     for (let i = 0; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName("td");
-        const rowData = [];
-        for (let j = 0; j < cells.length; j++) {
-            rowData.push(cells[j].textContent.trim());
+        if (rows[i].style.display !== "none") {
+            const cells = rows[i].getElementsByTagName("td");
+            const rowData = [];
+            for (let j = 0; j < cells.length; j++) {
+                rowData.push(cells[j].textContent.trim());
+            }
+            data.push(rowData);
         }
-        data.push(rowData);
     }
 
+    // Create a worksheet
     const worksheet = XLSX.utils.aoa_to_sheet(data);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Table Data");
 
-    XLSX.writeFile(workbook, "table_data.xlsx");
+    // Create a workbook with the worksheet
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Filtered Table Data");
+
+    // Export the workbook to an Excel file
+    XLSX.writeFile(workbook, "WDS.xlsx");
+
 }
 
 
