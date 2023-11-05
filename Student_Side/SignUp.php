@@ -17,7 +17,7 @@ $_SESSION['origin'] = 'Student_Register';
       <img src="../assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
       <h1>Student Registration</h1>
-      <form class="form-grid">
+      <form class="form-grid" id="Signup_Student_User" method="POST">
         <div class="form-column">
           <label for="idNumber">ID Number:</label>
           <input type="text" id="idNumber" name="idNumber" required>

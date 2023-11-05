@@ -2,7 +2,7 @@
 session_start();
 // include '../backend/validate_user.php';
 // include '../backend/connect_database.php';
-$_SESSION['origin'] = 'Student';
+$_SESSION['origin'] = 'Teacher';
 ?>
 <!DOCTYPE html>
 <html>
@@ -227,7 +227,7 @@ $_SESSION['origin'] = 'Student';
         <img id='logo-gcu' src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
       </div>
       <div class="column">
-        <form id="Login_Student_User" method="post" style='margin:10%'>
+        <form id="Login_Teacher_User" method="post" style='margin:10%'>
           <h1>LOGIN FORM</h1>
           <br>
           <div class="txt_field">
@@ -249,8 +249,8 @@ $_SESSION['origin'] = 'Student';
   </div>
 </body>
 <script>
-  $("#Login_Student_User").on("submit", function(event) {
-    var source = "student_side_login";
+  $("#Login_Teacher_User").on("submit", function(event) {
+    var source = "teacher_side_login";
     event.preventDefault();
     $.ajax({
       type: 'POST',
@@ -261,10 +261,10 @@ $_SESSION['origin'] = 'Student';
         source: source
       },
       success: function(data) {
-        if (data === "success_student") {
-          window.location.href = "student-home";
+        if (data === "success_teacher") {
+          window.location.href = "index.php";
         } else {
-          alert("Invalid username or password.");
+          alert(data);
         }
       }
     });

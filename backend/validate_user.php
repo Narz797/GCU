@@ -74,6 +74,33 @@ if (isset($_SESSION['origin'])) {
                 echo "Error";
             }
         }
+    } elseif ($origin === 'Teacher') {
+        if (isset($_POST['email']) && isset($_POST['password'])) {
+            $username = $_POST['email'];
+            $password = $_POST['password'];
+
+            $sql = "SELECT * FROM teachers WHERE email=?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$username]);
+
+            if ($stmt->rowCount() === 1) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $storedHashedPassword = $row['password'];
+                $user_id = $row['employee_id']; // Retrieve user_id
+
+                // Verify the password
+                if (password_verify($password, $storedHashedPassword)) {
+                    // Password is correct
+                    $_SESSION['session_id'] = $user_id;
+                    echo "success_teacher";
+                } else {
+                    // Password is incorrect
+                    echo "Invalid username or password.";
+                }
+            } else{
+                echo "Error";
+            }
+        }
     }
 }
 
