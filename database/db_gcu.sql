@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2023 at 07:08 AM
+-- Generation Time: Nov 05, 2023 at 09:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -147,7 +147,25 @@ INSERT INTO `appointment` (`appointment_id`, `student_id`, `employee_id`, `trans
 (83, 111, 2002529, 136, NULL, 'sdfg', '2023-11-02', '08:00:00', '09:00:00', 'done', 'remarked', NULL, NULL),
 (84, 111, 2002529, 137, NULL, 'xcvb', '2023-11-03', '08:00:00', '09:00:00', 'done', 'done', NULL, NULL),
 (85, 111, 2002529, 138, NULL, 'asdf', '2023-11-23', '16:05:00', '09:00:00', 'rescheduled', 'asdfasdf', NULL, '2023-11-02'),
-(86, 111, 2002529, 139, NULL, 'ASD', '2023-11-03', '08:00:00', '09:00:00', 'taken', NULL, NULL, NULL);
+(86, 111, 2002529, 139, NULL, 'ASD', '2023-11-03', '08:00:00', '09:00:00', 'taken', NULL, NULL, NULL),
+(87, 432, 2002529, 140, NULL, 'asdfa', '2023-11-02', '08:00:00', '09:00:00', 'taken', NULL, NULL, NULL),
+(88, 432, 2002529, 141, '', 'fghjkfghj', '2023-11-02', '10:00:00', '11:00:00', 'taken', NULL, NULL, NULL),
+(89, 432, 2002529, 142, '', 'dfgh', '2023-11-02', '08:00:00', '09:00:00', 'taken', NULL, NULL, NULL),
+(90, 432, 2002529, 143, '', 'asdf', '2023-11-02', '08:00:00', '09:00:00', 'taken', NULL, NULL, NULL),
+(91, 432, 2002529, 144, NULL, 'asdf', '2023-11-02', '10:00:00', '11:00:00', 'taken', NULL, NULL, NULL),
+(92, 432, 2002529, 145, 'No reason', 'sghdfgh', '2023-11-02', '12:00:00', '13:00:00', 'taken', NULL, NULL, NULL),
+(93, 432, 2002529, 146, 'No reason at all', '', '2023-11-02', '14:00:00', '15:00:00', 'taken', NULL, NULL, NULL),
+(94, 432, 2002529, 147, 'asdfadfasd', 'sdfg', '2023-11-03', '05:00:00', '06:00:00', 'taken', NULL, NULL, NULL),
+(95, 432, 2002529, 148, 'dsgsdfg', 'ghjkghjk', '2023-11-03', '06:00:00', '07:00:00', 'taken', NULL, NULL, NULL),
+(96, 432, 2002529, 149, 'gsdfgs', 'gjfgjhfghjf', '2023-11-03', '08:00:00', '09:00:00', 'taken', NULL, NULL, NULL),
+(97, 432, 2002529, 150, 'sdfgsf', 'gjkghkvbn', '2023-11-03', '10:00:00', '11:00:00', 'taken', NULL, NULL, NULL),
+(98, 432, 2002529, 151, 'asdfasdf', 'asdf', '2023-11-04', '08:00:00', '09:00:00', 'taken', NULL, NULL, NULL),
+(100, 432, 2002529, 153, 'asdfasd', 'asdfa', '2023-11-02', '04:00:00', '05:00:00', 'taken', NULL, NULL, NULL),
+(101, 432, 2002529, 154, 'asdfasdf', '.,,,j', '2023-11-02', '05:00:00', '06:00:00', 'taken', NULL, NULL, NULL),
+(102, 432, 2002529, 155, 'asdfasdf', 'kkk', '2023-11-02', '06:00:00', '07:00:00', 'taken', NULL, NULL, NULL),
+(103, 432, 2002529, 156, 'asdfsadf', '0k,,,', '2023-11-02', '07:00:00', '08:00:00', 'taken', NULL, NULL, NULL),
+(104, 432, 2002529, 157, 'fasdfa', ',kll', '2023-11-02', '08:00:00', '09:00:00', 'taken', NULL, NULL, NULL),
+(105, 432, 2002529, 158, 'last', 'last', '2023-11-04', '08:00:00', '09:00:00', 'taken', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -329,6 +347,36 @@ INSERT INTO `student_user` (`stud_user_id`, `first_name`, `last_name`, `middle_n
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `teachers`
+--
+
+CREATE TABLE `teachers` (
+  `id` int(11) NOT NULL,
+  `employee_id` varchar(20) NOT NULL,
+  `college` varchar(100) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `middle_name` varchar(50) NOT NULL,
+  `contact_number` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `civil_status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `teachers`
+--
+
+INSERT INTO `teachers` (`id`, `employee_id`, `college`, `gender`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `civil_status`) VALUES
+(1, '123456', 'College of Teacher Education', 'Male', 'Doe', 'John', 'Michael', '123-456-7890', 'john.doe@email.com', 'Married'),
+(2, '111', 'College of Information Sciences', 'Male', 'Monkey', 'Dulagan', 'Luffy', '123-456-7890', 'luffy.d@email.com', 'Single'),
+(3, '31254', 'College of Agriculture', 'Female', 'Nami', 'Robin', 'Franky', '123-456-7890', 'namisan@email.com', 'Others'),
+(4, '0879', 'College of Nursing', 'Male', 'Trafalgar', 'Water', 'Law', '123-456-7890', 'ilovemywife@email.com', 'Married'),
+(5, '2555', 'College of Social Sciences', 'Male', 'Kid', 'Killer', 'Machine', '123-456-7890', 'tsundere@email.com', 'Others');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transact`
 --
 
@@ -353,7 +401,7 @@ INSERT INTO `transact` (`transact_id`, `student_id`, `employee_id`, `transact_ty
 (121, 432, NULL, 'Withdrawing Enrollment', '2023-11-02 04:15:59', NULL, NULL, 'pending', NULL),
 (122, 432, NULL, 'Dropping Subjects', '2023-11-02 04:16:04', NULL, NULL, 'pending', NULL),
 (123, 432, NULL, 'Shifting', '2023-11-02 04:16:16', NULL, NULL, 'pending', NULL),
-(124, 432, NULL, 'leave_of_absence', '2023-11-02 04:19:34', NULL, NULL, 'pending', NULL),
+(124, 432, NULL, 'leave_of_absence', '2023-11-02 04:19:34', NULL, NULL, 'done', NULL),
 (125, 432, NULL, 'leave_of_absence', '2023-11-02 04:19:39', NULL, NULL, 'pending', NULL),
 (126, 111, NULL, 'readmission', '2023-11-02 04:20:13', NULL, NULL, 'pending', NULL),
 (127, 111, NULL, 'readmission', '2023-11-02 04:20:16', NULL, NULL, 'pending', NULL),
@@ -366,7 +414,54 @@ INSERT INTO `transact` (`transact_id`, `student_id`, `employee_id`, `transact_ty
 (136, 111, 2002529, 'appointment', '2023-11-02 05:29:52', NULL, NULL, 'done', NULL),
 (137, 111, 2002529, 'appointment', '2023-11-02 05:30:02', NULL, NULL, 'done', NULL),
 (138, 111, 2002529, 'appointment', '2023-11-02 06:04:44', '2023-11-02 07:03:15', NULL, 'rescheduled', 'asdfasdf'),
-(139, 111, 2002529, 'appointment', '2023-11-02 06:16:56', NULL, NULL, 'taken', NULL);
+(139, 111, 2002529, 'appointment', '2023-11-02 06:16:56', NULL, NULL, 'taken', NULL),
+(140, 432, 2002529, 'appointment', '2023-11-02 13:06:53', NULL, NULL, 'taken', NULL),
+(141, 432, 2002529, 'appointment', '2023-11-02 13:07:01', NULL, NULL, 'taken', NULL),
+(142, 432, 2002529, 'appointment', '2023-11-02 13:31:18', NULL, NULL, 'taken', NULL),
+(143, 432, 2002529, 'appointment', '2023-11-02 13:36:39', NULL, NULL, 'taken', NULL),
+(144, 432, 2002529, 'appointment', '2023-11-02 13:37:27', NULL, NULL, 'taken', NULL),
+(145, 432, 2002529, 'appointment', '2023-11-02 13:37:37', NULL, NULL, 'taken', NULL),
+(146, 432, 2002529, 'appointment', '2023-11-02 13:37:44', NULL, NULL, 'taken', NULL),
+(147, 432, 2002529, 'appointment', '2023-11-02 14:13:12', NULL, NULL, 'taken', NULL),
+(148, 432, 2002529, 'appointment', '2023-11-02 14:13:21', NULL, NULL, 'taken', NULL),
+(149, 432, 2002529, 'appointment', '2023-11-02 14:13:27', NULL, NULL, 'taken', NULL),
+(150, 432, 2002529, 'appointment', '2023-11-02 14:13:34', NULL, NULL, 'taken', NULL),
+(151, 432, 2002529, 'appointment', '2023-11-02 14:24:37', NULL, NULL, 'taken', NULL),
+(152, NULL, 2002529, 'appointment', '2023-11-02 14:24:50', NULL, NULL, 'open', NULL),
+(153, 432, 2002529, 'appointment', '2023-11-02 14:51:46', NULL, NULL, 'taken', NULL),
+(154, 432, 2002529, 'appointment', '2023-11-02 14:51:54', NULL, NULL, 'taken', NULL),
+(155, 432, 2002529, 'appointment', '2023-11-02 14:52:01', NULL, NULL, 'taken', NULL),
+(156, 432, 2002529, 'appointment', '2023-11-02 14:52:08', NULL, NULL, 'taken', NULL),
+(157, 432, 2002529, 'appointment', '2023-11-02 14:52:15', NULL, NULL, 'taken', NULL),
+(158, 432, 2002529, 'appointment', '2023-11-02 15:03:26', NULL, NULL, 'taken', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tstable`
+--
+
+CREATE TABLE `tstable` (
+  `id` int(11) NOT NULL,
+  `student_id` varchar(20) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `college` varchar(10) NOT NULL,
+  `year_level` varchar(50) NOT NULL,
+  `gender` varchar(50) NOT NULL,
+  `reason` varchar(50) NOT NULL,
+  `date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tstable`
+--
+
+INSERT INTO `tstable` (`id`, `student_id`, `full_name`, `college`, `year_level`, `gender`, `reason`, `date`) VALUES
+(1, '111', 'Mina Sharon', 'College of', '1st Year', 'Female', 'Tardy', '03-24-22'),
+(2, '222', 'Sam Sam', 'College of', '2nd Year', 'Male', 'Academic Deficiency', '03-24-22'),
+(3, '333', 'Ann Sana', 'College of', '4th Year', 'Male', 'Absent', '03-24-22'),
+(4, '444', 'Tzuyu Chou', 'College of', '3rd Year', 'Female', 'Tardy', '03-24-22'),
+(5, '555', 'Jihyo Momo', 'College of', '1st Year', 'Female', 'Absent', '03-24-22');
 
 -- --------------------------------------------------------
 
@@ -464,11 +559,23 @@ ALTER TABLE `student_user`
   ADD PRIMARY KEY (`stud_user_id`);
 
 --
+-- Indexes for table `teachers`
+--
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `transact`
 --
 ALTER TABLE `transact`
   ADD PRIMARY KEY (`transact_id`),
   ADD KEY `student_id` (`student_id`);
+
+--
+-- Indexes for table `tstable`
+--
+ALTER TABLE `tstable`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `withdrawal`
@@ -502,7 +609,7 @@ ALTER TABLE `admin_admin`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `courses`
@@ -529,10 +636,22 @@ ALTER TABLE `siblings`
   MODIFY `id_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `transact`
 --
 ALTER TABLE `transact`
-  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `transact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+
+--
+-- AUTO_INCREMENT for table `tstable`
+--
+ALTER TABLE `tstable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `withdrawal`
