@@ -686,10 +686,6 @@
                         <a href="page1.php">
                         <i class="uil uil-navigator"></i>
                          <span class="btnText">Back</span></a>
-                        
-                                
-                        
-                       
                     </div>
                   
                     <button class="SubmitBtn" id="next" >

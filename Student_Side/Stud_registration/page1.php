@@ -14,6 +14,8 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 
     <!----======== CSS ======== -->
@@ -67,6 +69,12 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
     }
 
     body {
+        /* Linear Gradient */
+/* background: linear-gradient(to right,#00674b, #00674b); */
+
+/* Radial Gradient */
+/* background: radial-gradient(circle,#1B4D3E, white); */
+
         min-height: 100vh;
         display: flex;
         align-items: center;
@@ -576,19 +584,59 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
 
 
 
-    #specifyBoxScholarship input[type="text"] {
-        border-bottom: 1px solid black; /* You can adjust the color and style as needed */
-    }
+   
+    .custom-file-upload {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+
+
+.underline-input1 {
+    border: none;
+    border-bottom: 1px solid #000; /* You can customize the color and style */
+    outline: none; /* Removes the default focus outline */
+    padding: 4px 0; /* Adjust padding as needed */
+    background:transparent;
+}
+
+/* Additional styling for the checkbox and label */
+.container1 {
+    display: flex;
+    align-items: center;
+    
+}
+
+/* You may need to adjust the checkbox styles to position it correctly */
+
+
+
+
+
+
+
+
+
+
+    
+
 </style>
 
 <body>
 
-    <!-- <div class="left-column">
-        <img src="assets/img/GCU_logo.png" alt="Logo" class="logo">
-    </div>
-     -->
+
     <div class="container">
+
         <header>STUDENT REGISTRATION FORM</header>
+        
 
         <form action="#" id="registrationForm" enctype="multipart/form-data">
             <div class="form first">
@@ -597,8 +645,14 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                     <hr>
                     <hr>
                     <br>
-                    <!-- <h2>Personal Details</h2>
-            <hr> -->
+                    <div action="upload.php" method="post" enctype="multipart/form-data">
+                        <label for="imageUpload" class="custom-file-upload" >
+                            <input type="file" id="imageUpload" name="image" accept="image/*">
+                            Upload School ID
+                        </label>
+                       
+                </div>
+                <br>
 
                     <div class="fields">
 
@@ -915,123 +969,19 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                             <span class="btnText">Next</span>
                             <i class="uil uil-navigator"></i>
                         </button>
+
                     </div>
                 </div>
+
 
 
 
             </div>
 
 
+
             <div class="form second">
 
-            <!-- <h3>Educational Background</h3>
-                <br>
-
-                <div class="check-group">
-                    <label>
-                        <input type="checkbox" id="senior" name="school_type" onclick="showInput('senior');" />
-                        Senior High
-                    </label>
-                    <label>
-                        <input type="checkbox" id="junior" name="school_type" onclick="showInput('junior');" />
-                        Junior High
-                    </label>
-                    <label>
-                        <input type="checkbox" id="elem" name="school_type" onclick="showInput('elementary');" />
-                        Elementary
-                    </label>
-                    <label>
-                        <input type="checkbox" id="other" name="school_type" onclick="showInput('other');" />
-                        Other School Attended
-                    </label>
-                </div>
-
-                <div class="fields" id="seniorFields" style="display: none;">
-                    <div>
-                        <br>
-                        <p style="font-weight: bold;">SENIOR HIGHSCHOOL:</p>
-                    </div>
-                    <br>
-                    <div class="input-field">
-                        <label>Name of the School</label>
-                        <input type="text" id="SenSchool" name="SenSchool" required>
-                    </div>
-                    <div class="input-field">
-                        <label>Year Graduated</label>
-                        <input type="text" type="text" id="SenSchool" name="SenSchool" required>
-                    </div>
-
-                    <div class="input-field2">
-                        <label>Awards Received</label>
-                        <input type="text" type="text" id="SenSchool" name="SenSchool">
-                    </div>
-                </div>
-
-                <div class="fields" id="juniorFields" style="display: none;">
-                    <div>
-                        <br>
-                        <p style="font-weight: bold;"> JUNIOR HIGHSCHOOL:</p>
-                    </div>
-                    <br>
-                    <div class="input-field">
-                        <label>Name of the School</label>
-                        <input type="text" id="JunSchool" name="JunSchool" required>
-                    </div>
-                    <div class="input-field">
-                        <label>Year Graduated</label>
-                        <input type="text" id="JunYear" name="JunYear" required>
-                    </div>
-
-                    <div class="input-field2">
-                        <label>Awards Received</label>
-                        <input type="text" id="JunAward" name="JunAward">
-                    </div>
-                </div>
-
-                <div class="fields" id="elementaryFields" style="display: none;">
-                <div>
-                        <br>
-                        <p style="font-weight: bold;"> ELEMENTARY:</p>
-                    </div>
-                    <br>
-                    <div class="input-field">
-                        <label>Name of the School</label>
-                        <input type="text">
-                    </div>
-                    <div class="input-field">
-                        <label>Year Graduated</label>
-                        <input type="text">
-                    </div>
-                    <div class="input-field2">
-                        <label>Awards Received</label>
-                        <input type="text">
-                    </div>
-                </div>
-                <div class="fields" id="otherFields" style="display: none;">
-                    <div>
-                        <br>
-                        <p style="font-weight: bold;"> OTHER SCHOOL ATTENDED:</p>
-                    </div>
-                    <br>
-                    <div class="input-field">
-                        <label>Name of the School</label>
-                        <input type="text">
-                    </div>
-                    <div class="input-field">
-                        <label>Year Graduated</label>
-                        <input type="text">
-                    </div>
-                    <div class="input-field2">
-                        <label>Awards Received</label>
-                        <input type="text">
-                    </div>
-                </div>
-                <br> -->
-
-
-
-    
 
                 <br>
 
@@ -1098,16 +1048,17 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                 <br>
 
 
-                <fieldset class="container1">
-                    <legend>
-                        <h3><b>Sources of Financial Support</b></h3>
-                    </legend>
+                
+                    
+                    <h3><b>Sources of Financial Support</b></h3>
+                    <br>
+                    
 
-                    <div class="checkbox-group">
+                    <div class="checkbox-group" >
 
 
                         <label class="container1">Parents
-                            <input type="checkbox" name="src" value="Parents" id="parentsCheckbox">
+                            <input type="checkbox"  style=" color: #007bff;" name="src" value="Parents" id="parentsCheckbox">
                             <span class="checkmark"></span>
                         </label>
 
@@ -1122,48 +1073,57 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                             <span class="checkmark"></span>
                         </label>
 
-
-                            <label class="container1">
-                                Scholarship
-                                <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox" onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
+                        <!-- <div class="container2">
+                            <label class="container1">Scholarship
+                                <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox">
                                 <span class="checkmark"></span>
                             </label>
+                            <input type="text" id="scholarship" name="scholarship" class="underline-input1">
+                        </div> -->
+                        <div class="container2">
+    <label class="container1">Scholarship
+        <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox">
+        <span class="checkmark"></span>
+    </label>
+    <input type="text" id="scholarship" name="scholarship" class="underline-input1" style="display: none;">
+</div>
 
-                            <!-- Specify box for Scholarship -->
-                            <div id="specifyBoxScholarship" style="display: block;">
-                            <label for="specifyScholarship">Specify Scholarship:</label>
-                            <input type="text">
-                            </div>
+
+                        
 
 
-                            <!-- Other Checkbox -->
-                            <label class="container1">
-                                Others:
-                                <input type="checkbox" id="otherCheckbox" onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
+
+       
+
+                        <div class="container2">
+                            <label class="container1">Others
+                                <input type="checkbox" name="src" value="Othes" id="othersCheckbox">
                                 <span class="checkmark"></span>
                             </label>
-
-                            <!-- Specify box for Others -->
-                            <div id="specifyBoxOther" style="display: none"> Specify: 
-                            <input type="text" id="textBox">
+                            <input type="text" id="others" name="others" class="underline-input1">
                         </div>
+
+
+         
+           
+
+
+
+
+
+
+                         
 
                     </div>
 
                     <br>
-                </fieldset>
-
-                <!-- Your submit button and other form sections here -->
-
-
-
+                
 
                 <fieldset>
 
                     <legend>
                         <h3><b>Marital Status of Parents</b></h3>
                     </legend>
-                    <!-- <legend><b>Marital Status of Parents</b></legend> -->
                     <div class="fieldset-container">
                         <div class="fieldset-column">
                             <div class="radio-group">
@@ -1259,7 +1219,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                 <div class="fields">
 
                     <div class="input-field">
-                        <label>email/usernmame</label>
+                        <label>email/username</label>
                         <input type="text" id="eu" name="eu">
                     </div>
 
@@ -1286,19 +1246,13 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                         <span class="btnText">Next</span>
                         <i class="uil uil-navigator"></i>
                     </button>
-                        
-                    <!-- <button class="nextBtn" id="nextButton" type="button">
-                            <span class="btnText">Submit</span>
-                            <i class="uil uil-navigator"></i>
-                        </button> -->
-                      
-
                 </div>
 
                 
             </div>
 
         </form>
+        
     </div>
     <script>
     const nextButton = document.getElementById("next");
@@ -1559,28 +1513,56 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         });
     </script>
 
+    
+<script>
+function toggleInput() {
+    var inputBox = document.getElementById("first");
+    var checkbox = document.getElementById("relativesCheckbox");
 
-
-<!-- <script>
-function showInput(type) {
-   
-    document.getElementById('seniorFields').style.display = 'none';
-    document.getElementById('juniorFields').style.display = 'none';
-    document.getElementById('elementaryFields').style.display = 'none';
-    document.getElementById('otherFields').style.display = 'none';
-
-   
-    if (type === 'senior') {
-        document.getElementById('seniorFields').style.display = 'block';
-    } else if (type === 'junior') {
-        document.getElementById('juniorFields').style.display = 'block';
-    } else if (type === 'elementary') {
-        document.getElementById('elementaryFields').style.display = 'block';
-    } else if (type === 'other') {
-        document.getElementById('otherFields').style.display = 'block';
+    if (checkbox.checked) {
+        inputBox.style.display = "block";
+    } else {
+        inputBox.style.display = "none";
     }
 }
-</script> -->
+</script>
+
+<script>
+document.getElementById("scholarshipCheckbox").addEventListener("change", function() {
+    var scholarshipInput = document.getElementById("scholarship");
+    if (this.checked) {
+        scholarshipInput.style.display = "block";
+    } else {
+        scholarshipInput.style.display = "none";
+    }
+});
+</script>
+
+<script>
+
+document.getElementById("othersCheckbox").addEventListener("change", function() {
+    var othersInput = document.getElementById("others");
+    if (this.checked) {
+        othersInput.style.display = "block";
+    } else {
+        othersInput.style.display = "none";
+    }
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
     document.getElementById("yesRadio1").addEventListener("click", function () {
