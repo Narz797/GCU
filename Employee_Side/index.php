@@ -71,17 +71,17 @@ $id = $_SESSION['session_id'];
 <!-- call employee id 
     number or 
     profession = "Admin"-->
-            <h2 class="title">Welcome back,&nbspAdmin</h2>
+            <h2 class="title">Welcome back,<span id="position"></span></h2>
         </header>
         <hr>
         <div class="card-body">
-            <div class="card-image">
-                <img src="assets/images/sp.jpg" alt="">
+            <div class="card-image" id="gender">
+                <img src="" alt="">
             </div>
             <div class="card-information">
 <!-- call employee 
     registered data -->
-                <h1 class="title main-title"><span class="title-lastname main-title">uchiha,</span> Itachi Verlyn Rizz M.</h1>
+                <h1 class="title main-title"><span class="title-lastname main-title" id="lname">uchiha,</span> <span id="fname"> Verlyn Rizz M.</span></h1>
                 <p class="card-description1">Joined at <b id="date_joined"></b><br><br></p>
                 <p class="card-description">
                     <span>Email:</span><b id="employee_email"></b><br>
@@ -174,7 +174,21 @@ $id = $_SESSION['session_id'];
     window.location.href = '';
         }
     // Function to update the HTML elements
-    function updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined) {
+    function updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, gender) {
+       
+        const genderImageMap = {
+                  'Male': 'assets/images/sp.jpg',
+                  'Female': 'assets/images/sp2.jpg'
+              };
+              const image = document.createElement('img');
+                image.style.display = 'block'; // Display the image above the text
+
+                if (gender === 'Male') {
+                  image.src = genderImageMap['Male'];
+                } else if (gender === 'Female') {
+                  image.src = genderImageMap['Female'];
+                }
+
         $('#studentId').text(studentId);
         $('#transactType').text(transactType);
         $('#total').text(total);
@@ -182,7 +196,14 @@ $id = $_SESSION['session_id'];
         $('#employee_position').text(employee_position);
         $('#date_joined').text(employee_date_joined);
         $('#totalAppointments').text(totalAppointments);
-   
+        $('#position').text(ePosition);
+        $('#fname').text(eFname);
+        $('#lname').text(eLname);
+                
+                        // Replace the content of the #gender div with the created image
+                const genderElement = document.getElementById('gender');
+                genderElement.innerHTML = ''; // Clear existing content
+                genderElement.appendChild(image);
     }
     // Function to fetch data from get_transaction.php
     function fetchData() {
@@ -203,8 +224,12 @@ $id = $_SESSION['session_id'];
                             var employee_email = data.adminUserData[0].email;
                             var employee_position = data.adminUserData[0].position;
                             var employee_date_joined = data.adminUserData[0].date_joined;
+                            var eFname = data.adminUserData[0].first_name;
+                            var eLname = data.adminUserData[0].last_name;
+                            var ePosition = data.adminUserData[0].position;
+                            var eGender = data.adminUserData[0].gender;
                             console.log(totalAppointments);
-                            updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined);
+                            updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
                             console.log(total);
                             // Start both counting animations
                             countAppointments(totalAppointments);
