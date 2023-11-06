@@ -121,6 +121,7 @@
           <th>Gender</th>
           <th>Reason</th>
           <th>Date</th>
+          <th>Status</th>
 
 <!-- I dont know if u need action here
  but just in case or just delete it-->
@@ -283,6 +284,7 @@
                     row.append("<td>" + entry.gender + "</td>");
                     row.append("<td>" + entry.reason + "</td>");
                     row.append("<td>" + entry.date + "</td>");
+                    row.append("<td>" + entry.status + "</td>");
                     var statusCell = $("<td></td>");
                     var statusLink = $("<a href='#divTwo'><button><i class='ri-delete-bin-6-line'></i></button></a>");
 

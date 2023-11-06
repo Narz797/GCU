@@ -1,7 +1,7 @@
 <?php
 include '../backend/connect_database.php';
 $sql = "SELECT
-`student_id`, `full_name`, `college`, `year_level`, `gender`, `reason`, `date`
+`student_id`, `full_name`, `college`, `year_level`, `gender`, `reason`, `date`, `status`
 FROM
 tstable
 ";
