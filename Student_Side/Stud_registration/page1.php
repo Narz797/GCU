@@ -100,7 +100,7 @@
     .container form {
         position: relative;
         margin-top: 16px;
-        min-height: 1500px;
+        min-height: 2000px;
         /* background-color: #fff; */
         overflow: hidden;
     }
@@ -918,10 +918,10 @@
 
             <div class="form second">
 
-                <h3>Educational Background</h3>
+            <h3>Educational Background</h3>
                 <br>
 
-                <!-- <div class="check-group">
+                <div class="check-group">
                     <label>
                         <input type="checkbox" id="senior" name="school_type" onclick="showInput('senior');" />
                         Senior High
@@ -938,10 +938,9 @@
                         <input type="checkbox" id="other" name="school_type" onclick="showInput('other');" />
                         Other School Attended
                     </label>
-                </div> -->
+                </div>
 
-
-                <!-- <div class="fields" id="seniorFields" style="display: none;">
+                <div class="fields" id="seniorFields" style="display: none;">
                     <div>
                         <br>
                         <p style="font-weight: bold;">SENIOR HIGHSCHOOL:</p>
@@ -949,23 +948,44 @@
                     <br>
                     <div class="input-field">
                         <label>Name of the School</label>
-                        <input type="text">
+                        <input type="text" id="SenSchool" name="SenSchool" required>
                     </div>
                     <div class="input-field">
                         <label>Year Graduated</label>
-                        <input type="text">
+                        <input type="text" type="text" id="SenSchool" name="SenSchool" required>
                     </div>
 
                     <div class="input-field2">
                         <label>Awards Received</label>
-                        <input type="text">
+                        <input type="text" type="text" id="SenSchool" name="SenSchool">
                     </div>
-                </div> -->
+                </div>
 
-                <!-- <div class="fields" id="juniorFields" style="display: none;">
+                <div class="fields" id="juniorFields" style="display: none;">
                     <div>
                         <br>
                         <p style="font-weight: bold;"> JUNIOR HIGHSCHOOL:</p>
+                    </div>
+                    <br>
+                    <div class="input-field">
+                        <label>Name of the School</label>
+                        <input type="text" id="JunSchool" name="JunSchool" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Year Graduated</label>
+                        <input type="text" id="JunYear" name="JunYear" required>
+                    </div>
+
+                    <div class="input-field2">
+                        <label>Awards Received</label>
+                        <input type="text" id="JunAward" name="JunAward">
+                    </div>
+                </div>
+
+                <div class="fields" id="elementaryFields" style="display: none;">
+                <div>
+                        <br>
+                        <p style="font-weight: bold;"> ELEMENTARY:</p>
                     </div>
                     <br>
                     <div class="input-field">
@@ -976,40 +996,32 @@
                         <label>Year Graduated</label>
                         <input type="text">
                     </div>
-
                     <div class="input-field2">
                         <label>Awards Received</label>
                         <input type="text">
                     </div>
-                </div> -->
+                </div>
+                <div class="fields" id="otherFields" style="display: none;">
+                    <div>
+                        <br>
+                        <p style="font-weight: bold;"> OTHER SCHOOL ATTENDED:</p>
+                    </div>
+                    <br>
+                    <div class="input-field">
+                        <label>Name of the School</label>
+                        <input type="text">
+                    </div>
+                    <div class="input-field">
+                        <label>Year Graduated</label>
+                        <input type="text">
+                    </div>
+                    <div class="input-field2">
+                        <label>Awards Received</label>
+                        <input type="text">
+                    </div>
+                </div>
+                <br>
 
-                <!-- <div class="input-field1">
-                            <label>Name of the School</label>
-                        
-                            <input style="width:70%;" type="text" id="address" name="address" required>
-                            <br>
-                            <label>Year Graduated</label>
-                            
-                            <input style="width:70%;" type="text" id="address" name="address" required> <br>
-                            <label>Awards Received</label>
-                           
-                            <input style="width:100%; height:50%;" type="text" id="address" name="address" required>
-
-                        </div> -->
-
-                 <!-- <form>
-                    SENIOR HIGHSCHOOL
-                   
-                            <label for="education">Name of School:</label>
-                            <input style="width: 100%;padding: 5px;border: 1px solid #ccc; border-radius: 5px;" type="text" id="education" name="education">
-
-                            <label for="education">Year Graduated:</label>
-                            <input style="width: 100%;padding: 5px;border: 1px solid #ccc; border-radius: 5px;" type="text" id="education" name="education">
-
-                            <label for="education">Awards Received</label>
-                            <input style="width: 100%;padding: 5px;border: 1px solid #ccc; border-radius: 5px;" type="text" id="education" name="education">
-                    
-                </form> -->
 
 
     
@@ -1542,7 +1554,7 @@
 
 
 
-<!-- <script>
+<script>
 function showInput(type) {
    
     document.getElementById('seniorFields').style.display = 'none';
@@ -1561,7 +1573,7 @@ function showInput(type) {
         document.getElementById('otherFields').style.display = 'block';
     }
 }
-</script> -->
+</script>
 
 <script>
     document.getElementById("yesRadio1").addEventListener("click", function () {
