@@ -918,7 +918,7 @@
 
             <div class="form second">
 
-            <h3>Educational Background</h3>
+            <!-- <h3>Educational Background</h3>
                 <br>
 
                 <div class="check-group">
@@ -1020,7 +1020,7 @@
                         <input type="text">
                     </div>
                 </div>
-                <br>
+                <br> -->
 
 
 
@@ -1554,7 +1554,7 @@
 
 
 
-<script>
+<!-- <script>
 function showInput(type) {
    
     document.getElementById('seniorFields').style.display = 'none';
@@ -1573,7 +1573,7 @@ function showInput(type) {
         document.getElementById('otherFields').style.display = 'block';
     }
 }
-</script>
+</script> -->
 
 <script>
     document.getElementById("yesRadio1").addEventListener("click", function () {
