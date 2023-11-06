@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2023 at 03:20 PM
+-- Generation Time: Nov 06, 2023 at 05:48 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -452,19 +452,20 @@ CREATE TABLE `tstable` (
   `year_level` varchar(50) NOT NULL,
   `gender` varchar(50) NOT NULL,
   `reason` varchar(50) NOT NULL,
-  `date` varchar(20) NOT NULL
+  `date` varchar(20) NOT NULL,
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tstable`
 --
 
-INSERT INTO `tstable` (`id`, `student_id`, `full_name`, `college`, `year_level`, `gender`, `reason`, `date`) VALUES
-(1, '111', 'Mina Sharon', 'College of', '1st Year', 'Female', 'Tardy', '03-24-22'),
-(2, '222', 'Sam Sam', 'College of', '2nd Year', 'Male', 'Academic Deficiency', '03-24-22'),
-(3, '333', 'Ann Sana', 'College of', '4th Year', 'Male', 'Absent', '03-24-22'),
-(4, '444', 'Tzuyu Chou', 'College of', '3rd Year', 'Female', 'Tardy', '03-24-22'),
-(5, '555', 'Jihyo Momo', 'College of', '1st Year', 'Female', 'Absent', '03-24-22');
+INSERT INTO `tstable` (`id`, `student_id`, `full_name`, `college`, `year_level`, `gender`, `reason`, `date`, `status`) VALUES
+(1, '111', 'Mina Sharon', 'College of', '1st Year', 'Female', 'Tardy', '03-24-22', 'Excused'),
+(2, '222', 'Sam Sam', 'College of', '2nd Year', 'Male', 'Academic Deficiency', '03-24-22', 'Unexcused'),
+(3, '333', 'Ann Sana', 'College of', '4th Year', 'Male', 'Absent', '03-24-22', 'Sent'),
+(4, '444', 'Tzuyu Chou', 'College of', '3rd Year', 'Female', 'Tardy', '03-24-22', 'Recieved'),
+(5, '555', 'Jihyo Momo', 'College of', '1st Year', 'Female', 'Absent', '03-24-22', 'Excused');
 
 -- --------------------------------------------------------
 

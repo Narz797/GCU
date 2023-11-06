@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+$_SESSION['origin'] = 'Student_Register';//for register_user.php
+?>
+
+
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en">
