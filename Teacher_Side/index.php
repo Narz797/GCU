@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
 </head>
 <body>
 <div class="container">
@@ -109,7 +111,7 @@
   <section class="attendance">
     <div class="attendance-list">
       <h1>List of Referred Students</h1>
-        <table class="table">
+        <table class="table" id="dynamicTable">
         <thead>
           <tr>
           <th>ID</th>
@@ -127,7 +129,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!-- <tr>
           <td>010101</td>
           <td>Sam Sam </td>
           <td>Design</td>
@@ -146,9 +148,11 @@
           <td>Academic Defieciency</td>
           <td>03-24-22</td>
           <td><a href="#divTwo"><button><i class="ri-delete-bin-6-line"></i></button></a></td>
-          </tr>
+          </tr> -->
+
         </tbody>
         </table>
+        <!-- <p id="noHistoryMessage1">Empty</p> -->
     </div>
   </section>
 </section>
@@ -252,8 +256,83 @@
 </body>
 <script>
   $(document).ready(function() {
-    $('.table').DataTable();
-  });
+    
+
+            // Fetch data using $.ajax
+            $.ajax({
+                url: '../backend/referred_students.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                   // const table = document.getElementById('data-table');
+                   // const searchInput = document.getElementById('searchInput');
+                    
+                console.log(data);
+                // if (data.status===0){
+                var tableBody = $("#dynamicTable tbody");
+ 
+                for (var i = 0; i < data.length; i++) {
+                    
+                    var entry = data[i];
+                    var tableToAppend = tableBody; // Determine which table to append to
+                    var row = $("<tr></tr>");
+                    row.append("<td>" + entry.student_id + "</td>");
+                    row.append("<td>" + entry.full_name+"</td>");
+                    row.append("<td>" + entry.college + "</td>");
+                    row.append("<td>" + entry.year_level + "</td>");
+                    row.append("<td>" + entry.gender + "</td>");
+                    row.append("<td>" + entry.reason + "</td>");
+                    row.append("<td>" + entry.date + "</td>");
+                    var statusCell = $("<td></td>");
+                    var statusLink = $("<a href='#divTwo'><button><i class='ri-delete-bin-6-line'></i></button></a>");
+
+                    statusCell.append(statusLink);
+                    row.append(statusCell);
+
+                    tableBody.append(row);
+                    // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
+                 }
+                 console.log("data",data);
+                 $('#dynamicTable').DataTable();
+                // var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
+                // var noHistoryMessage1 = $("#noHistoryMessage1"); 
+                //     if (dynamicTableRowCount1 > 0) {
+                //     noHistoryMessage1.hide(); // Hide the no history message if there is data
+                //     } else {
+                //         noHistoryMessage1.show(); // Show the no history message if no data
+                //     }
+                    // Initial table population
+                    // filterData();
+
+                    // Add Sorting Event Listeners
+                // const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
+                // const tableHeadings = document.querySelectorAll('#dynamicTable th');
+                // tableHeadings.forEach((head, i) => {
+                //     let sort_asc = true;
+                //     head.onclick = () => {
+                //         head.classList.toggle('asc', sort_asc);
+                //         sort_asc = head.classList.contains('asc') ? false : true;
+                //         sortTable(i, sort_asc);
+                //     };
+                // });
+                //     // Sorting Function
+                // function sortTable(column, sort_asc) {
+                //     [...table_rows].sort((a, b) => {
+                //         let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase();
+                //         let second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                //         return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+                //     })
+                //     .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+                // }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching data:', error);
+            }
+            });
+
+            
+        });
+
 </script>
 </html>
 </span>
