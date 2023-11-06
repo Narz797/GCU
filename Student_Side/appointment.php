@@ -150,7 +150,7 @@ include 'includes/main2.php';
             <main class="table" id="customers_table"  style=" height: auto; ">
     
             <section class="table-body">
-                <table>
+                <table style="color:black;">
                     <thead>
                         <tr>
                             <th> No. <span class="icon-arrow">&UpArrow;</span></th>
@@ -204,10 +204,10 @@ include 'includes/main2.php';
              
             </section>
             <section class="table-body" >
-                <table >
+                <table style="color:black;">
                     <thead>
                         <tr>
-                            <th> No. <span class="icon-arrow">&UpArrow;</span></th>
+                            <th  > No. <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Title of appointment <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Date <span class="icon-arrow">&UpArrow;</span></th>
                             
