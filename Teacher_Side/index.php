@@ -1,3 +1,14 @@
+<?php 
+session_start();
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
+$id = $_SESSION['session_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,15 +37,18 @@
 
 <!-- Get teacher's data with image or delete image -->
 
-      <img src="sp2.jpg">
-      <h6>111000111</h6>
-      <h4>Monkey Dulagan Luffy</h4>
-      <p>College of Information Sciences</p>
+      <div id="gender" style="display: flex; justify-content: center; align-items: center;">
+            <!-- The initial image source should be empty -->
+            <img src="" alt="">
+        </div>
+      <h6 id="EId">111000111</h6>
+      <h4 id="name">Monkey Dulagan Luffy</h4>
+      <p  id="college">College of Information Sciences</p>
       <div class="per">
       <table>
         <tr>
-        <td><span>000-000-0000</span></td>
-        <td><span>strawhatluffy@pirate.com</span></td>
+        <td><span id="cn">000-000-0000</span></td>
+        <td><span id="email">strawhatluffy@pirate.com</span></td>
         </tr>
         <tr>
         <td class="color">Contact Number</td>
@@ -296,36 +310,7 @@
                  }
                  console.log("data",data);
                  $('#dynamicTable').DataTable();
-                // var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
-                // var noHistoryMessage1 = $("#noHistoryMessage1"); 
-                //     if (dynamicTableRowCount1 > 0) {
-                //     noHistoryMessage1.hide(); // Hide the no history message if there is data
-                //     } else {
-                //         noHistoryMessage1.show(); // Show the no history message if no data
-                //     }
-                    // Initial table population
-                    // filterData();
 
-                    // Add Sorting Event Listeners
-                // const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
-                // const tableHeadings = document.querySelectorAll('#dynamicTable th');
-                // tableHeadings.forEach((head, i) => {
-                //     let sort_asc = true;
-                //     head.onclick = () => {
-                //         head.classList.toggle('asc', sort_asc);
-                //         sort_asc = head.classList.contains('asc') ? false : true;
-                //         sortTable(i, sort_asc);
-                //     };
-                // });
-                //     // Sorting Function
-                // function sortTable(column, sort_asc) {
-                //     [...table_rows].sort((a, b) => {
-                //         let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase();
-                //         let second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
-                //         return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
-                //     })
-                //     .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
-                // }
             },
             error: function(xhr, status, error) {
                 console.error('Error fetching data:', error);
@@ -335,6 +320,71 @@
             
         });
 
+            // Function to update the HTML elements
+            function updateValues(EmployeeId, college, name, cn, email , gender) {
+
+              const genderImageMap = {
+                  'Male': 'sp.jpg',
+                  'Female': 'sp2.jpg'
+              };
+              const image = document.createElement('img');
+                image.style.display = 'block'; // Display the image above the text
+
+                if (gender === 'Male') {
+                  image.src = genderImageMap['Male'];
+                } else if (gender === 'Female') {
+                  image.src = genderImageMap['Female'];
+                }
+
+                $('#EId').text(EmployeeId);
+                $('#college').text(college);
+                $('#name').text(name);
+                $('#cn').text(cn);
+                $('#email').text(email);
+              
+                // Replace the content of the #gender div with the created image
+                const genderElement = document.getElementById('gender');
+                genderElement.innerHTML = ''; // Clear existing content
+                genderElement.appendChild(image);
+            }
+
+    // Function to fetch data from get_transaction.php
+    function fetchData() {
+        console.log('AJAX request started');
+        $.ajax({
+            type: 'GET',
+            url: '../backend/get_teacher.php',
+            dataType: 'json',
+            
+                // ...
+                success: function (data) {
+                    if (data.length > 0) {
+                          var EmployeeData = data[0]; // Assuming you expect a single row
+                            var EmployeeId = EmployeeData.employee_id;
+                            var college = EmployeeData.college;
+                            var gender = EmployeeData.gender;
+                            var name = EmployeeData.last_name + ', '+ EmployeeData.first_name;
+                            var cn = EmployeeData.contact_number;
+                            var email = EmployeeData.email;
+                            // var cs = EmployeeData.civil_status;
+                            console.log("ID: ", gender);
+
+                            updateValues(EmployeeId, college, name, cn, email, gender);
+
+                        } else {
+                        // Handle the case when no results are found
+                        // You can update the UI as needed
+                        console.log('No results found');
+                    }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error: ' + error);
+                console.error('Status: ' + status);
+                console.error('Response: ' + xhr.responseText);
+            }
+        });
+    }
+    fetchData();
 </script>
 </html>
 </span>
