@@ -500,280 +500,228 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                     <br>
                     <!-- <h2>Personal Details</h2>
             <hr> -->
-                    <div class="fields">
-                        <div class="input-field">
-                            <label for="idno">ID Number</label>
-                            <input type="text" name='idno' id="idno" name="idno" required>
-                        </div>
-                        <div class="input-field">
-                            <label for='course'>Course</label>
-                            <select required name='course' id="cs" >
-                                <option disabled selected>Select Course</option>
-                                <option value='BSAB'>Bachelor of Science in Agribusiness</option>
-                                <option value='BSA'>Bachelor of Science in Agriculture</option>
-                                <option value='BA Comm'>Bachelor of Arts in Communication</option>
-                                <option value='BAEL'>Bachelor of Arts in English Language</option>
-                                <option value='BAFL'>Bachelor of Arts in Filipino Language</option>
-                                <option value='BSABE'>Bachelor of Science in Agriculture and Biosystems Engineering</option>
-                                <option value='BSCE'>Bachelor of Science in Civil Engineering</option>
-                                <option value='BSEE'>Bachelor of Science in Electrical Engineering</option>
-                                <option value='BSIE'>Bachelor of Science in Industrial Engineering</option>
-                                <option value='BSF'>Bachelor of Science in Forestry</option>
-                                <option value='BSET'>Bachelor of Science in Entrepreneurship</option>
-                                <option value='BSFT'>Bachelor of Science in Food Technology</option>
-                                <option value='BSHM'>Bachelor of Science in Hospitality Management</option>
-                                <option value='BSND'>Bachelor of Science in Nutrition and Dietetics</option>
-                                <option value='BSTM'>Bachelor of Science in Tourism Management</option>
-                                <option value='BPeD'>Bachelor of Physical Education</option>
-                                <option value='BSESS'>Bachelor of Science in Exercise and Sports Sciences</option>
-                                <option value='BLIS'>Bachelor in Library and Information Sciences</option>
-                                <option value='BSDC'>Bachelor of Science in Development Communication</option>
-                                <option value='BSIT'>Bachelor of Science in Information Technology</option>
-                                <option value='BS Bio'>Bachelor of Science in Biology</option>
-                                <option value='BS Chem'>Bachelor of Science in Chemistry</option>
-                                <option value='BSES'>Bachelor of Science in Environmental Science</option>
-                                <option value='BS Math'>Bachelor of Science in Mathematics</option>
-                                <option value='BSS'>Bachelor of Science in Statistics</option>
-                                <option value='BSN'>Bachelor of Science in Nursing</option>
-                                <option value='BPA'>Bachelor of Public Administration</option>
-                                <option value='BS Psych'>Bachelor of Science in Psychology</option>
-                                <option value='BECED'>Bachelor of Early Childhood Education</option>
-                                <option value='BEED'>Bachelor of Elementary Education</option>
-                                <option value='BSED'>Bachelor of Secondary Education</option>
-                                <option value='BTLED'>Bachelor of Technology and Livelihood Education</option>
-                                <option value='DVM'>Doctor of Veterinary Medicine</option>
-                                <option value='BA Hist'>Bachelor of Arts in History</option>
-                            </select>
-                        </div>
-                        <div class="input-field">
-                            <label>Year Level</label>
-                            <select required id="cs">
-                                <option disabled selected>Select</option>
-                                <option value='1'>1</option>
-                                <option value='2'>2</option>
-                                <option value='3'>3</option>
-                                <option value='4'>4</option>
-                                <option value='5'>5</option>
-                                <option value='6'>6</option>
-                            </select>
-                        </div>
-                        <div class="input-field">
-                            <label>Last Name</label>
-                            <input type="text" id="lastname" name="lastname" required>
-                        </div>
-                        <div class="input-field">
-                            <label>First Name</label>
-                            <input type="text" id="firstname" name="firstname" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Middle Name</label>
-                            <input type="text" id="middlename" name="middlename" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Contact Number</label>
-                            <input type="text" id="cn" name="cn" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Section</label>
-                            <input type="text" id="section" name="section" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Civil Status</label>
-                            <select required id="cs">
-                                <option disabled selected>Select</option>
-                                <option>Single</option>
-                                <option>Married</option>
-                                <option>Others</option>
-                            </select>
-                        </div>
-                        <div class="input-field">
-                            <label>Date of Birth</label>
-                            <input type="date" id="dob" name="dob" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Birth Place</label>
-                            <input type="text" id="bp" name="bp" required>
-                        </div>
-                        <div class="input-field">
-                            <label>Nationality</label>
-                            <input type="text" id="nationality" name="nationality" required>
-                        </div>
-                        <div class="input-field1">
-                            <label>Languages/Dialects you can read, write, and understand:</label>
-                            <input type="text" id="lang" name="lang" required>
-                        </div>
-                        <div class="input-field1">
-                            <label>House Number/Street/Barangay/Municipality/Province/Zip Code</label>
-                            <input type="text" id="address" name="address" required>
-                        </div>
-                        <h2>Family Background</h2>
+                  
+                      
+                        
+            <div >
+          
+                <br>
+                <p><b><i>In view of the Indigenous People's Act (RA 8371), Magna Carta for
+                            Persons with Disability (RA 7277, as amended by RA 9442), the (c) Solo Parents
+                            Welfare Act of 2000 (RA 8972), and CHED Memorandum Order 9 s.2013, please answer
+                            the following items:</i></b></p>
+                <br>
+                <p><b>
+                        
+                <p>Are you a member of an Indigenous group?</p>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" id="yesRadio1" name="membership" value="yes" />
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" id="noRadio1" name="membership" value="no" />
+                        No
+                    </label>
+                </div>
+                <div class="underline-input" id="indigenousInput">
+                    <br>
+                    <label for="indigenousInfo">Please specify:</label>
+                    <input type="text" id="indigenousInfo" name="indigenousInfo" style="display: none;">
+                </div>
+                        
                         <br>
-                        <br>
-                        <div style="width: 100%;">
-                            <!--  -->
-                            <p><b>Whom do you live?</b></p>
-                            <br>
-                            <div class="radio-group">
-                                <label>
-                                    <input type="radio" id="yesRadio" name="whom" value="yes" onclick="showParentsInput();" required>
-                                    Parents
-                                </label>
-                                <label>
-                                    <input type="radio" id="noRadio" name="whom" value="no" onclick="showGuardianInput();" required>
-                                    Guardian
-                                </label>
-                            </div>
-                            <br>
-                            <div id="inputContainer" style="display: none;">
-                                <h3> Father</h3>
-                                <!-- <p>Father</p> -->
-                                <fieldset style="border:none;">
-                                    <div class="fields">
-                                        <div class="input-field">
-                                            <label>Last Name</label>
-                                            <input type="text" id="Flname" name="Flname" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>First Name</label>
-                                            <input type="text" id="Ffname" name="Ffname" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Middle Name</label>
-                                            <input type="text" id="Fmname" name="Fmname" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Age</label>
-                                            <input type="text" id="Fage" name="Fage" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Occupational</label>
-                                            <input type="text" id="Focc" name="Focc" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Educational Attainment</label>
-                                            <input type="text" id="Fedu" name="Fedu" required>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <hr>
-                                <h3> Mother</h3>
-                                <!-- <p>Father</p> -->
-                                <fieldset style="border:none;">
-                                    <div class="fields">
-                                        <div class="input-field">
-                                            <label>Last Name</label>
-                                            <input type="text" id="Mlname" name="Mlname" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>First Name</label>
-                                            <input type="text" id="Mfname" name="Mfname" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Middle Name</label>
-                                            <input type="text" id="Mmname" name="Mmname" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Age</label>
-                                            <input type="text" id="Mage" name="Mage" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Occupational</label>
-                                            <input type="text" id="Mocc" name="Mocc" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Educational Attainment</label>
-                                            <input type="text" id="Medu" name="Medu" required>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </div>
-                            <div id="inputContainerG" style="display: none;">
-                                <h3>Guardian</h3>
-                                <!-- <p>Father</p> -->
-                                <fieldset style="border:none;">
-                                    <div class="fields">
-                                        <div class="input-field">
-                                            <label>Last Name</label>
-                                            <input type="text" id="Glname" name="Glname" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>First Name</label>
-                                            <input type="text" id="Gfname" name="Gfname" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Middle Name</label>
-                                            <input type="text" id="Gmname" name="Gmname" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Age</label>
-                                            <input type="text" id="Gage" name="Gage" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Occupational</label>
-                                            <input type="text" id="Gocc" name="Gocc" required>
-                                        </div>
-                                        <div class="input-field">
-                                            <label>Educational Attainment</label>
-                                            <input type="text" id="Gedu" name="Gedu" required>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <hr>
-                            </div>
+                        <p><b>
+                                Are you a person with a disability (PWD)?</b>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" id="yesRadio2" name="pwd" value="yes" />
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" id="noRadio2" name="pwd" value="no" />
+                                No
+                            </label>
                         </div>
-                        <!-- Skip for now -->
-                        <div style="width: 100%;">
-                            <p><b><i>List the names of your siblings (brothers & sisters)
-                                        including yourself, arranged from the eldest to the youngest.</i></b></p>
-                            <br>
-                            <label for="total_number"><b>Your total number: </b></label>
-                            <select id="total_number" name="total_number" onchange="createTable()">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
-                            <br><br>
-                            <table id="siblingsTable" class="responsive-table">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Last Name</th>
-                                        <th>First Name</th>
-                                        <th>Middle Name</th>
-                                        <th>Age</th>
-                                        <th>Highest Educational Attainment</th>
-                                        <th>Civil Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Sibling rows will be dynamically added here -->
-                                </tbody>
-                            </table>
+                </p>
+                <br>
+                <p><b>
+                        Are you a student parent?</b>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" id="yesRadio3" name="studpar" value="yes" />
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" id="noRadio3" name="studpar" value="no" />
+                        No
+                    </label>
+                </div>
+                </p>
+                <br>
+                <fieldset class="container1">
+                    <legend>
+                        <h3><b>Sources of Financial Support</b></h3>
+                    </legend>
+                    <div class="checkbox-group">
+                        <label class="container1">Parents
+                            <input type="checkbox" name="src" value="Parents" id="parentsCheckbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container1">Self-supporting
+                            <input type="checkbox" name="src" value="Self" id="selfCheckbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container1">Relatives and/or Guardian
+                            <input type="checkbox" name="src" value="Relatives" id="relativesCheckbox">
+                            <span class="checkmark"></span>
+                        </label>
+                            <label class="container1">
+                                Scholarship
+                                <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox" onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
+                                <span class="checkmark"></span>
+                            </label>
+                            <!-- Specify box for Scholarship -->
+                            <div id="specifyBoxScholarship" style="display: block;">
+                            <label for="specifyScholarship">Specify Scholarship:</label>
+                            <input type="text">
+                            </div>
+                            <!-- Other Checkbox -->
+                            <label class="container1">
+                                Others:
+                                <input type="checkbox" id="otherCheckbox" onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
+                                <span class="checkmark"></span>
+                            </label>
+                            <!-- Specify box for Others -->
+                            <div id="specifyBoxOther" style="display: none"> Specify: 
+                            <input type="text" id="textBox">
                         </div>
-
-                        <button class="nextBtn" id="next" type="button" onclick="goToPage2()">
-                            <span class="btnText">Next</span>
-                            <i class="uil uil-navigator"></i>
-                        </button>
-
                     </div>
+                    <br>
+                </fieldset>
+                <!-- Your submit button and other form sections here -->
+                <fieldset>
+                    <legend>
+                        <h3><b>Marital Status of Parents</b></h3>
+                    </legend>
+                    <!-- <legend><b>Marital Status of Parents</b></legend> -->
+                    <div class="fieldset-container">
+                        <div class="fieldset-column">
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="contactChoice1" name="maritalStatus" value="married" />
+                                    <label for="contactChoice1">Parents are married</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="contactChoice2" name="maritalStatus" value="annulled" />
+                                    <label for="contactChoice2">Marriage is legally annulled</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="contactChoice3" name="maritalStatus" value="livingTogether" />
+                                    <label for="contactChoice3">Parents are not married but are living together</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset-column">
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="contactChoice4" name="maritalStatus" value="singleParent" />
+                                    <label for="contactChoice4">Single Parent</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="contactChoice5" name="maritalStatus" value="separated" />
+                                    <label for="contactChoice5">Parents are separated (one or both have other partners)</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="contactChoice6" name="maritalStatus" value="widowWidower" />
+                                    <label for="contactChoice6">Widow/widower</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <br>
+                <div class="aboutme">
+                    <h2>More about Me:</h2>
+                    <p>1. The three words that describe me are
+                        <input type="text" id="first" name="first">
+                        <input type="text" id="second" name="second">
+                        <input type="text" id="third" name="third">
+                    </p>
+                    <p>2. My father is
+                        <input type="text" id="Fis" name="Fis">
+                    </p>
+                    <p>3. My mother is
+                        <input type="text">
+                    </p>
+                    <p>4. The sibling (kapatid) I am closest to is my
+                        <input type="text" id="Mis" name="Mis">
+                        because<input type="text">
+                    </p>
+                    <p>5. When I think about my family I feel
+                        <input type="text" id="abtFam" name="abtFam">
+                    </p>
+                    <p>6. When I was a child, I
+                        <input type="text" id="whenChild" name="whenChild">
+                    </p>
+                    <p>7. In school, my teachers are
+                        <input type="text" id="teachAre" name="teachAre">
+                    </p>
+                    <p>8. My friends don't know that
+                        <input type="text" id="freindsDunno" name="freindsDunno">
+                    </p>
+                    <p>9. When I think about the future, I
+                        <input type="text" id="future" name="future">
+                    </p>
+                    <p>10. My greatest goal is
+                        <input type="text" id="goal" name="goal">
+                    </p>
+                    <br>
+                </div>
+
+                <h2>Create Account</h2>
+                <br>
+            <div class="fields">
+                <div class="input-field">
+                    <label>email/usernmame</label>
+                    <input type="text" id="eu" name="eu">
+                </div>
+                <div class="input-field">
+                    <label>Password</label>
+                    <input type="text" id="pass" name="pass">
+                </div>
+                <div class="input-field">
+                    <label>Confirm Password</label>
+                    <input type="text" id="conpass" name="conpass">
                 </div>
             </div>
            
+            <div class="buttons">
+            <div class="backBtn" onclick="goToPage2()">
+                    <i class="uil uil-navigator"></i>
+                    <span class="btnText">Back</span>
+                </div>
+
+                <form  method="post">
+                    <button class="nextBtn" id="next" type="submit">
+                        <span class="btnText">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </form>
+            </div>
+
+                
+            </div>
+        </form>
     </div>
+
+
     <script>
 function goToPage2() {
     window.location.href = "page2.php";
 }
+
+
 </script>
 
 
@@ -999,25 +947,7 @@ function goToPage2() {
             });
         });
     </script>
-<!-- <script>
-function showInput(type) {
-   
-    document.getElementById('seniorFields').style.display = 'none';
-    document.getElementById('juniorFields').style.display = 'none';
-    document.getElementById('elementaryFields').style.display = 'none';
-    document.getElementById('otherFields').style.display = 'none';
-   
-    if (type === 'senior') {
-        document.getElementById('seniorFields').style.display = 'block';
-    } else if (type === 'junior') {
-        document.getElementById('juniorFields').style.display = 'block';
-    } else if (type === 'elementary') {
-        document.getElementById('elementaryFields').style.display = 'block';
-    } else if (type === 'other') {
-        document.getElementById('otherFields').style.display = 'block';
-    }
-}
-</script> -->
+
 <script>
     document.getElementById("yesRadio1").addEventListener("click", function () {
         document.getElementById("indigenousInfo").style.display = "block";

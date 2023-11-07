@@ -566,43 +566,35 @@
                     </div>
                 </div>
             </div>
-            <h2>Create Account</h2>
-                <br>
-            <div class="fields">
-<div class="input-field">
-    <label>email/usernmame</label>
-    <input type="text" id="eu" name="eu">
-</div>
-<div class="input-field">
-    <label>Password</label>
-    <input type="text" id="pass" name="pass">
-</div>
-<div class="input-field">
-    <label>Confirm Password</label>
-    <input type="text" id="conpass" name="conpass">
-</div>
-</div>
+         
             
             <div class="buttons">
-                    <div class="backBtn">
-                        <a href="page1.php">
-                        <i class="uil uil-navigator"></i>
-                         <span class="btnText">Back</span></a>
-                    </div>
-                  
-                    <button class="SubmitBtn" id="next" >
-                        <span class="btnSubmit">Submit</span>
-                        <i class="uil uil-navigator"></i>
-                    </button>
-                        
-                  
-                      
+                <div class="backBtn" onclick="goToPage1()">
+                    <i class="uil uil-navigator"></i>
+                    <span class="btnText">Back</span>
                 </div>
+
+                <button class="nextBtn" id="next" type="button" onclick="goToPage3()">
+                    <span class="btnText">Next</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+            </div>
                     
       
                     
-         </form> 
+        </form> 
 </body>
+
+<script>
+function goToPage1() {
+    window.location.href = "page1.php";
+}
+
+function goToPage3() {
+    window.location.href = "page3.php";
+}
+</script>
+
 <script>
     const otherSchoolCheckbox = document.getElementById("otherSchoolCheckbox");
     const otherSchoolSection = document.getElementById("otherSchoolSection");
