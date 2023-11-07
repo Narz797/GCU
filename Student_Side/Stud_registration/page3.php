@@ -474,6 +474,9 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
     #specifyBoxScholarship input[type="text"] {
         border-bottom: 1px solid black; /* You can adjust the color and style as needed */
     }
+    .custom-file-upload input[type="file"] {
+    display: none;
+}
 </style>
 <body>
     <!-- <div class="left-column">
@@ -683,7 +686,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                 <br>
             <div class="fields">
                 <div class="input-field">
-                    <label>email/usernmame</label>
+                    <label>email/username</label>
                     <input type="text" id="eu" name="eu">
                 </div>
                 <div class="input-field">

@@ -475,6 +475,9 @@
         border: 1px solid #ccc; /* Adjust the border style as needed */
         border-radius: 5px; /* Adjust the border radius as needed */
     }
+    .custom-file-upload input[type="file"] {
+    display: none;
+}
 </style>
 
 <body>

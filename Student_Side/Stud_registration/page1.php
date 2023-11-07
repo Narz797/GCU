@@ -301,17 +301,10 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         } */
     fieldset {
         flex: 1;
-        /* Equal size for all fieldsets */
-        /* border: 1px solid #000000; */
-        /* padding: 10px; */
-        /* margin-right: 10px; */
-        /* Add some spacing between fieldsets */
+       
     }
     .fieldset-container {
-        /* display: flex; */
-        /* flex-wrap: wrap; */
-        /* justify-content: space-between; */
-        /* Distribute fieldsets evenly */
+      
         display: block;
         position: relative;
         padding-left: 35px;
@@ -474,6 +467,9 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
     #specifyBoxScholarship input[type="text"] {
         border-bottom: 1px solid black; /* You can adjust the color and style as needed */
     }
+    .custom-file-upload input[type="file"] {
+    display: none;
+}
 </style>
 <body>
     <!-- <div class="left-column">
@@ -498,8 +494,21 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                     <hr>
                     <hr>
                     <br>
-                    <!-- <h2>Personal Details</h2>
-            <hr> -->
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        <label for="imageUpload" class="custom-file-upload" style=" display: inline-block;
+                            background-color: #4CAF50;
+                            color: #fff;
+                            padding: 10px 20px;
+                            cursor: pointer;
+                            border: none;
+                            border-radius: 5px;
+                            margin-right: 10px;">
+                            <input type="file" id="imageUpload" name="image" accept="image/*">
+                            Upload Image
+                        </label>
+                    </form>
+                    <br>
+                    <br>
                     <div class="fields">
                         <div class="input-field">
                             <label for="idno">ID Number</label>
@@ -999,45 +1008,27 @@ function goToPage2() {
             });
         });
     </script>
-<!-- <script>
-function showInput(type) {
-   
-    document.getElementById('seniorFields').style.display = 'none';
-    document.getElementById('juniorFields').style.display = 'none';
-    document.getElementById('elementaryFields').style.display = 'none';
-    document.getElementById('otherFields').style.display = 'none';
-   
-    if (type === 'senior') {
-        document.getElementById('seniorFields').style.display = 'block';
-    } else if (type === 'junior') {
-        document.getElementById('juniorFields').style.display = 'block';
-    } else if (type === 'elementary') {
-        document.getElementById('elementaryFields').style.display = 'block';
-    } else if (type === 'other') {
-        document.getElementById('otherFields').style.display = 'block';
-    }
-}
-</script> -->
-<script>
-    document.getElementById("yesRadio1").addEventListener("click", function () {
-        document.getElementById("indigenousInfo").style.display = "block";
-        document.querySelector('label[for="indigenousInfo"]').style.display = "block";
-    });
-    document.getElementById("noRadio1").addEventListener("click", function () {
-        document.getElementById("indigenousInfo").style.display = "none";
-        document.querySelector('label[for="indigenousInfo"]').style.display = "none";
-    });
-</script>
-<script>
-    function toggleSpecifyBox(checkboxId, specifyBoxId) {
-        var checkbox = document.getElementById(checkboxId);
-        var specifyBox = document.getElementById(specifyBoxId);
-        if (checkbox.checked) {
-            specifyBox.style.display = "block";
-        } else {
-            specifyBox.style.display = "none";
+
+    <script>
+        document.getElementById("yesRadio1").addEventListener("click", function () {
+            document.getElementById("indigenousInfo").style.display = "block";
+            document.querySelector('label[for="indigenousInfo"]').style.display = "block";
+        });
+        document.getElementById("noRadio1").addEventListener("click", function () {
+            document.getElementById("indigenousInfo").style.display = "none";
+            document.querySelector('label[for="indigenousInfo"]').style.display = "none";
+        });
+    </script>
+    <script>
+        function toggleSpecifyBox(checkboxId, specifyBoxId) {
+            var checkbox = document.getElementById(checkboxId);
+            var specifyBox = document.getElementById(specifyBoxId);
+            if (checkbox.checked) {
+                specifyBox.style.display = "block";
+            } else {
+                specifyBox.style.display = "none";
+            }
         }
-    }
-</script>
+    </script>
 </body>
 </html>
