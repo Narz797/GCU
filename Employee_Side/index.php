@@ -216,7 +216,7 @@ $id = $_SESSION['session_id'];
                 // ...
                 success: function (data) {
                     console.log(data.latest_data);
-                    if (data.latest_data.length > 0) {
+                    if (data.latest_data && data.latest_data.length > 0) {
                             var studentId = data.latest_data[0].student_id;
                             var transactType = data.latest_data[0].transact_type;
                             var total = data.total_pending_transactions;
@@ -237,6 +237,22 @@ $id = $_SESSION['session_id'];
                         } else {
                         // Handle the case when no results are found
                         // You can update the UI as needed
+                            var studentId = "None";
+                            var total = 0;
+                            var totalAppointments = 0; // Define total here
+                            var employee_email = data.adminUserData[0].email;
+                            var employee_position = data.adminUserData[0].position;
+                            var employee_date_joined = data.adminUserData[0].date_joined;
+                            var eFname = data.adminUserData[0].first_name;
+                            var eLname = data.adminUserData[0].last_name;
+                            var ePosition = data.adminUserData[0].position;
+                            var eGender = data.adminUserData[0].gender;
+                            console.log(totalAppointments);
+                            updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
+                            console.log(total);
+                            // Start both counting animations
+                            countAppointments(totalAppointments);
+                            countForms(total);
                         console.log('No results found');
                     }
             },
