@@ -504,7 +504,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                             border-radius: 5px;
                             margin-right: 10px;">
                             <input type="file" id="imageUpload" name="image" accept="image/*">
-                            Upload Image
+                            Upload BSU School ID
                         </label>
                     </form>
                     <br>
