@@ -346,7 +346,7 @@ i.fa-sign-out-alt:hover {
              
             </section>
             <section class="table-body" >
-                <table >
+                <table id="dynamicTable">
                     <thead>
                         <tr>
                             <th> No. </th>
@@ -356,31 +356,21 @@ i.fa-sign-out-alt:hover {
                         </tr>
                     </thead>
                     <tbody >
-                        <tr>
+                        <!-- <tr>
                             <td> 1 </td>
                             <td> Counseling</td>
                             <td> 17 Dec, 2022 </td>
-                            <!-- <td>
-                                <p class="status delivered">Delivered</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td> -->
                         </tr>
                         <tr>
                             <td> 2 </td>
                             <td> Readmission</td>
                             <td> 27 Aug, 2023 </td>
-                            <!-- <td>
-                                <p class="status cancelled">Cancelled</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td>
+
                         </tr> -->
                  
                     </tbody>
                 </table>
+                <p id="noHistoryMessage">Empty</p>
             </section>
             </main>
             </div>
@@ -398,4 +388,71 @@ i.fa-sign-out-alt:hover {
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="assets/js/calendar.js"></script>    
+<script>
+    
+    $(document).ready(function () {
+        $.ajax({
+            url: "../backend/stud_all_trans.php",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                // if (data.status===0){
+                var tableBody = $("#dynamicTable tbody");
+                var historyTableBody = $("#historyTableBody tbody");
+                var noHistoryMessage = $("#noHistoryMessage"); 
+ 
+ 
+                for (var i = 0; i < data.length; i++) {
+                    
+                    var entry = data[i];
+                    
+                    var tableToAppend = tableBody; // Determine which table to append to
+                    var row = $("<tr></tr>");
+                    row.append("<td>" + entry.transact_id+ "</td>");
+                    row.append("<td>" + entry.transact_type + "</td>");
+                    row.append("<td>" + entry.date_completed+"</td>");
+
+                    tableBody.append(row);
+                    // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
+                    console.log("data",data);
+                var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
+                    if (dynamicTableRowCount1 > 0) {
+                    noHistoryMessage.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage.show(); // Show the no history message if no data
+                    }
+                                        // Add Sorting Event Listeners
+                const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
+                const tableHeadings = document.querySelectorAll('#dynamicTable th');
+                tableHeadings.forEach((head, i) => {
+                    let sort_asc = true;
+                    head.onclick = () => {
+                        head.classList.toggle('asc', sort_asc);
+                        sort_asc = head.classList.contains('asc') ? false : true;
+                        sortTable(i, sort_asc);
+                    };
+                });
+                    // Sorting Function
+                function sortTable(column, sort_asc) {
+                    [...table_rows].sort((a, b) => {
+                        let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase();
+                        let second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                        return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+                    })
+                    .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+                }
+            }
+
+                },
+                error: function (xhr, status, error) {
+                console.error("AJAX Error:");
+                console.error("Status: " + status);
+                console.error("Error: " + error);
+                console.error("Response Text: " + xhr.responseText);
+                }
+                });
+
+                });
+</script>
+  
