@@ -30,6 +30,8 @@ include 'includes/main2.php';
     <link rel="stylesheet" href="../Employee_Side/assets/apmt.css">
     <link rel="stylesheet" href="../Employee_Side/assets/css/forms.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
     .column {
@@ -167,44 +169,15 @@ include 'includes/main2.php';
             <section  id="blog" class="blog"  >
     <div class="container" data-aos="fade-up">
           </div>
-          <div class="col-lg-4" style=" width:auto;" >
-            <div class="sidebar"  style="background-color:white;">
-              <div class="sidebar-item recent-posts" >
-                <div class="mt-3" >
-                  <div class="post-item mt-3">
-                    <img src="assets/img/form.png" alt="" style="height:60px; ">
-                    <div>
-                      <h4><a href="Form1.php">Name ng Form</a></h4>
-                      <time datetime="2020-01-01">March 2023</time>
-                    </div>
-                  </div><!-- End recent post item-->
-            
-            <br>
-            <hr>
-                   <div class="post-item mt-3">
-                    <img src="assets/img/form.png" alt="" style="height:60px; ">
-                    <div>
-                      <h4><a href="Form1.php">Name ng Form</a></h4>
-                      <time datetime="2020-01-01">March 2023</time>
-                    </div>
-                  </div><!-- End recent post item-->
-                    
-            <br>
-            <hr>
-                   <div class="post-item mt-3">
-                    <img src="assets/img/form.png" alt="" style="height:60px; ">
-                    <div>
-                      <h4><a href="Form1.php">Name ng Form</a></h4>
-                      <time datetime="2020-01-01">March 2023</time>
-                    </div>
-                  </div><!-- End recent post item-->
-                
-                  
+          <div class="col-lg-4" style="width:auto;">
+            <div class="sidebar" style="background-color:white;">
+              <div class="sidebar-item recent-posts">
+                <div class="mt-3" id="scrollable-container">
+                  <!-- Content loaded via Ajax will be appended here -->
                 </div>
-              </div><!-- End sidebar recent posts-->
-            </div><!-- End Blog Sidebar -->
-            
-        </div>
+              </div>
+            </div>
+          </div>
         
           </div>
         </div>
@@ -219,3 +192,37 @@ include 'includes/main2.php';
   </body>
 <!-- <script src="../Employee_Side/assets/js/calendar.js"></script>    
 <script src="../Employee_Side/assets/main.js"></script>  -->
+<script>
+  $(document).ready(function() {
+    // Function to load data from the database via Ajax
+    function loadDataFromDatabase() {
+      $.ajax({
+        url: '../backend/stud_history.php',
+        method: 'GET',
+        dataType: 'json', // Set the expected data type to JSON
+        success: function(data) {
+          // Iterate through the JSON data and append it to the scrollable container
+          data.forEach(function(item) {
+            // Create the HTML structure for each data item
+            var content = '<div class="post-item mt-3">';
+            content += '<img src="assets/img/form.png" alt="" style="height:60px; ">';
+            content += '<div>';
+            content += '<h4><a href="Form1.php">' + item.transact_type + '</a></h4>';
+            content += '<time datetime="2020-01-01">' + item.date_completed + '</time>';
+            content += '</div>';
+            content += '</div>';
+            content += '<br>';
+            content += '<hr>';
+            $('#scrollable-container').append(content);
+          });
+        },
+        error: function(error) {
+          console.error('Error fetching data: ' + error);
+        }
+      });
+    }
+
+    // Call the function to load data when the page loads
+    loadDataFromDatabase();
+  });
+</script>
