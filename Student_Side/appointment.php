@@ -47,6 +47,8 @@ include 'includes/main2.php';
   display: table;
   clear: both;
 }
+
+
     </style>
   <body>
        

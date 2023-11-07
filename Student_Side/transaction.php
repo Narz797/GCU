@@ -44,6 +44,47 @@ include 'includes/main2.php';
   display: table;
   clear: both;
 }
+@-webkit-keyframes mover {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-15%);
+    }
+}
+
+@keyframes mover {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-15%);
+    }
+}
+
+/* Media Query for Phones (adjust as needed) */
+@media (max-width: 767px) {
+    @-webkit-keyframes mover {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-10%);
+        }
+    }
+
+    @keyframes mover {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-10%);
+        }
+    }
+}
+
+
+
     </style>
   <body>
        
@@ -64,8 +105,7 @@ include 'includes/main2.php';
                <i class="bi bi-file-text"></i>
               </div>
               <h3>Readmission Slip</h3>
-              <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
-                bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
+              <br>
               <a href="./forms/readmission-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -75,8 +115,7 @@ include 'includes/main2.php';
                 <i class="bi bi-file-text"></i>
               </div>
               <h3>Withdrawal/Dropping/Shifting Form</h3>
-              <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
-                bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
+              <br>
               <a href="./forms/withdrawal-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -86,8 +125,7 @@ include 'includes/main2.php';
                 <i class="bi bi-file-text"></i>
               </div>
               <h3>Referral Slip</h3>
-              <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
-                bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
+              <br>
               <a href="./forms/referral-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -97,8 +135,8 @@ include 'includes/main2.php';
                 <i class="bi bi-file-text"></i>
               </div>
               <h3>Leave Of Absence</h3>
-              <p>Description: ashagdhsadgsdgsdfsdghkljcdjshgdbshdgshgd
-                bsadshsakdshhhhhhhhhhhhhhhhhhhhnayssyasnasyaysassdgs</p>
+              <br>
+              
               <a href="./forms/leave-of-absence-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
