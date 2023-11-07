@@ -35,12 +35,12 @@ include 'includes/main1.php';
   
 </head>
 <style>
-    .column {
+    /* .column {
   float: left;
-  /* width: 40%; */
+
   padding: 10px;
-  height: auto; /* Should be removed. Only for demonstration */
-}
+  height: auto; 
+} */
 
 /* Clear floats after the columns */
 .row:after {
@@ -77,26 +77,16 @@ i.fa-sign-out-alt:hover {
             }
         }
 
-        .left-column img {
-            margin-top: 50%;
-            margin-bottom: 5%;
-            margin-left:10%;
-            width: 80%;
-            -webkit-animation: mover 2s infinite alternate;
-            animation: mover 1s infinite alternate;
-            border-radius: 50%;
 
-  box-sizing: border-box;
-}
 
 /* Create two equal columns that floats next to each other */
-.column {
+/* .column {
   float: left;
-  /* width: 50%; */
-  padding: 10px;
-  height: auto; /* Should be removed. Only for demonstration */
  
-}
+  padding: 10px;
+  height: auto; 
+ 
+} */
 
 /* Clear floats after the columns */
 .row:after {
@@ -104,7 +94,117 @@ i.fa-sign-out-alt:hover {
   display: table;
   clear: both;
 }
+@media (max-width: 768px) {
+            .column {
+                width: 100%;
+                padding: 10px;
+            }
 
+            .left-column img {
+                width: 100%;
+            }
+
+            .table-body {
+                margin-left: 0; /* Adjust margins as needed for smaller screens */
+            }
+
+            /* Add more responsive styles as needed */
+        }
+
+        /* Your existing styles (non-responsive) */
+        /* .column {
+            float: left;
+            width: 20%;
+            padding: 10px;
+            height: auto;
+        } */
+
+        /* .myDiv {
+                    width:50%;
+                    height: 75px;
+                    border: 2px solid black;
+                    margin: 10px; 
+                    text-align: center;
+                    background-color:#72A50A;
+                    display: inline-block;
+                    color:black;
+
+                } */
+
+                th, td {
+   
+    /* padding: 8px; */
+    text-align: left;
+    
+  }
+  /* t{
+
+      background-color:#72A50A;
+
+  } */
+
+ 
+  tr:hover {
+    background-color:darkgreen; /* Hover color */
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    /* width:1000%; */
+    margin-left:5%;
+  }
+
+  /* table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-right: 20px;
+  } */
+
+  /* th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  } */
+
+  /* th {
+    background-color: #f2f2f2;
+  } */
+
+  /* tr:hover {
+    background-color: #f5f5f5;
+  } */
+
+  .ID {
+    height: 400px;
+    width:3000px;
+    margin-left:100%;
+    margin-top:20px;
+  }
+
+  .image-container {
+    display: flex;
+    align-items: center;
+}
+
+.name-info {
+    margin-left: 10px; /* Add margin to create space between image and text */
+}
+.image {
+            margin-top: 5%;
+            margin-bottom: 5%;
+            margin-left:5%;
+            width: 80%;
+            -webkit-animation: mover 2s infinite alternate;
+            animation: mover 1s infinite alternate;
+            border-radius:50%;
+           
+
+  
+}
+
+
+ 
 
     </style>
   <body>
@@ -128,40 +228,86 @@ i.fa-sign-out-alt:hover {
     <i style="margin-left: 3500%; font-size: 40px; font-weight: bold;" class="fa fa-sign-out-alt fa-2x"></i>
 </a>
 </section> 
+<!-- <div class="image" >
+       <img src="../assets/img/ab.jpg" alt="Logo" class="logo" style="height:100%; withd:20px; border-radius:50%;">
+        
+  
+    </div>  -->
+
+    <div class="image-container">
+    
+            <img class="image"src="../assets/img/ab.jpg" alt="Logo" class="logo" style="height: 100%; width: 20%; border-radius: 50%;">
+            
+        <div class="name-info">
+        <p>FirstName , Lastname ,  Middlename</p>
+        
+       
+    </div>
+    
+</div>
+
+   
 
 
 
-<div class="row" >
-<div class="column" style="width:20%; ">
+<!-- <div class="row" > -->
+<!-- <div class="column" style="width:20%; "> -->
   
   <!-- Your content goes here -->
-   <div class="left-column" style=" display: flex; justify-content: center; align-items: center;">
+   <!-- <div class="left-column" style=" display: flex; justify-content: center; align-items: center;">
        <img src="../assets/img/ab.jpg" alt="Logo" class="logo">
-   </div>
-   <p   style="text-align:center; font-size: 20px; font-weight: bold;align-items: center; color:white;" > ID #: 20015**</p>
+   </div> -->
+   <!-- <p   style="text-align:center; font-size: 20px; font-weight: bold;align-items: center; color:white;" > ID #: 20015**</p>
    <p   style="text-align:center;font-size: 20px; font-weight: bold;align-items: center; color:white;" > Lee Min Hoo</p>
    <p   style="text-align:center;font-size: 20px; font-weight: bold;align-items: center; color:white;" >BS in Information Technology</p>
-   <p   style="text-align:center;font-size: 20px; font-weight: bold;align-items: center; color:white;" >4-B</p>
+   <p   style="text-align:center;font-size: 20px; font-weight: bold;align-items: center; color:white;" >4-B</p> -->
+
+   <!-- <div style="display: inline-block; border: 2px solid black; padding: 10px; border-radius: 10px; background-color: white;">
+    <img src="../assets/img/id.jpg" alt="ID" class="ID" style="height: 400px;">
+</div> -->
 
 
 
- </div>
+
+ <!-- </div> -->
 
 
 
-  <div class="column" style=" width:80%;  ">
+
+
+  <!-- <div style=" width:80%;  "> -->
 
 
         
         
 
-            <div class="column" style="width:80%;display: flex;">
-    <section class="table-body" style=" background-color:transparent; margin-left:20%;">
-        
+            <!-- <div  style="width:80%;display: flex;"> -->
+    
         <!-- Your table content here -->
-        <i class='far fa-edit' style="font-size:36px; margin-left: 90%; background-color:white;"></i>
+        <!-- <i class='far fa-edit' style="font-size:36px; margin-left: 90%; background-color:white;"></i>
+         -->
+         
+         <!-- <div class="myDiv" style="height: 400px; display: inline-block; border: 2px solid black; padding: 10px; border-radius: 10px; background-color: white;">
+    <h2>School ID</h2>
+    <img src="../assets/img/id.jpg" alt="ID" class="ID" style="height: 400px;">
+</div> -->
 
-        <table >
+
+<!-- 
+            <div class="myDiv">
+            <h2>Contact Number</h2>
+            <hr>
+            <p>09091238752</p>
+            </div>
+
+            <div class="myDiv">
+            <h2>Box 3</h2>
+            <p>This is some text in Box 3.</p>
+            </div>
+             -->
+        
+
+        <!-- <table >
                     <thead style="color:white;">
                         <tr>
                             <th> Contact Number </th>
@@ -180,12 +326,12 @@ i.fa-sign-out-alt:hover {
                             <td> Busan, South </td>
                             
 
-                            <!-- <td>
+                            <td>
                                 <p class="status delivered">Delivered</p>
                             </td>
                             <td> 
                                 <i class="ri-delete-bin-6-line"></i>
-                            </td> -->
+                            </td>
                         </tr>
                         
                  
@@ -193,9 +339,9 @@ i.fa-sign-out-alt:hover {
                     <thead style="color:white;">
                         <tr>
                             <th> Languages: </th>
-                            <!-- <th> Civil Status </th>
+                            <th> Civil Status </th>
                             <th> Birthdate</th>
-                            <th> Birtplace</th> -->
+                            <th> Birtplace</th>
 
                             
                         </tr>
@@ -208,12 +354,12 @@ i.fa-sign-out-alt:hover {
                             <td> Tagalog </td>
                             
 
-                            <!-- <td>
+                            <td>
                                 <p class="status delivered">Delivered</p>
                             </td>
                             <td> 
                                 <i class="ri-delete-bin-6-line"></i>
-                            </td> -->
+                            </td>
                         </tr>
                         
                  
@@ -223,9 +369,9 @@ i.fa-sign-out-alt:hover {
                     <thead style="color:white;">
                         <tr>
                             <th> Address: </th>
-                            <!-- <th> Civil Status </th>
+                            <th> Civil Status </th>
                             <th> Birthdate</th>
-                            <th> Birtplace</th> -->
+                            <th> Birtplace</th>
 
                             
                         </tr>
@@ -238,12 +384,12 @@ i.fa-sign-out-alt:hover {
                             <td> 44972</td>
                             
 
-                            <!-- <td>
+                            <td>
                                 <p class="status delivered">Delivered</p>
                             </td>
                             <td> 
                                 <i class="ri-delete-bin-6-line"></i>
-                            </td> -->
+                            </td>
                         </tr>
                         
                  
@@ -252,9 +398,9 @@ i.fa-sign-out-alt:hover {
                     <thead style="color:white;">
                         <tr>
                             <th> Nationality</th>
-                            <!-- <th> Civil Status </th>
+                            <th> Civil Status </th>
                             <th> Birthdate</th>
-                            <th> Birtplace</th> -->
+                            <th> Birtplace</th>
 
                             
                         </tr>
@@ -267,44 +413,141 @@ i.fa-sign-out-alt:hover {
                             <td> </td>
                             
 
-                            <!-- <td>
+                            <td>
                                 <p class="status delivered">Delivered</p>
                             </td>
                             <td> 
                                 <i class="ri-delete-bin-6-line"></i>
-                            </td> -->
+                            </td>
                         </tr>
                         
                  
                     </tbody>
 
 
-                </table>
+                </table> -->
 
-    </section>
+    <!-- </section> -->
 
+    <!-- <div>
+    <img src="../assets/img/id.jpg" alt="ID" class="ID" style="height: 400px;">
+    </div> -->
 
+    
+
+    <!-- <table>
+  <tr>
+    <th >Student ID</th>
+    <td>12345</td>
+  </tr>
+  <tr>
+    <th style="color: black">Name</th>
+    <td style="color: black">John Doe</td>
+  </tr>
+  <tr>
+    <th>Age</th>
+    <td>20</td>
+  </tr>
+  <tr>
+    <th style="color: black" >Gender</th>
+    <td style="color: black">Male</td>
+  </tr>
+  <tr>
+    <th>Major</th>
+    <td>Computer Science</td>
+  </tr>
+  <tr>
+    <th style="color: black">GPA</th>
+    <td style="color: black">3.7</td>
+  </tr>
+</table>
+
+<div>
+<img src="../assets/img/id.jpg" alt="ID" class="ID" style="height: 400px;">
+</div> -->
+
+<div class="container">
+  <table style="width:1000%;">
+    <tr >
+      <th >Student ID</th>
+      <td>12345</td>
+    </tr>
+    <tr>
+      <th style="color: black">Name</th>
+      <td style="color: black">John Doe</td>
+      
+
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th style="color: black">Gender</th>
+      <td style="color: black">Male</td>
+    </tr>
+    <tr>
+      <th>Major</th>
+      <td>Computer Science</td>
+    </tr>
+
+    <tr>
+      <th style="color: black">GPA</th>
+      <td style="color: black">3.7</td>
+    </tr>
+
+    <tr>
+      <th style="color: black">GPA</th>
+      <td style="color: black">3.7</td>
+    </tr>
+
+    <tr>
+      <th style="color: black">GPA</th>
+      <td style="color: black">3.7</td>
+    </tr>
+
+    <tr>
+      <th style="color: black">GPA</th>
+      <td style="color: black">3.7</td>
+    </tr>
+
+    <tr>
+      <th style="color: black">GPA</th>
+      <td style="color: black">3.7</td>
+    </tr>
+
+    <tr>
+      <th style="color: black">GPA</th>
+      <td style="color: black">3.7</td>
+    </tr>
+
+  </table>
+
+  <div>
+    <img src="../assets/img/id.jpg" alt="ID" class="ID">
+  </div>
+</div>
 
 
     
-</div>
+<!-- </div> -->
 
 
 
-
+<!-- 
   </div>
 
 
-</div>
+</div> -->
 
 
-<br>
+<!-- <br>
 
 <div>
   </div>
 
 
-    <div  >
+    <div  > -->
 
 
                         
