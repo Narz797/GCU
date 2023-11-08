@@ -1,4 +1,8 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 <style>
 
 :root {
@@ -2013,6 +2017,7 @@ p {
   font-weight: 600;
   letter-spacing: .025em;
   text-transform: uppercase;
+  color:black;
 }
 
 .heading-small {
@@ -2021,6 +2026,7 @@ p {
   padding-bottom: .25rem;
   letter-spacing: .04em;
   text-transform: uppercase;
+  
 }
 
 .display-2 span {
@@ -2037,16 +2043,46 @@ p {
 #navbar .navbar {
   margin-bottom: 20px;
 }
-    </style>
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+
+
+</style>
 <body>
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color:#20B2AA; height: 50px; "><i class="fa fa-sign-out" style="font-size:48px;color:black; margin-left:1650px" ></i>
+</section> 
+
   <div class="main-content">
     <!-- Top navbar -->
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">User profile</a>
+        <!-- <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">User profile</a> -->
         <!-- Form -->
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
             <div class="input-group input-group-alternative">
               <div class="input-group-prepend">
@@ -2055,18 +2091,18 @@ p {
               <input class="form-control" placeholder="Search" type="text">
             </div>
           </div>
-        </form>
+        </form> -->
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg">
+                <!-- <span class="avatar avatar-sm rounded-circle"> -->
+                <!-- <i class="fa fa-sign-out" style="font-size:48px;color:white; margin-left:1600px" ></i> -->
                 </span>
-                <div class="media-body ml-2 d-none d-lg-block">
+                <!-- <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
-                </div>
+                </div> -->
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
@@ -2100,19 +2136,19 @@ p {
       </div>
     </nav>
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 700px; background-image: url(../assets/img/bsubg.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
       <!-- Header container -->
-      <div class="container-fluid d-flex align-items-center">
+      <!-- <div class="container-fluid d-flex align-items-center">
         <div class="row">
           <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello Name,</h1>
+            <h1 class="display-2 text-white">Hello</h1>
             <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
             <a href="#!" class="btn btn-info">Edit profile</a>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--7">
@@ -2130,12 +2166,14 @@ p {
                 </div>
               </div>
             </div>
-            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+            <!-- <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               <div class="d-flex justify-content-between">
                 <a href="#" class="btn btn-sm btn-info mr-4">Connect</a>
                 <a href="#" class="btn btn-sm btn-default float-right">Message</a>
               </div>
-            </div>
+            </div> -->
+            <br>
+            <br>
             <div class="card-body pt-0 pt-md-4">
               <div class="row">
                 <div class="col">
@@ -2159,21 +2197,28 @@ p {
                   <i class="ni education_hat mr-2"></i>Benguet State University-Guidance and Counseling Unit
                 </div>
                 <hr class="my-4">
-                <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
+                <!-- <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p> -->
               </div>
             </div>
           </div>
+
+          
         </div>
+
+        
         <div class="col-xl-8 order-xl-1">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">My account</h3>
+                  <h3 class="mb-0">MY ACCOUNT</h3>
                 </div>
                 <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                  <a href="#!" class="btn btn-sm btn-primary">
+                    <i class="fa fa-pencil"></i> Edit Account
+                  </a>
                 </div>
+
               </div>
             </div>
             <div class="card-body">
@@ -2278,47 +2323,568 @@ p {
                   </div>
                 </div>
                 <hr class="my-4">
-                <!-- Address -->
-                <h6 class="heading-small text-muted mb-4">Family Background</h6>
+                <!-- Family Bacground -->
+                <h3 >FAMILY BACKGROUND</h3>
+                <h1 class="heading-small text-muted mb-4">FATHER</h1>
+
+                
+
                 <div class="pl-lg-4">
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-md-12">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-address">Parents (Father)</label>
                         <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                      
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="row">
+
                     <div class="col-lg-4">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-city">City</label>
-                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+                        <label class="form-control-label" for="input-city">Lastname</label>
+                        <section type="text" id="flast" class="form-control form-control-alternative" >Sung</section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-country">Country</label>
-                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+                        <label class="form-control-label" for="input-country">Firstname</label>
+                        <section type="text" id="ffirst" class="form-control form-control-alternative" >Jong</section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Postal code</label>
-                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+                        <label class="form-control-label" for="input-country">Middlename</label>
+                        <section type="number" id="fmiddle" class="form-control form-control-alternative" > Ki </section>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-city">Age</label>
+                        <section type="number" id="fage" class="form-control form-control-alternative" > 36 </section>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-country">Occupational</label>
+                        <section type="number" id="foccupational" class="form-control form-control-alternative" > Actor </section>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" > College </section>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                <h1 class="heading-small text-muted mb-4">MOTHER</h1>
+
+                
+
+                <div class="pl-lg-4">
+                  <!-- <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-address">Parents (Father)</label>
+                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                      
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="row">
+
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-city">Lastname</label>
+                        <section type="text" id="flast" class="form-control form-control-alternative" >Sung</section>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-country">Firstname</label>
+                        <section type="text" id="ffirst" class="form-control form-control-alternative" >Jong</section>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Middlename</label>
+                        <section type="number" id="fmiddle" class="form-control form-control-alternative" > Ki </section>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-city">Age</label>
+                        <section type="number" id="fage" class="form-control form-control-alternative" > 36 </section>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-country">Occupational</label>
+                        <section type="number" id="foccupational" class="form-control form-control-alternative" > Actor </section>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" > College </section>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  </div>
+
+                  <h1 class="heading-small text-muted mb-4">GUARDIAN</h1>
+
+                
+
+                  <div class="pl-lg-4">
+                    <!-- <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-address">Parents (Father)</label>
+                          <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                        
+                        </div>
+                      </div>
+                    </div> -->
+                    <div class="row">
+
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-city">Lastname</label>
+                          <section type="text" id="flast" class="form-control form-control-alternative" >Sung</section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-country">Firstname</label>
+                          <section type="text" id="ffirst" class="form-control form-control-alternative" >Jong</section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country">Middlename</label>
+                          <section type="number" id="fmiddle" class="form-control form-control-alternative" > Ki </section>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-city">Age</label>
+                          <section type="number" id="fage" class="form-control form-control-alternative" > 36 </section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-country">Occupational</label>
+                          <section type="number" id="foccupational" class="form-control form-control-alternative" > Actor </section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
+                          <section type="number" id="feducation" class="form-control form-control-alternative" > College </section>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                    </div>
+                  
+
+                
                 <hr class="my-4">
                 <!-- Description -->
-                <h6 class="heading-small text-muted mb-4">About me</h6>
+                <h6 class="heading-small text-muted mb-4">SIBLINGS</h6>
+
+                <table id="customers">
+                  <tr>
+                    <th>Lastname</th>
+                    <th>Firstname</th>
+                    <th>Middlename</th>
+                    <th>Age</th>
+                    <th>Highest Educational Attainment</th>
+                    <th>Civil Status</th>
+
+                  </tr>
+                  <tr>
+                    <td>Taquio</td>
+                    <td>Narz Josef</td>
+                    <td>Dikoalam</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+
+
+                  </tr>
+                  <tr>
+                    <td>Berglunds snabbköp</td>
+                    <td>Christina Berglund</td>
+                    <td>Sweden</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                  <tr>
+                    <td>Centro comercial Moctezuma</td>
+                    <td>Francisco Chang</td>
+                    <td>Mexico</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                  <tr>
+                    <td>Ernst Handel</td>
+                    <td>Roland Mendel</td>
+                    <td>Austria</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                  <tr>
+                    <td>Island Trading</td>
+                    <td>Helen Bennett</td>
+                    <td>UK</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                  <tr>
+                    <td>Königlich Essen</td>
+                    <td>Philip Cramer</td>
+                    <td>Germany</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                  <tr>
+                    <td>Laughing Bacchus Winecellars</td>
+                    <td>Yoshi Tannamuri</td>
+                    <td>Canada</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                  <tr>
+                    <td>Magazzini Alimentari Riuniti</td>
+                    <td>Giovanni Rovelli</td>
+                    <td>Italy</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                  <tr>
+                    <td>North/South</td>
+                    <td>Simon Crowther</td>
+                    <td>UK</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                  <tr>
+                    <td>Paris spécialités</td>
+                    <td>Marie Bertrand</td>
+                    <td>France</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                  <tr>
+                    <td>Paris spécialités</td>
+                    <td>Marie Bertrand</td>
+                    <td>France</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                  <tr>
+                    <td>Paris spécialités</td>
+                    <td>Marie Bertrand</td>
+                    <td>France</td>
+                    <td>21</td>
+                    <td>Highschool</td>
+                    <td>Married</td>
+                  </tr>
+                </table>
+
+                <hr class="my-4">
+                <!-- Description -->
+                <h3>EDUCATIONAL BACKGROUND</h3>
+                <h6 class="heading-small text-muted mb-4">SENIOR HIGHSCHOOL</h6>
+
+               
                 <div class="pl-lg-4">
-                  <div class="form-group focused">
-                    <label>About Me</label>
-                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-username">Name of the School</label>
+                        <section type="text" id="s_name" class="form-control form-control-alternative">Sisters of Mary of banneux,Inc.</section>
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Year Graduated</label>
+                        <section type="text" id="y_grad" class="form-control form-control-alternative">2019<section>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
+                <div class="pl-lg-4">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-email">Awards Received</label>
+                    <section style="height:100px;" id="award" class="form-control form-control-alternative" >Matinong studyante</section>
+
+                  </div>
+                </div>
+                <h6 class="heading-small text-muted mb-4">JUNIOR HIGHSCHOOL</h6>
+
+               
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-username">Name of the School</label>
+                          <section type="text" id="s_name" class="form-control form-control-alternative">Sisters of Mary of banneux,Inc.</section>
+                        </div>
+                      </div>
+                      
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">Year Graduated</label>
+                          <section type="text" id="y_grad" class="form-control form-control-alternative">2017<section>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pl-lg-4">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-email">Awards Received</label>
+                      <section style="height:100px;" id="award" class="form-control form-control-alternative" >Matinong studyante</section>
+
+                    </div>
+                  </div>
+
+                  <h6 class="heading-small text-muted mb-4">ELEMENTARY</h6>
+
+               
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-username">Name of the School</label>
+                          <section type="text" id="s_name" class="form-control form-control-alternative">Tagudtud Elementary School</section>
+                        </div>
+                      </div>
+                      
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">Year Graduated</label>
+                          <section type="text" id="y_grad" class="form-control form-control-alternative">2014<section>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pl-lg-4">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-email">Awards Received</label>
+                      <section style="height:100px;" id="award" class="form-control form-control-alternative" >Matinong studyante</section>
+
+                    </div>
+                  </div>
+
+                  <h6 class="heading-small text-muted mb-4">OTHER SCHOOL ATTENDED</h6>
+
+               
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-username">Name of the School</label>
+                          <section type="text" id="s_name" class="form-control form-control-alternative">BVS</section>
+                        </div>
+                      </div>
+                      
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">Year Graduated</label>
+                          <section type="text" id="y_grad" class="form-control form-control-alternative">2022<section>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pl-lg-4">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-email">Awards Received</label>
+                      <section style="height:100px;" id="award" class="form-control form-control-alternative" >NC</section>
+
+                    </div>
+                  </div>
+
+                  <hr class="my-4">
+                <!-- Description -->
+                <p><b><i>In view of the Indigenous People's Act (RA 8371), Magna Carta for
+                            Persons with Disability (RA 7277, as amended by RA 9442), the (c) Solo Parents
+                            Welfare Act of 2000 (RA 8972), and CHED Memorandum Order 9 s.2013, please answer
+                            the following items:</i></b></p>
+                
+                
+
+                <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-username">Are you a member of an Indigenous group?</label>
+                          <section type="text" id="indige" class="form-control form-control-alternative">Yes - Kankaey/Igorot</section>
+                          <!-- If yes, specify ilagay mo nalang beside yes example (Yes-Tas anong indigenous group belong) -->
+                          <!-- <br>
+                          <section type="text" id="s_name" class="form-control form-control-alternative">Yes</section> -->
+
+
+                        </div>
+                      </div>
+                      
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">Are you a person with a disability (PWD)?</label>
+                          <section type="text" id="pwd" class="form-control form-control-alternative">No<section>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">Are you a student parent ?</label>
+                          <section type="text" id="stud_parent" class="form-control form-control-alternative">No<section>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- <div class="pl-lg-4">
+                  <div class="form-group focused">
+                  <label >Are you a student parent?</label>
+                    <section class="form-control form-control-alternative" >No</section>
+                  </div>
+                </div> -->
+
+                <hr class="my-4">
+                <!-- Description -->
+                <h6 class="heading-small text-muted mb-4">SOURCES OF FINANCIAL SUPPORT</h6>
+             
+                  
+                  <i class="fa fa-check"></i>
+                  <label for="checkbox1" class="custom-checkbox-label">Parent</label>
+                   
+                    <br>
+                    <i class="fa fa-check"></i>
+                    <label for="checkbox2">Self Supporting</label>
+                    
+                    <br>
+                    <i class="fa fa-check"></i>
+                    <label for="checkbox3">Relative and/or Guardian</label>
+                    <br>
+                    <i class="fa fa-check"></i>
+                    <label for="checkbox3">Scholarship - </label>
+                    <label for="checkbox3">TDP-TES</label>
+
+                    <br>
+                    <i class="fa fa-check"></i>
+                    <label for="checkbox3">Others - </label>
+                    <label for="checkbox3">achuchuchu</label>
+
+                    <hr class="my-4">
+                <!-- Description -->
+                <h6 class="heading-small text-muted mb-4">MARITAL STATUS OF PARENT</h6>
+             
+                  
+                  <i class="fa fa-check"></i>
+                  <label for="checkbox1" class="custom-checkbox-label">Parents are married.</label>
+                   
+                   
+
+
+
+
+                    
+                  <!-- </div> -->
+                <!-- </div> -->
+
+            
+
+                <hr class="my-4">
+                <!-- Description -->
+                <h6 class="heading-small text-muted mb-4">More About me</h6>
+                <div class="pl-lg-4">
+                  <div class="form-group focused">
+                  
+                  <label >1. The three words that describe me are - </label>
+                  <label>answer,</label>
+                  <label>answer,</label>
+                  <label>answer.</label>
+
+                   
+                    <br>
+                   
+                    <label >2. My father is </label>
+                    <label >answer.</label>
+
+                    
+                    <br>
+                    <label >3. My mother is </label>
+                    <label >answer.</label>
+                  
+
+                    <br>
+                    <label >4. The sibling (kapatid) I am closest to is my  </label>
+                    <label>answer</label>
+                    <label>because</label>
+                    <label>answer.</label>
+
+                    <br>
+                    <label >5. When I think about my family I feel </label>
+                    <label >answer.</label>
+
+                    <br>
+                    <label >6. When I was a child, I </label>
+                    <label >answer.</label>
+
+                    <br>
+                    <label >7. In school, my teachers are </label>
+                    <label >answer.</label>
+
+                    <br>
+                    <label>8. My friends don't know that </label>
+                    <label>answer.</label>
+
+                    <br>
+                    <label >9. When I think about the future, I</label>
+                    <label >answer.</label>
+
+                    <br>
+                    <label >10. My greatest goal is </label>
+                    <label>answer.</label>
+
+                </div>
+
+                
+
+
+
+
               </form>
             </div>
           </div>
@@ -2326,7 +2892,7 @@ p {
       </div>
     </div>
   </div>
-  <footer class="footer">
+  <!-- <footer class="footer">
     <div class="row align-items-center justify-content-xl-between">
       <div class="col-xl-6 m-auto text-center">
         <div class="copyright">
@@ -2334,5 +2900,11 @@ p {
         </div>
       </div>
     </div>
-  </footer>
+  </footer> -->
+
+  <section id="topbar" class="topbar d-flex align-items-center" style="background-color:#20B2AA; height: 50px; "></section>
+
+
+  
 </body>
+
