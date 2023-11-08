@@ -6,8 +6,11 @@ session_start();
     echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
     
     exit; // Make sure to exit the script after a header redirect
+  
   }
+  // include 'main2.php';
 $id = $_SESSION['session_id'];
+$_SESSION['transact_type'] = 'referral';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,36 +66,67 @@ $id = $_SESSION['session_id'];
 <!-- Save data -->
 
         <h1>REFERRAL SLIP</h1>
+        <div id="show">
+        <form id="check_stud" name="form1" method="post">
         <div class="flex">
-        <div class="form">
-          <label for="#">Student's First Name:</label>
-          <input type="text" id="#" name="#" required>
+        <div class="form">    
+          <label for="Sid">Student ID:</label>
+          <input type="number" id="Sid" name="Sid" required>
+        </div>
+        
+                <div class="form1">
+          <label>Reason:</label>
+          <select required id="reason">
+            <option disabled selected>Select reason for referral</option>
+            <option>Academic Deficiency/ies</option>
+            <option>Absent</option>
+            <option>Tardy</option>
+          </select>
+        </div>
+          <!-- <a href="#"><button>REFER</button></a> -->
+          <input type="submit" class="btn btn-primary" name="submit" id="submit" value="REFER">
+        
+        </div>
+        </form>
+        </div>
+
+        <div id="hide">
+        <!--  -->
+        <form id="form_transact" name="form1" method="post">
+        <div class="flex">
+        <div class="form">    
+          <label for="Sid">Student ID:</label>
+          <input type="number" id="Sid" name="Sid" required>
+        </div>
+        <div class="form">    
+          <label for="fname">Student's First Name:</label>
+          <input type="text" id="fname" name="fname" required>
         </div>
         <div class="form">
-          <label for="#">Student's Middle Name:</label>
-          <input type="text" id="#" name="#" required>
+          <label for="lname">Student's Last Name:</label>
+          <input type="text" id="lname" name="lname" required>
         </div>
         <div class="form">
-          <label for="#">Student's Last Name:</label>
-          <input type="text" id="#" name="#" required>
-        </div>
-        <div class="form">
-          <label for="#">Year/Level:</label>
-          <input type="text" id="#" name="#" required>
+          <label for="yl">Year/Level:</label>
+          <input type="text" id="yl" name="yl" required>
         </div>
         </div>
         <div class="flex">
         <div class="form1">
           <label>Gender:</label>
-          <select required>
+          <select required id="gender">
             <option disabled selected>Select gender</option>
             <option>Male</option>
             <option>Female</option>
           </select>
         </div>
+        <div class="form">
+          <label for="course">Course:</label>
+          <input type="text" id="crse" name="crse" required>
+        </div>
         <div class="form1">
-          <label for="#">College:</label>
-          <select required>
+          <label for="college">College:</label>
+          <select required id="college">
             <option disabled selected>Select College</option>
             <option>College of Agriculture</option>
             <option>College of Teacher Education</option>
@@ -109,16 +143,31 @@ $id = $_SESSION['session_id'];
             <option>College of Natural Sciences</option>
           </select>
         </div>
+        <div class="form">
+          <label for="cn">contact_number:</label>
+          <input type="text" id="cn" name="cn" required>
+        </div>
+        <div class="form">
+          <label for="gp">Parent/Guardian's Name:</label>
+          <input type="text" id="gp" name="gp" required>
+        </div>
+        <div class="form">
+          <label for="gpn">Parent/Guardian's Number:</label>
+          <input type="text" id="gpn" name="gpn" required>
+        </div>
         <div class="form1">
           <label>Reason:</label>
-          <select required>
+          <select required id="reason">
             <option disabled selected>Select reason for referral</option>
             <option>Academic Deficiency/ies</option>
             <option>Absent</option>
             <option>Tardy</option>
           </select>
         </div>
-          <a href="#"><button>REFER</button></a>
+          <!-- <a href="#"><button>REFER</button></a> -->
+          <input type="submit" class="btn btn-primary" name="submit" id="submit" value="REFER">
+        </div>
+        </form>
         </div>
     </div>
   </div>
@@ -129,10 +178,13 @@ $id = $_SESSION['session_id'];
         <thead>
           <tr>
           <th>ID</th>
-          <th>Full Name</th>
-          <th>College</th>
+          <th>Last Name</th>
+          <th>First Name</th>
           <th>Year/Level</th>
-          <th>Gender</th>
+          <th>Course</th>
+          <th>College</th>
+          <th>Contact Number</th>
+          <th>Referred By</th>
           <th>Reason</th>
           <th>Date</th>
           <th>Status</th>
@@ -270,121 +322,184 @@ $id = $_SESSION['session_id'];
   </div>          
 </body>
 <script>
-  $(document).ready(function() {
+var hide = $("#hide");
+var show = $("#show");
+hide.hide(); 
+
+$(document).ready(function() {
     
 
-            // Fetch data using $.ajax
-            $.ajax({
-                url: '../backend/referred_students.php',
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                   // const table = document.getElementById('data-table');
-                   // const searchInput = document.getElementById('searchInput');
-                    
-                console.log(data);
-                // if (data.status===0){
-                var tableBody = $("#dynamicTable tbody");
- 
-                for (var i = 0; i < data.length; i++) {
-                    
-                    var entry = data[i];
-                    var tableToAppend = tableBody; // Determine which table to append to
-                    var row = $("<tr></tr>");
-                    row.append("<td>" + entry.student_id + "</td>");
-                    row.append("<td>" + entry.full_name+"</td>");
-                    row.append("<td>" + entry.college + "</td>");
-                    row.append("<td>" + entry.year_level + "</td>");
-                    row.append("<td>" + entry.gender + "</td>");
-                    row.append("<td>" + entry.reason + "</td>");
-                    row.append("<td>" + entry.date + "</td>");
-                    row.append("<td>" + entry.status + "</td>");
-                    var statusCell = $("<td></td>");
-                    var statusLink = $("<a href='#divTwo'><button><i class='ri-delete-bin-6-line'></i></button></a>");
-
-                    statusCell.append(statusLink);
-                    row.append(statusCell);
-
-                    tableBody.append(row);
-                    // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
-                 }
-                 console.log("data",data);
-                 $('#dynamicTable').DataTable();
-
-            },
-            error: function(xhr, status, error) {
-                console.error('Error fetching data:', error);
-            }
-            });
-
+    // Fetch data using $.ajax
+    $.ajax({
+        url: '../backend/referred_students.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+           // const table = document.getElementById('data-table');
+           // const searchInput = document.getElementById('searchInput');
             
-        });
+        console.log(data);
+        // if (data.status===0){
+        var tableBody = $("#dynamicTable tbody");
 
-            // Function to update the HTML elements
-            function updateValues(EmployeeId, college, name, cn, email , gender) {
-
-              const genderImageMap = {
-                  'Male': 'sp.jpg',
-                  'Female': 'sp2.jpg'
-              };
-              const image = document.createElement('img');
-                image.style.display = 'block'; // Display the image above the text
-
-                if (gender === 'Male') {
-                  image.src = genderImageMap['Male'];
-                } else if (gender === 'Female') {
-                  image.src = genderImageMap['Female'];
-                }
-
-                $('#EId').text(EmployeeId);
-                $('#college').text(college);
-                $('#name').text(name);
-                $('#cn').text(cn);
-                $('#email').text(email);
-              
-                // Replace the content of the #gender div with the created image
-                const genderElement = document.getElementById('gender');
-                genderElement.innerHTML = ''; // Clear existing content
-                genderElement.appendChild(image);
-            }
-
-    // Function to fetch data from get_transaction.php
-    function fetchData() {
-        console.log('AJAX request started');
-        $.ajax({
-            type: 'GET',
-            url: '../backend/get_teacher.php',
-            dataType: 'json',
+        for (var i = 0; i < data.length; i++) {
             
-                // ...
-                success: function (data) {
-                    if (data.length > 0) {
-                          var EmployeeData = data[0]; // Assuming you expect a single row
-                            var EmployeeId = EmployeeData.employee_id;
-                            var college = EmployeeData.college;
-                            var gender = EmployeeData.gender;
-                            var name = EmployeeData.last_name + ', '+ EmployeeData.first_name;
-                            var cn = EmployeeData.contact_number;
-                            var email = EmployeeData.email;
-                            // var cs = EmployeeData.civil_status;
-                            console.log("ID: ", gender);
+            var entry = data[i];
+            var tableToAppend = tableBody; // Determine which table to append to
+            var row = $("<tr></tr>");
+            row.append("<td>" + entry.student_id + "</td>");
+            row.append("<td>" + entry.last_name+"</td>");
+            row.append("<td>" + entry.first_name+"</td>");
+            row.append("<td>" + entry.year_level + "</td>");
+            row.append("<td>" + entry.course + "</td>");
+            row.append("<td>" + entry.college + "</td>");
+            row.append("<td>" + entry.contact_number + "</td>");
+            row.append("<td>" + entry.refers + "</td>");
+            row.append("<td>" + entry.reason + "</td>");
+            row.append("<td>" + entry.date + "</td>");
+            row.append("<td>" + entry.status + "</td>");
+            var statusCell = $("<td></td>");
+            var statusLink = $("<a href='#divTwo'><button><i class='ri-delete-bin-6-line'></i></button></a>");
 
-                            updateValues(EmployeeId, college, name, cn, email, gender);
+            statusCell.append(statusLink);
+            row.append(statusCell);
 
-                        } else {
-                        // Handle the case when no results are found
-                        // You can update the UI as needed
-                        console.log('No results found');
-                    }
-            },
-            error: function (xhr, status, error) {
-                console.error('Error: ' + error);
-                console.error('Status: ' + status);
-                console.error('Response: ' + xhr.responseText);
-            }
-        });
+            tableBody.append(row);
+            // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
+         }
+         console.log("data",data);
+         $('#dynamicTable').DataTable();
+
+    },
+    error: function(xhr, status, error) {
+        console.error('Error fetching data:', error);
     }
-    fetchData();
+    });
+
+    
+});
+
+    // Function to update the HTML elements
+    function updateValues(EmployeeId, college, name, cn, email , gender) {
+
+      const genderImageMap = {
+          'Male': 'sp.jpg',
+          'Female': 'sp2.jpg'
+      };
+      const image = document.createElement('img');
+        image.style.display = 'block'; // Display the image above the text
+
+        if (gender === 'Male') {
+          image.src = genderImageMap['Male'];
+        } else if (gender === 'Female') {
+          image.src = genderImageMap['Female'];
+        }
+
+        $('#EId').text(EmployeeId);
+        $('#college').text(college);
+        $('#name').text(name);
+        $('#cn').text(cn);
+        $('#email').text(email);
+      
+        // Replace the content of the #gender div with the created image
+        const genderElement = document.getElementById('gender');
+        genderElement.innerHTML = ''; // Clear existing content
+        genderElement.appendChild(image);
+    }
+
+// Function to fetch data from get_transaction.php
+function fetchData() {
+console.log('AJAX request started');
+$.ajax({
+    type: 'GET',
+    url: '../backend/get_teacher.php',
+    dataType: 'json',
+    
+        // ...
+        success: function (data) {
+            if (data.length > 0) {
+                  var EmployeeData = data[0]; // Assuming you expect a single row
+                    var EmployeeId = EmployeeData.employee_id;
+                    var college = EmployeeData.college;
+                    var gender = EmployeeData.gender;
+                    var name = EmployeeData.last_name + ', '+ EmployeeData.first_name;
+                    var cn = EmployeeData.contact_number;
+                    var email = EmployeeData.email;
+                    // var cs = EmployeeData.civil_status;
+                    console.log("ID: ", gender);
+
+                    updateValues(EmployeeId, college, name, cn, email, gender);
+
+                } else {
+                // Handle the case when no results are found
+                // You can update the UI as needed
+                console.log('No results found');
+            }
+    },
+    error: function (xhr, status, error) {
+        console.error('Error: ' + error);
+        console.error('Status: ' + status);
+        console.error('Response: ' + xhr.responseText);
+    }
+});
+}
+fetchData();
+
+//check if student is available in database
+$("#check_stud").on("submit", function (event) {
+      event.preventDefault();
+
+      var transact_type = "referral"
+
+      $.ajax({
+        type: 'POST',
+        url: '../backend/check_student.php',
+        data: {
+          sid: $("#Sid").val(),
+          reason: $("#reason").val()
+        },
+        success: function (data) {
+          alert(data);
+          if (data === "Added") {
+            // alert(data);
+        } else if (data === "Not_added") {
+          alert(data);
+         
+          alert("It seems that this student has does not have an account. Please enter his/her details manually for referral");
+          hide.show();
+          show.hide(); 
+
+                        $("#form_transact").on("submit", function (event) {
+                    event.preventDefault();
+                          
+                    $.ajax({
+                      type: 'POST',
+                      url: '../backend/create_transaction.php',
+                      data: {
+                        sid: $("#Sid").val(),
+                        fname: $("#fname").val(),
+                        lname: $("#lname").val(),
+                        year_level: $("#yl").val(),//
+                        gender: $("#gender").val(),
+                        course: $("#crse").val(),
+                        college: $("#college").val(),
+                        cn: $("#cn").val(),
+                        gp: $("#gp").val(),
+                        gpn: $("#gpn").val(),
+                        reasons: $("#reason").val()
+                      },
+                      success: function (data) {
+                        alert(data);
+                      }
+                    });
+                  });
+        }
+        }
+      });
+    });
+
+
+
 </script>
 </html>
 </span>
