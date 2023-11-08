@@ -116,11 +116,11 @@ $_SESSION['transact_type'] = 'referral';
           <label>Gender:</label>
           <select required id="gender" name="gender">
             <option disabled selected>Select gender</option>
-            <option>Male</option>
-            <option>Female</option>
+            <option value = "Male">Male</option>
+            <option value = "Female">Female</option>
           </select>
         </div>
-        <div class="form">
+        <div class="form1">
           <label for="course">Course:</label>
           <input type="text" id="crse" name="crse" required>
         </div>
@@ -128,19 +128,19 @@ $_SESSION['transact_type'] = 'referral';
           <label for="college">College:</label>
           <select id="college" name="college" required >
             <option disabled selected>Select College</option>
-            <option>College of Agriculture</option>
-            <option>College of Teacher Education</option>
-            <option>College of Home Economics & Technology</option>
-            <option>College of Forestry</option>
-            <option>College of Nursing</option>
-            <option>College of Veterinary Medicine</option>
-            <option>College of Human Kinetics</option>
-            <option>College of Public Administration & Governance</option>
-            <option>College of Information Sciences</option>
-            <option>College of Arts & Humanities</option>
-            <option>College of Social Sciences</option>
-            <option>College of Numeracy & Applied Sciences</option>
-            <option>College of Natural Sciences</option>
+            <option value="College of Agriculture">College of Agriculture</option>
+            <option value="College of Teacher Education">College of Teacher Education</option>
+            <option value="College of Home Economics & Technology">College of Home Economics & Technology</option>
+            <option value="College of Forestry">College of Forestry</option>
+            <option value="College of Nursing">College of Nursing</option>
+            <option value="College of Veterinary Medicine">College of Veterinary Medicine</option>
+            <option value="College of Human Kinetics">College of Human Kinetics</option>
+            <option value="College of Public Administration & Governance">College of Public Administration & Governance</option>
+            <option value="College of Information Sciences">College of Information Sciences</option>
+            <option value="College of Arts & Humanities">College of Arts & Humanities</option>
+            <option value="College of Social Sciences">College of Social Sciences</option>
+            <option value="College of Numeracy & Applied Sciences">College of Numeracy & Applied Sciences</option>
+            <option value="College of Natural Sciences">College of Natural Sciences</option>
           </select>
         </div>
         <div class="form">
@@ -227,7 +227,7 @@ $_SESSION['transact_type'] = 'referral';
 
 <!--This the pop-up-->
 
-  <!-- <div class="overlay" id="divOne">
+  <div class="overlay" id="divOne">
     <div class="wrapper">
     <h1>Edit Profile</h1>
     <a href="#" class="close">&times;</a>
@@ -319,7 +319,7 @@ $_SESSION['transact_type'] = 'referral';
     </div>
     </div>
     </div>
-  </div>           -->
+  </div>          
 </body>
 <script>
 var hide = $("#hide");
@@ -358,10 +358,12 @@ $("#check_stud").on("submit", function (event) {
                 var collegeSelect = document.getElementById("college");
 
                 // Get the selected value
-                var selectedCollege = collegeSelect.value;
+                var selectedCollege = collegeSelect.text;
 
                 // You can now use the selectedCollege variable to access the selected value
-                console.log(selectedCollege);
+                console.log("College",selectedCollege);
+                console.log("CN",$("#cn").val());
+                console.log("gpn",$("#gpn").val());
                   $.ajax({
                     
                       type: 'POST',

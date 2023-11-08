@@ -11,11 +11,13 @@ session_start();
   }
   $id = $_SESSION['stud_id'];
   $tran = $_SESSION['tran_id'];
+  $tid = $_SESSION['teachid'];
   $form=$_SESSION['form_type'];
 
   echo '<script>
         console.log("clicked, ' . $id . '");
         console.log("clicked, ' . $tran . '");
+        console.log("clicked, ' . $tid . '");
         console.log("clicked, ' . $form . '");
         </script>';
   

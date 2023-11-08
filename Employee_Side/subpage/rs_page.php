@@ -228,7 +228,7 @@ function searchTable() { //searches in all column
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
 
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", "+ entry.stud_user_id +")'>View</button>");
+                    var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", "+ entry.stud_user_id +", "+ entry.teacher_id +")'>View</button>");
                     statusCell.append(statusLink);
                     row.append(statusCell);
 
@@ -317,15 +317,16 @@ function searchTable() { //searches in all column
 
         });
     });
-    function view_form(tid, sid){
+    function view_form(tid, sid, teachid){
         console.log("student", sid);
         console.log("transact", tid);
+        console.log("transact", teachid);
 
                     // Send stud_id to the server using an AJAX request
                     $.ajax({
                 type: 'POST',  // You can use POST to send data securely
                 url: '../../backend/session_forms/set_session_ref.php',  // PHP script that sets the session variable
-                data: { stud_id: sid, tran_id: tid },
+                data: { stud_id: sid, tran_id: tid, teachid: teachid },
                 success: function(response) {
                     // Handle the response from the server, if needed
                     console.log(response);

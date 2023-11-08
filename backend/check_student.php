@@ -38,10 +38,11 @@ if (
         $reasons = $_POST['reason'];
         // $refer = $_POST['refer'];
         $datetime = new DateTime();
+
         $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
 
         $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :transact_type, :date_created, :status)';
-        $sql_2 = 'INSERT INTO referral(`transact_id`, `reason`, `referred`) VALUES (:transact_id, :reasons, :refer)';
+        $sql_2 = 'INSERT INTO referral(`transact_id`, `reason`, `referred`, `teacher_id`) VALUES (:transact_id, :reasons, :refer, :tid)';
         try {
             $code = $pdo->prepare($sql_1);
             $code->bindParam(':student_id', $id);
@@ -57,6 +58,7 @@ if (
         $code->bindParam(':transact_id', $transact_id);
         $code->bindParam(':reasons', $reasons);
         $code->bindParam(':refer', $tname); // Assuming $tname contains the full name
+        $code->bindParam(':tid', $tid);
         $code->execute();
     }
     
