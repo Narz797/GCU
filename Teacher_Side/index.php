@@ -92,7 +92,7 @@ $_SESSION['transact_type'] = 'referral';
 
         <div id="hide">
         <!--  -->
-        <form id="form_transact" name="form1" method="post">
+        <form id="form_transact" name="form2" method="post">
         <div class="flex">
         <div class="form">    
           <label for="Sid">Student ID:</label>
@@ -114,7 +114,7 @@ $_SESSION['transact_type'] = 'referral';
         <div class="flex">
         <div class="form1">
           <label>Gender:</label>
-          <select required id="gender">
+          <select required id="gender" name="gender">
             <option disabled selected>Select gender</option>
             <option>Male</option>
             <option>Female</option>
@@ -126,7 +126,7 @@ $_SESSION['transact_type'] = 'referral';
         </div>
         <div class="form1">
           <label for="college">College:</label>
-          <select required id="college">
+          <select id="college" name="college" required >
             <option disabled selected>Select College</option>
             <option>College of Agriculture</option>
             <option>College of Teacher Education</option>
@@ -227,7 +227,7 @@ $_SESSION['transact_type'] = 'referral';
 
 <!--This the pop-up-->
 
-  <div class="overlay" id="divOne">
+  <!-- <div class="overlay" id="divOne">
     <div class="wrapper">
     <h1>Edit Profile</h1>
     <a href="#" class="close">&times;</a>
@@ -319,7 +319,7 @@ $_SESSION['transact_type'] = 'referral';
     </div>
     </div>
     </div>
-  </div>          
+  </div>           -->
 </body>
 <script>
 var hide = $("#hide");
@@ -327,6 +327,82 @@ var show = $("#show");
 hide.hide(); 
 
 $(document).ready(function() {
+//check if student is available in database
+$("#check_stud").on("submit", function (event) {
+      event.preventDefault();
+
+      var transact_type = "referral"
+
+      $.ajax({
+        type: 'POST',
+        url: '../backend/check_student.php',
+        data: {
+          sid: $("#Sid").val(),
+          reason: $("#reason").val()
+        },
+        success: function (data) {
+          alert(data);
+          if (data === "Added") {
+            // alert(data);
+        } else if (data === "Not_added") {
+         
+          alert("It seems that this student has does not have an account. Please enter his/her details manually for referral");
+          hide.show();
+          show.hide(); 
+
+
+          $("#form_transact").submit(function(event) {
+                  event.preventDefault(); // Prevent the default form submission
+                 
+// Get the select element by its ID
+                var collegeSelect = document.getElementById("college");
+
+                // Get the selected value
+                var selectedCollege = collegeSelect.value;
+
+                // You can now use the selectedCollege variable to access the selected value
+                console.log(selectedCollege);
+                  $.ajax({
+                    
+                      type: 'POST',
+                      url: '../backend/create_transaction.php',
+                      
+                      data: {
+                          sid: $("#Sid").val(),
+                          fname: $("#fname").val(),
+                          lname: $("#lname").val(),
+                          year_level: $("#yl").val(),
+                          gender: $("#gender").val(),
+                          course: $("#crse").val(),
+                          colleges: $("#college").val(),
+                          cn: $("#cn").val(),
+                          gp: $("#gp").val(),
+                          gpn: $("#gpn").val(),
+                          reasons: $("#reason").val()
+                          
+                      },
+                      success: function(data) {
+                          alert(data);
+                      },
+                      error: function(xhr, status, error) {
+                          alert("Error2: " + error);
+                      }
+                  });
+              });
+          
+        }
+        },
+    error: function (xhr, status, error) {
+      alert("Error: " + error);
+    }
+      });
+    });
+
+    function second_form(){
+     
+    }
+
+
     
 
     // Fetch data using $.ajax
@@ -377,7 +453,7 @@ $(document).ready(function() {
     });
 
     
-});
+
 
     // Function to update the HTML elements
     function updateValues(EmployeeId, college, name, cn, email , gender) {
@@ -445,60 +521,8 @@ $.ajax({
 }
 fetchData();
 
-//check if student is available in database
-$("#check_stud").on("submit", function (event) {
-      event.preventDefault();
 
-      var transact_type = "referral"
-
-      $.ajax({
-        type: 'POST',
-        url: '../backend/check_student.php',
-        data: {
-          sid: $("#Sid").val(),
-          reason: $("#reason").val()
-        },
-        success: function (data) {
-          alert(data);
-          if (data === "Added") {
-            // alert(data);
-        } else if (data === "Not_added") {
-          alert(data);
-         
-          alert("It seems that this student has does not have an account. Please enter his/her details manually for referral");
-          hide.show();
-          show.hide(); 
-
-                        $("#form_transact").on("submit", function (event) {
-                    event.preventDefault();
-                          
-                    $.ajax({
-                      type: 'POST',
-                      url: '../backend/create_transaction.php',
-                      data: {
-                        sid: $("#Sid").val(),
-                        fname: $("#fname").val(),
-                        lname: $("#lname").val(),
-                        year_level: $("#yl").val(),//
-                        gender: $("#gender").val(),
-                        course: $("#crse").val(),
-                        college: $("#college").val(),
-                        cn: $("#cn").val(),
-                        gp: $("#gp").val(),
-                        gpn: $("#gpn").val(),
-                        reasons: $("#reason").val()
-                      },
-                      success: function (data) {
-                        alert(data);
-                      }
-                    });
-                  });
-        }
-        }
-      });
-    });
-
-
+  });
 
 </script>
 </html>

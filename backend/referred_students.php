@@ -23,7 +23,7 @@ INNER JOIN
 INNER JOIN
     referral ON transact.transact_id = referral.transact_id
 WHERE
-    transact.transact_type = 'referral'
+    transact.transact_type = 'referral' AND transact.status = 'pending'
 
 UNION ALL
 
@@ -44,7 +44,9 @@ SELECT
 
 
 FROM
-    tstable;
+    tstable
+    WHERE
+    tstable.status = 'pending';
 
 ";
 
