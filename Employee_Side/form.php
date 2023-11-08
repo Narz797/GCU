@@ -284,7 +284,7 @@ function fetchData() { //getting total
                 // ...
                 success: function (data) {
                     console.log(data.latest_data);
-                    if (data.latest_data.length > 0) {
+                    if (data.latest_data && data.latest_data.length > 0) {
                             var totalLOA = data.total_pending_LOA;
                             var totalRA = data.total_pending_RA;
                             var totalRS = data.total_pending_RS;
@@ -297,7 +297,16 @@ function fetchData() { //getting total
                             console.log(totalLOA);
 
                         } else {
-
+                            var totalLOA = 0;
+                            var totalRA = 0;
+                            var totalRS = 0;
+                            var totalWDS = 0;
+                            console.log("LOA",totalLOA);
+                            console.log("RA",totalRA);
+                            console.log("LOA",totalRS);
+                            console.log("RS",totalLOA);
+                            updateValues(totalLOA, totalRA, totalRS, totalWDS);
+                            console.log(totalLOA);
                         console.log('No results found');
                     }
             },

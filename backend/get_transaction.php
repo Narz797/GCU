@@ -81,8 +81,14 @@ try {
         header('Content-Type: application/json');
         echo json_encode($response);
     } else {
+        $response = [
+
+            'adminUserData' => $adminUserData
+        ];
         // Return an empty JSON object if no results are found
-        echo json_encode([]);
+                // Return data as JSON and set the content type header to JSON
+                header('Content-Type: application/json');
+                echo json_encode($response);
     }
 } catch (PDOException $e) {
     // Handle any errors by returning a JSON error response

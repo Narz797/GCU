@@ -152,7 +152,7 @@ include 'includes/main2.php';
             <main class="table" id="customers_table"  style=" height: auto; ">
     
             <section class="table-body">
-                <table style="color:black;">
+                <table style="color:black;" id="dynamicTable">
                     <thead>
                         <tr>
                             <th> No. <span class="icon-arrow">&UpArrow;</span></th>
@@ -162,31 +162,22 @@ include 'includes/main2.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!-- <tr>
                             <td> 1 </td>
                             <td> Counseling</td>
                             <td> 17 Dec, 2022 </td>
-                            <!-- <td>
-                                <p class="status delivered">Delivered</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td> -->
+
                         </tr>
                         <tr>
                             <td> 2 </td>
                             <td> Readmission</td>
                             <td> 27 Aug, 2023 </td>
-                            <!-- <td>
-                                <p class="status cancelled">Cancelled</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td>
-                        </tr> -->
-                 
+
+                        </tr>
+                  -->
                     </tbody>
                 </table>
+                <p id="noHistoryMessage">Empty</p>
             </section>
     </div>
     <!-- History of transaction -->
@@ -206,7 +197,7 @@ include 'includes/main2.php';
              
             </section>
             <section class="table-body" >
-                <table style="color:black;">
+                <table style="color:black;" id="dynamicTable2">
                     <thead>
                         <tr>
                             <th  > No. <span class="icon-arrow">&UpArrow;</span></th>
@@ -216,31 +207,20 @@ include 'includes/main2.php';
                         </tr>
                     </thead>
                     <tbody >
-                        <tr>
+                        <!-- <tr>
                             <td> 1 </td>
                             <td> Counseling</td>
                             <td> 17 Dec, 2022 </td>
-                            <!-- <td>
-                                <p class="status delivered">Delivered</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td> -->
                         </tr>
                         <tr>
                             <td> 2 </td>
                             <td> Readmission</td>
                             <td> 27 Aug, 2023 </td>
-                            <!-- <td>
-                                <p class="status cancelled">Cancelled</p>
-                            </td>
-                            <td> 
-                                <i class="ri-delete-bin-6-line"></i>
-                            </td>
-                        </tr> -->
-                 
+                        </tr>
+                  -->
                     </tbody>
                 </table>
+                <p id="noHistoryMessage2">Empty</p>
             </section>
             </main>
             </div>
@@ -330,4 +310,110 @@ include 'includes/main2.php';
               }
             
           }
+
+          $(document).ready(function () {
+        $.ajax({
+            url: "../backend/stud_taken_appt.php",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                // if (data.status===0){
+                var tableBody = $("#dynamicTable tbody");
+                var tableBody2 = $("#dynamicTable2 tbody");
+                var historyTableBody = $("#historyTableBody tbody");
+                var noHistoryMessage = $("#noHistoryMessage"); 
+                var noHistoryMessage2 = $("#noHistoryMessage2"); 
+ 
+                for (var i = 0; i < data.length; i++) {
+                    
+                    var entry = data[i];
+                    
+                    if(entry.status === "taken"){
+                    var tableToAppend = tableBody; // Determine which table to append to
+                    var row = $("<tr></tr>");
+                    row.append("<td>" + entry.appointment_id+ "</td>");
+                    row.append("<td>" + entry.Reason + "</td>");
+                    row.append("<td>" + entry.date+"</td>");
+
+                    tableBody.append(row);
+                    // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
+                    console.log("data",data);
+                var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
+                    if (dynamicTableRowCount1 > 0) {
+                    noHistoryMessage.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage.show(); // Show the no history message if no data
+                    }
+                                        // Add Sorting Event Listeners
+                const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
+                const tableHeadings = document.querySelectorAll('#dynamicTable th');
+                tableHeadings.forEach((head, i) => {
+                    let sort_asc = true;
+                    head.onclick = () => {
+                        head.classList.toggle('asc', sort_asc);
+                        sort_asc = head.classList.contains('asc') ? false : true;
+                        sortTable(i, sort_asc);
+                    };
+                });
+                    // Sorting Function
+                function sortTable(column, sort_asc) {
+                    [...table_rows].sort((a, b) => {
+                        let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase();
+                        let second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                        return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+                    })
+                    .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+                }
+              } else if (entry.status === "done")
+              {
+                var tableToAppend2 = tableBody2; // Determine which table to append to
+                   var row = $("<tr></tr>");
+                    row.append("<td>" + entry.appointment_id+ "</td>");
+                    row.append("<td>" + entry.Reason + "</td>");
+                    row.append("<td>" + entry.date+"</td>");
+
+                    tableBody2.append(row);
+
+                    var dynamicTableRowCount2 = $("#dynamicTable2 tbody tr").length;
+                    if (dynamicTableRowCount2 > 0) {
+                    noHistoryMessage2.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage2.show(); // Show the no history message if no data
+                    }
+                     
+                    // Add Sorting Event Listeners
+                const table_rows2 = document.querySelectorAll('#dynamicTable2 tbody tr');
+                const tableHeadings2 = document.querySelectorAll('#dynamicTable2 th');
+                tableHeadings2.forEach((head, i) => {
+                    let sort_asc = true;
+                    head.onclick = () => {
+                        head.classList.toggle('asc', sort_asc);
+                        sort_asc = head.classList.contains('asc') ? false : true;
+                        sortTable(i, sort_asc);
+                    };
+                });
+                    // Sorting Function
+                function sortTable(column, sort_asc) {
+                    [...table_rows2].sort((a, b) => {
+                        let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase();
+                        let second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                        return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+                    })
+                    .map(sorted_row => document.querySelector('#dynamicTable2 tbody').appendChild(sorted_row));
+                }
+              }
+                
+                  }
+
+        },
+        error: function (xhr, status, error) {
+    console.error("AJAX Error:");
+    console.error("Status: " + status);
+    console.error("Error: " + error);
+    console.error("Response Text: " + xhr.responseText);
+}
+        });
+    
+    });
     </script> 
