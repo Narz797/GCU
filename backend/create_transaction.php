@@ -140,19 +140,42 @@ if ($transact == 'readmission') {
     } catch (PDOException $e) {
         echo "Error inserting data: " . $e->getMessage();
     }
+}
+ else if ($transact == 'referral') {
+    $tid = $_SESSION['session_id'];
 
-} else if ($transact == 'referral') {
+    $query2 = "SELECT CONCAT(`first_name`, ' ', `last_name`) AS `full_name` FROM `teachers` WHERE `employee_id` = ?";
+    $stmt2 = $pdo->prepare($query2);
+    $stmt2->bindParam(1, $tid);
+    $stmt2->execute();
+    $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+    
+    $tname = $result2[0]['full_name']; // Assuming you expect only one result and want the full name as a string
+
+    $sid = $_POST['sid'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $yrlvl = $_POST['year_level'];
+    $gender = $_POST['gender'];
+    $course = $_POST['course'];
+    $college = $_POST['college'];
+    $cn = $_POST['cn'];
+    $gp = $_POST['gp'];
+    $gpn = $_POST['gpn'];
     $reasons = $_POST['reasons'];
-    $refer = $_POST['refer'];
+
+    // $refer = $_POST['refer'];
     $datetime = new DateTime();
     $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
-    $reasonsString = implode(',', $reasons);// Convert the array of reasons to a comma-separated string
 
-    $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :transact_type, :date_created, :status)';
+    $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :transact_type, :date_created, :status)';
     $sql_2 = 'INSERT INTO referral(`transact_id`, `reason`, `referred`) VALUES (:transact_id, :reasons, :refer)';
+    $sql_3 = 'INSERT INTO `tstable`(`student_id`, `first_name`, `last_name`, `course`, `college`, `year_level`, `gender`, `contact_number`, `GP_name`, `GP_number`, `reason`, `date`, `refer`, `status`) VALUES (:sid, :fname, :lname, :course, :college, :yrlvl, :gender, :cn, :gp, :gpn, :reasons, :date_created, :refer, :status)';
+
+
     try {
         $code = $pdo->prepare($sql_1);
-        $code->bindParam(':student_id', $id);
+        $code->bindParam(':student_id', $sid);
         $code->bindParam(':transact_type', $transact);
         $code->bindParam(':date_created',$dateCreated);
         $code->bindParam(':status',$status);
@@ -161,9 +184,26 @@ if ($transact == 'readmission') {
         $transact_id = $pdo->lastInsertId();
         $code = $pdo->prepare($sql_2);
         $code->bindParam(':transact_id',$transact_id);
-        $code->bindParam(':reasons', $reasonsString);
-        $code->bindParam(':refer', $refer);
+        $code->bindParam(':reasons', $reasons);
+        $code->bindParam(':refer', $tname);
 
+        $code->execute();
+
+        $code = $pdo->prepare($sql_3);
+        $code->bindParam(':sid', $sid);
+        $code->bindParam(':fname', $fname);
+        $code->bindParam(':lname', $lname);
+        $code->bindParam(':yrlvl', $yrlvl);
+        $code->bindParam(':gender', $gender);
+        $code->bindParam(':course', $course);
+        $code->bindParam(':college', $college);
+        $code->bindParam(':cn', $cn);
+        $code->bindParam(':gp', $gp);
+        $code->bindParam(':gpn', $gpn);
+        $code->bindParam(':reasons', $reasons);
+        $code->bindParam(':refer', $tname);
+        $code->bindParam(':date_created', $dateCreated);
+        $code->bindParam(':status', $status);
         $code->execute();
 
         echo "Data inserted successfully";
@@ -172,7 +212,7 @@ if ($transact == 'readmission') {
     }
 
 
-}
+ }
 // echo "User ID: " . $id;
 $pdo = null;
 ?>

@@ -140,6 +140,7 @@
                   <td>Pending</td>
                   <td>
                     <button><a href="editemployee.php">Edit</button></a>
+                    <button><a href="editemployee.php">Edit</button></a>
                   </td>
                   
                  </tbody>

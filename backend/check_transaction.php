@@ -175,8 +175,7 @@ WHERE transact.status != 'done';
         CASE
             WHEN transact.transact_type = 'WDS' THEN IFNULL(withdrawal.reason, '')
             ELSE IFNULL(transact.transact_type, '')
-        END,
-        IFNULL(appointment.Reason, '')
+        END
     ) AS reason,
     transact.status,
     transact.date_created,

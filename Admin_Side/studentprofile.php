@@ -1,20 +1,3 @@
-<?php
-$servername = "localhost";
-$dbname = "db_gcu";
-$username = "root";
-$password = "";
-
-$conn = new mysqli($servername,$username,$password,$dbname);
-
-
-if ($conn->connect_error){
-    die("Connection failed: ". $conn->connect_error);
-}
-
-$sql = "SELECT * FROM student_user";
-$result = $conn->query($sql);
-
-?>
 
 
 <!DOCTYPE html>
@@ -107,73 +90,54 @@ $result = $conn->query($sql);
         <section class="table-header">
             <h1>List of Students</h1>
             <div class="input-group">
-                <input type="text" id="searchInput" placeholder="Search Data...">
+                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search Data...">
                 
             </div>
             <div class="export-file">
                 <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/export.png" alt=""></label>
                 <input type="checkbox" id="export-file">
                 <div class="export-file-options">
-                    <label>Export As &nbsp; &#10140;</label>
-                    <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
-                    <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
+                <label>Export As &nbsp; &#10140;</label>
+                    <label for="export-file" id="exportToExcel" onclick="exportToExcel()">EXCEL <img src="assets/images/excel.png" alt=""></label>
+                    <label for="export-file" id="exportToPDF" onclick="exportToPDF()">PDF <img src="assets/images/pdf.png" alt=""></label>
                 </div>
             </div>
             
         </section>
        
         <section class="table-body" >
-            <table  id="table" >
-            <table>
-                <thead>
-                    <tr>
-                        <th> Student ID # <br></th>
-                        <th> Last Name <br></th>
-                        <th> First Name <br></th>
-                        <th> Middle Name <br></th>
-                        <th> Gender <br></th>
-                        <th> Year Level <br></th>
-                        <th> Department / College<br></th>
-                        <th> Email <br></th>
-                        
-                       
-                        
-                    </tr>
-                </thead>
-                
-                <tbody>
-                <?php
-                    if ($result->num_rows > 0){
-                        while ($row = $result->fetch_assoc()){
-                            echo "<tr>";
-                            echo"<td>".$row["stud_user_id"]."</td>";
-                            echo"<td>".$row["last_name"]."</td>";
-                            echo"<td>".$row["first_name"]."</td>";
-                            echo"<td>".$row["middle_name"]."</td>";
-                            echo"<td>".$row["gender"]."</td>";
-                            echo"<td>".$row["Year_level"]."</td>";
-                            echo"<td>".$row["course"]."</td>";
-                            echo"<td>".$row["email"]."</td>";
-                        }
-                    }else{
-                        echo "No data available";
-                    }
-                    $conn->close();
-                    ?>
 
-
-                    
-
-                 </tbody>
-             
-            </table>
-        </section>
+        <table id="dynamicTable">
+        <thead>
+        <tr>
+            <th> Student ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
+            <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
+            <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
+            <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
+            <th> Department / College<br><span class="icon-arrow">&UpArrow;</span></th>
+            <th> Course Taken <br><span class="icon-arrow">&UpArrow;</span></th>
+            <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
+            <th> Guardian Name<br><span class="icon-arrow">&UpArrow;</span></th>
+            <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
+            <th> Action </th>
+        </tr>
+    </thead>
+    <tbody>
+      
+     </tbody>
+ 
+</table>
+</section>
     </main>
     </div>
         </div>
     </div>
 </section>
 <br>
+<br>
+<script src="../backend/jsPDF-1.3.2/dist/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
     <!-- Footer -->
     <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
@@ -184,8 +148,218 @@ $result = $conn->query($sql);
     </div>
 </footer>
 <!-- Script     -->
+<script>
+            function searchTable() { //searches in all column
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dynamicTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                tr[i].style.display = "none"; // Hide all rows initially
+                for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+                    td = tr[i].getElementsByTagName("td")[j];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = ""; // Display the row if any column matches the search criteria
+                            break; // Break out of the inner loop to avoid hiding the row again
+                        }
+                    }
+                }
+            }
+        }
+    function logout() {
+    window.location.href = '../home?logout=true';
+}
+
+function archive() {
+    window.location.href = './subpage/archive.php';
+        }
+
+ $(document).ready(function() {
+            // Fetch data using $.ajax
+            $.ajax({
+                url: '../backend/search_student.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    const table = document.getElementById('data-table');
+                    const searchInput = document.getElementById('searchInput');
+                    const genderImageMap = {
+                    'male': './assets/images/male.jpg',
+                    'female': './assets/images/female.jpg'
+                };
+                    
+                console.log(data);
+                // if (data.status===0){
+                var tableBody = $("#dynamicTable tbody");
+                var historyTableBody = $("#historyTableBody tbody");
+                var noHistoryMessage1 = $("#noHistoryMessage1"); 
+                var noHistoryMessage2 = $("#noHistoryMessage2"); 
+ 
+                for (var i = 0; i < data.length; i++) {
+                    
+                    var entry = data[i];
+                    var status = entry.status;
+                    var tableToAppend = tableBody; 
+                    // Determine which table to append to
+                    // Create an image element based on gender
+                    const image = document.createElement('img');
+                    image.style.display = 'block'; // Display the image above the text
+                            if (entry.gender === 'Male') {
+                                image.src = genderImageMap['male'];
+                            } else if (entry.gender === 'Female') {
+                                image.src = genderImageMap['female'];
+                    }
+                    var row = $("<tr></tr>");
+                    var cell = $("<td></td>");
+                    cell.append(image); // Append the image to the table cell
+                    cell.append("</br>" + entry.stud_user_id);
+                    row.append(cell);
+                    row.append("<td>" + entry.last_name + "</td>");
+                    row.append("<td>" + entry.first_name +"</td>");
+                    row.append("<td>" + entry.Year_level +"</td>");
+                    row.append("<td>" + entry.Colleges + "</td>");
+                    row.append("<td>" + entry.course + "</td>");
+                    row.append("<td>" + entry.Contact_number + "</td>");
+                    row.append("<td>" + entry.ParentGuardianNumber + "</td>");
+                    row.append("<td>" + entry.ParentGuardianName + "</td>");
+                    // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
+                    // var statusText = status == 'pending' ? 'Unread' : 'Read';
+                    var statusCell = $("<td></td>");
+                    var statusLink = $("<button onclick='view_student(" + entry.stud_user_id + ")'>View</button>");
+
+                    statusCell.append(statusLink);
+                    row.append(statusCell);
+                    tableBody.append(row);
+            
+                    
+                 }
+                 console.log("data",data);
+                var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
+                    if (dynamicTableRowCount1 > 0) {
+                    noHistoryMessage1.hide(); // Hide the no history message if there is data
+                    } else {
+                        noHistoryMessage1.show(); // Show the no history message if no data
+                    }
+                    // Initial table population
+                    // filterData();
+
+                    // Add Sorting Event Listeners
+                const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
+                const tableHeadings = document.querySelectorAll('#dynamicTable th');
+                tableHeadings.forEach((head, i) => {
+                    let sort_asc = true;
+                    head.onclick = () => {
+                        head.classList.toggle('asc', sort_asc);
+                        sort_asc = head.classList.contains('asc') ? false : true;
+                        sortTable(i, sort_asc);
+                    };
+                });
+                    // Sorting Function
+                function sortTable(column, sort_asc) {
+                    [...table_rows].sort((a, b) => {
+                        let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase();
+                        let second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                        return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+                    })
+                    .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching data:', error);
+            }
+            });
+
+            
+        });
+
+        function view_student(stud_id) {
+            alert(stud_id);
+
+            // Send stud_id to the server using an AJAX request
+            $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../backend/set_session_variable.php',  // PHP script that sets the session variable
+                data: { stud_user_id: stud_id },
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = 'subpage/pfp_page.php';
+                }
+            });
+        }
 
 
+        
+// export to excel
+function exportToExcel() {
+    const table = document.getElementById("dynamicTable");
+    const rows = table.getElementsByTagName("tr");
+    const data = [];
+
+    // Iterate through the visible table rows and collect cell values
+    for (let i = 0; i < rows.length; i++) {
+        if (rows[i].style.display !== "none") {
+            const cells = rows[i].getElementsByTagName("td");
+            const rowData = [];
+            for (let j = 0; j < cells.length; j++) {
+                rowData.push(cells[j].textContent.trim());
+            }
+            data.push(rowData);
+        }
+    }
+
+    // Create a worksheet
+    const worksheet = XLSX.utils.aoa_to_sheet(data);
+
+    // Create a workbook with the worksheet
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Filtered Table Data");
+
+    // Export the workbook to an Excel file
+    XLSX.writeFile(workbook, "Filtered_Students.xlsx");
+}
+
+
+//export to pdf
+function exportToPDF() {
+    const doc = new jsPDF();
+    const table = document.getElementById('dynamicTable');
+    
+    const columns = [];
+    const rows = [];
+    
+    const headerRow = table.rows[0];
+    for (let i = 0; i < headerRow.cells.length; i++) {
+        columns.push(headerRow.cells[i].textContent.trim());
+    }
+    
+    for (let i = 1; i < table.rows.length; i++) {
+        const currentRow = table.rows[i];
+        if (currentRow.style.display !== "none") {
+            const row = [];
+            for (let j = 0; j < currentRow.cells.length; j++) {
+                row.push(currentRow.cells[j].textContent.trim());
+            }
+            rows.push(row);
+        }
+    }
+    
+    const tableConfig = {
+        head: [columns],
+        body: rows,
+    };
+    
+    // Create the PDF using jsPDF-AutoTable
+    doc.autoTable(tableConfig);
+
+    // Save the PDF to a file
+    doc.save('Filtered_Students.pdf');
+}
+</script>
 <script src="./assets/main.js"></script>
  <script src="./assets/js/table.js"></script>
 </body>
