@@ -38,6 +38,25 @@ if ($type == 'readmission') {
 
 } else if ($type == 'referral') {
     $sql = "SELECT
+    tstable.student_id AS stud_user_id,
+    tstable.id AS transact_id,
+    tstable.last_name,
+    tstable.first_name,
+    tstable.year_level AS Year_level,
+    tstable.course,
+    tstable.college AS Colleges,
+    tstable.contact_number AS Contact_number,
+    tstable.GP_number AS ParentGuardianNumber,
+    tstable.gender,
+    tstable.refer AS referred,
+    tstable.status AS status,
+    NULL AS transact_type,
+    tstable.date AS date_created,
+    tstable.teacher_id
+FROM
+    tstable
+UNION ALL
+SELECT
     student_user.stud_user_id,
     transact.transact_id,
     student_user.last_name,
@@ -51,7 +70,8 @@ if ($type == 'readmission') {
     referral.referred,
     transact.status,
     transact.transact_type,
-    transact.date_created
+    transact.date_created,
+    referral.teacher_id
 FROM
     student_user
 INNER JOIN
@@ -61,7 +81,8 @@ INNER JOIN
 INNER JOIN
     referral ON transact.transact_id = referral.transact_id
 WHERE
-    transact.transact_type = 'referral';";
+    transact.transact_type = 'referral';
+";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
@@ -175,8 +196,7 @@ WHERE transact.status != 'done';
         CASE
             WHEN transact.transact_type = 'WDS' THEN IFNULL(withdrawal.reason, '')
             ELSE IFNULL(transact.transact_type, '')
-        END,
-        IFNULL(appointment.Reason, '')
+        END
     ) AS reason,
     transact.status,
     transact.date_created,

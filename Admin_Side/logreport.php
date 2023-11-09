@@ -81,7 +81,7 @@
     <div class="container">
         <div class="card">
            <header class="card-header">
-                <h1>Today's Total Login Activity Report</h1>
+                <h1>Today's Login Activity Report</h1>
                 
             </header>
             
@@ -140,58 +140,7 @@
 <!-- Script     -->
  
 <script>
- $(document).ready(function() {
-    $.ajax({
-        url: "../backend/check_transaction.php",
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-          
-            var contentTemplate = '';
-            for (var i = 0; i < data.length; i++) {
-                var entry = data[i];
-                var status = entry.status; // Store the status in a variable
-                contentTemplate += `
-                    <div class="content1" data-stud-user-id="${entry.stud_user_id}">
-                        <img src="./assets/images/${status === 0 ? 'a.jpg' : 'pfp.jpg'}">
-                        <h4>${entry.service_requested}</h4>
-                        <p>${entry.last_name}</p>
-                        <h5>${entry.stud_user_id}</h5>
-                        <br>
-                        <h5 class="status-icon">
-                            <i class="${status === 0 ? 'ri-mail-unread-line' : 'ri-mail-open-line'}"></i>
-                        </h5>
-                        <br>
-                        ${status === 0 ? '<a href="#">' : '<a href="#">'}
-                            <button class="buy-${status === 0 ? 1 : 2}" ${status === 1 ? 'disabled' : ''}>READ MORE</button>
-                        </a>
-                    </div>
-                `;
-            }
-            $("#dynamicContent").html(contentTemplate);
-            $(".content1 button").click(function() {
-    var contentElement = $(this).closest(".content1");
-    var studUserId = contentElement.data("stud-user-id"); // Extract stud_user_id from content1
-    // Make an AJAX request to update the status
-    $.ajax({
-        url: "../backend/update_status.php",
-        type: "POST",
-        data: { stud_user_id: studUserId },
-        success: function(response) {
-          console.log(response); // Log the response from the server
-    console.log("Status updated in the database");
-        },
-        error: function(xhr, status, error) {
-            console.error("Request failed with status: " + status);
-        }
-    });
-});
-        },
-        error: function(xhr, status, error) {
-            console.error("Request failed with status: " + status);
-        }
-    });
-});
+ 
 //responsive date
 function updateCurrentDate(){
     const currentDateElement = document.getElementById("currentDate");

@@ -31,7 +31,6 @@ include 'includes/main2.php';
     <link rel="stylesheet" href="../Employee_Side/assets/css/forms.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
     .column {
@@ -46,44 +45,19 @@ include 'includes/main2.php';
   display: table;
   clear: both;
 }
-@-webkit-keyframes mover {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-15%);
-    }
-}
 
-@keyframes mover {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-15%);
-    }
-}
 
-/* Media Query for Phones (adjust as needed) */
-@media (max-width: 767px) {
-    @-webkit-keyframes mover {
-        0% {
-            transform: translateY(0);
-        }
-        100% {
-            transform: translateY(-10%);
-        }
+  @media (max-width: 768px) {
+    /* Styles for screens with a maximum width of 768px (e.g., tablets and smaller) */
+    .row {
+      flex-direction: column;
     }
+    .column {
+      width: 100%;
+    }
+    /* Add more responsive styles as needed */
+  }
 
-    @keyframes mover {
-        0% {
-            transform: translateY(0);
-        }
-        100% {
-            transform: translateY(-10%);
-        }
-    }
-}
 
 
 
