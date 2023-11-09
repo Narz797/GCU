@@ -30,33 +30,36 @@ $_SESSION['transact_type'] = 'referral';
 </head>
 
 <body>
-<!-- Header -->
-<header class="header">
-    <nav class="nav">
+    <!-- Header -->
+    <header class="header">
+    <nav class="nav"> 
         <div class="logo">
-          <a href="#" ><img src="bsu.png" alt=""></a>
+            <a href="./index.php" ><img src="bsu.png" alt=""></a>
         </div>
-        <div class="align-right">            
-          <button class="icon-btn place-items-center">
-            <i class="ri-user-3-line"></i>
-          </button>
+        <div class="align-right">
+            <button class="icon-btn place-items-center" onclick="logout()" value="logout">
+                <i class="ri-user-3-line"> Log-out</i>
+            </button>
         </div>
     </nav>
 </header>
-    <!-- Banner -->
-  <section class="banner">
+
+    <!-- Welcome-message -->
+    <section>
+    <section class="banner">
         <div class="banner-container">
     <br>
-        <img src="GCU_logo.png" alt="">
-        <div class="banner-text">
-            <h5>REPUBLIC OF THE PHILIPPINES</h5>
-            <hr class="banner-line">
-            <h2><span>BENGUET STATE UNIVERSITY</span></h2>
-            <h1>GUIDANCE AND COUNSELING UNIT</h1>
-        </div>
+            <img src="GCU_logo.png" alt="">
+            <div class="banner-text">
+                <h5>REPUBLIC OF THE PHILIPPINES</h5>
+                <hr class="banner-line">
+                <h2><span>BENGUET STATE UNIVERSITY</span></h2>
+                <h1>GUIDANCE AND COUNSELING UNIT</h1>
+            </div>
         </div>
     </section>
-
+    <div class="block"> 
+    </div>
     <div class="block"></div>
 
 <div class="container">
@@ -69,10 +72,7 @@ $_SESSION['transact_type'] = 'referral';
 
 <!-- Get teacher's data with image or delete image -->
 
-      <div id="gender" style="display: flex; justify-content: center; align-items: center;">
-            <!-- The initial image source should be empty -->
-            <img src="" alt="">
-        </div>
+<img src="bsu.png">
       <h6 id="EId">111000111</h6>
       <h4 id="name">Monkey Dulagan Luffy</h4>
       <p  id="college">College of Information Sciences</p>
@@ -95,41 +95,20 @@ $_SESSION['transact_type'] = 'referral';
 <!-- Save data -->
 
         <h1>REFERRAL SLIP</h1>
-        <div id="show">
-        <form id="check_stud" name="form1" method="post">
-        <div class="flex">
-        <div class="form">    
-          <label for="Sid">Student ID:</label>
-          <input type="number" id="Sid" name="Sid" required>
-        </div>
-        
-                <div class="form1">
-          <label>Reason:</label>
-          <select required id="reason">
-            <option disabled selected>Select reason for referral</option>
-            <option>Academic Deficiency/ies</option>
-            <option>Absent</option>
-            <option>Tardy</option>
-          </select>
-        </div>
-          <!-- <a href="#"><button>REFER</button></a> -->
-          <input type="submit" class="btn btn-primary" name="submit" id="submit" value="REFER">
-        
-        </div>
-        </form>
-        </div>
-
-        <div id="hide">
-        <!--  -->
         <form id="form_transact" name="form2" method="post">
+       
         <div class="flex">
         <div class="form">    
           <label for="Sid">Student ID:</label>
           <input type="number" id="Sid" name="Sid" required>
         </div>
-        <div class="form">    
+        <div class="form">
           <label for="fname">Student's First Name:</label>
-          <input type="text" id="fname" name="fname" required>
+          <input type="text"  id="fname" name="fname" required>
+        </div>
+        <div class="form">
+          <label for="mname">Student's Middle Name:</label>
+          <input type="text" id="mname" name="mname" required>
         </div>
         <div class="form">
           <label for="lname">Student's Last Name:</label>
@@ -139,50 +118,24 @@ $_SESSION['transact_type'] = 'referral';
           <label for="yl">Year/Level:</label>
           <input type="text" id="yl" name="yl" required>
         </div>
+        <div class="form">
+          <label for="contact">Student's Contact Number:</label>
+          <input type="text" id="contact" name="contact" required>
         </div>
+        </div>
+
         <div class="flex">
         <div class="form1">
           <label>Gender:</label>
-          <select required id="gender" name="gender">
+          <select id="genderr" required >
             <option disabled selected>Select gender</option>
-            <option value = "Male">Male</option>
-            <option value = "Female">Female</option>
+            <option>Male</option>
+            <option>Female</option>
           </select>
         </div>
         <div class="form1">
-          <label for="course">Course:</label>
-          <input type="text" id="crse" name="crse" required>
-        </div>
-        <div class="form1">
-          <label for="college">College:</label>
-          <select id="college" name="college" required >
-            <option disabled selected>Select College</option>
-            <option value="College of Agriculture">College of Agriculture</option>
-            <option value="College of Teacher Education">College of Teacher Education</option>
-            <option value="College of Home Economics & Technology">College of Home Economics & Technology</option>
-            <option value="College of Forestry">College of Forestry</option>
-            <option value="College of Nursing">College of Nursing</option>
-            <option value="College of Veterinary Medicine">College of Veterinary Medicine</option>
-            <option value="College of Human Kinetics">College of Human Kinetics</option>
-            <option value="College of Public Administration & Governance">College of Public Administration & Governance</option>
-            <option value="College of Information Sciences">College of Information Sciences</option>
-            <option value="College of Arts & Humanities">College of Arts & Humanities</option>
-            <option value="College of Social Sciences">College of Social Sciences</option>
-            <option value="College of Numeracy & Applied Sciences">College of Numeracy & Applied Sciences</option>
-            <option value="College of Natural Sciences">College of Natural Sciences</option>
-          </select>
-        </div>
-        <div class="form">
-          <label for="cn">contact_number:</label>
-          <input type="text" id="cn" name="cn" required>
-        </div>
-        <div class="form">
-          <label for="gp">Parent/Guardian's Name:</label>
-          <input type="text" id="gp" name="gp" required>
-        </div>
-        <div class="form">
-          <label for="gpn">Parent/Guardian's Number:</label>
-          <input type="text" id="gpn" name="gpn" required>
+          <label for="crse">Course:</label>
+          <input type="text"id="crse" name="crse" required>
         </div>
         <div class="form1">
           <label>Reason:</label>
@@ -193,11 +146,17 @@ $_SESSION['transact_type'] = 'referral';
             <option>Tardy</option>
           </select>
         </div>
-          <!-- <a href="#"><button>REFER</button></a> -->
-          <input type="submit" class="btn btn-primary" name="submit" id="submit" value="REFER">
+
+        <!-- show when reason is late or absent -->
+        <div class="form1">
+          <label for="date">Month/Date/Year:</label>
+          <input type="text" id="date" name="date" required>
         </div>
+        <input type="submit" class="btn btn-primary" name="submit" id="submit" value="REFER">
+        </div>
+
         </form>
-        </div>
+        
     </div>
   </div>
   <section class="attendance">
@@ -207,13 +166,10 @@ $_SESSION['transact_type'] = 'referral';
         <thead>
           <tr>
           <th>ID</th>
-          <th>Last Name</th>
-          <th>First Name</th>
-          <th>Year/Level</th>
+          <th>Full Name</th>
           <th>Course</th>
-          <th>College</th>
-          <th>Contact Number</th>
-          <th>Referred By</th>
+          <th>Year/Level</th>
+          <th>Gender</th>
           <th>Reason</th>
           <th>Date</th>
           <th>Status</th>
@@ -351,79 +307,37 @@ $_SESSION['transact_type'] = 'referral';
   </div>          
 </body>
 <script>
-var hide = $("#hide");
-var show = $("#show");
-// hide.hide(); 
-hide.show();
-          show.hide(); 
+function logout() {
+    window.location.href = '../home?logout=true';
+}
 
 $(document).ready(function() {
 //check if student is available in database
-$("#check_stud").on("submit", function (event) {
+$("#form_transact").on("submit", function (event) {
       event.preventDefault();
 
       var transact_type = "referral"
-
+      var studentContactNumber = document.getElementById("contact").value;
+      console.log(studentContactNumber);
       $.ajax({
         type: 'POST',
         url: '../backend/check_student.php',
         data: {
-          sid: $("#Sid").val(),
-          reason: $("#reason").val()
-        },
-        success: function (data) {
-          alert(data);
-          if (data === "Added") {
-            // alert(data);
-        } else if (data === "Not_added") {
-         
-          alert("It seems that this student has does not have an account. Please enter his/her details manually for referral");
-          hide.show();
-          show.hide(); 
-
-
-          $("#form_transact").submit(function(event) {
-                  event.preventDefault(); // Prevent the default form submission
-                 
-// Get the select element by its ID
-                var collegeSelect = document.getElementById("college");
-
-                // Get the selected value
-                var selectedCollege = collegeSelect.text;
-
-                // You can now use the selectedCollege variable to access the selected value
-                console.log("College",selectedCollege);
-                console.log("CN",$("#cn").val());
-                console.log("gpn",$("#gpn").val());
-                  $.ajax({
-                    
-                      type: 'POST',
-                      url: '../backend/create_transaction.php',
-                      
-                      data: {
                           sid: $("#Sid").val(),
                           fname: $("#fname").val(),
+                          mname: $("#mname").val(),
                           lname: $("#lname").val(),
                           year_level: $("#yl").val(),
-                          gender: $("#gender").val(),
+                          gender: $("#genderr").val(),
                           course: $("#crse").val(),
-                          colleges: $("#college").val(),
-                          cn: $("#cn").val(),
-                          gp: $("#gp").val(),
-                          gpn: $("#gpn").val(),
-                          reasons: $("#reason").val()
+                          cn: $("#contact").val(),
+                          reasons: $("#reason").val(),
+                          datee: $("#date").val()
                           
                       },
-                      success: function(data) {
-                          alert(data);
-                      },
-                      error: function(xhr, status, error) {
-                          alert("Error2: " + error);
-                      }
-                  });
-              });
-          
-        }
+        success: function (data) {
+          alert(data);
+
         },
     error: function (xhr, status, error) {
       alert("Error: " + error);
@@ -457,13 +371,10 @@ $("#check_stud").on("submit", function (event) {
             var tableToAppend = tableBody; // Determine which table to append to
             var row = $("<tr></tr>");
             row.append("<td>" + entry.student_id + "</td>");
-            row.append("<td>" + entry.last_name+"</td>");
-            row.append("<td>" + entry.first_name+"</td>");
-            row.append("<td>" + entry.year_level + "</td>");
+            row.append("<td>" + entry.first_name+" " + entry.last_name+"</td>");
             row.append("<td>" + entry.course + "</td>");
-            row.append("<td>" + entry.college + "</td>");
-            row.append("<td>" + entry.contact_number + "</td>");
-            row.append("<td>" + entry.refers + "</td>");
+            row.append("<td>" + entry.year_level + "</td>");
+            row.append("<td>" + entry.gender + "</td>");
             row.append("<td>" + entry.reason + "</td>");
             row.append("<td>" + entry.date + "</td>");
             row.append("<td>" + entry.status + "</td>");
@@ -491,29 +402,12 @@ $("#check_stud").on("submit", function (event) {
     // Function to update the HTML elements
     function updateValues(EmployeeId, college, name, cn, email , gender) {
 
-      const genderImageMap = {
-          'Male': 'sp.jpg',
-          'Female': 'sp2.jpg'
-      };
-      const image = document.createElement('img');
-        image.style.display = 'block'; // Display the image above the text
-
-        if (gender === 'Male') {
-          image.src = genderImageMap['Male'];
-        } else if (gender === 'Female') {
-          image.src = genderImageMap['Female'];
-        }
-
         $('#EId').text(EmployeeId);
         $('#college').text(college);
         $('#name').text(name);
         $('#cn').text(cn);
         $('#email').text(email);
       
-        // Replace the content of the #gender div with the created image
-        const genderElement = document.getElementById('gender');
-        genderElement.innerHTML = ''; // Clear existing content
-        genderElement.appendChild(image);
     }
 
 // Function to fetch data from get_transaction.php

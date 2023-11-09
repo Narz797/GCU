@@ -30,6 +30,7 @@ include 'includes/main2.php';
     <link rel="stylesheet" href="../Employee_Side/assets/apmt.css">
     <link rel="stylesheet" href="../Employee_Side/assets/css/forms.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <style>

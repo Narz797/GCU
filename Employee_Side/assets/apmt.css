@@ -96,65 +96,65 @@ i{
 
 /* Header */
 .header{
-    transition: all 0.5s;
-    background-color: black;}
+  transition: all 0.5s;
+  background-color: black;}
 .nav{
-    height: 7rem;
-    display: flex;
-    align-items: center;}
+  height: 7rem;
+  display: flex;
+  align-items: center;}
 .logo img{
-    display: flex;
-    margin-left: 10px;
-    width: 50px; 
-    height:50px; 
-    padding:2px;}
+  display: flex;
+  margin-left: 10px;
+  width: 50px; 
+  height:50px; 
+  padding:2px;}
 .nav-mobile{
-    width: 100%;
-    height: 100vh;
-    background-color: var(--dark-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 2.5rem;
-    z-index: 999;
-    transition: transform .5s;
-    transform: translateX(-105%);}
+  width: 100%;
+  height: 100vh;
+  background-color: var(--dark-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 2.5rem;
+  z-index: 999;
+  transition: transform .5s;
+  transform: translateX(-105%);}
 .list{
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-small);}
-.list-link{
-    display: inline-block;
-    font-size: var(--font-size-small);
-    padding: 1rem 1.5rem;}
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-small);}
+.list-link1{
+  display: inline-block;
+  font-size: var(--font-size-small);
+  padding: 1rem 1.5rem;}
 .current{
-    color: var(--dark-color);
-    background-color: var(--accent-color);}
+  color: var(--dark-color);
+  background-color: var(--accent-color);}
 .current:hover{
-    background-color: var(--hover-color);
-    color: var(--light-color);}
+  background-color: var(--hover-color);
+  color: var(--light-color);}
 .menu-toggle-close{
-    background-color: var(--accent-color);
-    position: absolute;
-    top: 2.5rem;
-    right: 2.5rem;}
+  background-color: var(--accent-color);
+  position: absolute;
+  top: 2.5rem;
+  right: 2.5rem;}
 .current1:hover{
-    background-color: var(--hover-color);
-    color: var(--light-color);}
+  background-color: var(--hover-color);
+  color: var(--light-color);}
 .icon-btn{
-    width: 3.5rem;
-    height: 3.5rem;}
+  width: 3.5rem;
+  height: 3.5rem;}
 .icon-btn:hover{
-    background-color: var(--hover-color);}
+  background-color: var(--hover-color);}
 .hov:hover{
-    background-color: var(--hover-color);
-    color: var(--dark-color);}
+  background-color: var(--hover-color);
+  color: var(--dark-color);}
 .align-right{
-    margin-left: auto;
-    background-color: var(--accent-color);
-    border-radius: .4rem;}
+  margin-left: auto;
+  background-color: var(--accent-color);
+  border-radius: .4rem;}
 .theme-dark-icon{
-    display: none;}
+  display: none;}
 
 
 /* JavaScript styles */

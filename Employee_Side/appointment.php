@@ -45,18 +45,20 @@
 <body>
     <!-- Header -->
 <header class="header">
-    <nav class="nav container"> 
-        <img src="assets/images/bsu.png" alt="" style="width:5.5%; height:auto; padding:2px">
+    <nav class="nav"> 
+    <div class="logo">
+            <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
+        </div>
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-                    <a href="./employee-home" class="list-link current">Home</a>
+                    <a href="./employee-home" class="list-link1 current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="./request-forms" class="list-link">Requested Forms</a>
+                    <a href="./request-forms" class="list-link1 current1">Requested Forms</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="./student-profile" class="list-link">Student Profiles</a>
+                    <a href="./student-profile" class="list-link1 current1">Student Profiles</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
