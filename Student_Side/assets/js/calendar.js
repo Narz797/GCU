@@ -219,7 +219,7 @@ function getActiveDay(date) {
 function getAvailability(year, month, date) {
   $.ajax({
     type: 'GET',
-    url: '../backend/get_availability.php',
+    url: '../backend/get_availability2.php',
     data: {
       year: year,
       month: month,
@@ -350,4 +350,5 @@ function convertTime(time) {
   const formattedHour = hour % 12 || 12;
   return `${formattedHour}:${min} ${timeFormat}`;
 }
+refreshEvents();
 });

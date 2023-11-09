@@ -124,7 +124,9 @@ $id = $_SESSION['session_id'];
                     <h2 class="title">LATEST Requested Forms</h2>
                     <p class="card-description2"><b id="studentId"></b> has requested a <b id="transactType"></b> form.</p>
                 </div>
-                <a href="./request-forms"><button class="list-link">Read More</button></a>
+                <!-- <a href="./request-forms"> -->
+                    <button class="list-link" onclick = "goto_recent()">Read More</button>
+                <!-- </a> -->
             </div>
             <div class="card border two">
                 <div>
@@ -167,11 +169,15 @@ $id = $_SESSION['session_id'];
 <script src="./assets/index.js"></script>   
     
 <script>
+    var sid;
+    var tt;
+    var tid;
+    var teachid;
             function archive() {
     window.location.href = '';
         }
     // Function to update the HTML elements
-    function updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, gender) {
+    function updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, gender) {
        
         const genderImageMap = {
                   'Male': 'assets/images/sp.jpg',
@@ -186,7 +192,7 @@ $id = $_SESSION['session_id'];
                   image.src = genderImageMap['Female'];
                 }
 
-        $('#studentId').text(studentId);
+        $('#studentId').text(fname + " " + lname);
         $('#transactType').text(transactType);
         $('#total').text(total);
         $('#employee_email').text(employee_email);
@@ -214,8 +220,12 @@ $id = $_SESSION['session_id'];
                 success: function (data) {
                     console.log(data.latest_data);
                     if (data.latest_data && data.latest_data.length > 0) {
-                            var studentId = data.latest_data[0].student_id;
+                            sid = data.latest_data[0].student_id;
+                            var fname = data.latest_data[0].first_name;
+                            var lname = data.latest_data[0].last_name;
                             var transactType = data.latest_data[0].transact_type;
+                            tt = data.latest_data[0].transact_type;
+                            tid = data.latest_data[0].transact_id;
                             var total = data.total_pending_transactions;
                             var totalAppointments = data.total_appointments; // Define total here
                             var employee_email = data.adminUserData[0].email;
@@ -226,7 +236,7 @@ $id = $_SESSION['session_id'];
                             var ePosition = data.adminUserData[0].position;
                             var eGender = data.adminUserData[0].gender;
                             console.log(totalAppointments);
-                            updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
+                            updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
                             console.log(total);
                             // Start both counting animations
                             countAppointments(totalAppointments);
@@ -291,10 +301,115 @@ function HistoryData() {
         }
     });
 }
+
+function goto_recent(){
+    if (tt === 'referral')
+    {
+        console.log("student", sid);
+        console.log("transact", tid);
+
+                    // Send stud_id to the server using an AJAX request
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid, ttype: tt, },
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = 'forms/ref.php';
+                }
+            });
+    }else if(tt === 'readmission'){
+        console.log("student", sid);
+        console.log("transact", tid);
+
+                    // Send stud_id to the server using an AJAX request
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid, ttype: tt},
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = 'forms/read.php';
+                }
+            });
+
+    }else if(tt === 'Withdrawing Enrollment'){
+        console.log("student", sid);
+        console.log("transact", tid);
+        var type = 'withdrawal';
+
+                    // Send stud_id to the server using an AJAX request
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid, ttype: type },
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = 'forms/w.php';
+                }
+            });
+
+    }else if(tt === 'Dropping Subjects'){
+        console.log("student", sid);
+        console.log("transact", tid);
+        var type = 'withdrawal';
+
+                    // Send stud_id to the server using an AJAX request
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid, ttype: type},
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = 'forms/d.php';
+                }
+            });
+
+    }else if(tt === 'Shifting'){
+        console.log("student", sid);
+        console.log("transact", tid);
+        var type = 'withdrawal';
+
+                    // Send stud_id to the server using an AJAX request
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid, ttype: type},
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = 'forms/s.php';
+                }
+            });
+
+    }else if(tt === 'leave_of_absence'){
+        console.log("student", sid);
+        console.log("transact", tid);
+        var type = 'loa';
+
+                    // Send stud_id to the server using an AJAX request
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid, ttype: type},
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = 'forms/loa.php';
+                }
+            });
+
+    }
+}
 // Call the fetchData function when the page loads
 HistoryData();
     // Call the fetchData function when the page loads
     fetchData();
+
 </script>
 <script src="./assets/js/count.js"></script> 
 </body>

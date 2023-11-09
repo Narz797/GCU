@@ -48,7 +48,7 @@ session_start();
 <!-- Back function once click goes back 
     to whatever page it opened before clicking archive -->
 
-                    <a href="#" class="list-link current">Back</a>
+    <button onclick="goBack()" class="list-link current">Back</button>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -200,6 +200,9 @@ session_start();
 <br>
     <!-- Script     -->
     <script>
+                function goBack() {
+            window.history.back();
+        }
                 function searchTable() { //searches in all column
             var input, filter, table, tr, td, i, j, txtValue;
             input = document.getElementById("searchInput");

@@ -214,18 +214,21 @@ function gotoDate() {
 function getActiveDay(date) {
   const day = new Date(year, month, date);
   const dayName = day.toString().split(" ")[0];
+
   eventDay.innerHTML = dayName;
   eventDate.innerHTML = date + " " + months[month] + " " + year;
 }
 
 function getAvailability(year, month, date) {
+  const eID = window.sessionID; //value of employee id
   $.ajax({
     type: 'GET',
     url: '../backend/get_availability.php',
     data: {
       year: year,
       month: month,
-      date: date
+      date: date,
+      ID: eID
     },
     success: function (data) {
       console.log("get_availability data:", data);
@@ -450,9 +453,9 @@ addEventTitle.addEventListener("input", (e) => {
   addEventTitle.value = addEventTitle.value.slice(0, 60);
 });
 
-addEventStudentName.addEventListener("input", (e) =>{
-  addEventStudentName.value = addEventStudentName.value.slice(0,60);
-});
+// addEventStudentName.addEventListener("input", (e) =>{
+//   addEventStudentName.value = addEventStudentName.value.slice(0,60);
+// });
 
 
 //allow only time in eventtime from and to
@@ -517,4 +520,5 @@ function convertTime(time) {
   const formattedHour = hour % 12 || 12;
   return `${formattedHour}:${min} ${timeFormat}`;
 }
+refreshEvents();
 });

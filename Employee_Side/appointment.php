@@ -11,6 +11,7 @@
 
   $_SESSION['transact_type']='appointment';//asign value to transact_type/
   $_SESSION['form_type']='appointment';//
+  $eid = $_SESSION['session_id']
   
 ?>
 <!DOCTYPE html>
@@ -145,9 +146,9 @@
             <div class="add-event-input">
               <input type="text" placeholder="Event Name" class="event-name" />
             </div>
-            <div class="add-event-input">
+            <!-- <div class="add-event-input">
               <input type="text" placeholder="Student Name" class="event-student-name"/>
-            </div>
+            </div> -->
             <div class="add-event-input">
               <input
                 type="text"
@@ -286,6 +287,8 @@
 <script>
   var trans_id
 var app_id
+var eid = "<?php echo $eid; ?>";
+console.log(eid);
   var sessionID = <?php echo json_encode($_SESSION['session_id']); ?>;
   function logout() {
     window.location.href = '../home?logout=true';

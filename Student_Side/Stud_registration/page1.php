@@ -841,49 +841,82 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 
     </div>
     <script>
-        function goToPage2() {
-            var table = document.getElementById('siblingsTable');
-            var data = [];
-            for (var i = 0, row; row = table.rows[i]; i++) {
-                var rowData = [];
-                for (var j = 0, col; col = row.cells[j]; j++) {
-                    rowData.push(col.firstChild.value);
-                }
-                data.push(rowData);
-            }
-            console.log(data);
-            sessionStorage.setItem('tableData', JSON.stringify(data));
-            document.getElementById('registrationForm').submit();
-            window.location.href = "page2.php";
+    function createTable() {
+        var totalNumber = document.getElementById("total_number").value;
+        var table = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0];
+        table.innerHTML = ""; // Clear existing rows
+
+        var siblingsData = [];
+
+        for (var i = 0; i < totalNumber; i++) {
+            var row = table.insertRow(i);
+            var noCell = row.insertCell(0);
+            var lnameCell = row.insertCell(1);
+            var fnameCell = row.insertCell(2);
+            var mnameCell = row.insertCell(3);
+            var ageCell = row.insertCell(4);
+            var educCell = row.insertCell(5);
+            var civilCell = row.insertCell(6);
+
+            noCell.innerHTML = "" + (i + 1);
+            lnameCell.innerHTML = '<input type="text" name="lname[]">';
+            fnameCell.innerHTML = '<input type="text" name="fname[]">';
+            mnameCell.innerHTML = '<input type="text" name="mname[]">';
+            ageCell.innerHTML = '<input type="text" name="age[]">';
+            educCell.innerHTML = '<input type="text" name="education[]">';
+            civilCell.innerHTML = '<input type="text" name="civil[]">';
+
+            // Store values in an array
+            siblingsData.push({
+                lastName: "",
+                firstName: "",
+                middleName: "",
+                age: "",
+                education: "",
+                civilStatus: ""
+            });
         }
-    </script>
 
+        // Call logTableValues to populate the siblingsData array
+        logTableValues(siblingsData);
 
+        // Return the values
+        return siblingsData;
+    }
 
-    <script>
-        function createTable() {
-            var totalNumber = document.getElementById("total_number").value;
-            var table = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0];
-            table.innerHTML = ""; // Clear existing rows
-            for (var i = 0; i < totalNumber; i++) {
-                var row = table.insertRow(i);
-                var noCell = row.insertCell(0);
-                var lnameCell = row.insertCell(1);
-                var fnameCell = row.insertCell(2);
-                var mnameCell = row.insertCell(3);
-                var ageCell = row.insertCell(4);
-                var educCell = row.insertCell(5);
-                var civilCell = row.insertCell(6);
-                noCell.innerHTML = "" + (i + 1);
-                lnameCell.innerHTML = '<input type="text" name="lname[]">';
-                fnameCell.innerHTML = '<input type="text" name="fname[]">';
-                mnameCell.innerHTML = '<input type="text" name="mname[]">';
-                ageCell.innerHTML = '<input type="text" name="age[]">';
-                educCell.innerHTML = '<input type="text" name="education[]">';
-                civilCell.innerHTML = '<input type="text" name="civil[]">';
-            }
+    function logTableValues(siblingsData) {
+        var totalNumber = siblingsData.length;
+        var table = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0];
+
+        for (var i = 0; i < totalNumber; i++) {
+            var row = table.rows[i];
+            var inputs = row.querySelectorAll('input');
+
+            siblingsData[i].lastName = inputs[0].value;
+            siblingsData[i].firstName = inputs[1].value;
+            siblingsData[i].middleName = inputs[2].value;
+            siblingsData[i].age = inputs[3].value;
+            siblingsData[i].education = inputs[4].value;
+            siblingsData[i].civilStatus = inputs[5].value;
         }
-    </script>
+    }
+</script>
+
+<script>
+    function goToPage2() {
+        var siblingsData = createTable();
+
+        // Prevent form submission
+        event.preventDefault();
+
+        // Do something with the sibling data (e.g., send it to the server)
+        console.log("Siblings Data:", siblingsData);
+
+        // Redirect to the next page
+        window.location.href = "page2.php";
+    }
+</script>
+
     <script>
         function showParentsInput() {
             document.getElementById("inputContainer").style.display = "block";

@@ -54,11 +54,12 @@ try {
     $adminUserData = $stmt7->fetchAll(PDO::FETCH_ASSOC);
 
     // Fetch the latest data based on the date_created column
-    $latestDataSql = "SELECT `student_id`, `transact_type`, `date_created`
-        FROM transact
-        WHERE `status` = 'pending'
-        ORDER BY `date_created` DESC
-        LIMIT 1;";
+    $latestDataSql = "SELECT transact.transact_id, transact.student_id, transact.transact_type, transact.date_created, student_user.first_name, student_user.last_name
+                        FROM transact
+                        INNER JOIN student_user ON transact.student_id = student_user.stud_user_id
+                        WHERE transact.status = 'pending'
+                        ORDER BY `date_created` DESC
+                        LIMIT 1;";
 
     $stmt8 = $pdo->prepare($latestDataSql);
     $stmt8->execute();

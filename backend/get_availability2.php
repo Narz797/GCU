@@ -11,8 +11,6 @@ try {
     $year = isset($_GET['year']) ? $_GET['year'] : date('Y');
     $month = isset($_GET['month']) ? $_GET['month'] : date('m');
     $date = isset($_GET['date']) ? $_GET['date'] : date('d');
-   $eid = isset($_GET['ID']) ? $_GET['ID'] : null;
-
 
     // Execute a query to retrieve events from the database for the specified year, month, and date
     $query = "SELECT 
@@ -31,13 +29,12 @@ try {
                     admin_user ON appointment.employee_id = admin_user.admin_user_id
                 INNER JOIN 
                     transact ON appointment.transact_id = transact.transact_id
-              WHERE YEAR(`date`) = :year AND MONTH(`date`) = :month AND DAY(`date`) = :date AND appointment.status = 'open' AND admin_user.admin_user_id = :id;";
+              WHERE YEAR(`date`) = :year AND MONTH(`date`) = :month AND DAY(`date`) = :date AND appointment.status = 'open';";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':year', $year, PDO::PARAM_INT);
     $stmt->bindParam(':month', $month, PDO::PARAM_INT);
     $stmt->bindParam(':date', $date, PDO::PARAM_INT);
-    $stmt->bindParam(':id', $eid, PDO::PARAM_INT);
     $stmt->execute();
 
     // Fetch data and return it as JSON
