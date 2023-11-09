@@ -100,7 +100,7 @@ include 'includes/main2.php';
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
-              <h3>Referral Slip</h3>
+              <h3>Late or Absent Slip</h3>
               <br>
               <a href="./forms/referral-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
@@ -141,21 +141,21 @@ include 'includes/main2.php';
                 
             </section>
             <section  id="blog" class="blog"  >
-    <div class="container" data-aos="fade-up">
-          </div>
-          <div class="col-lg-4" style="width:auto;">
-            <div class="sidebar" style="background-color:white;">
-              <div class="sidebar-item recent-posts">
-                <div class="mt-3" id="scrollable-container">
-                  <!-- Content loaded via Ajax will be appended here -->
+              <div class="container" data-aos="fade-up">
+                    </div>
+                    <div class="col-lg-4" style="width:auto;">
+                      <div class="sidebar" style="background-color:white;">
+                        <div class="sidebar-item recent-posts">
+                          <div class="mt-3" id="scrollable-container">
+                            <!-- Content loaded via Ajax will be appended here -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        
-          </div>
-        </div>
-      </div>
       
       
             
