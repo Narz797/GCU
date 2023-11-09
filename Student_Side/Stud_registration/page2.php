@@ -109,7 +109,12 @@ if (!empty($_POST['total_number'])) {
 if (!empty($_POST['siblings'])) {
     $_SESSION['siblings'] = serialize($_POST['siblings']);
 }
-
+if (isset($_SESSION['tableData'])) {
+    $tableData = $_SESSION['tableData'];
+    // Process the data here
+} else {
+    echo "Table data is not set in the session.";
+}
 ?>
 
 <head>

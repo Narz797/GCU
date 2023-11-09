@@ -845,17 +845,15 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
             var table = document.getElementById('siblingsTable');
             var data = [];
             for (var i = 0, row; row = table.rows[i]; i++) {
-                //iterate through rows
-                //rows would be accessed using the "row" variable assigned in the for loop
                 var rowData = [];
                 for (var j = 0, col; col = row.cells[j]; j++) {
-                    rowData.push(col.innerHTML);
+                    rowData.push(col.firstChild.value);
                 }
                 data.push(rowData);
             }
             console.log(data);
             sessionStorage.setItem('tableData', JSON.stringify(data));
-            console.log('Table data saved in session.');
+            document.getElementById('registrationForm').submit();
             window.location.href = "page2.php";
         }
     </script>
