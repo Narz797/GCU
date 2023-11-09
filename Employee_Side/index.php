@@ -40,9 +40,6 @@ $id = $_SESSION['session_id'];
             <i class="ri-sun-line theme-light-icon"></i>
             <i class="ri-moon-line theme-dark-icon"></i>
         </button>
-        <button class="icon-btn place-items-center" onclick="archive()">
-           <i class="ri-archive-drawer-line"></i>
-        </button>
         </div>
     </nav>
 </header>

@@ -219,7 +219,6 @@ session_start();
                             <th> Contact <br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Date<br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Requested<br> <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Status<br> <span class="icon-arrow">&UpArrow;</span></th>
                         </tr>
                     </thead>
                     <tbody id="data-table">
@@ -344,14 +343,7 @@ function fetchData() { //getting total
                     row.append("<td>" + entry.transact_type + "</td>");
                     // row.append("<td>" + entry.status + "</td>");
                      // Check the value of entry.status and set the class and text accordingly
-                        if (status == 'done') {
-                            row.append("<td><p class='status delivered'>Done</p></td>");
-                        } else if (status == 'pending') {
-                            row.append("<td><p class='status pending'>Pending</p></td>");
-                        } else {
-                            // Handle other cases, e.g., 'Cancelled' or anything else
-                            row.append("<td><p class='status cancelled'>" + status + "</p></td>");
-                        }
+                       
                     tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                  }

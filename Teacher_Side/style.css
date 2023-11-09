@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-*{
+*{ 
   margin: 0;
   padding: 0;
   outline: none;
@@ -11,6 +11,70 @@
 body{
   background: rgb(226, 226, 226);
 }
+
+
+/* Header */
+.header{
+  transition: all 0.5s;
+  background-color: black;}
+.nav{
+  height: 10rem;
+  display: flex;
+  align-items: center;}
+.logo img{
+  display: flex;
+  margin-left: 10px;
+  width: 50px; 
+  height:50px; 
+  padding:2px;}
+.align-right{
+  margin-left: auto;
+  background-color: #568203;
+  border-radius: .4rem;
+  padding: 2px;}
+.align-right:hover{
+  background-color: #87A96B;}
+.icon-btn{
+  width: 3.5rem;
+  height: 3.5rem;}
+
+/* Banner */
+.banner{
+  background-color: #F5F5DC; 
+  color:black;}
+.banner-container{
+  display:flex; 
+  justify-content:center; 
+  padding-top:2%; 
+  padding-bottom: 2%;}
+.banner-container img{
+  display: inline-block; 
+  vertical-align: middle;  
+  width:10%; 
+  height:auto;}
+.banner-text{
+  display: inline-block; 
+  vertical-align: middle;}
+.banner-text h5{
+  font-size: 1vw;
+  font-family: 'Georgia', serif;}
+.banner-line{
+  width: 100%; 
+  border-color: black; 
+  margin-bottom: 0;}
+.banner-text h2{
+  font-size: 1.8vw;
+  font-family: 'Times New Roman', serif;}
+.banner-text h1{
+  font-size: 2vw;
+  font-family: 'Garamond', serif;
+  font-weight: bold;}
+
+.block{
+  background-color: black; 
+  height:50px;}
+
+
 .container{
   display: flex;
 }

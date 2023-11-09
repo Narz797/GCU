@@ -139,8 +139,7 @@ session_start();
                                     <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
                                     <th> Course Taken <br><span class="icon-arrow">&UpArrow;</span></th>
                                     <th> Department / College <br><span class="icon-arrow">&UpArrow;</span></th>
-                                    <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                                    <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Registered/Unregistered <br><span class="icon-arrow">&UpArrow;</span></th>
                                     <th> Referred By <br><span class="icon-arrow">&UpArrow;</span></th>
                                     <th> Action </th>
                                 </tr>
@@ -220,8 +219,12 @@ function searchTable() { //searches in all column
                     row.append("<td>" + entry.Year_level +"</td>");
                     row.append("<td>" + entry.course + "</td>");
                     row.append("<td>" + entry.Colleges + "</td>");
-                    row.append("<td>" + entry.Contact_number + "</td>");
-                    row.append("<td>" + entry.ParentGuardianNumber + "</td>");
+                    // row.append("<td>" + entry.RUR + "</td>");
+                    if (entry.RUR == 'Registered') {
+                            row.append("<td><p class='status'>Registered</p></td>");
+                        } else if (entry.RUR == 'Unregistered') {
+                            row.append("<td><p class='status1'>Unregistered</p></td>");
+                        }
                     row.append("<td>" + entry.referred + "</td>");
 
                     var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';

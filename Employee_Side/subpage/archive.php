@@ -48,7 +48,7 @@ session_start();
 <!-- Back function once click goes back 
     to whatever page it opened before clicking archive -->
 
-                    <a href="../request-forms" class="list-link current">Back</a>
+                    <a href="#" class="list-link current">Back</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -66,14 +66,6 @@ session_start();
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
-
-<!-- This is the archive button which you will copy and paste it exactly same position as is-->
-
-        <button class="icon-btn place-items-center" onclick="archive()">
-           <i class="ri-archive-drawer-line"></i>
-        </button>
-
-        
         </div>
     </nav>
 </header>

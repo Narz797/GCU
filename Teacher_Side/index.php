@@ -27,9 +27,38 @@ $_SESSION['transact_type'] = 'referral';
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-
 </head>
+
 <body>
+<!-- Header -->
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+          <a href="#" ><img src="bsu.png" alt=""></a>
+        </div>
+        <div class="align-right">            
+          <button class="icon-btn place-items-center">
+            <i class="ri-user-3-line"></i>
+          </button>
+        </div>
+    </nav>
+</header>
+    <!-- Banner -->
+  <section class="banner">
+        <div class="banner-container">
+    <br>
+        <img src="GCU_logo.png" alt="">
+        <div class="banner-text">
+            <h5>REPUBLIC OF THE PHILIPPINES</h5>
+            <hr class="banner-line">
+            <h2><span>BENGUET STATE UNIVERSITY</span></h2>
+            <h1>GUIDANCE AND COUNSELING UNIT</h1>
+        </div>
+        </div>
+    </section>
+
+    <div class="block"></div>
+
 <div class="container">
 <section class="main">
   <div class="main-top">
@@ -324,7 +353,9 @@ $_SESSION['transact_type'] = 'referral';
 <script>
 var hide = $("#hide");
 var show = $("#show");
-hide.hide(); 
+// hide.hide(); 
+hide.show();
+          show.hide(); 
 
 $(document).ready(function() {
 //check if student is available in database
