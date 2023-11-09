@@ -28,47 +28,115 @@ $_SESSION['transact_type'] = 'referral'; //asign value to transact_type
   z-index: 1000;
   background-color:#105c06;
 }
+
+label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  /* Style the date input */
+  input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px; /* Adjust the font size as needed */
+  }
+
+  /* Hide the default file input button */
+input[type="file"] {
+  display: none;
+}
+
+/* Style the custom button */
+label[for="fileUpload"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Optional: Add hover effect */
+label[for="fileUpload"]:hover {
+  background-color: #45a049;
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Optional: Add styles for selected radio button */
+input[type="radio"]:checked + span {
+  font-weight: bold;
+  color: #007bff; /* Change color as needed */
+}
+
+
+  
+ 
+
 </style>
 <body>
   <div class="card">
     <div class="card-header">
-      <h1 id="Title">Referral Slip</h1>
+      <h1 id="Title">Late or Absent Slip</h1>
     </div>
     <div class="card-body">
       <form id="form_transact" name="form1" method="post">
-        <p>
-          <label for="select">Reason For Referral:</label>
+       
+     
+
+       <b>Date</b>
+        <input type="date" id="date" name="date">
         </p>
         <p>
-          <label>
-            <input type="radio" name="reasons[]" value="Interview" id="interview">
-            interview</label>
-          <br>
-          <label>
-            <input type="radio" name="reasons[]" value="Counseling" id="counseling">
-            counseling</label>
-          <br>
-          <label>
-            <input type="radio" name="reasons[]" value="Late" id="late">
-            late</label>
-          <br>
-          <label>
-            <input type="radio" name="reasons[]" value="Absent" id="absent">
-            absent</label>
-          <br>
-          <label>
-            <input type="radio" name="others" value="5" id="others" onclick="myFunction()">
-            others</label>
-          <input type="text" name="textfield3" id="oth" style="display: none">
+        <form>
+
+        <b>Reason:</b>
+        <br>
+        <label>
+          <input type="radio" name="time" value="late"> Late
+        </label>
+        
+        <label>
+          <input type="radio" name="time" value="tardi"> Absent
+        </label>
+      </form>
+
+        
+        <br>
+
+        <label for="fileUpload">Upload Letter of Explaination</label>
+        <input type="file" id="fileUpload" name="fileUpload">
+
+
+  <br>
+        <label for="fileUpload">Upload Parent/Guardian ID</label>
+        <input type="file" id="fileUpload" name="fileUpload">
+        <!-- <div class="file-input-container">
+          <label for="fileUpload">Letter of Explanation: </label>
+          <input type="file" id="fileUpload" name="fileUpload">
+          <button class="custom-file-button">Choose File</button>
+        </div> -->
+        
+          
+         
         </p>
         <p>
-          Referred By:
+          <!-- Referred By:
           <label for="textfield"></label>
           <select name="textfield" id="refer">
             <option value="Myself">Myself</option>
             <option value="Instructor">Instructor</option>
             <option value="College Dean">College Dean</option>
-          </select>
+          </select> -->
           <br>
         </p>
         <p>
