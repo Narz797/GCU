@@ -605,7 +605,7 @@ if (!empty($_POST['othawards'])) {
             <!---- Initializing Session for errors --->
         </span>
         <header>STUDENT REGISTRATION FORM</header>
-        <form action="page2.php" id="registrationForm" enctype="multipart/form-data">
+        <form action="../../backend/register_user.php" method="POST" id="registrationForm" enctype="multipart/form-data">
             <div class="form first">
                 <div class="details personal">
                     <br>
@@ -837,8 +837,6 @@ if (!empty($_POST['othawards'])) {
                                 </button>
                             </form>
                         </div>
-
-
                     </div>
         </form>
     </div>
