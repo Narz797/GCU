@@ -1,10 +1,11 @@
 <?php
 session_start();
-$_SESSION['origin'] = 'Student_Register';//for register_user.php
+$_SESSION['origin'] = 'Student_Register'; //for register_user.php
 ?>
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,15 +21,18 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
 <style>
     /* ===== Google Font Import - Poppins ===== */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
     }
+
     .autocomplete-container {
         position: relative;
     }
+
     .autocomplete-popup {
         position: absolute;
         top: 100%;
@@ -40,18 +44,22 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         overflow-y: auto;
         display: none;
     }
+
     .autocomplete-popup ul {
         list-style: none;
         padding: 0;
         margin: 0;
     }
+
     .autocomplete-popup li {
         padding: 5px 10px;
         cursor: pointer;
     }
+
     .autocomplete-popup li:hover {
         background-color: #f0f0f0;
     }
+
     body {
         min-height: 100vh;
         display: flex;
@@ -59,6 +67,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         justify-content: center;
         background-color: #fafffe;
     }
+
     .container {
         position: relative;
         max-width: 900px;
@@ -69,12 +78,14 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         /* background-color: #fff; */
         /* box-shadow: 0 5px 10px rgba(0,0,0,0.1); */
     }
+
     .container header {
         position: relative;
         font-size: 20px;
         font-weight: 600;
         color: #333;
     }
+
     .container header::before {
         content: "";
         position: absolute;
@@ -85,6 +96,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         border-radius: 8px;
         background-color: #4070f4;
     }
+
     .container form {
         position: relative;
         margin-top: 16px;
@@ -92,26 +104,31 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         /* background-color: #fff; */
         overflow: hidden;
     }
+
     .container form .form {
         position: absolute;
         /* background-color: #fff; */
         transition: 0.3s ease;
     }
+
     .container form .form.second {
         opacity: 0;
         pointer-events: none;
         transform: translateX(100%);
     }
+
     form.secActive .form.second {
         opacity: 1;
         pointer-events: auto;
         transform: translateX(0);
     }
+
     form.secActive .form.first {
         opacity: 0;
         pointer-events: none;
         transform: translateX(-100%);
     }
+
     .container form .title {
         display: block;
         margin-bottom: 8px;
@@ -120,18 +137,21 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         margin: 6px 0;
         color: #333;
     }
+
     .container form .fields {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
     }
+
     form .fields .input-field {
         display: flex;
         width: calc(100% / 3 - 15px);
         flex-direction: column;
         margin: 4px 0;
     }
+
     form .fields .input-field1 {
         display: flex;
         width: 100%;
@@ -139,11 +159,13 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         flex-direction: column;
         margin: 4px 0;
     }
+
     .input-field1 label {
         font-size: 16px;
         font-weight: 500;
         color: #2e2e2e;
     }
+
     form .fields .input-field2 {
         display: flex;
         width: 100%;
@@ -151,11 +173,13 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         flex-direction: column;
         margin: 4px 0;
     }
+
     .input-field2 label {
         font-size: 16px;
         font-weight: 500;
         color: #2e2e2e;
     }
+
     .input-field2 input,
     select {
         outline: none;
@@ -169,11 +193,13 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         height: 90px;
         margin: 8px 0;
     }
+
     .input-field label {
         font-size: 16px;
         font-weight: 500;
         color: #2e2e2e;
     }
+
     .input-field1 input,
     select {
         outline: none;
@@ -187,6 +213,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         height: 42px;
         margin: 8px 0;
     }
+
     .input-field input,
     select {
         outline: none;
@@ -200,17 +227,21 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         height: 42px;
         margin: 8px 0;
     }
+
     .input-field input :focus,
     .input-field select:focus {
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
     }
+
     .input-field select,
     .input-field input[type="date"] {
         color: #707070;
     }
+
     .input-field input[type="date"]:valid {
         color: #333;
     }
+
     .container form button,
     .backBtn {
         display: flex;
@@ -228,44 +259,55 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         transition: all 0.3s linear;
         cursor: pointer;
     }
+
     .container form .btnText {
         font-size: 14px;
         font-weight: 400;
     }
+
     form button:hover {
         background-color: #265df2;
     }
+
     form button i,
     form .backBtn i {
         margin: 0 6px;
     }
+
     form .backBtn i {
         transform: rotate(180deg);
     }
+
     form .buttons {
         display: flex;
         align-items: center;
     }
+
     form .buttons button,
     .backBtn {
         margin-right: 14px;
     }
+
     @media (max-width: 750px) {
         .container form {
             overflow-y: scroll;
         }
+
         .container form::-webkit-scrollbar {
             display: none;
         }
+
         form .fields .input-field {
             width: calc(100% / 2 - 15px);
         }
     }
+
     @media (max-width: 550px) {
         form .fields .input-field {
             width: 100%;
         }
     }
+
     /* .left-column img {
              
             
@@ -278,33 +320,38 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
             width: 80%;
             height: 80%;
         } */
-        
+
     @-webkit-keyframes mover {
         0% {
             transform: translateY(0);
         }
+
         100% {
             transform: translateY(-20px);
         }
     }
+
     @keyframes mover {
         0% {
             transform: translateY(0);
         }
+
         100% {
             transform: translateY(-20px);
         }
     }
+
     /* .fieldset-column {
             flex: 1;
             margin-right: 20px; 
         } */
     fieldset {
         flex: 1;
-       
+
     }
+
     .fieldset-container {
-      
+
         display: block;
         position: relative;
         padding-left: 35px;
@@ -316,6 +363,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         -ms-user-select: none;
         user-select: none;
     }
+
     .container1 {
         display: block;
         position: relative;
@@ -328,6 +376,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         -ms-user-select: none;
         user-select: none;
     }
+
     /* Hide the browser's default checkbox */
     .container1 input {
         position: absolute;
@@ -336,6 +385,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         height: 0;
         width: 0;
     }
+
     /* Create a custom checkbox */
     .checkmark {
         position: absolute;
@@ -345,24 +395,29 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         width: 22px;
         background-color: #eee;
     }
+
     /* On mouse-over, add a grey background color */
     .container1:hover input~.checkmark {
         background-color: #ccc;
     }
+
     /* When the checkbox is checked, add a blue background */
     .container1 input:checked~.checkmark {
         background-color: #2196F3;
     }
+
     /* Create the checkmark/indicator (hidden when not checked) */
     .checkmark:after {
         content: "";
         position: absolute;
         display: none;
     }
+
     /* Show the checkmark when checked */
     .container1 input:checked~.checkmark:after {
         display: block;
     }
+
     /* Style the checkmark/indicator */
     .container1 .checkmark:after {
         left: 9px;
@@ -375,37 +430,46 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
     }
+
     .check-group label {
         /* display: block; */
         margin-right: 30px;
     }
+
     .radio-group label {
         /* display: block; */
         margin-right: 30px;
     }
+
     .radio-group input[type="radio"] {
         margin-right: 5px;
     }
+
     #specifyInput {
         display: none;
     }
+
     .underline-input1 {
         width: 50%;
         outline: none;
     }
+
     .responsive-table {
         width: 100%;
         border-collapse: collapse;
     }
+
     .responsive-table th,
     .responsive-table td {
         border: 1px solid #ddd;
         padding: 8px;
         text-align: left;
     }
+
     .responsive-table th {
         background-color: #f2f2f2;
     }
+
     .responsive-table input[type="text"] {
         width: 100%;
         box-sizing: border-box;
@@ -417,6 +481,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         outline: none;
         /* Remove outline */
     }
+
     .aboutme input[type="text"] {
         border: none;
         border-bottom: 1px solid #000;
@@ -427,12 +492,15 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         font-size: 14px;
         text-decoration: none;
     }
+
     .hidden {
         display: none;
     }
+
     .visible {
         display: block;
     }
+
     .indigenousInfo {
         outline: none;
         font-size: 14px;
@@ -444,11 +512,13 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         height: 42px;
         margin: 8px 0
     }
+
     .underline-input {
         position: relative;
         width: 50%;
         margin: 8px 0;
     }
+
     .underline-input input {
         border: none;
         border-bottom: 1px solid #000;
@@ -457,66 +527,49 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
         outline: none;
         width: 100%;
     }
+
     /* Initially hide the table */
     #siblingsTable {
         display: none;
     }
+
     /* .input-field input:required {
     border: 1px solid red;
 } */
     #specifyBoxScholarship input[type="text"] {
-        border-bottom: 1px solid black; /* You can adjust the color and style as needed */
+        border-bottom: 1px solid black;
+        /* You can adjust the color and style as needed */
     }
+
     .custom-file-upload input[type="file"] {
-    display: none;
-}
+        display: none;
+    }
 </style>
+
 <body>
     <!-- <div class="left-column">
         <img src="assets/img/GCU_logo.png" alt="Logo" class="logo">
     </div>
      -->
     <div class="container">
-    <span id="error">
- <!---- Initializing Session for errors --->
- <?php
- if (!empty($_SESSION['error'])) {
- echo $_SESSION['error'];
- unset($_SESSION['error']);
- }
- ?>
- </span>
         <header>STUDENT REGISTRATION FORM</header>
-        <form action="page2.php" id="registrationForm" enctype="multipart/form-data">
+        <form action="page2.php" method="POST" id="registrationForm" enctype="multipart/form-data">
             <div class="form first">
                 <div class="details personal">
                     <br>
                     <hr>
                     <hr>
                     <br>
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
-                        <label for="imageUpload" class="custom-file-upload" style=" display: inline-block;
-                            background-color: #4CAF50;
-                            color: #fff;
-                            padding: 10px 20px;
-                            cursor: pointer;
-                            border: none;
-                            border-radius: 5px;
-                            margin-right: 10px;">
-                            <input type="file" id="imageUpload" name="image" accept="image/*">
-                            Upload BSU School ID
-                        </label>
-                    </form>
                     <br>
                     <br>
                     <div class="fields">
                         <div class="input-field">
                             <label for="idno">ID Number</label>
-                            <input type="text" name='idno' id="idno" name="idno" required>
+                            <input type="text" name='idno' id="idno" required>
                         </div>
                         <div class="input-field">
                             <label for='course'>Course</label>
-                            <select required name='course' id="cs" >
+                            <select required name='course' id="cs">
                                 <option disabled selected>Select Course</option>
                                 <option value='BSAB'>Bachelor of Science in Agribusiness</option>
                                 <option value='BSA'>Bachelor of Science in Agriculture</option>
@@ -554,9 +607,10 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                                 <option value='BA Hist'>Bachelor of Arts in History</option>
                             </select>
                         </div>
+
                         <div class="input-field">
                             <label>Year Level</label>
-                            <select required id="cs">
+                            <select required id="cs" name='year_level'>
                                 <option disabled selected>Select</option>
                                 <option value='1'>1</option>
                                 <option value='2'>2</option>
@@ -566,14 +620,17 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                                 <option value='6'>6</option>
                             </select>
                         </div>
+
                         <div class="input-field">
                             <label>Last Name</label>
                             <input type="text" id="lastname" name="lastname" required>
                         </div>
+
                         <div class="input-field">
                             <label>First Name</label>
                             <input type="text" id="firstname" name="firstname" required>
                         </div>
+
                         <div class="input-field">
                             <label>Middle Name</label>
                             <input type="text" id="middlename" name="middlename" required>
@@ -588,13 +645,14 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                         </div>
                         <div class="input-field">
                             <label>Civil Status</label>
-                            <select required id="cs">
+                            <select required id="civs" name='civil_status'>
                                 <option disabled selected>Select</option>
                                 <option>Single</option>
                                 <option>Married</option>
                                 <option>Others</option>
                             </select>
                         </div>
+
                         <div class="input-field">
                             <label>Date of Birth</label>
                             <input type="date" id="dob" name="dob" required>
@@ -607,6 +665,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                             <label>Nationality</label>
                             <input type="text" id="nationality" name="nationality" required>
                         </div>
+
                         <div class="input-field1">
                             <label>Languages/Dialects you can read, write, and understand:</label>
                             <input type="text" id="lang" name="lang" required>
@@ -618,24 +677,26 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                         <h2>Family Background</h2>
                         <br>
                         <br>
+
                         <div style="width: 100%;">
-                            <!--  -->
+
                             <p><b>Whom do you live?</b></p>
                             <br>
                             <div class="radio-group">
                                 <label>
-                                    <input type="radio" id="yesRadio" name="whom" value="yes" onclick="showParentsInput();" required>
+                                    <input type="radio" id="yesRadio" name="whom" value="parents" onclick="showParentsInput();" required>
                                     Parents
                                 </label>
                                 <label>
-                                    <input type="radio" id="noRadio" name="whom" value="no" onclick="showGuardianInput();" required>
+                                    <input type="radio" id="noRadio" name="whom" value="guardian" onclick="showGuardianInput();" required>
                                     Guardian
                                 </label>
                             </div>
                             <br>
+
                             <div id="inputContainer" style="display: none;">
                                 <h3> Father</h3>
-                                <!-- <p>Father</p> -->
+
                                 <fieldset style="border:none;">
                                     <div class="fields">
                                         <div class="input-field">
@@ -666,7 +727,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                                 </fieldset>
                                 <hr>
                                 <h3> Mother</h3>
-                                <!-- <p>Father</p> -->
+
                                 <fieldset style="border:none;">
                                     <div class="fields">
                                         <div class="input-field">
@@ -698,7 +759,6 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                             </div>
                             <div id="inputContainerG" style="display: none;">
                                 <h3>Guardian</h3>
-                                <!-- <p>Father</p> -->
                                 <fieldset style="border:none;">
                                     <div class="fields">
                                         <div class="input-field">
@@ -730,7 +790,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                                 <hr>
                             </div>
                         </div>
-                        <!-- Skip for now -->
+
                         <div style="width: 100%;">
                             <p><b><i>List the names of your siblings (brothers & sisters)
                                         including yourself, arranged from the eldest to the youngest.</i></b></p>
@@ -751,7 +811,7 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                                 <option value="12">12</option>
                             </select>
                             <br><br>
-                            <table id="siblingsTable" class="responsive-table">
+                            <table id="siblingsTable" name='siblings' class="responsive-table">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
@@ -764,12 +824,12 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Sibling rows will be dynamically added here -->
+
                                 </tbody>
                             </table>
                         </div>
 
-                        <button class="nextBtn" id="next" type="button" onclick="goToPage2()">
+                        <button class="nextBtn" id="next" type="submit" onclick="goToPage2()">
                             <span class="btnText">Next</span>
                             <i class="uil uil-navigator"></i>
                         </button>
@@ -777,13 +837,29 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                     </div>
                 </div>
             </div>
-           
+        </form>
+
     </div>
     <script>
-function goToPage2() {
-    window.location.href = "page2.php";
-}
-</script>
+        function goToPage2() {
+            var table = document.getElementById('siblingsTable');
+            var data = [];
+            for (var i = 0, row; row = table.rows[i]; i++) {
+                //iterate through rows
+                //rows would be accessed using the "row" variable assigned in the for loop
+                var rowData = [];
+                for (var j = 0, col; col = row.cells[j]; j++) {
+                    rowData.push(col.innerHTML);
+                }
+                data.push(rowData);
+            }
+            console.log(data);
+            sessionStorage.setItem('tableData', JSON.stringify(data));
+            console.log('Table data saved in session.');
+            window.location.href = "page2.php";
+        }
+    </script>
+
 
 
     <script>
@@ -817,18 +893,21 @@ function goToPage2() {
             enableParentInputs(true); // Enable parent inputs
             enableGuardianInputs(false); // Disable Guardian inputs
         }
+
         function showGuardianInput() {
             document.getElementById("inputContainerG").style.display = "block";
             document.getElementById("inputContainer").style.display = "none"; // Hide Parent inputs
             enableParentInputs(false); // Disable Parent inputs
             enableGuardianInputs(true); // Enable Guardian inputs
         }
+
         function enableParentInputs(enable) {
             const parentInputs = document.querySelectorAll('#inputContainer input[type="text"]');
             parentInputs.forEach(input => {
                 input.disabled = !enable;
             });
         }
+
         function enableGuardianInputs(enable) {
             const guardianInputs = document.querySelectorAll('#inputContainerG input[type="text"]');
             guardianInputs.forEach(input => {
@@ -904,6 +983,7 @@ function goToPage2() {
             xmlhttp.open("GET", "../../backend/autocomplete.php?input=" + inputValue, true);
             xmlhttp.send();
         }
+
         function displaySuggestions(suggestions, suggestionsDiv, input) {
             if (suggestions.length === 0) {
                 suggestionsDiv.style.display = "none";
@@ -929,7 +1009,7 @@ function goToPage2() {
         });
     </script>
     <!-- save to database -->
-    <script>
+    <!-- <script>
         $("#registrationForm").on("submit", function(event) {
             var source = "student_side_signup";
             event.preventDefault();
@@ -1007,14 +1087,14 @@ function goToPage2() {
                 }
             });
         });
-    </script>
+    </script> -->
 
     <script>
-        document.getElementById("yesRadio1").addEventListener("click", function () {
+        document.getElementById("yesRadio1").addEventListener("click", function() {
             document.getElementById("indigenousInfo").style.display = "block";
             document.querySelector('label[for="indigenousInfo"]').style.display = "block";
         });
-        document.getElementById("noRadio1").addEventListener("click", function () {
+        document.getElementById("noRadio1").addEventListener("click", function() {
             document.getElementById("indigenousInfo").style.display = "none";
             document.querySelector('label[for="indigenousInfo"]').style.display = "none";
         });
@@ -1031,4 +1111,5 @@ function goToPage2() {
         }
     </script>
 </body>
+
 </html>

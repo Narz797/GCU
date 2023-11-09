@@ -1,7 +1,114 @@
 <?php
 session_start();
-$_SESSION['origin'] = 'Student_Register';//for register_user.php
+
+if (!empty($_POST['idno'])) {
+    $_SESSION['idno'] = $_POST['idno'];
+}
+if (!empty($_POST['course'])) {
+    $_SESSION['course'] = $_POST['course'];
+}
+if (!empty($_POST['year_level'])) {
+    $_SESSION['year_level'] = $_POST['year_level'];
+}
+if (!empty($_POST['lastname'])) {
+    $_SESSION['lastname'] = $_POST['lastname'];
+}
+if (!empty($_POST['firstname'])) {
+    $_SESSION['firstname'] = $_POST['firstname'];
+}
+if (!empty($_POST['middlename'])) {
+    $_SESSION['middlename'] = $_POST['middlename'];
+}
+if (!empty($_POST['cn'])) {
+    $_SESSION['cn'] = $_POST['cn'];
+}
+if (!empty($_POST['section'])) {
+    $_SESSION['section'] = $_POST['section'];
+}
+if (!empty($_POST['civil_status'])) {
+    $_SESSION['civil_status'] = $_POST['civil_status'];
+}
+if (!empty($_POST['dob'])) {
+    $_SESSION['dob'] = $_POST['dob'];
+}
+if (!empty($_POST['bp'])) {
+    $_SESSION['bp'] = $_POST['bp'];
+}
+if (!empty($_POST['nationality'])) {
+    $_SESSION['nationality'] = $_POST['nationality'];
+}
+if (!empty($_POST['lang'])) {
+    $_SESSION['lang'] = $_POST['lang'];
+}
+if (!empty($_POST['address'])) {
+    $_SESSION['address'] = $_POST['address'];
+}
+if (!empty($_POST['whom'])) {
+    $_SESSION['whom'] = $_POST['whom'];
+}
+if (!empty($_POST['Flname'])) {
+    $_SESSION['Flname'] = $_POST['Flname'];
+}
+if (!empty($_POST['Ffname'])) {
+    $_SESSION['Ffname'] = $_POST['Ffname'];
+}
+if (!empty($_POST['Fmname'])) {
+    $_SESSION['Fmname'] = $_POST['Fmname'];
+}
+if (!empty($_POST['Fage'])) {
+    $_SESSION['Fage'] = $_POST['Fage'];
+}
+if (!empty($_POST['Focc'])) {
+    $_SESSION['Focc'] = $_POST['Focc'];
+}
+if (!empty($_POST['Fedu'])) {
+    $_SESSION['Fedu'] = $_POST['Fedu'];
+}
+if (!empty($_POST['Mlname'])) {
+    $_SESSION['Mlname'] = $_POST['Mlname'];
+}
+if (!empty($_POST['Mfname'])) {
+    $_SESSION['Mfname'] = $_POST['Mfname'];
+}
+if (!empty($_POST['Mmname'])) {
+    $_SESSION['Mmname'] = $_POST['Mmname'];
+}
+if (!empty($_POST['Mage'])) {
+    $_SESSION['Mage'] = $_POST['Mage'];
+}
+if (!empty($_POST['Mocc'])) {
+    $_SESSION['Mocc'] = $_POST['Mocc'];
+}
+if (!empty($_POST['Medu'])) {
+    $_SESSION['Medu'] = $_POST['Medu'];
+}
+if (!empty($_POST['Glname'])) {
+    $_SESSION['Glname'] = $_POST['Glname'];
+}
+if (!empty($_POST['Gfname'])) {
+    $_SESSION['Gfname'] = $_POST['Gfname'];
+}
+if (!empty($_POST['Gmage'])) {
+    $_SESSION['Gmname'] = $_POST['Gmname'];
+}
+if (!empty($_POST['Gage'])) {
+    $_SESSION['Gage'] = $_POST['Gage'];
+}
+if (!empty($_POST['Gocc'])) {
+    $_SESSION['Gocc'] = $_POST['Gocc'];
+}
+if (!empty($_POST['Gedu'])) {
+    $_SESSION['Gedu'] = $_POST['Gedu'];
+}
+if (!empty($_POST['total_number'])) {
+    $_SESSION['total_number'] = $_POST['total_number'];
+}
+if (!empty($_POST['siblings'])) {
+    $_SESSION['siblings'] = serialize($_POST['siblings']);
+}
+
 ?>
+
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en">
@@ -486,12 +593,6 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
     <div class="container">
     <span id="error">
  <!---- Initializing Session for errors --->
- <?php
- if (!empty($_SESSION['error'])) {
- echo $_SESSION['error'];
- unset($_SESSION['error']);
- }
- ?>
  </span>
         <header>STUDENT REGISTRATION FORM</header>
         <form action="page2.php" id="registrationForm" enctype="multipart/form-data">
@@ -698,6 +799,20 @@ $_SESSION['origin'] = 'Student_Register';//for register_user.php
                     <input type="text" id="conpass" name="conpass">
                 </div>
             </div>
+
+            <h2>Upload ID</h2>
+            <br>
+            <label for="imageUpload" class="custom-file-upload" style=" display: inline-block;
+                            background-color: #4CAF50;
+                            color: #fff;
+                            padding: 10px 20px;
+                            cursor: pointer;
+                            border: none;
+                            border-radius: 5px;
+                            margin-right: 10px;">
+                            <input type="file" id="imageUpload" name="image" accept="image/*">
+                            Upload BSU School ID
+                        </label>
            
             <div class="buttons">
             <div class="backBtn" onclick="goToPage2()">
