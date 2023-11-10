@@ -108,7 +108,7 @@ echo json_encode($data);
         FROM student_user
         INNER JOIN transact ON student_user.stud_user_id = transact.student_id 
         INNER JOIN ca ON transact.transact_id = ca.transact_id 
-        WHERE student_user.stud_user_id = :id  AND transact.transact_id = :tid AND (transact.transact_type = 'Absent' OR transact.transact_type = 'Tardy' OR transact.transact_type = 'Academic Deficiency/ies');
+        WHERE student_user.stud_user_id = :id  AND transact.transact_id = :tid AND (transact.transact_type = 'Absent' OR transact.transact_type = 'Tardy');
     ";
 
     $stmt = $pdo->prepare($sql);
