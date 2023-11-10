@@ -310,6 +310,7 @@ $_SESSION['transact_type'] = 'referral';
 function logout() {
     window.location.href = '../home?logout=true';
 }
+var clg;
 
 $(document).ready(function() {
 //check if student is available in database

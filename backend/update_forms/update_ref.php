@@ -27,8 +27,19 @@ if (isset($_POST['stat']) && isset($_POST['id']) && isset($_POST['tid'])) {
         if ($stmt->execute()) {
             echo "Transaction marked as done successfully.";
         } else {
-            echo "Error marking the transaction as done: " . implode(' ', $stmt->errorInfo());
+            $errorInfo = $stmt->errorInfo();
+        
+            // Check if there is an error message
+            if (isset($errorInfo[2]) && is_string($errorInfo[2])) {
+                echo "Error marking the transaction as done: " . $errorInfo[2];
+            } else {
+                echo "An unknown error occurred while processing your request. Please try again later.";
+            }
         }
+
+        
+        
+        
     } catch (PDOException $e) {
         echo "Database error: " . $e->getMessage();
     } finally {

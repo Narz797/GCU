@@ -142,7 +142,7 @@ session_start();
 
 <!--This will be pop-up-->
 
-                <a href="#divOne"><button class="yes" onclick="status_update('done')">Received</button></a>
+                <a href="#divOne"><button class="yes" onclick="status_update('Recieved')">Received</button></a>
                  </div>
             </div>
         </div>
