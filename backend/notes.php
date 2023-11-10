@@ -23,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Delete Note
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    $sid = $student; // or $_GET['sid'] depending on how you're sending the datassssss
+    $sid = $_REQUEST['id']; // or $_GET['sid'] depending on how you're sending the datassssss
 
-    $stmt = $pdo->prepare("DELETE FROM notes WHERE stud_id = :sid");
+    $stmt = $pdo->prepare("DELETE FROM notes WHERE id = :sid");
     $stmt->bindParam(':sid', $sid);
     // $stmt->bindParam(':id', $id);
     $stmt->execute();
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
 // Update Note
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     parse_str(file_get_contents("php://input"), $_PUT);
-    $id = $student;
+    $id = $_PUT['id'];
     $title = $_PUT['title'];
     $description = $_PUT['description'];
 

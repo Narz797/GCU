@@ -62,6 +62,7 @@ function showNotes() {
                                     </div>
                                 </div>
                             </li>`;
+                            console.log("id: ", note.id);
                 addBox.insertAdjacentHTML("afterend", liTag);
             });
         })
@@ -79,33 +80,29 @@ function showMenu(elem) {
 }
 
 
-function deleteNote() {
+function deleteNote(id) {
     let confirmDel = confirm("Are you sure you want to delete this note?");
     if (!confirmDel) return;
 
     // Send a DELETE request to the server to delete the note
-    sendRequest('DELETE', `../../backend/notes.php`, data => {
-        console.log(data);
-        showNotes(); // Refresh notes or handle success
+    sendRequest('DELETE', `../../backend/notes.php?id=${id}`, data => {
+        console.log("deleted",data);
+         // Refresh notes or handle success
     });
+    showNotes();
 }
 
-function updateNote(title, filterDesc) {
+function updateNote(id, title, filterDesc) {
     let description = filterDesc.replaceAll('<br/>', '\r\n');
+    student = id; // Update the student ID for the update action
+    isUpdate = true; // Set the update flag to true
     addBox.click();
     titleTag.value = title;
     descTag.value = description;
     popupTitle.innerText = "Update a Note";
     addBtn.innerText = "Update Note";
-    // Update the UI for editing a note
-
-    // Assuming isUpdate is set to true and relevant fields are populated
-    // Send an UPDATE request to the server with the updated data
-    sendRequest('PUT', '../../backend/notes.php', `title=${title}&description=${description}`, data => {
-        console.log(data);
-        showNotes(); // Refresh notes or handle success
-    });
 }
+
 
 addBtn.addEventListener("click", e => {
     e.preventDefault();
@@ -127,8 +124,15 @@ addBtn.addEventListener("click", e => {
                 showNotes(); // Refresh notes or handle success
                 closeIcon.click();
             });
-        } else {
-            // For update logic, handled in the updateNote function
+        } else if (isUpdate){
+            // Send an UPDATE request to the server with the updated data
+            sendRequest('PUT', '../../backend/notes.php', `id=${student}&title=${title}&description=${description}`, data => {
+                console.log(data);
+                showNotes(); // Refresh notes or handle success
+                closeIcon.click(); // Close the form or reset UI after the update
+            });
+            isUpdate = false; // Reset the update flag after the update action
         }
     }
 });
+
