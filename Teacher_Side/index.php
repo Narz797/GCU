@@ -222,7 +222,7 @@ $_SESSION['transact_type'] = 'referral';
           <div class="fields">
           <div class="input-field">
             <label>College</label>
-              <select required id="clg_edit">
+              <select id="clg_edit">
                 <option disabled selected>Select College</option>
                 <option>College of Agriculture</option>
                 <option>College of Teacher Education</option>
@@ -241,7 +241,7 @@ $_SESSION['transact_type'] = 'referral';
           </div>
           <div class="input-field">
             <label>Gender</label>
-            <select required id="gnder_edit">
+            <select id="gnder_edit">
               <option disabled selected>Select gender</option>
               <option>Male</option>
               <option>Female</option>
@@ -249,27 +249,27 @@ $_SESSION['transact_type'] = 'referral';
           </div>
           <div class="input-field">
             <label>Last Name</label>
-            <input type="text" required id="lname_edit">
+            <input type="text" id="lname_edit">
           </div>
           <div class="input-field">
             <label>First Name</label>
-            <input type="text" required id="fname_edit">
+            <input type="text" id="fname_edit">
           </div>
           <div class="input-field">
             <label>Middle Name</label>
-            <input type="text" required id="mname_edit">
+            <input type="text" id="mname_edit">
           </div>
           <div class="input-field">
             <label>Contact Number</label>
-            <input type="text" required id="cn_edit">
+            <input type="text" id="cn_edit">
           </div>
           <div class="input-field">
             <label>Email</label>
-            <input type="text" required id="email_edit">
+            <input type="text" id="email_edit">
           </div>
           <div class="input-field">
             <label>Civil Status</label>
-            <select required id="cs_edit">
+            <select id="cs_edit">
               <option disabled selected>Select</option>
               <option>Single</option>
               <option>Married</option>
@@ -308,6 +308,7 @@ function logout() {
     window.location.href = '../home?logout=true';
 }
 var clg;
+var eID
 
 $(document).ready(function() {
 //check if student is available in database
@@ -349,7 +350,7 @@ $("#form_transact").on("submit", function (event) {
         type: 'POST',
         url: '../backend/edit_teacher.php',
         data: {
-                          // tid: $("#idNumber").val(),
+                          tid: eID,
                           colege: $("#clg_edit").val(),
                           gender: $("#gnder_edit").val(),
                           fname: $("#fname_edit").val(),
@@ -444,6 +445,7 @@ $.ajax({
             if (data.length > 0) {
                   var EmployeeData = data[0]; // Assuming you expect a single row
                     var EmployeeId = EmployeeData.employee_id;
+                    eID = EmployeeData.employee_id;
                     var college = EmployeeData.college;
                     var gender = EmployeeData.gender;
                     var name = EmployeeData.last_name + ', '+ EmployeeData.first_name;
