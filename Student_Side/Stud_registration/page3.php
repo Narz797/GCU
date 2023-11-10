@@ -670,7 +670,7 @@ if (!empty($_POST['othawards'])) {
                         </div>
                         </p>
                         <br>
-                        <fieldset class="container1">
+                        
                             <legend>
                                 <h3><b>Sources of Financial Support</b></h3>
                             </legend>
@@ -689,13 +689,12 @@ if (!empty($_POST['othawards'])) {
                                 </label>
                                 <label class="container1">
                                     Scholarship
-                                    <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox">
+                                    <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox"  onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
                                     <span class="checkmark"></span>
                                 </label>
                                 <!-- Specify box for Scholarship -->
-                                <div id="specifyBoxScholarship" style="display: block;">
-                                    <label for="specifyScholarship">Specify Scholarship:</label>
-                                    <input type="text" name="scholarship">
+                                <div id="specifyBoxScholarship" style="display: none"> Specify:
+                                    <input type="text" id="textBox">
                                 </div>
                                 <!-- Other Checkbox -->
                                 <label class="container1">
@@ -709,7 +708,7 @@ if (!empty($_POST['othawards'])) {
                                 </div>
                             </div>
                             <br>
-                        </fieldset>
+                       
                         <!-- Your submit button and other form sections here -->
                         <fieldset>
                             <legend>
