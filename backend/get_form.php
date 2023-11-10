@@ -87,6 +87,51 @@ foreach ($data as &$row) {
 echo json_encode($data);
 
     //code for readmission
+}  else if ($form == 'admission') {
+    $sql = "SELECT
+        student_user.stud_user_id,
+        student_user.last_name,
+        student_user.first_name,
+        student_user.email,
+        student_user.Year_level,
+        student_user.course,
+        student_user.gender,
+        transact.transact_id,
+        student_user.Contact_number,
+        student_user.ParentGuardianNumber,
+        student_user.ParentGuardianName,
+        ca.date_of_AbsentOrTardy,
+        ca.reason,
+        ca.attachment1,
+        ca.attachment2,
+        ca.attachment3
+        FROM student_user
+        INNER JOIN transact ON student_user.stud_user_id = transact.student_id 
+        INNER JOIN ca ON transact.transact_id = ca.transact_id 
+        WHERE student_user.stud_user_id = :id  AND transact.transact_id = :tid AND (transact.transact_type = 'Absent' OR transact.transact_type = 'Tardy' OR transact.transact_type = 'Academic Deficiency/ies');
+    ";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':tid', $tid, PDO::PARAM_INT);  // Bind the ID parameter
+
+    $stmt->execute();
+
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+ // Assuming your blob columns are named "image1_data" and "image2_data"
+foreach ($data as &$row) {
+    $row['attachment1'] = base64_encode($row['attachment1']);
+    $row['attachment2'] = base64_encode($row['attachment2']);
+    $row['attachment3'] = base64_encode($row['attachment3']);
+}
+
+
+
+// Prepare and echo data as JSON
+echo json_encode($data);
+
+    //code for readmission
 } else if ($form == 'referral') {
     $sql = "SELECT
         student_user.stud_user_id,

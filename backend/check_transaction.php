@@ -36,10 +36,42 @@ if ($type == 'readmission') {
     // Prepare and echo data as JSON
     echo json_encode($data);
 
+} else if ($type == 'admission') {
+    $sql = "SELECT
+    student_user.stud_user_id,
+    student_user.first_name,
+    student_user.last_name,
+    student_user.Year_level,
+    student_user.course,
+    student_user.Contact_number,
+    student_user.ParentGuardianNumber,
+    student_user.gender,
+    courses.Colleges,
+    transact.transact_id,
+    transact.status,
+    transact.transact_type,
+    transact.date_created
+    FROM
+    student_user
+    INNER JOIN
+    transact ON student_user.stud_user_id = transact.student_id
+    INNER JOIN ca ON transact.transact_id = ca.transact_id 
+    INNER JOIN
+    courses ON student_user.course = courses.Acronym
+    WHERE
+    ca.reason = 'Absent' OR ca.reason = 'Tardy' OR ca.reason = 'Academic Deficiency/ies';";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Prepare and echo data as JSON
+    echo json_encode($data);
+
 } else if ($type == 'referral') {
     $sql = "SELECT
     tstable.student_id AS stud_user_id,
-    tstable.id AS transact_id,
+    transact.transact_id,
     tstable.last_name,
     tstable.first_name,
     tstable.year_level AS Year_level,
@@ -52,9 +84,16 @@ if ($type == 'readmission') {
     tstable.status AS status,
     NULL AS transact_type,
     tstable.date AS date_created,
-    tstable.teacher_id
+    tstable.teacher_id,
+    referral.reg
 FROM
     tstable
+INNER JOIN
+    transact ON tstable.student_id = transact.student_id
+INNER JOIN
+    referral ON transact.transact_id = referral.transact_id
+
+    
 UNION ALL
 SELECT
     student_user.stud_user_id,
@@ -71,7 +110,8 @@ SELECT
     transact.status,
     transact.transact_type,
     transact.date_created,
-    referral.teacher_id
+    referral.teacher_id,
+    referral.reg
 FROM
     student_user
 INNER JOIN

@@ -27,9 +27,11 @@ if (
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $status = 'pending';
+    $reasons = $_POST['reasons'];
 
     if (count($result) === 0) {
         echo "Not_added";
+        $RUR = 'Unregistered';
             
                 $query2 = "SELECT CONCAT(`first_name`, ' ', `last_name`) AS `full_name` FROM `teachers` WHERE `employee_id` = ?";
                 $stmt2 = $pdo->prepare($query2);
@@ -38,6 +40,7 @@ if (
                 $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 
                 $tname = $result2[0]['full_name']; // Assuming you expect only one result and want the full name as a string
+                $RUR = 'Unregistered';
                 $tid=$_SESSION['session_id'];
                 $sid = $_POST['sid'];
                 $fname = $_POST['fname'];
@@ -47,22 +50,22 @@ if (
                 $gender = $_POST['gender'];
                 $course = $_POST['course'];
                 $cn = $_POST['cn'];
-                $reasons = $_POST['reasons'];
+                
                 $date = $_POST['datee']; 
             
                 // $refer = $_POST['refer'];
                 $datetime = new DateTime();
                 $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
             
-                $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :transact_type, :date_created, :status)';
-                $sql_2 = 'INSERT INTO referral(`transact_id`, `reason`, `referred`, `teacher_id`) VALUES (:transact_id, :reasons, :refer, :tid)';
+                $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :reasons, :date_created, :status)';
+                $sql_2 = 'INSERT INTO referral(`transact_id`, `reason`, `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :reasons, :refer, :tid, :RUR)';
                 $sql_3 = 'INSERT INTO `tstable`(`student_id`, `teacher_id`, `first_name`, `middle_name`, `last_name`, `course`, `year_level`, `gender`, `contact_number`, `reason`, `date`,  `refer`, `status`) VALUES (:sid, :tid, :fname, :mname, :lname, :course, :yrlvl, :gender, :cn, :reasons, :date, :tname, :status)';
             
             
                 try {
                     $code = $pdo->prepare($sql_1);
                     $code->bindParam(':sid', $sid); // Change :student_id to :sid
-                    $code->bindParam(':transact_type', $transact);
+                    $code->bindParam(':reasons', $reasons);
                     $code->bindParam(':date_created', $dateCreated);
                     $code->bindParam(':status', $status); // Make sure $status is defined and has a value
                     $code->execute();
@@ -73,7 +76,7 @@ if (
                     $code->bindParam(':reasons', $reasons);
                     $code->bindParam(':refer', $tname);
                     $code->bindParam(':tid', $tid);
-                
+                    $code->bindParam(':RUR', $RUR);
                     $code->execute();
                 
                     $code = $pdo->prepare($sql_3);
@@ -103,14 +106,15 @@ if (
 
     } else {
         echo "Added";
-        $reasons = $_POST['reason'];
+       
+        $RUR = 'Registered';
         // $refer = $_POST['refer'];
         $datetime = new DateTime();
 
         $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
 
         $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :transact_type, :date_created, :status)';
-        $sql_2 = 'INSERT INTO referral(`transact_id`, `reason`, `referred`, `teacher_id`) VALUES (:transact_id, :reasons, :refer, :tid)';
+        $sql_2 = 'INSERT INTO referral(`transact_id`, `reason`, `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :reasons, :refer, :tid, :RUR)';
         try {
             $code = $pdo->prepare($sql_1);
             $code->bindParam(':student_id', $id);
@@ -127,6 +131,7 @@ if (
         $code->bindParam(':reasons', $reasons);
         $code->bindParam(':refer', $tname); // Assuming $tname contains the full name
         $code->bindParam(':tid', $tid);
+        $code->bindParam(':RUR', $RUR);
         $code->execute();
     }
     

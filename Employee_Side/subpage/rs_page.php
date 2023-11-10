@@ -210,7 +210,9 @@ function searchTable() { //searches in all column
                 for (var i = 0; i < data.length; i++) {
                     var entry = data[i];
                     var status = entry.status;
-                    var tableToAppend = tableBody; // Determine which table to append to
+                    var tableToAppend = tableBody;
+                    var reg = entry.reg; 
+                    console.log("reg", reg);
                     
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.stud_user_id + "</td>");
@@ -220,9 +222,9 @@ function searchTable() { //searches in all column
                     row.append("<td>" + entry.course + "</td>");
                     row.append("<td>" + entry.Colleges + "</td>");
                     // row.append("<td>" + entry.RUR + "</td>");
-                    if (entry.RUR == 'Registered') {
+                    if (reg == 'Registered') {
                             row.append("<td><p class='status'>Registered</p></td>");
-                        } else if (entry.RUR == 'Unregistered') {
+                        } else if (reg == 'Unregistered') {
                             row.append("<td><p class='status1'>Unregistered</p></td>");
                         }
                     row.append("<td>" + entry.referred + "</td>");
