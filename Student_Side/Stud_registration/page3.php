@@ -589,6 +589,47 @@ if (!empty($_POST['othawards'])) {
     .custom-file-upload input[type="file"] {
         display: none;
     }
+
+ 
+
+        #textBox {
+            border: none; /* Remove the default border */
+            border-bottom: 1px solid #000; /* Add a bottom border for the underline effect */
+            outline: none; /* Remove the default focus outline */
+            width:80%;
+        }
+
+        .container1 {
+            display: block;
+            position: relative;
+            padding-left: 30px; /* Adjust the padding as needed */
+            margin-bottom: 12px; /* Adjust the margin as needed */
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Style for the checkbox input */
+        #parentsCheckbox {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Style for the checkmark */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px; /* Adjust the size of the checkmark as needed */
+            width: 20px; /* Adjust the size of the checkmark as needed */
+            background-color: transparent;
+            border: 2px solid #000; /* Outline color */
+        }
+
+        /* Style for the checked state of the checkbox */
+        #parentsCheckbox:checked + .checkmark {
+            background-color: transparent;
+        }
 </style>
 
 <body>
@@ -696,12 +737,13 @@ if (!empty($_POST['othawards'])) {
                                 <div id="specifyBoxScholarship" style="display: none"> Specify:
                                     <input type="text" id="textBox">
                                 </div>
-                                <!-- Other Checkbox -->
+                                
                                 <label class="container1">
                                     Others:
                                     <input type="checkbox" id="otherCheckbox" name='others' onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
                                     <span class="checkmark"></span>
                                 </label>
+                                
                                 <!-- Specify box for Others -->
                                 <div id="specifyBoxOther" style="display: none"> Specify:
                                     <input type="text" id="textBox">
