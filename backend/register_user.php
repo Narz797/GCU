@@ -5,12 +5,67 @@ if (isset($_SESSION['origin'])) {
 
     $origin = $_SESSION['origin'];
 
+
     if ($origin === 'Student_Register') {
         //register for student in here
+        $membership = $_POST['membership'];
+        $indigeninfo = $_POST['indigenousInfo'];
+        $pwd = $_POST['pwd'];
+        $studpar = $_POST['studpar'];
+        $src = $_POST['src'];
+        $scholarship = $_POST['scholarship'];
+        $others = $_POST['others'];
+        $maristatus = $_POST['maritalStatus'];
+        $first = $_POST['first'];
+        $second = $_POST['second'];
+        $third = $_POST['third'];
+        $Fis = $_POST['Fis'];
+        $Mis = $_POST['Mis'];
+        $abtFam = $_POST['abtFam'];
+        $whenChild = $_POST['whenChild'];
+        $teachAre = $_POST['teachAre'];
+        $friendsDunno = $_POST['friendsDuno'];
+        $future = $_POST['future'];
+        $goal = $_POST['goal'];
+        $eu = $_POST['eu'];
+        $pass = $_POST['pass'];
+        $conpass = $_POST['conpass'];
+        $image = $_POST['image'];
 
+        $query1 = "SELECT * FROM `student_user` WHERE `stud_user_id` = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(1, $_SESSION['idno']);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        if (count($result) === 1) {
+            echo "User Already Registered";
+        } else {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO `student_user`(`stud_user_id`, `course`, `Year_level`, `last_name`,
+             `first_name`, `middle_name`, `Contact_number`, `year_enrolled`, `Section`, `Civil_status`, 
+             `gender`, `birth_date`, `Birth_place`, `Nationality`, `Languages_and_dialects`, `Address`, 
+             `email`, `IG`, `PWD`, `username`, `password`) 
+             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(1, $_SESSION['idno']);
+            $stmt->bindParam(2, $college);
+            $stmt->bindParam(3, $gender);
+            $stmt->bindParam(4, $lastname);
+            $stmt->bindParam(5, $firstname);
+            $stmt->bindParam(6, $middlename);
+            $stmt->bindParam(7, $cn);
+            $stmt->bindParam(8, $email);
+            $stmt->bindParam(9, $hashedPassword);
+            $stmt->bindParam(10, $stat);
+    
+            if ($stmt->execute()) {
+                echo "success_teacher";
+            } else {
+                echo "Registration failed";
+            }
         }
-        elseif ($origin === 'Employee_Register') {
+
         }
         elseif ($origin === 'Teacher_Register') {
             if (

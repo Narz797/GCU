@@ -567,7 +567,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <label for="idno">ID Number</label>
                             <input type="text" name='idno' id="idno" required>
                         </div>
-                        <div class="input-field">
+                         <div class="input-field">
                             <label for='course'>Course</label>
                             <select required name='course' id="cs">
                                 <option disabled selected>Select Course</option>
@@ -612,12 +612,12 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <label>Year Level</label>
                             <select required id="cs" name='year_level'>
                                 <option disabled selected>Select</option>
-                                <option value='1st'>1st</option>
-                                <option value='2nd'>2nd</option>
-                                <option value='3rd'>3rd</option>
-                                <option value='4th'>4th</option>
-                                <option value='5th'>5th</option>
-                                <option value='6th'>6th</option>
+                                <option value='1'>1st</option>
+                                <option value='2'>2nd</option>
+                                <option value='3'>3rd</option>
+                                <option value='4'>4th</option>
+                                <option value='5'>5th</option>
+                                <option value='6'>6th</option>
                             </select>
                         </div>
 
@@ -640,8 +640,12 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <input type="text" id="cn" name="cn" required>
                         </div>
                         <div class="input-field">
+                            <label>Year Enrolled</label>
+                            <input type="text" id="year_enroll" name="year_enroll" required>
+                        </div>
+                        <div class="input-field">
                             <label>Section</label>
-                            <input type="text" id="section" name="section" required>
+                            <input type="data" id="section" name="section" required>
                         </div>
                         <div class="input-field">
                             <label>Civil Status</label>
@@ -650,6 +654,14 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                 <option>Single</option>
                                 <option>Married</option>
                                 <option>Others</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Gender</label>
+                            <select required id="gender" name='gender'>
+                                <option disabled selected>Select</option>
+                                <option>Male</option>
+                                <option>Female</option>
                             </select>
                         </div>
 
@@ -828,6 +840,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                 </tbody>
                             </table>
                         </div>
+                       
 
                         <button class="nextBtn" id="next" type="submit" onclick="goToPage2()">
                             <span class="btnText">Next</span>
@@ -836,17 +849,16 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 
                     </div>
                 </div>
-            </div>
+            </div> 
         </form>
 
     </div>
     <script>
+    let siblingsData = [];
     function createTable() {
         var totalNumber = document.getElementById("total_number").value;
         var table = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0];
         table.innerHTML = ""; // Clear existing rows
-
-        var siblingsData = [];
 
         for (var i = 0; i < totalNumber; i++) {
             var row = table.insertRow(i);
@@ -880,6 +892,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
         // Call logTableValues to populate the siblingsData array
         logTableValues(siblingsData);
 
+        sessionStorage.setItem('siblings',siblingsData);
         // Return the values
         return siblingsData;
     }
@@ -899,19 +912,12 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
             siblingsData[i].education = inputs[4].value;
             siblingsData[i].civilStatus = inputs[5].value;
         }
+        
     }
 </script>
 
 <script>
     function goToPage2() {
-        var siblingsData = createTable();
-
-        // Prevent form submission
-        event.preventDefault();
-
-        // Do something with the sibling data (e.g., send it to the server)
-        console.log("Siblings Data:", siblingsData);
-
         // Redirect to the next page
         window.location.href = "page2.php";
     }
@@ -1039,86 +1045,6 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
             this.value = this.value.toUpperCase();
         });
     </script>
-    <!-- save to database -->
-    <!-- <script>
-        $("#registrationForm").on("submit", function(event) {
-            var source = "student_side_signup";
-            event.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: '../../backend/register_user.php',
-                data: {
-                    // idno: $("#idno").val(),
-                    // firstname: $("#firstname").val(),
-                    // lastname: $("#lastname").val(),
-                    // middlename: $("#middlename").val(),
-                    // course: $("#course").val(),
-                    // year: $("#year").val(),
-                    // cn: $("#cn").val(),
-                    // email: $("#email").val(),
-                    // cs: $("#cs").val(),
-                    // select: $("#select").val(),
-                    // dob: $("#dob").val(),
-                    // bp: $("#bp").val(),
-                    // nationality: $("#nationality").val(),
-                    // lang: $("#lang").val(),
-                    // address: $("#address").val(),
-                    // whom: $("#whom").val(),
-                    // Flname: $("#Flname").val(),
-                    // Ffname: $("#Ffname").val(),
-                    // Fmname: $("#Fmname").val(),
-                    // Fage: $("#Fage").val(),
-                    // Focc: $("#Focc").val(),
-                    // Fedu: $("#Fedu").val(),
-                    // Mlname: $("#Mlname").val(),
-                    // Mfname: $("#Mfname").val(),
-                    // Mmname: $("#Mmname").val(),
-                    // Mage: $("#Mage").val(),
-                    // Mocc: $("#Mocc").val(),
-                    // Medu: $("#Medu").val(),
-                    // Glname: $("#Glname").val(),
-                    // Gfname: $("#Gfname").val(),
-                    // Gmname: $("#Gmname").val(),
-                    // Gage: $("#Gage").val(),
-                    // Gocc: $("#Gocc").val(),
-                    // Gedu: $("#Gedu").val(),
-                    // total_number: $("#total_number").val(),
-                    // siblings: $("#siblings").val(),
-                    // membership: $("#membership").val(),
-                    // indigenousInfo: $("#indigenousInfo").val(),
-                    // pwd: $("#pwd").val(),
-                    // studpar: $("#studpar").val(),
-                    // src: $("#src").val(), // Assuming src is an input element
-                    // maritalStatus: $("#maritalStatus").val(),
-                    // first: $("#first").val(),
-                    // Fis: $("#Fis").val(),
-                    // Mis: $("#Mis").val(),
-                    // abtFam: $("#abtFam").val(),
-                    // whenChild: $("#whenChild").val(),
-                    // teachAre: $("#teachAre").val(),
-                    // freindsDunno: $("#freindsDunno").val(),
-                    // future: $("#future").val(),
-                    // goal: $("#goal").val(),
-                    // eu: $("#eu").val(),
-                    // pass: $("#password").val(),
-                    // // signature:$("#customFile").val(),
-                    form: $('#registrationForm').val(),
-                    source: source
-                },
-                success: function(data) {
-                    if (data === "success_student") {
-                        window.location.href = "../Student_Side/student-login";
-                        alert("Sign up successful");
-                    } else {
-                        alert(data);
-                    }
-                },
-                error: function(data) {
-                    alert("Connection error");
-                }
-            });
-        });
-    </script> -->
 
     <script>
         document.getElementById("yesRadio1").addEventListener("click", function() {

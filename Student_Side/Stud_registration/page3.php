@@ -614,9 +614,6 @@ if (!empty($_POST['othawards'])) {
                     <br>
                     <!-- <h2>Personal Details</h2>
             <hr> -->
-
-
-
                     <div>
 
                         <br>
@@ -692,18 +689,18 @@ if (!empty($_POST['othawards'])) {
                                 </label>
                                 <label class="container1">
                                     Scholarship
-                                    <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox" onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
+                                    <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox">
                                     <span class="checkmark"></span>
                                 </label>
                                 <!-- Specify box for Scholarship -->
                                 <div id="specifyBoxScholarship" style="display: block;">
                                     <label for="specifyScholarship">Specify Scholarship:</label>
-                                    <input type="text">
+                                    <input type="text" name="scholarship">
                                 </div>
                                 <!-- Other Checkbox -->
                                 <label class="container1">
                                     Others:
-                                    <input type="checkbox" id="otherCheckbox" onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
+                                    <input type="checkbox" id="otherCheckbox" name='others' onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
                                     <span class="checkmark"></span>
                                 </label>
                                 <!-- Specify box for Others -->

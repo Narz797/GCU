@@ -4,6 +4,8 @@
 <?php
 session_start();
 
+echo var_dump($_POST);
+
 if (!empty($_POST['idno'])) {
     $_SESSION['idno'] = $_POST['idno'];
 }
@@ -30,6 +32,9 @@ if (!empty($_POST['section'])) {
 }
 if (!empty($_POST['civil_status'])) {
     $_SESSION['civil_status'] = $_POST['civil_status'];
+}
+if (!empty($_POST['gender'])) {
+    $_SESSION['gender'] = $_POST['gender'];
 }
 if (!empty($_POST['dob'])) {
     $_SESSION['dob'] = $_POST['dob'];
@@ -107,14 +112,9 @@ if (!empty($_POST['total_number'])) {
     $_SESSION['total_number'] = $_POST['total_number'];
 }
 if (!empty($_POST['siblings'])) {
-    $_SESSION['siblings'] = serialize($_POST['siblings']);
+    $_SESSION['siblings'] = $_POST['siblings'];
 }
-if (isset($_SESSION['tableData'])) {
-    $tableData = $_SESSION['tableData'];
-    // Process the data here
-} else {
-    echo "Table data is not set in the session.";
-}
+
 ?>
 
 <head>
