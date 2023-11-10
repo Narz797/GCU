@@ -231,11 +231,6 @@ session_start();
                 <small>Type what to take note about the student.</small>
             </header>
             <hr>
-
-<!-- your call if you delete this area
-or use the same method for the add/edit of the button in the table
-below if you understand the javascript-->
-
         <div class="popup-box">
         <div class="popup">
         <div class="content">

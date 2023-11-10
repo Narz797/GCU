@@ -140,8 +140,8 @@ session_start();
                                 <form>
                                     <!-- <label>Attending Personnel</label>
                                     <input type="text" placeholder="Your Name"> -->
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..." id="remarks"></textarea>
+                                    <!-- <label>Remarks</label>
+                                    <textarea placeholder="Type here if you have remarks..." id="remarks"></textarea> -->
                                     <label>Rescheduled Date and Time:</label>
                                     <input type="datetime-local" id="date">
                                     <br>

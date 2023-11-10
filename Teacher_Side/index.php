@@ -218,15 +218,11 @@ $_SESSION['transact_type'] = 'referral';
     <a href="#" class="close">&times;</a>
       <div class="popup">
       <div class="popup2">
-        <form>
+        <form id="form_edit" name="form3" method="post">
           <div class="fields">
           <div class="input-field">
-            <label for="idNumber">Employee ID Number:</label>
-            <input type="text" id="idNumber" name="idNumber" required>
-          </div>
-          <div class="input-field">
             <label>College</label>
-              <select required>
+              <select required id="clg_edit">
                 <option disabled selected>Select College</option>
                 <option>College of Agriculture</option>
                 <option>College of Teacher Education</option>
@@ -245,7 +241,7 @@ $_SESSION['transact_type'] = 'referral';
           </div>
           <div class="input-field">
             <label>Gender</label>
-            <select required>
+            <select required id="gnder_edit">
               <option disabled selected>Select gender</option>
               <option>Male</option>
               <option>Female</option>
@@ -253,27 +249,27 @@ $_SESSION['transact_type'] = 'referral';
           </div>
           <div class="input-field">
             <label>Last Name</label>
-            <input type="text" required>
+            <input type="text" required id="lname_edit">
           </div>
           <div class="input-field">
             <label>First Name</label>
-            <input type="text" required>
+            <input type="text" required id="fname_edit">
           </div>
           <div class="input-field">
             <label>Middle Name</label>
-            <input type="text" required>
+            <input type="text" required id="mname_edit">
           </div>
           <div class="input-field">
             <label>Contact Number</label>
-            <input type="text" required>
+            <input type="text" required id="cn_edit">
           </div>
           <div class="input-field">
             <label>Email</label>
-            <input type="text" required>
+            <input type="text" required id="email_edit">
           </div>
           <div class="input-field">
             <label>Civil Status</label>
-            <select required>
+            <select required id="cs_edit">
               <option disabled selected>Select</option>
               <option>Single</option>
               <option>Married</option>
@@ -281,10 +277,11 @@ $_SESSION['transact_type'] = 'referral';
             </select>
            </div>
          </div>
-        </form>
+        
       </div>
       </div>
-      <button>EDIT</button>
+      <button type="submit" name="submit">EDIT</button>
+      </form>
     </div>
   </div>
   <div class="overlay" id="divTwo">
@@ -346,9 +343,32 @@ $("#form_transact").on("submit", function (event) {
       });
     });
 
-    function second_form(){
-     
+    $("#form_edit").on("submit", function (event) {
+      event.preventDefault();
+      $.ajax({
+        type: 'POST',
+        url: '../backend/edit_teacher.php',
+        data: {
+                          // tid: $("#idNumber").val(),
+                          colege: $("#clg_edit").val(),
+                          gender: $("#gnder_edit").val(),
+                          fname: $("#fname_edit").val(),
+                          mname: $("#mname_edit").val(),
+                          lname: $("#lname_edit").val(),
+                          cn: $("#cn_edit").val(),
+                          email: $("#email_edit").val(),
+                          cs: $("#cs_edit").val()
+                          
+                      },
+        success: function (data) {
+          alert(data);
+
+        },
+    error: function (xhr, status, error) {
+      alert("Error: " + error);
     }
+      });
+    });
 
 
     
