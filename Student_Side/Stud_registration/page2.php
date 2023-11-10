@@ -4,8 +4,6 @@
 <?php
 session_start();
 
-echo var_dump($_POST);
-
 if (!empty($_POST['idno'])) {
     $_SESSION['idno'] = $_POST['idno'];
 }
@@ -26,6 +24,9 @@ if (!empty($_POST['middlename'])) {
 }
 if (!empty($_POST['cn'])) {
     $_SESSION['cn'] = $_POST['cn'];
+}
+if (!empty($_POST['year_enroll'])) {
+    $_SESSION['year_enroll'] = $_POST['year_enroll'];
 }
 if (!empty($_POST['section'])) {
     $_SESSION['section'] = $_POST['section'];
@@ -680,10 +681,6 @@ if (!empty($_POST['siblings'])) {
         <img src="assets/img/GCU_logo.png" alt="Logo" class="logo">
     </div>
      -->
-    <script>
-        var session = eval('(<?php echo json_encode($_SESSION) ?>)');
-        console.log(session);
-    </script>
     <div class="container">
         <header>STUDENT REGISTRATION FORM - EDUCATIONAL BACKGROUND</header>
         <br>
