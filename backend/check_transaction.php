@@ -59,7 +59,7 @@ if ($type == 'readmission') {
     INNER JOIN
     courses ON student_user.course = courses.Acronym
     WHERE
-    ca.reason = 'Absent' OR ca.reason = 'Tardy' OR ca.reason = 'Academic Deficiency/ies';";
+    ca.reason = 'Absent' OR ca.reason = 'Tardy';";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
