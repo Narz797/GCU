@@ -8,32 +8,78 @@ if (isset($_SESSION['origin'])) {
 
     if ($origin === 'Student_Register') {
         //register for student in here
-        $membership = $_POST['membership'];
-        $indigeninfo = $_POST['indigenousInfo'];
-        $pwd = $_POST['pwd'];
-        $studpar = $_POST['studpar'];
-        $src = $_POST['src'];
-        $scholarship = $_POST['scholarship'];
-        $others = $_POST['others'];
-        $maristatus = $_POST['maritalStatus'];
-        $first = $_POST['first'];
-        $second = $_POST['second'];
-        $third = $_POST['third'];
-        $Fis = $_POST['Fis'];
-        $Mis = $_POST['Mis'];
-        $abtFam = $_POST['abtFam'];
-        $whenChild = $_POST['whenChild'];
-        $teachAre = $_POST['teachAre'];
-        $friendsDunno = $_POST['friendsDuno'];
-        $future = $_POST['future'];
-        $goal = $_POST['goal'];
-        $eu = $_POST['eu'];
-        $pass = $_POST['pass'];
-        $conpass = $_POST['conpass'];
-        $image = $_POST['image'];
+        if (!empty($_POST['membership'])) {
+            $membership = $_POST['membership'];
+        }
+        if (!empty($_POST['indigenousInfo'])) {
+            $indigeninfo = $_POST['indigenousInfo'];
+        }
+        if (!empty($_POST['pwd'])) {
+            $pwd = $_POST['pwd'];
+        }
+        if (!empty($_POST['studpar'])) {
+            $studpar = $_POST['studpar'];
+        }
+        if (!empty($_POST['src'])) {
+            $src = $_POST['src'];
+        }
+        if (!empty($_POST['scholarship'])) {
+            $scholarship = $_POST['scholarship'];
+        }
+        if (!empty($_POST['others'])) {
+            $others = $_POST['others'];
+        }
+        if (!empty($_POST['maritalStatus'])) {
+            $maristatus = $_POST['maritalStatus'];
+        }
+        if (!empty($_POST['first'])) {
+            $first = $_POST['first'];
+        }
+        if (!empty($_POST['second'])) {
+            $second = $_POST['second'];
+        }
+        if (!empty($_POST['third'])) {
+            $third = $_POST['third'];
+        }
+        if (!empty($_POST['Fis'])) {
+            $Fis = $_POST['Fis'];
+        }
+        if (!empty($_POST['Mis'])) {
+            $Mis = $_POST['Mis'];
+        }
+        if (!empty($_POST['abtFam'])) {
+            $abtFam = $_POST['abtFam'];
+        }
+        if (!empty($_POST['whenChild'])) {
+            $whenChild = $_POST['whenChild'];
+        }
+        if (!empty($_POST['teachAre'])) {
+            $teachAre = $_POST['teachAre'];
+        }
+        if (!empty($_POST['friendsDuno'])) {
+            $friendsDunno = $_POST['friendsDuno'];
+        }
+        if (!empty($_POST['future'])) {
+            $future = $_POST['future'];
+        }
+        if (!empty($_POST['goal'])) {
+            $goal = $_POST['goal'];
+        }
+        if (!empty($_POST['eu'])) {
+            $eu = $_POST['eu'];
+        }
+        if (!empty($_POST['pass'])) {
+            $pass = $_POST['pass'];
+        }
+        if (!empty($_POST['conpass'])) {
+            $conpass = $_POST['conpass'];
+        }
+        if (!empty($_POST['image'])) {
+            $image = $_POST['image'];
+        }
 
         $query1 = "SELECT * FROM `student_user` WHERE `stud_user_id` = ?";
-        $stmt = $pdo->prepare($query);
+        $stmt = $pdo->prepare($query1);
         $stmt->bindParam(1, $_SESSION['idno']);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -45,8 +91,9 @@ if (isset($_SESSION['origin'])) {
             $sql = "INSERT INTO `student_user`(`stud_user_id`, `course`, `Year_level`, `last_name`,
              `first_name`, `middle_name`, `Contact_number`, `year_enrolled`, `Section`, `Civil_status`, 
              `gender`, `birth_date`, `Birth_place`, `Nationality`, `Languages_and_dialects`, `Address`, 
-             `email`, `IG`, `PWD`, `username`, `password`) 
-             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+             `email`, 
+             `username`, `password`) 
+             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(1, $_SESSION['idno']);
             $stmt->bindParam(2, $_SESSION['course']);
@@ -65,10 +112,10 @@ if (isset($_SESSION['origin'])) {
             $stmt->bindParam(15,$_SESSION['lang']);
             $stmt->bindParam(16,$_SESSION['address']);
             $stmt->bindParam(17,$eu);
-            $stmt->bindParam(18,$membership);
-            $stmt->bindParam(19,$pwd);
-            $stmt->bindParam(20,$eu);
-            $stmt->bindParam(21,$pass);
+            // $stmt->bindParam(18,$membership);
+            // $stmt->bindParam(19,$pwd);
+            $stmt->bindParam(18,$eu);
+            $stmt->bindParam(19,$pass);
     
             if ($stmt->execute()) {
                 echo "success_teacher";

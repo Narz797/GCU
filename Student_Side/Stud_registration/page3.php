@@ -590,43 +590,49 @@ if (!empty($_POST['othawards'])) {
         display: none;
     }
 
- 
 
-        #textBox {
-            border: none; /* Remove the default border */
-            border-bottom: 1px solid #000; /* Add a bottom border for the underline effect */
-            outline: none; /* Remove the default focus outline */
-            width:80%;
-        }
 
-        .container1 {
-            display: block;
-            position: relative;
-            padding-left: 30px; /* Adjust the padding as needed */
-            margin-bottom: 12px; /* Adjust the margin as needed */
-            cursor: pointer;
-            user-select: none;
-        }
+    #textBox {
+        border: none;
+        /* Remove the default border */
+        border-bottom: 1px solid #000;
+        /* Add a bottom border for the underline effect */
+        outline: none;
+        /* Remove the default focus outline */
+        width: 80%;
+    }
 
-        /* Style for the checkbox input */
-        #parentsCheckbox {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
+    .container1 {
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        /* Adjust the padding as needed */
+        margin-bottom: 12px;
+        /* Adjust the margin as needed */
+        cursor: pointer;
+        user-select: none;
+    }
 
-        /* Style for the checkmark */
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 20px; /* Adjust the size of the checkmark as needed */
-            width: 20px; /* Adjust the size of the checkmark as needed */
-            background-color: transparent;
-            border: 2px solid #000; /* Outline color */
-        }
+    /* Style for the checkbox input */
+    #parentsCheckbox {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
 
-      
+    /* Style for the checkmark */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        /* Adjust the size of the checkmark as needed */
+        width: 20px;
+        /* Adjust the size of the checkmark as needed */
+        background-color: transparent;
+        border: 2px solid #000;
+        /* Outline color */
+    }
 </style>
 
 <body>
@@ -639,9 +645,6 @@ if (!empty($_POST['othawards'])) {
     </div>
      -->
     <div class="container">
-        <span id="error">
-            <!---- Initializing Session for errors --->
-        </span>
         <header>STUDENT REGISTRATION FORM</header>
         <form action="../../backend/register_user.php" method="POST" id="registrationForm" enctype="multipart/form-data">
             <div class="form first">
@@ -650,10 +653,7 @@ if (!empty($_POST['othawards'])) {
                     <hr>
                     <hr>
                     <br>
-                    <!-- <h2>Personal Details</h2>
-            <hr> -->
                     <div>
-
                         <br>
                         <p><b><i>In view of the Indigenous People's Act (RA 8371), Magna Carta for
                                     Persons with Disability (RA 7277, as amended by RA 9442), the (c) Solo Parents
@@ -661,7 +661,6 @@ if (!empty($_POST['othawards'])) {
                                     the following items:</i></b></p>
                         <br>
                         <p><b>
-
                                 <p>Are you a member of an Indigenous group?</p>
                                 <div class="radio-group">
                                     <label>
@@ -678,7 +677,6 @@ if (!empty($_POST['othawards'])) {
                                     <label for="indigenousInfo">Please specify:</label>
                                     <input type="text" id="indigenousInfo" name="indigenousInfo" style="display: none;">
                                 </div>
-
                                 <br>
                                 <p><b>
                                         Are you a person with a disability (PWD)?</b>
@@ -708,46 +706,46 @@ if (!empty($_POST['othawards'])) {
                         </div>
                         </p>
                         <br>
-                        
-                            <legend>
-                                <h3><b>Sources of Financial Support</b></h3>
-                            </legend>
-                            <div class="checkbox-group">
-                                <label class="container1">Parents
-                                    <input type="checkbox" name="src" value="Parents" id="parentsCheckbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container1">Self-supporting
-                                    <input type="checkbox" name="src" value="Self" id="selfCheckbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container1">Relatives and/or Guardian
-                                    <input type="checkbox" name="src" value="Relatives" id="relativesCheckbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container1">
-                                    Scholarship
-                                    <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox"  onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <!-- Specify box for Scholarship -->
-                                <div id="specifyBoxScholarship" style="display: none"> Specify:
-                                    <input type="text" id="textBox">
-                                </div>
-                                
-                                <label class="container1">
-                                    Others:
-                                    <input type="checkbox" id="otherCheckbox" name='others' onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
-                                    <span class="checkmark"></span>
-                                </label>
-                                
-                                <!-- Specify box for Others -->
-                                <div id="specifyBoxOther" style="display: none"> Specify:
-                                    <input type="text" id="textBox">
-                                </div>
+
+                        <legend>
+                            <h3><b>Sources of Financial Support</b></h3>
+                        </legend>
+                        <div class="checkbox-group">
+                            <label class="container1">Parents
+                                <input type="checkbox" name="src" value="Parents" id="parentsCheckbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container1">Self-supporting
+                                <input type="checkbox" name="src" value="Self" id="selfCheckbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container1">Relatives and/or Guardian
+                                <input type="checkbox" name="src" value="Relatives" id="relativesCheckbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container1">
+                                Scholarship
+                                <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox" onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
+                                <span class="checkmark"></span>
+                            </label>
+                            <!-- Specify box for Scholarship -->
+                            <div id="specifyBoxScholarship" style="display: none"> Specify:
+                                <input type="text" id="textBox">
                             </div>
-                            <br>
-                       
+
+                            <label class="container1">
+                                Others:
+                                <input type="checkbox" id="otherCheckbox" name='others' onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <!-- Specify box for Others -->
+                            <div id="specifyBoxOther" style="display: none"> Specify:
+                                <input type="text" id="textBox">
+                            </div>
+                        </div>
+                        <br>
+
                         <!-- Your submit button and other form sections here -->
                         <fieldset>
                             <legend>
