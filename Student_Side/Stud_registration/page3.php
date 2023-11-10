@@ -626,10 +626,7 @@ if (!empty($_POST['othawards'])) {
             border: 2px solid #000; /* Outline color */
         }
 
-        /* Style for the checked state of the checkbox */
-        #parentsCheckbox:checked + .checkmark {
-            background-color: transparent;
-        }
+      
 </style>
 
 <body>
