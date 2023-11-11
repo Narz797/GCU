@@ -4,71 +4,44 @@ session_start(); // Ensure the session is started
 include '../backend/connect_database.php';
 
 $id = ($_POST['tid']);
-$clg = ($_POST['colege']);
-$gndr = ($_POST['gender']);
-$fname = ($_POST['fname']);
-$mname = ($_POST['mname']);
-$lname = ($_POST['lname']);
-$cn = ($_POST['cn']);
-$email = ($_POST['email']);
-$cs = ($_POST['cs']);
 
-// Start building the SQL query
-$sql = "UPDATE `teachers` SET ";
+$allowedFields = array(
+    'college' => $_POST['colege'],
+    'gender' => $_POST['gender'],
+    'first_name' => $_POST['fname'],
+    'middle_name' => $_POST['mname'],
+    'last_name' => $_POST['lname'],
+    'contact_number' => $_POST['cn'],
+    'email' => $_POST['email'],
+    'civil_status' => $_POST['cs']
+);
 
-$setValues = [];
-$parameters = [];
+$updateFields = [];
+$parameters = [
+    ':id' => $id
+];
 
-// Check each field for existence and add to the query if not empty
-if (!empty($clg)) {
-    $setValues[] = "`college` = :clg";
-    $parameters[':clg'] = $clg;
-}
-if (!empty($gndr)) {
-    $setValues[] = "`gender` = :gndr";
-    $parameters[':gndr'] = $gndr;
-}
-if (!empty($fname)) {
-    $setValues[] = "`first_name` = :fname";
-    $parameters[':fname'] = $fname;
-}
-if (!empty($mname)) {
-    $setValues[] = "`middle_name` = :mname";
-    $parameters[':mname'] = $mname;
-}
-if (!empty($lname)) {
-    $setValues[] = "`last_name` = :lname";
-    $parameters[':lname'] = $lname;
-}
-if (!empty($cn)) {
-    $setValues[] = "`contact_number` = :cn";
-    $parameters[':cn'] = $cn;
-}
-if (!empty($email)) {
-    $setValues[] = "`email` = :email";
-    $parameters[':email'] = $email;
-}
-if (!empty($cs)) {
-    $setValues[] = "`civil_status` = :cs";
-    $parameters[':cs'] = $cs;
+foreach ($allowedFields as $key => $value) {
+    if (!empty($value)) {
+        $updateFields[] = "`$key` = :$key";
+        $parameters[":$key"] = $value;
+    }
 }
 
-// Join the set values
-$setValuesStr = implode(", ", $setValues);
-
-$sql .= $setValuesStr . " WHERE employee_id = :id"; // Complete the SQL query
+$sql = "UPDATE `teachers` SET " . implode(", ", $updateFields) . " WHERE employee_id = :id";
 
 $stmt = $pdo->prepare($sql);
-$stmt->bindParam(':id', $id, PDO::PARAM_INT); // Bind the ID parameter
-
-// Bind parameters for the fields that are not empty
-foreach ($parameters as $key => $value) {
-    $stmt->bindParam($key, $value, PDO::PARAM_STR);
+foreach ($parameters as $key => &$value) {
+    if ($key !== ':id') {
+        $stmt->bindParam($key, $value);
+    } else {
+        $stmt->bindParam($key, $value, PDO::PARAM_INT);
+    }
 }
 
 $stmt->execute();
 
-$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$data = array('success' => true); // You might not get data using fetchAll() for an UPDATE statement
 
 // Prepare and echo data as JSON
 echo json_encode($data);

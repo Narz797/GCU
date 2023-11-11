@@ -363,7 +363,7 @@ $("#form_transact").on("submit", function (event) {
                       },
         success: function (data) {
           alert(data);
-
+          fetchData()
         },
     error: function (xhr, status, error) {
       alert("Error: " + error);
