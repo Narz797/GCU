@@ -293,8 +293,8 @@ $_SESSION['transact_type'] = 'referral';
       <form>
         <h1>Are you sure?</h1>
         <div class="action">
-          <a href="#"><button class="yes">Yes</button></a>
-          <a href="#"><button class="no">No</button></a>
+          <a href="#"><button class="yes" onclick="dlete ()">Yes</button></a>
+          <a href="#"><button class="no" onclick="cancel ()">No</button></a>
         </div>
       </form>
     </div>
@@ -308,7 +308,8 @@ function logout() {
     window.location.href = '../home?logout=true';
 }
 var clg;
-var eID
+var eID;
+var sID;
 
 $(document).ready(function() {
 //check if student is available in database
@@ -336,6 +337,7 @@ $("#form_transact").on("submit", function (event) {
                       },
         success: function (data) {
           alert(data);
+          fetchData();
 
         },
     error: function (xhr, status, error) {
@@ -401,7 +403,7 @@ $("#form_transact").on("submit", function (event) {
             row.append("<td>" + entry.date + "</td>");
             row.append("<td>" + entry.status + "</td>");
             var statusCell = $("<td></td>");
-            var statusLink = $("<a href='#divTwo'><button><i class='ri-delete-bin-6-line'></i></button></a>");
+            var statusLink = $("<a href='#divTwo'><button onclick='delete_stud(" + entry.student_id + ")'><i class='ri-delete-bin-6-line'></i></button></a>");
 
             statusCell.append(statusLink);
             row.append(statusCell);
@@ -418,7 +420,7 @@ $("#form_transact").on("submit", function (event) {
     }
     });
 
-    
+
 
 
     // Function to update the HTML elements
@@ -473,7 +475,27 @@ fetchData();
 
 
   });
-
+  function dlete()
+  {
+    $.ajax({
+          type: 'POST',
+          url: '../backend/del_stud.php',
+          data: {
+            id: sID
+          },
+          success: function (data) {
+            console.log("Remarked:", data);
+          },
+          error: function (xhr, status, error) {
+            console.error("Error marking event as done:", error);
+            alert("Error marking event as done: " + error);
+          },
+        });
+  }
+  function delete_stud (id){
+      sID = id;
+      console.log("Stud_id: ",sID);
+    }
 </script>
 </html>
 </span>

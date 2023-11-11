@@ -23,7 +23,7 @@ courses ON student_user.course = courses.Acronym
 INNER JOIN
 referral ON transact.transact_id = referral.transact_id
 WHERE
-transact.transact_type = 'referral'
+transact.transact_type = 'referral' AND transact.status != 'done'
 
 UNION
 
@@ -44,7 +44,9 @@ tstable.date
 FROM
 tstable
 INNER JOIN
-transact ON tstable.student_id = transact.student_id;
+transact ON tstable.student_id = transact.student_id
+WHERE
+tstable.status != 'done';
 
 
 ";
