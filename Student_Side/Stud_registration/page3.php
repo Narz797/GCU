@@ -863,12 +863,11 @@ if (!empty($_POST['othawards'])) {
                                 <span class="btnText">Back</span>
                             </div>
 
-                            <form method="post">
+
                                 <button class="nextBtn" id="next" type="submit">
                                     <span class="btnText">Submit</span>
                                     <i class="uil uil-navigator"></i>
                                 </button>
-                            </form>
                         </div>
                     </div>
         </form>
