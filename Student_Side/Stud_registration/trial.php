@@ -25,7 +25,7 @@ if (!empty($_POST['middlename'])) {
 if (!empty($_POST['cn'])) {
     $_SESSION['cn'] = $_POST['cn'];
 }
-if (!empty($_POST['email'])){
+if (!empty($_POST['email'])) {
     $_SESSION['email'] = $_POST['email'];
 }
 if (!empty($_POST['year_enroll'])) {
@@ -685,11 +685,7 @@ if (!empty($_POST['siblings'])) {
     </div>
      -->
     <div class="container">
-        <header>STUDENT REGISTRATION FORM - EDUCATIONAL BACKGROUND</header>
-        <br>
-        <h3>SENIOR HIGHSCHOOL</h3>
-        <hr>
-
+        <header>STUDENT REGISTRATION FORM</header>
         <form action="page3.php" method="POST" id="registrationForm" enctype="multipart/form-data">
             <div class="fields">
                 <div class="input-field1">
@@ -783,6 +779,7 @@ if (!empty($_POST['siblings'])) {
             </div>
 
         </form>
+    </div>
 </body>
 
 <script>
