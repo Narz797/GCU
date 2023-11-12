@@ -89,7 +89,7 @@ input[type="radio"]:checked + span {
       <h1 id="Title">Late or Absent Slip</h1>
     </div>
     <div class="card-body">
-      <form id="form_transact" name="form1" method="post">
+      <form id="form_transact" name="form1" method="post" enctype="multipart/form-data">
        
      
 
@@ -117,8 +117,8 @@ input[type="radio"]:checked + span {
 <p></p>
 <br>
 
-        <label for="fileUpload">Upload Required Files</label>
-        <input type="file" id="fileUpload" name="fileUpload" multiple>
+      <label for="fileUpload">Upload Required Files</label>
+          <input type="file" id="fileUpload" name="fileUpload[]" multiple>
   <br>
 
         <p>
@@ -139,33 +139,39 @@ input[type="radio"]:checked + span {
     }
   </script>
   <script>
-    $("#form_transact").on("submit", function (event) {
-      event.preventDefault();
-      var fromDate = document.getElementById("fromDate").value;
+$("#form_transact").on("submit", function (event) {
+    event.preventDefault();
+
+    var formData = new FormData(this); // Instantiate the FormData object with the form
+
+    var fromDate = document.getElementById("fromDate").value;
     var toDate = document.getElementById("toDate").value;
+    var dateRange = fromDate + ' to ' + toDate;
 
-    var dateRange = fromDate + ' to ' + toDate; // Concatenate the dates
+    var student_id = <?php echo $_SESSION['session_id'] ?>;
+    var transact_type = "AT";
+    var selectedReasons = $("#refer").val(); // Use 'textfield' instead of 'reasons[]'
 
-    console.log(dateRange); // Check in the console
-      var student_id = <?php echo $_SESSION['session_id'] ?>;
-      var transact_type = "AT"
-      var selectedReasons = $("input[name='reasons[]']:checked").map(function () {
-        return $(this).val();
-      }).get();
-      $.ajax({
+    // Append the additional data to the formData object
+    formData.append('date', dateRange);
+    formData.append('transact_type', transact_type);
+    formData.append('selectedReasons', selectedReasons);
+
+    // Now send the form data including files via AJAX
+    $.ajax({
         type: 'POST',
         url: '../../backend/create_transaction.php',
-        data: {
-          reasons: $('#refer').val(),
-          date: dateRange,
-          files: $('#fileUpload').val(),
-         
-        },
+        data: formData,
+        contentType: false,
+        processData: false,
         success: function (data) {
-          alert(data);
+            alert(data);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error: ' + error);
         }
-      });
     });
+});
   </script>
 </body>
 </html>
