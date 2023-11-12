@@ -150,6 +150,7 @@ session_start();
     var sid;
     var date;
     var rsn;
+    var ext;
         function logout() {
     window.location.href = '../../home?logout=true';
 }
@@ -207,6 +208,7 @@ if (data.length > 0) {
     date = studentData.date_of_AbsentOrTardy;
     var reason = studentData.reason;
     rsn = studentData.reason;
+    ext =studentData.file_extension;
     var att1 = studentData.attachment1;
     console.log(fname);
     updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, reason);
@@ -233,18 +235,44 @@ function displayBlobFiles(studentData) {
         if (studentData.hasOwnProperty(key) && key.startsWith('attachment')) {
             const downloadLink = document.createElement('a');
             downloadLink.innerText = 'Download ' + key; // Text for the download link
-            downloadLink.download = 'file_' + key; // Generic filename for download
-            downloadLink.href = 'data:image/jpeg;base64,' + studentData[key]; // Set file content
+
+            const fileExtension = ext; // Assuming 'ext' contains the file extension
+
+            let contentType = 'application/octet-stream'; // Default content type
+
+            switch (fileExtension) {
+                case 'jpg':
+                case 'jpeg':
+                    contentType = 'image/jpeg';
+                    break;
+                case 'png':
+                    contentType = 'image/png';
+                    break;
+                case 'pdf':
+                    contentType = 'application/pdf';
+                    break;
+                case 'docx':
+                    contentType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+                    break;
+                // Add more cases for other file types (e.g., docx, txt, etc.)
+                default:
+                    break;
+            }
+
+            // Set the content type and file content for download
+            downloadLink.href = 'data:' + contentType + ';base64,' + studentData[key];
 
             attachmentContainer.appendChild(downloadLink);
             attachmentContainer.appendChild(document.createElement('br')); // Line break for better separation
         }
     }
 }
+
 }
 
 function status_update(status){
     // update status to pendig here
+    console.log("Updating status");
     $.ajax({
   type: 'POST',
   url: '../../backend/update_forms/update_ca.php',
