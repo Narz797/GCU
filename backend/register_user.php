@@ -77,8 +77,8 @@ if (isset($_SESSION['origin'])) {
         if (!empty($_POST['image'])) {
             $_SESSION['image'] = $_POST['image'];
         }
-
-        var_dump($_SESSION);
+        
+        echo var_dump($_SESSION);
 
         $query1 = "SELECT * FROM `student_user` WHERE `stud_user_id` = ?";
         $stmt = $pdo->prepare($query1);
@@ -89,7 +89,7 @@ if (isset($_SESSION['origin'])) {
         if (count($result) === 1) {
             echo "User Already Registered";
         } else {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $hashedPassword = password_hash($_SESSION['pass'], PASSWORD_DEFAULT);
             $sql = "INSERT INTO `student_user`(
             `stud_user_id`, `course`, `Year_level`, `last_name`,`first_name`,
             `middle_name`, `Contact_number`, `year_enrolled`, `Section`, `Civil_status`, 
@@ -118,7 +118,7 @@ if (isset($_SESSION['origin'])) {
             $stmt->bindParam(18,$_SESSION['membership']);
             $stmt->bindParam(19,$_SESSION['pwd']);
             $stmt->bindParam(20,$_SESSION['eu']);
-            $stmt->bindParam(21,$_SESSION['pass']);
+            $stmt->bindParam(21,$hashedPassword);
     
             if ($stmt->execute()) {
                 echo "success_teacher";
