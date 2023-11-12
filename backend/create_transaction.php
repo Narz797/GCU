@@ -152,14 +152,14 @@ if ($transact == 'readmission') {
 
     // Assuming 'attachment1' field is a BLOB in your database
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :transact_type, :date_created, :status)';
-    $sql_2 = 'INSERT INTO ca(`transact_id`,`stud_id`, `Reason`, `attachment1`, `date_of_AbsentOrTardy`, `status`) 
-              VALUES (:transact_id, :sid, :reasons, :file, :date, :status)';
+    $sql_2 = 'INSERT INTO ca(transact_id, stud_id, Reason, attachment1, file_extension, date_of_AbsentOrTardy, status) 
+            VALUES (:transact_id, :sid, :reasons, :file, :file_extension, :date, :status)';
 
     try {
         // Insert initial transaction record
         $code = $pdo->prepare($sql_1);
         $code->bindParam(':sid', $id);
-        $code->bindParam(':transact_type', $transact);
+        $code->bindParam(':transact_type', $reason);
         $code->bindParam(':date_created', $date);
         $code->bindParam(':status', $status);
         $code->execute();
@@ -168,26 +168,29 @@ if ($transact == 'readmission') {
 
         $fileContent = ''; // Create a string to store all file contents
 
-        // Combine all file contents into one string
-        foreach ($_FILES['fileUpload']['tmp_name'] as $key => $tmp_name) {
-            $fileContent .= file_get_contents($tmp_name);
-        }
+        // Combine all file contents and handle individual file extensions
+        foreach ($_FILES['fileUpload']['tmp_name'] as $index => $tmp_name) {
+            $fileContent = file_get_contents($tmp_name);
+            $fileExtension = pathinfo($_FILES['fileUpload']['name'][$index], PATHINFO_EXTENSION);
 
-        // Insert the combined file content as a single BLOB
-        $code = $pdo->prepare($sql_2);
-        $code->bindParam(':transact_id', $transact_id);
-        $code->bindParam(':sid', $id);
-        $code->bindParam(':reasons', $reason);
-        $code->bindParam(':file', $fileContent, PDO::PARAM_LOB);
-        $code->bindParam(':date', $date);
-        $code->bindParam(':status', $status);
-        $code->execute();
+            // Insert the combined file content as a single BLOB along with the extension
+            $code = $pdo->prepare($sql_2);
+            $code->bindParam(':transact_id', $transact_id);
+            $code->bindParam(':sid', $id);
+            $code->bindParam(':reasons', $reason);
+            $code->bindParam(':file', $fileContent, PDO::PARAM_LOB);
+            $code->bindParam(':file_extension', $fileExtension);
+            $code->bindParam(':date', $date);
+            $code->bindParam(':status', $status);
+            $code->execute();
+        }
 
         echo "Data inserted successfully";
     } catch (PDOException $e) {
         echo "Error inserting data: " . $e->getMessage();
     }
 }
+
 echo "User ID: " . $id;
 $pdo = null;
 ?>

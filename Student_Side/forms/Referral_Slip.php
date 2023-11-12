@@ -107,7 +107,7 @@ input[type="radio"]:checked + span {
         <br>
           <label for="textfield"></label>
           <select name="textfield" id="refer">
-            <option value="Late">Late</option>
+            <option value="Tardy">Tardy</option>
             <option value="Absent">Absent</option>
             <option value="Academic Deficiency/ies">Academic Deficiency/ies</option>
           </select>
@@ -142,22 +142,47 @@ input[type="radio"]:checked + span {
 $("#form_transact").on("submit", function (event) {
     event.preventDefault();
 
-    var formData = new FormData(this); // Instantiate the FormData object with the form
-
+    var formData = new FormData(this);
     var fromDate = document.getElementById("fromDate").value;
     var toDate = document.getElementById("toDate").value;
     var dateRange = fromDate + ' to ' + toDate;
 
     var student_id = <?php echo $_SESSION['session_id'] ?>;
     var transact_type = "AT";
-    var selectedReasons = $("#refer").val(); // Use 'textfield' instead of 'reasons[]'
+    var selectedReasons = $("#refer").val();
 
-    // Append the additional data to the formData object
     formData.append('date', dateRange);
     formData.append('transact_type', transact_type);
     formData.append('selectedReasons', selectedReasons);
+    var files = document.getElementById('fileUpload').files;
 
-    // Now send the form data including files via AJAX
+    // Loop through the selected files to determine their types
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const fileExtension = file.name.split('.').pop();
+
+        // Save the file extension to the FormData object
+        formData.append('file_' + i + '_extension', fileExtension);
+
+        // Determine the file type and add it to the FormData
+        let fileType;
+        if (fileExtension === 'pdf') {
+            fileType = 'application/pdf';
+        } else if (fileExtension === 'docx') {
+            fileType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        } else if (fileExtension === 'jpg' || fileExtension === 'jpeg') {
+            fileType = 'image/jpeg';
+        }else if (fileExtension === 'png') {
+            fileType = 'image/png';
+        } // Add more cases for other file types
+
+        if (fileType) {
+            formData.append('file_' + i, file, 'file_' + i + '.' + fileExtension);
+        } else {
+            console.log('Unsupported file:', file.name);
+        }
+    }
+
     $.ajax({
         type: 'POST',
         url: '../../backend/create_transaction.php',
@@ -167,11 +192,12 @@ $("#form_transact").on("submit", function (event) {
         success: function (data) {
             alert(data);
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error('Error: ' + error);
         }
     });
 });
+
   </script>
 </body>
 </html>

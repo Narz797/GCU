@@ -102,7 +102,8 @@ echo json_encode($data);
         student_user.ParentGuardianName,
         ca.date_of_AbsentOrTardy,
         ca.reason,
-        ca.attachment1
+        ca.attachment1,
+        ca.file_extension
         FROM student_user
         INNER JOIN transact ON student_user.stud_user_id = transact.student_id 
         INNER JOIN ca ON transact.transact_id = ca.transact_id 
@@ -117,21 +118,19 @@ echo json_encode($data);
 
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
- // Assuming your blob columns are named "image1_data" and "image2_data"
- foreach ($data as &$row) {
-    foreach ($row as $key => $value) {
-        if (strpos($key, 'attachment') === 0) {
-            $row[$key] = base64_encode($value);
+    // Assuming your blob columns are named "attachment1"
+    foreach ($data as &$row) {
+        foreach ($row as $key => $value) {
+            if ($key === 'attachment1') {
+                $row[$key] = base64_encode($value);
+            }
         }
     }
+
+    // Prepare and echo data as JSON
+    echo json_encode($data);
 }
-
-
-// Prepare and echo data as JSON
-echo json_encode($data);
-
-    //code for readmission
-} else if ($form == 'referral') {
+ else if ($form == 'referral') {
     $sql = "SELECT
         student_user.stud_user_id,
         student_user.last_name,
