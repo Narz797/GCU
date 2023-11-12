@@ -640,6 +640,10 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <input type="text" id="cn" name="cn" required>
                         </div>
                         <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" id="email" name="email" required>
+                        </div>
+                        <div class="input-field">
                             <label>Year Enrolled</label>
                             <input type="text" id="year_enroll" name="year_enroll" required>
                         </div>
@@ -657,7 +661,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             </select>
                         </div>
                         <div class="input-field">
-                            <label>Gender</label>
+                            <label>Sex</label>
                             <select required id="gender" name='gender'>
                                 <option disabled selected>Select</option>
                                 <option>Male</option>

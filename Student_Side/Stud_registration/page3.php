@@ -664,18 +664,18 @@ if (!empty($_POST['othawards'])) {
                                 <p>Are you a member of an Indigenous group?</p>
                                 <div class="radio-group">
                                     <label>
-                                        <input type="radio" id="yesRadio1" name="membership" value="yes" />
+                                        <input type="radio" id="yesRadio" name="membership" value="yes" required>
                                         Yes
                                     </label>
                                     <label>
-                                        <input type="radio" id="noRadio1" name="membership" value="no" />
+                                        <input type="radio" id="noRadio" name="membership" value="no" required>
                                         No
                                     </label>
                                 </div>
                                 <div class="underline-input" id="indigenousInput">
                                     <br>
-                                    <label for="indigenousInfo">Please specify:</label>
-                                    <input type="text" id="indigenousInfo" name="indigenousInfo" style="display: none;">
+                                    <label for="indigenousInfo">If yes, please specify:</label>
+                                    <input type="text" id="indigenousInfo" name="indigenousInfo">
                                 </div>
                                 <br>
                                 <p><b>
@@ -730,18 +730,18 @@ if (!empty($_POST['othawards'])) {
                             </label>
                             <!-- Specify box for Scholarship -->
                             <div id="specifyBoxScholarship" style="display: none"> Specify:
-                                <input type="text" id="textBox">
+                                <input type="text" name ='specificScholar'id="textBox">
                             </div>
 
                             <label class="container1">
                                 Others:
-                                <input type="checkbox" id="otherCheckbox" name='others' onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
+                                <input type="checkbox" id="otherCheckbox" name='src' onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
                                 <span class="checkmark"></span>
                             </label>
 
                             <!-- Specify box for Others -->
                             <div id="specifyBoxOther" style="display: none"> Specify:
-                                <input type="text" id="textBox">
+                                <input type="text" name="specificOther" id="textBox">
                             </div>
                         </div>
                         <br>
@@ -830,7 +830,7 @@ if (!empty($_POST['othawards'])) {
                         <br>
                         <div class="fields">
                             <div class="input-field">
-                                <label>email/username</label>
+                                <label>Username</label>
                                 <input type="text" id="eu" name="eu">
                             </div>
                             <div class="input-field">
@@ -863,13 +863,14 @@ if (!empty($_POST['othawards'])) {
                                 <span class="btnText">Back</span>
                             </div>
 
-
-                                <button class="nextBtn" id="next" type="submit">
-                                    <span class="btnText">Submit</span>
-                                    <i class="uil uil-navigator"></i>
-                                </button>
+                            <button class="nextBtn" id="next" type="submit">
+                                <span class="btnText">Next</span>
+                                <i class="uil uil-navigator"></i>
+                            </button>
                         </div>
                     </div>
+                </div>
+            </div>
         </form>
     </div>
 
@@ -1025,86 +1026,6 @@ if (!empty($_POST['othawards'])) {
         var textfield4 = document.getElementById('course');
         textfield4.addEventListener('input', function() {
             this.value = this.value.toUpperCase();
-        });
-    </script>
-    <!-- save to database -->
-    <script>
-        $("#registrationForm").on("submit", function(event) {
-            var source = "student_side_signup";
-            event.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: '../../backend/register_user.php',
-                data: {
-                    // idno: $("#idno").val(),
-                    // firstname: $("#firstname").val(),
-                    // lastname: $("#lastname").val(),
-                    // middlename: $("#middlename").val(),
-                    // course: $("#course").val(),
-                    // year: $("#year").val(),
-                    // cn: $("#cn").val(),
-                    // email: $("#email").val(),
-                    // cs: $("#cs").val(),
-                    // select: $("#select").val(),
-                    // dob: $("#dob").val(),
-                    // bp: $("#bp").val(),
-                    // nationality: $("#nationality").val(),
-                    // lang: $("#lang").val(),
-                    // address: $("#address").val(),
-                    // whom: $("#whom").val(),
-                    // Flname: $("#Flname").val(),
-                    // Ffname: $("#Ffname").val(),
-                    // Fmname: $("#Fmname").val(),
-                    // Fage: $("#Fage").val(),
-                    // Focc: $("#Focc").val(),
-                    // Fedu: $("#Fedu").val(),
-                    // Mlname: $("#Mlname").val(),
-                    // Mfname: $("#Mfname").val(),
-                    // Mmname: $("#Mmname").val(),
-                    // Mage: $("#Mage").val(),
-                    // Mocc: $("#Mocc").val(),
-                    // Medu: $("#Medu").val(),
-                    // Glname: $("#Glname").val(),
-                    // Gfname: $("#Gfname").val(),
-                    // Gmname: $("#Gmname").val(),
-                    // Gage: $("#Gage").val(),
-                    // Gocc: $("#Gocc").val(),
-                    // Gedu: $("#Gedu").val(),
-                    // total_number: $("#total_number").val(),
-                    // siblings: $("#siblings").val(),
-                    // membership: $("#membership").val(),
-                    // indigenousInfo: $("#indigenousInfo").val(),
-                    // pwd: $("#pwd").val(),
-                    // studpar: $("#studpar").val(),
-                    // src: $("#src").val(), // Assuming src is an input element
-                    // maritalStatus: $("#maritalStatus").val(),
-                    // first: $("#first").val(),
-                    // Fis: $("#Fis").val(),
-                    // Mis: $("#Mis").val(),
-                    // abtFam: $("#abtFam").val(),
-                    // whenChild: $("#whenChild").val(),
-                    // teachAre: $("#teachAre").val(),
-                    // freindsDunno: $("#freindsDunno").val(),
-                    // future: $("#future").val(),
-                    // goal: $("#goal").val(),
-                    // eu: $("#eu").val(),
-                    // pass: $("#password").val(),
-                    // // signature:$("#customFile").val(),
-                    form: $('#registrationForm').val(),
-                    source: source
-                },
-                success: function(data) {
-                    if (data === "success_student") {
-                        window.location.href = "../Student_Side/student-login";
-                        alert("Sign up successful");
-                    } else {
-                        alert(data);
-                    }
-                },
-                error: function(data) {
-                    alert("Connection error");
-                }
-            });
         });
     </script>
 
