@@ -310,6 +310,8 @@ function logout() {
 var clg;
 var eID;
 var sID;
+var dc;
+var transID;
 
 $(document).ready(function() {
 //check if student is available in database
@@ -392,6 +394,8 @@ $("#form_transact").on("submit", function (event) {
         for (var i = 0; i < data.length; i++) {
             
             var entry = data[i];
+            dc =entry.date;
+
             var tableToAppend = tableBody; // Determine which table to append to
             var row = $("<tr></tr>");
             row.append("<td>" + entry.student_id + "</td>");
@@ -402,8 +406,10 @@ $("#form_transact").on("submit", function (event) {
             row.append("<td>" + entry.reason + "</td>");
             row.append("<td>" + entry.date + "</td>");
             row.append("<td>" + entry.status + "</td>");
+
+
             var statusCell = $("<td></td>");
-            var statusLink = $("<a href='#divTwo'><button onclick='delete_stud(" + entry.student_id + ")'><i class='ri-delete-bin-6-line'></i></button></a>");
+            var statusLink = $("<a href='#divTwo'><button onclick='delete_stud( " + entry.transact_id + ")'><i class='ri-delete-bin-6-line'></i></button></a>");
 
             statusCell.append(statusLink);
             row.append(statusCell);
@@ -474,17 +480,27 @@ $.ajax({
 fetchData();
 
 
+
   });
+  function delete_stud (tid){
+    transID = tid;
+      sID = id;
+
+    }
   function dlete()
   {
+
+      console.log("Tid: ",transID);
     $.ajax({
           type: 'POST',
           url: '../backend/del_stud.php',
           data: {
-            id: sID
+
+            Tid: transID
           },
           success: function (data) {
             console.log("Remarked:", data);
+            document.getElementById("divTwo").style.display = "none";
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
@@ -492,10 +508,14 @@ fetchData();
           },
         });
   }
-  function delete_stud (id){
-      sID = id;
-      console.log("Stud_id: ",sID);
-    }
+  function cancel()
+  {
+
+
+            console.log("Canceled");
+            document.getElementById("divTwo").style.display = "none";
+
+  }
 </script>
 </html>
 </span>

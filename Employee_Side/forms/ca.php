@@ -240,7 +240,7 @@ function status_update(status){
   },
   success: function (data) {
     console.log("Remarked:", data);
-    window.location.href = "../subpage/ra-forms";
+    window.location.href = "../subpage/ca_page.php";
   },
   error: function (xhr, status, error) {
     console.error("Error marking event as done:", error);
