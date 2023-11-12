@@ -141,80 +141,53 @@ if ($transact == 'readmission') {
         echo "Error inserting data: " . $e->getMessage();
     }
 }
-//  else if ($transact == 'referral') {
-//     $tid = $_SESSION['session_id'];
+ else if ($transact == 'ca') {
+    $id = $_SESSION['session_id'];
+    $reason = $_POST['selectedReasons'];
+    $date = $_POST['date'];
+    $status = 'pending';
 
-//     $query2 = "SELECT CONCAT(`first_name`, ' ', `last_name`) AS `full_name` FROM `teachers` WHERE `employee_id` = ?";
-//     $stmt2 = $pdo->prepare($query2);
-//     $stmt2->bindParam(1, $tid);
-//     $stmt2->execute();
-//     $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-    
-//     $tname = $result2[0]['full_name']; // Assuming you expect only one result and want the full name as a string
-//     $tid=$_SESSION['session_id'];
-//     $sid = $_POST['sid'];
-//     $fname = $_POST['fname'];
-//     $lname = $_POST['lname'];
-//     $yrlvl = $_POST['year_level'];
-//     $gender = $_POST['gender'];
-//     $course = $_POST['course'];
-//     $college = $_POST['colleges'];
-//     $cn = $_POST['cn'];
-//     $gp = $_POST['gp'];
-//     $gpn = $_POST['gpn'];
-//     $reasons = $_POST['reasons'];
+    $datetime = new DateTime();
+    $dateCreated = $datetime->format('Y-m-d H:i:s');
 
-//     // $refer = $_POST['refer'];
-//     $datetime = new DateTime();
-//     $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
+    // Assuming 'attachment1' field is a BLOB in your database
+    $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :transact_type, :date_created, :status)';
+    $sql_2 = 'INSERT INTO ca(`transact_id`,`stud_id`, `Reason`, `attachment1`, `date_of_AbsentOrTardy`, `status`) 
+              VALUES (:transact_id, :sid, :reasons, :file, :date, :status)';
 
-//     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :transact_type, :date_created, :status)';
-//     $sql_2 = 'INSERT INTO referral(`transact_id`, `reason`, `referred`, `teacher_id`) VALUES (:transact_id, :reasons, :refer, :tid)';
-//     $sql_3 = 'INSERT INTO `tstable`(`student_id`, `first_name`, `last_name`, `course`, `college`, `year_level`, `gender`, `contact_number`, `GP_name`, `GP_number`, `reason`, `date`, `refer`, `status`, `teacher_id`) VALUES (:sid, :fname, :lname, :course, :colleges, :yrlvl, :gender, :cn, :gp, :gpn, :reasons, :date_created, :refer, :status, :tid)';
+    try {
+        // Insert initial transaction record
+        $code = $pdo->prepare($sql_1);
+        $code->bindParam(':sid', $id);
+        $code->bindParam(':transact_type', $transact);
+        $code->bindParam(':date_created', $date);
+        $code->bindParam(':status', $status);
+        $code->execute();
 
+        $transact_id = $pdo->lastInsertId();
 
-//     try {
-//         $code = $pdo->prepare($sql_1);
-//         $code->bindParam(':sid', $sid); // Change :student_id to :sid
-//         $code->bindParam(':transact_type', $transact);
-//         $code->bindParam(':date_created', $dateCreated);
-//         $code->bindParam(':status', $status); // Make sure $status is defined and has a value
-//         $code->execute();
-    
-//         $transact_id = $pdo->lastInsertId();
-//         $code = $pdo->prepare($sql_2);
-//         $code->bindParam(':transact_id', $transact_id); // Change :transact_id to :transact_id
-//         $code->bindParam(':reasons', $reasons);
-//         $code->bindParam(':refer', $tname);
-//         $code->bindParam(':tid', $tid);
-    
-//         $code->execute();
-    
-//         $code = $pdo->prepare($sql_3);
-//         $code->bindParam(':sid', $sid);
-//         $code->bindParam(':fname', $fname);
-//         $code->bindParam(':lname', $lname);
-//         $code->bindParam(':yrlvl', $yrlvl);
-//         $code->bindParam(':gender', $gender);
-//         $code->bindParam(':course', $course);
-//         $code->bindParam(':colleges', $college);  
-//         $code->bindParam(':cn', $cn);
-//         $code->bindParam(':gp', $gp);
-//         $code->bindParam(':gpn', $gpn);
-//         $code->bindParam(':reasons', $reasons);
-//         $code->bindParam(':refer', $tname);
-//         $code->bindParam(':date_created', $dateCreated);
-//         $code->bindParam(':status', $status); // Make sure $status is defined and has a value
-//         $code->bindParam(':tid', $tid);
-//         $code->execute();
-    
-//         echo "Data inserted successfully";
-//     } catch (PDOException $e) {
-//         echo "Error inserting data: " . $e->getMessage();
-//     }
-    
+        $fileContent = ''; // Create a string to store all file contents
 
-//  }
-// echo "User ID: " . $id;
+        // Combine all file contents into one string
+        foreach ($_FILES['fileUpload']['tmp_name'] as $key => $tmp_name) {
+            $fileContent .= file_get_contents($tmp_name);
+        }
+
+        // Insert the combined file content as a single BLOB
+        $code = $pdo->prepare($sql_2);
+        $code->bindParam(':transact_id', $transact_id);
+        $code->bindParam(':sid', $id);
+        $code->bindParam(':reasons', $reason);
+        $code->bindParam(':file', $fileContent, PDO::PARAM_LOB);
+        $code->bindParam(':date', $date);
+        $code->bindParam(':status', $status);
+        $code->execute();
+
+        echo "Data inserted successfully";
+    } catch (PDOException $e) {
+        echo "Error inserting data: " . $e->getMessage();
+    }
+}
+echo "User ID: " . $id;
 $pdo = null;
 ?>

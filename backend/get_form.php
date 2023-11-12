@@ -102,13 +102,11 @@ echo json_encode($data);
         student_user.ParentGuardianName,
         ca.date_of_AbsentOrTardy,
         ca.reason,
-        ca.attachment1,
-        ca.attachment2,
-        ca.attachment3
+        ca.attachment1
         FROM student_user
         INNER JOIN transact ON student_user.stud_user_id = transact.student_id 
         INNER JOIN ca ON transact.transact_id = ca.transact_id 
-        WHERE student_user.stud_user_id = :id  AND transact.transact_id = :tid AND (transact.transact_type = 'Absent' OR transact.transact_type = 'Tardy');
+        WHERE student_user.stud_user_id = :id  AND transact.transact_id = :tid AND (ca.Reason = 'Absent' OR ca.Reason = 'Tardy');
     ";
 
     $stmt = $pdo->prepare($sql);
@@ -120,12 +118,13 @@ echo json_encode($data);
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
  // Assuming your blob columns are named "image1_data" and "image2_data"
-foreach ($data as &$row) {
-    $row['attachment1'] = base64_encode($row['attachment1']);
-    $row['attachment2'] = base64_encode($row['attachment2']);
-    $row['attachment3'] = base64_encode($row['attachment3']);
+ foreach ($data as &$row) {
+    foreach ($row as $key => $value) {
+        if (strpos($key, 'attachment') === 0) {
+            $row[$key] = base64_encode($value);
+        }
+    }
 }
-
 
 
 // Prepare and echo data as JSON

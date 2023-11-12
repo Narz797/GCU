@@ -13,29 +13,31 @@ if (isset($_POST['stat']) && isset($_POST['id']) && isset($_POST['tid']) && isse
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-        // // Define your SQL update query to mark the transaction as done
-        // $sql = "UPDATE `transact` SET `status` = :status WHERE `student_id` = :id AND `transact_id` = :tid";
+//         // Define your SQL update query to mark the transaction as done
+//         $sql = "UPDATE `transact` SET `status` = :status WHERE `student_id` = :id AND `date_created` = :date AND transact_type = 'referral'";
 
-        // // Prepare and execute the SQL statement
-        // $stmt = $pdo->prepare($sql);
-        // $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        // $stmt->bindParam(':tid', $tid, PDO::PARAM_INT);
-        // $stmt->bindParam(':status', $stat, PDO::PARAM_STR); // Use PARAM_STR for remarks
+//         // Prepare and execute the SQL statement
+//         $stmt = $pdo->prepare($sql);
+//         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+//         $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+//         $stmt->bindParam(':status', $stat, PDO::PARAM_STR);
+//         $stmt->bindParam(':type', $rsn, PDO::PARAM_STR);
+// // Use PARAM_STR for remarks
 
-        // if ($stmt->execute()) {
-        //     echo "Transaction marked as done successfully.";
-        // } else {
-        //     $errorInfo = $stmt->errorInfo();
+//         if ($stmt->execute()) {
+//             echo "Transaction marked as done successfully.";
+//         } else {
+//             $errorInfo = $stmt->errorInfo();
         
-        //     // Check if there is an error message
-        //     if (isset($errorInfo[2]) && is_string($errorInfo[2])) {
-        //         echo "Error marking the transaction as done: " . $errorInfo[2];
-        //     } else {
-        //         echo "An unknown error occurred while processing your request. Please try again later.";
-        //     }
-        // }
+//             // Check if there is an error message
+//             if (isset($errorInfo[2]) && is_string($errorInfo[2])) {
+//                 echo "Error marking the transaction as done: " . $errorInfo[2];
+//             } else {
+//                 echo "An unknown error occurred while processing your request. Please try again later.";
+//             }
+//         }
 
-        $sql2 = "UPDATE `transact` SET `status` = :status WHERE `student_id` = :id AND `date_created` = :date AND transact_type = :type";
+        $sql2 = "UPDATE `transact` SET `status` = :status WHERE `student_id` = :id AND `date_created` = :date AND (transact_type = :type OR transact_type = 'referral') ";
 
         $stmt = $pdo->prepare($sql2);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);

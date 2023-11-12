@@ -217,6 +217,8 @@ $_SESSION['origin'] = 'Employee';
       -webkit-animation: mover 2s infinite alternate;
       animation: mover 1s infinite alternate;
     }
+
+
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
@@ -246,6 +248,7 @@ $_SESSION['origin'] = 'Employee';
           <div class="pass"><a href="ForgotPassword.php"><b>Forgot Password?</b></a></div>
           <input type="submit" value="Login" id="submitButton" />
           <div class="signup_link">Not a member? <a href="SignUp_Employee.php"><b>Signup</b></a></div>
+
         </form>
       </div>
     </div>

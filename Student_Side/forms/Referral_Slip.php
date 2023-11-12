@@ -9,7 +9,7 @@ session_start();
     exit; // Make sure to exit the script after a header redirect
   }
 include 'formstyle.php';
-$_SESSION['transact_type'] = 'referral'; //asign value to transact_type
+$_SESSION['transact_type'] = 'ca'; //asign value to transact_type
 ?>
 <html>
 <head>
@@ -89,56 +89,38 @@ input[type="radio"]:checked + span {
       <h1 id="Title">Late or Absent Slip</h1>
     </div>
     <div class="card-body">
-      <form id="form_transact" name="form1" method="post">
+      <form id="form_transact" name="form1" method="post" enctype="multipart/form-data">
        
      
 
-       <b>Date</b>
-        <input type="date" id="date" name="date">
-        </p>
-        <p>
-        <form>
-
+      <label for="date">Range of days absent/tardy:</label><br>
+          <!-- id = date -->
+          <label for="date">From:</label>
+          <input type="date" id="fromDate" name="fromDate" required>
+          <label for="date">To:</label>
+          <input type="date" id="toDate" name="toDate" required>
+       
+<br>
+<p></p>
+<br>
         <b>Reason:</b>
         <br>
-        <label>
-          <input type="radio" name="time" value="late"> Late
-        </label>
-        
-        <label>
-          <input type="radio" name="time" value="tardi"> Absent
-        </label>
-      </form>
-
-        
-        <br>
-
-        <label for="fileUpload">Upload Letter of Explaination</label>
-        <input type="file" id="fileUpload" name="fileUpload">
-
-
-  <br>
-        <label for="fileUpload">Upload Parent/Guardian ID</label>
-        <input type="file" id="fileUpload" name="fileUpload">
-        <!-- <div class="file-input-container">
-          <label for="fileUpload">Letter of Explanation: </label>
-          <input type="file" id="fileUpload" name="fileUpload">
-          <button class="custom-file-button">Choose File</button>
-        </div> -->
-        
-          
-         
-        </p>
-        <p>
-          <!-- Referred By:
           <label for="textfield"></label>
           <select name="textfield" id="refer">
-            <option value="Myself">Myself</option>
-            <option value="Instructor">Instructor</option>
-            <option value="College Dean">College Dean</option>
-          </select> -->
-          <br>
-        </p>
+            <option value="Late">Late</option>
+            <option value="Absent">Absent</option>
+            <option value="Academic Deficiency/ies">Academic Deficiency/ies</option>
+          </select>
+        
+        <br>
+        <br>
+<p></p>
+<br>
+
+      <label for="fileUpload">Upload Required Files</label>
+          <input type="file" id="fileUpload" name="fileUpload[]" multiple>
+  <br>
+
         <p>
           <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
         </p>
@@ -157,30 +139,39 @@ input[type="radio"]:checked + span {
     }
   </script>
   <script>
-    $("#form_transact").on("submit", function (event) {
-      event.preventDefault();
-      var student_id = <?php echo $_SESSION['session_id'] ?>;
-      var transact_type = "withdrawal"
-      var selectedReasons = $("input[name='reasons[]']:checked").map(function () {
-        return $(this).val();
-      }).get();
-      var othersText = $("#oth").val();
-      // Add othersText to the selectedReasons array if it's not empty
-      if (othersText.trim() !== "") {
-        selectedReasons.push(othersText);
-      }
-      $.ajax({
+$("#form_transact").on("submit", function (event) {
+    event.preventDefault();
+
+    var formData = new FormData(this); // Instantiate the FormData object with the form
+
+    var fromDate = document.getElementById("fromDate").value;
+    var toDate = document.getElementById("toDate").value;
+    var dateRange = fromDate + ' to ' + toDate;
+
+    var student_id = <?php echo $_SESSION['session_id'] ?>;
+    var transact_type = "AT";
+    var selectedReasons = $("#refer").val(); // Use 'textfield' instead of 'reasons[]'
+
+    // Append the additional data to the formData object
+    formData.append('date', dateRange);
+    formData.append('transact_type', transact_type);
+    formData.append('selectedReasons', selectedReasons);
+
+    // Now send the form data including files via AJAX
+    $.ajax({
         type: 'POST',
         url: '../../backend/create_transaction.php',
-        data: {
-          reasons: selectedReasons,
-          refer: $('#refer').find(":selected").val()
-        },
+        data: formData,
+        contentType: false,
+        processData: false,
         success: function (data) {
-          alert(data);
+            alert(data);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error: ' + error);
         }
-      });
     });
+});
   </script>
 </body>
 </html>

@@ -149,8 +149,12 @@ $_SESSION['transact_type'] = 'referral';
 
         <!-- show when reason is late or absent -->
         <div class="form1">
-          <label for="date">Month/Date/Year:</label>
-          <input type="text" id="date" name="date" required>
+          <label for="date">Range of days absent:</label><br>
+          <!-- id = date -->
+          <label for="date">From:</label>
+          <input type="date" id="fromDate" name="fromDate" required>
+          <label for="date">To:</label>
+          <input type="date" id="toDate" name="toDate" required>
         </div>
         <input type="submit" class="btn btn-primary" name="submit" id="submit" value="REFER">
         </div>
@@ -310,11 +314,21 @@ function logout() {
 var clg;
 var eID;
 var sID;
+var dc;
+var transID;
+
 
 $(document).ready(function() {
 //check if student is available in database
 $("#form_transact").on("submit", function (event) {
       event.preventDefault();
+
+    var fromDate = document.getElementById("fromDate").value;
+    var toDate = document.getElementById("toDate").value;
+
+    var dateRange = fromDate + ' to ' + toDate; // Concatenate the dates
+
+    console.log(dateRange); // Check in the console
 
       var transact_type = "referral"
       var studentContactNumber = document.getElementById("contact").value;
@@ -332,7 +346,7 @@ $("#form_transact").on("submit", function (event) {
                           course: $("#crse").val(),
                           cn: $("#contact").val(),
                           reasons: $("#reason").val(),
-                          datee: $("#date").val()
+                          datee: dateRange
                           
                       },
         success: function (data) {
@@ -374,8 +388,7 @@ $("#form_transact").on("submit", function (event) {
     });
 
 
-    
-
+   
     // Fetch data using $.ajax
     $.ajax({
         url: '../backend/referred_students.php',
@@ -392,6 +405,8 @@ $("#form_transact").on("submit", function (event) {
         for (var i = 0; i < data.length; i++) {
             
             var entry = data[i];
+            dc =entry.date;
+
             var tableToAppend = tableBody; // Determine which table to append to
             var row = $("<tr></tr>");
             row.append("<td>" + entry.student_id + "</td>");
@@ -402,8 +417,10 @@ $("#form_transact").on("submit", function (event) {
             row.append("<td>" + entry.reason + "</td>");
             row.append("<td>" + entry.date + "</td>");
             row.append("<td>" + entry.status + "</td>");
+
+
             var statusCell = $("<td></td>");
-            var statusLink = $("<a href='#divTwo'><button onclick='delete_stud(" + entry.student_id + ")'><i class='ri-delete-bin-6-line'></i></button></a>");
+            var statusLink = $("<a href='#divTwo'><button onclick='delete_stud( " + entry.transact_id + ")'><i class='ri-delete-bin-6-line'></i></button></a>");
 
             statusCell.append(statusLink);
             row.append(statusCell);
@@ -474,17 +491,27 @@ $.ajax({
 fetchData();
 
 
+
   });
+  function delete_stud (tid){
+    transID = tid;
+      sID = id;
+
+    }
   function dlete()
   {
+
+      console.log("Tid: ",transID);
     $.ajax({
           type: 'POST',
           url: '../backend/del_stud.php',
           data: {
-            id: sID
+
+            Tid: transID
           },
           success: function (data) {
             console.log("Remarked:", data);
+            document.getElementById("divTwo").style.display = "none";
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
@@ -492,10 +519,14 @@ fetchData();
           },
         });
   }
-  function delete_stud (id){
-      sID = id;
-      console.log("Stud_id: ",sID);
-    }
+  function cancel()
+  {
+
+
+            console.log("Canceled");
+            document.getElementById("divTwo").style.display = "none";
+
+  }
 </script>
 </html>
 </span>

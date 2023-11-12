@@ -2065,15 +2065,28 @@ p {
   text-align: left;
   background-color: #04AA6D;
   color: white;
+
+
 }
+.outline-image {
+  width: 450px; /* Set your desired width */
+  height: 700px; /* Set your desired height */
+  border: 4px solid #333; /* Set your desired border color and width */
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3); /* Add a gray shadow effect */
+  border-radius: 10px; /* Set your desired border radius */
+}
+
+
+
+
 
 
 
 
 </style>
 <body>
-<section id="topbar" class="topbar d-flex align-items-center" style="background-color:#20B2AA; height: 50px; "><i class="fa fa-sign-out" style="font-size:48px;color:black; margin-left:1650px" ></i>
-</section> 
+<!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color:#20B2AA; height: 50px; "><i class="fa fa-sign-out" style="font-size:48px;color:black; margin-left:1650px" ></i> -->
+<!-- </section>  -->
 
   <div class="main-content">
     <!-- Top navbar -->
@@ -2082,16 +2095,12 @@ p {
         <!-- Brand -->
         <!-- <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">User profile</a> -->
         <!-- Form -->
-        <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <form id="logoutForm" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
-            <div class="input-group input-group-alternative">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-search"></i></span>
-              </div>
-              <input class="form-control" placeholder="Search" type="text">
-            </div>
+            <button id="logoutButton" class="btn btn-outline-light">Logout</button>
           </div>
-        </form> -->
+        </form>
+
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
@@ -2105,7 +2114,7 @@ p {
                 </div> -->
               </div>
             </a>
-            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+            <!-- <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
               <div class=" dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Welcome!</h6>
               </div>
@@ -2130,13 +2139,13 @@ p {
                 <i class="ni ni-user-run"></i>
                 <span>Logout</span>
               </a>
-            </div>
+            </div> -->
           </li>
         </ul>
       </div>
     </nav>
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 700px; background-image: url(../assets/img/bsubg.jpg); background-size: cover; background-position: center top;">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../assets/img/bsubg.jpg); background-size: cover; background-position: center top;">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
       <!-- Header container -->
@@ -2159,7 +2168,7 @@ p {
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="../assets/img/ab.jpg" alt="" width="500px" height="200px" class="rounded-circle">
+                    <img src="../assets/img/GCU_logo.png" alt="" width="450px" height="180px" class="rounded-circle">
                     <!-- <img class="image"src="../assets/img/ab.jpg" alt="Logo" class="logo" style="height: 100%; width: 20%; border-radius: 50%;"> -->
 
                   </a>
@@ -2178,6 +2187,7 @@ p {
               <div class="row">
                 <div class="col">
                   <!-- <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                    
                    
                    
                    
@@ -2189,7 +2199,7 @@ p {
               <br>
               <div class="text-center">
                 <h3>
-                  Lastname,FirstnaME,mIDDLEnAME
+                WELCOME TO
                 </h3>
                
                
@@ -2198,6 +2208,8 @@ p {
                 </div>
                 <hr class="my-4">
                 <!-- <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p> -->
+                <img src="../assets/img/id.jpg" alt="" width="450px" height="700px" class="outline-image">
+                
               </div>
             </div>
           </div>
@@ -2902,9 +2914,35 @@ p {
     </div>
   </footer> -->
 
+  <!-- Add this script tag to your HTML file -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the logout button element
+    var logoutButton = document.getElementById('logoutButton');
+
+    // Add a click event listener to the logout button
+    logoutButton.addEventListener('click', function() {
+      // Display a confirmation prompt
+      var confirmation = confirm('Are you sure you want to log out?');
+
+      // Check if the user clicked "Yes"
+      if (confirmation) {
+        // Redirect to appointment.php
+        window.location.href = '../appointment.php';
+      } else {
+        // The user clicked "No," you can add additional handling if needed
+        console.log('Logout canceled');
+      }
+    });
+  });
+</script>
+
+
+
+
   <section id="topbar" class="topbar d-flex align-items-center" style="background-color:#20B2AA; height: 50px; "></section>
 
-
+ 
   
 </body>
 

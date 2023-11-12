@@ -13,7 +13,8 @@ student_user.gender,
 referral.reason,
 referral.referred AS refer,
 transact.status,
-transact.date_created AS date
+transact.date_created AS date,
+transact.transact_id
 FROM
 student_user
 INNER JOIN
@@ -40,7 +41,8 @@ tstable.gender,
 tstable.reason,
 tstable.refer,
 transact.status,
-tstable.date
+tstable.date,
+transact.transact_id
 FROM
 tstable
 INNER JOIN
