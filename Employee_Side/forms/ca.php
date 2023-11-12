@@ -194,19 +194,15 @@ if (data.length > 0) {
     var reason = studentData.reason;
     rsn = studentData.reason;
     var att1 = studentData.attachment1;
-    var att2 = studentData.attachment2;
-    var att3 = studentData.attachment3;
     console.log(fname);
     updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, reason);
 
     // Display the blob data as images
     displayBlobAsImage(att1, 'attachment1'); // Pass the image data and an element ID
-    displayBlobAsImage(att2, 'attachment2'); // Pass the image data and an element ID
-    displayBlobAsImage(att3, 'attachment3');
   
 } else {
     // Handle the case when no results are found
-    console.log('No results found');
+    console.log('No results found', data);
 }
 },
 error: function (xhr, status, error) {

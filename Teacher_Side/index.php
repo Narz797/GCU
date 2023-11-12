@@ -149,8 +149,12 @@ $_SESSION['transact_type'] = 'referral';
 
         <!-- show when reason is late or absent -->
         <div class="form1">
-          <label for="date">Month/Date/Year:</label>
-          <input type="text" id="date" name="date" required>
+          <label for="date">Range of days absent:</label><br>
+          <!-- id = date -->
+          <label for="date">From:</label>
+          <input type="date" id="fromDate" name="fromDate" required>
+          <label for="date">To:</label>
+          <input type="date" id="toDate" name="toDate" required>
         </div>
         <input type="submit" class="btn btn-primary" name="submit" id="submit" value="REFER">
         </div>
@@ -313,10 +317,18 @@ var sID;
 var dc;
 var transID;
 
+
 $(document).ready(function() {
 //check if student is available in database
 $("#form_transact").on("submit", function (event) {
       event.preventDefault();
+
+    var fromDate = document.getElementById("fromDate").value;
+    var toDate = document.getElementById("toDate").value;
+
+    var dateRange = fromDate + ' to ' + toDate; // Concatenate the dates
+
+    console.log(dateRange); // Check in the console
 
       var transact_type = "referral"
       var studentContactNumber = document.getElementById("contact").value;
@@ -334,7 +346,7 @@ $("#form_transact").on("submit", function (event) {
                           course: $("#crse").val(),
                           cn: $("#contact").val(),
                           reasons: $("#reason").val(),
-                          datee: $("#date").val()
+                          datee: dateRange
                           
                       },
         success: function (data) {
@@ -376,8 +388,7 @@ $("#form_transact").on("submit", function (event) {
     });
 
 
-    
-
+   
     // Fetch data using $.ajax
     $.ajax({
         url: '../backend/referred_students.php',
