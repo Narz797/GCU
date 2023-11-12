@@ -142,50 +142,52 @@ if ($transact == 'readmission') {
     }
 }
  else if ($transact == 'ca') {
-
-
-
-    $reason = $_POST['reasons'];
+    $id = $_SESSION['session_id'];
+    $reason = $_POST['selectedReasons'];
     $date = $_POST['date'];
-    $files = $_POST['files'];
+    $status = 'pending';
 
-
-    // $refer = $_POST['refer'];
     $datetime = new DateTime();
-    $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
+    $dateCreated = $datetime->format('Y-m-d H:i:s');
 
+    // Assuming 'attachment1' field is a BLOB in your database
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :transact_type, :date_created, :status)';
-    $sql_2 = 'INSERT INTO ca(`transact_id`, `stud_id`, `Reason`, `attachment1`, `date_of_AbsentOrTardy`, `status`) VALUES (:transact_id, :sid, :reasons, :file, :date, :status)';
-    
-
+    $sql_2 = 'INSERT INTO ca(`transact_id`,`stud_id`, `Reason`, `attachment1`, `date_of_AbsentOrTardy`, `status`) 
+              VALUES (:transact_id, :sid, :reasons, :file, :date, :status)';
 
     try {
+        // Insert initial transaction record
         $code = $pdo->prepare($sql_1);
-        $code->bindParam(':sid', $id); // Change :student_id to :sid
+        $code->bindParam(':sid', $id);
         $code->bindParam(':transact_type', $transact);
         $code->bindParam(':date_created', $date);
-        $code->bindParam(':status', $status); // Make sure $status is defined and has a value
-        $code->execute();
-    
-        $transact_id = $pdo->lastInsertId();
-        $code = $pdo->prepare($sql_2);
-        $code->bindParam(':transact_id', $transact_id); // Change :transact_id to :transact_id
-        $code->bindParam(':sid', $id);
-        $code->bindParam(':reasons', $reason);
-        $code->bindParam(':file', $files);
-        $code->bindParam(':date', $date);
         $code->bindParam(':status', $status);
-    
         $code->execute();
 
-    
+        $transact_id = $pdo->lastInsertId();
+
+        $fileContent = ''; // Create a string to store all file contents
+
+        // Combine all file contents into one string
+        foreach ($_FILES['fileUpload']['tmp_name'] as $key => $tmp_name) {
+            $fileContent .= file_get_contents($tmp_name);
+        }
+
+        // Insert the combined file content as a single BLOB
+        $code = $pdo->prepare($sql_2);
+        $code->bindParam(':transact_id', $transact_id);
+        $code->bindParam(':sid', $id);
+        $code->bindParam(':reasons', $reason);
+        $code->bindParam(':file', $fileContent, PDO::PARAM_LOB);
+        $code->bindParam(':date', $date);
+        $code->bindParam(':status', $status);
+        $code->execute();
+
         echo "Data inserted successfully";
     } catch (PDOException $e) {
         echo "Error inserting data: " . $e->getMessage();
     }
-    
-
- }
+}
 echo "User ID: " . $id;
 $pdo = null;
 ?>

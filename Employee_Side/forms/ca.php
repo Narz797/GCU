@@ -124,9 +124,11 @@ session_start();
                 <div class="box">
                   <p class="card-description" id="reason">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
                   <div class="center-attached">
-                  <img src="" title="No Attached Document" id="attachment1">
-                  <img src="" title="No Attached Document" id="attachment2">
-                  <img src="" title="No Attached Document" id="attachment3">
+                  <!-- <img src="" title="No Attached Document" id="attachment1"> -->
+                  <div id="attachmentContainer"></div>
+
+                  <!-- <img src="" title="No Attached Document" id="attachment2">
+                  <img src="" title="No Attached Document" id="attachment3"> -->
                   </div>
                 </div>
                 </div>
@@ -178,6 +180,18 @@ dataType: 'json',
 success: function (data) {
 if (data.length > 0) {
     var studentData = data[0]; // Assuming you expect a single row
+
+    // gets attachaments
+    for (var key in studentData) {
+                if (studentData.hasOwnProperty(key) && !key.startsWith('attachment')) {
+                    var element = document.getElementById(key);
+                    if (element) {
+                        element.innerText = studentData[key];
+                    }
+                }
+            }
+
+    // 
     var id = studentData.stud_user_id;
     sid = studentData.stud_user_id;
     tid = studentData.transact_id;
@@ -198,7 +212,7 @@ if (data.length > 0) {
     updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, reason);
 
     // Display the blob data as images
-    displayBlobAsImage(att1, 'attachment1'); // Pass the image data and an element ID
+    displayBlobFiles(studentData); // Pass the image data and an element ID
   
 } else {
     // Handle the case when no results are found
@@ -212,11 +226,18 @@ console.error('Response: ' + xhr.responseText);
 }
 });
 
-function displayBlobAsImage(blobData, elementId) {
-    if (blobData) {
-        var imgElement = document.getElementById(elementId);
-        if (imgElement) {
-            imgElement.src = 'data:image/jpeg;base64,' + blobData; // Assuming JPEG format
+function displayBlobFiles(studentData) {
+    const attachmentContainer = document.getElementById('attachmentContainer');
+
+    for (var key in studentData) {
+        if (studentData.hasOwnProperty(key) && key.startsWith('attachment')) {
+            const downloadLink = document.createElement('a');
+            downloadLink.innerText = 'Download ' + key; // Text for the download link
+            downloadLink.download = 'file_' + key; // Generic filename for download
+            downloadLink.href = 'data:image/jpeg;base64,' + studentData[key]; // Set file content
+
+            attachmentContainer.appendChild(downloadLink);
+            attachmentContainer.appendChild(document.createElement('br')); // Line break for better separation
         }
     }
 }

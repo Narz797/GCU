@@ -118,11 +118,13 @@ echo json_encode($data);
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
  // Assuming your blob columns are named "image1_data" and "image2_data"
-foreach ($data as &$row) {
-    $row['attachment1'] = base64_encode($row['attachment1']);
-
+ foreach ($data as &$row) {
+    foreach ($row as $key => $value) {
+        if (strpos($key, 'attachment') === 0) {
+            $row[$key] = base64_encode($value);
+        }
+    }
 }
-
 
 
 // Prepare and echo data as JSON
