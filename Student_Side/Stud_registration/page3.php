@@ -37,6 +37,9 @@ if (!empty($_POST['othyear'])) {
 if (!empty($_POST['othawards'])) {
     $_SESSION['othawards'] = $_POST['othawards'];
 }
+if(!empty($_POST['otherSchool'])){
+    $_SESSION['otherSchool'] = $_POST['otherSchool'];
+}
 
 ?>
 
@@ -712,20 +715,20 @@ if (!empty($_POST['othawards'])) {
                         </legend>
                         <div class="checkbox-group">
                             <label class="container1">Parents
-                                <input type="checkbox" name="src" value="Parents" id="parentsCheckbox">
+                                <input type="checkbox" name="src[]" value="Parents" id="parentsCheckbox">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container1">Self-supporting
-                                <input type="checkbox" name="src" value="Self" id="selfCheckbox">
+                                <input type="checkbox" name="src[]" value="Self" id="selfCheckbox">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container1">Relatives and/or Guardian
-                                <input type="checkbox" name="src" value="Relatives" id="relativesCheckbox">
+                                <input type="checkbox" name="src[]" value="Relatives" id="relativesCheckbox">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container1">
                                 Scholarship
-                                <input type="checkbox" name="src" value="Scholarship" id="scholarshipCheckbox" onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
+                                <input type="checkbox" name="src[]" value="Scholarship" id="scholarshipCheckbox" onclick="toggleSpecifyBox('scholarshipCheckbox', 'specifyBoxScholarship')">
                                 <span class="checkmark"></span>
                             </label>
                             <!-- Specify box for Scholarship -->
@@ -735,7 +738,7 @@ if (!empty($_POST['othawards'])) {
 
                             <label class="container1">
                                 Others:
-                                <input type="checkbox" id="otherCheckbox" name='src' onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
+                                <input type="checkbox" id="otherCheckbox" name='src[]' onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
                                 <span class="checkmark"></span>
                             </label>
 
@@ -815,7 +818,7 @@ if (!empty($_POST['othawards'])) {
                                 <input type="text" id="teachAre" name="teachAre">
                             </p>
                             <p>8. My friends don't know that
-                                <input type="text" id="freindsDunno" name="freindsDunno">
+                                <input type="text" id="friendsDunno" name="friendsDunno">
                             </p>
                             <p>9. When I think about the future, I
                                 <input type="text" id="future" name="future">

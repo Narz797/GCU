@@ -746,7 +746,7 @@ if (!empty($_POST['siblings'])) {
                 </div>
             </div>
             <br>
-            <input type="checkbox" id="otherSchoolCheckbox">
+            <input type="checkbox" id="otherSchoolCheckbox" name='otherSchool'>
             <label for="otherSchoolCheckbox">Other School Attended</label>
             <br>
             <br>
