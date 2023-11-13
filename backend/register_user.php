@@ -168,7 +168,7 @@ if (isset($_SESSION['origin'])) {
             }
 
             if($_SESSION['whom']=='parents'){
-                $sql4 = "INSERT INTO `father`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`) VALUES (?,?,?,?,?,?,?)";
+                $sql4 = "INSERT INTO `father`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`,`contact`) VALUES (?,?,?,?,?,?,?,?)";
                 $stmt4 = $pdo->prepare($sql4);
                 $stmt4->bindParam(1, $_SESSION['idno']);
                 $stmt4->bindParam(2, $_SESSION['Ffname']);
@@ -177,10 +177,11 @@ if (isset($_SESSION['origin'])) {
                 $stmt4->bindParam(5,$_SESSION['Fage']);
                 $stmt4->bindParam(6,$_SESSION['Focc']);
                 $stmt4->bindParam(7,$_SESSION['Fedu']);
+                $stmt4->bindParam(8,$_SESSION['Fcontact']);
 
                 $stmt4->execute();
 
-                $sql5 = "INSERT INTO `mother`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`) VALUES (?,?,?,?,?,?,?)";
+                $sql5 = "INSERT INTO `mother`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`,`contact`) VALUES (?,?,?,?,?,?,?,?)";
                 $stmt5 = $pdo->prepare($sql5);
                 $stmt5->bindParam(1, $_SESSION['idno']);
                 $stmt5->bindParam(2, $_SESSION['Mfname']);
@@ -189,21 +190,22 @@ if (isset($_SESSION['origin'])) {
                 $stmt5->bindParam(5,$_SESSION['Mage']);
                 $stmt5->bindParam(6,$_SESSION['Mocc']);
                 $stmt5->bindParam(7,$_SESSION['Medu']);
+                $stmt5->bindParam(7,$_SESSION['Mcontact']);
 
                 $stmt5->execute();
 
             }
             if($_SESSION['whom']=='guardian'){
-                $sql8 = "INSERT INTO `guardian`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`) VALUES (?,?,?,?,?,?,?)";
+                $sql8 = "INSERT INTO `guardian`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`) VALUES (?,?,?,?,?,?,?,?)";
                 $stmt8 = $pdo->prepare($sql8);
                 $stmt8->bindParam(1, $_SESSION['idno']);
                 $stmt8->bindParam(2, $_SESSION['Gfname']);
-                $gmname = isset($_SESSION['Gmname']) ? $_SESSION['Gmname'] : null;
                 $stmt8->bindParam(3, $_SESSION['Gmname']);
                 $stmt8->bindParam(4, $_SESSION['Glname']);
                 $stmt8->bindParam(5,$_SESSION['Gage']);
                 $stmt8->bindParam(6,$_SESSION['Gocc']);
                 $stmt8->bindParam(7,$_SESSION['Gedu']);
+                $stmt8->bindParam(7,$_SESSION['Gcontact']);
 
                 $stmt8->execute();
             }
