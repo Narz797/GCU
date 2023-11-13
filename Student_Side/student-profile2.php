@@ -2390,6 +2390,13 @@ p {
                         <section type="number" id="feducation" class="form-control form-control-alternative" > College </section>
                       </div>
                     </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country"> Contact Number</label>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" > 09214852314 </section>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
 
@@ -2444,6 +2451,12 @@ p {
                       <div class="form-group">
                         <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
                         <section type="number" id="feducation" class="form-control form-control-alternative" > College </section>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country"> Contact Number</label>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" > 09214852314 </section>
                       </div>
                     </div>
 
@@ -2505,6 +2518,12 @@ p {
                           <section type="number" id="feducation" class="form-control form-control-alternative" > College </section>
                         </div>
                       </div>
+                      <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country"> Contact Number</label>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" > 09214852314 </section>
+                      </div>
+                    </div>
 
 
                     </div>

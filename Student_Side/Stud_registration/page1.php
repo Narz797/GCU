@@ -16,6 +16,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
     <link rel="stylesheet" href="style.css">
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- <link rel="stylesheet" href="../assets/css/stud_reg.css"> -->
     <title>Responsive Regisration Form </title>
 </head>
 <style>
@@ -739,6 +740,10 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                             <label>Educational Attainment</label>
                                             <input type="text" id="Fedu" name="Fedu" required>
                                         </div>
+                                        <div class="input-field">
+                                            <label>Contact Number</label>
+                                            <input type="text" id="Fedu" name="Fedu" required>
+                                        </div>
                                     </div>
                                 </fieldset>
                                 <hr>
@@ -770,6 +775,10 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                             <label>Educational Attainment</label>
                                             <input type="text" id="Medu" name="Medu" required>
                                         </div>
+                                        <div class="input-field">
+                                            <label>Contact Number</label>
+                                            <input type="text" id="Fedu" name="Fedu" required>
+                                        </div>
                                     </div>
                                 </fieldset>
                             </div>
@@ -800,6 +809,10 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                         <div class="input-field">
                                             <label>Educational Attainment</label>
                                             <input type="text" id="Gedu" name="Gedu" required>
+                                        </div>
+                                        <div class="input-field">
+                                            <label>Contact Number</label>
+                                            <input type="text" id="Fedu" name="Fedu" required>
                                         </div>
                                     </div>
                                 </fieldset>

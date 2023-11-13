@@ -8,7 +8,6 @@ session_start();
     
     exit; // Make sure to exit the script after a header redirect
   }
-include 'formstyle.php';
 $_SESSION['transact_type'] = 'ca'; //asign value to transact_type
 ?>
 <html>
@@ -19,15 +18,6 @@ $_SESSION['transact_type'] = 'ca'; //asign value to transact_type
   <link href="../assets/img/GCU_logo.png" rel="icon">
 </head>
 <style>
-  #back_button{
-  padding: 10px 30px;
-  float: left; /* Adjusted the float property */
-  position: fixed; /* Fixed position so it stays in place */
-  top: 10px; /* Positioned at the top */
-  left: 50px; /* Positioned at the left */
-  z-index: 1000;
-  background-color:#105c06;
-}
 
 label {
     display: block;
@@ -78,6 +68,201 @@ input[type="radio"]:checked + span {
   color: #007bff; /* Change color as needed */
 }
 
+    /* Your existing styles here */
+    body {
+      /* font-family: Arial, sans-serif; */
+      background-color: #f4f4f4;
+      
+      padding: 0;
+     
+     
+      /* background: linear-gradient(
+    142deg,
+    green  0%,
+    black 100%
+  ); */
+ 
+
+      
+    }
+
+    .card {
+      max-width: 800px;
+      margin: 50px auto;
+     background:white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      box-sizing: border-box;
+      
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 1); 
+      
+
+      animation: fadeInUp 1s ease-in-out; /* Animation */
+    }
+
+    .card-header {
+      background: #007bff;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size:18px;
+
+      font-family: "Century Gothic", sans-serif;
+    }
+
+    textarea {
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
+      width: 100%;
+      padding: 8px;
+      height:200px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      font-family: "Century Gothic", sans-serif;
+      font-size:18px;
+    }
+
+    .button {
+      text-align: center;
+    
+      
+    }
+
+   button {
+      padding: 10px 20px;
+      background-color: green;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+
+    button:hover {
+      background-color: #008080;
+    }
+
+
+    .button-container {
+      display: flex;
+   
+      
+      
+    }
+    .button {
+      margin-right: 10px; /* Adjust the margin to create space between buttons */
+    }
+
+
+
+    /* Define the fadeInUp animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo-container {
+      display: flex;
+      /* text-align: center; */
+      
+    
+      animation: fadeInUp 1s ease-in-out; /* Animation */
+    }
+
+    .logo-container img {
+      width: 80px;
+      height: 80px;
+    }
+    h1
+    {
+      margin-left:10px;
+      text-align: center;
+      font-family: "Century Gothic", sans-serif;
+      font-weight: bold;
+
+    }
+
+    /* Style for the label */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Style for the container of date inputs */
+.date-range-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* Style for each date input */
+.date-input {
+  flex: 1;
+}
+
+/* Style for date inputs */
+input[type="date"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 4px;
+}
+
+/* Style for date inputs when focused */
+input[type="date"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Style for the container of the reason dropdown */
+.reason-dropdown-container {
+  margin-top: 8px;
+}
+
+/* Style for the reason dropdown */
+select {
+  padding: 8px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Style for the reason dropdown when focused */
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+
 
   
  
@@ -85,32 +270,51 @@ input[type="radio"]:checked + span {
 </style>
 <body>
   <div class="card">
-    <div class="card-header">
-      <h1 id="Title">Late or Absent Slip</h1>
-    </div>
+  <div class="logo-container" >
+    <img  src="../assets/img/GCU_logo.png" alt="GCU Logo">
+   
+   <!-- <h1  id="Title" style="font-family: Papyrus, fantasy;">Readmission Slip</h1> -->
+ 
+    <img  style="margin-left:auto" src="../assets/img/bsu.png" alt="BSU Logo">
+  </div>
+  <hr>
+
+  <h1 id="Title" >Referral Slip</h1>
+  <hr>
+
     <div class="card-body">
       <form id="form_transact" name="form1" method="post" enctype="multipart/form-data">
        
      
 
       <label for="date">Range of days absent/tardy:</label><br>
-          <!-- id = date -->
-          <label for="date">From:</label>
-          <input type="date" id="fromDate" name="fromDate" required>
-          <label for="date">To:</label>
-          <input type="date" id="toDate" name="toDate" required>
+
+<div class="date-range-container">
+  <div class="date-input">
+    <label for="fromDate">From:</label>
+    <input type="date" id="fromDate" name="fromDate" required>
+  </div>
+
+  <div class="date-input">
+    <label for="toDate">To:</label>
+    <input type="date" id="toDate" name="toDate" required>
+  </div>
+</div>
+
        
 <br>
 <p></p>
 <br>
-        <b>Reason:</b>
-        <br>
-          <label for="textfield"></label>
-          <select name="textfield" id="refer">
-            <option value="Tardy">Tardy</option>
-            <option value="Absent">Absent</option>
-            <option value="Academic Deficiency/ies">Academic Deficiency/ies</option>
-          </select>
+<b>Reason:</b><br>
+
+<div class="reason-dropdown-container">
+  <select name="textfield" id="refer">
+    <option value="Tardy">Tardy</option>
+    <option value="Absent">Absent</option>
+    <option value="Academic Deficiency/ies">Academic Deficiency/ies</option>
+  </select>
+</div>
+
         
         <br>
         <br>
@@ -121,9 +325,20 @@ input[type="radio"]:checked + span {
           <input type="file" id="fileUpload" name="fileUpload[]" multiple>
   <br>
 
-        <p>
-          <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
-        </p>
+  <div class="button-container">
+          <div class="button">
+            <p>
+              <!-- Change type from submit to button, and use onclick to handle the back button -->
+              <button type="button" class="btn btn-primary" onclick="window.location.href='../student-home'">Back</button>
+            </p>
+          </div>
+          <div class="button">
+            <p>
+              <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
+              <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+            </p>
+          </div>
+        </div>
       </form>
     </div>
   </div>

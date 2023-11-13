@@ -8,7 +8,6 @@ session_start();
     
     exit; // Make sure to exit the script after a header redirect
   }
-include 'formstyle.php';
 $_SESSION['transact_type']='WDS';//asign value to transact_type
 ?>
 <html>
@@ -47,32 +46,204 @@ $_SESSION['transact_type']='WDS';//asign value to transact_type
     .autocomplete-popup li:hover {
         background-color: #f0f0f0;
     }
+
+    body {
+      /* font-family: Arial, sans-serif; */
+      background-color: #f4f4f4;
+      
+      padding: 0;
+     
+     
+      /* background: linear-gradient(
+    142deg,
+    green  0%,
+    black 100%
+  ); */
+}
+
+  .card {
+      max-width: 800px;
+      margin: 50px auto;
+     background:white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      box-sizing: border-box;
+      
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 1); 
+      
+
+      animation: fadeInUp 1s ease-in-out; /* Animation */
+    }
+ 
+
+      
+    .card-header {
+      background: #007bff;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px 8px 0 0;
+    }
+    .card-body {
+      padding: 20px;
+    }
+
+    .button {
+      text-align: center;
+    
+      
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size:18px;
+
+      font-family: "Century Gothic", sans-serif;
+    }
+
+    textarea {
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
+      width: 100%;
+      padding: 8px;
+      height:200px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      font-family: "Century Gothic", sans-serif;
+
+      font-size:18px;
+    }
+
+    .button {
+      text-align: center;
+    
+      
+    }
+
+   button {
+      padding: 10px 20px;
+      background-color: green;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+
+    button:hover {
+      background-color: #008080;
+    }
+
+    .button-container {
+      display: flex;
+   
+      
+      
+    }
+    .button {
+      margin-right: 10px; /* Adjust the margin to create space between buttons */
+    }
+
+
+
+    /* Define the fadeInUp animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo-container {
+      display: flex;
+      /* text-align: center; */
+      
+    
+      animation: fadeInUp 1s ease-in-out; /* Animation */
+    }
+
+    .logo-container img {
+      width: 80px;
+      height: 80px;
+    }
+    h1
+    {
+      margin-left:10px;
+      text-align: center;
+      font-family: "Century Gothic", sans-serif;
+    }
+
+    /* Style for the select container */
+select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Century Gothic", sans-serif;
+
+}
+
+/* Style for the select options */
+select option {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Style for the select container when focused */
+select:focus {
+  outline: none;
+  border-color: #007bff; /* Change the border color when focused */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow when focused */
+}
+
+
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="card-header">
+      <!-- Other card content goes here -->
+      <div class="logo-container" >
+    <img  src="../assets/img/GCU_logo.png" alt="GCU Logo">
+   
+   <!-- <h1  id="Title" style="font-family: Papyrus, fantasy;">Readmission Slip</h1> -->
+ 
+    <img  style="margin-left:auto" src="../assets/img/bsu.png" alt="BSU Logo">
+  </div>
+  <hr>
+
+  <h1 stly=" font-family: Consolas;" id="Title" >Withdrawal/Dropping/Shifting Slip</h1>
+  <hr>
+
+    <!-- <div class="card-header">
       <h1 id="Title">Withdrawal/Dropping/Shifting Slip</h1>
-    </div>
+    </div> -->
     <div class="card-body">
       <form id="form_transact" name="form1" method="post">
         <p>
-          <label>Reason</label>
-          <label for="select2">:</label>
+          <label>Reason:</label>
+          <!-- <label for="select2">:</label> -->
           <select name="select2" id="action">
+            
             <option value="Withdrawing Enrollment">Withdrawing Enrollment</option>
             <option value="Dropping Subjects">Dropping Subjects</option>
             <option value="Shifting">Shifting</option>
           </select>
         </p>
         <p>
-          <label for="textarea2">State your Reason/s:
-          </label><br>
-          <textarea name="textarea2" class="textarea" id="reason_state"></textarea>
-        </p>
-        <p>
-          <label>Reason/s for withdrawing enrollment/ dropping subject/s / shifting</label>
-          <label for="textarea">:<br>
+       
+          <label>Reason/s for withdrawing enrollment/ dropping subject/s / shifting:</label>
+          <!-- <label for="textarea">:<br> -->
           </label>
           <textarea name="textarea" class="textarea" id="reason_explain"></textarea>
         </p>
@@ -92,9 +263,22 @@ $_SESSION['transact_type']='WDS';//asign value to transact_type
                 <div id="autocomplete-suggestions2" class="autocomplete-popup"></div>
             </div>
         </div>
-        <p>
-          <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit">
-        </p>
+        <div class="button-container">
+          <div class="button">
+            <p>
+              <!-- Change type from submit to button, and use onclick to handle the back button -->
+              <button type="button" class="btn btn-primary" onclick="window.location.href='../student-home'">Back</button>
+            </p>
+          </div>
+          <div class="button">
+            <p>
+              <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
+              <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+            </p>
+          </div>
+        </div>
+
+
       </form>
       
       <div id="suggestions"></div>
@@ -183,5 +367,27 @@ textfield5.addEventListener('input', function () {
     this.value = this.value.toUpperCase();
 });
   </script>
+
+<script>
+      function submitForm() {
+        // Check if the form is filled before submitting
+        if ($('#reason_explain').val() === '' ) {
+          alert('Please fill out all fields before submitting.');
+        } else {
+          // If the form is filled, proceed with AJAX submission
+          $.ajax({
+            type: 'POST',
+            url: '../../backend/create_transaction.php',
+            data: {
+              
+              motivation: $("#reason_explain").val(),
+            },
+            success: function (data) {
+              alert(data);
+            }
+          });
+        }
+      }
+    </script>
 </body>
 </html>
