@@ -30,7 +30,7 @@ label {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 16px; /* Adjust the font size as needed */
+    font-size: 18px; /* Adjust the font size as needed */
   }
 
   /* Hide the default file input button */
@@ -40,18 +40,22 @@ input[type="file"] {
 
 /* Style the custom button */
 label[for="fileUpload"] {
-  background-color: #4CAF50;
+  background-color:#009000;
   color: white;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
   display: inline-block;
+  font-size: 18px; /* Adjust the font size as needed */
+
 }
 
 /* Optional: Add hover effect */
 label[for="fileUpload"]:hover {
-  background-color: #45a049;
+  background-color:#008080;
+  font-size: 18px; /* Adjust the font size as needed */
+
 }
 label {
   display: block;
@@ -94,6 +98,7 @@ input[type="radio"]:checked + span {
       padding: 20px;
       border-radius: 8px;
       box-sizing: border-box;
+
       
       box-shadow: 0 18px 40px rgba(0, 0, 0, 1); 
       
@@ -207,7 +212,7 @@ label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* Style for the container of date inputs */
@@ -230,14 +235,17 @@ input[type="date"] {
   width: 100%;
   box-sizing: border-box;
   margin-top: 4px;
+  font-size:18px;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+
 }
 
-/* Style for date inputs when focused */
-input[type="date"]:focus {
+/* input[type="date"]:focus {
   outline: none;
   border-color: #007bff;
+  font-size:18px;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
+} */
 
 /* Style for the container of the reason dropdown */
 .reason-dropdown-container {
@@ -305,25 +313,26 @@ select:focus {
 <br>
 <p></p>
 <br>
-<b>Reason:</b><br>
+<b style="font-family: Century Gothic, sans-serif; font-size:18px;">Reason:</b><br>
 
 <div class="reason-dropdown-container">
   <select name="textfield" id="refer">
-    <option value="Tardy">Tardy</option>
+    <option value="Tardy">Late</option>
     <option value="Absent">Absent</option>
     <option value="Academic Deficiency/ies">Academic Deficiency/ies</option>
   </select>
 </div>
 
         
-        <br>
-        <br>
+       
 <p></p>
 <br>
 
       <label for="fileUpload">Upload Required Files</label>
           <input type="file" id="fileUpload" name="fileUpload[]" multiple>
   <br>
+  <br>
+          <br>
 
   <div class="button-container">
           <div class="button">
@@ -332,6 +341,7 @@ select:focus {
               <button type="button" class="btn btn-primary" onclick="window.location.href='../student-home'">Back</button>
             </p>
           </div>
+         
           <div class="button">
             <p>
               <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
