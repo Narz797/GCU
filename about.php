@@ -25,20 +25,8 @@ include 'landingpage.php';
             display: flex;
             flex-direction: row;
         }
-        .left-column {
-            flex: 1;
-            padding: 10px;
-            display: flex;
-            /* justify-content: center; */
-            align-items: center;
-        }
-        .right-column {
-            /* margin-top: 2%; */
-            flex: 2;
-            background-color: -webkit-linear-gradient(left, #fefefe, #96ded8);
-            padding: 20px;
-            border-radius: 10px;
-        }
+     
+     
         .logo {
             width: 100px;
             height: auto;
@@ -66,10 +54,10 @@ include 'landingpage.php';
                 flex-direction: column;
                 align-items: center;
             }
-            .left-column img,
+            /* .left-column img,
             .right-column {
                 width: 100%;
-            }
+            } */
             /* Modify other styles as needed for small screens */
         }
         /* Media query for screens between 576px and 768px (e.g., tablets) */
@@ -148,9 +136,9 @@ include 'landingpage.php';
                     <div>
                       <h3>Saul Goodman</h3>
                       <h4>Ceo &amp; Founder</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
+                      
+                       
+                      
                     </div>
                   </div>
                   <p>
@@ -169,9 +157,7 @@ include 'landingpage.php';
                     <div>
                       <h3>Sara Wilsson</h3>
                       <h4>Designer</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
+                     
                     </div>
                   </div>
                   <p>
@@ -190,9 +176,7 @@ include 'landingpage.php';
                     <div>
                       <h3>Jena Karlis</h3>
                       <h4>Store Owner</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
+                      
                     </div>
                   </div>
                   <p>
@@ -211,9 +195,7 @@ include 'landingpage.php';
                     <div>
                       <h3>Matt Brandon</h3>
                       <h4>Freelancer</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
+                     
                     </div>
                   </div>
                   <p>
@@ -232,9 +214,7 @@ include 'landingpage.php';
                     <div>
                       <h3>John Larson</h3>
                       <h4>Entrepreneur</h4>
-                      <div class="stars">
-                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                      </div>
+                     
                     </div>
                   </div>
                   <p>
@@ -251,4 +231,4 @@ include 'landingpage.php';
       </div>
     </section><!-- End Testimonials Section -->
 </body>
-<?php include 'includes/footer1.php' ?>
+<?php include 'includes/footer.php' ?>
