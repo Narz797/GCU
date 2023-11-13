@@ -86,6 +86,8 @@ if (isset($_SESSION['origin'])) {
         if (isset($_SESSION['siblings'])) {
             $siblingsData = json_decode($_SESSION['siblings'], true);
 
+        echo var_dump($_SESSION);
+
         $query1 = "SELECT * FROM `student_user` WHERE `stud_user_id` = ?";
         $stmt = $pdo->prepare($query1);
         $stmt->bindParam(1, $_SESSION['idno']);
@@ -348,8 +350,10 @@ if (isset($_SESSION['origin'])) {
                     && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()
                 ) {
                     echo "Registered Successfully";
+                    header('../Teacher_Side/teacher-login');
                 } else {
                     echo "Registration failed";
+                    header('../home');
                 }
             }
         }
@@ -404,9 +408,10 @@ if (isset($_SESSION['origin'])) {
                 $stmt->bindParam(10, $stat);
 
                 if ($stmt->execute()) {
-                    echo "success_teacher";
+                    echo "Registered Successfully";
+
                 } else {
-                    echo "Registration failed";
+                    echo "Registration Failed";
                 }
             }
         } else {
