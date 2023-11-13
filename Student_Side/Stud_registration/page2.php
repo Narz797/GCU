@@ -106,7 +106,7 @@ if (isset($_POST['Glname'])) {
 if (isset($_POST['Gfname'])) {
     $_SESSION['Gfname'] = $_POST['Gfname'];
 }
-if (isset($_POST['Gmage'])) {
+if (isset($_POST['Gmname'])) {
     $_SESSION['Gmname'] = $_POST['Gmname'];
 }
 if (isset($_POST['Gage'])) {

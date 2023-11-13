@@ -64,6 +64,7 @@ include 'includes/main2.php';
 
     </style>
   <body>
+    <?php echo var_dump($_SESSION);?>
        
 </div>
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 50px; "></section> 

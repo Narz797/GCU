@@ -190,13 +190,13 @@ if (isset($_SESSION['origin'])) {
                 $stmt5->bindParam(5,$_SESSION['Mage']);
                 $stmt5->bindParam(6,$_SESSION['Mocc']);
                 $stmt5->bindParam(7,$_SESSION['Medu']);
-                $stmt5->bindParam(7,$_SESSION['Mcontact']);
+                $stmt5->bindParam(8,$_SESSION['Mcontact']);
 
                 $stmt5->execute();
 
             }
             if($_SESSION['whom']=='guardian'){
-                $sql8 = "INSERT INTO `guardian`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`) VALUES (?,?,?,?,?,?,?,?)";
+                $sql8 = "INSERT INTO `guardian`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`,`contact`) VALUES (?,?,?,?,?,?,?,?)";
                 $stmt8 = $pdo->prepare($sql8);
                 $stmt8->bindParam(1, $_SESSION['idno']);
                 $stmt8->bindParam(2, $_SESSION['Gfname']);
@@ -205,7 +205,7 @@ if (isset($_SESSION['origin'])) {
                 $stmt8->bindParam(5,$_SESSION['Gage']);
                 $stmt8->bindParam(6,$_SESSION['Gocc']);
                 $stmt8->bindParam(7,$_SESSION['Gedu']);
-                $stmt8->bindParam(7,$_SESSION['Gcontact']);
+                $stmt8->bindParam(8,$_SESSION['Gcontact']);
 
                 $stmt8->execute();
             }
