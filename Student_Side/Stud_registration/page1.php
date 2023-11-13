@@ -742,7 +742,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                         </div>
                                         <div class="input-field">
                                             <label>Contact Number</label>
-                                            <input type="text" id="Fedu" name="Fedu" required>
+                                            <input type="text" id="Fcontact" name="Fcontact" required>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -777,7 +777,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                         </div>
                                         <div class="input-field">
                                             <label>Contact Number</label>
-                                            <input type="text" id="Fedu" name="Fedu" required>
+                                            <input type="text" id="Mcontact" name="Mcontact" required>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -812,7 +812,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                         </div>
                                         <div class="input-field">
                                             <label>Contact Number</label>
-                                            <input type="text" id="Fedu" name="Fedu" required>
+                                            <input type="text" id="Gcontact" name="Gcontact" required>
                                         </div>
                                     </div>
                                 </fieldset>

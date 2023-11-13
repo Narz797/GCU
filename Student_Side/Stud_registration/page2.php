@@ -76,6 +76,9 @@ if (isset($_POST['Focc'])) {
 if (isset($_POST['Fedu'])) {
     $_SESSION['Fedu'] = $_POST['Fedu'];
 }
+if (isset($_POST['Fcontact'])) {
+    $_SESSION['Fcontact'] = $_POST['Fcontact'];
+}
 if (isset($_POST['Mlname'])) {
     $_SESSION['Mlname'] = $_POST['Mlname'];
 }
@@ -94,6 +97,9 @@ if (isset($_POST['Mocc'])) {
 if (isset($_POST['Medu'])) {
     $_SESSION['Medu'] = $_POST['Medu'];
 }
+if (isset($_POST['Mcontact'])) {
+    $_SESSION['Mcontact'] = $_POST['Mcontact'];
+}
 if (isset($_POST['Glname'])) {
     $_SESSION['Glname'] = $_POST['Glname'];
 }
@@ -111,6 +117,9 @@ if (isset($_POST['Gocc'])) {
 }
 if (isset($_POST['Gedu'])) {
     $_SESSION['Gedu'] = $_POST['Gedu'];
+}
+if (isset($_POST['Gcontact'])) {
+    $_SESSION['Gcontact'] = $_POST['Gcontact'];
 }
 if (isset($_POST['total_number'])) {
     $_SESSION['total_number'] = $_POST['total_number'];
