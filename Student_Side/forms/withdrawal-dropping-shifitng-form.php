@@ -273,7 +273,7 @@ select:focus {
           <div class="button">
             <p>
               <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-              <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+              <button type="submit" class="btn btn-primary"  id="submit">Submit</button>
             </p>
           </div>
         </div>
@@ -305,7 +305,7 @@ $("#form_transact").on("submit", function (event) {
     url: '../../backend/create_transaction.php',
     data: {
       reason: $('#action').find(":selected").val(),
-      statement: $('#reason_state').val(),
+
       explain: $("#reason_explain").val(),
       course_frm: course_frm,
       course_to: course_to
@@ -368,26 +368,6 @@ textfield5.addEventListener('input', function () {
 });
   </script>
 
-<script>
-      function submitForm() {
-        // Check if the form is filled before submitting
-        if ($('#reason_explain').val() === '' ) {
-          alert('Please fill out all fields before submitting.');
-        } else {
-          // If the form is filled, proceed with AJAX submission
-          $.ajax({
-            type: 'POST',
-            url: '../../backend/create_transaction.php',
-            data: {
-              
-              motivation: $("#reason_explain").val(),
-            },
-            success: function (data) {
-              alert(data);
-            }
-          });
-        }
-      }
-    </script>
+
 </body>
 </html>

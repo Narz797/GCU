@@ -189,11 +189,9 @@ include 'includes/main2.php';
             <hr>
             <div class=" gallery" >
             <main class="table" id="customers_table" style=" height: auto; ">
-            <section class="table-header">
+            <section >
                 <p style="margin-left: 2%; font-size: 25px; font-weight: bold; color:white;" >HISTORY OF APPOINTMENT</p>
-                <!-- <div class="input-group">
-                    <input type="search" placeholder="Search...">
-                </div> -->
+               
              
             </section>
             <section class="table-body" >
