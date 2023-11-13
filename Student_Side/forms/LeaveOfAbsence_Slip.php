@@ -273,7 +273,7 @@ label, span {
           <div class="button">
             <p>
               <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-              <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+              <button type="submit" class="btn btn-primary" is = "submit">Submit</button>
             </p>
           </div>
         </div>
@@ -300,26 +300,6 @@ label, span {
     }); 
   </script>
 
-<script>
-      function submitForm() {
-        // Check if the form is filled before submitting
-        if ($('#reason_leave').val() === '' || $('#do_leave').val() === '') {
-          alert('Please fill out all fields before submitting.');
-        } else {
-          // If the form is filled, proceed with AJAX submission
-          $.ajax({
-            type: 'POST',
-            url: '../../backend/create_transaction.php',
-            data: {
-              reason: $("#reason_leave").val(),
-              motivation: $("#do_leave").val(),
-            },
-            success: function (data) {
-              alert(data);
-            }
-          });
-        }
-      }
-    </script>
+
 </body>
 </html>

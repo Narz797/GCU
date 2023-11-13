@@ -37,7 +37,7 @@ if ($transact == 'readmission') {
 
 } else if ($transact == 'WDS') {
     $reason = $_POST['reason'];
-    $statement = $_POST['statement'];
+
     $explain = $_POST['explain'];
     $datetime = new DateTime();
     $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
@@ -48,10 +48,10 @@ if ($transact == 'readmission') {
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :reason, :date_created, :status)';
     
     if ($reason == 'Shifting') {
-        $sql_2 = 'INSERT INTO withdrawal(`transact_id`, `reason`, `statement`, `explain`, `shift_from`, `shift_to`) VALUES (:transact_id, :reason, :statement, :explain, :course_frm, :course_to)';
+        $sql_2 = 'INSERT INTO withdrawal(`transact_id`, `reason`, `explain`, `shift_from`, `shift_to`) VALUES (:transact_id, :reason, :explain, :course_frm, :course_to)';
     } else {
         // Modify this SQL statement as needed for non-'Shifting' actions
-        $sql_2 = 'INSERT INTO withdrawal(`transact_id`, `reason`, `statement`, `explain`) VALUES (:transact_id, :reason, :statement, :explain)';
+        $sql_2 = 'INSERT INTO withdrawal(`transact_id`, `reason`, `explain`) VALUES (:transact_id, :reason, :explain)';
     }
 
     try {
@@ -83,7 +83,7 @@ if ($transact == 'readmission') {
                 $code = $pdo->prepare($sql_2);
                 $code->bindParam(':transact_id', $transact_id);
                 $code->bindParam(':reason', $reason);
-                $code->bindParam(':statement', $statement);
+
                 $code->bindParam(':explain', $explain);
                 $code->bindParam(':course_frm', $course_frm_id);
                 $code->bindParam(':course_to', $course_to_id);
@@ -95,7 +95,7 @@ if ($transact == 'readmission') {
             $code = $pdo->prepare($sql_2);
             $code->bindParam(':transact_id', $transact_id);
             $code->bindParam(':reason', $reason);
-            $code->bindParam(':statement', $statement);
+
             $code->bindParam(':explain', $explain);
             $code->execute();
             echo "Data inserted successfully for non-'Shifting' action";

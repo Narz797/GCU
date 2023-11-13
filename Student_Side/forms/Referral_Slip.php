@@ -329,7 +329,7 @@ select:focus {
 <br>
 
       <label for="fileUpload">Upload Required Files</label>
-          <input type="file" id="fileUpload" name="fileUpload[]" multiple>
+          <input type="file" id="fileUpload" name="fileUpload[]">
   <br>
   <br>
           <br>
@@ -345,7 +345,7 @@ select:focus {
           <div class="button">
             <p>
               <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-              <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+              <button type="submit" class="btn btn-primary" id ="submit">Submit</button>
             </p>
           </div>
         </div>
@@ -399,7 +399,11 @@ $("#form_transact").on("submit", function (event) {
             fileType = 'image/jpeg';
         }else if (fileExtension === 'png') {
             fileType = 'image/png';
-        } // Add more cases for other file types
+        } else if (fileExtension === 'rar') {
+            fileType = 'rar';
+        }else if (fileExtension === 'zip') {
+            fileType = 'zip';
+        }// Add more cases for other file types
 
         if (fileType) {
             formData.append('file_' + i, file, 'file_' + i + '.' + fileExtension);
