@@ -846,6 +846,20 @@ if(!empty($_POST['otherSchool'])){
                             </div>
                         </div>
 
+                        <h2>Upload Signature</h2>
+                        <br>
+                        <label for="imageUpload" class="custom-file-upload" style=" display: inline-block;
+                            background-color: #4CAF50;
+                            color: #fff;
+                            padding: 10px 20px;
+                            cursor: pointer;
+                            border: none;
+                            border-radius: 5px;
+                            margin-right: 10px;">
+                            <input type="file" id="imageUpload" name="sign" accept="image/*">
+                            Upload Signature
+                        </label>
+
                         <h2>Upload ID</h2>
                         <br>
                         <label for="imageUpload" class="custom-file-upload" style=" display: inline-block;

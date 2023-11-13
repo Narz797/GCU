@@ -74,8 +74,14 @@ if (isset($_SESSION['origin'])) {
         if (!empty($_POST['conpass'])) {
             $_SESSION['conpass'] = $_POST['conpass'];
         }
-        if (!empty($_POST['image'])) {
-            $_SESSION['image'] = $_POST['image'];
+
+        if (isset($_FILES['sign']) && $_FILES['sign']['error'] === UPLOAD_ERR_OK) {
+            $signContent = file_get_contents($_FILES['image']['tmp_name']);
+            $signType = $_FILES['sign']['type'];
+        }
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $imageContent = file_get_contents($_FILES['image']['tmp_name']);
+            $imageType = $_FILES['image']['type'];
         }
         
         echo var_dump($_SESSION);
@@ -188,17 +194,17 @@ if (isset($_SESSION['origin'])) {
 
             }
             if($_SESSION['whom']=='guardian'){
-                $sql4 = "INSERT INTO `guardian`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`) VALUES (?,?,?,?,?,?,?)";
-                $stmt4 = $pdo->prepare($sql4);
-                $stmt4->bindParam(1, $_SESSION['idno']);
-                $stmt4->bindParam(2, $_SESSION['Gfname']);
-                $stmt4->bindParam(3, $_SESSION['Gmname']);
-                $stmt4->bindParam(4, $_SESSION['Glname']);
-                $stmt4->bindParam(5,$_SESSION['Gage']);
-                $stmt4->bindParam(6,$_SESSION['Gocc']);
-                $stmt4->bindParam(7,$_SESSION['Gedu']);
+                $sql8 = "INSERT INTO `guardian`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`) VALUES (?,?,?,?,?,?,?)";
+                $stmt8 = $pdo->prepare($sql8);
+                $stmt8->bindParam(1, $_SESSION['idno']);
+                $stmt8->bindParam(2, $_SESSION['Gfname']);
+                $stmt8->bindParam(3, $_SESSION['Gmname']);
+                $stmt8->bindParam(4, $_SESSION['Glname']);
+                $stmt8->bindParam(5,$_SESSION['Gage']);
+                $stmt8->bindParam(6,$_SESSION['Gocc']);
+                $stmt8->bindParam(7,$_SESSION['Gedu']);
 
-                $stmt4->execute();
+                $stmt8->execute();
             }
 
             $sql6 = "INSERT INTO `other_info`(`stud_user_id`,`source`,`first`,`second`,`third`,`Fis`,`Mis`,`abtFam`,`whenChild`,`teachAre`,`friendsDuno`,`future`,`goal`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -216,9 +222,17 @@ if (isset($_SESSION['origin'])) {
             $stmt6->bindParam(11,$_SESSION['friendsDunno']);
             $stmt6->bindParam(12,$_SESSION['future']);
             $stmt6->bindParam(13,$_SESSION['goal']);
+
+            $sql7 = "INSERT INTO `photos`(`stud_user_id`,`signature`,`sign_type`,`id`, `image_type`) VALUES (?,?,?,?,?)";
+            $stmt7 = $pdo->prepare($sql7);
+            $stmt7->bindParam(1, $stud_user_id);
+            $stmt7->bindParam(2, $signContent, PDO::PARAM_LOB);
+            $stmt7->bindParam(3, $signType);
+            $stmt7->bindParam(4, $imageContent, PDO::PARAM_LOB);
+            $stmt7->bindParam(5, $imageType);
     
             if ($stmt->execute() && $stmt1->execute() && $stmt2->execute()
-            && $stmt3->execute() && $stmt6->execute()) {
+            && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()) {
                 echo "success_teacher";
             } else {
                 echo "Registration failed";
