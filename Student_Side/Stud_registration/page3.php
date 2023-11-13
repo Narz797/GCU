@@ -664,22 +664,22 @@ if(!empty($_POST['otherSchool'])){
                                     the following items:</i></b></p>
                         <br>
                         <p><b>
-                                <p>Are you a member of an Indigenous group?</p>
-                                <div class="radio-group">
-                                    <label>
-                                        <input type="radio" id="yesRadio" name="membership" value="yes" required>
-                                        Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" id="noRadio" name="membership" value="no" required>
-                                        No
-                                    </label>
-                                </div>
-                                <div class="underline-input" id="indigenousInput">
-                                    <br>
-                                    <label for="indigenousInfo">If yes, please specify:</label>
-                                    <input type="text" id="indigenousInfo" name="indigenousInfo">
-                                </div>
+                        <p>Are you a member of an Indigenous group?</p>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" id="yesRadio" name="membership" value="yes" required onclick="showSpecifyInput()">
+                                    Yes
+                                </label>
+                                <label>
+                                    <input type="radio" id="noRadio" name="membership" value="no" required onclick="hideSpecifyInput()">
+                                    No
+                                </label>
+                            </div>
+                            <div class="underline-input" id="indigenousInput" style="display:none;">
+                                <br>
+                                <label for="indigenousInfo">If yes, please specify:</label>
+                                <input type="text" id="indigenousInfo" name="indigenousInfo">
+                            </div>
                                 <br>
                                 <p><b>
                                         Are you a person with a disability (PWD)?</b>
@@ -1032,7 +1032,7 @@ if(!empty($_POST['otherSchool'])){
         });
     </script>
 
-    <script>
+    <!-- <script>
         document.getElementById("yesRadio1").addEventListener("click", function() {
             document.getElementById("indigenousInfo").style.display = "block";
             document.querySelector('label[for="indigenousInfo"]').style.display = "block";
@@ -1041,7 +1041,16 @@ if(!empty($_POST['otherSchool'])){
             document.getElementById("indigenousInfo").style.display = "none";
             document.querySelector('label[for="indigenousInfo"]').style.display = "none";
         });
-    </script>
+    </script> -->
+    <script>
+    function showSpecifyInput() {
+        document.getElementById('indigenousInput').style.display = 'block';
+    }
+
+    function hideSpecifyInput() {
+        document.getElementById('indigenousInput').style.display = 'none';
+    }
+</script>
     <script>
         function toggleSpecifyBox(checkboxId, specifyBoxId) {
             var checkbox = document.getElementById(checkboxId);

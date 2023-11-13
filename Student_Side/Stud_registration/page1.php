@@ -569,7 +569,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                         </div>
                          <div class="input-field">
                             <label for='course'>Course</label>
-                            <select required name='course' id="cs">
+                            <select name='course' id="cs">
                                 <option disabled selected>Select Course</option>
                                 <option value='BSAB'>Bachelor of Science in Agribusiness</option>
                                 <option value='BSA'>Bachelor of Science in Agriculture</option>
@@ -610,7 +610,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 
                         <div class="input-field">
                             <label>Year Level</label>
-                            <select required id="cs" name='year_level'>
+                            <select  id="cs" name='year_level'>
                                 <option disabled selected>Select</option>
                                 <option value='1'>1st</option>
                                 <option value='2'>2nd</option>
@@ -956,7 +956,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
             });
         }
     </script>
-    <script>
+    <!-- <script>
         const form = document.querySelector("form");
         const nextBtn = form.querySelector(".nextBtn");
         const backBtn = form.querySelector(".backBtn");
@@ -977,7 +977,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
         backBtn.addEventListener("click", () => {
             form.classList.remove('secActive');
         });
-    </script>
+    </script> -->
     <script>
         // Add a click event listener to the button
         document.getElementById("total_number").addEventListener("click", function() {
