@@ -83,6 +83,8 @@ if (isset($_SESSION['origin'])) {
             $imageContent = file_get_contents($_FILES['image']['tmp_name']);
             $imageType = $_FILES['image']['type'];
         }
+        if (isset($_SESSION['siblings'])) {
+            $siblingsData = json_decode($_SESSION['siblings'], true);
         
         echo var_dump($_SESSION);
 
@@ -233,6 +235,23 @@ if (isset($_SESSION['origin'])) {
             $stmt7->bindParam(3, $signType);
             $stmt7->bindParam(4, $imageContent, PDO::PARAM_LOB);
             $stmt7->bindParam(5, $imageType);
+
+             // Assuming siblings data structure, loop through and construct SQL queries
+            $stmt8 = $pdo->prepare("INSERT INTO siblings (id_number, Student_id, Last_name, First_name, Middle_name, Age, High_edu, Civil_status) 
+            VALUES (:idNumber, :studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
+
+            foreach ($siblingsData as $sibling) {
+            $stmt8->bindParam(':idNumber', $sibling['id_number']);
+            $stmt8->bindParam(':studentId', $sibling['student_id']);
+            $stmt8->bindParam(':lastName', $sibling['Last_name']);
+            $stmt8->bindParam(':firstName', $sibling['First_name']);
+            $stmt8->bindParam(':middleName', $sibling['Middle_name']);
+            $stmt8->bindParam(':age', $sibling['Age']);
+            $stmt8->bindParam(':highEdu', $sibling['High_edu']);
+            $stmt8->bindParam(':civilStatus', $sibling['Civil_status']);
+
+            $stmt8->execute();
+            }
     
             if ($stmt->execute() && $stmt1->execute() && $stmt2->execute()
             && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()) {
@@ -300,3 +319,4 @@ if (isset($_SESSION['origin'])) {
         }
 }
 $pdo = null; // Close the database connection
+}

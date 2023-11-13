@@ -1,7 +1,38 @@
+<?php 
+session_start();
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
+  
+$id = $_SESSION['session_id'];
+echo "<script>console.log('$id');</script>";
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Remix icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Stylesheet -->
+
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+</head>
 
 <style>
   :root {
@@ -2086,12 +2117,7 @@
     /* Set your desired border radius */
   }
 
-  <?php
-  session_start();
-  include '../backend/connect_database.php';
 
-  echo $_SESSION['idno'];
-  ?>
 </style>
 
 <body>
@@ -2107,7 +2133,7 @@
         <!-- Form -->
         <form id="logoutForm" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
-            <button id="logoutButton" class="btn btn-outline-light">Logout</button>
+            <a class="btn btn-outline-light" onclick="logout()">Logout</a>
           </div>
         </form>
 
@@ -2251,14 +2277,14 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">ID No.</label>
-                        <section type="text" id="input-username" class="form-control form-control-alternative">1520000</section>
+                        <section type="text" id="input-username" class="form-control form-control-alternative" id="id">1520000</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Last Name</label>
-                        <section type="email" id="input-email" class="form-control form-control-alternative">Lee<section>
+                        <section type="email" id="input-email" class="form-control form-control-alternative" id="lname">Lee<section>
                       </div>
                     </div>
                   </div>
@@ -2266,79 +2292,79 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-first-name">First name</label>
-                        <section type="text" id="input-first-name" class="form-control form-control-alternative">Min</section>
+                        <section type="text" id="input-first-name" class="form-control form-control-alternative" id="fname">Min</section>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Middle Name</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">Hoo</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="mname">Hoo</section>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Course</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">BSIT</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="crse">BSIT</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Year Level</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">4</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="YL">4</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Section</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">B</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="sec">B</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Contact Number</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">09236879562</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="CN">09236879562</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Civil Status</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">Single</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="CS">Single</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Date of Birth</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">December 25,2023</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="bday">December 25,2023</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Birthplace</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">La Union</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="bplace">La Union</section>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Nationality</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">Korean</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="nationality">Korean</section>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Languages/Dialects you can read, write, and understand</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">Korean,English,Tagalog,KanKane-ey,Ilocano</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="lang">Korean,English,Tagalog,KanKane-ey,Ilocano</section>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">House Number/Street/Barangay/Municipality/Province/Zip Code</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative">Seoul,South Korea</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="address">Seoul,South Korea</section>
                       </div>
                     </div>
 
@@ -2365,45 +2391,45 @@
 
                     <div class="col-lg-4">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-city">Lastname</label>
-                        <section type="text" id="flast" class="form-control form-control-alternative">Sung</section>
+                        <label class="form-control-label" for="input-city" >Lastname</label>
+                        <section type="text" id="flast" class="form-control form-control-alternative" id="Flname">Sung</section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-country">Firstname</label>
-                        <section type="text" id="ffirst" class="form-control form-control-alternative">Jong</section>
+                        <section type="text" id="ffirst" class="form-control form-control-alternative" id="Fnlname">Jong</section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Middlename</label>
-                        <section type="number" id="fmiddle" class="form-control form-control-alternative"> Ki </section>
+                        <section type="number" id="fmiddle" class="form-control form-control-alternative" id="Fmname"> Ki </section>
                       </div>
                     </div>
 
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-city">Age</label>
-                        <section type="number" id="fage" class="form-control form-control-alternative"> 36 </section>
+                        <section type="number" id="fage" class="form-control form-control-alternative" id="Fage"> 36 </section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-country">Occupational</label>
-                        <section type="number" id="foccupational" class="form-control form-control-alternative"> Actor </section>
+                        <section type="number" id="foccupational" class="form-control form-control-alternative" id="Focc"> Actor </section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative"> College </section>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Fcol"> College </section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country"> Contact Number</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative"> 09214852314 </section>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Fcn"> 09214852314 </section>
                       </div>
                     </div>
 
@@ -2428,45 +2454,45 @@
 
                     <div class="col-lg-4">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-city">Lastname</label>
-                        <section type="text" id="flast" class="form-control form-control-alternative">Sung</section>
+                        <label class="form-control-label" for="input-city" >Lastname</label>
+                        <section type="text" id="flast" class="form-control form-control-alternative" id="Mlname">Sung</section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-country">Firstname</label>
-                        <section type="text" id="ffirst" class="form-control form-control-alternative">Jong</section>
+                        <section type="text" id="ffirst" class="form-control form-control-alternative" id="Mfname">Jong</section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Middlename</label>
-                        <section type="number" id="fmiddle" class="form-control form-control-alternative"> Ki </section>
+                        <section type="number" id="fmiddle" class="form-control form-control-alternative" id="Mmname"> Ki </section>
                       </div>
                     </div>
 
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-city">Age</label>
-                        <section type="number" id="fage" class="form-control form-control-alternative"> 36 </section>
+                        <section type="number" id="fage" class="form-control form-control-alternative" id="Mage"> 36 </section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-country">Occupational</label>
-                        <section type="number" id="foccupational" class="form-control form-control-alternative"> Actor </section>
+                        <section type="number" id="foccupational" class="form-control form-control-alternative" id="Mocc"> Actor </section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative"> College </section>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Mcol"> College </section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country"> Contact Number</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative"> 09214852314 </section>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Mcn"> 09214852314 </section>
                       </div>
                     </div>
 
@@ -2494,44 +2520,44 @@
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-city">Lastname</label>
-                        <section type="text" id="flast" class="form-control form-control-alternative">Sung</section>
+                        <section type="text" id="flast" class="form-control form-control-alternative" id="Glname">Sung</section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-country">Firstname</label>
-                        <section type="text" id="ffirst" class="form-control form-control-alternative">Jong</section>
+                        <section type="text" id="ffirst" class="form-control form-control-alternative" id="Gfname">Jong</section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Middlename</label>
-                        <section type="number" id="fmiddle" class="form-control form-control-alternative"> Ki </section>
+                        <section type="number" id="fmiddle" class="form-control form-control-alternative" id="Gmname"> Ki </section>
                       </div>
                     </div>
 
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-city">Age</label>
-                        <section type="number" id="fage" class="form-control form-control-alternative"> 36 </section>
+                        <section type="number" id="fage" class="form-control form-control-alternative" id="Gage"> 36 </section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-country">Occupational</label>
-                        <section type="number" id="foccupational" class="form-control form-control-alternative"> Actor </section>
+                        <section type="number" id="foccupational" class="form-control form-control-alternative" id="Gocc"> Actor </section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative"> College </section>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Gol"> College </section>
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country"> Contact Number</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative"> 09214852314 </section>
+                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Gcn"> 09214852314 </section>
                       </div>
                     </div>
 
@@ -2667,14 +2693,14 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative">Sisters of Mary of banneux,Inc.</section>
+                        <section type="text" id="s_name" class="form-control form-control-alternative" id="sen_school">Sisters of Mary of banneux,Inc.</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative">2019<section>
+                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="sen_school_yg">2019<section>
                       </div>
                     </div>
                   </div>
@@ -2683,7 +2709,7 @@
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative">Matinong studyante</section>
+                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="sen_school_awards">Matinong studyante</section>
 
                   </div>
                 </div>
@@ -2695,14 +2721,14 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative">Sisters of Mary of banneux,Inc.</section>
+                        <section type="text" id="s_name" class="form-control form-control-alternative" id="jun_school">Sisters of Mary of banneux,Inc.</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative">2017<section>
+                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="jun_school_yg">2017<section>
                       </div>
                     </div>
                   </div>
@@ -2711,7 +2737,7 @@
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative">Matinong studyante</section>
+                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="jun_school_awards">Matinong studyante</section>
 
                   </div>
                 </div>
@@ -2724,14 +2750,14 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative">Tagudtud Elementary School</section>
+                        <section type="text" id="s_name" class="form-control form-control-alternative" id="elm_school">Tagudtud Elementary School</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative">2014<section>
+                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="elm_school_yg">2014<section>
                       </div>
                     </div>
                   </div>
@@ -2740,7 +2766,7 @@
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative">Matinong studyante</section>
+                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="elm_school_awards">Matinong studyante</section>
 
                   </div>
                 </div>
@@ -2753,14 +2779,14 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative">BVS</section>
+                        <section type="text" id="s_name" class="form-control form-control-alternative" id="oth_school">BVS</section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative">2022<section>
+                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="oth_school_yg">2022<section>
                       </div>
                     </div>
                   </div>
@@ -2769,7 +2795,7 @@
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative">NC</section>
+                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="oth_school_awards">NC</section>
 
                   </div>
                 </div>
@@ -2788,7 +2814,7 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Are you a member of an Indigenous group?</label>
-                        <section type="text" id="indige" class="form-control form-control-alternative">Yes - Kankaey/Igorot</section>
+                        <section type="text" id="indige" class="form-control form-control-alternative"><span id="ip">Yes</span> - <span id="ip2">Kankaey/Igorot</span></section>
                         <!-- If yes, specify ilagay mo nalang beside yes example (Yes-Tas anong indigenous group belong) -->
                         <!-- <br>
                           <section type="text" id="s_name" class="form-control form-control-alternative">Yes</section> -->
@@ -2800,7 +2826,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Are you a person with a disability (PWD)?</label>
-                        <section type="text" id="pwd" class="form-control form-control-alternative">No<section>
+                        <section type="text" id="pwd" class="form-control form-control-alternative" id = "pwd">No<section>
                       </div>
                     </div>
                   </div>
@@ -2809,7 +2835,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">Are you a student parent ?</label>
-                    <section type="text" id="stud_parent" class="form-control form-control-alternative">No<section>
+                    <section type="text" id="stud_parent" class="form-control form-control-alternative" id="sp">No<section>
                   </div>
                 </div>
             </div>
@@ -2826,34 +2852,53 @@
           <!-- Description -->
           <h6 class="heading-small text-muted mb-4">SOURCES OF FINANCIAL SUPPORT</h6>
 
-
-          <i class="fa fa-check"></i>
+          <input type="checkbox" id="FS_parent" disabled>
+          <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox1" class="custom-checkbox-label">Parent</label>
-
           <br>
-          <i class="fa fa-check"></i>
+
+          <input type="checkbox" id="FS_ss" disabled>
+          <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox2">Self Supporting</label>
-
           <br>
-          <i class="fa fa-check"></i>
+
+          <input type="checkbox" id="FS_rg" disabled>
+          <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox3">Relative and/or Guardian</label>
           <br>
-          <i class="fa fa-check"></i>
-          <label for="checkbox3">Scholarship - </label>
-          <label for="checkbox3">TDP-TES</label>
 
+          <input type="checkbox" id="FS_sch" disabled>
+          <!-- <i class="fa fa-check"></i> -->
+          <label for="checkbox4">Scholarship - <span id="FS_sch2">TDP-TES</span></label>
           <br>
-          <i class="fa fa-check"></i>
-          <label for="checkbox3">Others - </label>
-          <label for="checkbox3">achuchuchu</label>
+
+          <input type="checkbox" id="FS_oth" disabled>
+          <!-- <i class="fa fa-check"></i> -->
+          <label for="checkbox5">Others - <span id="FS_oth2" >achuchuchu</span></label>
+
 
           <hr class="my-4">
           <!-- Description -->
           <h6 class="heading-small text-muted mb-4">MARITAL STATUS OF PARENT</h6>
 
 
-          <i class="fa fa-check"></i>
+          <input type="checkbox" id="MS_pam" disabled>
           <label for="checkbox1" class="custom-checkbox-label">Parents are married.</label>
+          
+          <input type="checkbox" id="MS_mla" disabled>
+          <label for="checkbox1" class="custom-checkbox-label">>Marriage is legally annulled.</label>
+
+          <input type="checkbox" id="MS_notm" disabled>
+          <label for="checkbox1" class="custom-checkbox-label">Parents are not married but are living together.</label>
+
+          <input type="checkbox" id="MS_sp" disabled>
+          <label for="checkbox1" class="custom-checkbox-label">Single Parent.</label>
+
+          <input type="checkbox" id="MS_ps" disabled>
+          <label for="checkbox1" class="custom-checkbox-label">Parents are separated (one or both have other partners).</label>
+
+          <input type="checkbox" id="MS_wid" disabled>
+          <label for="checkbox1" class="custom-checkbox-label">Widow/widower.</label>
 
 
 
@@ -2873,51 +2918,51 @@
             <div class="form-group focused">
 
               <label>1. The three words that describe me are - </label>
-              <label>answer,</label>
-              <label>answer,</label>
-              <label>answer.</label>
+              <span id="MAM_ans1">answer,</span>
+              <span id="MAM_ans2">answer,</span>
+              <span id="MAM_ans3">answer.</span>
 
 
               <br>
 
               <label>2. My father is </label>
-              <label>answer.</label>
+              <label id="MAM_fat">answer.</label>
 
 
               <br>
               <label>3. My mother is </label>
-              <label>answer.</label>
+              <label id="MAM_mom">answer.</label>
 
 
               <br>
               <label>4. The sibling (kapatid) I am closest to is my </label>
-              <label>answer</label>
-              <label>because</label>
-              <label>answer.</label>
+              <label id="MAM_sib_ans">answer</label>
+              <label id="MAM_sib_bec">because</label>
+              <label id="MAM_sib_ans2">answer.</label>
 
               <br>
               <label>5. When I think about my family I feel </label>
-              <label>answer.</label>
+              <label id="MAM_think">answer.</label>
 
               <br>
               <label>6. When I was a child, I </label>
-              <label>answer.</label>
+              <label id="MAM_child">answer.</label>
 
               <br>
               <label>7. In school, my teachers are </label>
-              <label>answer.</label>
+              <label id="MAM_school">answer.</label>
 
               <br>
               <label>8. My friends don't know that </label>
-              <label>answer.</label>
+              <label id="MAM_dunno">answer.</label>
 
               <br>
               <label>9. When I think about the future, I</label>
-              <label>answer.</label>
+              <label id="MAM_future">answer.</label>
 
               <br>
               <label>10. My greatest goal is </label>
-              <label>answer.</label>
+              <label id="MAM_goal">answer.</label>
 
             </div>
 
@@ -2945,27 +2990,121 @@
 
   <!-- Add this script tag to your HTML file -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+  
       // Get the logout button element
-      var logoutButton = document.getElementById('logoutButton');
-
-      // Add a click event listener to the logout button
-      logoutButton.addEventListener('click', function() {
+      function logout() {
+   
         // Display a confirmation prompt
-        var confirmation = confirm('Are you sure you want to log out?');
+        // var confirmation = confirm('Are you sure you want to log out?');
 
-        // Check if the user clicked "Yes"
-        if (confirmation) {
+        // // Check if the user clicked "Yes"
+        // if (confirmation) {
           // Redirect to appointment.php
-          window.location.href = '../appointment.php';
-        } else {
-          // The user clicked "No," you can add additional handling if needed
-          console.log('Logout canceled');
-        }
-      });
-    });
+          window.location.href = '../home?logout=true';
+        // } else {
+        //   // The user clicked "No," you can add additional handling if needed
+        //   console.log('Logout canceled');
+        // }
+      };
+  
   </script>
+<script>
+    // Function to update the HTML elements
+    function updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, gender) {
+       
+       const genderImageMap = {
+                 'Male': 'assets/images/sp.jpg',
+                 'Female': 'assets/images/sp2.jpg'
+             };
+             const image = document.createElement('img');
+               image.style.display = 'block'; // Display the image above the text
 
+               if (gender === 'Male') {
+                 image.src = genderImageMap['Male'];
+               } else if (gender === 'Female') {
+                 image.src = genderImageMap['Female'];
+               }
+
+       $('#studentId').text(fname + " " + lname);
+       $('#transactType').text(transactType);
+       $('#total').text(total);
+       $('#employee_email').text(employee_email);
+       $('#employee_position').text(employee_position);
+       $('#date_joined').text(employee_date_joined);
+       $('#totalAppointments').text(totalAppointments);
+       $('#position').text(ePosition);
+       $('#fname').text(eFname);
+       $('#lname').text(eLname);
+               
+                       // Replace the content of the #gender div with the created image
+               const genderElement = document.getElementById('gender');
+               genderElement.innerHTML = ''; // Clear existing content
+               genderElement.appendChild(image);
+   }
+   // Function to fetch data from get_transaction.php
+   function fetchData() {
+       console.log('AJAX request started');
+       $.ajax({
+           type: 'GET',
+           url: '../backend/get_transaction.php',
+           dataType: 'json',
+           
+               // ...
+               success: function (data) {
+                   console.log(data.latest_data);
+                   if (data.latest_data && data.latest_data.length > 0) {
+                           sid = data.latest_data[0].student_id;
+                           var fname = data.latest_data[0].first_name;
+                           var lname = data.latest_data[0].last_name;
+                           var transactType = data.latest_data[0].transact_type;
+                           tt = data.latest_data[0].transact_type;
+                           tid = data.latest_data[0].transact_id;
+                           var total = data.total_pending_transactions;
+                           var totalAppointments = data.total_appointments; // Define total here
+                           var employee_email = data.adminUserData[0].email;
+                           var employee_position = data.adminUserData[0].position;
+                           var employee_date_joined = data.adminUserData[0].date_joined;
+                           var eFname = data.adminUserData[0].first_name;
+                           var eLname = data.adminUserData[0].last_name;
+                           var ePosition = data.adminUserData[0].position;
+                           var eGender = data.adminUserData[0].gender;
+                           console.log(totalAppointments);
+                           updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
+                           console.log(total);
+                           // Start both counting animations
+                           countAppointments(totalAppointments);
+                           countForms(total);
+                       } else {
+                       // Handle the case when no results are found
+                       // You can update the UI as needed
+                           var studentId = "None";
+                           var total = 0;
+                           var totalAppointments = 0; // Define total here
+                           var employee_email = data.adminUserData[0].email;
+                           var employee_position = data.adminUserData[0].position;
+                           var employee_date_joined = data.adminUserData[0].date_joined;
+                           var eFname = data.adminUserData[0].first_name;
+                           var eLname = data.adminUserData[0].last_name;
+                           var ePosition = data.adminUserData[0].position;
+                           var eGender = data.adminUserData[0].gender;
+                           console.log(totalAppointments);
+                           updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
+                           console.log(total);
+                           // Start both counting animations
+                           countAppointments(totalAppointments);
+                           countForms(total);
+                       console.log('No results found');
+                   }
+           },
+           error: function (xhr, status, error) {
+               console.error('Error: ' + error);
+               console.error('Status: ' + status);
+               console.error('Response: ' + xhr.responseText);
+           }
+       });
+   }
+
+</script>
 
 
 

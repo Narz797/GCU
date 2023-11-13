@@ -10,6 +10,7 @@ if (isset($_SESSION['origin'])) {
             $username = $_POST['email'];
             $password = $_POST['password'];
 
+            try {
             $sql = "SELECT * FROM student_user WHERE email=?";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$username]);
@@ -29,8 +30,12 @@ if (isset($_SESSION['origin'])) {
                     echo "Invalid username or password.";
                 }
             } else {
-                echo "Error";
+                echo json_encode(["status" => "error", "message" => "Invalid username or password"]);
+
             }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
         }
     } elseif ($origin === 'Employee') {
         if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -98,7 +103,7 @@ if (isset($_SESSION['origin'])) {
                     echo "Invalid username or password.";
                 }
             } else{
-                echo "Error";
+                echo "Error" . $e->getMessage();
             }
         }
     }

@@ -124,9 +124,14 @@ if (isset($_POST['Gcontact'])) {
 if (isset($_POST['total_number'])) {
     $_SESSION['total_number'] = $_POST['total_number'];
 }
-if (isset($_POST['siblings'])) {
-    $_SESSION['siblings'] = $_POST['siblings'];
-}
+// if (isset($_POST['siblings'])) {
+//     $siblingsDataJSON = $_SESSION['siblings'];
+
+//     // Decode the JSON string into a PHP associative array
+//     $siblingsData = json_decode($siblingsDataJSON, true);
+//     $sessionDataJSON = json_encode($_SESSION);
+// }
+
 
 ?>
 
@@ -795,6 +800,27 @@ if (isset($_POST['siblings'])) {
 </body>
 
 <script>
+            // Retrieve insertStatements from sessionStorage
+            // const storedInsertStatements = JSON.parse(sessionStorage.getItem('insertStatements'));
+
+            // // Now you can use storedInsertStatements on this page
+            // console.log(storedInsertStatements);
+            //         // Now you can use storedInsertStatements in your AJAX call or anywhere else in this page
+            //         if (storedInsertStatements) {
+            //             // Your AJAX call
+            //             $.ajax({
+            //                 url: '../backend/sibling.php', // Replace with your endpoint URL
+            //                 type: 'POST', // Or 'GET' based on your requirements
+            //                 data: { insertStatements: storedInsertStatements },
+            //                 success: function(response) {
+            //                     // Handle the response here
+            //                 },
+            //                 error: function(error) {
+            //                     // Handle any errors
+            //                 }
+            //             });
+            //         }
+
     function goToPage1() {
         window.location.href = "page1.php";
     }

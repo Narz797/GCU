@@ -871,71 +871,87 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 
     </div>
     <script>
-    let siblingsData = [];
-    function createTable() {
-        var totalNumber = document.getElementById("total_number").value;
-        var table = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0];
-        table.innerHTML = ""; // Clear existing rows
+        var  insertStatements;
+        let siblingsData = [];
 
-        for (var i = 0; i < totalNumber; i++) {
-            var row = table.insertRow(i);
-            var noCell = row.insertCell(0);
-            var lnameCell = row.insertCell(1);
-            var fnameCell = row.insertCell(2);
-            var mnameCell = row.insertCell(3);
-            var ageCell = row.insertCell(4);
-            var educCell = row.insertCell(5);
-            var civilCell = row.insertCell(6);
+function createTable() {
+    var totalNumber = document.getElementById("total_number").value;
+    var table = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0];
+    table.innerHTML = ""; // Clear existing rows
+    siblingsData = []; // Clear the array before populating it again
 
-            noCell.innerHTML = "" + (i + 1);
-            lnameCell.innerHTML = '<input type="text" name="lname[]">';
-            fnameCell.innerHTML = '<input type="text" name="fname[]">';
-            mnameCell.innerHTML = '<input type="text" name="mname[]">';
-            ageCell.innerHTML = '<input type="text" name="age[]">';
-            educCell.innerHTML = '<input type="text" name="education[]">';
-            civilCell.innerHTML = '<input type="text" name="civil[]">';
+    for (var i = 0; i < totalNumber; i++) {
+        var row = table.insertRow(i);
+        var noCell = row.insertCell(0);
+        var lnameCell = row.insertCell(1);
+        var fnameCell = row.insertCell(2);
+        var mnameCell = row.insertCell(3);
+        var ageCell = row.insertCell(4);
+        var educCell = row.insertCell(5);
+        var civilCell = row.insertCell(6);
 
-            // Store values in an array
-            siblingsData.push({
-                lastName: "",
-                firstName: "",
-                middleName: "",
-                age: "",
-                education: "",
-                civilStatus: ""
-            });
-        }
+        noCell.innerHTML = "" + (i + 1);
+        lnameCell.innerHTML = '<input type="text" name="lname[]">';
+        fnameCell.innerHTML = '<input type="text" name="fname[]">';
+        mnameCell.innerHTML = '<input type="text" name="mname[]">';
+        ageCell.innerHTML = '<input type="text" name="age[]">';
+        educCell.innerHTML = '<input type="text" name="education[]">';
+        civilCell.innerHTML = '<input type="text" name="civil[]">';
 
-        // Call logTableValues to populate the siblingsData array
-        logTableValues(siblingsData);
-
-        sessionStorage.setItem('siblings',siblingsData);
-        // Return the values
-        return siblingsData;
+        // Store initial empty values in the siblingsData array
+        siblingsData.push({
+            lastName: "",
+            firstName: "",
+            middleName: "",
+            age: "",
+            education: "",
+            civilStatus: ""
+        });
     }
+}
 
-    function logTableValues(siblingsData) {
-        var totalNumber = siblingsData.length;
-        var table = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0];
+document.getElementById('next').addEventListener('click', function() {
+    collectDataFromTable();
+    sendDataToServer(siblingsData);
+});
 
-        for (var i = 0; i < totalNumber; i++) {
-            var row = table.rows[i];
-            var inputs = row.querySelectorAll('input');
-
-            siblingsData[i].lastName = inputs[0].value;
-            siblingsData[i].firstName = inputs[1].value;
-            siblingsData[i].middleName = inputs[2].value;
-            siblingsData[i].age = inputs[3].value;
-            siblingsData[i].education = inputs[4].value;
-            siblingsData[i].civilStatus = inputs[5].value;
+function collectDataFromTable() {
+    var tableRows = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+    siblingsData = Array.from(tableRows).map(row => {
+        const inputs = row.querySelectorAll('input');
+        return {
+            lastName: inputs[0].value,
+            firstName: inputs[1].value,
+            middleName: inputs[2].value,
+            age: inputs[3].value,
+            education: inputs[4].value,
+            civilStatus: inputs[5].value
+        };
+    });
+}
+// data of sibling immediatley save to datbase
+//ayosin mo nlanag if pede maisabay sa iba na mag post
+//uses different backend
+//try mo nalnag connect sa user register if pwede
+function sendDataToServer(data) {
+    // Use AJAX to send siblingsData to the server
+    $.ajax({
+        url: '../../backend/sibling.php',
+        type: 'POST',
+        data: { siblingsData: data },
+        success: function(response) {
+            console.log(response); // Log the response from the server
+        },
+        error: function(error) {
+            console.log(error); // Log any errors that occur
         }
-        
-    }
-</script>
-
-<script>
+    });
+}
     function goToPage2() {
         // Redirect to the next page
+        // Store insertStatements in sessionStorage
+        // sessionStorage.setItem('insertStatements', JSON.stringify(insertStatements));
+
         window.location.href = "page2.php";
     }
 </script>

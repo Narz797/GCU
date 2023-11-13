@@ -11,7 +11,8 @@ session_start();
     exit; // Make sure to exit the script after a header redirect
   }
   
-
+$id = $_SESSION['session_id'];
+  echo "<script>console.log('$id');</script>";
 include 'includes/main2.php';
  ?>
 <head>
