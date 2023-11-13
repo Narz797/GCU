@@ -8,74 +8,80 @@ if (isset($_SESSION['origin'])) {
 
     if ($origin === 'Student_Register') {
         //register for student in here
-        if (!empty($_POST['membership'])) {
+        if (isset($_POST['membership'])) {
             $_SESSION['membership'] = $_POST['membership'];
         }
-        if (!empty($_POST['indigenousInfo'])) {
+        if (isset($_POST['indigenousInfo'])) {
             $_SESSION['indigenousInfo'] = $_POST['indigenousInfo'];
         }
-        if (!empty($_POST['pwd'])) {
+        if (isset($_POST['pwd'])) {
             $_SESSION['pwd'] = $_POST['pwd'];
         }
-        if (!empty($_POST['studpar'])) {
+        if (isset($_POST['studpar'])) {
             $_SESSION['studpar'] = $_POST['studpar'];
         }
         if (isset($_POST['src']) && is_array($_POST['src'])) {
             $_SESSION['src'] = implode(', ', $_POST['src']);
         }
-        if (!empty($_POST['specificScholar'])) {
+        if (isset($_POST['specificScholar'])) {
             $_SESSION['specificScholar'] = $_POST['specificScholar'];
         }
-        if (!empty($_POST['specificOther'])) {
+        if (isset($_POST['specificOther'])) {
             $_SESSION['specificOther'] = $_POST['specificOther'];
         }
-        if (!empty($_POST['maritalStatus'])) {
+        if (isset($_POST['maritalStatus'])) {
             $_SESSION['maritalStatus'] = $_POST['maritalStatus'];
         }
-        if (!empty($_POST['first'])) {
+        if (isset($_POST['first'])) {
             $_SESSION['first'] = $_POST['first'];
         }
-        if (!empty($_POST['second'])) {
+        if (isset($_POST['second'])) {
             $_SESSION['second'] = $_POST['second'];
         }
-        if (!empty($_POST['third'])) {
+        if (isset($_POST['third'])) {
             $_SESSION['third'] = $_POST['third'];
         }
-        if (!empty($_POST['Fis'])) {
+        if (isset($_POST['Fis'])) {
             $_SESSION['Fis'] = $_POST['Fis'];
         }
-        if (!empty($_POST['Mis'])) {
+        if (isset($_POST['Mis'])) {
             $_SESSION['Mis'] = $_POST['Mis'];
         }
-        if (!empty($_POST['abtFam'])) {
+        if (isset($_POST['abtFam'])) {
             $_SESSION['abtFam'] = $_POST['abtFam'];
         }
-        if (!empty($_POST['whenChild'])) {
+        if (isset($_POST['whenChild'])) {
             $_SESSION['whenChild'] = $_POST['whenChild'];
         }
-        if (!empty($_POST['teachAre'])) {
+        if (isset($_POST['teachAre'])) {
             $_SESSION['teachAre'] = $_POST['teachAre'];
         }
-        if (!empty($_POST['friendsDunno'])) {
+        if (isset($_POST['friendsDunno'])) {
             $_SESSION['friendsDunno'] = $_POST['friendsDunno'];
         }
-        if (!empty($_POST['future'])) {
+        if (isset($_POST['future'])) {
             $_SESSION['future'] = $_POST['future'];
         }
-        if (!empty($_POST['goal'])) {
+        if (isset($_POST['goal'])) {
             $_SESSION['goal'] = $_POST['goal'];
         }
-        if (!empty($_POST['eu'])) {
+        if (isset($_POST['eu'])) {
             $_SESSION['eu'] = $_POST['eu'];
         }
-        if (!empty($_POST['pass'])) {
+        if (isset($_POST['pass'])) {
             $_SESSION['pass'] = $_POST['pass'];
         }
-        if (!empty($_POST['conpass'])) {
+        if (isset($_POST['conpass'])) {
             $_SESSION['conpass'] = $_POST['conpass'];
         }
-        if (!empty($_POST['image'])) {
-            $_SESSION['image'] = $_POST['image'];
+
+        if (isset($_FILES['sign']) && $_FILES['sign']['error'] === UPLOAD_ERR_OK) {
+            $signContent = file_get_contents($_FILES['sign']['tmp_name']);
+            $signType = $_FILES['sign']['type'];
+        }
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $imageContent = file_get_contents($_FILES['image']['tmp_name']);
+            $imageType = $_FILES['image']['type'];
         }
         
         echo var_dump($_SESSION);
@@ -150,7 +156,7 @@ if (isset($_SESSION['origin'])) {
             $stmt3->bindParam(3, $_SESSION['senyear']);
             $stmt3->bindParam(4,$_SESSION['senawards']);
 
-            if($_SESSION['othname']!=null && $_SESSION['othyear']!=null && $_SESSION['othawards']!=null){
+            if(isset($_SESSION['othname']) && isset($_SESSION['othyear']) && isset($_SESSION['othawards'])){
                 $sql6 = "INSERT INTO `other_school`(`stud_user_id`,`school_name`,`year`,`awards`) VALUES (?,?,?,?)";
                 $stmt6 = $pdo->prepare($sql6);
                 $stmt6->bindParam(1, $_SESSION['idno']);
@@ -188,17 +194,18 @@ if (isset($_SESSION['origin'])) {
 
             }
             if($_SESSION['whom']=='guardian'){
-                $sql4 = "INSERT INTO `guardian`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`) VALUES (?,?,?,?,?,?,?)";
-                $stmt4 = $pdo->prepare($sql4);
-                $stmt4->bindParam(1, $_SESSION['idno']);
-                $stmt4->bindParam(2, $_SESSION['Gfname']);
-                $stmt4->bindParam(3, $_SESSION['Gmname']);
-                $stmt4->bindParam(4, $_SESSION['Glname']);
-                $stmt4->bindParam(5,$_SESSION['Gage']);
-                $stmt4->bindParam(6,$_SESSION['Gocc']);
-                $stmt4->bindParam(7,$_SESSION['Gedu']);
+                $sql8 = "INSERT INTO `guardian`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`) VALUES (?,?,?,?,?,?,?)";
+                $stmt8 = $pdo->prepare($sql8);
+                $stmt8->bindParam(1, $_SESSION['idno']);
+                $stmt8->bindParam(2, $_SESSION['Gfname']);
+                $gmname = isset($_SESSION['Gmname']) ? $_SESSION['Gmname'] : null;
+                $stmt8->bindParam(3, $_SESSION['Gmname']);
+                $stmt8->bindParam(4, $_SESSION['Glname']);
+                $stmt8->bindParam(5,$_SESSION['Gage']);
+                $stmt8->bindParam(6,$_SESSION['Gocc']);
+                $stmt8->bindParam(7,$_SESSION['Gedu']);
 
-                $stmt4->execute();
+                $stmt8->execute();
             }
 
             $sql6 = "INSERT INTO `other_info`(`stud_user_id`,`source`,`first`,`second`,`third`,`Fis`,`Mis`,`abtFam`,`whenChild`,`teachAre`,`friendsDuno`,`future`,`goal`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -216,9 +223,17 @@ if (isset($_SESSION['origin'])) {
             $stmt6->bindParam(11,$_SESSION['friendsDunno']);
             $stmt6->bindParam(12,$_SESSION['future']);
             $stmt6->bindParam(13,$_SESSION['goal']);
+
+            $sql7 = "INSERT INTO `photos`(`stud_user_id`,`signature`,`sign_type`,`id`, `image_type`) VALUES (?,?,?,?,?)";
+            $stmt7 = $pdo->prepare($sql7);
+            $stmt7->bindParam(1, $stud_user_id);
+            $stmt7->bindParam(2, $signContent, PDO::PARAM_LOB);
+            $stmt7->bindParam(3, $signType);
+            $stmt7->bindParam(4, $imageContent, PDO::PARAM_LOB);
+            $stmt7->bindParam(5, $imageType);
     
             if ($stmt->execute() && $stmt1->execute() && $stmt2->execute()
-            && $stmt3->execute() && $stmt6->execute()) {
+            && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()) {
                 echo "success_teacher";
             } else {
                 echo "Registration failed";

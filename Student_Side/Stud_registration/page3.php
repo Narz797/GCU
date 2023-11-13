@@ -1,43 +1,43 @@
 <?php
 session_start();
 
-if (!empty($_POST['senschool'])) {
+if (isset($_POST['senschool'])) {
     $_SESSION['senschool'] = $_POST['senschool'];
 }
-if (!empty($_POST['senyear'])) {
+if (isset($_POST['senyear'])) {
     $_SESSION['senyear'] = $_POST['senyear'];
 }
-if (!empty($_POST['senawards'])) {
+if (isset($_POST['senawards'])) {
     $_SESSION['senawards'] = $_POST['senawards'];
 }
-if (!empty($_POST['junschool'])) {
+if (isset($_POST['junschool'])) {
     $_SESSION['junschool'] = $_POST['junschool'];
 }
-if (!empty($_POST['junyear'])) {
+if (isset($_POST['junyear'])) {
     $_SESSION['junyear'] = $_POST['junyear'];
 }
-if (!empty($_POST['junawards'])) {
+if (isset($_POST['junawards'])) {
     $_SESSION['junawards'] = $_POST['junawards'];
 }
-if (!empty($_POST['elemname'])) {
+if (isset($_POST['elemname'])) {
     $_SESSION['elemname'] = $_POST['elemname'];
 }
-if (!empty($_POST['elemyear'])) {
+if (isset($_POST['elemyear'])) {
     $_SESSION['elemyear'] = $_POST['elemyear'];
 }
-if (!empty($_POST['elemawards'])) {
+if (isset($_POST['elemawards'])) {
     $_SESSION['elemawards'] = $_POST['elemawards'];
 }
-if (!empty($_POST['othname'])) {
+if (isset($_POST['othname'])) {
     $_SESSION['othname'] = $_POST['othname'];
 }
-if (!empty($_POST['othyear'])) {
+if (isset($_POST['othyear'])) {
     $_SESSION['othyear'] = $_POST['othyear'];
 }
-if (!empty($_POST['othawards'])) {
+if (isset($_POST['othawards'])) {
     $_SESSION['othawards'] = $_POST['othawards'];
 }
-if(!empty($_POST['otherSchool'])){
+if(isset($_POST['otherSchool'])){
     $_SESSION['otherSchool'] = $_POST['otherSchool'];
 }
 
@@ -845,6 +845,20 @@ if(!empty($_POST['otherSchool'])){
                                 <input type="text" id="conpass" name="conpass">
                             </div>
                         </div>
+
+                        <h2>Upload Signature</h2>
+                        <br>
+                        <label for="imageUpload" class="custom-file-upload" style=" display: inline-block;
+                            background-color: #4CAF50;
+                            color: #fff;
+                            padding: 10px 20px;
+                            cursor: pointer;
+                            border: none;
+                            border-radius: 5px;
+                            margin-right: 10px;">
+                            <input type="file" id="imageUpload" name="sign" accept="image/*">
+                            Upload Signature
+                        </label>
 
                         <h2>Upload ID</h2>
                         <br>
