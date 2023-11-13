@@ -34,11 +34,12 @@ include 'includes/main2.php';
 
 </head>
 <style>
+ 
     .column {
   float: left;
   width: 50%;
   padding: 10px;
-  height: auto; /* Should be removed. Only for demonstration */
+ /* Should be removed. Only for demonstration */
 }
 /* Clear floats after the columns */
 .row:after {
@@ -75,8 +76,8 @@ include 'includes/main2.php';
   <section id="services" class="services sections-bg" style="background-color: transparent;">
       <div class="container" data-aos="fade-up">
         <!-- <div class="row gy-4" data-aos="fade-up" data-aos-delay="100" > -->
-        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100" style="width:100%;">
-          <div class="col-lg-4 col-md-6" style="width:100%;">
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100" style="width:100%; ">
+          <div class="col-lg-4 col-md-6" style="width:100%;  ">
             <div class="service-item  position-relative">
               <div class="icon">
                <i class="bi bi-file-text"></i>
