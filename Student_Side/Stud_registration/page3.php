@@ -880,8 +880,8 @@ if(isset($_POST['otherSchool'])){
                                 <span class="btnText">Back</span>
                             </div>
 
-                            <button class="nextBtn" id="next" type="submit" onclick="(send_sblings())">
-                                <span class="btnText">Next</span>
+                            <button class="nextBtn" id="next" type="submit" onclick="Register()">
+                                <span class="btnText">Submit</span>
                                 <i class="uil uil-navigator"></i>
                             </button>
                         </div>
@@ -895,10 +895,6 @@ if(isset($_POST['otherSchool'])){
     <script>
         function goToPage2() {
             window.location.href = "page2.php";
-        }
-        function send_siblings(){
-
-
         }
     </script>
 
