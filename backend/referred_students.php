@@ -1,5 +1,8 @@
 <?php
 include '../backend/connect_database.php';
+session_start();
+$id = $_SESSION['session_id'];
+
 $sql = "SELECT DISTINCT
 student_user.stud_user_id AS student_id,
 student_user.last_name,
@@ -24,7 +27,7 @@ courses ON student_user.course = courses.Acronym
 INNER JOIN
 referral ON transact.transact_id = referral.transact_id
 WHERE
-transact.transact_type = 'referral' AND transact.status != 'done'
+transact.transact_type = 'referral' AND transact.status != 'done' AND referral.teacher_id = :id 
 
 UNION
 
@@ -54,6 +57,7 @@ tstable.status != 'done';
 ";
 
 $stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id', $id);
 $stmt->execute();
 
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
