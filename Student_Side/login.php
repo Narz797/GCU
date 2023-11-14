@@ -256,7 +256,7 @@ $_SESSION['origin'] = 'Student';
       type: 'POST',
       url: '../backend/validate_user.php',
       data: {
-        email: $("#idno").val(),
+        idno: $("#idno").val(),
         password: $("#password").val(),
         source: source
       },

@@ -89,11 +89,10 @@ if (isset($_SESSION['origin'])) {
             $siblingsData = json_decode($_SESSION['siblings'], true);
         
             // Assuming siblings data structure, loop through and construct SQL queries
-            $stmtSibling = $pdo->prepare("INSERT INTO siblings (id_number, Student_id, Last_name, First_name, Middle_name, Age, High_edu, Civil_status) 
-                VALUES (:idNumber, :studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
+            $stmtSibling = $pdo->prepare("INSERT INTO siblings (Student_id, Last_name, First_name, Middle_name, Age, High_edu, Civil_status) 
+                VALUES (:studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
         
             foreach ($siblingsData as $sibling) {
-                $stmtSibling->bindParam(':idNumber', $sibling['id_number']);
                 $stmtSibling->bindParam(':studentId', $sibling['student_id']);
                 $stmtSibling->bindParam(':lastName', $sibling['Last_name']);
                 $stmtSibling->bindParam(':firstName', $sibling['First_name']);
@@ -246,7 +245,7 @@ if (isset($_SESSION['origin'])) {
                 $stmt6->bindParam(12, $_SESSION['future']);
                 $stmt6->bindParam(13, $_SESSION['goal']);
 
-                $sql7 = "INSERT INTO `photos`(`stud_user_id`,`signature`,`sign_type`, `id`, `image_type`) VALUES (?,?,?,?,?)";
+                $sql7 = "INSERT INTO `photos`(`stud_user_id`,`signature`,`sign_type`, `id_picture`, `image_type`) VALUES (?,?,?,?,?)";
                 $stmt7 = $pdo->prepare($sql7);
                 $stmt7->bindParam(1, $_SESSION['idno']);
                 $stmt7->bindParam(2, $signContent, PDO::PARAM_LOB);
@@ -254,87 +253,19 @@ if (isset($_SESSION['origin'])) {
                 $stmt7->bindParam(4, $imageContent, PDO::PARAM_LOB);
                 $stmt7->bindParam(5, $imageType);
 
+                $stmt7->execute();
 
-                $stmt4->execute();
-
-                $sql5 = "INSERT INTO `mother`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`,`contact`) VALUES (?,?,?,?,?,?,?,?)";
-                $stmt5 = $pdo->prepare($sql5);
-                $stmt5->bindParam(1, $_SESSION['idno']);
-                $stmt5->bindParam(2, $_SESSION['Mfname']);
-                $stmt5->bindParam(3, $_SESSION['Mmname']);
-                $stmt5->bindParam(4, $_SESSION['Mlname']);
-                $stmt5->bindParam(5,$_SESSION['Mage']);
-                $stmt5->bindParam(6,$_SESSION['Mocc']);
-                $stmt5->bindParam(7,$_SESSION['Medu']);
-                $stmt5->bindParam(8,$_SESSION['Mcontact']);
-
-                $stmt5->execute();
+                if ($stmt->execute() && $stmt1->execute() && $stmt2->execute()
+                && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()) {
+                    echo "Registered Successfully";
+                    header('../Student_Side/student-login');
+                } else {
+                    echo "Registration failed";
+                    header('../home');
+                }
 
             }
-            if($_SESSION['whom']=='guardian'){
-                $sql8 = "INSERT INTO `guardian`(`stud_user_id`,`fname`,`mname`,`lname`,`age`,`occupation`,`educ_background`,`contact`) VALUES (?,?,?,?,?,?,?,?)";
-                $stmt8 = $pdo->prepare($sql8);
-                $stmt8->bindParam(1, $_SESSION['idno']);
-                $stmt8->bindParam(2, $_SESSION['Gfname']);
-                $stmt8->bindParam(3, $_SESSION['Gmname']);
-                $stmt8->bindParam(4, $_SESSION['Glname']);
-                $stmt8->bindParam(5,$_SESSION['Gage']);
-                $stmt8->bindParam(6,$_SESSION['Gocc']);
-                $stmt8->bindParam(7,$_SESSION['Gedu']);
-                $stmt8->bindParam(8,$_SESSION['Gcontact']);
 
-                $stmt8->execute();
-            }
-
-            $sql6 = "INSERT INTO `other_info`(`stud_user_id`,`source`,`first`,`second`,`third`,`Fis`,`Mis`,`abtFam`,`whenChild`,`teachAre`,`friendsDuno`,`future`,`goal`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            $stmt6 = $pdo->prepare($sql6);
-            $stmt6->bindParam(1, $_SESSION['idno']);
-            $stmt6->bindParam(2, $_SESSION['src']);
-            $stmt6->bindParam(3, $_SESSION['first']);
-            $stmt6->bindParam(4, $_SESSION['second']);
-            $stmt6->bindParam(5, $_SESSION['third']);
-            $stmt6->bindParam(6,$_SESSION['Fis']);
-            $stmt6->bindParam(7,$_SESSION['Mis']);
-            $stmt6->bindParam(8,$_SESSION['abtFam']);
-            $stmt6->bindParam(9, $_SESSION['whenChild']);
-            $stmt6->bindParam(10, $_SESSION['teachAre']);
-            $stmt6->bindParam(11,$_SESSION['friendsDunno']);
-            $stmt6->bindParam(12,$_SESSION['future']);
-            $stmt6->bindParam(13,$_SESSION['goal']);
-
-            $sql7 = "INSERT INTO `photos`(`stud_user_id`,`signature`,`sign_type`,`id`, `image_type`) VALUES (?,?,?,?,?)";
-            $stmt7 = $pdo->prepare($sql7);
-            $stmt7->bindParam(1, $stud_user_id);
-            $stmt7->bindParam(2, $signContent, PDO::PARAM_LOB);
-            $stmt7->bindParam(3, $signType);
-            $stmt7->bindParam(4, $imageContent, PDO::PARAM_LOB);
-            $stmt7->bindParam(5, $imageType);
-
-             // Assuming siblings data structure, loop through and construct SQL queries
-            // $stmt8 = $pdo->prepare("INSERT INTO siblings (id_number, Student_id, Last_name, First_name, Middle_name, Age, High_edu, Civil_status) 
-            // VALUES (:idNumber, :studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
-            
-            // foreach ($siblingsData as $sibling) {
-            // $stmt8->bindParam(':idNumber', $sibling['id_number']);
-            // $stmt8->bindParam(':studentId', $sibling['student_id']);
-            // $stmt8->bindParam(':lastName', $sibling['Last_name']);
-            // $stmt8->bindParam(':firstName', $sibling['First_name']);
-            // $stmt8->bindParam(':middleName', $sibling['Middle_name']);
-            // $stmt8->bindParam(':age', $sibling['Age']);
-            // $stmt8->bindParam(':highEdu', $sibling['High_edu']);
-            // $stmt8->bindParam(':civilStatus', $sibling['Civil_status']);
-
-            // $stmt8->execute();
-            // }
-    
-            if ($stmt->execute() && $stmt1->execute() && $stmt2->execute()
-            && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()) {
-                echo "Registered Successfully";
-                header('../Student_Side/student-login');
-            } else {
-                echo "Registration failed";
-                header('../home');
-            }
             }
         }
 
