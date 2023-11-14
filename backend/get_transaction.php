@@ -26,6 +26,13 @@ try {
     $stmt2->execute();
     $countLOA = $stmt2->fetch(PDO::FETCH_ASSOC);
 
+        // Count CA
+    $countPendingSql5 = "SELECT COUNT(*) AS total_pending_CA FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND status = 'pending' AND (transact_type = 'Absent' OR transact_type = 'Tady' OR transact_type = 'Academic Deficiency/ies')";
+    $stmt9 = $pdo->prepare($countPendingSql5);
+    $stmt9->bindParam(':currentDate', $currentDate);
+    $stmt9->execute();
+    $countCA = $stmt9->fetch(PDO::FETCH_ASSOC);
+
     // Count RA
     $countPendingSql2 = "SELECT COUNT(*) AS total_pending_RA FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND transact_type = 'readmission'AND status = 'pending'";
     $stmt3 = $pdo->prepare($countPendingSql2);
@@ -47,50 +54,55 @@ try {
     $stmt6->execute();
     $countAppointments = $stmt6->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch admin user data
-    $adminUserDataSql = "SELECT `email`, `position`, `date_joined`, `first_name`, `last_name`, `gender` FROM admin_user";
-    $stmt7 = $pdo->prepare($adminUserDataSql);
-    $stmt7->execute();
-    $adminUserData = $stmt7->fetchAll(PDO::FETCH_ASSOC);
 
-    // Fetch the latest data based on the date_created column
     $latestDataSql = "SELECT transact.transact_id, transact.student_id, transact.transact_type, transact.date_created, student_user.first_name, student_user.last_name
-                        FROM transact
-                        INNER JOIN student_user ON transact.student_id = student_user.stud_user_id
-                        WHERE transact.status = 'pending'
-                        ORDER BY `date_created` DESC
-                        LIMIT 1;";
+    FROM transact
+    INNER JOIN student_user ON transact.student_id = student_user.stud_user_id
+    WHERE transact.status = 'pending'
+    ORDER BY `date_created` DESC
+    LIMIT 1;";
 
     $stmt8 = $pdo->prepare($latestDataSql);
     $stmt8->execute();
     $latestData = $stmt8->fetchAll(PDO::FETCH_ASSOC);
 
+    // Fetch admin user data
+    $id = $_SESSION['session_id'];
+
+    $adminUserDataSql = "SELECT `email`, `position`, `date_joined`, `first_name`, `last_name`, `gender` FROM admin_user WHERE `admin_user_id` = :adminUserId";
+    $stmt7 = $pdo->prepare($adminUserDataSql);
+    $stmt7->bindParam(':adminUserId', $id); // Bind the session id to the parameter
+    $stmt7->execute();
+    $adminUserData = $stmt7->fetchAll(PDO::FETCH_ASSOC);
+
     if (!empty($latestData)) {
-        // Combine the latest data, count of pending transactions, appointments, and admin user data
         $response = [
             'latest_data' => $latestData,
             'total_pending_transactions' => $countPending['total_pending_transactions'],
+            'total_pending_CA' => $countCA['total_pending_CA'],
             'total_pending_LOA' => $countLOA['total_pending_LOA'],
             'total_pending_RA' => $countRA['total_pending_RA'],
             'total_pending_RS' => $countRS['total_pending_RS'],
             'total_pending_WDS' => $countWDS['total_pending_WDS'],
             'total_appointments' => $countAppointments['total_appointments'],
-            'adminUserData' => $adminUserData
+            'adminUserData' => $adminUserData,
         ];
-
-        // Return data as JSON and set the content type header to JSON
-        header('Content-Type: application/json');
-        echo json_encode($response);
     } else {
         $response = [
-
-            'adminUserData' => $adminUserData
+            'latest_data' => [], // No results for latest_data
+            'total_pending_transactions' => $countPending['total_pending_transactions'],
+            'total_pending_CA' => $countCA['total_pending_CA'],
+            'total_pending_LOA' => $countLOA['total_pending_LOA'],
+            'total_pending_RA' => $countRA['total_pending_RA'],
+            'total_pending_RS' => $countRS['total_pending_RS'],
+            'total_pending_WDS' => $countWDS['total_pending_WDS'],
+            'total_appointments' => $countAppointments['total_appointments'],
+            'adminUserData' => $adminUserData,
         ];
-        // Return an empty JSON object if no results are found
-                // Return data as JSON and set the content type header to JSON
-                header('Content-Type: application/json');
-                echo json_encode($response);
     }
+    header('Content-Type: application/json');
+echo json_encode($response);
+
 } catch (PDOException $e) {
     // Handle any errors by returning a JSON error response
     header('Content-Type: application/json');

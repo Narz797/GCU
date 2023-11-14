@@ -119,7 +119,7 @@ session_start();
           <div class="content1">
                 <img src="./assets/images/read.jpg">
                 <h4>CLASS ADMISSION SLIP</h4>
-                <p><span class="num" data-val="28">000</span>
+                <p><span class="num"  id="CA">000</span>
                 <span class="text">pending...</span></p>
                 <h5>don't know the serial number</h5>
                 <br>
@@ -260,7 +260,8 @@ session_start();
         }
 
 
-        function updateValues(LOA, RA, RS, WDS) {
+        function updateValues(CA, LOA, RA, RS, WDS) {
+        $('#CA').text(CA);
         $('#LOA').text(LOA);
         $('#RA').text(RA);
         $('#RS').text(RS);
@@ -284,18 +285,21 @@ function fetchData() { //getting total
                 success: function (data) {
                     console.log(data.latest_data);
                     if (data.latest_data && data.latest_data.length > 0) {
+                            var totalCA = data.total_pending_CA;
                             var totalLOA = data.total_pending_LOA;
                             var totalRA = data.total_pending_RA;
                             var totalRS = data.total_pending_RS;
                             var totalWDS = data.total_pending_WDS;
+                            console.log("CA",totalCA);
                             console.log("LOA",totalLOA);
                             console.log("RA",totalRA);
                             console.log("LOA",totalRS);
                             console.log("RS",totalLOA);
-                            updateValues(totalLOA, totalRA, totalRS, totalWDS);
+                            updateValues(totalCA, totalLOA, totalRA, totalRS, totalWDS);
                             console.log(totalLOA);
 
                         } else {
+                            var totalCA = 0;
                             var totalLOA = 0;
                             var totalRA = 0;
                             var totalRS = 0;
@@ -304,7 +308,7 @@ function fetchData() { //getting total
                             console.log("RA",totalRA);
                             console.log("LOA",totalRS);
                             console.log("RS",totalLOA);
-                            updateValues(totalLOA, totalRA, totalRS, totalWDS);
+                            updateValues(totalCA, totalLOA, totalRA, totalRS, totalWDS);
                             console.log(totalLOA);
                         console.log('No results found');
                     }

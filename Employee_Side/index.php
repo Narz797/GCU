@@ -211,65 +211,66 @@ $id = $_SESSION['session_id'];
     // Function to fetch data from get_transaction.php
     function fetchData() {
         console.log('AJAX request started');
-        $.ajax({
-            type: 'GET',
-            url: '../backend/get_transaction.php',
-            dataType: 'json',
-            
-                // ...
-                success: function (data) {
-                    console.log(data.latest_data);
-                    if (data.latest_data && data.latest_data.length > 0) {
-                            sid = data.latest_data[0].student_id;
-                            var fname = data.latest_data[0].first_name;
-                            var lname = data.latest_data[0].last_name;
-                            var transactType = data.latest_data[0].transact_type;
-                            tt = data.latest_data[0].transact_type;
-                            tid = data.latest_data[0].transact_id;
-                            var total = data.total_pending_transactions;
-                            var totalAppointments = data.total_appointments; // Define total here
-                            var employee_email = data.adminUserData[0].email;
-                            var employee_position = data.adminUserData[0].position;
-                            var employee_date_joined = data.adminUserData[0].date_joined;
-                            var eFname = data.adminUserData[0].first_name;
-                            var eLname = data.adminUserData[0].last_name;
-                            var ePosition = data.adminUserData[0].position;
-                            var eGender = data.adminUserData[0].gender;
-                            console.log(totalAppointments);
-                            updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
-                            console.log(total);
-                            // Start both counting animations
-                            countAppointments(totalAppointments);
-                            countForms(total);
-                        } else {
-                        // Handle the case when no results are found
-                        // You can update the UI as needed
-                            var studentId = "None";
-                            var total = 0;
-                            var totalAppointments = 0; // Define total here
-                            var employee_email = data.adminUserData[0].email;
-                            var employee_position = data.adminUserData[0].position;
-                            var employee_date_joined = data.adminUserData[0].date_joined;
-                            var eFname = data.adminUserData[0].first_name;
-                            var eLname = data.adminUserData[0].last_name;
-                            var ePosition = data.adminUserData[0].position;
-                            var eGender = data.adminUserData[0].gender;
-                            console.log(totalAppointments);
-                            updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
-                            console.log(total);
-                            // Start both counting animations
-                            countAppointments(totalAppointments);
-                            countForms(total);
-                        console.log('No results found');
-                    }
-            },
-            error: function (xhr, status, error) {
-                console.error('Error: ' + error);
-                console.error('Status: ' + status);
-                console.error('Response: ' + xhr.responseText);
-            }
-        });
+    $.ajax({
+        type: 'GET',
+        url: '../backend/get_transaction.php',
+        dataType: 'json',
+        success: function (data) {
+            processData(data);
+        },
+        error: function (xhr, status, error) {
+            console.error('Error: ' + error);
+            console.error('Status: ' + status);
+            console.error('Response: ' + xhr.responseText);
+        }
+    });
     }
+
+
+    // Function to process the retrieved data
+function processData(data) {
+    if (data.latest_data && data.latest_data.length > 0) {
+        // Process the data and perform necessary actions
+        var sid = data.latest_data[0].student_id;
+        var fname = data.latest_data[0].first_name;
+        var lname = data.latest_data[0].last_name;
+        var transactType = data.latest_data[0].transact_type;
+        var tt = data.latest_data[0].transact_type;
+        var tid = data.latest_data[0].transact_id;
+        var total = data.total_pending_transactions;
+        var totalAppointments = data.total_appointments;
+        var employee_email = data.adminUserData[0].email;
+        var employee_position = data.adminUserData[0].position;
+        var employee_date_joined = data.adminUserData[0].date_joined;
+        var eFname = data.adminUserData[0].first_name;
+        var eLname = data.adminUserData[0].last_name;
+        var ePosition = data.adminUserData[0].position;
+        var eGender = data.adminUserData[0].gender;
+
+        updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
+
+        countAppointments(totalAppointments);
+        countForms(total);
+    } else {
+        // Handle when no results are found
+        var studentId = "None";
+        var total = 0;
+        var totalAppointments = 0;
+        var employee_email = data.adminUserData[0].email;
+        var employee_position = data.adminUserData[0].position;
+        var employee_date_joined = data.adminUserData[0].date_joined;
+        var eFname = data.adminUserData[0].first_name;
+        var eLname = data.adminUserData[0].last_name;
+        var ePosition = data.adminUserData[0].position;
+        var eGender = data.adminUserData[0].gender;
+
+        updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
+
+        countAppointments(totalAppointments);
+        countForms(total);
+        console.log('No results found');
+    }
+}
 // Function to update the card description with data
 function updateCardDescription(data) {
     const cardDescription = $('#list-history');
