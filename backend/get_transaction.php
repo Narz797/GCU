@@ -48,7 +48,7 @@ try {
     $countAppointments = $stmt6->fetch(PDO::FETCH_ASSOC);
 
     // Fetch admin user data
-    $adminUserDataSql = "SELECT `email`, `position`, `date_joined`, `first_name`, `last_name`, `position`, `gender` FROM admin_user";
+    $adminUserDataSql = "SELECT `email`, `position`, `date_joined`, `first_name`, `last_name`, `gender` FROM admin_user";
     $stmt7 = $pdo->prepare($adminUserDataSql);
     $stmt7->execute();
     $adminUserData = $stmt7->fetchAll(PDO::FETCH_ASSOC);

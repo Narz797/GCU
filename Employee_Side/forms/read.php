@@ -132,7 +132,7 @@ session_start();
                     
 <!-- Get any uplaoded file or the real-time image -->
 
-                  <img src="" title="No Attached Document" id="attachment">
+                  <!-- <img src="" title="No Attached Document" id="attachment"> -->
                   </div>
                 </div>
                 <div>
@@ -147,7 +147,7 @@ session_start();
 
 <!-- Get any uplaoded file or the real-time image -->
 
-                <img src="" title="No Attached Document" id="document">
+                <!-- <img src="" title="No Attached Document" id="document"> -->
                   </div>
                 </div>
                 </div>
@@ -261,14 +261,11 @@ function archive() {
             var relation = studentData.Relation;
             var motiv = studentData.motivation;
             var reason = studentData.reason;
-            var att = studentData.attachment;
-            var doc = studentData.document;
+
             console.log(fname);
             updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, motiv, reason);
 
-            // Display the blob data as images
-            displayBlobAsImage(doc, 'document'); // Pass the image data and an element ID
-            displayBlobAsImage(att, 'attachment'); // Pass the image data and an element ID
+
           
         } else {
             // Handle the case when no results are found
@@ -282,14 +279,7 @@ function archive() {
         }
         });
 
-        function displayBlobAsImage(blobData, elementId) {
-            if (blobData) {
-                var imgElement = document.getElementById(elementId);
-                if (imgElement) {
-                    imgElement.src = 'data:image/jpeg;base64,' + blobData; // Assuming JPEG format
-                }
-            }
-        }
+
         }
 
         function status_update(status){
