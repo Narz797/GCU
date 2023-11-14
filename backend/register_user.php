@@ -5,8 +5,10 @@ if (isset($_SESSION['origin'])) {
 
     $origin = $_SESSION['origin'];
 
-
     if ($origin === 'Student_Register') {
+
+        echo var_dump($_POST);
+        
         //register for student in here
         if (isset($_POST['membership'])) {
             $_SESSION['membership'] = $_POST['membership'];
