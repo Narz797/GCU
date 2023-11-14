@@ -231,9 +231,9 @@ $_SESSION['origin'] = 'Student';
           <h1>LOGIN FORM</h1>
           <br>
           <div class="txt_field">
-            <input type="email" id="email" name="email" required />
+            <input type="text" id="idno" name="idno" required />
             <span></span>
-            <label>Email</label>
+            <label>ID Number</label>
           </div>
           <div class="txt_field">
             <input type="password" id="password" name="password" required />
@@ -256,7 +256,7 @@ $_SESSION['origin'] = 'Student';
       type: 'POST',
       url: '../backend/validate_user.php',
       data: {
-        email: $("#email").val(),
+        email: $("#idno").val(),
         password: $("#password").val(),
         source: source
       },
@@ -264,7 +264,7 @@ $_SESSION['origin'] = 'Student';
         if (data === "success_student") {
           window.location.href = "student-home";
         } else {
-          alert(data);
+          alert('Error');
         }
       }
     });

@@ -85,8 +85,25 @@ if (isset($_SESSION['origin'])) {
         }
         if (isset($_SESSION['siblings'])) {
             $siblingsData = json_decode($_SESSION['siblings'], true);
-
-        echo var_dump($_SESSION);
+        
+            // Assuming siblings data structure, loop through and construct SQL queries
+            $stmtSibling = $pdo->prepare("INSERT INTO siblings (id_number, Student_id, Last_name, First_name, Middle_name, Age, High_edu, Civil_status) 
+                VALUES (:idNumber, :studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
+        
+            foreach ($siblingsData as $sibling) {
+                $stmtSibling->bindParam(':idNumber', $sibling['id_number']);
+                $stmtSibling->bindParam(':studentId', $sibling['student_id']);
+                $stmtSibling->bindParam(':lastName', $sibling['Last_name']);
+                $stmtSibling->bindParam(':firstName', $sibling['First_name']);
+                $stmtSibling->bindParam(':middleName', $sibling['Middle_name']);
+                $stmtSibling->bindParam(':age', $sibling['Age']);
+                $stmtSibling->bindParam(':highEdu', $sibling['High_edu']);
+                $stmtSibling->bindParam(':civilStatus', $sibling['Civil_status']);
+        
+                $stmtSibling->execute();
+            }
+        }
+        var_dump($_SESSION);
 
         $query1 = "SELECT * FROM `student_user` WHERE `stud_user_id` = ?";
         $stmt = $pdo->prepare($query1);
@@ -105,7 +122,7 @@ if (isset($_SESSION['origin'])) {
             `stud_user_id`, `course`, `Year_level`, `last_name`,`first_name`,
             `middle_name`, `Contact_number`, `year_enrolled`, `Section`, `Civil_status`, 
             `gender`, `birth_date`, `Birth_place`, `Nationality`, `Languages_and_dialects`,
-            `Address`, `email`,`IG`,`PWD`,`studpar`,`maritalStatus`, `username`,
+            `Address`, `email`,`IG`,`PWD`,`Student_parent`,`Marital_status_of_parents`, `username`,
             `password`) 
             VALUES (?,?,?,?,?,
             ?,?,?,?,?,
@@ -292,21 +309,21 @@ if (isset($_SESSION['origin'])) {
             $stmt7->bindParam(5, $imageType);
 
              // Assuming siblings data structure, loop through and construct SQL queries
-            $stmt8 = $pdo->prepare("INSERT INTO siblings (id_number, Student_id, Last_name, First_name, Middle_name, Age, High_edu, Civil_status) 
-            VALUES (:idNumber, :studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
+            // $stmt8 = $pdo->prepare("INSERT INTO siblings (id_number, Student_id, Last_name, First_name, Middle_name, Age, High_edu, Civil_status) 
+            // VALUES (:idNumber, :studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
+            
+            // foreach ($siblingsData as $sibling) {
+            // $stmt8->bindParam(':idNumber', $sibling['id_number']);
+            // $stmt8->bindParam(':studentId', $sibling['student_id']);
+            // $stmt8->bindParam(':lastName', $sibling['Last_name']);
+            // $stmt8->bindParam(':firstName', $sibling['First_name']);
+            // $stmt8->bindParam(':middleName', $sibling['Middle_name']);
+            // $stmt8->bindParam(':age', $sibling['Age']);
+            // $stmt8->bindParam(':highEdu', $sibling['High_edu']);
+            // $stmt8->bindParam(':civilStatus', $sibling['Civil_status']);
 
-            foreach ($siblingsData as $sibling) {
-            $stmt8->bindParam(':idNumber', $sibling['id_number']);
-            $stmt8->bindParam(':studentId', $sibling['student_id']);
-            $stmt8->bindParam(':lastName', $sibling['Last_name']);
-            $stmt8->bindParam(':firstName', $sibling['First_name']);
-            $stmt8->bindParam(':middleName', $sibling['Middle_name']);
-            $stmt8->bindParam(':age', $sibling['Age']);
-            $stmt8->bindParam(':highEdu', $sibling['High_edu']);
-            $stmt8->bindParam(':civilStatus', $sibling['Civil_status']);
-
-            $stmt8->execute();
-            }
+            // $stmt8->execute();
+            // }
     
             if ($stmt->execute() && $stmt1->execute() && $stmt2->execute()
             && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()) {
@@ -422,6 +439,4 @@ if (isset($_SESSION['origin'])) {
         // $conn->close();
 
     }
-}
 $pdo = null; // Close the database connection
-?>

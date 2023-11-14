@@ -6,12 +6,12 @@ if (isset($_SESSION['origin'])) {
     $origin = $_SESSION['origin'];
 
     if ($origin === 'Student') {
-        if (isset($_POST['email']) && isset($_POST['password'])) {
-            $username = $_POST['email'];
+        if (isset($_POST['idno']) && isset($_POST['password'])) {
+            $username = $_POST['idno'];
             $password = $_POST['password'];
 
             try {
-            $sql = "SELECT * FROM student_user WHERE email=?";
+            $sql = "SELECT * FROM student_user WHERE stud_user_id=?";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([$username]);
 
