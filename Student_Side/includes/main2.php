@@ -14,9 +14,10 @@
         <!--  <img src="/GCU.png" alt="">  -->
         <!-- <h1>Impact<span>.</span></h1> -->
       </a>
+      <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
 <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
   <ul style="height:1000px;">
-    <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
+    
   
      
     <li ><a href="student-home">TRANSACTION</a></li>
@@ -71,6 +72,11 @@
 
 <!-- </section> -->
 <style>
+  @media (min-width: 1280px) {
+  .mobile-nav-toggle {
+    display: none;
+  }
+}
   .for-mobile{
     visibility: hidden;
   }
