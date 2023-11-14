@@ -17,7 +17,8 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
 }
 ?>
 <!-- test -->
-<head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Roboto');
@@ -49,6 +50,20 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
     /* Use flexbox to align items horizontally */
     /* align-items: center;  */
     /* Vertically center the items within the container */
+  }
+
+  @media only screen and (max-width: 767px) {
+    .left-column img {
+      width: 100%; /* Adjust as needed */
+      margin-top: 10%;
+      margin-bottom: 2%;
+    }
+
+    .right-column {
+      margin-top: 5%;
+    }
+
+    /* Add other responsive styles as needed */
   }
 </style>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -190,5 +205,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
       });
     });
   </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
     <body>
       <?php include 'includes/footer1.php' ?>

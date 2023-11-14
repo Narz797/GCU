@@ -1,31 +1,23 @@
 <?php
 session_start();
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
 $_SESSION['origin'] = 'Teacher';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto');
     body {
-      /* background: #2980b9; */
       font-family: 'Roboto', sans-serif;
-      /* background: rgb(51, 138, 11); */
-      /* background: rgb(51, 138, 11); */
-      /* background: -webkit-linear-gradient(left, #0c4401, #ebeeeb);  */
       display: flex;
       height: 100vh;
       justify-content: center;
       align-items: center;
       width: 100%;
+      margin: 0;
     }
-    /* .field{ */
-    /* background: -webkit-linear-gradient(left, #fefefe, #61c6be); */
-    /* } */
     #logo-gcu {
       width: 60%;
       margin: auto;
@@ -36,40 +28,32 @@ $_SESSION['origin'] = 'Teacher';
     .container {
       margin: 0px;
       padding: 0px;
-       /* flex-direction: row;  */
     }
-    /* Create two equal columns that floats next to each other */
     .column {
       width: 50%;
       padding: 10px;
       margin: 0 auto;
       text-align: center;
-      justify-content: center;
-      /* Should be removed. Only for demonstration */
     }
-    /* Clear floats after the columns */
     .row:after {
       content: "";
       display: table;
       clear: both;
-      
     }
-    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
     @media screen and (max-width: 600px) {
       .column {
         width: 100%;
       }
+      #logo-gcu {
+        width: 80%;
+      }
     }
     .right-column {
-      /* margin-top: 2%; */
-      /* flex: 2; */
-      /* background-color: -webkit-linear-gradient(left, #fefefe, #96ded8); */
       padding: 5px;
-      /* border-radius: 10px; */
     }
     .logo {
-      /* width: 100px;
-            height: auto; */
+      width: 100%;
+      height: auto;
     }
     @-webkit-keyframes mover {
       0% {
@@ -87,7 +71,6 @@ $_SESSION['origin'] = 'Teacher';
         transform: translateY(-20px);
       }
     }
-    /* Add your existing styles here */
     .center {
       position: absolute;
       top: 50%;
@@ -111,7 +94,6 @@ $_SESSION['origin'] = 'Teacher';
     }
     form .txt_field {
       position: relative;
-      /* border-bottom: 2px solid #050505; */
       margin: 30px 0;
     }
     .txt_field input {
@@ -120,9 +102,7 @@ $_SESSION['origin'] = 'Teacher';
       height: 40px;
       font-size: 16px;
       border: 1px solid #ccc;
-      /* Add a border around the input */
       border-radius: 5px;
-      /* Add rounded corners to the border */
       outline: none;
     }
     .txt_field label {
@@ -148,7 +128,6 @@ $_SESSION['origin'] = 'Teacher';
     .txt_field input:focus~label,
     .txt_field input:valid~label {
       top: -10px;
-      /* color: #000000; */
     }
     .txt_field input:focus~span::before,
     .txt_field input:valid~span::before {
@@ -175,12 +154,9 @@ $_SESSION['origin'] = 'Teacher';
       outline: none;
       transition: 0.5s;
       border: none;
-      /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
-      /* background: -webkit-linear-gradient(left, #e7e7e2 , #0c4401); */
     }
     input[type="submit"]:hover {
       border-color: #17f522;
-      /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
     }
     .signup_link {
       margin: 30px 0;
@@ -195,22 +171,32 @@ $_SESSION['origin'] = 'Teacher';
     .signup_link a:hover {
       text-decoration: underline;
     }
-    #back_button {
-      padding: 10px 30px;
-      float: left;
-      /* Adjusted the float property */
-      position: fixed;
-      /* Fixed position so it stays in place */
-      top: 10px;
-      /* Positioned at the top */
-      left: 50px;
-      /* Positioned at the left */
-      z-index: 1000;
-      background-color: #105c06;
+    .back-to-home-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    @media screen and (max-width: 600px) {
+    .back-to-home-button:hover {
+      background-color: #2980b9;
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    @media screen and (max-width: 768px) {
       .column {
         width: 100%;
+      }
+      .logo {
+        width: 80%;
+      }
+      .center {
+        max-width: 100%;
       }
     }
   </style>
@@ -218,10 +204,7 @@ $_SESSION['origin'] = 'Teacher';
   <link href="assets/img/GCU_logo.png" rel="icon">
 </head>
 <body>
-  <!-- <fieldset style="width:80%;"> -->
-  
   <div class="container" style="margin-left: 2%;">
-  <a id='back_button' class="btn btn-primary" href="/gcu/home" role="button">Back</a>
     <div class="row">
       <div class="column">
         <img id='logo-gcu' src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
@@ -244,6 +227,7 @@ $_SESSION['origin'] = 'Teacher';
           <input type="submit" value="Login" id="submitButton" />
           <div class="signup_link">Not a member? <a href="Stud_registration/page1.php"><b>Signup</b></a></div>
         </form>
+        <a href="/gcu/home" class="back-to-home-button">BACK TO HOME</a>
       </div>
     </div>
   </div>
