@@ -16,6 +16,7 @@ $_SESSION['origin'] = 'Teacher_Register';
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <title>Teacher Regisration Form </title>
 </head>
+
 <body>
 
     <!-- Might as well put the header or banner here-->

@@ -13,6 +13,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: lightgray;
+    color:black;
 }
 .container {
     position: relative;
@@ -38,12 +39,12 @@ body {
     text-align: center;
     font-size: 30px;
     font-weight: 600;
-    color: darkgreen;    
+    color:black;    
     animation: moveContainer 1s infinite alternate;
 }
 .container hr {
     border: none;
-    background-color: #3c9141; 
+   
     height: 4px; 
 }
 .container form {
@@ -70,7 +71,7 @@ form .fields .input-field {
 .input-field label {
     font-size: 16px;
     font-weight: 500;
-    color: forestgreen;
+    color: black;
 }
 .input-field select {
     font-style: italic;
