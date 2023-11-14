@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 include '../backend/connect_database.php';
 if (isset($_SESSION['origin'])) {
 
@@ -7,8 +8,6 @@ if (isset($_SESSION['origin'])) {
 
     if ($origin === 'Student_Register') {
 
-        echo var_dump($_POST);
-        
         //register for student in here
         if (isset($_POST['membership'])) {
             $_SESSION['membership'] = $_POST['membership'];
@@ -81,17 +80,49 @@ if (isset($_SESSION['origin'])) {
             $signContent = file_get_contents($_FILES['sign']['tmp_name']);
             $signType = $_FILES['sign']['type'];
         }
-        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        if (
+            isset($_FILES['sign']) && $_FILES['sign']['error'] === UPLOAD_ERR_OK &&
+            isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK
+        ) {
+
+            $studUserId = $_SESSION['idno']; // replace with the actual user ID
+            $studlastName = $_SESSION['lastname'];
+
+            // Save the signature file
+            $signContent = file_get_contents($_FILES['sign']['tmp_name']);
+            $signType = $_FILES['sign']['type'];
+            $signFileName = "uploads/sign_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['sign']['name'], PATHINFO_EXTENSION);
+            file_put_contents($signFileName, $signContent);
+
+            // Save the ID picture file
             $imageContent = file_get_contents($_FILES['image']['tmp_name']);
             $imageType = $_FILES['image']['type'];
+            $imageFileName = "uploads/id_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            file_put_contents($imageFileName, $imageContent);
+
+            // Save file paths to the database
+            $stmtsave = $pdo->prepare("INSERT INTO `photos`(`stud_user_id`, `signature`, `sign_type`, `id_picture`, `image_type`) VALUES (?, ?, ?, ?, ?)");
+
+            // Bind parameters or use bindValue
+            $stmtsave->bindParam(1, $studUserId, PDO::PARAM_INT);
+            $stmtsave->bindParam(2, $signFileName, PDO::PARAM_STR);
+            $stmtsave->bindParam(3, $signType, PDO::PARAM_STR);
+            $stmtsave->bindParam(4, $imageFileName, PDO::PARAM_STR);
+            $stmtsave->bindParam(5, $imageType, PDO::PARAM_STR);
+
+            $stmtsave->execute();
+
+            // $stmtsave->close();
+        } else {
+            echo "Error uploading files.";
         }
         if (isset($_SESSION['siblings'])) {
             $siblingsData = json_decode($_SESSION['siblings'], true);
-        
+
             // Assuming siblings data structure, loop through and construct SQL queries
             $stmtSibling = $pdo->prepare("INSERT INTO siblings (Student_id, Last_name, First_name, Middle_name, Age, High_edu, Civil_status) 
                 VALUES (:studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
-        
+
             foreach ($siblingsData as $sibling) {
                 $stmtSibling->bindParam(':studentId', $sibling['student_id']);
                 $stmtSibling->bindParam(':lastName', $sibling['Last_name']);
@@ -100,7 +131,7 @@ if (isset($_SESSION['origin'])) {
                 $stmtSibling->bindParam(':age', $sibling['Age']);
                 $stmtSibling->bindParam(':highEdu', $sibling['High_edu']);
                 $stmtSibling->bindParam(':civilStatus', $sibling['Civil_status']);
-        
+
                 $stmtSibling->execute();
             }
         }
@@ -245,131 +276,136 @@ if (isset($_SESSION['origin'])) {
                 $stmt6->bindParam(12, $_SESSION['future']);
                 $stmt6->bindParam(13, $_SESSION['goal']);
 
-                $sql7 = "INSERT INTO `photos`(`stud_user_id`,`signature`,`sign_type`, `id_picture`, `image_type`) VALUES (?,?,?,?,?)";
-                $stmt7 = $pdo->prepare($sql7);
-                $stmt7->bindParam(1, $_SESSION['idno']);
-                $stmt7->bindParam(2, $signContent, PDO::PARAM_LOB);
-                $stmt7->bindParam(3, $signType);
-                $stmt7->bindParam(4, $imageContent, PDO::PARAM_LOB);
-                $stmt7->bindParam(5, $imageType);
+                // $sql7 = "INSERT INTO `photos`(`stud_user_id`,`signature`,`sign_type`, `id_picture`, `image_type`) VALUES (?,?,?,?,?)";
+                // $stmt7 = $pdo->prepare($sql7);
+                // $stmt7->bindParam(1, $_SESSION['idno']);
+                // $stmt7->bindParam(2, $signContent, PDO::PARAM_LOB);
+                // $stmt7->bindParam(3, $signType);
+                // $stmt7->bindParam(4, $imageContent, PDO::PARAM_LOB);
+                // $stmt7->bindParam(5, $imageType);
 
-                $stmt7->execute();
+                // $stmt7->execute();
 
-                if ($stmt->execute() && $stmt1->execute() && $stmt2->execute()
-                && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()) {
+                if ($stmt->execute() && $stmt1->execute() && $stmt2->execute() && $stmt3->execute() && $stmt6->execute()) {
                     echo "Registered Successfully";
-                    header('../Student_Side/student-login');
+                    header('Location: ../Student_Side/student-login');
                 } else {
                     echo "Registration failed";
-                    header('../home');
-                }
-
-            }
-
-            }
-        }
-
-        }
-        elseif ($origin === 'Teacher_Register') {
-            if (
-                isset($_POST['idNumber'], $_POST['firstname'], $_POST['lastname'], $_POST['middlename'],
-                $_POST['cn'], $_POST['college'], $_POST['gender'], $_POST['stat'], $_POST['email'], $_POST['password'])
-            ) {
-                $idnumber = $_POST['idNumber'];
-                $firstname = $_POST['firstname'];
-                $lastname = $_POST['lastname'];
-                $middlename = $_POST['middlename'];
-                $gender = $_POST['gender'];
-                $college = $_POST['college'];
-                $cn = $_POST['cn'];
-                $stat = $_POST['stat'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-            
-                // Use prepared statements with PDO
-                $query = "SELECT * FROM `teachers` WHERE `employee_id` = ?";
-                $stmt = $pdo->prepare($query);
-                $stmt->bindParam(1, $idnumber);
-                $stmt->execute();
-                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-                if (count($result) === 1) {
-                    echo "User Already Registered";
-                if (
-                    $stmt->execute() && $stmt1->execute() && $stmt2->execute()
-                    && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()
-                ) {
-                    echo "Registered Successfully";
-                    header('../Teacher_Side/teacher-login');
-                } else {
-                    echo "Registration failed";
-                    header('../home');
+                    header('Location: ../Student_Side/Stud_registration/page3.php');
                 }
             }
         }
-    } elseif ($origin === 'Teacher_Register') {
-        if (
-            isset(
-                $_POST['idNumber'],
-                $_POST['firstname'],
-                $_POST['lastname'],
-                $_POST['middlename'],
-                $_POST['cn'],
-                $_POST['college'],
-                $_POST['gender'],
-                $_POST['stat'],
-                $_POST['email'],
-                $_POST['password']
-            )
-        ) {
-            $idnumber = $_POST['idNumber'];
-            $firstname = $_POST['firstname'];
-            $lastname = $_POST['lastname'];
-            $middlename = $_POST['middlename'];
-            $gender = $_POST['gender'];
-            $college = $_POST['college'];
-            $cn = $_POST['cn'];
-            $stat = $_POST['stat'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            // Use prepared statements with PDO
-            $query = "SELECT * FROM `teachers` WHERE `employee_id` = ?";
-            $stmt = $pdo->prepare($query);
-            $stmt->bindParam(1, $idnumber);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            if (count($result) === 1) {
-                echo "User Already Registered";
-            } else {
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO `teachers` (`employee_id`, `college`, `gender`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `password`, `civil_status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(1, $idnumber);
-                $stmt->bindParam(2, $college);
-                $stmt->bindParam(3, $gender);
-                $stmt->bindParam(4, $lastname);
-                $stmt->bindParam(5, $firstname);
-                $stmt->bindParam(6, $middlename);
-                $stmt->bindParam(7, $cn);
-                $stmt->bindParam(8, $email);
-                $stmt->bindParam(9, $hashedPassword);
-                $stmt->bindParam(10, $stat);
-
-                if ($stmt->execute()) {
-                    echo "Registered Successfully";
-
-                } else {
-                    echo "Registration Failed";
-                }
-            }
-        } else {
-            echo "Missing data fields.";
-        }
-
-        // Close the database connection
-        // $conn->close();
-
     }
+} elseif ($origin === 'Teacher_Register') {
+    if (
+        isset(
+            $_POST['idNumber'],
+            $_POST['firstname'],
+            $_POST['lastname'],
+            $_POST['middlename'],
+            $_POST['cn'],
+            $_POST['college'],
+            $_POST['gender'],
+            $_POST['stat'],
+            $_POST['email'],
+            $_POST['password']
+        )
+    ) {
+        $idnumber = $_POST['idNumber'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $middlename = $_POST['middlename'];
+        $gender = $_POST['gender'];
+        $college = $_POST['college'];
+        $cn = $_POST['cn'];
+        $stat = $_POST['stat'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Use prepared statements with PDO
+        $query = "SELECT * FROM `teachers` WHERE `employee_id` = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(1, $idnumber);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($result) === 1) {
+            echo "User Already Registered";
+            if (
+                $stmt->execute() && $stmt1->execute() && $stmt2->execute()
+                && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()
+            ) {
+                echo "Registered Successfully";
+                header('../Teacher_Side/teacher-login');
+            } else {
+                echo "Registration failed";
+                header('../home');
+            }
+        }
+    }
+} elseif ($origin === 'Teacher_Register') {
+    if (
+        isset(
+            $_POST['idNumber'],
+            $_POST['firstname'],
+            $_POST['lastname'],
+            $_POST['middlename'],
+            $_POST['cn'],
+            $_POST['college'],
+            $_POST['gender'],
+            $_POST['stat'],
+            $_POST['email'],
+            $_POST['password']
+        )
+    ) {
+        $idnumber = $_POST['idNumber'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $middlename = $_POST['middlename'];
+        $gender = $_POST['gender'];
+        $college = $_POST['college'];
+        $cn = $_POST['cn'];
+        $stat = $_POST['stat'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Use prepared statements with PDO
+        $query = "SELECT * FROM `teachers` WHERE `employee_id` = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(1, $idnumber);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($result) === 1) {
+            echo "User Already Registered";
+        } else {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO `teachers` (`employee_id`, `college`, `gender`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `password`, `civil_status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(1, $idnumber);
+            $stmt->bindParam(2, $college);
+            $stmt->bindParam(3, $gender);
+            $stmt->bindParam(4, $lastname);
+            $stmt->bindParam(5, $firstname);
+            $stmt->bindParam(6, $middlename);
+            $stmt->bindParam(7, $cn);
+            $stmt->bindParam(8, $email);
+            $stmt->bindParam(9, $hashedPassword);
+            $stmt->bindParam(10, $stat);
+
+            if ($stmt->execute()) {
+                echo "Registered Successfully";
+            } else {
+                echo "Registration Failed";
+            }
+        }
+    } else {
+        echo "Missing data fields.";
+    }
+
+    // Close the database connection
+    // $conn->close();
+
+}
+ob_end_flush();
 $pdo = null; // Close the database connection
