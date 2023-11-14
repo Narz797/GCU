@@ -40,7 +40,7 @@ if (isset($_POST['othawards'])) {
 if(isset($_POST['otherSchool'])){
     $_SESSION['otherSchool'] = $_POST['otherSchool'];
 }
-
+// echo var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>
@@ -857,7 +857,7 @@ if(isset($_POST['otherSchool'])){
                             border-radius: 5px;
                             margin-right: 10px;">
                             <input type="file" id="imageUpload" name="sign" accept="image/*">
-                            Upload Signaturesubmit
+                            Upload Signature
                         </label>
 
                         <h2>Upload ID</h2>
@@ -880,7 +880,7 @@ if(isset($_POST['otherSchool'])){
                                 <span class="btnText">Back</span>
                             </div>
 
-                            <button class="nextBtn" id="next" type="submit" onclick="Register()">
+                            <button class="nextBtn" id="next" type="submit">
                                 <span class="btnText">Submit</span>
                                 <i class="uil uil-navigator"></i>
                             </button>
