@@ -3,6 +3,7 @@
 
 <?php include '../includes/head.php'; ?>
 
+
 <body>
 
   <header id="header" class="header d-flex align-items-center" style="background-color: black; ">
@@ -28,18 +29,21 @@
     <li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li> -->
 
 
-<div class="containerA" style="margin-right:3%; background-color:black;">
+    <div class="containerA" style="margin-right: 3%; background-color: black;">
 
-<div class="account-icon">
-
-<li class="dropdown"><a href="#"><span> <img src="assets/img/dp.png" alt="" height="40px"  ></span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul  style="background-color: transparent; ">
-              <li><a href="../Student_Side/student-profile2.php">PROFILE</a></li>
-              <li><a href="../home?logout=true">LOGOUT</a></li>
-            </ul>
-          </li>
+<li class="dropdown">
+    <a href="#" style="display: flex; align-items: center;">
+        <span><img src="assets/img/dp.png" alt="" height="40px"></span>
+        <!-- <i class="fas fa-chevron-right" style="margin-left: 5px; color:white;"></i> -->
+    </a>
+    <ul style="background-color: transparent; width: 100px;">
+        <li><a href="../Student_Side/student-profile2.php">PROFILE</a></li>
+        <li><a href="../home?logout=true">LOGOUT</a></li>
+    </ul>
+</li>
 
 </div>
+
 
 </div>
 
@@ -173,12 +177,35 @@
   
    
   }
+  .scroll-top .hover-text {
+  display: none;
+  position: absolute;
+  top: -30px; /* Adjust this value to position the text above the icon */
+  right: 5%;
+  transform: translateX(-30%);
+  width: 200px; /* Adjust the width of the tooltip as needed */
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow for a tooltip effect */
+  border-radius: 5px;
+  text-align: center;
+  z-index: 1; /* Ensure the tooltip appears above the icon */
+  color:black;
+}
+.scroll-top:hover .hover-text {
+  display: block;
+}
+
+  
+  
 
 </style>
 
 </section>
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="../dh_student.php"class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="fa fa-question-circle"></i>
+    <span class="hover-text">Need Help? Click here for assistance.</span></a>
 
   <div id="preloader"></div>
 

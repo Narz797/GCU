@@ -18,7 +18,7 @@ $_SESSION['origin'] = 'Student';
       /* background: rgb(51, 138, 11); */
       /* background: -webkit-linear-gradient(left, #0c4401, #ebeeeb);  */
       display: flex;
-      height: 100vh;
+      height: 110vh;
       justify-content: center;
       align-items: center;
       width: 100%;
@@ -213,6 +213,34 @@ $_SESSION['origin'] = 'Student';
         width: 100%;
       }
     }
+
+    /* Add this CSS to your existing styles or in a separate style tag or file */
+
+/* Add this CSS to your existing styles or in a separate style tag or file */
+
+/* Add this CSS to your existing styles or in a separate style tag or file */
+
+.back-to-home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-home-button:hover {
+    background-color: #2980b9;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* Add any additional styles for hover effect */
+}
+
+
   </style>
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <link href="assets/img/GCU_logo.png" rel="icon">
@@ -221,7 +249,7 @@ $_SESSION['origin'] = 'Student';
   <!-- <fieldset style="width:80%;"> -->
   
   <div class="container">
-  <a id='back_button' class="btn btn-primary" href="/gcu/home" role="button">Back</a>
+  <!-- <a id='back_button' class="btn btn-primary" href="/gcu/home" role="button">Back</a> -->
     <div class="row">
       <div class="column">
         <img id='logo-gcu' src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
@@ -244,6 +272,7 @@ $_SESSION['origin'] = 'Student';
           <input type="submit" value="Login" id="submitButton" />
           <div class="signup_link">Not a member? <a href="Stud_registration/page1.php"><b>Signup</b></a></div>
         </form>
+        <a href="/gcu/home" class="back-to-home-button">BACK TO HOME</a>
       </div>
     </div>
   </div>
