@@ -15,7 +15,7 @@
         <!-- <h1>Impact<span>.</span></h1> -->
       </a>
 <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
-  <ul>
+  <ul style="height:1000px;">
     <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
   
      
@@ -25,7 +25,7 @@
 
 
     <!-- Show when Mobile view -->
-    <!-- <li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
+    <!-- <li class="for-mobile"><a href="student-home">TRANSACTION</a></li>
     <li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li> -->
 
 
@@ -201,7 +201,7 @@
 
 </style>
 
-</section>
+<!-- </section> -->
 
   <a href="../dh_student.php"class="scroll-top d-flex align-items-center justify-content-center">
   <i class="fa fa-question-circle"></i>
