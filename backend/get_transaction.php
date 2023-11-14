@@ -27,7 +27,7 @@ try {
     $countLOA = $stmt2->fetch(PDO::FETCH_ASSOC);
 
         // Count CA
-    $countPendingSql5 = "SELECT COUNT(*) AS total_pending_CA FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND status = 'pending' AND (transact_type = 'Absent' OR transact_type = 'Tady' OR transact_type = 'Academic Deficiency/ies')";
+    $countPendingSql5 = "SELECT COUNT(*) AS total_pending_CA FROM transact WHERE (DATE(date_created) = :currentDate OR status = 'pending') AND status = 'pending' AND (transact_type = 'Absent' OR transact_type = 'Tardy' OR transact_type = 'Academic Deficiency/ies')";
     $stmt9 = $pdo->prepare($countPendingSql5);
     $stmt9->bindParam(':currentDate', $currentDate);
     $stmt9->execute();

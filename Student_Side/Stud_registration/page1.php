@@ -952,7 +952,7 @@ function sendDataToServer(data) {
         // Store insertStatements in sessionStorage
         // sessionStorage.setItem('insertStatements', JSON.stringify(insertStatements));
 
-        window.location.href = "page2.php";
+        // window.location.href = "page2.php";
     }
 </script>
 

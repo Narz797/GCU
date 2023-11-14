@@ -231,6 +231,26 @@ console.error('Response: ' + xhr.responseText);
 function displayBlobFiles(studentData) {
     const attachmentContainer = document.getElementById('attachmentContainer');
 
+    attachmentContainer.addEventListener('click', function (event) {
+        const target = event.target;
+
+        // Check if the clicked element is a download link
+        if (target.tagName === 'A') {
+            // Prevent the default link behavior
+            event.preventDefault();
+
+            // Trigger the download
+            const downloadLink = target;
+            const clickEvent = new MouseEvent('click', {
+                bubbles: false,
+                cancelable: false,
+                view: window
+            });
+
+            downloadLink.dispatchEvent(clickEvent);
+        }
+    });
+
     for (var key in studentData) {
         if (studentData.hasOwnProperty(key) && key.startsWith('attachment')) {
             const downloadLink = document.createElement('a');
@@ -254,6 +274,12 @@ function displayBlobFiles(studentData) {
                 case 'docx':
                     contentType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
                     break;
+                case 'zip':
+                    contentType = 'application/zip';
+                    break;
+                case 'rar':
+                    contentType = 'application/x-rar-compressed';
+                    break;
                 // Add more cases for other file types (e.g., docx, txt, etc.)
                 default:
                     break;
@@ -261,12 +287,14 @@ function displayBlobFiles(studentData) {
 
             // Set the content type and file content for download
             downloadLink.href = 'data:' + contentType + ';base64,' + studentData[key];
+            downloadLink.download = 'file.' + fileExtension; // Set the download attribute
 
             attachmentContainer.appendChild(downloadLink);
             attachmentContainer.appendChild(document.createElement('br')); // Line break for better separation
         }
     }
 }
+
 
 }
 
