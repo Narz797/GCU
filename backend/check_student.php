@@ -57,7 +57,7 @@ if (
                 $datetime = new DateTime();
                 $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
             
-                $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :reasons, :date, :status)';
+                $sql_1 = 'INSERT INTO transact(student_id, transact_type, teacher_id, date_created, status) VALUES (:sid, :reasons, :tid, :date, :status)';
                 $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :sid, :reasons, :refer, :tid, :RUR)';
                 $sql_3 = 'INSERT INTO `tstable`(`student_id`, `teacher_id`, `first_name`, `middle_name`, `last_name`, `course`, `year_level`, `gender`, `contact_number`, `reason`, `date`,  `refer`, `status`) VALUES (:sid, :tid, :fname, :mname, :lname, :course, :yrlvl, :gender, :cn, :reasons, :date, :tname, :status)';
             
@@ -65,6 +65,7 @@ if (
                 try {
                     $code = $pdo->prepare($sql_1);
                     $code->bindParam(':sid', $sid); // Change :student_id to :sid
+                    $code->bindParam(':tid', $tid); 
                     $code->bindParam(':reasons', $reasons);
                     $code->bindParam(':date', $date);
                     $code->bindParam(':status', $status); // Make sure $status is defined and has a value
@@ -113,11 +114,12 @@ if (
         // $refer = $_POST['refer'];
         $date = $_POST['datee'];  // Convert DateTime to a string in MySQL DATETIME format
 
-        $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :transact_type, :date, :status)';
+        $sql_1 = 'INSERT INTO transact(student_id, transact_type, teacher_id, date_created, status) VALUES (:student_id, :transact_type, :tid,  :date, :status)';
         $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :sidd, :reasons, :refer, :tid, :RUR)';
         try {
             $code = $pdo->prepare($sql_1);
             $code->bindParam(':student_id', $id);
+            $code->bindParam(':tid', $tid); 
             $code->bindParam(':transact_type', $transact);
             $code->bindParam(':date',$date);
             $code->bindParam(':status',$status);

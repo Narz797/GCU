@@ -17,7 +17,7 @@ session_start();
   echo '<script>
         console.log("clicked, ' . $id . '");
         console.log("clicked, ' . $tran . '");
-        console.log("clicked, ' . $tid . '");
+        console.log("TID, ' . $tid . '");
         console.log("clicked, ' . $form . '");
         </script>';
   
@@ -124,9 +124,9 @@ session_start();
 
 <!-- Get teacher's data -->
 
-                    <p class="title1"> Referred by: <u>Naycer Tulas of CIS Department.</u></p>
-                    <p><b> Email:</b> naycertulas00@bsugov.com</p>
-                    <p> <b>Contact Number:</b> 0000-0000-000</p>
+                    <p class="title1"> Referred by: <u id="teach">Naycer Tulas of CIS Department.</u></p>
+                    <p><b> Email:</b> <span id="Temail">naycertulas00@bsugov.com</span></p>
+                    <p> <b>Contact Number:</b> <span id="Tcn">0000-0000-000</span></p>
                 </div>
                 <div class="main-box">
                 <div class="box">
@@ -188,7 +188,7 @@ function archive() {
 
 
         // Function to update the HTML elements
-        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, referred) {
+        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, referred, Temail, Tfname, Tlname, Tcn) {
 
             $('#id_no').text(id);
             $('#name').text(fname+ ' '+ lname);
@@ -198,6 +198,9 @@ function archive() {
             $('#pgname').text(pgname);
             $('#pgn').text(pgn);
             $('#reason').text(reason);
+            $('#teach').text(Tfname+ ' '+Tlname);
+            $('#Temail').text(Temail);
+            $('#Tcn').text(Tcn);
        
 
             }
@@ -226,9 +229,13 @@ function archive() {
                 var relation = studentData.Relation;
                 var reason = studentData.reason;
                 var referred = studentData.referred;
+                var Temail = studentData.Temail;
+                var Tfname = studentData.Tfname;
+                var Tlname = studentData.Tlname;
+                var Tcn = studentData.Tcn;
 
                 console.log(fname);
-                updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, referred);
+                updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, referred, Temail, Tfname, Tlname, Tcn);
 
             
             } else {

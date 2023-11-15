@@ -4,6 +4,7 @@ include '../backend/connect_database.php';
 $id = $_SESSION['stud_id'];
 $form = $_SESSION['form_type'];
 $tid = $_SESSION['tran_id'];
+$teachid = $_SESSION['teachid'];
 
 if ($form == 'loa') {
 $sql = "SELECT
@@ -146,16 +147,23 @@ echo json_encode($data);
         student_user.ParentGuardianName,
         student_user.Relation,
         referral.reason,
-        referral.referred
+        referral.referred,
+        teachers.email AS Temail,
+        teachers.first_name AS Tfname,
+        teachers.last_name AS Tlname,
+        teachers.contact_number AS Tcn
+
         FROM student_user
         INNER JOIN transact ON student_user.stud_user_id = transact.student_id 
         INNER JOIN referral ON transact.transact_id = referral.transact_id 
-        WHERE student_user.stud_user_id = :id AND transact.transact_type = 'referral' AND transact.transact_id = :tid;
+        INNER JOIN teachers ON referral.teacher_id = teachers.employee_id 
+        WHERE student_user.stud_user_id = :id AND transact.transact_type = 'referral' AND transact.transact_id = :tid; AND referral.teacher_id = :teachid;
 "; // add teacher info when Available
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-$stmt->bindParam(':tid', $tid, PDO::PARAM_INT); // Bind the ID parameter
+$stmt->bindParam(':tid', $tid, PDO::PARAM_INT);
+$stmt->bindParam(':teachid', $teachid, PDO::PARAM_INT); // Bind the ID parameter
 
 $stmt->execute();
 
