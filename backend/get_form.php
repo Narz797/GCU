@@ -4,7 +4,6 @@ include '../backend/connect_database.php';
 $id = $_SESSION['stud_id'];
 $form = $_SESSION['form_type'];
 $tid = $_SESSION['tran_id'];
-$teachid = $_SESSION['teachid'];
 
 if ($form == 'loa') {
 $sql = "SELECT
@@ -132,6 +131,8 @@ echo json_encode($data);
     echo json_encode($data);
 }
  else if ($form == 'referral') {
+    $teachid = $_SESSION['teachid'];
+
     $sql = "SELECT
         student_user.stud_user_id,
         student_user.last_name,

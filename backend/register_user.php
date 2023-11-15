@@ -295,68 +295,11 @@ if (isset($_SESSION['origin'])) {
                 }
             }
         }
-    }
-} elseif ($origin === 'Teacher_Register') {
+    
+}  elseif ($origin === 'Teacher_Register') {
     if (
-        isset(
-            $_POST['idNumber'],
-            $_POST['firstname'],
-            $_POST['lastname'],
-            $_POST['middlename'],
-            $_POST['cn'],
-            $_POST['college'],
-            $_POST['gender'],
-            $_POST['stat'],
-            $_POST['email'],
-            $_POST['password']
-        )
-    ) {
-        $idnumber = $_POST['idNumber'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $middlename = $_POST['middlename'];
-        $gender = $_POST['gender'];
-        $college = $_POST['college'];
-        $cn = $_POST['cn'];
-        $stat = $_POST['stat'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        // Use prepared statements with PDO
-        $query = "SELECT * FROM `teachers` WHERE `employee_id` = ?";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(1, $idnumber);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        if (count($result) === 1) {
-            echo "User Already Registered";
-            if (
-                $stmt->execute() && $stmt1->execute() && $stmt2->execute()
-                && $stmt3->execute() && $stmt6->execute() && $stmt7->execute()
-            ) {
-                echo "Registered Successfully";
-                header('../Teacher_Side/teacher-login');
-            } else {
-                echo "Registration failed";
-                header('../home');
-            }
-        }
-    }
-} elseif ($origin === 'Teacher_Register') {
-    if (
-        isset(
-            $_POST['idNumber'],
-            $_POST['firstname'],
-            $_POST['lastname'],
-            $_POST['middlename'],
-            $_POST['cn'],
-            $_POST['college'],
-            $_POST['gender'],
-            $_POST['stat'],
-            $_POST['email'],
-            $_POST['password']
-        )
+        isset($_POST['idNumber'], $_POST['firstname'], $_POST['lastname'], $_POST['middlename'],
+        $_POST['cn'], $_POST['college'], $_POST['gender'], $_POST['stat'], $_POST['email'], $_POST['password'])
     ) {
         $idnumber = $_POST['idNumber'];
         $firstname = $_POST['firstname'];
@@ -394,9 +337,9 @@ if (isset($_SESSION['origin'])) {
             $stmt->bindParam(10, $stat);
 
             if ($stmt->execute()) {
-                echo "Registered Successfully";
+                echo "success_teacher";
             } else {
-                echo "Registration Failed";
+                echo "Registration failed";
             }
         }
     } else {
@@ -406,6 +349,7 @@ if (isset($_SESSION['origin'])) {
     // Close the database connection
     // $conn->close();
 
+}
 }
 ob_end_flush();
 $pdo = null; // Close the database connection
