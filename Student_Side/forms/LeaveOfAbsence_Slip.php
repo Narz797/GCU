@@ -281,7 +281,9 @@ label, span {
     </div>
   </div>
   <script>
+   
     $("#form_transact").on("submit", function (event) {
+      if (window.confirm("Do you want to proceed?")) {
       event.preventDefault();
       $.ajax({
         type: 'POST',
@@ -294,10 +296,12 @@ label, span {
           do_leave: $("#do_leave").val()
         },
         success: function (data) {
-          alert(data);
+          alert("Request Sent");
         }
       });
+    }
     }); 
+  
   </script>
 
 

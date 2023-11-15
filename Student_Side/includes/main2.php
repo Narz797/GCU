@@ -6,56 +6,52 @@
 
 <body>
 
-  <header id="header" class="header d-flex align-items-center" style="background-color: black; ">
+<header id="header" class="header d-flex align-items-center" style="background-color: black; ">
 
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between" >
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!--  <img src="/GCU.png" alt="">  -->
-        <!-- <h1>Impact<span>.</span></h1> -->
-      </a>
-      <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
+<div class="container-fluid container-xl d-flex align-items-center justify-content-between" >
+  <a href="index.html" class="logo d-flex align-items-center">
+    <!-- Uncomment the line below if you also wish to use an image logo -->
+    <!--  <img src="/GCU.png" alt="">  -->
+    <!-- <h1>Impact<span>.</span></h1> -->
+  </a>
 <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
-  <ul style="height:1000px;">
-    
-  
-     
-    <li ><a href="student-home">TRANSACTION</a></li>
-    <li><a href="appointment.php">APPOINTMENT</a></li>
+<ul id="mob">
+<img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
+
+ 
+<li ><a href="student-home">TRANSACTION</a></li>
+<li><a href="appointment.php">APPOINTMENT</a></li>
 
 
 
-    <!-- Show when Mobile view -->
-    <!-- <li class="for-mobile"><a href="student-home">TRANSACTION</a></li>
-    <li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li> -->
+<!-- Show when Mobile view -->
+<!-- <li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
+<li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li> -->
 
 
-    <div class="containerA" style="margin-right: 3%; background-color: black;">
+<div class="containerA" style="margin-right:3%; background-color:black;">
 
-<li class="dropdown">
-    <a href="#" style="display: flex; align-items: center;">
-        <span><img src="assets/img/dp.png" alt="" height="40px"></span>
-        <!-- <i class="fas fa-chevron-right" style="margin-left: 5px; color:white;"></i> -->
-    </a>
-    <ul style="background-color: transparent; width: 100px;">
-        <li><a href="../Student_Side/student-profile2.php">PROFILE</a></li>
-        <li><a href="../home?logout=true">LOGOUT</a></li>
-    </ul>
-</li>
+<div class="account-icon">
+
+<li class="dropdown"><a href="#"><span> <img src="assets/img/dp.png" alt="" height="40px"  ></span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+        <ul  style="background-color: transparent; ">
+          <li><a href="../Student_Side/student-profile2.php">PROFILE</a></li>
+          <li><a href="../home?logout=true">LOGOUT</a></li>
+        </ul>
+      </li>
 
 </div>
 
-
 </div>
 
-  </ul>
+</ul>
 </nav><!-- .navbar -->
 
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
-    </div>
-  </header><!-- End Header -->
+</div>
+</header><!-- End Header --><!-- End Header -->
   <!-- End Header -->
 
 
@@ -159,6 +155,9 @@
     width: 10%;
   }
   @media (max-width: 1279px) {
+    ul{
+      height:1000px;
+    }
     .for-mobile{
       visibility: visible;
   }

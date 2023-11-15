@@ -411,7 +411,7 @@ $("#form_transact").on("submit", function (event) {
             console.log('Unsupported file:', file.name);
         }
     }
-
+    if (window.confirm("Do you want to proceed?")) {
     $.ajax({
         type: 'POST',
         url: '../../backend/create_transaction.php',
@@ -419,12 +419,13 @@ $("#form_transact").on("submit", function (event) {
         contentType: false,
         processData: false,
         success: function (data) {
-            alert(data);
+          alert("Request Sent");
         },
         error: function (xhr, status, error) {
             console.error('Error: ' + error);
         }
     });
+  }
 });
 
   </script>
