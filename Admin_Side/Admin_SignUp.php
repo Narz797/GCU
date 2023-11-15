@@ -1,20 +1,20 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin Sign Up</title>
-  <!-- Stylesheet -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link rel="stylesheet" href="../Css/register_style.css">
-  <link href="assets/img/GCU_logo.png" rel="icon">
-  <link rel="icon" href="../Assets/img/GCU_logo.png">
-  <link href="assets/register_style.css" rel="stylesheet" type="text/css">
+<title>Employee Sign Up</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="../Css/register_style.css">
+<link href="assets/img/GCU_logo.png" rel="icon">
+<link rel="icon" href="../Assets/img/GCU_logo.png">
+<link href="assets/register_style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">
 <div class="logo">
    <img src="../assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
  </div>
-   <h1>Admin Registration</h1>
+   <h1>Employee Registration</h1>
    <form class="form-grid">
      <div class="form-column">
        <label for="idNumber">ID Number:</label>
@@ -48,5 +48,40 @@
      </div>
    </form>
  </div>
+<script>
+  $("#Signup_Employee_User").on("submit", function (event) {
+  var source = "employee_side_signup";
+  event.preventDefault();
+  $.ajax({
+      type: 'POST',
+      url: '../backend/register_user.php',
+      data: {
+          Employee_idno: $("#Employee_idno").val(),
+          firstname: $("#firstname").val(),
+          lastname: $("#lastname").val(),
+          middlename: $("#middlename").val(),
+          select: $("#select").val(),
+          position: $("#position").val(),
+          email: $("#email").val(),
+          username: $("#username").val(),
+          password: $("#password").val(),
+          source: source
+      },
+      success: function (data) {
+  
+          if (data === "success_employee") {
+              window.location.href = "../Employee_Side/login_Employee.php";
+              alert("Sign up successful");
+          } else {
+            alert(data);
+          }
+        // alert(data);
+      },
+      error: function (data) {
+        alert("cannot connect");
+      }
+  });
+  });
+</script>
 </body>
 </html>
