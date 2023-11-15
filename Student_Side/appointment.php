@@ -298,7 +298,8 @@ include 'includes/main2.php';
                     console.log("slot taken:", data);
                     alert("Slot taken for: ",aid);
                     document.getElementById("divOne").style.display = "none";
-                    window.location.reload();
+                    window.location.href = "appointment.php";
+
                   },
                   error: function (xhr, status, error) {
                     console.error("Error marking event as done:", error);

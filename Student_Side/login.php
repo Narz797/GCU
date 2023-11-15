@@ -293,7 +293,7 @@ $_SESSION['origin'] = 'Student';
         if (data === "success_student") {
           window.location.href = "student-home";
         } else {
-          alert('Error');
+          alert('Error, Sutdent not registered');
         }
       }
     });
