@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2023 at 04:31 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Nov 15, 2023 at 01:07 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,7 @@ CREATE TABLE `about_me` (
   `dont_know_that` varchar(255) NOT NULL,
   `future` varchar(255) NOT NULL,
   `greatest_goal` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -60,15 +60,15 @@ CREATE TABLE `absence` (
   `reason` longtext DEFAULT NULL,
   `leave` longtext DEFAULT NULL,
   `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `absence`
 --
 
 INSERT INTO `absence` (`absence_id`, `transact_id`, `semester`, `start_year`, `end_year`, `reason`, `leave`, `status`) VALUES
-(4, 75, '1', 2022, 2055, 'loa', 'loa', ''),
-(8, 206, '2', 2023, 2024, 'sdfg', 'gfds', '');
+(4, 75, '1', '2022', '2055', 'loa', 'loa', ''),
+(8, 206, '2', '2023', '2024', 'sdfg', 'gfds', '');
 
 -- --------------------------------------------------------
 
@@ -81,7 +81,7 @@ CREATE TABLE `admin_admin` (
   `admin_id` int(11) NOT NULL,
   `uname` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin_admin`
@@ -98,7 +98,7 @@ INSERT INTO `admin_admin` (`id`, `admin_id`, `uname`, `pass`) VALUES
 
 CREATE TABLE `admin_user` (
   `admin_user_id` int(11) NOT NULL,
-  `first_ name` text NOT NULL,
+  `first_name` text NOT NULL,
   `last_name` text NOT NULL,
   `middle_name` text NOT NULL,
   `gender` text NOT NULL,
@@ -107,13 +107,13 @@ CREATE TABLE `admin_user` (
   `email` text NOT NULL,
   `username` text NOT NULL,
   `password` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin_user`
 --
 
-INSERT INTO `admin_user` (`admin_user_id`, `first_ name`, `last_name`, `middle_name`, `gender`, `position`, `date_joined`, `email`, `username`, `password`) VALUES
+INSERT INTO `admin_user` (`admin_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `position`, `date_joined`, `email`, `username`, `password`) VALUES
 (2002529, 'Narz Josef', 'Taquio', 'L.', 'Male', 'admin', '2013-10-17', 'josefnarz2011@gmail.com', 'Narz', '$2y$10$vrzb0bq0qR6EeXUQrWzOielCpmRrMiY246zbJrJz/H01go267FBCW');
 
 -- --------------------------------------------------------
@@ -132,7 +132,7 @@ CREATE TABLE `appointment` (
   `start_time` time DEFAULT NULL,
   `end_time` time DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `appointment`
@@ -157,7 +157,7 @@ CREATE TABLE `ca` (
   `attachment3` longblob NOT NULL,
   `date_of_AbsentOrTardy` date NOT NULL,
   `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -170,7 +170,7 @@ CREATE TABLE `courses` (
   `Colleges` varchar(255) NOT NULL,
   `Course` varchar(255) NOT NULL,
   `Acronym` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `courses`
@@ -224,7 +224,7 @@ CREATE TABLE `elementary_school` (
   `school_name` text NOT NULL,
   `year` int(11) NOT NULL,
   `awards` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `elementary_school`
@@ -265,7 +265,7 @@ CREATE TABLE `father` (
   `occupation` text NOT NULL,
   `educ_background` text NOT NULL,
   `contact` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `father`
@@ -316,7 +316,7 @@ CREATE TABLE `guardian` (
   `occupation` text NOT NULL,
   `educ_background` text NOT NULL,
   `contact` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `guardian`
@@ -340,7 +340,7 @@ CREATE TABLE `junior_highschool` (
   `school_name` text NOT NULL,
   `year` int(11) NOT NULL,
   `awards` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `junior_highschool`
@@ -375,7 +375,7 @@ CREATE TABLE `mother` (
   `occupation` text NOT NULL,
   `educ_background` text NOT NULL,
   `contact` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `mother`
@@ -422,7 +422,7 @@ CREATE TABLE `notes` (
   `title` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `notes`
@@ -454,7 +454,7 @@ CREATE TABLE `other_info` (
   `friendsDuno` text NOT NULL,
   `future` text NOT NULL,
   `goal` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `other_info`
@@ -481,7 +481,7 @@ CREATE TABLE `other_school` (
   `school_name` text NOT NULL,
   `year` int(11) NOT NULL,
   `awards` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `other_school`
@@ -540,7 +540,7 @@ CREATE TABLE `photos` (
   `sign_type` blob NOT NULL,
   `id_picture` mediumblob NOT NULL,
   `image_type` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -554,7 +554,7 @@ CREATE TABLE `readmission` (
   `motivation` longtext DEFAULT NULL,
   `reason` longtext DEFAULT NULL,
   `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `readmission`
@@ -579,7 +579,7 @@ CREATE TABLE `referral` (
   `reason` varchar(255) DEFAULT NULL,
   `referred` longtext DEFAULT NULL,
   `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `referral`
@@ -600,7 +600,7 @@ CREATE TABLE `senior_highschool` (
   `school_name` text NOT NULL,
   `year` int(11) NOT NULL,
   `awards` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `senior_highschool`
@@ -634,7 +634,7 @@ CREATE TABLE `siblings` (
   `Age` int(100) NOT NULL,
   `High_edu` varchar(255) NOT NULL,
   `Civil_status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `siblings`
@@ -675,26 +675,26 @@ CREATE TABLE `student_user` (
   `Marital_status_of_parents` varchar(255) NOT NULL,
   `username` text DEFAULT NULL,
   `password` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `student_user`
 --
 
 INSERT INTO `student_user` (`stud_user_id`, `first_name`, `last_name`, `middle_name`, `gender`, `year_enrolled`, `Section`, `course`, `birth_date`, `status`, `email`, `Year_level`, `Contact_number`, `ParentGuardianNumber`, `Civil_status`, `Birth_place`, `Nationality`, `Languages_and_dialects`, `Address`, `IG`, `PWD`, `Student_parent`, `Marital_status_of_parents`, `username`, `password`) VALUES
-(1, 'JONATHAN', 'CAPONPON', '1221', 'Female', 2021, 'B', 'BA Comm', '2023-11-16', 0, 'tacudog.jonray@gmail.com', 3, 321321, 0, 'Others', '2212121', '212121', '2212121', '212121', 'no', 'no', 'no', 'annulled', 'tacudog.jonray@gmail.com', '$2y$10$T86NLSKlXdGMJ.idlXF9u.ihG1AlC9ChjjCRqnKbbqy8KZ2U441n6'),
-(2, 'JONATHAN', 'ATITIW', '1221', 'Male', 2021, 'B', 'BAEL', '2023-11-01', 0, 'tacudog.jonray@gmail.com', 3, 321321, 0, 'Single', '2212121', '212121', '2212121', '212121', 'no', 'no', 'no', 'married', 'tacudog.jonray@gmail.com', '$2y$10$JtKerRH0XWkM6vROdU4jCegehpNG3J5ctyPmBuBApraOksAqxZs2S'),
-(111, 'John', 'Doe', 'D', 'Male', 2020, '', 'BLIS', '2023-08-15', 1, 'user2@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user2', '$2y$10$SczVZE3o64M8ZhuB1.NtG.AEY38qQFypzZ/FCW2m1sHyIR0eVEeSO'),
-(112, 'Jane', 'D.', 'Doe', 'Female', 2019, '', 'BSDC', '2023-08-21', 1, 'user3@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user3', '$2y$10$jU4Y./C62dj97yonb5Wk7u02Spu3cnzv5sjNJXBj.8U1M77T7ScOy'),
-(114, 'Josh', 'Kun', 'S', 'Male', 2020, '', 'BSIT', '2023-08-11', 0, 'user4@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user4', '$2y$10$4c3P3QQ2hUkIu8hffGl0ZewQB3ZHzfu1uNV76W9fiy/A/IhELhD5q'),
-(115, 'Shinomiya', 'Kaguya', 'S', 'Female', 2019, '', 'BSDC', '2023-08-11', 0, 'user5@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user4', '$2y$10$Bc5xD1fwgVaDhyfodnoRpeWEqq3wys7oO1rEXODkS6bLBFxwxkPH.'),
-(116, 'Miyuki', 'Shirogane', 'S.', 'Male', 2019, '', 'BSIT', '2023-08-18', 0, 'user6@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user6', '$2y$10$ijDxvfz1Nwj/W71jek9d1Oi/E3glb8U/HAqoCq9vqCHPwp3/BraT2'),
-(117, 'Luffy', 'Monkey', 'D', 'Male', 2020, '', 'BLIS', '2023-08-18', 0, 'user7@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user7', '$2y$10$tu1lLwa.V8I728aNkNnpbuwdBckqpv46jpwAPJpVkwDDdPvqIQYmC'),
-(118, 'test8', 'test', 't', 'Female', 2020, '', 'qwer', '2023-08-17', 0, 'user8@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user8', '$2y$10$RKW1IMlG82XCHHjAevPL0e.YPsPzqFv6ibl70MIvXTheK90sQtf0a'),
-(432, 'Narz Josef', 'Taquio', 'L.', 'Male', 2020, '', 'BSIT', '0000-00-00', 0, 'josefnarz2011@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'Narz', '$2y$10$Qsu.qwvkZ1ProVhvKXzCceopW3769HusjdHNfgzrouJH43BH0jISy'),
-(6543, 'test', 'test', 't', 'Male', 2005, '', 'BSIT', '2023-08-23', 0, 'narz@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'student2', 'pass2'),
+(1, 'JONATHAN', 'CAPONPON', '1221', 'Female', '2021', 'B', 'BA Comm', '2023-11-16', 0, 'tacudog.jonray@gmail.com', 3, 321321, 0, 'Others', '2212121', '212121', '2212121', '212121', 'no', 'no', 'no', 'annulled', 'tacudog.jonray@gmail.com', '$2y$10$T86NLSKlXdGMJ.idlXF9u.ihG1AlC9ChjjCRqnKbbqy8KZ2U441n6'),
+(2, 'JONATHAN', 'ATITIW', '1221', 'Male', '2021', 'B', 'BAEL', '2023-11-01', 0, 'tacudog.jonray@gmail.com', 3, 321321, 0, 'Single', '2212121', '212121', '2212121', '212121', 'no', 'no', 'no', 'married', 'tacudog.jonray@gmail.com', '$2y$10$JtKerRH0XWkM6vROdU4jCegehpNG3J5ctyPmBuBApraOksAqxZs2S'),
+(111, 'John', 'Doe', 'D', 'Male', '2020', '', 'BLIS', '2023-08-15', 1, 'user2@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user2', '$2y$10$SczVZE3o64M8ZhuB1.NtG.AEY38qQFypzZ/FCW2m1sHyIR0eVEeSO'),
+(112, 'Jane', 'D.', 'Doe', 'Female', '2019', '', 'BSDC', '2023-08-21', 1, 'user3@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user3', '$2y$10$jU4Y./C62dj97yonb5Wk7u02Spu3cnzv5sjNJXBj.8U1M77T7ScOy'),
+(114, 'Josh', 'Kun', 'S', 'Male', '2020', '', 'BSIT', '2023-08-11', 0, 'user4@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user4', '$2y$10$4c3P3QQ2hUkIu8hffGl0ZewQB3ZHzfu1uNV76W9fiy/A/IhELhD5q'),
+(115, 'Shinomiya', 'Kaguya', 'S', 'Female', '2019', '', 'BSDC', '2023-08-11', 0, 'user5@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user4', '$2y$10$Bc5xD1fwgVaDhyfodnoRpeWEqq3wys7oO1rEXODkS6bLBFxwxkPH.'),
+(116, 'Miyuki', 'Shirogane', 'S.', 'Male', '2019', '', 'BSIT', '2023-08-18', 0, 'user6@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user6', '$2y$10$ijDxvfz1Nwj/W71jek9d1Oi/E3glb8U/HAqoCq9vqCHPwp3/BraT2'),
+(117, 'Luffy', 'Monkey', 'D', 'Male', '2020', '', 'BLIS', '2023-08-18', 0, 'user7@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user7', '$2y$10$tu1lLwa.V8I728aNkNnpbuwdBckqpv46jpwAPJpVkwDDdPvqIQYmC'),
+(118, 'test8', 'test', 't', 'Female', '2020', '', 'qwer', '2023-08-17', 0, 'user8@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'user8', '$2y$10$RKW1IMlG82XCHHjAevPL0e.YPsPzqFv6ibl70MIvXTheK90sQtf0a'),
+(432, 'Narz Josef', 'Taquio', 'L.', 'Male', '2020', '', 'BSIT', '0000-00-00', 0, 'josefnarz2011@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'Narz', '$2y$10$Qsu.qwvkZ1ProVhvKXzCceopW3769HusjdHNfgzrouJH43BH0jISy'),
+(6543, 'test', 'test', 't', 'Male', '2005', '', 'BSIT', '2023-08-23', 0, 'narz@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'student2', 'pass2'),
 (2001518, 'Jonray', 'Tacudog', 'Bernard', 'Male', NULL, '', NULL, NULL, 0, 'tacudog.jonray@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'spellarj', '12345'),
-(2002529, 'asdfasd', 'asdfasd', 'f', 'Female', 2020, '', 'BSIT', '2023-09-07', 0, 'jo@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'zzz', 'pass');
+(2002529, 'asdfasd', 'asdfasd', 'f', 'Female', '2020', '', 'BSIT', '2023-09-07', 0, 'jo@gmail.com', 0, 0, 0, '', '', '', '', '', '', '', '', '', 'zzz', 'pass');
 
 -- --------------------------------------------------------
 
@@ -714,7 +714,7 @@ CREATE TABLE `teachers` (
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `civil_status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `teachers`
@@ -743,7 +743,7 @@ CREATE TABLE `transact` (
   `date_created` datetime DEFAULT NULL,
   `date_completed` datetime DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `transact`
@@ -781,7 +781,7 @@ CREATE TABLE `withdrawal` (
   `status` varchar(255) NOT NULL,
   `shift_from` varchar(255) NOT NULL,
   `shift_to` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `withdrawal`
