@@ -94,6 +94,7 @@ $_SESSION['origin'] = 'Teacher_Register';
                                 <option>Others</option>
                             </select>
                         </div>
+                        <button type="submit">BACK</button>
                         <button type="submit">SUBMIT</button>
                     </div>
                 </div>
