@@ -208,12 +208,12 @@ input[type="radio"]:checked + span {
     }
 
     /* Style for the label */
-label {
+/* label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
   font-size: 18px;
-}
+} */
 
 /* Style for the container of date inputs */
 .date-range-container {
@@ -270,6 +270,37 @@ select:focus {
 }
 
 
+    /* Create a two-column layout using flexbox */
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    /* Style for each column */
+ 
+    div {
+      margin-bottom: 10px;
+    }
+
+    .column {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    input {
+      margin-right: 5px; /* Optional: Add some space between the radio button and the label */
+      width: 20px; /* Set a fixed width for the radio button */
+    }
+
+    label {
+      flex-grow: 1; /* Allow labels to grow and take up remaining space */
+    }
+    .hidden {
+      display: none;
+    }
+
 
 
   
@@ -322,6 +353,70 @@ select:focus {
     <option value="Academic Deficiency/ies">Academic Deficiency/ies</option>
   </select>
 </div>
+
+
+  
+    <input type="radio" id="health" name="concern" value="health">
+   Health-related concerns
+   <br>
+ 
+ 
+
+
+
+
+    <input type="radio" id="personal" name="concern" value="personal">
+    Personal Concerns
+    <br>
+ 
+
+ 
+    <input type="radio" id="socio-cultural" name="concern" value="socio-cultural">
+ Socio-Cultural Concerns
+ <br>
+ 
+
+
+
+    <input type="radio" id="behavioral" name="concern" value="behavioral">
+Behavioral
+<br>
+ 
+
+ 
+    <input type="radio" id="filial" name="concern" value="filial">
+    Filial Responsibilities
+    <br>
+ 
+    <input type="radio" id="environmentalRadio" name="concern" value="environmental" onclick="showSpecify('environmentalSpecify')"> Environmental
+  <br>
+
+    <input type="radio" id="environmentalRadio" name="concern" value="environmental" onclick="showSpecify('environmentalSpecify')"> Environmental
+  <br>
+
+
+  <input type="radio" id="otherRadio" name="concern" value="other" onclick="showSpecify('otherSpecify')"> Official co/extra-curricular activity:
+  <br>
+  Specify: <input type="text" id="environmentalSpecify" class="hidden" name="specify">
+  <input type="text" id="otherSpecify" class="hidden" name="specify">
+
+  <br>
+  <input type="radio" id="otherRadio" name="concern" value="other" onclick="showSpecify('otherSpecify')"> Others
+  <br>
+  Specify: <input type="text" id="environmentalSpecify" class="hidden" name="specify">
+  <input type="text" id="otherSpecify" class="hidden" name="specify">
+
+
+
+
+ 
+
+
+
+
+
+
+
 
         
        
@@ -428,6 +523,22 @@ $("#form_transact").on("submit", function (event) {
   }
 });
 
+  </script>
+
+<script>
+    function showSpecify(specifyId) {
+      var specifyInput = document.getElementById(specifyId);
+      var otherSpecifyInput = document.getElementById('otherSpecify');
+      
+      if (specifyInput) {
+        specifyInput.classList.remove('hidden');
+      }
+
+      // Hide other Specify input if it's not the selected radio button
+      if (specifyId !== 'otherSpecify' && otherSpecifyInput) {
+        otherSpecifyInput.classList.add('hidden');
+      }
+    }
   </script>
 </body>
 </html>

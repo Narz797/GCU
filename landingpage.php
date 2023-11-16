@@ -63,7 +63,7 @@
             REGISTER</a></li> -->
           <li class="dropdown"><a><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
-              <li><a href="./Student_Side/Stud_registration/page1.php">STUDENT</a></li>
+              <li><a href="./Student_Side/Stud_registration/agreement.php">STUDENT</a></li>
               <li><a href="Teacher_Side/register.php">TEACHER</a></li>
 
 
