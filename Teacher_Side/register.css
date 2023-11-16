@@ -7,14 +7,16 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 body {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: lightgray;
-    color:black;
+    color: black;
 }
+
 .container {
     position: relative;
     max-width: 900px;
@@ -26,58 +28,68 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 @keyframes moveContainer {
     0% {
         transform: translateY(0);
     }
     100% {
-        transform: translateY(10px); 
+        transform: translateY(10px);
     }
 }
+
 .container header {
     margin-top: 15px;
     text-align: center;
     font-size: 30px;
     font-weight: 600;
-    color:black;    
+    color: black;
     animation: moveContainer 1s infinite alternate;
 }
+
 .container hr {
     border: none;
-   
-    height: 4px; 
+    height: 4px;
 }
+
 .container form {
     position: relative;
     margin-top: 16px;
     min-height: 450px;
     overflow: hidden;
 }
+
 .container form .fields {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.details{
+
+.details {
     padding: 2rem;
 }
+
 form .fields .input-field {
     display: flex;
     width: calc(100% / 3 - 15px);
     flex-direction: column;
     margin: 6px;
 }
+
 .input-field label {
     font-size: 16px;
     font-weight: 500;
     color: black;
 }
+
 .input-field select {
     font-style: italic;
     color: black;
 }
-.input-field input,select {
+
+.input-field input,
+.input-field select {
     outline: none;
     font-size: 14px;
     font-weight: 400;
@@ -88,13 +100,14 @@ form .fields .input-field {
     height: 42px;
     margin: 8px 0;
     font-weight: bold;
-
 }
-.input-field input :focus,
+
+.input-field input:focus,
 .input-field select:focus {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
 }
-button{
+
+button {
     font-size: 15px;
     display: inline-block;
     align-items: center;
@@ -111,9 +124,23 @@ button{
     transition: all 0.3s linear;
     cursor: pointer;
 }
+
 button:hover {
     background-color: #265df2;
     color: black;
 }
 
-   
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+    .container form .fields {
+        flex-direction: column;
+    }
+
+    .input-field {
+        width: 100%; /* Full width on smaller screens */
+    }
+    form .fields .input-field {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 15px;
+    }
+}

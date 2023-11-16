@@ -1,4 +1,6 @@
+@media screen and (min-width: 767px) {
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 *{
   margin: 0;
   padding: 0;
@@ -426,7 +428,7 @@ table.dataTable tbody tr:nth-of-type(odd) {
 .no:hover{
     color: white;
     background-color: darkred;}
-    wrapper{
+    .wrapper{
     margin: 70px auto;
     padding: 20px;
     background-color: dimgray;
@@ -523,3 +525,37 @@ table.dataTable tbody tr:nth-of-type(odd) {
 .block{
     background-color: black; 
     height:50px;}
+
+
+}
+/* Add this inside the existing media query for smaller screens */
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px; /* Adjust the font size for smaller screens */
+  }
+
+  .container {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+  }
+
+  .main {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .users {
+    
+    flex-direction: column; 
+  }
+
+  .users .card,
+  .users .slip {
+    width: 100%; /* Make the card and slip take full width on smaller screens */
+    margin: 10px 0; /* Adjust margin for smaller screens */
+  }
+
+  .attendance-list {
+    width: 100%; /* Make the attendance list take full width on smaller screens */
+    margin-top: 10px; /* Adjust margin for smaller screens */
+  }
+}
