@@ -1,7 +1,8 @@
 <?php
 session_start();
 include 'landingpage.php';
-if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
+
+if ((isset($_GET['logout']) && $_GET['logout'] === 'true') || (isset($_SESSION) && !empty($_SESSION))) {
   // Clear session variables
   session_unset();
   // Destroy the session
@@ -16,6 +17,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
   echo '<script>console.log("' . $message . '");</script>';
 }
 ?>
+
 <!-- test -->
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -19,17 +19,33 @@ echo "<script>console.log($randomNumber)</script>";
     </div>
     <h2  style="color:black; font-family: 'Lucida Console', Courier, monospace;">Enter New Password</h2>
     <form id="forgot_pass" method="post">
-      <label for="password" style="color:black;">Password</label>
-      <input type="password" id="password" name="password" required>
+    <label for="password" style="color:black;">Password</label>
+    <input type="password" id="password" name="password" required>
+    <button type="button" onclick="togglePasswordVisibility('password')">View</button>
 
-      <label for="password2" style="color:black;">Re-enter Password</label>
-      <input type="password" id="password2" name="password2" required>
-      
+    <label for="password2" style="color:black;">Re-enter Password</label>
+    <input type="password" id="password2" name="password2" required>
+    <button type="button" onclick="togglePasswordVisibility('password2')">View</button>
+
       <input style="background-color:black;color:white;" type="submit" value="Reset Password">
     </form>
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+<script>
+    function togglePasswordVisibility(inputId) {
+        var passwordInput = document.getElementById(inputId);
+        var button = document.querySelector('button[onclick="togglePasswordVisibility(\'' + inputId + '\')"]');
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            button.textContent = "Hide";
+        } else {
+            passwordInput.type = "password";
+            button.textContent = "View";
+        }
+    }
+</script>
 <script>
   $("#forgot_pass").on("submit", function(event) {
   
