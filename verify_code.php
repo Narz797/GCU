@@ -11,12 +11,29 @@ echo "<script>console.log($randomNumber)</script>";
   <link href="assets/css/forgot_password_style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.min.css">
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+  <style>
+    .container {
+      position: relative;
+    }
+
+    #loading-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      transition: opacity 0.5s ease;
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <div class="logo">
       <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
+    <img id="loading-spinner" src="assets/img/GCU_LOGO.gif">
     <h2  style="color:black; font-family: 'Lucida Console', Courier, monospace;">FORGOT PASSWORD</h2>
     <form id="verify_code" method="post">
         <label for="code" style="color:black;">Input 4 digit code*</label>
@@ -44,11 +61,14 @@ function validateInput(input) {
 </script>
 <script>
     function resend(){
+          // Show loading spinner
+    $("#loading-spinner").show();
         $.ajax({
       type: 'POST',
       url: 'backend/resend.php',
       success: function(data) {
-        
+                // Hide loading spinner on success
+                $("#loading-spinner").hide();
         alert("The code to change your password is sent to your email")
         console.log(data)
         window.location.reload();
