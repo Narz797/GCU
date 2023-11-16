@@ -1,3 +1,9 @@
+<?php
+session_start();
+// include '../backend/validate_user.php';
+// include '../backend/connect_database.php';
+$_SESSION['origin'] = 'Employee';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

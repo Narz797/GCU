@@ -235,7 +235,7 @@ function processData(data) {
         var fname = data.latest_data[0].first_name;
         var lname = data.latest_data[0].last_name;
         var transactType = data.latest_data[0].transact_type;
-        var tt = data.latest_data[0].transact_type;
+         tt = data.latest_data[0].transact_type;
         var tid = data.latest_data[0].transact_id;
         var total = data.total_pending_transactions;
         var totalAppointments = data.total_appointments;

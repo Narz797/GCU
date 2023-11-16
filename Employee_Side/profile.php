@@ -302,7 +302,7 @@ function archive() {
         });
 
         function view_student(stud_id) {
-            alert(stud_id);
+            // alert(stud_id);
 
             // Send stud_id to the server using an AJAX request
             $.ajax({

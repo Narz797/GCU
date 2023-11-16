@@ -69,7 +69,7 @@
             <div class="card-information">
 <!-- call employee 
     registered data -->
-                <h1 class="title main-title"><span class="title-lastname main-title">Dr. Angeli T. Austria</h1>
+                 <h2 class="title">Welcome back,<span id="position"></span></h2>
                 <p class="card-description1">Joined at <b id="date_joined"></b><br><br></p>
                 <p class="card-description">
                     <span>Email:</span><b id="employee_email"></b><br>

@@ -208,6 +208,7 @@ session_start();
           alert('Please fill out all fields before submitting.');
         } else {
           // If the form is filled, proceed with AJAX submission
+          if (window.confirm("Do you want to proceed?")) {
           $.ajax({
             type: 'POST',
             url: '../../backend/create_transaction.php',
@@ -216,9 +217,10 @@ session_start();
               motivation: $("#motivation_enroll").val(),
             },
             success: function (data) {
-              alert(data);
+              alert("Request Sent");
             }
           });
+        }
         }
       }
     </script>

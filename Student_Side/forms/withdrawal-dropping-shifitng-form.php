@@ -300,6 +300,8 @@ $("#form_transact").on("submit", function (event) {
   var transact_type = "withdrawal";
   var course_frm = dropdown.value === 'Shifting' ? textfield4.value : null;
   var course_to = dropdown.value === 'Shifting' ? textfield5.value : null;
+ 
+  if (window.confirm("Do you want to proceed?")) {
   $.ajax({
     type: 'POST',
     url: '../../backend/create_transaction.php',
@@ -311,9 +313,10 @@ $("#form_transact").on("submit", function (event) {
       course_to: course_to
     },
     success: function (data) {
-      alert(data);
+      alert("Request Sent");
     }
   });
+}
 });
    
   </script>

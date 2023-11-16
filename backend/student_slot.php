@@ -13,7 +13,7 @@ $sql = "SELECT
         appointment
         INNER JOIN 
         student_user ON appointment.student_id = student_user.stud_user_id
-        WHERE appointment.status = 'taken' AND student_user.stud_user_id = :id ;
+        WHERE appointment.status = 'done' AND student_user.stud_user_id = :id ;
 ";
 
 $stmt = $pdo->prepare($sql);

@@ -129,18 +129,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <td>1</td>
-                  <td>Castro</td>
-                  <td>Liezl</td>
-                  <td>D.</td>
-                  <td>Female</td>
-                  <td>liezlcastro@gmail.com</td>
-                  <td>0987435678</td>
-                  <td>Auditor</td>
-                  <td>Pending</td>
+                  
                   <td>
                     <button><a href="editemployee.php">Edit</button></a>
-                    <button><a href="editemployee.php">Edit</button></a>
+                    <button>Delete</button>
                   </td>
                   
                  </tbody>

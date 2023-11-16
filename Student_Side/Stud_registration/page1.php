@@ -891,12 +891,12 @@ function createTable() {
         var civilCell = row.insertCell(6);
 
         noCell.innerHTML = "" + (i + 1);
-        lnameCell.innerHTML = '<input type="text" name="lname[]">';
-        fnameCell.innerHTML = '<input type="text" name="fname[]">';
-        mnameCell.innerHTML = '<input type="text" name="mname[]">';
-        ageCell.innerHTML = '<input type="text" name="age[]">';
-        educCell.innerHTML = '<input type="text" name="education[]">';
-        civilCell.innerHTML = '<input type="text" name="civil[]">';
+        lnameCell.innerHTML = '<input type="text" id="lname" name="lname[]">';
+        fnameCell.innerHTML = '<input type="text" id="fname" name="fname[]">';
+        mnameCell.innerHTML = '<input type="text" id="mname" name="mname[]">';
+        ageCell.innerHTML = '<input type="text" id="age" name="age[]">';
+        educCell.innerHTML = '<input type="text" id="education" name="education[]">';
+        civilCell.innerHTML = '<input type="text" id="civil" name="civil[]">';
 
         // Store initial empty values in the siblingsData array
         siblingsData.push({

@@ -37,7 +37,7 @@ if (isset($_POST['othyear'])) {
 if (isset($_POST['othawards'])) {
     $_SESSION['othawards'] = $_POST['othawards'];
 }
-if(isset($_POST['otherSchool'])){
+if (isset($_POST['otherSchool'])) {
     $_SESSION['otherSchool'] = $_POST['otherSchool'];
 }
 // echo var_dump($_SESSION);
@@ -664,22 +664,22 @@ if(isset($_POST['otherSchool'])){
                                     the following items:</i></b></p>
                         <br>
                         <p><b>
-                        <p>Are you a member of an Indigenous group?</p>
-                            <div class="radio-group">
-                                <label>
-                                    <input type="radio" id="yesRadio" name="membership" value="yes" required onclick="showSpecifyInput()">
-                                    Yes
-                                </label>
-                                <label>
-                                    <input type="radio" id="noRadio" name="membership" value="no" required onclick="hideSpecifyInput()">
-                                    No
-                                </label>
-                            </div>
-                            <div class="underline-input" id="indigenousInput" style="display:none;">
-                                <br>
-                                <label for="indigenousInfo">If yes, please specify:</label>
-                                <input type="text" id="indigenousInfo" name="indigenousInfo">
-                            </div>
+                                <p>Are you a member of an Indigenous group?</p>
+                                <div class="radio-group">
+                                    <label>
+                                        <input type="radio" id="yesRadio" name="membership" value="yes" required onclick="showSpecifyInput()">
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" id="noRadio" name="membership" value="no" required onclick="hideSpecifyInput()">
+                                        No
+                                    </label>
+                                </div>
+                                <div class="underline-input" id="indigenousInput" style="display:none;">
+                                    <br>
+                                    <label for="indigenousInfo">If yes, please specify:</label>
+                                    <input type="text" id="indigenousInfo" name="indigenousInfo">
+                                </div>
                                 <br>
                                 <p><b>
                                         Are you a person with a disability (PWD)?</b>
@@ -733,7 +733,7 @@ if(isset($_POST['otherSchool'])){
                             </label>
                             <!-- Specify box for Scholarship -->
                             <div id="specifyBoxScholarship" style="display: none"> Specify:
-                                <input type="text" name ='specificScholar'id="textBox">
+                                <input type="text" name='specificScholar' id="textBox">
                             </div>
 
                             <label class="container1">
@@ -846,7 +846,7 @@ if(isset($_POST['otherSchool'])){
                             </div>
                         </div>
 
-                        <h2>Upload Signature</h2>
+                        <!-- <h2>Upload Signature</h2>
                         <br>
                         <label for="imageUpload" class="custom-file-upload" style=" display: inline-block;
                             background-color: #4CAF50;
@@ -856,7 +856,7 @@ if(isset($_POST['otherSchool'])){
                             border: none;
                             border-radius: 5px;
                             margin-right: 10px;">
-                            <input type="file" id="imageUpload" name="sign" accept="image/*">
+                            <input type="file" id="signUpload" name="sign" accept="image/*">
                             Upload Signature
                         </label>
 
@@ -872,7 +872,15 @@ if(isset($_POST['otherSchool'])){
                             margin-right: 10px;">
                             <input type="file" id="imageUpload" name="image" accept="image/*">
                             Upload BSU School ID
-                        </label>
+                        </label> -->
+
+                        <h2>Upload Signature</h2>
+                        <input type="file" name="sign" accept="image/*" >
+
+                        <h2>Upload ID</h2>
+                        <input type="file" name="image" accept="image/*">
+
+                        <br><br>
 
                         <div class="buttons">
                             <div class="backBtn" onclick="goToPage2()">
@@ -880,7 +888,7 @@ if(isset($_POST['otherSchool'])){
                                 <span class="btnText">Back</span>
                             </div>
 
-                            <button class="nextBtn" id="next" type="submit">
+                            <button class="nextBtn" id="next" type="submit" value="Submit">
                                 <span class="btnText">Submit</span>
                                 <i class="uil uil-navigator"></i>
                             </button>
@@ -900,7 +908,6 @@ if(isset($_POST['otherSchool'])){
 
 
     <script>
-
         function createTable() {
             var totalNumber = document.getElementById("total_number").value;
             var table = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0];
@@ -1058,14 +1065,14 @@ if(isset($_POST['otherSchool'])){
         });
     </script> -->
     <script>
-    function showSpecifyInput() {
-        document.getElementById('indigenousInput').style.display = 'block';
-    }
+        function showSpecifyInput() {
+            document.getElementById('indigenousInput').style.display = 'block';
+        }
 
-    function hideSpecifyInput() {
-        document.getElementById('indigenousInput').style.display = 'none';
-    }
-</script>
+        function hideSpecifyInput() {
+            document.getElementById('indigenousInput').style.display = 'none';
+        }
+    </script>
     <script>
         function toggleSpecifyBox(checkboxId, specifyBoxId) {
             var checkbox = document.getElementById(checkboxId);
