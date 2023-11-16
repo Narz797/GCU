@@ -268,7 +268,7 @@ $_SESSION['origin'] = 'Student';
             <span></span>
             <label>Password</label>
           </div>
-          <div class="pass"><a href="ForgotPassword.php"><b>Forgot Password?</b></a></div>
+          <div class="pass"><a href="../ForgotPassword.php"><b>Forgot Password?</b></a></div>
           <input type="submit" value="Login" id="submitButton" />
           <div class="signup_link">Not a member? <a href="Stud_registration/page1.php"><b>Signup</b></a></div>
         </form>

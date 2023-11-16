@@ -1,8 +1,8 @@
 <?php 
 
 session_start();
-// $randomNumber = $_SESSION['random_number'];
-// echo "<script>console.log($randomNumber)</script>";
+$randomNumber = $_SESSION['random_number'];
+echo "<script>console.log($randomNumber)</script>";
  ?>
 <!DOCTYPE html>
 <html>
@@ -17,10 +17,13 @@ session_start();
     <div class="logo">
       <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
-    <h2  style="color:black; font-family: 'Lucida Console', Courier, monospace;">FORGOT PASSWORD</h2>
+    <h2  style="color:black; font-family: 'Lucida Console', Courier, monospace;">Enter New Password</h2>
     <form id="forgot_pass" method="post">
-      <label for="email" style="color:black;">Email*</label>
-      <input type="email" id="email" name="email" required>
+      <label for="password" style="color:black;">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="password2" style="color:black;">Re-enter Password</label>
+      <input type="password" id="password2" name="password2" required>
       
       <input style="background-color:black;color:white;" type="submit" value="Reset Password">
     </form>
@@ -34,15 +37,21 @@ session_start();
     console.log("performing ajax");
     $.ajax({
       type: 'POST',
-      url: 'backend/forgot_pass.php',
+      url: 'backend/Update_pass.php',
       data: {
-        email: $("#email").val()
+        pass1: $("#password").val(),
+        pass2: $("#password2").val()
       },
       success: function(data) {
         
-        alert("The code to change your password is sent to your email")
-        console.log(data)
-        window.location.href = "verify_code.php";
+        if (data === "Password Reset") {
+            alert("Password Changed")
+          window.location.href = "home?logout=true";
+          
+        } else {
+          alert('Error:', data);
+          console.log(data);
+        }
      
         // add location to enter code
       },
@@ -54,6 +63,6 @@ session_start();
   });
 </script>
 <?php
-// unset($_SESSION['random_number']);//it shold clear once used for verification
+//it shold clear once used for verification
 ?>
 </html>
