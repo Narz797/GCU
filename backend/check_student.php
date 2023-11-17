@@ -7,6 +7,8 @@ if (
 ) {
     $id = $_POST['sid'];
     $transact ='referral';
+    $TCN = $_POST['Tcn'];
+    $Temail = $_POST['TeachEmail'];
     
 
 
@@ -57,38 +59,42 @@ if (
                 $datetime = new DateTime();
                 $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
             
-                $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :reasons, :date, :status)';
+                $sql_1 = 'INSERT INTO transact(student_id, transact_type, teacher_id, date_created, status) VALUES (:sid, :reasons, :tid,  :date, :status)';
                 $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :sid, :reasons, :refer, :tid, :RUR)';
-                $sql_3 = 'INSERT INTO `tstable`(`student_id`, `teacher_id`, `first_name`, `middle_name`, `last_name`, `course`, `year_level`, `gender`, `contact_number`, `reason`, `date`,  `refer`, `status`) VALUES (:sid, :tid, :fname, :mname, :lname, :course, :yrlvl, :gender, :cn, :reasons, :date, :tname, :status)';
+                $sql_3 = 'INSERT INTO `tstable`(`student_id`, `teacher_id`,  `transact_id`, `email`, `first_name`, `middle_name`, `last_name`, `course`, `year_level`, `gender`, `contact_number`, `reason`, `date`,  `refer`, `status`) VALUES (:sid, :tid, :transact_id, :email, :fname, :mname, :lname, :course, :yrlvl, :gender, :cn, :reasons, :date, :tname, :status)';
             
             
                 try {
                     $code = $pdo->prepare($sql_1);
-                    $code->bindParam(':sid', $sid); // Change :student_id to :sid 
-                    $code->bindParam(':reasons', $reasons);
+                    $code->bindParam(':sid', $sid);
+                    $code->bindParam(':tid', $tid); 
+                    $code->bindParam(':reasons', $transact);
                     $code->bindParam(':date', $date);
-                    $code->bindParam(':status', $status); // Make sure $status is defined and has a value
+                    $code->bindParam(':status', $status);
                     $code->execute();
                 
                     $transact_id = $pdo->lastInsertId();
                     $code = $pdo->prepare($sql_2);
                     $code->bindParam(':transact_id', $transact_id);
-                    $code->bindParam(':sid', $sid); // Change :transact_id to :transact_id
+                    $code->bindParam(':sid', $sid);
                     $code->bindParam(':reasons', $reasons);
                     $code->bindParam(':refer', $tname);
                     $code->bindParam(':tid', $tid);
                     $code->bindParam(':RUR', $RUR);
                     $code->execute();
                 
+               
                     $code = $pdo->prepare($sql_3);
                     $code->bindParam(':sid', $sid);
                     $code->bindParam(':tid', $tid);
+                    $code->bindParam(':transact_id', $transact_id);
+                    $code->bindParam(':email', $Temail);
                     $code->bindParam(':fname', $fname);
                     $code->bindParam(':mname', $mname);
                     $code->bindParam(':lname', $lname);
+                    $code->bindParam(':course', $course);
                     $code->bindParam(':yrlvl', $yrlvl);
-                    $code->bindParam(':gender', $gender);
-                    $code->bindParam(':course', $course); 
+                    $code->bindParam(':gender', $gender); 
                     $code->bindParam(':cn', $cn);
                     $code->bindParam(':reasons', $reasons);
                     $code->bindParam(':date', $date);

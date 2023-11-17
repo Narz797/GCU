@@ -212,6 +212,7 @@ function archive() {
             url: '../../backend/get_form.php',
             dataType: 'json',
             success: function (data) {
+                console.log(data);
             if (data.length > 0) {
                 var studentData = data[0]; // Assuming you expect a single row
                 var id = studentData.stud_user_id;
@@ -264,7 +265,7 @@ function archive() {
             },
             success: function (data) {
                 console.log("Remarked:", data);
-                window.location.href = "../subpage/rs-forms";
+                // window.location.href = "../subpage/rs-forms";
             },
             error: function (xhr, status, error) {
                 console.error("Error marking event as done:", error);

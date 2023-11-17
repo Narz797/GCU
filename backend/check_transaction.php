@@ -71,17 +71,17 @@ if ($type == 'readmission') {
 } else if ($type == 'referral') {
     $sql = "SELECT
     tstable.student_id AS stud_user_id,
-    transact.transact_id,
+    tstable.transact_id,
     tstable.last_name,
     tstable.first_name,
     tstable.year_level AS Year_level,
     tstable.course,
-    tstable.college AS Colleges,
+    NULL AS Colleges,
     tstable.contact_number AS Contact_number,
-    tstable.GP_number AS ParentGuardianNumber,
+    NULL AS ParentGuardianNumber,
     tstable.gender,
     tstable.refer AS referred,
-    tstable.status AS status,
+    transact.status AS status,
     NULL AS transact_type,
     tstable.date AS date_created,
     tstable.teacher_id,
@@ -89,9 +89,9 @@ if ($type == 'readmission') {
 FROM
     tstable
 INNER JOIN
-    transact ON tstable.student_id = transact.student_id
-INNER JOIN
-    referral ON transact.transact_id = referral.transact_id
+    referral ON tstable.transact_id = referral.transact_id
+    INNER JOIN
+    transact ON tstable.transact_id = transact.transact_id
 
     
 UNION ALL

@@ -27,7 +27,7 @@ courses ON student_user.course = courses.Acronym
 INNER JOIN
 referral ON transact.transact_id = referral.transact_id
 WHERE
-transact.transact_type = 'referral' AND transact.status != 'done' AND referral.teacher_id = :id 
+transact.transact_type = 'referral' AND transact.status != 'done' AND referral.teacher_id = :id
 
 UNION
 
@@ -37,19 +37,18 @@ tstable.last_name,
 tstable.first_name,
 tstable.year_level,
 tstable.course,
-tstable.college,
+NULL AS college,
 tstable.contact_number,
-tstable.GP_number,
+NULL AS GP_number,
 tstable.gender,
 tstable.reason,
 tstable.refer,
-transact.status,
+tstable.status,
 tstable.date,
-transact.transact_id
+tstable.transact_id
 FROM
 tstable
-INNER JOIN
-transact ON tstable.student_id = transact.student_id
+
 WHERE
 tstable.status != 'done';
 

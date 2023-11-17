@@ -327,6 +327,7 @@ function search() {
         dataType: 'json',
         data: { studentId: studentId }, // Pass the student ID to the server
         success: function(data) {
+          if (data.length>0){
             console.log(data);
 
             for (var i = 0; i < data.length; i++) {
@@ -357,6 +358,29 @@ function search() {
                 genderInput.value = entry.gender;
                 genderInput.setAttribute('disabled', 'disabled');
             }
+          }else{
+              
+
+                var fnameInput = document.getElementById('fname');
+                var mnameInput = document.getElementById('mname');
+                var lnameInput = document.getElementById('lname');
+                var courseInput = document.getElementById('crse');
+                var contactInput = document.getElementById('contact');
+                var genderInput = document.getElementById('genderr');
+
+                fnameInput.value = "";
+                fnameInput.removeAttribute('readonly');
+                mnameInput.value = "";
+                mnameInput.removeAttribute('readonly');
+                lnameInput.value = "";
+                lnameInput.removeAttribute('readonly');
+                courseInput.value = "";
+                courseInput.removeAttribute('readonly');
+                contactInput.value = "";
+                contactInput.removeAttribute('readonly');
+                genderInput.value = "";
+                genderInput.removeAttribute('disabled');
+          }
         },
         error: function(xhr, status, error) {
             console.error('Error fetching data:', error);
@@ -368,6 +392,8 @@ var eID;
 var sID;
 var dc;
 var transID;
+var Temail;
+var cn;
 
 
 $(document).ready(function() {
@@ -393,18 +419,9 @@ $(document).ready(function() {
 $("#form_transact").on("submit", function (event) {
       event.preventDefault();
 
-    var fromDate = document.getElementById("fromDate").value;
-    var toDate = document.getElementById("toDate").value;
-
-    var dateRange = fromDate + ' to ' + toDate; // Concatenate the dates
-
-    console.log(dateRange); // Check in the console
-
-
-
       var transact_type = "referral"
       var studentContactNumber = document.getElementById("contact").value;
-      console.log(studentContactNumber);
+      console.log($("#Sid").val());
       $.ajax({
         type: 'POST',
         url: '../backend/check_student.php',
@@ -419,11 +436,14 @@ $("#form_transact").on("submit", function (event) {
                           cn: $("#contact").val(),
                           reasons: $("#reason").val(),
                           datee: $("#Date").val(),
+                          Tcn: cn,
+                          TeachEmail: Temail 
                           
                       },
         success: function (data) {
+          console.log('Success!');
           alert(data);
-          fetchData();
+          window.location.reload();
 
         },
     error: function (xhr, status, error) {
@@ -460,7 +480,7 @@ $("#form_transact").on("submit", function (event) {
     });
 
 
-function fetchData() {
+
    
     // Fetch data using $.ajax
     $.ajax({
@@ -479,7 +499,8 @@ function fetchData() {
             
             var entry = data[i];
             dc =entry.date;
-
+            sID = entry.student_id;
+            
             var tableToAppend = tableBody; // Determine which table to append to
             var row = $("<tr></tr>");
             row.append("<td>" + entry.student_id + "</td>");
@@ -511,7 +532,7 @@ function fetchData() {
     });
 
 
-
+    function fetchData() {
 
     // Function to update the HTML elements
     function updateValues(EmployeeId, college, name, cn, email , gender) {
@@ -540,8 +561,9 @@ $.ajax({
                     var college = EmployeeData.college;
                     var gender = EmployeeData.gender;
                     var name = EmployeeData.last_name + ', '+ EmployeeData.first_name;
-                    var cn = EmployeeData.contact_number;
+                    cn = EmployeeData.contact_number;
                     var email = EmployeeData.email;
+                    Temail = EmployeeData.email;
                     // var cs = EmployeeData.civil_status;
                     console.log("ID: ", gender);
 
@@ -567,7 +589,7 @@ fetchData();
   });
   function delete_stud (tid){
     transID = tid;
-      sID = id;
+      // sID = id;
 
     }
   function dlete()
@@ -584,10 +606,12 @@ fetchData();
           success: function (data) {
             console.log("Remarked:", data);
             document.getElementById("divTwo").style.display = "none";
+            window.location.href = "index.php";
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
             alert("Error marking event as done: " + error);
+            window.location.href = "index.php";
           },
         });
   }
@@ -597,6 +621,7 @@ fetchData();
 
             console.log("Canceled");
             document.getElementById("divTwo").style.display = "none";
+            fetchData();
 
   }
 </script>

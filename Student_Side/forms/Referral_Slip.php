@@ -328,31 +328,30 @@ select:focus {
 
       <label for="date">Range of days absent/tardy:</label><br>
 
-<div class="date-range-container">
-  <div class="date-input">
-    <label for="fromDate">From:</label>
-    <input type="date" id="fromDate" name="fromDate" required>
-  </div>
-
-  <div class="date-input">
-    <label for="toDate">To:</label>
-    <input type="date" id="toDate" name="toDate" required>
-  </div>
-</div>
 
        
-<br>
-<p></p>
-<br>
+
 <b style="font-family: Century Gothic, sans-serif; font-size:18px;">Reason:</b><br>
 
 <div class="reason-dropdown-container">
   <select name="textfield" id="refer">
+  <option disabled selected>Select</option>
     <option value="Tardy">Late</option>
     <option value="Absent">Absent</option>
     <option value="Academic Deficiency/ies">Academic Deficiency/ies</option>
   </select>
 </div>
+
+<br>
+<p></p>
+<br>
+<div class="date-range-container" id="dates">
+  <div class="date-input">
+    <label for="Date">Date:</label>
+    <input type="date" id="Date" name="Date" required>
+  </div>
+</div>
+
 
 
   
@@ -407,7 +406,12 @@ Behavioral
   <input type="text" id="otherSpecify" class="hidden" name="specify">
 
 
+  <div class="form1" id="rem">
+          <label for="remark">Remarks:</label><br>
+          <input type="text"id="remark" name="remark">
 
+
+        </div>
 
  
 
@@ -448,6 +452,23 @@ Behavioral
     </div>
   </div>
   <script>
+      var LA = $("#dates");
+    var AO = $("#rem");
+    LA.hide();
+    AO.hide();
+    $("#refer").change(function() {
+      if ($(this).val() == "Absent" || $(this).val() == "Tardy") {
+        LA.show();
+        AO.hide();
+      } else if ($(this).val() == "Academic Deficiency/ies") {
+        LA.hide();
+        AO.show();
+      } else {
+        LA.hide();
+        AO.hide();
+      }
+    });
+
     function myFunction() {
       var checkBox2 = document.getElementById("others");
       var text2 = document.getElementById("oth");
@@ -463,15 +484,14 @@ $("#form_transact").on("submit", function (event) {
     event.preventDefault();
 
     var formData = new FormData(this);
-    var fromDate = document.getElementById("fromDate").value;
-    var toDate = document.getElementById("toDate").value;
-    var dateRange = fromDate + ' to ' + toDate;
+    var date = document.getElementById("Date").value;
+  
 
     var student_id = <?php echo $_SESSION['session_id'] ?>;
     var transact_type = "AT";
     var selectedReasons = $("#refer").val();
 
-    formData.append('date', dateRange);
+    formData.append('date', date);
     formData.append('transact_type', transact_type);
     formData.append('selectedReasons', selectedReasons);
     var files = document.getElementById('fileUpload').files;

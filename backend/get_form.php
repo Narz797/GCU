@@ -134,31 +134,72 @@ echo json_encode($data);
     $teachid = $_SESSION['teachid'];
 
     $sql = "SELECT
-        student_user.stud_user_id,
-        student_user.last_name,
-        student_user.first_name,
-        student_user.email,
-        student_user.Year_level,
-        student_user.course,
-        student_user.gender,
-        transact.transact_type,
-        transact.transact_id,
-        student_user.Contact_number,
-        student_user.ParentGuardianNumber,
-        student_user.ParentGuardianName,
-        student_user.Relation,
-        referral.reason,
-        referral.referred,
-        teachers.email AS Temail,
-        teachers.first_name AS Tfname,
-        teachers.last_name AS Tlname,
-        teachers.contact_number AS Tcn
+    student_user.stud_user_id,
+    student_user.last_name,
+    student_user.first_name,
+    student_user.email,
+    student_user.Year_level,
+    student_user.course,
+    student_user.gender,
+    transact.transact_type,
+    transact.transact_id,
+    student_user.Contact_number,
+    student_user.ParentGuardianNumber,
+    student_user.ParentGuardianName,
+    student_user.Relation,
+    referral.reason,
+    referral.referred,
+    teachers.email AS Temail,
+    teachers.first_name AS Tfname,
+    teachers.last_name AS Tlname,
+    teachers.contact_number AS Tcn
+FROM
+    student_user
+INNER JOIN
+    transact ON student_user.stud_user_id = transact.student_id 
+INNER JOIN
+    referral ON transact.transact_id = referral.transact_id 
+INNER JOIN
+    teachers ON referral.teacher_id = teachers.employee_id 
+WHERE
+    student_user.stud_user_id = :id
+    AND transact.transact_type = 'referral' 
+    AND transact.transact_id = :tid 
+    AND referral.teacher_id = :teachid
 
-        FROM student_user
-        INNER JOIN transact ON student_user.stud_user_id = transact.student_id 
-        INNER JOIN referral ON transact.transact_id = referral.transact_id 
-        INNER JOIN teachers ON referral.teacher_id = teachers.employee_id 
-        WHERE student_user.stud_user_id = :id AND transact.transact_type = 'referral' AND transact.transact_id = :tid; AND referral.teacher_id = :teachid;
+UNION
+
+SELECT
+    tstable.student_id AS stud_user_id,
+    tstable.last_name,
+    tstable.first_name,
+    NULL AS email,
+    tstable.Year_level,
+    tstable.course,
+    tstable.gender,
+    NULL AS transact_type,
+    tstable.transact_id,
+    tstable.Contact_number,
+    NULL AS ParentGuardianNumber,
+    NULL AS ParentGuardianName,
+    NULL AS Relation,
+    referral.reason,
+    tstable.refer as referred,
+    tstable.email AS Temail,
+    teachers.first_name AS Tfname,
+    teachers.last_name AS Tlname,
+    teachers.contact_number AS Tcn
+FROM
+    tstable
+INNER JOIN
+    referral ON tstable.transact_id = referral.transact_id
+INNER JOIN
+    teachers ON tstable.teacher_id = teachers.employee_id
+    WHERE
+    tstable.transact_id = :tid;
+
+
+        -- WHERE student_user.stud_user_id = :id AND transact.transact_type = 'referral' AND transact.transact_id = :tid AND referral.teacher_id = :teachid;
 "; // add teacher info when Available
 
 $stmt = $pdo->prepare($sql);
