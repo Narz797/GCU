@@ -1,37 +1,91 @@
-<?php 
+<?php
+include("../backend/connect_database.php");
+
 session_start();
-  // Check if the session variable is empty
-  if (empty($_SESSION['session_id'])) {
-    // Redirect to the desired location
-    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
-    exit; // Make sure to exit the script after a header redirect
-  }
-  
+// Check if the session variable is empty
+if (empty($_SESSION['session_id'])) {
+  // Redirect to the desired location
+  echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+
+  exit; // Make sure to exit the script after a header redirect
+}
+
 $id = $_SESSION['session_id'];
-echo "<script>console.log('$id');</script>";
+
+$personal = $pdo->prepare("SELECT * FROM `student_user` WHERE  `stud_user_id` = :id");
+$personal->bindParam(':id', $id, PDO::PARAM_INT);
+$personal->execute();
+$pers_info = $personal->fetchAll();
+
+$father = $pdo->prepare("SELECT * FROM `father` WHERE  `stud_user_id` = :id");
+$father->bindParam(':id', $id, PDO::PARAM_INT);
+$father->execute();
+$father_info = $father->fetchAll();
+
+$mother = $pdo->prepare("SELECT * FROM `mother` WHERE  `stud_user_id` = :id");
+$mother->bindParam(':id', $id, PDO::PARAM_INT);
+$mother->execute();
+$mother_info = $mother->fetchAll();
+
+$guardian = $pdo->prepare("SELECT * FROM `guardian` WHERE  `stud_user_id` = :id");
+$guardian->bindParam(':id', $id, PDO::PARAM_INT);
+$guardian->execute();
+$guardian_info = $guardian->fetchAll();
+
+if (empty($guardian_info)) {
+  echo '<style>#guardian { display: none; }</style>';
+}
+if (empty($father_info) && empty($mother_info)) {
+  echo '<style>#parents { display: none; }</style>';
+}
+
+$senschool = $pdo->prepare("SELECT * FROM `senior_highschool` WHERE  `stud_user_id` = :id");
+$senschool->bindParam(':id', $id, PDO::PARAM_INT);
+$senschool->execute();
+$senschool_info = $senschool->fetchAll();
+
+$junschool = $pdo->prepare("SELECT * FROM `junior_highschool` WHERE  `stud_user_id` = :id");
+$junschool->bindParam(':id', $id, PDO::PARAM_INT);
+$junschool->execute();
+$junschool_info = $junschool->fetchAll();
+
+$elemschool = $pdo->prepare("SELECT * FROM `elementary_school` WHERE  `stud_user_id` = :id");
+$elemschool->bindParam(':id', $id, PDO::PARAM_INT);
+$elemschool->execute();
+$elemschool_info = $elemschool->fetchAll();
+
+$othschool = $pdo->prepare("SELECT * FROM `elementary_school` WHERE  `stud_user_id` = :id");
+$othschool->bindParam(':id', $id, PDO::PARAM_INT);
+$othschool->execute();
+$othschool_info = $othschool->fetchAll();
+
+if (empty($othschool_info)) {
+  echo '<style>#otherschool { display: none; }</style>';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Remix icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <!-- Stylesheet -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Remix icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Stylesheet -->
 
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <style>
@@ -1967,7 +2021,7 @@ echo "<script>console.log('$id');</script>";
         opacity: 0;
       }
 
-      100%{
+      100% {
         transform: translate(0, 0);
         opacity: 1;
       }
@@ -2116,8 +2170,6 @@ echo "<script>console.log('$id');</script>";
     border-radius: 10px;
     /* Set your desired border radius */
   }
-
-
 </style>
 
 <body>
@@ -2261,30 +2313,31 @@ echo "<script>console.log('$id');</script>";
                 <div class="col-8">
                   <h3 class="mb-0">MY ACCOUNT</h3>
                 </div>
-                <div class="col-4 text-right">
+                <!-- <div class="col-4 text-right">
                   <a href="#!" class="btn btn-sm btn-primary">
                     <i class="fa fa-pencil"></i> Edit Account
                   </a>
-                </div>
+                </div> -->
 
               </div>
             </div>
             <div class="card-body">
               <form>
-                <h6 class="heading-small text-muted mb-4">User information <?php echo var_dump($_SESSION);?> </h6>
+
+                <h6 class="heading-small text-muted mb-4">User information </h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">ID No.</label>
-                        <section type="text" id="input-username" class="form-control form-control-alternative" id="id">1520000</section>
+                        <section type="text" id="input-username" class="form-control form-control-alternative" id="id"><?php echo $pers_info[0]['stud_user_id'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Last Name</label>
-                        <section type="email" id="input-email" class="form-control form-control-alternative" id="lname">Lee<section>
+                        <section type="email" id="input-email" class="form-control form-control-alternative" id="lname"><?php echo $pers_info[0]['last_name'] ?><section>
                       </div>
                     </div>
                   </div>
@@ -2292,79 +2345,79 @@ echo "<script>console.log('$id');</script>";
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-first-name">First name</label>
-                        <section type="text" id="input-first-name" class="form-control form-control-alternative" id="fname">Min</section>
+                        <section type="text" id="input-first-name" class="form-control form-control-alternative" id="fname"><?php echo $pers_info[0]['first_name'] ?></section>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Middle Name</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="mname">Hoo</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="mname"><?php echo $pers_info[0]['middle_name'] ?></section>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Course</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="crse">BSIT</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="crse"><?php echo $pers_info[0]['course'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Year Level</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="YL">4</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="YL"><?php echo $pers_info[0]['Year_level'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Section</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="sec">B</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="sec"><?php echo $pers_info[0]['Section'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Contact Number</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="CN">09236879562</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="CN"><?php echo $pers_info[0]['Contact_number'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Civil Status</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="CS">Single</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="CS"><?php echo $pers_info[0]['Civil_status'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Date of Birth</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="bday">December 25,2023</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="bday"><?php echo $pers_info[0]['birth_date'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Birthplace</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="bplace">La Union</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="bplace"><?php echo $pers_info[0]['Birth_place'] ?></section>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Nationality</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="nationality">Korean</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="nationality"><?php echo $pers_info[0]['Nationality'] ?></section>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Languages/Dialects you can read, write, and understand</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="lang">Korean,English,Tagalog,KanKane-ey,Ilocano</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="lang"><?php echo $pers_info[0]['Languages_and_dialects'] ?></section>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">House Number/Street/Barangay/Municipality/Province/Zip Code</label>
-                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="address">Seoul,South Korea</section>
+                        <section type="text" id="input-last-name" class="form-control form-control-alternative" id="address"><?php echo $pers_info[0]['Address'] ?></section>
                       </div>
                     </div>
 
@@ -2373,200 +2426,203 @@ echo "<script>console.log('$id');</script>";
                 <hr class="my-4">
                 <!-- Family Bacground -->
                 <h3>FAMILY BACKGROUND</h3>
-                <h1 class="heading-small text-muted mb-4">FATHER</h1>
+                <div id='parents'>
+                  <h1 class="heading-small text-muted mb-4">FATHER</h1>
 
 
 
-                <div class="pl-lg-4">
-                  <!-- <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-address">Parents (Father)</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
-                      
-                      </div>
-                    </div>
-                  </div> -->
-                  <div class="row">
+                  <div class="pl-lg-4">
+                    <!-- <div class="row">
+    <div class="col-md-12">
+      <div class="form-group focused">
+        <label class="form-control-label" for="input-address">Parents (Father)</label>
+        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+      
+      </div>
+    </div>
+  </div> -->
 
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-city" >Lastname</label>
-                        <section type="text" id="flast" class="form-control form-control-alternative" id="Flname">Sung</section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-country">Firstname</label>
-                        <section type="text" id="ffirst" class="form-control form-control-alternative" id="Fnlname">Jong</section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country">Middlename</label>
-                        <section type="number" id="fmiddle" class="form-control form-control-alternative" id="Fmname"> Ki </section>
-                      </div>
-                    </div>
+                    <div class="row">
 
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-city">Age</label>
-                        <section type="number" id="fage" class="form-control form-control-alternative" id="Fage"> 36 </section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-country">Occupational</label>
-                        <section type="number" id="foccupational" class="form-control form-control-alternative" id="Focc"> Actor </section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Fcol"> College </section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country"> Contact Number</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Fcn"> 09214852314 </section>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-                <h1 class="heading-small text-muted mb-4">MOTHER</h1>
-
-
-
-                <div class="pl-lg-4">
-                  <!-- <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-address">Parents (Father)</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
-                      
-                      </div>
-                    </div>
-                  </div> -->
-                  <div class="row">
-
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-city" >Lastname</label>
-                        <section type="text" id="flast" class="form-control form-control-alternative" id="Mlname">Sung</section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-country">Firstname</label>
-                        <section type="text" id="ffirst" class="form-control form-control-alternative" id="Mfname">Jong</section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country">Middlename</label>
-                        <section type="number" id="fmiddle" class="form-control form-control-alternative" id="Mmname"> Ki </section>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-city">Age</label>
-                        <section type="number" id="fage" class="form-control form-control-alternative" id="Mage"> 36 </section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-country">Occupational</label>
-                        <section type="number" id="foccupational" class="form-control form-control-alternative" id="Mocc"> Actor </section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Mcol"> College </section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country"> Contact Number</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Mcn"> 09214852314 </section>
-                      </div>
-                    </div>
-
-
-                  </div>
-
-                </div>
-
-                <h1 class="heading-small text-muted mb-4">GUARDIAN</h1>
-
-
-
-                <div class="pl-lg-4">
-                  <!-- <div class="row">
-                      <div class="col-md-12">
+                      <div class="col-lg-4">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-address">Parents (Father)</label>
-                          <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
-                        
+                          <label class="form-control-label" for="input-city">Lastname</label>
+                          <section type="text" id="flast" class="form-control form-control-alternative" id="Flname"><?php echo $father_info[0]['lname'] ?></section>
                         </div>
                       </div>
-                    </div> -->
-                  <div class="row">
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-country">Firstname</label>
+                          <section type="text" id="ffirst" class="form-control form-control-alternative" id="Fnlname"><?php echo $father_info[0]['fname'] ?></section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country">Middlename</label>
+                          <section type="number" id="fmiddle" class="form-control form-control-alternative" id="Fmname"><?php echo $father_info[0]['mname'] ?></section>
+                        </div>
+                      </div>
 
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-city">Lastname</label>
-                        <section type="text" id="flast" class="form-control form-control-alternative" id="Glname">Sung</section>
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-city">Age</label>
+                          <section type="number" id="fage" class="form-control form-control-alternative" id="Fage"> <?php echo $father_info[0]['age'] ?></section>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-country">Firstname</label>
-                        <section type="text" id="ffirst" class="form-control form-control-alternative" id="Gfname">Jong</section>
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-country">Occupational</label>
+                          <section type="number" id="foccupational" class="form-control form-control-alternative" id="Focc"> <?php echo $father_info[0]['occupation'] ?> </section>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country">Middlename</label>
-                        <section type="number" id="fmiddle" class="form-control form-control-alternative" id="Gmname"> Ki </section>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
+                          <section type="number" id="feducation" class="form-control form-control-alternative" id="Fcol"> <?php echo $father_info[0]['educ_background'] ?> </section>
+                        </div>
                       </div>
-                    </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country"> Contact Number</label>
+                          <section type="number" id="feducation" class="form-control form-control-alternative" id="Fcn"> <?php echo $father_info[0]['contact'] ?> </section>
+                        </div>
+                      </div>
 
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-city">Age</label>
-                        <section type="number" id="fage" class="form-control form-control-alternative" id="Gage"> 36 </section>
-                      </div>
                     </div>
-                    <div class="col-lg-4">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-country">Occupational</label>
-                        <section type="number" id="foccupational" class="form-control form-control-alternative" id="Gocc"> Actor </section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Gol"> College </section>
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-country"> Contact Number</label>
-                        <section type="number" id="feducation" class="form-control form-control-alternative" id="Gcn"> 09214852314 </section>
-                      </div>
-                    </div>
-
-
                   </div>
 
+                  <h1 class="heading-small text-muted mb-4">MOTHER</h1>
+
+
+
+                  <div class="pl-lg-4">
+                    <!-- <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-address">Parents (Father)</label>
+                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                      
+                      </div>
+                    </div>
+                  </div> -->
+                    <div class="row">
+
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-city">Lastname</label>
+                          <section type="text" id="flast" class="form-control form-control-alternative" id="Mlname"><?php echo $mother_info[0]['lname'] ?></section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-country">Firstname</label>
+                          <section type="text" id="ffirst" class="form-control form-control-alternative" id="Mfname"><?php echo $mother_info[0]['fname'] ?></section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country">Middlename</label>
+                          <section type="number" id="fmiddle" class="form-control form-control-alternative" id="Mmname"><?php echo $mother_info[0]['mname'] ?></section>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-city">Age</label>
+                          <section type="number" id="fage" class="form-control form-control-alternative" id="Mage"><?php echo $mother_info[0]['age'] ?></section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-country">Occupational</label>
+                          <section type="number" id="foccupational" class="form-control form-control-alternative" id="Mocc"><?php echo $mother_info[0]['occupation'] ?></section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
+                          <section type="number" id="feducation" class="form-control form-control-alternative" id="Mcol"><?php echo $mother_info[0]['educ_background'] ?></section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country"> Contact Number</label>
+                          <section type="number" id="feducation" class="form-control form-control-alternative" id="Mcn"><?php echo $mother_info[0]['contact'] ?></section>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  </div>
                 </div>
 
+                <div id="guardian">
+                  <h1 class="heading-small text-muted mb-4">GUARDIAN</h1>
 
+
+
+                  <div class="pl-lg-4">
+                    <!-- <div class="row">
+      <div class="col-md-12">
+        <div class="form-group focused">
+          <label class="form-control-label" for="input-address">Parents (Father)</label>
+          <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+        
+        </div>
+      </div>
+    </div> -->
+                    <div class="row">
+
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-city">Lastname</label>
+                          <section type="text" id="flast" class="form-control form-control-alternative" id="Glname"><?php echo $guardian_info[0]['lname'] ?></section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-country">Firstname</label>
+                          <section type="text" id="ffirst" class="form-control form-control-alternative" id="Gfname"><?php echo $guardian_info[0]['fname'] ?></section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country">Middlename</label>
+                          <section type="number" id="fmiddle" class="form-control form-control-alternative" id="Gmname"><?php echo $guardian_info[0]['mname'] ?></section>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-city">Age</label>
+                          <section type="number" id="fage" class="form-control form-control-alternative" id="Gage"> <?php echo $guardian_info[0]['age'] ?> </section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-country">Occupational</label>
+                          <section type="number" id="foccupational" class="form-control form-control-alternative" id="Gocc"> <?php echo $guardian_info[0]['occupation'] ?></section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
+                          <section type="number" id="feducation" class="form-control form-control-alternative" id="Gol"><?php echo $guardian_info[0]['educ_background'] ?></section>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-country"> Contact Number</label>
+                          <section type="number" id="feducation" class="form-control form-control-alternative" id="Gcn"><?php echo $guardian_info[0]['contact'] ?></section>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+                  </div>
+                </div>
 
                 <hr class="my-4">
                 <!-- Description -->
@@ -2600,86 +2656,6 @@ echo "<script>console.log('$id');</script>";
                     <td>Highschool</td>
                     <td>Married</td>
                   </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
-                  <tr>
-                    <td>Ernst Handel</td>
-                    <td>Roland Mendel</td>
-                    <td>Austria</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
-                  <tr>
-                    <td>Island Trading</td>
-                    <td>Helen Bennett</td>
-                    <td>UK</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
-                  <tr>
-                    <td>Königlich Essen</td>
-                    <td>Philip Cramer</td>
-                    <td>Germany</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
-                  <tr>
-                    <td>Laughing Bacchus Winecellars</td>
-                    <td>Yoshi Tannamuri</td>
-                    <td>Canada</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
-                  <tr>
-                    <td>Magazzini Alimentari Riuniti</td>
-                    <td>Giovanni Rovelli</td>
-                    <td>Italy</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
-                  <tr>
-                    <td>North/South</td>
-                    <td>Simon Crowther</td>
-                    <td>UK</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
-                  <tr>
-                    <td>Paris spécialités</td>
-                    <td>Marie Bertrand</td>
-                    <td>France</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
-                  <tr>
-                    <td>Paris spécialités</td>
-                    <td>Marie Bertrand</td>
-                    <td>France</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
-                  <tr>
-                    <td>Paris spécialités</td>
-                    <td>Marie Bertrand</td>
-                    <td>France</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
                 </table>
 
                 <hr class="my-4">
@@ -2693,14 +2669,14 @@ echo "<script>console.log('$id');</script>";
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative" id="sen_school">Sisters of Mary of banneux,Inc.</section>
+                        <section type="text" id="s_name" class="form-control form-control-alternative" id="sen_school"><?php echo $senschool_info[0]['school_name'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="sen_school_yg">2019<section>
+                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="sen_school_yg"><?php echo $senschool_info[0]['year'] ?><section>
                       </div>
                     </div>
                   </div>
@@ -2709,7 +2685,7 @@ echo "<script>console.log('$id');</script>";
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="sen_school_awards">Matinong studyante</section>
+                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="sen_school_awards"><?php echo $senschool_info[0]['awards'] ?></section>
 
                   </div>
                 </div>
@@ -2721,14 +2697,14 @@ echo "<script>console.log('$id');</script>";
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative" id="jun_school">Sisters of Mary of banneux,Inc.</section>
+                        <section type="text" id="s_name" class="form-control form-control-alternative" id="jun_school"><?php echo $junschool_info[0]['school_name'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="jun_school_yg">2017<section>
+                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="jun_school_yg"><?php echo $junschool_info[0]['year'] ?><section>
                       </div>
                     </div>
                   </div>
@@ -2737,7 +2713,7 @@ echo "<script>console.log('$id');</script>";
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="jun_school_awards">Matinong studyante</section>
+                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="jun_school_awards"><?php echo $junschool_info[0]['awards'] ?></section>
 
                   </div>
                 </div>
@@ -2750,14 +2726,14 @@ echo "<script>console.log('$id');</script>";
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative" id="elm_school">Tagudtud Elementary School</section>
+                        <section type="text" id="s_name" class="form-control form-control-alternative" id="elm_school"><?php echo $elemschool_info[0]['school_name'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="elm_school_yg">2014<section>
+                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="elm_school_yg"><?php echo $elemschool_info[0]['year'] ?><section>
                       </div>
                     </div>
                   </div>
@@ -2766,38 +2742,41 @@ echo "<script>console.log('$id');</script>";
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="elm_school_awards">Matinong studyante</section>
+                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="elm_school_awards"><?php echo $elemschool_info[0]['awards'] ?></section>
 
                   </div>
                 </div>
+                <div id="otherschool">
+                  <h6 class="heading-small text-muted mb-4">OTHER SCHOOL ATTENDED</h6>
 
-                <h6 class="heading-small text-muted mb-4">OTHER SCHOOL ATTENDED</h6>
 
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-username">Name of the School</label>
+                          <section type="text" id="s_name" class="form-control form-control-alternative" id="oth_school"><?php echo $othschool_info[0]['school_name'] ?></section>
+                        </div>
+                      </div>
 
-                <div class="pl-lg-4">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative" id="oth_school">BVS</section>
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-email">Year Graduated</label>
+                          <section type="text" id="y_grad" class="form-control form-control-alternative" id="oth_school_yg"><?php echo $othschool_info[0]['year'] ?><section>
+                        </div>
                       </div>
                     </div>
 
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="oth_school_yg">2022<section>
-                      </div>
+                  </div>
+
+                  <div class="pl-lg-4">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-email">Awards Received</label>
+                      <section style="height:100px;" id="award" class="form-control form-control-alternative" id="oth_school_awards"><?php echo $othschool_info[0]['awards'] ?></section>
+
                     </div>
                   </div>
-                </div>
 
-                <div class="pl-lg-4">
-                  <div class="form-group focused">
-                    <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="oth_school_awards">NC</section>
-
-                  </div>
                 </div>
 
                 <hr class="my-4">
@@ -2814,7 +2793,7 @@ echo "<script>console.log('$id');</script>";
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Are you a member of an Indigenous group?</label>
-                        <section type="text" id="indige" class="form-control form-control-alternative"><span id="ip">Yes</span> - <span id="ip2">Kankaey/Igorot</span></section>
+                        <section type="text" id="indige" class="form-control form-control-alternative"><span id="ip"><?php echo $pers_info[0]['IG'] ?></span> - <span id="ip2">Kankaey/Igorot</span></section>
                         <!-- If yes, specify ilagay mo nalang beside yes example (Yes-Tas anong indigenous group belong) -->
                         <!-- <br>
                           <section type="text" id="s_name" class="form-control form-control-alternative">Yes</section> -->
@@ -2826,7 +2805,7 @@ echo "<script>console.log('$id');</script>";
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Are you a person with a disability (PWD)?</label>
-                        <section type="text" id="pwd" class="form-control form-control-alternative" id = "pwd">No<section>
+                        <section type="text" id="pwd" class="form-control form-control-alternative" id="pwd"><?php echo $pers_info[0]['PWD'] ?><section>
                       </div>
                     </div>
                   </div>
@@ -2835,7 +2814,7 @@ echo "<script>console.log('$id');</script>";
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">Are you a student parent ?</label>
-                    <section type="text" id="stud_parent" class="form-control form-control-alternative" id="sp">No<section>
+                    <section type="text" id="stud_parent" class="form-control form-control-alternative" id="sp"><?php echo $pers_info[0]['Student_parent'] ?><section>
                   </div>
                 </div>
             </div>
@@ -2874,7 +2853,7 @@ echo "<script>console.log('$id');</script>";
 
           <input type="checkbox" id="FS_oth" disabled>
           <!-- <i class="fa fa-check"></i> -->
-          <label for="checkbox5">Others - <span id="FS_oth2" >achuchuchu</span></label>
+          <label for="checkbox5">Others - <span id="FS_oth2">achuchuchu</span></label>
 
 
           <hr class="my-4">
@@ -2884,7 +2863,7 @@ echo "<script>console.log('$id');</script>";
 
           <input type="checkbox" id="MS_pam" disabled>
           <label for="checkbox1" class="custom-checkbox-label">Parents are married.</label>
-          
+
           <input type="checkbox" id="MS_mla" disabled>
           <label for="checkbox1" class="custom-checkbox-label">>Marriage is legally annulled.</label>
 
@@ -2990,121 +2969,118 @@ echo "<script>console.log('$id');</script>";
 
   <!-- Add this script tag to your HTML file -->
   <script>
-  
-      // Get the logout button element
-      function logout() {
-   
-        // Display a confirmation prompt
-        // var confirmation = confirm('Are you sure you want to log out?');
+    // Get the logout button element
+    function logout() {
 
-        // // Check if the user clicked "Yes"
-        // if (confirmation) {
-          // Redirect to appointment.php
-          window.location.href = '../home?logout=true';
-        // } else {
-        //   // The user clicked "No," you can add additional handling if needed
-        //   console.log('Logout canceled');
-        // }
-      };
-  
+      // Display a confirmation prompt
+      // var confirmation = confirm('Are you sure you want to log out?');
+
+      // // Check if the user clicked "Yes"
+      // if (confirmation) {
+      // Redirect to appointment.php
+      window.location.href = '../home?logout=true';
+      // } else {
+      //   // The user clicked "No," you can add additional handling if needed
+      //   console.log('Logout canceled');
+      // }
+    };
   </script>
-<script>
+  <script>
     // Function to update the HTML elements
     function updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, gender) {
-       
-       const genderImageMap = {
-                 'Male': 'assets/images/sp.jpg',
-                 'Female': 'assets/images/sp2.jpg'
-             };
-             const image = document.createElement('img');
-               image.style.display = 'block'; // Display the image above the text
 
-               if (gender === 'Male') {
-                 image.src = genderImageMap['Male'];
-               } else if (gender === 'Female') {
-                 image.src = genderImageMap['Female'];
-               }
+      const genderImageMap = {
+        'Male': 'assets/images/sp.jpg',
+        'Female': 'assets/images/sp2.jpg'
+      };
+      const image = document.createElement('img');
+      image.style.display = 'block'; // Display the image above the text
 
-       $('#studentId').text(fname + " " + lname);
-       $('#transactType').text(transactType);
-       $('#total').text(total);
-       $('#employee_email').text(employee_email);
-       $('#employee_position').text(employee_position);
-       $('#date_joined').text(employee_date_joined);
-       $('#totalAppointments').text(totalAppointments);
-       $('#position').text(ePosition);
-       $('#fname').text(eFname);
-       $('#lname').text(eLname);
-               
-                       // Replace the content of the #gender div with the created image
-               const genderElement = document.getElementById('gender');
-               genderElement.innerHTML = ''; // Clear existing content
-               genderElement.appendChild(image);
-   }
-   // Function to fetch data from get_transaction.php
-   function fetchData() {
-       console.log('AJAX request started');
-       $.ajax({
-           type: 'GET',
-           url: '../backend/get_transaction.php',
-           dataType: 'json',
-           
-               // ...
-               success: function (data) {
-                   console.log(data.latest_data);
-                   if (data.latest_data && data.latest_data.length > 0) {
-                           sid = data.latest_data[0].student_id;
-                           var fname = data.latest_data[0].first_name;
-                           var lname = data.latest_data[0].last_name;
-                           var transactType = data.latest_data[0].transact_type;
-                           tt = data.latest_data[0].transact_type;
-                           tid = data.latest_data[0].transact_id;
-                           var total = data.total_pending_transactions;
-                           var totalAppointments = data.total_appointments; // Define total here
-                           var employee_email = data.adminUserData[0].email;
-                           var employee_position = data.adminUserData[0].position;
-                           var employee_date_joined = data.adminUserData[0].date_joined;
-                           var eFname = data.adminUserData[0].first_name;
-                           var eLname = data.adminUserData[0].last_name;
-                           var ePosition = data.adminUserData[0].position;
-                           var eGender = data.adminUserData[0].gender;
-                           console.log(totalAppointments);
-                           updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
-                           console.log(total);
-                           // Start both counting animations
-                           countAppointments(totalAppointments);
-                           countForms(total);
-                       } else {
-                       // Handle the case when no results are found
-                       // You can update the UI as needed
-                           var studentId = "None";
-                           var total = 0;
-                           var totalAppointments = 0; // Define total here
-                           var employee_email = data.adminUserData[0].email;
-                           var employee_position = data.adminUserData[0].position;
-                           var employee_date_joined = data.adminUserData[0].date_joined;
-                           var eFname = data.adminUserData[0].first_name;
-                           var eLname = data.adminUserData[0].last_name;
-                           var ePosition = data.adminUserData[0].position;
-                           var eGender = data.adminUserData[0].gender;
-                           console.log(totalAppointments);
-                           updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
-                           console.log(total);
-                           // Start both counting animations
-                           countAppointments(totalAppointments);
-                           countForms(total);
-                       console.log('No results found');
-                   }
-           },
-           error: function (xhr, status, error) {
-               console.error('Error: ' + error);
-               console.error('Status: ' + status);
-               console.error('Response: ' + xhr.responseText);
-           }
-       });
-   }
+      if (gender === 'Male') {
+        image.src = genderImageMap['Male'];
+      } else if (gender === 'Female') {
+        image.src = genderImageMap['Female'];
+      }
 
-</script>
+      $('#studentId').text(fname + " " + lname);
+      $('#transactType').text(transactType);
+      $('#total').text(total);
+      $('#employee_email').text(employee_email);
+      $('#employee_position').text(employee_position);
+      $('#date_joined').text(employee_date_joined);
+      $('#totalAppointments').text(totalAppointments);
+      $('#position').text(ePosition);
+      $('#fname').text(eFname);
+      $('#lname').text(eLname);
+
+      // Replace the content of the #gender div with the created image
+      const genderElement = document.getElementById('gender');
+      genderElement.innerHTML = ''; // Clear existing content
+      genderElement.appendChild(image);
+    }
+    // Function to fetch data from get_transaction.php
+    function fetchData() {
+      console.log('AJAX request started');
+      $.ajax({
+        type: 'GET',
+        url: '../backend/get_transaction.php',
+        dataType: 'json',
+
+        // ...
+        success: function(data) {
+          console.log(data.latest_data);
+          if (data.latest_data && data.latest_data.length > 0) {
+            sid = data.latest_data[0].student_id;
+            var fname = data.latest_data[0].first_name;
+            var lname = data.latest_data[0].last_name;
+            var transactType = data.latest_data[0].transact_type;
+            tt = data.latest_data[0].transact_type;
+            tid = data.latest_data[0].transact_id;
+            var total = data.total_pending_transactions;
+            var totalAppointments = data.total_appointments; // Define total here
+            var employee_email = data.adminUserData[0].email;
+            var employee_position = data.adminUserData[0].position;
+            var employee_date_joined = data.adminUserData[0].date_joined;
+            var eFname = data.adminUserData[0].first_name;
+            var eLname = data.adminUserData[0].last_name;
+            var ePosition = data.adminUserData[0].position;
+            var eGender = data.adminUserData[0].gender;
+            console.log(totalAppointments);
+            updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
+            console.log(total);
+            // Start both counting animations
+            countAppointments(totalAppointments);
+            countForms(total);
+          } else {
+            // Handle the case when no results are found
+            // You can update the UI as needed
+            var studentId = "None";
+            var total = 0;
+            var totalAppointments = 0; // Define total here
+            var employee_email = data.adminUserData[0].email;
+            var employee_position = data.adminUserData[0].position;
+            var employee_date_joined = data.adminUserData[0].date_joined;
+            var eFname = data.adminUserData[0].first_name;
+            var eLname = data.adminUserData[0].last_name;
+            var ePosition = data.adminUserData[0].position;
+            var eGender = data.adminUserData[0].gender;
+            console.log(totalAppointments);
+            updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
+            console.log(total);
+            // Start both counting animations
+            countAppointments(totalAppointments);
+            countForms(total);
+            console.log('No results found');
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('Error: ' + error);
+          console.error('Status: ' + status);
+          console.error('Response: ' + xhr.responseText);
+        }
+      });
+    }
+  </script>
 
 
 
