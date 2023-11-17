@@ -15,18 +15,29 @@ $_SESSION['transact_type'] = 'referral';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Welcome, Teacher/s</title>
-      <!-- JSquery -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-      <!-- Remix icons -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-      <!-- CSS sheet -->
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <meta charset="UTF-8" />
+    <title>Welcome, Teacher/s</title>
+    <!-- Bootstrap CSS and JS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- jQuery UI and Bootstrap Datepicker -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- DataTables CSS and JS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- Font Awesome and Remix Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -151,10 +162,13 @@ $_SESSION['transact_type'] = 'referral';
 
         <!-- show when reason is late or absent -->
         <div class="form1" id="dates">
-          <label for="date">Range of days absent:</label><br>
+          <label for="date">Days absent:</label><br>
           <!-- id = date -->
-          <label for="date">From:</label>
-          <input type="date" id="Date" name="Date">
+          <div class="input-group date form-group" id="datepicker">
+              <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days" required />
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
+          </div>
+
 
         </div>
         <div class="form1" id="rem">
@@ -585,7 +599,18 @@ $.ajax({
 }
 fetchData();
 
-
+$('#datepicker').datepicker({
+        startDate: new Date(2000, 0, 1), // Update this to an earlier date
+        multidate: true,
+        format: "dd/mm/yyyy",
+        daysOfWeekHighlighted: "5,6",
+        // Remove or adjust the following line if needed
+        // datesDisabled: ['31/08/2017'],
+        language: 'en'
+    }).on('changeDate', function(e) {
+        // `e` here contains the extra attributes
+        $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
+    });
 
   });
   function delete_stud (tid){
