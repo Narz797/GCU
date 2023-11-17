@@ -55,7 +55,7 @@ try {
     $countAppointments = $stmt6->fetch(PDO::FETCH_ASSOC);
 
 
-    $latestDataSql = "SELECT transact.transact_id, transact.student_id, transact.transact_type, transact.date_created, student_user.first_name, student_user.last_name
+    $latestDataSql = "SELECT transact.transact_id, transact.student_id,  transact.teacher_id, transact.transact_type, transact.date_created, student_user.first_name, student_user.last_name
     FROM transact
     INNER JOIN student_user ON transact.student_id = student_user.stud_user_id
     WHERE transact.status = 'pending'

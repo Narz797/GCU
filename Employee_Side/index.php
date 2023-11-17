@@ -231,12 +231,13 @@ $id = $_SESSION['session_id'];
 function processData(data) {
     if (data.latest_data && data.latest_data.length > 0) {
         // Process the data and perform necessary actions
-        var sid = data.latest_data[0].student_id;
+         sid = data.latest_data[0].student_id;
         var fname = data.latest_data[0].first_name;
         var lname = data.latest_data[0].last_name;
         var transactType = data.latest_data[0].transact_type;
          tt = data.latest_data[0].transact_type;
-        var tid = data.latest_data[0].transact_id;
+         tid = data.latest_data[0].transact_id;
+        //  teachid = data.latest_data[0].transact_id;
         var total = data.total_pending_transactions;
         var totalAppointments = data.total_appointments;
         var employee_email = data.adminUserData[0].email;
@@ -309,17 +310,9 @@ function goto_recent(){
         console.log("student", sid);
         console.log("transact", tid);
 
-                    // Send stud_id to the server using an AJAX request
-                    $.ajax({
-                type: 'POST',  // You can use POST to send data securely
-                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
-                data: { stud_id: sid, tran_id: tid, ttype: tt, },
-                success: function(response) {
-                    // Handle the response from the server, if needed
-                    console.log(response);
-                    window.location.href = 'forms/ref.php';
-                }
-            });
+
+                    window.location.href = 'subpage/rs-forms';
+          
     }else if(tt === 'readmission'){
         console.log("student", sid);
         console.log("transact", tid);

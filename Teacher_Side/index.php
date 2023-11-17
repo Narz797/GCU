@@ -100,7 +100,7 @@ $_SESSION['transact_type'] = 'referral';
         <div class="flex">
         <div class="form">    
           <label for="Sid">Student ID:</label>
-          <input type="number" id="Sid" name="Sid" required>
+          <input type="number" id="Sid" name="Sid" required onblur="search()">
         </div>
         <div class="form">
           <label for="fname">Student's First Name:</label>
@@ -120,7 +120,7 @@ $_SESSION['transact_type'] = 'referral';
         </div>
         <div class="form">
           <label for="contact">Student's Contact Number:</label>
-          <input type="text" id="contact" name="contact" required>
+          <input type="text" id="contact" name="contact" >
         </div>
         </div>
 
@@ -133,6 +133,7 @@ $_SESSION['transact_type'] = 'referral';
             <option>Female</option>
           </select>
         </div>
+        
         <div class="form1">
           <label for="crse">Course:</label>
           <input type="text"id="crse" name="crse" required>
@@ -144,17 +145,23 @@ $_SESSION['transact_type'] = 'referral';
             <option>Academic Deficiency/ies</option>
             <option>Absent</option>
             <option>Tardy</option>
+            <option>Others</option>
           </select>
         </div>
 
         <!-- show when reason is late or absent -->
-        <div class="form1">
+        <div class="form1" id="dates">
           <label for="date">Range of days absent:</label><br>
           <!-- id = date -->
           <label for="date">From:</label>
-          <input type="date" id="fromDate" name="fromDate" required>
-          <label for="date">To:</label>
-          <input type="date" id="toDate" name="toDate" required>
+          <input type="date" id="Date" name="Date">
+
+        </div>
+        <div class="form1" id="rem">
+          <label for="remark">Remarks:</label><br>
+          <input type="text"id="remark" name="remark">
+
+
         </div>
         <input type="submit" class="btn btn-primary" name="submit" id="submit" value="REFER">
         </div>
@@ -311,6 +318,51 @@ $_SESSION['transact_type'] = 'referral';
 function logout() {
     window.location.href = '../home?logout=true';
 }
+function search() {
+    var studentId = $("#Sid").val();
+
+    $.ajax({
+        url: '../backend/TS_search_student.php',
+        type: 'GET',
+        dataType: 'json',
+        data: { studentId: studentId }, // Pass the student ID to the server
+        success: function(data) {
+            console.log(data);
+
+            for (var i = 0; i < data.length; i++) {
+                var entry = data[i];
+
+                var fnameInput = document.getElementById('fname');
+                var mnameInput = document.getElementById('mname');
+                var lnameInput = document.getElementById('lname');
+                var courseInput = document.getElementById('crse');
+                var contactInput = document.getElementById('contact');
+                var genderInput = document.getElementById('genderr');
+
+                fnameInput.value = entry.first_name;
+                fnameInput.setAttribute('readonly', 'readonly');
+
+                mnameInput.value = entry.middle_name;
+                mnameInput.setAttribute('readonly', 'readonly');
+
+                lnameInput.value = entry.last_name;
+                lnameInput.setAttribute('readonly', 'readonly');
+
+                courseInput.value = entry.course;
+                courseInput.setAttribute('readonly', 'readonly');
+
+                contactInput.value = entry.Contact_number;
+                contactInput.setAttribute('readonly', 'readonly');
+
+                genderInput.value = entry.gender;
+                genderInput.setAttribute('disabled', 'disabled');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching data:', error);
+        }
+    });
+}
 var clg;
 var eID;
 var sID;
@@ -319,6 +371,24 @@ var transID;
 
 
 $(document).ready(function() {
+  var LA = $("#dates");
+    var AO = $("#rem");
+    LA.hide();
+    AO.hide();
+
+    $("#reason").change(function() {
+      if ($(this).val() == "Absent" || $(this).val() == "Tardy") {
+        LA.show();
+        AO.hide();
+      } else if ($(this).val() == "Academic Deficiency/ies" || $(this).val() == "Others") {
+        LA.hide();
+        AO.show();
+      } else {
+        LA.hide();
+        AO.hide();
+      }
+    });
+
 //check if student is available in database
 $("#form_transact").on("submit", function (event) {
       event.preventDefault();
@@ -329,6 +399,8 @@ $("#form_transact").on("submit", function (event) {
     var dateRange = fromDate + ' to ' + toDate; // Concatenate the dates
 
     console.log(dateRange); // Check in the console
+
+
 
       var transact_type = "referral"
       var studentContactNumber = document.getElementById("contact").value;
@@ -346,7 +418,7 @@ $("#form_transact").on("submit", function (event) {
                           course: $("#crse").val(),
                           cn: $("#contact").val(),
                           reasons: $("#reason").val(),
-                          datee: dateRange
+                          datee: $("#Date").val(),
                           
                       },
         success: function (data) {
@@ -388,6 +460,7 @@ $("#form_transact").on("submit", function (event) {
     });
 
 
+function fetchData() {
    
     // Fetch data using $.ajax
     $.ajax({
@@ -451,8 +524,7 @@ $("#form_transact").on("submit", function (event) {
       
     }
 
-// Function to fetch data from get_transaction.php
-function fetchData() {
+
 console.log('AJAX request started');
 $.ajax({
     type: 'GET',

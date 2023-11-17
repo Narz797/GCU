@@ -50,7 +50,7 @@ if (isset($_POST['pass1']) && isset($_POST['pass2']))
 
 
     try {
-        if ($pass1 == $pass2)
+        if ($pass1 === $pass2)
         {
             $hashedPassword = password_hash($pass1, PASSWORD_DEFAULT);
             $sql = "UPDATE `admin_user` SET `password`= :pass WHERE `email` = :email";

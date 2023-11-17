@@ -64,10 +64,16 @@ $origin = $_SESSION['origin'];
       success: function(data) {
         // Hide loading spinner on success
         $("#loading-spinner").hide();
-        
-        alert("The code to change your password is sent to your email")
+        if (data === "unregistered") {
+          alert("This Email in not registered, please use a registered email")
+          console.log(data);
+          
+        } else {
+          alert("The code to change your password is sent to your email")
         console.log(data)
         window.location.href = "verify_code.php";
+        }
+
         // add location to enter code
       },
       error: function(xhr, status, error) {

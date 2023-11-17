@@ -11,7 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 
 // Load Composer's autoloader
 require 'C:\xampp\htdocs\GCU\phpmailer\phpmailer\vendor\autoload.php';
-echo "Entered";
+
 
     // Check if the random number is already set in the session
     if (!isset($_SESSION['random_number'])) {
@@ -26,8 +26,7 @@ echo "Entered";
     }
 
     // Output the result
-    echo "Random 4-digit number: $randomNumber";
-    echo "Email received";
+
 
 
     if (isset($_SESSION['origin'])) {
@@ -70,13 +69,13 @@ echo "Entered";
                         $mail->SMTPDebug = 2; // Enable verbose debug output
 
                         $mail->send();
-                        echo 'Message has been sent';
+                        echo 'sent';
                     } catch (Exception $e) {
                         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                     }
                 } else {
                     // Email is not registered
-                    echo "Email not registered";
+                    echo "unregistered";
                 }
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
@@ -121,13 +120,13 @@ echo "Entered";
                         $mail->SMTPDebug = 2; // Enable verbose debug output
 
                         $mail->send();
-                        echo 'Message has been sent';
+                        echo 'sent';
                     } catch (Exception $e) {
                         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                     }
                 } else {
                     // Email is not registered
-                    echo "Email not registered";
+                    echo "unregistered";
                 }
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
@@ -170,13 +169,13 @@ echo "Entered";
                         $mail->SMTPDebug = 2; // Enable verbose debug output
 
                         $mail->send();
-                        echo 'Message has been sent';
+                        echo 'sent';
                     } catch (Exception $e) {
                         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                     }
                 } else {
                     // Email is not registered
-                    echo "Email not registered";
+                    echo "unregistered";
                 }
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();

@@ -188,7 +188,7 @@ echo json_encode($data);
     student_user.ParentGuardianNumber,
     student_user.ParentGuardianName,
     student_user.Relation,
-    withdrawal.statement,
+    withdrawal.explain,
     withdrawal.shift_from,
     withdrawal.shift_to
     FROM student_user
