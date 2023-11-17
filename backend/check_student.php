@@ -52,7 +52,7 @@ if (
                 $gender = $_POST['gender'];
                 $course = $_POST['course'];
                 $cn = $_POST['cn'];
-                $rem = $_POST['remark'];
+                
                 $date = $_POST['datee']; 
             
                 // $refer = $_POST['refer'];
@@ -60,7 +60,7 @@ if (
                 $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
             
                 $sql_1 = 'INSERT INTO transact(student_id, transact_type, teacher_id, date_created, status) VALUES (:sid, :reasons, :tid,  :date, :status)';
-                $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `remarks`, `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :sid, :reasons, :rem, :refer, :tid, :RUR)';
+                $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :sid, :reasons, :refer, :tid, :RUR)';
                 $sql_3 = 'INSERT INTO `tstable`(`student_id`, `teacher_id`,  `transact_id`, `email`, `first_name`, `middle_name`, `last_name`, `course`, `year_level`, `gender`, `contact_number`, `reason`, `date`,  `refer`, `status`) VALUES (:sid, :tid, :transact_id, :email, :fname, :mname, :lname, :course, :yrlvl, :gender, :cn, :reasons, :date, :tname, :status)';
             
             
@@ -78,7 +78,6 @@ if (
                     $code->bindParam(':transact_id', $transact_id);
                     $code->bindParam(':sid', $sid);
                     $code->bindParam(':reasons', $reasons);
-                    $code->bindParam(':rem', $rem);
                     $code->bindParam(':refer', $tname);
                     $code->bindParam(':tid', $tid);
                     $code->bindParam(':RUR', $RUR);
@@ -121,7 +120,7 @@ if (
         $date = $_POST['datee'];  // Convert DateTime to a string in MySQL DATETIME format
 
         $sql_1 = 'INSERT INTO transact(student_id, transact_type, teacher_id, date_created, status) VALUES (:student_id, :transact_type, :tid,  :date, :status)';
-        $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `remarks`, `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :sidd, :reasons, :rem, :refer, :tid, :RUR)';
+        $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :sidd, :reasons, :refer, :tid, :RUR)';
         try {
             $code = $pdo->prepare($sql_1);
             $code->bindParam(':student_id', $id);
@@ -138,7 +137,6 @@ if (
         $code->bindParam(':transact_id', $transact_id);
         $code->bindParam(':sidd', $sid);
         $code->bindParam(':reasons', $reasons);
-        $code->bindParam(':rem', $rem);
         $code->bindParam(':refer', $tname); // Assuming $tname contains the full name
         $code->bindParam(':tid', $tid);
         $code->bindParam(':RUR', $RUR);
