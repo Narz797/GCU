@@ -15,7 +15,23 @@ $origin = $_SESSION['origin'];
   <style>
     .container {
       position: relative;
-    }
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Change RGBA values to 0, 0, 0 for black */
+
+
+      animation: fadeInUp 1s ease-in-out; /* Animation */
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
     #loading-spinner {
       position: absolute;
@@ -25,11 +41,22 @@ $origin = $_SESSION['origin'];
       z-index: 1;
       transition: opacity 0.5s ease;
       display: none;
+    
+    }
+
+    #reset:hover {
+      /* background-color: #2980b9; */
+      /* color:green; */
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
 <body>
   <div class="container">
+  <div class="logo">
+      <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
+    </div>
     <div class="logo">
       <img id="loading-spinner" style="display: none;" src="assets/img/GCU_LOGO.gif">
     </div>
@@ -39,7 +66,7 @@ $origin = $_SESSION['origin'];
       <label for="email" style="color:black;">Email*</label>
       <input type="email" id="email" name="email" required>
       
-      <input style="background-color:black;color:white;" type="submit" value="Reset Password">
+      <input id="reset"style="background-color:black;color:white;" type="submit" value="Reset Password">
     </form>
   </div>
   <!--  -->

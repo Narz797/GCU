@@ -13,11 +13,28 @@ echo "<script>console.log($randomNumber)</script>";
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
   <style>
-    .container {
-      position: relative;
-    }
+   .container {
+  position: relative;
+  width: 300px; /* Adjust the width as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease-in-out; /* Animation */
+}
 
-    #loading-spinner {
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+#loading-spinner {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -25,6 +42,47 @@ echo "<script>console.log($randomNumber)</script>";
       z-index: 1;
       transition: opacity 0.5s ease;
       display: none;
+     
+    }
+
+
+
+    input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #2980b9; /* Change the border color on focus */
+    }
+
+    #verify:hover {
+      /* background-color: #2980b9; */
+      /* color:green; */
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9; /* Change the background color on hover */
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
@@ -33,15 +91,17 @@ echo "<script>console.log($randomNumber)</script>";
     <div class="logo">
       <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
     </div>
-    <img id="loading-spinner" src="assets/img/GCU_LOGO.gif">
+    <img id="loading-spinner"  src="assets/img/GCU_LOGO.gif">
     <h2  style="color:black; font-family: 'Lucida Console', Courier, monospace;">FORGOT PASSWORD</h2>
     <form id="verify_code" method="post">
         <label for="code" style="color:black;">Input 4 digit code*</label>
+        <br>
         <input type="number" id="code" name="number" oninput="validateInput(this)" required>
         
-      
+      <br>
+      <br>
 
-      <input style="background-color:black;color:white;" type="submit" value="Verify">
+      <input id="verify"style="background-color:black;color:white;" type="submit" value="Verify">
     </form>
     <button onclick="resend()">Resend Code</button>
   </div>
