@@ -173,6 +173,7 @@ $id = $_SESSION['session_id'];
     var tt;
     var tid;
     var teachid;
+   
             function archive() {
     window.location.href = '';
         }
@@ -272,6 +273,7 @@ function processData(data) {
         console.log('No results found');
     }
 }
+console.log ("trans",tt);
 // Function to update the card description with data
 function updateCardDescription(data) {
     const cardDescription = $('#list-history');
@@ -305,99 +307,101 @@ function HistoryData() {
 }
 
 function goto_recent(){
-    if (tt === 'referral')
-    {
-        console.log("student", sid);
-        console.log("transact", tid);
+    // if (tt === 'referral')
+    // {
+    //     console.log("student", sid);
+    //     console.log("transact", tid);
 
 
-                    window.location.href = 'subpage/rs-forms';
+    //                 window.location.href = 'subpage/rs-forms';
           
-    }else if(tt === 'readmission'){
-        console.log("student", sid);
-        console.log("transact", tid);
+    // }else if(tt === 'readmission'){
+    //     console.log("student", sid);
+    //     console.log("transact", tid);
 
-                    // Send stud_id to the server using an AJAX request
-                    $.ajax({
-                type: 'POST',  // You can use POST to send data securely
-                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
-                data: { stud_id: sid, tran_id: tid, ttype: tt},
-                success: function(response) {
-                    // Handle the response from the server, if needed
-                    console.log(response);
-                    window.location.href = 'forms/read.php';
-                }
-            });
+    //                 // Send stud_id to the server using an AJAX request
+    //                 $.ajax({
+    //             type: 'POST',  // You can use POST to send data securely
+    //             url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+    //             data: { stud_id: sid, tran_id: tid, ttype: tt},
+    //             success: function(response) {
+    //                 // Handle the response from the server, if needed
+    //                 console.log(response);
+    //                 window.location.href = 'forms/read.php';
+    //             }
+    //         });
 
-    }else if(tt === 'Withdrawing Enrollment'){
-        console.log("student", sid);
-        console.log("transact", tid);
-        var type = 'withdrawal';
+    // }else if(tt === 'Withdrawing Enrollment'){
+    //     console.log("student", sid);
+    //     console.log("transact", tid);
+    //     var type = 'withdrawal';
 
-                    // Send stud_id to the server using an AJAX request
-                    $.ajax({
-                type: 'POST',  // You can use POST to send data securely
-                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
-                data: { stud_id: sid, tran_id: tid, ttype: type },
-                success: function(response) {
-                    // Handle the response from the server, if needed
-                    console.log(response);
-                    window.location.href = 'forms/w.php';
-                }
-            });
+    //                 // Send stud_id to the server using an AJAX request
+    //                 $.ajax({
+    //             type: 'POST',  // You can use POST to send data securely
+    //             url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+    //             data: { stud_id: sid, tran_id: tid, ttype: type },
+    //             success: function(response) {
+    //                 // Handle the response from the server, if needed
+    //                 console.log(response);
+    //                 window.location.href = 'forms/w.php';
+    //             }
+    //         });
 
-    }else if(tt === 'Dropping Subjects'){
-        console.log("student", sid);
-        console.log("transact", tid);
-        var type = 'withdrawal';
+    // }else if(tt === 'Dropping Subjects'){
+    //     console.log("student", sid);
+    //     console.log("transact", tid);
+    //     var type = 'withdrawal';
 
-                    // Send stud_id to the server using an AJAX request
-                    $.ajax({
-                type: 'POST',  // You can use POST to send data securely
-                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
-                data: { stud_id: sid, tran_id: tid, ttype: type},
-                success: function(response) {
-                    // Handle the response from the server, if needed
-                    console.log(response);
-                    window.location.href = 'forms/d.php';
-                }
-            });
+    //                 // Send stud_id to the server using an AJAX request
+    //                 $.ajax({
+    //             type: 'POST',  // You can use POST to send data securely
+    //             url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+    //             data: { stud_id: sid, tran_id: tid, ttype: type},
+    //             success: function(response) {
+    //                 // Handle the response from the server, if needed
+    //                 console.log(response);
+    //                 window.location.href = 'forms/d.php';
+    //             }
+    //         });
 
-    }else if(tt === 'Shifting'){
-        console.log("student", sid);
-        console.log("transact", tid);
-        var type = 'withdrawal';
+    // }else if(tt === 'Shifting'){
+    //     console.log("student", sid);
+    //     console.log("transact", tid);
+    //     var type = 'withdrawal';
 
-                    // Send stud_id to the server using an AJAX request
-                    $.ajax({
-                type: 'POST',  // You can use POST to send data securely
-                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
-                data: { stud_id: sid, tran_id: tid, ttype: type},
-                success: function(response) {
-                    // Handle the response from the server, if needed
-                    console.log(response);
-                    window.location.href = 'forms/s.php';
-                }
-            });
+    //                 // Send stud_id to the server using an AJAX request
+    //                 $.ajax({
+    //             type: 'POST',  // You can use POST to send data securely
+    //             url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+    //             data: { stud_id: sid, tran_id: tid, ttype: type},
+    //             success: function(response) {
+    //                 // Handle the response from the server, if needed
+    //                 console.log(response);
+    //                 window.location.href = 'forms/s.php';
+    //             }
+    //         });
 
-    }else if(tt === 'leave_of_absence'){
-        console.log("student", sid);
-        console.log("transact", tid);
-        var type = 'loa';
+    // }else if(tt === 'leave_of_absence'){
+    //     console.log("student", sid);
+    //     console.log("transact", tid);
+    //     var type = 'loa';
 
-                    // Send stud_id to the server using an AJAX request
-                    $.ajax({
-                type: 'POST',  // You can use POST to send data securely
-                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
-                data: { stud_id: sid, tran_id: tid, ttype: type},
-                success: function(response) {
-                    // Handle the response from the server, if needed
-                    console.log(response);
-                    window.location.href = 'forms/loa.php';
-                }
-            });
+    //                 // Send stud_id to the server using an AJAX request
+    //                 $.ajax({
+    //             type: 'POST',  // You can use POST to send data securely
+    //             url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+    //             data: { stud_id: sid, tran_id: tid, ttype: type},
+    //             success: function(response) {
+    //                 // Handle the response from the server, if needed
+    //                 console.log(response);
+    //                 window.location.href = 'forms/loa.php';
+    //             }
+    //         });
 
-    }
+    // }
+
+    window.location.href="request-forms";
 }
 // Call the fetchData function when the page loads
 HistoryData();

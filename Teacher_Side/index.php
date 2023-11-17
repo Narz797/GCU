@@ -436,6 +436,7 @@ $("#form_transact").on("submit", function (event) {
                           cn: $("#contact").val(),
                           reasons: $("#reason").val(),
                           datee: $("#Date").val(),
+                          remark: $("#remark").val(),
                           Tcn: cn,
                           TeachEmail: Temail 
                           
