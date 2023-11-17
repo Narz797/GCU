@@ -165,9 +165,9 @@ $_SESSION['transact_type'] = 'referral';
           <label for="date">Days absent:</label><br>
           <!-- id = date -->
           <div class="input-group date form-group" id="datepicker">
-              <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days" required />
-              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
-          </div>
+            <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days"/>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
+        </div>
 
 
         </div>
@@ -450,6 +450,7 @@ $("#form_transact").on("submit", function (event) {
                           cn: $("#contact").val(),
                           reasons: $("#reason").val(),
                           datee: $("#Date").val(),
+                          rem: $("#remark").val(),
                           Tcn: cn,
                           TeachEmail: Temail 
                           
