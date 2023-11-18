@@ -318,7 +318,7 @@ select:focus {
   </div>
   <hr>
 
-  <h1 id="Title" >Referral Slip</h1>
+  <h1 id="Title" >Admission Slip</h1>
   <hr>
 
     <div class="card-body">
@@ -338,7 +338,7 @@ select:focus {
   <option disabled selected>Select</option>
     <option value="Tardy">Late</option>
     <option value="Absent">Absent</option>
-    <option value="Academic Deficiency/ies">Academic Deficiency/ies</option>
+   
   </select>
 </div>
 
