@@ -73,8 +73,8 @@ $source = $oth_info[0]['source'];
 $checkedOption1 = (in_array('Parents', explode(', ', $source))) ? 'checked' : '';
 $checkedOption2 = (in_array('Self', explode(', ', $source))) ? 'checked' : '';
 $checkedOption3 = (in_array('Relatives', explode(', ', $source))) ? 'checked' : '';
-$checkedOption4 = (in_array('Scholarship', explode(', ', $source))) ? 'checked' :'';
-$checkedOption5 = (in_array('Others', explode(', ', $source))) ? 'checked' :'';
+$checkedOption4 = (in_array('Scholarship', explode(', ', $source))) ? 'checked' : '';
+$checkedOption5 = (in_array('Others', explode(', ', $source))) ? 'checked' : '';
 
 $maritalStatus = $pers_info[0]['Marital_status_of_parents'];
 
@@ -84,6 +84,11 @@ $checkmarital3 = ($maritalStatus == 'livingTogether') ? 'checked' : '';
 $checkmarital4 = ($maritalStatus == 'singleParent') ? 'checked' : '';
 $checkmarital5 = ($maritalStatus == 'separated') ? 'checked' : '';
 $checkmarital6 = ($maritalStatus == 'widowWidower') ? 'checked' : '';
+
+$siblings = $pdo->prepare("SELECT * FROM `siblings` WHERE  `studentID` = :id");
+$siblings->bindParam(':id', $id, PDO::PARAM_INT);
+$siblings->execute();
+$siblings = $siblings->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -2660,24 +2665,18 @@ $checkmarital6 = ($maritalStatus == 'widowWidower') ? 'checked' : '';
                     <th>Civil Status</th>
 
                   </tr>
-                  <tr>
-                    <td>Taquio</td>
-                    <td>Narz Josef</td>
-                    <td>Dikoalam</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-
-
-                  </tr>
-                  <tr>
-                    <td>Berglunds snabbköp</td>
-                    <td>Christina Berglund</td>
-                    <td>Sweden</td>
-                    <td>21</td>
-                    <td>Highschool</td>
-                    <td>Married</td>
-                  </tr>
+                  <?php
+                  foreach ($siblings as $row) {
+                    echo "<tr>";
+                    echo "<td>{$row['lastName']}</td>";
+                    echo "<td>{$row['firstName']}</td>";
+                    echo "<td>{$row['middleName']}</td>";
+                    echo "<td>{$row['age']}</td>";
+                    echo "<td>{$row['highEdu']}</td>";
+                    echo "<td>{$row['civilStatus']}</td>";
+                    echo "</tr>";
+                  }
+                  ?>
                 </table>
 
                 <hr class="my-4">
@@ -2815,7 +2814,7 @@ $checkmarital6 = ($maritalStatus == 'widowWidower') ? 'checked' : '';
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Are you a member of an Indigenous group?</label>
-                        <section type="text" id="indige" class="form-control form-control-alternative"><span id="ip"><?php echo $pers_info[0]['IG'] ?></span> - <span id="ip2">Kankaey/Igorot</span></section>
+                        <section type="text" id="indige" class="form-control form-control-alternative"><span id="ip"><?php echo $pers_info[0]['IG'] ?></span> - <span id="ip2"><?php echo $pers_info[0]['specificIG'] ?></span></section>
                         <!-- If yes, specify ilagay mo nalang beside yes example (Yes-Tas anong indigenous group belong) -->
                         <!-- <br>
                           <section type="text" id="s_name" class="form-control form-control-alternative">Yes</section> -->
@@ -2911,51 +2910,51 @@ $checkmarital6 = ($maritalStatus == 'widowWidower') ? 'checked' : '';
             <div class="form-group focused">
 
               <label>1. The three words that describe me are - </label>
-              <span id="MAM_ans1"><?php echo $oth_info[0]['first']?>, </span>
-              <span id="MAM_ans2"><?php echo $oth_info[0]['second']?>, </span>
-              <span id="MAM_ans3"><?php echo $oth_info[0]['third']?>.</span>
+              <span id="MAM_ans1"><?php echo $oth_info[0]['first'] ?>, </span>
+              <span id="MAM_ans2"><?php echo $oth_info[0]['second'] ?>, </span>
+              <span id="MAM_ans3"><?php echo $oth_info[0]['third'] ?>.</span>
 
 
               <br>
 
               <label>2. My father is </label>
-              <label id="MAM_fat"><?php echo $oth_info[0]['Fis']?>.</label>
+              <label id="MAM_fat"><?php echo $oth_info[0]['Fis'] ?>.</label>
 
 
               <br>
               <label>3. My mother is </label>
-              <label id="MAM_mom"><?php echo $oth_info[0]['Mis']?>.</label>
+              <label id="MAM_mom"><?php echo $oth_info[0]['Mis'] ?>.</label>
 
 
               <br>
               <label>4. The sibling (kapatid) I am closest to is my </label>
-              <label id="MAM_sib_ans">answer</label>
+              <label id="MAM_sib_ans"><?php echo $oth_info[0]['kapatid'] ?></label>
               <label id="MAM_sib_bec">because</label>
-              <label id="MAM_sib_ans2">answer.</label>
+              <label id="MAM_sib_ans2"><?php echo $oth_info[0]['kap_res'] ?>.</label>
 
               <br>
               <label>5. When I think about my family I feel </label>
-              <label id="MAM_think"><?php echo $oth_info[0]['abtFam']?>.</label>
+              <label id="MAM_think"><?php echo $oth_info[0]['abtFam'] ?>.</label>
 
               <br>
               <label>6. When I was a child, I </label>
-              <label id="MAM_child"><?php echo $oth_info[0]['whenChild']?>.</label>
+              <label id="MAM_child"><?php echo $oth_info[0]['whenChild'] ?>.</label>
 
               <br>
               <label>7. In school, my teachers are </label>
-              <label id="MAM_school"><?php echo $oth_info[0]['teachAre']?>.</label>
+              <label id="MAM_school"><?php echo $oth_info[0]['teachAre'] ?>.</label>
 
               <br>
               <label>8. My friends don't know that </label>
-              <label id="MAM_dunno"><?php echo $oth_info[0]['friendsDuno']?>.</label>
+              <label id="MAM_dunno"><?php echo $oth_info[0]['friendsDuno'] ?>.</label>
 
               <br>
               <label>9. When I think about the future, I</label>
-              <label id="MAM_future"><?php echo $oth_info[0]['future']?>.</label>
+              <label id="MAM_future"><?php echo $oth_info[0]['future'] ?>.</label>
 
               <br>
               <label>10. My greatest goal is </label>
-              <label id="MAM_goal"><?php echo $oth_info[0]['goal']?>.</label>
+              <label id="MAM_goal"><?php echo $oth_info[0]['goal'] ?>.</label>
 
             </div>
 
