@@ -738,7 +738,7 @@ if (isset($_POST['otherSchool'])) {
 
                             <label class="container1">
                                 Others:
-                                <input type="checkbox" id="otherCheckbox" name='src[]' onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
+                                <input type="checkbox" id="otherCheckbox" name='src[]' value="Others" onclick="toggleSpecifyBox('otherCheckbox', 'specifyBoxOther')">
                                 <span class="checkmark"></span>
                             </label>
 
@@ -802,11 +802,11 @@ if (isset($_POST['otherSchool'])) {
                                 <input type="text" id="Fis" name="Fis">
                             </p>
                             <p>3. My mother is
-                                <input type="text">
+                                <input type="text" id="Mis" name="Mis">
                             </p>
                             <p>4. The sibling (kapatid) I am closest to is my
-                                <input type="text" id="Mis" name="Mis">
-                                because<input type="text">
+                                <input type="text" id='kapatid' name='kapatid'>
+                                because<input type="text" id='kap_res' name='kap_res'>
                             </p>
                             <p>5. When I think about my family I feel
                                 <input type="text" id="abtFam" name="abtFam">

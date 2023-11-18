@@ -16,6 +16,25 @@ $_SESSION['transact_type'] = 'ca'; //asign value to transact_type
   <title>Feedback Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
+
+   <!-- Bootstrap CSS and JS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- jQuery UI and Bootstrap Datepicker -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- DataTables CSS and JS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- Font Awesome and Remix Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <style>
 
@@ -348,87 +367,55 @@ select:focus {
 <div class="date-range-container" id="dates">
   <div class="date-input">
     <label for="Date">Date:</label>
-    <input type="date" id="Date" name="Date" required>
+    <div class="input-group date form-group" id="datepicker">
+            <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days"  style="width: 50%;" autocomplete="off"/>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
+        </div>
   </div>
 </div>
 
 
-
-  
-    <input type="radio" id="health" name="concern" value="health">
-   Health-related concerns
-   <br>
- 
- 
-
-
-
-
-    <input type="radio" id="personal" name="concern" value="personal">
-    Personal Concerns
+<div id="COA">
+    <input type="radio" id="health" name="concern" value="health"> Health-related concerns
     <br>
- 
 
- 
-    <input type="radio" id="socio-cultural" name="concern" value="socio-cultural">
- Socio-Cultural Concerns
- <br>
- 
-
-
-
-    <input type="radio" id="behavioral" name="concern" value="behavioral">
-Behavioral
-<br>
- 
-
- 
-    <input type="radio" id="filial" name="concern" value="filial">
-    Filial Responsibilities
+    <input type="radio" id="personal" name="concern" value="personal"> Personal Concerns
     <br>
- 
-    <input type="radio" id="environmentalRadio" name="concern" value="environmental" onclick="showSpecify('environmentalSpecify')"> Environmental
-  <br>
 
-    <input type="radio" id="environmentalRadio" name="concern" value="environmental" onclick="showSpecify('environmentalSpecify')"> Environmental
-  <br>
+    <input type="radio" id="socio-cultural" name="concern" value="socio-cultural"> Socio-Cultural Concerns
+    <br>
 
+    <input type="radio" id="behavioral" name="concern" value="behavioral"> Behavioral
+    <br>
 
-  <input type="radio" id="otherRadio" name="concern" value="other" onclick="showSpecify('otherSpecify')"> Official co/extra-curricular activity:
-  <br>
-  Specify: <input type="text" id="environmentalSpecify" class="hidden" name="specify">
-  <input type="text" id="otherSpecify" class="hidden" name="specify">
+    <input type="radio" id="filial" name="concern" value="filial"> Filial Responsibilities
+    <br>
 
-  <br>
-  <input type="radio" id="otherRadio" name="concern" value="other" onclick="showSpecify('otherSpecify')"> Others
-  <br>
-  Specify: <input type="text" id="environmentalSpecify" class="hidden" name="specify">
-  <input type="text" id="otherSpecify" class="hidden" name="specify">
+    <input type="radio" id="environmentalRadio" name="concern" value="environmental"> Environmental
+    <br>
 
+    <input type="radio" id="officialActivityRadio" name="concern" value="officialActivity" > Official co/extra-curricular activity:
+    <br>
+    Specify: <input type="text" id="officialActivitySpecify" class="hidden" name="specify" style="width: 100%;">
+    <br>
 
+    <input type="radio" id="otherRadio" name="concern" value="others" > Others
+    <br>
+    Specify: <input type="text" id="otherSpecify" class="hidden" name="specify" style="width: 100%;">
+</div>
   <div class="form1" id="rem">
-          <label for="remark">Remarks:</label><br>
-          <input type="text"id="remark" name="remark">
+          <label for="remark">Reason:</label><br>
+          <input type="text"id="remark" name="remark"  style="width: 100%;">
 
 
         </div>
-
- 
-
-
-
-
-
-
-
-
-        
+  
        
 <p></p>
 <br>
-
       <label for="fileUpload">Upload Required Files</label>
-          <input type="file" id="fileUpload" name="fileUpload[]">
+      <input type="file" id="fileUpload" name="fileUpload[]" required>
+
   <br>
   <br>
           <br>
@@ -454,18 +441,119 @@ Behavioral
   <script>
       var LA = $("#dates");
     var AO = $("#rem");
+    var COA = $('#COA');
+    var selectedConcern;
+    
+    $(".hidden").hide();
     LA.hide();
     AO.hide();
+    COA.hide();
+
+    function validateForm() {
+        var fileInput = document.getElementById('fileUpload');
+
+        if (fileInput.files.length === 0) {
+            alert('Please select a file');
+            return false; // Prevent form submission
+        }
+
+        // Your additional validation logic can go here if needed
+
+        return true; // Allow form submission
+    }
+
+    function logSelectedConcern() {
+        var radioButtons = document.getElementsByName("concern");
+       
+    
+      
+        for (var i = 0; i < radioButtons.length; i++) {
+          if (radioButtons[i].checked) {
+            selectedConcern = radioButtons[i].value;
+            console.log("Selected concern: " + selectedConcern);
+
+            if (selectedConcern == "officialActivity"){
+              $("#officialActivitySpecify").show();
+              $("#otherSpecify").hide();
+              $("#otherSpecify").val("");
+
+            }else if (selectedConcern == "others"){
+              $("#otherSpecify").show();
+              $("#officialActivitySpecify").hide();
+              $("#officialActivitySpecify").val("");
+       
+            }
+            else{
+              $(".hidden").hide();
+              $("#officialActivitySpecify").val("");
+              $("#otherSpecify").val("");
+            }
+            return;
+          }
+        }
+
+        // If no radio button is checked
+        console.log("No concern selected");
+      }
+      
+      // Attach the function to the change event of the radio buttons
+      var radioButtons = document.getElementsByName("concern");
+      for (var i = 0; i < radioButtons.length; i++) {
+        radioButtons[i].addEventListener("change", logSelectedConcern);
+      }
+
     $("#refer").change(function() {
-      if ($(this).val() == "Absent" || $(this).val() == "Tardy") {
+      
+      var dateInput = document.getElementById('Date');
+      var remInput = document.getElementById('remark');
+
+      if ($(this).val() == "Absent") {
         LA.show();
+        COA.show();
         AO.hide();
+        $("#remark").val("");
+        dateInput.setAttribute('required', 'required');
+        remInput.removeAttribute('required');
+      }
+      else if ($(this).val() == "Tardy") {
+        LA.show();
+        COA.hide();
+        AO.hide();
+        selectedConcern = "";
+        $("#officialActivitySpecify").val("");
+        $("#otherSpecify").val("");
+        $("#remark").val("");
+        dateInput.setAttribute('required', 'required');
+        remInput.removeAttribute('required');
+        var radioButtons = document.getElementsByName('concern');
+
+        for (var i = 0; i < radioButtons.length; i++) {
+            radioButtons[i].checked = false;}
+        
+            var textInputs = document.getElementsByName('specify');
+
+        for (var i = 0; i < textInputs.length; i++) {
+            textInputs[i].value = '';
+        }
+
+
       } else if ($(this).val() == "Academic Deficiency/ies") {
         LA.hide();
+        COA.hide();
         AO.show();
+        $("#officialActivitySpecify").val("");
+        $("#otherSpecify").val("");
+        $("#Date").val("");
+        dateInput.removeAttribute('required');
+        remInput.setAttribute('required', 'required');
       } else {
         LA.hide();
+        COA.hide();
         AO.hide();
+        $("#remark").val("");
+        $("#officialActivitySpecify").val("");
+        $("#otherSpecify").val("");
+        $("#Date").val("");
       }
     });
 
@@ -482,18 +570,38 @@ Behavioral
   <script>
 $("#form_transact").on("submit", function (event) {
     event.preventDefault();
-
+    
     var formData = new FormData(this);
     var date = document.getElementById("Date").value;
-  
+    var oth = selectedConcern;
+    var ECspecifics = $("#officialActivitySpecify").val();
+    var OTHspecifics = $("#otherSpecify").val(); 
+    var specifics;
+
+    if (ECspecifics !== undefined && ECspecifics !== null && ECspecifics.trim() !== "") {
+                    // The variable 'rem' has a non-empty value
+                    console.log("Variable 'rem' has a non-empty value:", ECspecifics);
+                  specifics = ECspecifics
+                } else if (OTHspecifics !== undefined && OTHspecifics !== null && OTHspecifics.trim() !== ""){
+                    // The variable 'rem' is either undefined, null, or an empty string
+                    console.log("Variable 'rem' has a non-empty value:", OTHspecifics);
+                  specifics = OTHspecifics
+                }
+                else{
+                  specifics = "";
+                }
 
     var student_id = <?php echo $_SESSION['session_id'] ?>;
     var transact_type = "AT";
     var selectedReasons = $("#refer").val();
-
+    var remarks = $("#remark").val();
+    console.log("Specs", specifics);
     formData.append('date', date);
     formData.append('transact_type', transact_type);
     formData.append('selectedReasons', selectedReasons);
+    formData.append('COA', oth);
+    formData.append('specs', specifics);
+    formData.append('rem', remarks);
     var files = document.getElementById('fileUpload').files;
 
     // Loop through the selected files to determine their types
@@ -542,23 +650,25 @@ $("#form_transact").on("submit", function (event) {
     });
   }
 });
+$(document).ready(function() {
 
+  $('#datepicker').datepicker({
+        startDate: new Date(2000, 0, 1), // Update this to an earlier date
+        multidate: true,
+        format: "dd/mm/yyyy",
+
+        // Remove or adjust the following line if needed
+        // datesDisabled: ['31/08/2017'],
+        language: 'en'
+    }).on('changeDate', function(e) {
+        // `e` here contains the extra attributes
+        $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
+    });
+});
   </script>
 
 <script>
-    function showSpecify(specifyId) {
-      var specifyInput = document.getElementById(specifyId);
-      var otherSpecifyInput = document.getElementById('otherSpecify');
-      
-      if (specifyInput) {
-        specifyInput.classList.remove('hidden');
-      }
 
-      // Hide other Specify input if it's not the selected radio button
-      if (specifyId !== 'otherSpecify' && otherSpecifyInput) {
-        otherSpecifyInput.classList.add('hidden');
-      }
-    }
   </script>
 </body>
 </html>

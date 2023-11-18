@@ -568,7 +568,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <label for="idno">ID Number</label>
                             <input type="text" name='idno' id="idno" required>
                         </div>
-                         <div class="input-field">
+                        <div class="input-field">
                             <label for='course'>Course</label>
                             <select name='course' id="cs">
                                 <option disabled selected>Select Course</option>
@@ -611,7 +611,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 
                         <div class="input-field">
                             <label>Year Level</label>
-                            <select  id="cs" name='year_level'>
+                            <select id="cs" name='year_level'>
                                 <option disabled selected>Select</option>
                                 <option value='1'>1st</option>
                                 <option value='2'>2nd</option>
@@ -820,141 +820,129 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             </div>
                         </div>
 
-                        <div style="width: 100%;">
-                            <p><b><i>List the names of your siblings (brothers & sisters)
-                                        including yourself, arranged from the eldest to the youngest.</i></b></p>
-                            <br>
-                            <label for="total_number"><b>Your total number: </b></label>
-                            <select id="total_number" name="total_number" onchange="createTable()">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
-                            <br><br>
-                            <table id="siblingsTable" name='siblings' class="responsive-table">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Last Name</th>
-                                        <th>First Name</th>
-                                        <th>Middle Name</th>
-                                        <th>Age</th>
-                                        <th>Highest Educational Attainment</th>
-                                        <th>Civil Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                <div style="width: 100%;">
+                    <p><b><i>List the names of your siblings (brothers & sisters)
+                                including yourself, arranged from the eldest to the youngest.</i></b></p>
+                    <br>
+                    <label for="total_number"><b>Your total number: </b></label>
+                    <select id="total_number" name="total_number" onchange="createTable()">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <br><br>
+                    <table id="siblingsTable" name='siblings' class="responsive-table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Middle Name</th>
+                                <th>Age</th>
+                                <th>Highest Educational Attainment</th>
+                                <th>Civil Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                                </tbody>
-                            </table>
-                        </div>
-                       
-
-                        <button class="nextBtn" id="next" type="submit" onclick="goToPage2()">
-                            <span class="btnText">Next</span>
-                            <i class="uil uil-navigator"></i>
-                        </button>
-
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
-            </div> 
-        </form>
+
+
+                <button class="nextBtn" id="next" type="submit" onclick="getTableValues()">
+                    <span class="btnText">Next</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+
+            </div>
+    </div>
+    </div>
+    </form>
 
     </div>
     <script>
-        var  insertStatements;
+        var insertStatements;
         let siblingsData = [];
 
-function createTable() {
-    var totalNumber = document.getElementById("total_number").value;
-    var table = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0];
-    table.innerHTML = ""; // Clear existing rows
-    siblingsData = []; // Clear the array before populating it again
+        function createTable() {
+            var totalNumber = parseInt(document.getElementById("total_number").value);
 
-    for (var i = 0; i < totalNumber; i++) {
-        var row = table.insertRow(i);
-        var noCell = row.insertCell(0);
-        var lnameCell = row.insertCell(1);
-        var fnameCell = row.insertCell(2);
-        var mnameCell = row.insertCell(3);
-        var ageCell = row.insertCell(4);
-        var educCell = row.insertCell(5);
-        var civilCell = row.insertCell(6);
+            var table = document.getElementById("siblingsTable");
+            var current_row = table.rows.length - 1;
+            if (current_row < totalNumber) {
 
-        noCell.innerHTML = "" + (i + 1);
-        lnameCell.innerHTML = '<input type="text" id="lname" name="lname[]">';
-        fnameCell.innerHTML = '<input type="text" id="fname" name="fname[]">';
-        mnameCell.innerHTML = '<input type="text" id="mname" name="mname[]">';
-        ageCell.innerHTML = '<input type="text" id="age" name="age[]">';
-        educCell.innerHTML = '<input type="text" id="education" name="education[]">';
-        civilCell.innerHTML = '<input type="text" id="civil" name="civil[]">';
+                table.getElementsByTagName("tbody")[0].innerHTML = "";
+                // table.innerHTML = ""; // Clear existing rows
+                siblingsData = []; // Clear the array before populating it again
 
-        // Store initial empty values in the siblingsData array
-        siblingsData.push({
-            lastName: "",
-            firstName: "",
-            middleName: "",
-            age: "",
-            education: "",
-            civilStatus: ""
-        });
-    }
-}
+                for (var i = current_row; i < totalNumber; i++) {
+                    var row = table.insertRow(i + 1); // Start from 1 to leave space for the header row
+                    var names = ['sib_number[]', 'sib_lname[]', 'sib_fname[]', 'sib_mname[]', 'sib_age[]', 'sib_educ_attainment[]', 'sib_civil_status[]'];
+                    for (var j = 0; j < 7; j++) {
+                        var cell = row.insertCell(j);
+                        var input = document.createElement("input");
+                        input.type = "text";
+                        input.name = names[j];
+                        cell.appendChild(input);
+                    }
+                }
 
-document.getElementById('next').addEventListener('click', function() {
-    collectDataFromTable();
-    sendDataToServer(siblingsData);
-});
-
-function collectDataFromTable() {
-    var tableRows = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-    siblingsData = Array.from(tableRows).map(row => {
-        const inputs = row.querySelectorAll('input');
-        return {
-            lastName: inputs[0].value,
-            firstName: inputs[1].value,
-            middleName: inputs[2].value,
-            age: inputs[3].value,
-            education: inputs[4].value,
-            civilStatus: inputs[5].value
-        };
-    });
-}
-// data of sibling immediatley save to datbase
-//ayosin mo nlanag if pede maisabay sa iba na mag post
-//uses different backend
-//try mo nalnag connect sa user register if pwede
-function sendDataToServer(data) {
-    // Use AJAX to send siblingsData to the server
-    $.ajax({
-        url: '../../backend/sibling.php',
-        type: 'POST',
-        data: { siblingsData: data },
-        success: function(response) {
-            console.log(response); // Log the response from the server
-        },
-        error: function(error) {
-            console.log(error); // Log any errors that occur
+            } else {
+                var remove_row = current_row - totalNumber;
+                while (remove_row > 0) {
+                    table.deleteRow(table.rows.length - 1);
+                    remove_row--;
+                }
+            }
         }
-    });
-}
-    function goToPage2() {
-        // Redirect to the next page
-        // Store insertStatements in sessionStorage
-        // sessionStorage.setItem('insertStatements', JSON.stringify(insertStatements));
 
-        // window.location.href = "page2.php";
-    }
-</script>
+        function getTableValues() {
+            var table = document.getElementById('siblingsTable');
+            siblingsData = [];
+
+            for (var i = 1; i < table.rows.length; i++) {
+                var rowData = {};
+                for (var j = 0; j < table.rows[i].cells.length; j++) {
+                    var cell = table.rows[i].cells[j];
+                    var input = cell.querySelector("input");
+                    rowData[input.name] = input.value;
+
+                }
+                siblingsData.push(rowData);
+            }
+            $.ajax({
+                type: 'POST',
+                url: 'page2.php',
+                data: {
+                    siblings: siblingsData
+                }, // replace 'myData' with the key you want to use
+                success: function(response) {
+                    console.log('Data saved successfully.');
+                },
+                error: function(error) {
+                    console.error('Error saving data:', error);
+                }
+            });
+        }
+    </script>
+    <!-- <script>
+        function goToPage2() {
+            document.getElementById('next').addEventListener('click', function() {
+                getTableValues();
+            });
+
+        }
+    </script> -->
 
     <script>
         function showParentsInput() {
@@ -985,28 +973,6 @@ function sendDataToServer(data) {
             });
         }
     </script>
-    <!-- <script>
-        const form = document.querySelector("form");
-        const nextBtn = form.querySelector(".nextBtn");
-        const backBtn = form.querySelector(".backBtn");
-        const allInput = form.querySelectorAll(".first input");
-        nextBtn.addEventListener("click", () => {
-            let inputFilled = false;
-            allInput.forEach(input => {
-                if (input.value.trim() !== "") {
-                    inputFilled = true;
-                }
-            });
-            if (inputFilled) {
-                form.classList.add('secActive');
-            } else {
-                alert("Please fill in all required fields.");
-            }
-        });
-        backBtn.addEventListener("click", () => {
-            form.classList.remove('secActive');
-        });
-    </script> -->
     <script>
         // Add a click event listener to the button
         document.getElementById("total_number").addEventListener("click", function() {

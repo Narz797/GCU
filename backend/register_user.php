@@ -8,6 +8,18 @@ if (isset($_SESSION['origin'])) {
 
     if ($origin === 'Student_Register') {
 
+        if(isset($_POST['indigenousInfo'])){
+            $_SESSION['indigenousInfo'] = $_POST['indigenousInfo'];
+        }
+
+        if(isset($_POST['specificScholar'])){
+            $_SESSION['specificScholar'] = $_POST['specificScholar'];
+        }
+
+        if(isset($_POST['specificOther'])){
+            $_SESSION['specificOther'] = $_POST['specificOther'];
+        }
+
         //register for student in here
         if (isset($_POST['membership'])) {
             $_SESSION['membership'] = $_POST['membership'];
@@ -47,6 +59,12 @@ if (isset($_SESSION['origin'])) {
         }
         if (isset($_POST['Mis'])) {
             $_SESSION['Mis'] = $_POST['Mis'];
+        }
+        if (isset($_POST['kapatid'])) {
+            $_SESSION['kapatid'] = $_POST['kapatid'];
+        }
+        if (isset($_POST['kap_res'])) {
+            $_SESSION['kap_res'] = $_POST['kap_res'];
         }
         if (isset($_POST['abtFam'])) {
             $_SESSION['abtFam'] = $_POST['abtFam'];
@@ -116,26 +134,28 @@ if (isset($_SESSION['origin'])) {
         } else {
             echo "Error uploading files.";
         }
-        if (isset($_SESSION['siblings'])) {
-            $siblingsData = json_decode($_SESSION['siblings'], true);
-
+        if (isset($_SESSION['sib_lname']) && isset($_SESSION['sib_fname'])
+            && isset($_SESSION['sib_mname']) && isset($_SESSION['sib_age']) && isset($_SESSION['sib_educ_attainment'])
+            && isset($_SESSION['sib_civil_status'])
+        ) {
+            $sibling_count = $_SESSION['total_number'];
             // Assuming siblings data structure, loop through and construct SQL queries
-            $stmtSibling = $pdo->prepare("INSERT INTO siblings (Student_id, Last_name, First_name, Middle_name, Age, High_edu, Civil_status) 
+            $stmtSibling = $pdo->prepare("INSERT INTO siblings (studentId, lastName, firstName, middleName, age, highEdu, civilStatus) 
                 VALUES (:studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
 
-            foreach ($siblingsData as $sibling) {
-                $stmtSibling->bindParam(':studentId', $sibling['student_id']);
-                $stmtSibling->bindParam(':lastName', $sibling['Last_name']);
-                $stmtSibling->bindParam(':firstName', $sibling['First_name']);
-                $stmtSibling->bindParam(':middleName', $sibling['Middle_name']);
-                $stmtSibling->bindParam(':age', $sibling['Age']);
-                $stmtSibling->bindParam(':highEdu', $sibling['High_edu']);
-                $stmtSibling->bindParam(':civilStatus', $sibling['Civil_status']);
+            for($sibling_count;$sibling_count>0;$sibling_count--) {
+                $stmtSibling->bindParam(':studentId', $_SESSION['idno']);
+                $stmtSibling->bindParam(':lastName', $_SESSION['sib_lname'][$sibling_count - 1]);
+                $stmtSibling->bindParam(':firstName', $_SESSION['sib_fname'][$sibling_count - 1]);
+                $stmtSibling->bindParam(':middleName', $_SESSION['sib_mname'][$sibling_count - 1]);
+                $stmtSibling->bindParam(':age', $_SESSION['sib_age'][$sibling_count - 1]);
+                $stmtSibling->bindParam(':highEdu', $_SESSION['sib_educ_attainment'][$sibling_count - 1]);
+                $stmtSibling->bindParam(':civilStatus', $_SESSION['sib_civil_status'][$sibling_count - 1]);
 
                 $stmtSibling->execute();
+
             }
         }
-        var_dump($_SESSION);
 
         $query1 = "SELECT * FROM `student_user` WHERE `stud_user_id` = ?";
         $stmt = $pdo->prepare($query1);
@@ -154,13 +174,13 @@ if (isset($_SESSION['origin'])) {
             `stud_user_id`, `course`, `Year_level`, `last_name`,`first_name`,
             `middle_name`, `Contact_number`, `year_enrolled`, `Section`, `Civil_status`, 
             `gender`, `birth_date`, `Birth_place`, `Nationality`, `Languages_and_dialects`,
-            `Address`, `email`,`IG`,`PWD`,`Student_parent`,`Marital_status_of_parents`, `username`,
+            `Address`, `email`,`IG`,`specificIG`,`PWD`,`Student_parent`,`Marital_status_of_parents`, `username`,
             `password`) 
             VALUES (?,?,?,?,?,
             ?,?,?,?,?,
             ?,?,?,?,?,
             ?,?,?,?,?,
-            ?,?,?)";
+            ?,?,?,?)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(1, $_SESSION['idno']);
                 $stmt->bindParam(2, $_SESSION['course']);
@@ -180,11 +200,12 @@ if (isset($_SESSION['origin'])) {
                 $stmt->bindParam(16, $_SESSION['address']);
                 $stmt->bindParam(17, $_SESSION['email']);
                 $stmt->bindParam(18, $_SESSION['membership']);
-                $stmt->bindParam(19, $_SESSION['pwd']);
-                $stmt->bindParam(20, $_SESSION['studpar']);
-                $stmt->bindParam(21, $_SESSION['maritalStatus']);
-                $stmt->bindParam(22, $_SESSION['eu']);
-                $stmt->bindParam(23, $hashedPassword);
+                $stmt->bindParam(19,$_SESSION['indigenousInfo']);
+                $stmt->bindParam(20, $_SESSION['pwd']);
+                $stmt->bindParam(21, $_SESSION['studpar']);
+                $stmt->bindParam(22, $_SESSION['maritalStatus']);
+                $stmt->bindParam(23, $_SESSION['eu']);
+                $stmt->bindParam(24, $hashedPassword);
 
                 $sql1 = "INSERT INTO `elementary_school`(`stud_user_id`,`school_name`,`year`,`awards`) VALUES (?,?,?,?)";
                 $stmt1 = $pdo->prepare($sql1);
@@ -260,21 +281,23 @@ if (isset($_SESSION['origin'])) {
                     $stmt8->execute();
                 }
 
-                $sql6 = "INSERT INTO `other_info`(`stud_user_id`,`source`,`first`,`second`,`third`,`Fis`,`Mis`,`abtFam`,`whenChild`,`teachAre`,`friendsDuno`,`future`,`goal`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                $sql6 = "INSERT INTO `other_info`(`stud_user_id`,`source`,`specific_scholar`,`specific_other`,`first`,`second`,`third`,`Fis`,`Mis`,`abtFam`,`whenChild`,`teachAre`,`friendsDuno`,`future`,`goal`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 $stmt6 = $pdo->prepare($sql6);
                 $stmt6->bindParam(1, $_SESSION['idno']);
                 $stmt6->bindParam(2, $_SESSION['src']);
-                $stmt6->bindParam(3, $_SESSION['first']);
-                $stmt6->bindParam(4, $_SESSION['second']);
-                $stmt6->bindParam(5, $_SESSION['third']);
-                $stmt6->bindParam(6, $_SESSION['Fis']);
-                $stmt6->bindParam(7, $_SESSION['Mis']);
-                $stmt6->bindParam(8, $_SESSION['abtFam']);
-                $stmt6->bindParam(9, $_SESSION['whenChild']);
-                $stmt6->bindParam(10, $_SESSION['teachAre']);
-                $stmt6->bindParam(11, $_SESSION['friendsDunno']);
-                $stmt6->bindParam(12, $_SESSION['future']);
-                $stmt6->bindParam(13, $_SESSION['goal']);
+                $stmt6->bindParam(3, $_SESSION['kapatid']);
+                $stmt6->bindParam(4, $_SESSION['kap_res']);
+                $stmt6->bindParam(5, $_SESSION['first']);
+                $stmt6->bindParam(6, $_SESSION['second']);
+                $stmt6->bindParam(7, $_SESSION['third']);
+                $stmt6->bindParam(8, $_SESSION['Fis']);
+                $stmt6->bindParam(9, $_SESSION['Mis']);
+                $stmt6->bindParam(10, $_SESSION['abtFam']);
+                $stmt6->bindParam(11, $_SESSION['whenChild']);
+                $stmt6->bindParam(12, $_SESSION['teachAre']);
+                $stmt6->bindParam(13, $_SESSION['friendsDunno']);
+                $stmt6->bindParam(14, $_SESSION['future']);
+                $stmt6->bindParam(15, $_SESSION['goal']);
 
                 // $sql7 = "INSERT INTO `photos`(`stud_user_id`,`signature`,`sign_type`, `id_picture`, `image_type`) VALUES (?,?,?,?,?)";
                 // $stmt7 = $pdo->prepare($sql7);
@@ -288,68 +311,77 @@ if (isset($_SESSION['origin'])) {
 
                 if ($stmt->execute() && $stmt1->execute() && $stmt2->execute() && $stmt3->execute() && $stmt6->execute()) {
                     echo "Registered Successfully";
-                    header('Location: ../Student_Side/student-login');
+                    // header('Location: ../Student_Side/student-login');
                 } else {
                     echo "Registration failed";
                     header('Location: ../Student_Side/Stud_registration/page3.php');
                 }
             }
         }
-    
-}  elseif ($origin === 'Teacher_Register') {
-    if (
-        isset($_POST['idNumber'], $_POST['firstname'], $_POST['lastname'], $_POST['middlename'],
-        $_POST['cn'], $_POST['college'], $_POST['gender'], $_POST['stat'], $_POST['email'], $_POST['password'])
-    ) {
-        $idnumber = $_POST['idNumber'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $middlename = $_POST['middlename'];
-        $gender = $_POST['gender'];
-        $college = $_POST['college'];
-        $cn = $_POST['cn'];
-        $stat = $_POST['stat'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+    } elseif ($origin === 'Teacher_Register') {
+        if (
+            isset(
+                $_POST['idNumber'],
+                $_POST['firstname'],
+                $_POST['lastname'],
+                $_POST['middlename'],
+                $_POST['cn'],
+                $_POST['college'],
+                $_POST['gender'],
+                $_POST['stat'],
+                $_POST['email'],
+                $_POST['password']
+            )
+        ) {
+            $idnumber = $_POST['idNumber'];
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $middlename = $_POST['middlename'];
+            $gender = $_POST['gender'];
+            $college = $_POST['college'];
+            $cn = $_POST['cn'];
+            $stat = $_POST['stat'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
 
-        // Use prepared statements with PDO
-        $query = "SELECT * FROM `teachers` WHERE `employee_id` = ?";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(1, $idnumber);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        if (count($result) === 1) {
-            echo "User Already Registered";
-        } else {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `teachers` (`employee_id`, `college`, `gender`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `password`, `civil_status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $pdo->prepare($sql);
+            // Use prepared statements with PDO
+            $query = "SELECT * FROM `teachers` WHERE `employee_id` = ?";
+            $stmt = $pdo->prepare($query);
             $stmt->bindParam(1, $idnumber);
-            $stmt->bindParam(2, $college);
-            $stmt->bindParam(3, $gender);
-            $stmt->bindParam(4, $lastname);
-            $stmt->bindParam(5, $firstname);
-            $stmt->bindParam(6, $middlename);
-            $stmt->bindParam(7, $cn);
-            $stmt->bindParam(8, $email);
-            $stmt->bindParam(9, $hashedPassword);
-            $stmt->bindParam(10, $stat);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            if ($stmt->execute()) {
-                echo "success_teacher";
+            if (count($result) === 1) {
+                echo "User Already Registered";
             } else {
-                echo "Registration failed";
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                $sql = "INSERT INTO `teachers` (`employee_id`, `college`, `gender`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `password`, `civil_status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(1, $idnumber);
+                $stmt->bindParam(2, $college);
+                $stmt->bindParam(3, $gender);
+                $stmt->bindParam(4, $lastname);
+                $stmt->bindParam(5, $firstname);
+                $stmt->bindParam(6, $middlename);
+                $stmt->bindParam(7, $cn);
+                $stmt->bindParam(8, $email);
+                $stmt->bindParam(9, $hashedPassword);
+                $stmt->bindParam(10, $stat);
+
+                if ($stmt->execute()) {
+                    echo "success_teacher";
+                } else {
+                    echo "Registration failed";
+                }
             }
+        } else {
+            echo "Missing data fields.";
         }
-    } else {
-        echo "Missing data fields.";
+
+        // Close the database connection
+        // $conn->close();
+
     }
-
-    // Close the database connection
-    // $conn->close();
-
-}
 }
 ob_end_flush();
 $pdo = null; // Close the database connection

@@ -132,6 +132,27 @@ session_start();
                   </div>
                 </div>
                 </div>
+                <div>
+                  <h2 class="title" id="DAT"> Dates Absent/Tardy:</h2>
+                  <!-- <p class="card-description refer">Counseling</p>
+                  <p class="card-description refer">Academic Deficiency/ies</p>
+                  <p class="card-description refer">Absent on October 5 - 8, 2025</p>
+                  <p class="card-description refer">Tardy on October 5, 2025</p> -->
+                  <p class="card-description refer" id="dates">Counseling</p>
+                  
+                  <br>
+                  <h2 class="title" id="cause">Couse/s of absence:</h2>
+                  <h3 id="COA"><b>COA</b></h3>
+                  <p class="card-description refer" id="specs">Counseling</p>
+                </div>
+                <div>
+                  <h2 class="title" id="TR">Remarks</h2>
+                  <!-- <p class="card-description refer">Counseling</p>
+                  <p class="card-description refer">Academic Deficiency/ies</p>
+                  <p class="card-description refer">Absent on October 5 - 8, 2025</p>
+                  <p class="card-description refer">Tardy on October 5, 2025</p> -->
+                  <p class="card-description refer" id="rem">Remarks</p>
+                </div>
                 <div class="action">
                  <a href="form.php"><button class="yes" onclick="status_update('Excused')">Excused</button></a>
                  <a href="form.php"><button class="no" onclick="status_update('Unexcused')">Unexcused</button></a>
@@ -151,6 +172,7 @@ session_start();
     var date;
     var rsn;
     var ext;
+
         function logout() {
     window.location.href = '../../home?logout=true';
 }
@@ -158,16 +180,49 @@ function archive() {
     window.location.href = '../subpage/archive.php';
         }
 
-        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, reason) {
+        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, reason, coa, specs, rem, AOT) {
 
-$('#id_no').text(id);//
-$('#name').text(fname+ ' '+ lname);//
-$('#ys').text(course+ ' '+year_level);//
-$('#gender').text(gender);//
-$('#cn').text(cn);//
-$('#pgname').text(pgname);//
-$('#pgn').text(pgn);//
-$('#reason').text(reason);//
+                $('#id_no').text(id);//
+                $('#name').text(fname+ ' '+ lname);//
+                $('#ys').text(course+ ' '+year_level);//
+                $('#gender').text(gender);//
+                $('#cn').text(cn);//
+                $('#pgname').text(pgname);//
+                $('#pgn').text(pgn);//
+                $('#reason').text(reason);//
+                $('#dates').text(AOT);
+                $('#COA').text(coa);
+                $('#specs').text(specs);
+                $('#rem').text(rem);
+
+
+                            // Function to convert date strings to Date objects with format "MM/DD/YYYY"
+            function convertToDate(dateString) {
+                var parts = dateString.split('/');
+                return new Date(parts[2], parts[1] - 1, parts[0]);
+            } 
+ 
+                // Split the date_AT string at every comma
+                var dateArray = AOT.split(',');
+
+                // Convert the date strings to Date objects
+                var dateObjects = dateArray.map(convertToDate);
+
+                // Format the dates with month names
+                var formattedDates = dateObjects.map(dateObject =>
+                    dateObject.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    })
+                );
+
+                // Join the formatted dates with <br> tags
+                var formattedDateText = formattedDates.join('<br>');
+
+                // Set the HTML content of the element with id 'dates'
+                $('#dates').html(formattedDateText);
+
 
 
 }
@@ -210,11 +265,51 @@ if (data.length > 0) {
     rsn = studentData.reason;
     ext =studentData.file_extension;
     var att1 = studentData.attachment1;
+    var coa = studentData.COA;
+    var specs = studentData.specifics;
+    var rem = studentData.remarks;
+    var AOT = studentData.date_of_AbsentOrTardy;
     console.log(fname);
-    updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, reason);
+    updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, reason, coa, specs, rem, AOT);
 
     // Display the blob data as images
     displayBlobFiles(studentData); // Pass the image data and an element ID
+
+    if (rem !== undefined && rem !== null && rem.trim() !== "") {
+                    // The variable 'rem' has a non-empty value
+                    console.log("Variable 'rem' has a non-empty value:", rem);
+
+                } else {
+                    // The variable 'rem' is either undefined, null, or an empty string
+                    console.log("Variable 'rem' is either undefined, null, or an empty string.");
+                    $('#TR').hide();
+                }
+                if (AOT !== undefined && AOT !== null && AOT.trim() !== "") {
+                    // The variable 'rem' has a non-empty value
+                    console.log("Variable 'AOT' has a non-empty value:", AOT);
+                } else {
+                    // The variable 'rem' is either undefined, null, or an empty string
+                    console.log("Variable 'AOT' is either undefined, null, or an empty string.");
+                    $('#DAT').hide();
+                    $('#dates').hide();
+                }
+                if (specs !== undefined && AOT !== null && specs.trim() !== "") {
+                    // The variable 'rem' has a non-empty value
+                    console.log("Variable 'Specs' has a non-empty value:", specs);
+                } else {
+                    // The variable 'rem' is either undefined, null, or an empty string
+                    console.log("Variable 'Specs' is either undefined, null, or an empty string.");
+                    $('#specs').hide();
+                  
+                }  if (coa !== undefined && AOT !== null && coa.trim() !== "") {
+                    // The variable 'rem' has a non-empty value
+                    console.log("Variable 'coa' has a non-empty value:", coa);
+                } else {
+                    // The variable 'rem' is either undefined, null, or an empty string
+                    console.log("Variable 'coa' is either undefined, null, or an empty string.");
+                    $('#cause').hide();
+                  
+                }
   
 } else {
     // Handle the case when no results are found
@@ -294,6 +389,7 @@ function displayBlobFiles(studentData) {
         }
     }
 }
+                
 
 
 }
