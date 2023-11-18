@@ -62,7 +62,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
     }
 
     body {
-        min-height: 100vh;
+        height: auto;
         display: flex;
         align-items: center;
         justify-content: center;

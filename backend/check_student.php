@@ -119,7 +119,18 @@ if (
 
     } else {
         echo "Added";
-       
+        $tid=$_SESSION['session_id'];
+        $sid = $_POST['sid'];
+        $fname = $_POST['fname'];
+        $mname = $_POST['mname'];
+        $lname = $_POST['lname'];
+        $yrlvl = $_POST['year_level'];
+        $gender = $_POST['gender'];
+        $course = $_POST['course'];
+        $cn = $_POST['cn'];
+        $rem = $_POST['rem'];
+        $date = $_POST['datee']; 
+        $transact ='referral';
         $RUR = 'Registered';
         $sid = $_POST['sid'];
         // $refer = $_POST['refer'];
@@ -128,6 +139,8 @@ if (
 
         $sql_1 = 'INSERT INTO transact(student_id, transact_type, teacher_id, date_created, status) VALUES (:student_id, :transact_type, :tid,  :date_created, :status)';
         $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `remarks`, `Dates_for_AbsentTardy`,  `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :sidd, :reasons, :rem, :date, :refer, :tid, :RUR)';
+        $sql_3 = 'INSERT INTO `tstable`(`student_id`, `teacher_id`,  `transact_id`, `email`, `first_name`, `middle_name`, `last_name`, `course`, `year_level`, `gender`, `contact_number`, `reason`, `date`,  `refer`, `status`) VALUES (:sid, :tid, :transact_id, :email, :fname, :mname, :lname, :course, :yrlvl, :gender, :cn, :reasons, :date, :tname, :status)';
+            
         try {
             $code = $pdo->prepare($sql_1);
             $code->bindParam(':student_id', $id);
@@ -151,6 +164,23 @@ if (
         $code->bindParam(':RUR', $RUR);
         $code->execute();
     }
+    $code = $pdo->prepare($sql_3);
+    $code->bindParam(':sid', $sid);
+    $code->bindParam(':tid', $tid);
+    $code->bindParam(':transact_id', $transact_id);
+    $code->bindParam(':email', $Temail);
+    $code->bindParam(':fname', $fname);
+    $code->bindParam(':mname', $mname);
+    $code->bindParam(':lname', $lname);
+    $code->bindParam(':course', $course);
+    $code->bindParam(':yrlvl', $yrlvl);
+    $code->bindParam(':gender', $gender); 
+    $code->bindParam(':cn', $cn);
+    $code->bindParam(':reasons', $reasons);
+    $code->bindParam(':date', $dateCreated);
+    $code->bindParam(':tname', $tname);
+    $code->bindParam(':status', $status); // Make sure $status is defined and has a value
+    $code->execute();
     
             echo "Data inserted successfully";
         } catch (PDOException $e) {
