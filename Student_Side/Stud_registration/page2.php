@@ -738,7 +738,7 @@ if (isset($_POST['total_number'])) {
                 </div>
                 <div class="input-field1">
                     <label for="awards">Awards Received:</label>
-                    <input style="height: 150px; vertical-align: top;" type="text" id="awards" name="senawards">
+                    <input type="text" id="awards" name="senawards">
                 </div>
             </div>
             <br>
@@ -758,7 +758,7 @@ if (isset($_POST['total_number'])) {
                 </div>
                 <div class="input-field1">
                     <label for="awards">Awards Received:</label>
-                    <input style="height: 150px; vertical-align: top;" type="text" id="awards" name="junawards" >
+                    <input  type="text" id="awards" name="junawards" >
                 </div>
             </div>
             <br>
@@ -778,7 +778,7 @@ if (isset($_POST['total_number'])) {
                 </div>
                 <div class="input-field1">
                     <label for="awards">Awards Received:</label>
-                    <input style="height: 150px; vertical-align: top;" type="text" id="awards" name="elemawards">
+                    <input  type="text" id="awards" name="elemawards">
                 </div>
             </div>
             <br>
@@ -843,14 +843,35 @@ if (isset($_POST['total_number'])) {
             //             });
             //         }
 
+    // function goToPage1() {
+    //     window.location.href = "page1.php";
+    // }
+
+    // function goToPage3() {
+    //     window.location.href = "page3.php";
+    // }
+</script>
+
+<script>
     function goToPage1() {
         window.location.href = "page1.php";
     }
 
     function goToPage3() {
+        // Check if there are empty inputs before redirecting
+        var inputs = document.querySelectorAll('input');
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value.trim() === "") {
+                alert("Please fill in all the fields before proceeding to page3.php");
+                return; // Stop the function if an empty input is found
+            }
+        }
+
+        // If no empty inputs, redirect to page3.php
         window.location.href = "page3.php";
     }
 </script>
+
 
 <script>
     const otherSchoolCheckbox = document.getElementById("otherSchoolCheckbox");

@@ -636,6 +636,30 @@ if (isset($_POST['otherSchool'])) {
         border: 2px solid #000;
         /* Outline color */
     }
+
+    .file-input-container {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input {
+            position: absolute;
+            font-size: 100px;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+
+        .file-label {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 </style>
 
 <body>
@@ -834,15 +858,15 @@ if (isset($_POST['otherSchool'])) {
                         <div class="fields">
                             <div class="input-field">
                                 <label>Username</label>
-                                <input type="text" id="eu" name="eu">
+                                <input type="text" id="eu" name="eu" required>
                             </div>
                             <div class="input-field">
                                 <label>Password</label>
-                                <input type="text" id="pass" name="pass">
+                                <input type="text" id="pass" name="pass" required>
                             </div>
                             <div class="input-field">
                                 <label>Confirm Password</label>
-                                <input type="text" id="conpass" name="conpass">
+                                <input type="text" id="conpass" name="conpass" required>
                             </div>
                         </div>
 
@@ -875,10 +899,21 @@ if (isset($_POST['otherSchool'])) {
                         </label> -->
 
                         <h2>Upload Signature</h2>
-                        <input type="file" name="sign" accept="image/*" >
+                        <br>
+                        <!-- <input type="file" name="sign" accept="image/*" required> -->
+                        <div class="file-input-container">
+                            <label for="file" class="file-label">Choose File</label>
+                            <input type="file" name="sign" id="file" class="file-input" accept="image/*" required>
+                        </div>
 
+                        <!-- <h2>Upload ID</h2>
+                        <input type="file" name="image" accept="image/*" required> -->
                         <h2>Upload ID</h2>
-                        <input type="file" name="image" accept="image/*">
+                        
+                            <div class="file-input-container">
+                                <label for="image" class="file-label">Choose File</label>
+                                <input type="file" name="image" id="image" class="file-input" accept="image/*" required>
+                            </div>
 
                         <br><br>
 
@@ -900,11 +935,33 @@ if (isset($_POST['otherSchool'])) {
     </div>
 
 
-    <script>
+    <!-- <script>
         function goToPage2() {
             window.location.href = "page2.php";
         }
-    </script>
+    </script> -->
+    <!-- <script>
+    function goToPage2() {
+      
+        var requiredFields = ['field1', 'field2', 'field3'];
+
+       
+        for (var i = 0; i < requiredFields.length; i++) {
+            var field = document.getElementById(requiredFields[i]);
+            if (field.value.trim() === '') {
+                alert('Please fill out all required fields before proceeding to page2.php');
+                proceed = false;
+                break;
+            }
+        }
+
+       
+        if (proceed) {
+            window.location.href = 'page2.php';
+        }
+    }
+</script> -->
+
 
 
     <script>
