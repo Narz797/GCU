@@ -148,6 +148,8 @@ echo json_encode($data);
     student_user.ParentGuardianName,
     student_user.Relation,
     referral.reason,
+    referral.remarks,
+    referral.Dates_for_AbsentTardy,
     referral.referred,
     teachers.email AS Temail,
     teachers.first_name AS Tfname,
@@ -167,7 +169,7 @@ WHERE
     AND transact.transact_id = :tid 
     AND referral.teacher_id = :teachid
 
-UNION
+    UNION
 
 SELECT
     tstable.student_id AS stud_user_id,
@@ -184,7 +186,9 @@ SELECT
     NULL AS ParentGuardianName,
     NULL AS Relation,
     referral.reason,
-    tstable.refer as referred,
+    referral.remarks,
+    referral.Dates_for_AbsentTardy,
+    referral.referred,
     tstable.email AS Temail,
     teachers.first_name AS Tfname,
     teachers.last_name AS Tlname,
@@ -195,6 +199,7 @@ INNER JOIN
     referral ON tstable.transact_id = referral.transact_id
 INNER JOIN
     teachers ON tstable.teacher_id = teachers.employee_id
+
     WHERE
     tstable.transact_id = :tid;
 

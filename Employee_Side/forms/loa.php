@@ -147,7 +147,7 @@ session_start();
                 </div>
                 <div class="action">
                  <a href="#divOne"><button class="yes" onclick="status_update('done')">Accept</button></a>
-                <button class="no" onclick="status_update('pending')">Reconsider</button>
+                <button class="no" onclick="status_update('reconsider')">Reconsider</button>
                  </div>
             </div>
         </div>
