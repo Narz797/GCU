@@ -2959,11 +2959,6 @@ $checkmarital6 = ($maritalStatus == 'widowWidower') ? 'checked' : '';
 
             </div>
 
-
-
-
-
-
             </form>
           </div>
         </div>
