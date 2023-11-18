@@ -59,7 +59,7 @@ if ($type == 'readmission') {
     INNER JOIN
     courses ON student_user.course = courses.Acronym
     WHERE
-    ca.reason = 'Absent' OR ca.reason = 'Tardy';";
+    ca.reason = 'Absent' OR ca.reason = 'Tardy'OR ca.reason = 'Academic Deficiency/ies';";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
@@ -93,33 +93,6 @@ INNER JOIN
     INNER JOIN
     transact ON tstable.transact_id = transact.transact_id
 
-    
-UNION ALL
-SELECT
-    student_user.stud_user_id,
-    transact.transact_id,
-    student_user.last_name,
-    student_user.first_name,
-    student_user.Year_level,
-    student_user.course,
-    courses.Colleges,
-    student_user.Contact_number,
-    student_user.ParentGuardianNumber,
-    student_user.gender,
-    referral.referred,
-    transact.status,
-    transact.transact_type,
-    transact.date_created,
-    referral.teacher_id,
-    referral.reg
-FROM
-    student_user
-INNER JOIN
-    transact ON student_user.stud_user_id = transact.student_id
-INNER JOIN
-    courses ON student_user.course = courses.Acronym
-INNER JOIN
-    referral ON transact.transact_id = referral.transact_id
 WHERE
     transact.transact_type = 'referral';
 ";
