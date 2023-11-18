@@ -8,6 +8,10 @@ if (isset($_SESSION['origin'])) {
 
     if ($origin === 'Student_Register') {
 
+        if(isset($_POST['indigenousInfo'])){
+            $_SESSION['indigenousInfo'] = $_POST['indigenousInfo'];
+        }
+
         if(isset($_POST['specificScholar'])){
             $_SESSION['specificScholar'] = $_POST['specificScholar'];
         }
@@ -105,13 +109,13 @@ if (isset($_SESSION['origin'])) {
             // Save the signature file
             $signContent = file_get_contents($_FILES['sign']['tmp_name']);
             $signType = $_FILES['sign']['type'];
-            $signFileName = "uploads/" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['sign']['name'], PATHINFO_EXTENSION);
+            $signFileName = "uploads/sign_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['sign']['name'], PATHINFO_EXTENSION);
             file_put_contents($signFileName, $signContent);
 
             // Save the ID picture file
             $imageContent = file_get_contents($_FILES['image']['tmp_name']);
             $imageType = $_FILES['image']['type'];
-            $imageFileName = "uploads/" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $imageFileName = "uploads/id_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
             file_put_contents($imageFileName, $imageContent);
 
             // Save file paths to the database
@@ -170,13 +174,13 @@ if (isset($_SESSION['origin'])) {
             `stud_user_id`, `course`, `Year_level`, `last_name`,`first_name`,
             `middle_name`, `Contact_number`, `year_enrolled`, `Section`, `Civil_status`, 
             `gender`, `birth_date`, `Birth_place`, `Nationality`, `Languages_and_dialects`,
-            `Address`, `email`,`IG`,`PWD`,`Student_parent`,`Marital_status_of_parents`, `username`,
+            `Address`, `email`,`IG`,`specificIG`,`PWD`,`Student_parent`,`Marital_status_of_parents`, `username`,
             `password`) 
             VALUES (?,?,?,?,?,
             ?,?,?,?,?,
             ?,?,?,?,?,
             ?,?,?,?,?,
-            ?,?,?)";
+            ?,?,?,?)";
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(1, $_SESSION['idno']);
                 $stmt->bindParam(2, $_SESSION['course']);
@@ -196,11 +200,12 @@ if (isset($_SESSION['origin'])) {
                 $stmt->bindParam(16, $_SESSION['address']);
                 $stmt->bindParam(17, $_SESSION['email']);
                 $stmt->bindParam(18, $_SESSION['membership']);
-                $stmt->bindParam(19, $_SESSION['pwd']);
-                $stmt->bindParam(20, $_SESSION['studpar']);
-                $stmt->bindParam(21, $_SESSION['maritalStatus']);
-                $stmt->bindParam(22, $_SESSION['eu']);
-                $stmt->bindParam(23, $hashedPassword);
+                $stmt->bindParam(19,$_SESSION['indigenousInfo']);
+                $stmt->bindParam(20, $_SESSION['pwd']);
+                $stmt->bindParam(21, $_SESSION['studpar']);
+                $stmt->bindParam(22, $_SESSION['maritalStatus']);
+                $stmt->bindParam(23, $_SESSION['eu']);
+                $stmt->bindParam(24, $hashedPassword);
 
                 $sql1 = "INSERT INTO `elementary_school`(`stud_user_id`,`school_name`,`year`,`awards`) VALUES (?,?,?,?)";
                 $stmt1 = $pdo->prepare($sql1);
