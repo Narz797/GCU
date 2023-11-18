@@ -8,6 +8,14 @@ if (isset($_SESSION['origin'])) {
 
     if ($origin === 'Student_Register') {
 
+        if(isset($_POST['specificScholar'])){
+            $_SESSION['specificScholar'] = $_POST['specificScholar'];
+        }
+
+        if(isset($_POST['specificOther'])){
+            $_SESSION['specificOther'] = $_POST['specificOther'];
+        }
+
         //register for student in here
         if (isset($_POST['membership'])) {
             $_SESSION['membership'] = $_POST['membership'];
@@ -47,6 +55,12 @@ if (isset($_SESSION['origin'])) {
         }
         if (isset($_POST['Mis'])) {
             $_SESSION['Mis'] = $_POST['Mis'];
+        }
+        if (isset($_POST['kapatid'])) {
+            $_SESSION['kapatid'] = $_POST['kapatid'];
+        }
+        if (isset($_POST['kap_res'])) {
+            $_SESSION['kap_res'] = $_POST['kap_res'];
         }
         if (isset($_POST['abtFam'])) {
             $_SESSION['abtFam'] = $_POST['abtFam'];
@@ -262,21 +276,23 @@ if (isset($_SESSION['origin'])) {
                     $stmt8->execute();
                 }
 
-                $sql6 = "INSERT INTO `other_info`(`stud_user_id`,`source`,`first`,`second`,`third`,`Fis`,`Mis`,`abtFam`,`whenChild`,`teachAre`,`friendsDuno`,`future`,`goal`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                $sql6 = "INSERT INTO `other_info`(`stud_user_id`,`source`,`specific_scholar`,`specific_other`,`first`,`second`,`third`,`Fis`,`Mis`,`abtFam`,`whenChild`,`teachAre`,`friendsDuno`,`future`,`goal`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 $stmt6 = $pdo->prepare($sql6);
                 $stmt6->bindParam(1, $_SESSION['idno']);
                 $stmt6->bindParam(2, $_SESSION['src']);
-                $stmt6->bindParam(3, $_SESSION['first']);
-                $stmt6->bindParam(4, $_SESSION['second']);
-                $stmt6->bindParam(5, $_SESSION['third']);
-                $stmt6->bindParam(6, $_SESSION['Fis']);
-                $stmt6->bindParam(7, $_SESSION['Mis']);
-                $stmt6->bindParam(8, $_SESSION['abtFam']);
-                $stmt6->bindParam(9, $_SESSION['whenChild']);
-                $stmt6->bindParam(10, $_SESSION['teachAre']);
-                $stmt6->bindParam(11, $_SESSION['friendsDunno']);
-                $stmt6->bindParam(12, $_SESSION['future']);
-                $stmt6->bindParam(13, $_SESSION['goal']);
+                $stmt6->bindParam(3, $_SESSION['kapatid']);
+                $stmt6->bindParam(4, $_SESSION['kap_res']);
+                $stmt6->bindParam(5, $_SESSION['first']);
+                $stmt6->bindParam(6, $_SESSION['second']);
+                $stmt6->bindParam(7, $_SESSION['third']);
+                $stmt6->bindParam(8, $_SESSION['Fis']);
+                $stmt6->bindParam(9, $_SESSION['Mis']);
+                $stmt6->bindParam(10, $_SESSION['abtFam']);
+                $stmt6->bindParam(11, $_SESSION['whenChild']);
+                $stmt6->bindParam(12, $_SESSION['teachAre']);
+                $stmt6->bindParam(13, $_SESSION['friendsDunno']);
+                $stmt6->bindParam(14, $_SESSION['future']);
+                $stmt6->bindParam(15, $_SESSION['goal']);
 
                 // $sql7 = "INSERT INTO `photos`(`stud_user_id`,`signature`,`sign_type`, `id_picture`, `image_type`) VALUES (?,?,?,?,?)";
                 // $stmt7 = $pdo->prepare($sql7);
@@ -290,7 +306,7 @@ if (isset($_SESSION['origin'])) {
 
                 if ($stmt->execute() && $stmt1->execute() && $stmt2->execute() && $stmt3->execute() && $stmt6->execute()) {
                     echo "Registered Successfully";
-                    header('Location: ../Student_Side/student-login');
+                    // header('Location: ../Student_Side/student-login');
                 } else {
                     echo "Registration failed";
                     header('Location: ../Student_Side/Stud_registration/page3.php');

@@ -805,8 +805,8 @@ if (isset($_POST['otherSchool'])) {
                                 <input type="text" id="Mis" name="Mis">
                             </p>
                             <p>4. The sibling (kapatid) I am closest to is my
-                                <input type="text" >
-                                because<input type="text">
+                                <input type="text" id='kapatid' name='kapatid'>
+                                because<input type="text" id='kap_res' name='kap_res'>
                             </p>
                             <p>5. When I think about my family I feel
                                 <input type="text" id="abtFam" name="abtFam">
