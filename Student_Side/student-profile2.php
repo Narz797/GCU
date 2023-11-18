@@ -85,7 +85,7 @@ $checkmarital4 = ($maritalStatus == 'singleParent') ? 'checked' : '';
 $checkmarital5 = ($maritalStatus == 'separated') ? 'checked' : '';
 $checkmarital6 = ($maritalStatus == 'widowWidower') ? 'checked' : '';
 
-$siblings = $pdo->prepare("SELECT * FROM `siblings` WHERE  `stud_user_id` = :id");
+$siblings = $pdo->prepare("SELECT * FROM `siblings` WHERE  `studentID` = :id");
 $siblings->bindParam(':id', $id, PDO::PARAM_INT);
 $siblings->execute();
 $siblings = $siblings->fetchAll();
