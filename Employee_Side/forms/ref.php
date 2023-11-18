@@ -137,6 +137,24 @@ session_start();
                   <p class="card-description refer">Tardy on October 5, 2025</p> -->
                   <p class="card-description refer" id="reason">Counseling</p>
                 </div>
+                <br>
+
+                </div>
+                <div>
+                  <h2 class="title" id="DAT">  Dates Absent/Tardy:</h2>
+                  <!-- <p class="card-description refer">Counseling</p>
+                  <p class="card-description refer">Academic Deficiency/ies</p>
+                  <p class="card-description refer">Absent on October 5 - 8, 2025</p>
+                  <p class="card-description refer">Tardy on October 5, 2025</p> -->
+                  <p class="card-description refer" id="dates">Counseling</p>
+                </div>
+                <div>
+                  <h2 class="title" id="TR">Teacher's Remarks</h2>
+                  <!-- <p class="card-description refer">Counseling</p>
+                  <p class="card-description refer">Academic Deficiency/ies</p>
+                  <p class="card-description refer">Absent on October 5 - 8, 2025</p>
+                  <p class="card-description refer">Tardy on October 5, 2025</p> -->
+                  <p class="card-description refer" id="rem">Teacher's Remarks</p>
                 </div>
                 <!-- <div class="action"> -->
 
@@ -188,7 +206,7 @@ function archive() {
 
 
         // Function to update the HTML elements
-        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, referred, Temail, Tfname, Tlname, Tcn) {
+        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, rem, date_AT, referred, Temail, Tfname, Tlname, Tcn) {
 
             $('#id_no').text(id);
             $('#name').text(fname+ ' '+ lname);
@@ -201,7 +219,35 @@ function archive() {
             $('#teach').text(Tfname+ ' '+Tlname);
             $('#Temail').text(Temail);
             $('#Tcn').text(Tcn);
-       
+            $('#rem').text(rem);
+
+            // Function to convert date strings to Date objects with format "MM/DD/YYYY"
+            function convertToDate(dateString) {
+                var parts = dateString.split('/');
+                return new Date(parts[2], parts[1] - 1, parts[0]);
+            } 
+ 
+                // Split the date_AT string at every comma
+                var dateArray = date_AT.split(',');
+
+                // Convert the date strings to Date objects
+                var dateObjects = dateArray.map(convertToDate);
+
+                // Format the dates with month names
+                var formattedDates = dateObjects.map(dateObject =>
+                    dateObject.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    })
+                );
+
+                // Join the formatted dates with <br> tags
+                var formattedDateText = formattedDates.join('<br>');
+
+                // Set the HTML content of the element with id 'dates'
+                $('#dates').html(formattedDateText);
+
 
             }
             function fetchData() {
@@ -229,6 +275,8 @@ function archive() {
                 var pgname = studentData.ParentGuardianName;
                 var relation = studentData.Relation;
                 var reason = studentData.reason;
+                var rem = studentData.remarks;
+                var date_AT = studentData.Dates_for_AbsentTardy;
                 var referred = studentData.referred;
                 var Temail = studentData.Temail;
                 var Tfname = studentData.Tfname;
@@ -236,9 +284,30 @@ function archive() {
                 var Tcn = studentData.Tcn;
 
                 console.log(fname);
-                updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, referred, Temail, Tfname, Tlname, Tcn);
+                updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, rem, date_AT, referred, Temail, Tfname, Tlname, Tcn);
 
-            
+                var rem = studentData.remarks;
+
+                if (rem !== undefined && rem !== null && rem.trim() !== "") {
+                    // The variable 'rem' has a non-empty value
+                    console.log("Variable 'rem' has a non-empty value:", rem);
+
+                } else {
+                    // The variable 'rem' is either undefined, null, or an empty string
+                    console.log("Variable 'rem' is either undefined, null, or an empty string.");
+                    $('#TR').hide();
+                }
+                if (date_AT !== undefined && date_AT !== null && date_AT.trim() !== "") {
+                    // The variable 'rem' has a non-empty value
+                    console.log("Variable 'Date' has a non-empty value:", date_AT);
+                } else {
+                    // The variable 'rem' is either undefined, null, or an empty string
+                    console.log("Variable 'Date' is either undefined, null, or an empty string.");
+                    $('#DAT').hide();
+                    $('#dates').hide();
+                }
+
+                
             } else {
                 // Handle the case when no results are found
                 console.log('No results found');

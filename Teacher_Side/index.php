@@ -17,6 +17,9 @@ $_SESSION['transact_type'] = 'referral';
 <head>
     <meta charset="UTF-8" />
     <title>Welcome, Teacher/s</title>
+    
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
     <!-- Bootstrap CSS and JS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -36,8 +39,6 @@ $_SESSION['transact_type'] = 'referral';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <!-- Your Custom CSS -->
-    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -196,7 +197,7 @@ $_SESSION['transact_type'] = 'referral';
           <th>Year/Level</th>
           <th>Gender</th>
           <th>Reason</th>
-          <th>Date</th>
+          <th>Date Referred</th>
           <th>Status</th>
 
 <!-- I dont know if u need action here

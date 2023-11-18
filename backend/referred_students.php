@@ -43,11 +43,13 @@ NULL AS GP_number,
 tstable.gender,
 tstable.reason,
 tstable.refer,
-tstable.status,
+transact.status,
 tstable.date,
 tstable.transact_id
 FROM
 tstable
+INNER JOIN
+transact ON tstable.transact_id = transact.transact_id
 
 WHERE
 tstable.status != 'done';
