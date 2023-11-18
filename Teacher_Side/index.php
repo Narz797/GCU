@@ -166,7 +166,7 @@ $_SESSION['transact_type'] = 'referral';
           <label for="date">Days absent:</label><br>
           <!-- id = date -->
           <div class="input-group date form-group" id="datepicker">
-            <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days"/>
+            <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days" autocomplete="off"/>
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
         </div>
 
@@ -604,7 +604,7 @@ $('#datepicker').datepicker({
         startDate: new Date(2000, 0, 1), // Update this to an earlier date
         multidate: true,
         format: "dd/mm/yyyy",
-        daysOfWeekHighlighted: "5,6",
+
         // Remove or adjust the following line if needed
         // datesDisabled: ['31/08/2017'],
         language: 'en'

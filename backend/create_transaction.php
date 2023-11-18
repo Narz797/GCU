@@ -145,6 +145,9 @@ if ($transact == 'readmission') {
     $id = $_SESSION['session_id'];
     $reason = $_POST['selectedReasons'];
     $date = $_POST['date'];
+    $COA = $_POST['COA'];
+    $specs = $_POST['specs'];
+    $rem = $_POST['rem'];
     $status = 'pending';
 
     $datetime = new DateTime();
@@ -152,8 +155,8 @@ if ($transact == 'readmission') {
 
     // Assuming 'attachment1' field is a BLOB in your database
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :transact_type, :date_created, :status)';
-    $sql_2 = 'INSERT INTO ca(transact_id, stud_id, Reason, attachment1, file_extension, date_of_AbsentOrTardy, status) 
-            VALUES (:transact_id, :sid, :reasons, :file, :file_extension, :date, :status)';
+    $sql_2 = 'INSERT INTO ca(transact_id, stud_id, Reason, attachment1, file_extension, COA, specifics, remarks, date_of_AbsentOrTardy, status) 
+            VALUES (:transact_id, :sid, :reasons, :file, :file_extension, :coa, :specs, :rem, :date, :status)';
 
     try {
         // Insert initial transaction record
@@ -180,6 +183,9 @@ if ($transact == 'readmission') {
             $code->bindParam(':reasons', $reason);
             $code->bindParam(':file', $fileContent, PDO::PARAM_LOB);
             $code->bindParam(':file_extension', $fileExtension);
+            $code->bindParam(':coa', $COA);
+            $code->bindParam(':specs', $specs);
+            $code->bindParam(':rem', $rem);
             $code->bindParam(':date', $date);
             $code->bindParam(':status', $status);
             $code->execute();

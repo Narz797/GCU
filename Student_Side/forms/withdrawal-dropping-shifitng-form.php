@@ -251,14 +251,14 @@ select:focus {
             <label>Shifting from</label>
             <label for="textfield4">:</label>
             <div class="autocomplete-container">
-                <input type="text" name="textfield4" id="textfield4" onkeyup="showSuggestions('textfield4', 'autocomplete-suggestions1')">
+                <input type="text" name="textfield4" id="textfield4" onkeyup="showSuggestions('textfield4', 'autocomplete-suggestions1')" autocomplete="off">
                 <!-- Create a container to display autocomplete suggestions for the first input -->
                 <div id="autocomplete-suggestions1" class="autocomplete-popup"></div>
             </div>
             <label>to</label>
             <label for="textfield5">:</label>
             <div class="autocomplete-container">
-                <input type="text" name="textfield5" id="textfield5" onkeyup="showSuggestions('textfield5', 'autocomplete-suggestions2')">
+                <input type="text" name="textfield5" id="textfield5" onkeyup="showSuggestions('textfield5', 'autocomplete-suggestions2')" autocomplete="off">
                 <!-- Create a container to display autocomplete suggestions for the second input -->
                 <div id="autocomplete-suggestions2" class="autocomplete-popup"></div>
             </div>

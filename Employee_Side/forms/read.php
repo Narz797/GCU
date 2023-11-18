@@ -156,7 +156,7 @@ session_start();
 <!-- This will be a pop-up button -->
 
                  <a href="#divOne"><button class="yes" onclick="status_update('done')">Accept</button></a>
-                 <a href="#divThree"><button class="no" onclick="status_update('pending')">Reconsider</button></a>
+                 <a href="#divThree"><button class="no" onclick="status_update('reconsider')">Reconsider</button></a>
                  </div>
             </div>
         </div>
