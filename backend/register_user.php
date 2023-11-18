@@ -91,13 +91,13 @@ if (isset($_SESSION['origin'])) {
             // Save the signature file
             $signContent = file_get_contents($_FILES['sign']['tmp_name']);
             $signType = $_FILES['sign']['type'];
-            $signFileName = "uploads/sign_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['sign']['name'], PATHINFO_EXTENSION);
+            $signFileName = "uploads/" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['sign']['name'], PATHINFO_EXTENSION);
             file_put_contents($signFileName, $signContent);
 
             // Save the ID picture file
             $imageContent = file_get_contents($_FILES['image']['tmp_name']);
             $imageType = $_FILES['image']['type'];
-            $imageFileName = "uploads/id_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $imageFileName = "uploads/" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
             file_put_contents($imageFileName, $imageContent);
 
             // Save file paths to the database
@@ -116,26 +116,28 @@ if (isset($_SESSION['origin'])) {
         } else {
             echo "Error uploading files.";
         }
-        if (isset($_SESSION['siblings'])) {
-            $siblingsData = json_decode($_SESSION['siblings'], true);
-
+        if (isset($_SESSION['sib_lname']) && isset($_SESSION['sib_fname'])
+            && isset($_SESSION['sib_mname']) && isset($_SESSION['sib_age']) && isset($_SESSION['sib_educ_attainment'])
+            && isset($_SESSION['sib_civil_status'])
+        ) {
+            $sibling_count = $_SESSION['total_number'];
             // Assuming siblings data structure, loop through and construct SQL queries
-            $stmtSibling = $pdo->prepare("INSERT INTO siblings (Student_id, Last_name, First_name, Middle_name, Age, High_edu, Civil_status) 
+            $stmtSibling = $pdo->prepare("INSERT INTO siblings (studentId, lastName, firstName, middleName, age, highEdu, civilStatus) 
                 VALUES (:studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
 
-            foreach ($siblingsData as $sibling) {
-                $stmtSibling->bindParam(':studentId', $sibling['student_id']);
-                $stmtSibling->bindParam(':lastName', $sibling['Last_name']);
-                $stmtSibling->bindParam(':firstName', $sibling['First_name']);
-                $stmtSibling->bindParam(':middleName', $sibling['Middle_name']);
-                $stmtSibling->bindParam(':age', $sibling['Age']);
-                $stmtSibling->bindParam(':highEdu', $sibling['High_edu']);
-                $stmtSibling->bindParam(':civilStatus', $sibling['Civil_status']);
+            for($sibling_count;$sibling_count>0;$sibling_count--) {
+                $stmtSibling->bindParam(':studentId', $_SESSION['idno']);
+                $stmtSibling->bindParam(':lastName', $_SESSION['sib_lname'][$sibling_count - 1]);
+                $stmtSibling->bindParam(':firstName', $_SESSION['sib_fname'][$sibling_count - 1]);
+                $stmtSibling->bindParam(':middleName', $_SESSION['sib_mname'][$sibling_count - 1]);
+                $stmtSibling->bindParam(':age', $_SESSION['sib_age'][$sibling_count - 1]);
+                $stmtSibling->bindParam(':highEdu', $_SESSION['sib_educ_attainment'][$sibling_count - 1]);
+                $stmtSibling->bindParam(':civilStatus', $_SESSION['sib_civil_status'][$sibling_count - 1]);
 
                 $stmtSibling->execute();
+
             }
         }
-        var_dump($_SESSION);
 
         $query1 = "SELECT * FROM `student_user` WHERE `stud_user_id` = ?";
         $stmt = $pdo->prepare($query1);

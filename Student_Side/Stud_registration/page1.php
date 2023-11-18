@@ -556,7 +556,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
         <header>STUDENT REGISTRATION FORM</header>
         <form action="page2.php" method="POST" id="registrationForm" enctype="multipart/form-data">
             <div class="form first">
-                <!-- <div class="details personal">
+                <div class="details personal">
                     <br>
                     <hr>
                     <hr>
@@ -818,7 +818,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                 </fieldset>
                                 <hr>
                             </div>
-                        </div> -->
+                        </div>
 
                 <div style="width: 100%;">
                     <p><b><i>List the names of your siblings (brothers & sisters)
