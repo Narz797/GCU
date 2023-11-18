@@ -4,6 +4,27 @@
 <?php
 session_start();
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Assuming 'myData' is the key used in the JavaScript AJAX request
+    if (isset($_POST['sib_lname'])) {
+        $_SESSION['sib_lname'] = $_POST['sib_lname'];
+    }
+    if (isset($_POST['sib_fname'])) {
+        $_SESSION['sib_fname'] = $_POST['sib_fname'];
+    }
+    if (isset($_POST['sib_mname'])) {
+        $_SESSION['sib_mname'] = $_POST['sib_mname'];
+    }
+    if (isset($_POST['sib_age'])) {
+        $_SESSION['sib_age'] = $_POST['sib_age'];
+    }
+    if (isset($_POST['sib_educ_attainment'])) {
+        $_SESSION['sib_educ_attainment'] = $_POST['sib_educ_attainment'];
+    }
+    if (isset($_POST['sib_civil_status'])) {
+        $_SESSION['sib_civil_status'] = $_POST['sib_civil_status'];
+    }
+}
 if (isset($_POST['idno'])) {
     $_SESSION['idno'] = $_POST['idno'];
 }
@@ -124,6 +145,7 @@ if (isset($_POST['Gcontact'])) {
 if (isset($_POST['total_number'])) {
     $_SESSION['total_number'] = $_POST['total_number'];
 }
+
 // if (isset($_POST['siblings'])) {
 //     $siblingsDataJSON = $_SESSION['siblings'];
 

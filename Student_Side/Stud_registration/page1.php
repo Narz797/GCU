@@ -859,8 +859,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                 </div>
 
 
-                <button class="nextBtn" id="next" type="button">
-                    <!-- onclick="goToPage2()"> -->
+                <button class="nextBtn" id="next" type="submit" onclick="getTableValues()">
                     <span class="btnText">Next</span>
                     <i class="uil uil-navigator"></i>
                 </button>
@@ -876,62 +875,74 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
         let siblingsData = [];
 
         function createTable() {
-            var totalNumber = document.getElementById("total_number").value;
-            var table = document.getElementById("siblingsTable").getElementsByTagName('tbody')[0];
-            table.innerHTML = ""; // Clear existing rows
-            siblingsData = []; // Clear the array before populating it again
+            var totalNumber = parseInt(document.getElementById("total_number").value);
 
-            for (var i = 0; i < totalNumber; i++) {
-                var row = table.insertRow(i);
-                var noCell = row.insertCell(0);
-                var lnameCell = row.insertCell(1);
-                var fnameCell = row.insertCell(2);
-                var mnameCell = row.insertCell(3);
-                var ageCell = row.insertCell(4);
-                var educCell = row.insertCell(5);
-                var civilCell = row.insertCell(6);
+            var table = document.getElementById("siblingsTable");
+            var current_row = table.rows.length - 1;
+            if (current_row < totalNumber) {
 
-                noCell.innerHTML = "" + (i + 1);
-                lnameCell.innerHTML = '<input type="text" id="lname" name="lname" class="input-cell">';
-                fnameCell.innerHTML = '<input type="text" id="fname" name="fname" class="input-cell">';
-                mnameCell.innerHTML = '<input type="text" id="mname" name="mname" class="input-cell">';
-                ageCell.innerHTML = '<input type="text" id="age" name="age" class="input-cell">';
-                educCell.innerHTML = '<input type="text" id="education" name="education" class="input-cell">';
-                civilCell.innerHTML = '<input type="text" id="civil" name="civil" class="input-cell">';
+                table.getElementsByTagName("tbody")[0].innerHTML = "";
+                // table.innerHTML = ""; // Clear existing rows
+                siblingsData = []; // Clear the array before populating it again
+
+                for (var i = current_row; i < totalNumber; i++) {
+                    var row = table.insertRow(i + 1); // Start from 1 to leave space for the header row
+                    var names = ['sib_number[]', 'sib_lname[]', 'sib_fname[]', 'sib_mname[]', 'sib_age[]', 'sib_educ_attainment[]', 'sib_civil_status[]'];
+                    for (var j = 0; j < 7; j++) {
+                        var cell = row.insertCell(j);
+                        var input = document.createElement("input");
+                        input.type = "text";
+                        input.name = names[j];
+                        cell.appendChild(input);
+                    }
+                }
+
+            } else {
+                var remove_row = current_row - totalNumber;
+                while (remove_row > 0) {
+                    table.deleteRow(table.rows.length - 1);
+                    remove_row--;
+                }
             }
         }
 
         function getTableValues() {
             var table = document.getElementById('siblingsTable');
-            var rows = table.getElementsByTagName('tr');
+            siblingsData = [];
 
-            // var data = [];
+            for (var i = 1; i < table.rows.length; i++) {
+                var rowData = {};
+                for (var j = 0; j < table.rows[i].cells.length; j++) {
+                    var cell = table.rows[i].cells[j];
+                    var input = cell.querySelector("input");
+                    rowData[input.name] = input.value;
 
-            for (var i = 1; i < rows.length; i++) { // Start from index 1 to skip the header row
-                var cells = rows[i].getElementsByTagName('tr');
-                console.log(rows[i].innerHTML);
-
-                // var rowData = {
-                //     lname: cells[0].innerHTML(),
-                //     fname: cells[1].innerText,
-                //     mname: cells[2].innerText,
-                //     age: cells[3].innerText,
-                //     education: cells[4].innerText,
-                //     civil: cells[5].innerText,
-                // };
-
-                // data.push(rowData);
+                }
+                siblingsData.push(rowData);
             }
-            console.log(data);
+            $.ajax({
+                type: 'POST',
+                url: 'page2.php',
+                data: {
+                    siblings: siblingsData
+                }, // replace 'myData' with the key you want to use
+                success: function(response) {
+                    console.log('Data saved successfully.');
+                },
+                error: function(error) {
+                    console.error('Error saving data:', error);
+                }
+            });
+        }
+    </script>
+    <!-- <script>
+        function goToPage2() {
+            document.getElementById('next').addEventListener('click', function() {
+                getTableValues();
+            });
 
         }
-        document.getElementById('next').addEventListener('click', function() {
-            getTableValues();
-        });
-    </script>
-    <script>
-        // Add event listeners to each input cell
-    </script>
+    </script> -->
 
     <script>
         function showParentsInput() {
