@@ -103,7 +103,11 @@ echo json_encode($data);
         ca.date_of_AbsentOrTardy,
         ca.reason,
         ca.attachment1,
-        ca.file_extension
+        ca.file_extension,
+        ca.COA, 
+        ca.specifics,
+        ca.remarks,
+        ca.date_of_AbsentOrTardy
         FROM student_user
         INNER JOIN transact ON student_user.stud_user_id = transact.student_id 
         INNER JOIN ca ON transact.transact_id = ca.transact_id 

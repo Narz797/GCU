@@ -413,9 +413,9 @@ select:focus {
        
 <p></p>
 <br>
-
       <label for="fileUpload">Upload Required Files</label>
-          <input type="file" id="fileUpload" name="fileUpload[]">
+      <input type="file" id="fileUpload" name="fileUpload[]" required>
+
   <br>
   <br>
           <br>
@@ -449,17 +449,18 @@ select:focus {
     AO.hide();
     COA.hide();
 
-    // function showSpecify(type) {
-    //   $(".hidden").hide(); // Hide all specify inputs initially
-    //     var option1 = document.getElementById("officialActivityRadio");
-    //     var option2 = document.getElementById("otherRadio");
+    function validateForm() {
+        var fileInput = document.getElementById('fileUpload');
 
-    //     if (option1.checked && type === 'officialActivity') {
-    //       $("#officialActivitySpecify").show();
-    //     } else if (option2.checked && type === 'others') {
-    //       $("#otherSpecify").show();
-    //     }
-    // }
+        if (fileInput.files.length === 0) {
+            alert('Please select a file');
+            return false; // Prevent form submission
+        }
+
+        // Your additional validation logic can go here if needed
+
+        return true; // Allow form submission
+    }
 
     function logSelectedConcern() {
         var radioButtons = document.getElementsByName("concern");
@@ -503,20 +504,39 @@ select:focus {
 
     $("#refer").change(function() {
       
+      var dateInput = document.getElementById('Date');
+      var remInput = document.getElementById('remark');
+
       if ($(this).val() == "Absent") {
         LA.show();
         COA.show();
         AO.hide();
         $("#remark").val("");
-        
+        dateInput.setAttribute('required', 'required');
+        remInput.removeAttribute('required');
       }
       else if ($(this).val() == "Tardy") {
         LA.show();
         COA.hide();
         AO.hide();
+        selectedConcern = "";
         $("#officialActivitySpecify").val("");
         $("#otherSpecify").val("");
         $("#remark").val("");
+        dateInput.setAttribute('required', 'required');
+        remInput.removeAttribute('required');
+        var radioButtons = document.getElementsByName('concern');
+
+        for (var i = 0; i < radioButtons.length; i++) {
+            radioButtons[i].checked = false;}
+        
+            var textInputs = document.getElementsByName('specify');
+
+        for (var i = 0; i < textInputs.length; i++) {
+            textInputs[i].value = '';
+        }
+
+
       } else if ($(this).val() == "Academic Deficiency/ies") {
         LA.hide();
         COA.hide();
@@ -524,6 +544,8 @@ select:focus {
         $("#officialActivitySpecify").val("");
         $("#otherSpecify").val("");
         $("#Date").val("");
+        dateInput.removeAttribute('required');
+        remInput.setAttribute('required', 'required');
       } else {
         LA.hide();
         COA.hide();
@@ -564,6 +586,9 @@ $("#form_transact").on("submit", function (event) {
                     // The variable 'rem' is either undefined, null, or an empty string
                     console.log("Variable 'rem' has a non-empty value:", OTHspecifics);
                   specifics = OTHspecifics
+                }
+                else{
+                  specifics = "";
                 }
 
     var student_id = <?php echo $_SESSION['session_id'] ?>;

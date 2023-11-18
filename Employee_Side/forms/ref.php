@@ -141,7 +141,7 @@ session_start();
 
                 </div>
                 <div>
-                  <h2 class="title" id="DAT">  Dates Absent/Tardy:</h2>
+                  <h2 class="title" id="DAT">Dates Absent/Tardy:</h2>
                   <!-- <p class="card-description refer">Counseling</p>
                   <p class="card-description refer">Academic Deficiency/ies</p>
                   <p class="card-description refer">Absent on October 5 - 8, 2025</p>

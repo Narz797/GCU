@@ -163,7 +163,7 @@ if ($transact == 'readmission') {
         $code = $pdo->prepare($sql_1);
         $code->bindParam(':sid', $id);
         $code->bindParam(':transact_type', $reason);
-        $code->bindParam(':date_created', $date);
+        $code->bindParam(':date_created', $dateCreated  );
         $code->bindParam(':status', $status);
         $code->execute();
 
