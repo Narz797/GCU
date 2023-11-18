@@ -63,6 +63,28 @@ if (empty($othschool_info)) {
   echo '<style>#otherschool { display: none; }</style>';
 }
 
+$othinfo = $pdo->prepare("SELECT * FROM `other_info` WHERE  `stud_user_id` = :id");
+$othinfo->bindParam(':id', $id, PDO::PARAM_INT);
+$othinfo->execute();
+$oth_info = $othinfo->fetchAll();
+
+$source = $oth_info[0]['source'];
+
+$checkedOption1 = (in_array('Parents', explode(', ', $source))) ? 'checked' : '';
+$checkedOption2 = (in_array('Self', explode(', ', $source))) ? 'checked' : '';
+$checkedOption3 = (in_array('Relatives', explode(', ', $source))) ? 'checked' : '';
+$checkedOption4 = (in_array('Scholarship', explode(', ', $source))) ? 'checked' :'';
+$checkedOption5 = (in_array('Others', explode(', ', $source))) ? 'checked' :'';
+
+$maritalStatus = $pers_info[0]['Marital_status_of_parents'];
+
+$checkmarital1 = ($maritalStatus == 'married') ? 'checked' : '';
+$checkmarital2 = ($maritalStatus == 'annulled') ? 'checked' : '';
+$checkmarital3 = ($maritalStatus == 'livingTogether') ? 'checked' : '';
+$checkmarital4 = ($maritalStatus == 'singleParent') ? 'checked' : '';
+$checkmarital5 = ($maritalStatus == 'separated') ? 'checked' : '';
+$checkmarital6 = ($maritalStatus == 'widowWidower') ? 'checked' : '';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -2831,27 +2853,27 @@ if (empty($othschool_info)) {
           <!-- Description -->
           <h6 class="heading-small text-muted mb-4">SOURCES OF FINANCIAL SUPPORT</h6>
 
-          <input type="checkbox" id="FS_parent" disabled>
+          <input type="checkbox" id="FS_parent" disabled <?php echo $checkedOption1 ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox1" class="custom-checkbox-label">Parent</label>
           <br>
 
-          <input type="checkbox" id="FS_ss" disabled>
+          <input type="checkbox" id="FS_ss" disabled <?php echo $checkedOption2; ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox2">Self Supporting</label>
           <br>
 
-          <input type="checkbox" id="FS_rg" disabled>
+          <input type="checkbox" id="FS_rg" disabled <?php echo $checkedOption3; ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox3">Relative and/or Guardian</label>
           <br>
 
-          <input type="checkbox" id="FS_sch" disabled>
+          <input type="checkbox" id="FS_sch" disabled <?php echo $checkedOption4; ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox4">Scholarship - <span id="FS_sch2">TDP-TES</span></label>
           <br>
 
-          <input type="checkbox" id="FS_oth" disabled>
+          <input type="checkbox" id="FS_oth" disabled <?php echo $checkedOption5; ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox5">Others - <span id="FS_oth2">achuchuchu</span></label>
 
@@ -2861,34 +2883,26 @@ if (empty($othschool_info)) {
           <h6 class="heading-small text-muted mb-4">MARITAL STATUS OF PARENT</h6>
 
 
-          <input type="checkbox" id="MS_pam" disabled>
+          <input type="checkbox" id="MS_pam" disabled <?php echo $checkmarital1; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Parents are married.</label>
-
-          <input type="checkbox" id="MS_mla" disabled>
-          <label for="checkbox1" class="custom-checkbox-label">>Marriage is legally annulled.</label>
-
-          <input type="checkbox" id="MS_notm" disabled>
+          <br>
+          <input type="checkbox" id="MS_mla" disabled <?php echo $checkmarital2; ?>>
+          <label for="checkbox1" class="custom-checkbox-label">Marriage is legally annulled.</label>
+          <br>
+          <input type="checkbox" id="MS_notm" disabled <?php echo $checkmarital3; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Parents are not married but are living together.</label>
-
-          <input type="checkbox" id="MS_sp" disabled>
+          <br>
+          <input type="checkbox" id="MS_sp" disabled <?php echo $checkmarital4; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Single Parent.</label>
-
-          <input type="checkbox" id="MS_ps" disabled>
+          <br>
+          <input type="checkbox" id="MS_ps" disabled <?php echo $checkmarital5; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Parents are separated (one or both have other partners).</label>
-
-          <input type="checkbox" id="MS_wid" disabled>
+          <br>
+          <input type="checkbox" id="MS_wid" disabled <?php echo $checkmarital6; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Widow/widower.</label>
 
-
-
-
-
-
-
           <!-- </div> -->
           <!-- </div> -->
-
-
 
           <hr class="my-4">
           <!-- Description -->
@@ -2897,20 +2911,20 @@ if (empty($othschool_info)) {
             <div class="form-group focused">
 
               <label>1. The three words that describe me are - </label>
-              <span id="MAM_ans1">answer,</span>
-              <span id="MAM_ans2">answer,</span>
-              <span id="MAM_ans3">answer.</span>
+              <span id="MAM_ans1"><?php echo $oth_info[0]['first']?>, </span>
+              <span id="MAM_ans2"><?php echo $oth_info[0]['second']?>, </span>
+              <span id="MAM_ans3"><?php echo $oth_info[0]['third']?>.</span>
 
 
               <br>
 
               <label>2. My father is </label>
-              <label id="MAM_fat">answer.</label>
+              <label id="MAM_fat"><?php echo $oth_info[0]['Fis']?>.</label>
 
 
               <br>
               <label>3. My mother is </label>
-              <label id="MAM_mom">answer.</label>
+              <label id="MAM_mom"><?php echo $oth_info[0]['Mis']?>.</label>
 
 
               <br>
@@ -2921,27 +2935,27 @@ if (empty($othschool_info)) {
 
               <br>
               <label>5. When I think about my family I feel </label>
-              <label id="MAM_think">answer.</label>
+              <label id="MAM_think"><?php echo $oth_info[0]['abtFam']?>.</label>
 
               <br>
               <label>6. When I was a child, I </label>
-              <label id="MAM_child">answer.</label>
+              <label id="MAM_child"><?php echo $oth_info[0]['whenChild']?>.</label>
 
               <br>
               <label>7. In school, my teachers are </label>
-              <label id="MAM_school">answer.</label>
+              <label id="MAM_school"><?php echo $oth_info[0]['teachAre']?>.</label>
 
               <br>
               <label>8. My friends don't know that </label>
-              <label id="MAM_dunno">answer.</label>
+              <label id="MAM_dunno"><?php echo $oth_info[0]['friendsDuno']?>.</label>
 
               <br>
               <label>9. When I think about the future, I</label>
-              <label id="MAM_future">answer.</label>
+              <label id="MAM_future"><?php echo $oth_info[0]['future']?>.</label>
 
               <br>
               <label>10. My greatest goal is </label>
-              <label id="MAM_goal">answer.</label>
+              <label id="MAM_goal"><?php echo $oth_info[0]['goal']?>.</label>
 
             </div>
 
