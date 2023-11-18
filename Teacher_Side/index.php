@@ -497,9 +497,9 @@ $("#form_transact").on("submit", function (event) {
 
 
 
-   
     // Fetch data using $.ajax
     $.ajax({
+      
         url: '../backend/referred_students.php',
         type: 'GET',
         dataType: 'json',
@@ -543,8 +543,9 @@ $("#form_transact").on("submit", function (event) {
 
     },
     error: function(xhr, status, error) {
-        console.error('Error fetching data:', error);
-    }
+    console.error('Error fetching data:', error);
+    console.log('Server response:', xhr.responseText);
+}
     });
 
 
