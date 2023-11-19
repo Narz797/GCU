@@ -167,7 +167,9 @@ if (isset($_POST['total_number'])) {
     <link rel="stylesheet" href="style.css">
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <title>Responsive Regisration Form </title>
+    <title>Student Regisration Form </title>
+    <link href="../assets/img/GCU_logo.png" rel="icon">
+
 </head>
 <style>
     /* ===== Google Font Import - Poppins ===== */

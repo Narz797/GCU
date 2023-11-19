@@ -118,23 +118,24 @@ if (isset($_SESSION['origin'])) {
             $imageFileName = "uploads/id_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
             file_put_contents($imageFileName, $imageContent);
 
-            // Save file paths to the database
-            $stmtsave = $pdo->prepare("INSERT INTO `photos`(`stud_user_id`, `signature`, `sign_type`, `id_picture`, `image_type`) VALUES (?, ?, ?, ?, ?)");
+            // // Save file paths to the database
+            // $stmtsave = $pdo->prepare("INSERT INTO `photos`(`stud_user_id`, `signature`, `sign_type`, `id_picture`, `image_type`) VALUES (?, ?, ?, ?, ?)");
 
-            // Bind parameters or use bindValue
-            $stmtsave->bindParam(1, $studUserId, PDO::PARAM_INT);
-            $stmtsave->bindParam(2, $signFileName, PDO::PARAM_STR);
-            $stmtsave->bindParam(3, $signType, PDO::PARAM_STR);
-            $stmtsave->bindParam(4, $imageFileName, PDO::PARAM_STR);
-            $stmtsave->bindParam(5, $imageType, PDO::PARAM_STR);
+            // // Bind parameters or use bindValue
+            // $stmtsave->bindParam(1, $studUserId, PDO::PARAM_INT);
+            // $stmtsave->bindParam(2, $signFileName, PDO::PARAM_STR);
+            // $stmtsave->bindParam(3, $signType, PDO::PARAM_STR);
+            // $stmtsave->bindParam(4, $imageFileName, PDO::PARAM_STR);
+            // $stmtsave->bindParam(5, $imageType, PDO::PARAM_STR);
 
-            $stmtsave->execute();
+            // $stmtsave->execute();
 
             // $stmtsave->close();
         } else {
             echo "Error uploading files.";
         }
-        if (isset($_SESSION['sib_lname']) && isset($_SESSION['sib_fname'])
+        if (
+            isset($_SESSION['sib_lname']) && isset($_SESSION['sib_fname'])
             && isset($_SESSION['sib_mname']) && isset($_SESSION['sib_age']) && isset($_SESSION['sib_educ_attainment'])
             && isset($_SESSION['sib_civil_status'])
         ) {
@@ -143,7 +144,7 @@ if (isset($_SESSION['origin'])) {
             $stmtSibling = $pdo->prepare("INSERT INTO siblings (studentId, lastName, firstName, middleName, age, highEdu, civilStatus) 
                 VALUES (:studentId, :lastName, :firstName, :middleName, :age, :highEdu, :civilStatus)");
 
-            for($sibling_count;$sibling_count>0;$sibling_count--) {
+            for ($sibling_count; $sibling_count > 0; $sibling_count--) {
                 $stmtSibling->bindParam(':studentId', $_SESSION['idno']);
                 $stmtSibling->bindParam(':lastName', $_SESSION['sib_lname'][$sibling_count - 1]);
                 $stmtSibling->bindParam(':firstName', $_SESSION['sib_fname'][$sibling_count - 1]);
@@ -153,7 +154,6 @@ if (isset($_SESSION['origin'])) {
                 $stmtSibling->bindParam(':civilStatus', $_SESSION['sib_civil_status'][$sibling_count - 1]);
 
                 $stmtSibling->execute();
-
             }
         }
 
@@ -165,6 +165,7 @@ if (isset($_SESSION['origin'])) {
 
         if (count($result) === 1) {
             echo "User Already Registered";
+            header('Location: ../Student_Side/Stud_registration/page3.php');
         } else {
             if ($_SESSION['pass'] != $_SESSION['conpass']) {
                 echo "The password is not equal to your confirm password. Please check your passwords";
@@ -200,7 +201,7 @@ if (isset($_SESSION['origin'])) {
                 $stmt->bindParam(16, $_SESSION['address']);
                 $stmt->bindParam(17, $_SESSION['email']);
                 $stmt->bindParam(18, $_SESSION['membership']);
-                $stmt->bindParam(19,$_SESSION['indigenousInfo']);
+                $stmt->bindParam(19, $_SESSION['indigenousInfo']);
                 $stmt->bindParam(20, $_SESSION['pwd']);
                 $stmt->bindParam(21, $_SESSION['studpar']);
                 $stmt->bindParam(22, $_SESSION['maritalStatus']);
@@ -382,6 +383,46 @@ if (isset($_SESSION['origin'])) {
 
         // Close the database connection
         // $conn->close();
+
+    } elseif ($origin === 'Employee') {
+        if (isset($_POST['employeeid'])) {
+            $employee_id = $_POST['employeeid'];
+        }
+
+        if (isset($_POST['lname'])) {
+            $employee_lname = $_POST['lname'];
+        }
+
+        if (isset($_POST['fname'])) {
+            $employee_fname = $_POST['fname'];
+        }
+
+        if (isset($_POST['mname'])) {
+            $employee_mname = $_POST['mname'];
+        }
+
+        if (isset($_POST['sex'])) {
+            $employee_sex = $_POST['sex'];
+        }
+
+        if (isset($_POST['email'])) {
+            $employee_email = $_POST['email'];
+        }
+
+        if (isset($_POST['contactnumber'])) {
+            $employee_email = $_POST['contactnumber'];
+        }
+
+        if (isset($_POST['position'])) {
+            $employee_email = $_POST['position'];
+        }
+
+        $stmt = $pdo->prepare("INSERT INTO `admin_user`(`admin_user_id`, `first_name`, 
+        `last_name`, `middle_name`, `gender`, `position`, `date_joined`, `email`, 
+        `username`, `password`) VALUES (?,?,?,?,?,?,?,?,?,?)");
+
+        $joined_date = date("Y/m/d");
+
 
     }
 }

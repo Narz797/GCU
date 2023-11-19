@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Withdrawal/Dropping/Shifting slip</title>
+  <title>Agreement</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
   <style>

@@ -67,7 +67,6 @@ $othinfo = $pdo->prepare("SELECT * FROM `other_info` WHERE  `stud_user_id` = :id
 $othinfo->bindParam(':id', $id, PDO::PARAM_INT);
 $othinfo->execute();
 $oth_info = $othinfo->fetchAll();
-
 $source = $oth_info[0]['source'];
 
 $checkedOption1 = (in_array('Parents', explode(', ', $source))) ? 'checked' : '';
@@ -89,6 +88,7 @@ $siblings = $pdo->prepare("SELECT * FROM `siblings` WHERE  `studentID` = :id");
 $siblings->bindParam(':id', $id, PDO::PARAM_INT);
 $siblings->execute();
 $siblings = $siblings->fetchAll();
+
 
 ?>
 <!DOCTYPE html>
@@ -2889,12 +2889,12 @@ $siblings = $siblings->fetchAll();
 
           <input type="checkbox" id="FS_sch" disabled <?php echo $checkedOption4; ?>>
           <!-- <i class="fa fa-check"></i> -->
-          <label for="checkbox4">Scholarship - <span id="FS_sch2">TDP-TES</span></label>
+          <label for="checkbox4">Scholarship - <span id="FS_sch2"><?php if($oth_info[0]['specific_scholar']){ echo $oth_info[0]['specific_scholar'];} ?></span></label>
           <br>
 
           <input type="checkbox" id="FS_oth" disabled <?php echo $checkedOption5; ?>>
           <!-- <i class="fa fa-check"></i> -->
-          <label for="checkbox5">Others - <span id="FS_oth2">achuchuchu</span></label>
+          <label for="checkbox5">Others - <span id="FS_oth2"><?php if($oth_info[0]['specific_other']){ echo $oth_info[0]['specific_other'];} ?></span></label>
 
 
           <hr class="my-4">

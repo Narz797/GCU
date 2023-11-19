@@ -245,7 +245,7 @@ select:focus {
           <label>Reason/s for withdrawing enrollment/ dropping subject/s / shifting:</label>
           <!-- <label for="textarea">:<br> -->
           </label>
-          <textarea name="textarea" class="textarea" id="reason_explain"></textarea>
+          <textarea name="textarea" class="textarea" id="reason_explain" required ></textarea>
         </p>
         <div class="hidden" id="for-shift">
             <label>Shifting from</label>
