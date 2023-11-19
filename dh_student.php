@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help Page</title>
+    <link href="./assets/img/GCU_logo.png" rel="icon">
+
     <style>
         body {
             font-family: Arial, sans-serif;
