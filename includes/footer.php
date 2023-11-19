@@ -3,6 +3,7 @@
 
 <?php include 'head.php'; ?>
 
+
 <body>
 
   <!-- ======= Footer ======= -->
@@ -14,11 +15,9 @@
           <span id="titlefooter" style="font-size: 2rem;"><b>Guidance and Counseling Unit</b></span>
           <p>Benguet State University</p>
           <div class="social-links d-flex mt-4">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-          </div>
+          <a href="http://www.bsu.edu.ph/?fbclid=IwAR3NT5ZWPZP38V1FsCX9l_r4zXgyjIxg6_AHDofQw43BkBAl-R-_vEaF2eM" class="email"><i class="bi bi-envelope"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61553066382035" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="http://www.bsu.edu.ph/?fbclid=IwAR3NT5ZWPZP38V1FsCX9l_r4zXgyjIxg6_AHDofQw43BkBAl-R-_vEaF2eM" target="_blank" class="website"><i class="bi bi-globe"></i></a>
         </div>
       </div>
     </div>
