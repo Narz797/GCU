@@ -1,3 +1,8 @@
+<?php 
+    // session_start();
+    // $_SESSION['origin'] = 'Employee';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,29 +93,29 @@
      <!-- Section -->
     <section class="table-body">
     <section  id="table">
-    <form method="post" action="#">
+    <form method="post" action="../backend/register_user.php">
         <label for="employeeid">Employee ID Number:</label>
-        <input type="number" name="employeeid" value="" required><br>
+        <input type="number" name="employeeid"  required><br>
         <br>
         <label for="lname">Last Name:</label>
-        <input type="text" name="lname" value="" required>
+        <input type="text" name="lname"  required>
         <label for="fname">First Name:</label>
-        <input type="text" name="fname" value="" required>
+        <input type="text" name="fname"  required>
         <label for="mname">Middle Name:</label>
-        <input type="text" name="mname" value="" required><br>
+        <input type="text" name="mname"  required><br>
         <br>
         <label for="sex">Sex:</label>
-        <select id="gender" name="sex" value="" required>
+        <select id="gender" name="sex"  required>
             <option></option>
             <option>Female</option>
             <option>Male</option>
         <select>
         <label for="email">Email Address:</label>
-        <input type="text" name="email" value="" required>
+        <input type="text" name="email"  required>
         <label for="contactnumber">Contact Number:</label>
-        <input type="number" name="contactnumber" value="" required>
+        <input type="text" name="contactnumber"  required>
         <label for="position">Position:</label>
-        <input type="text" name="position" value="" required><br>
+        <input type="text" name="position"  required><br>
         <br>
         
         <button type="submit" value="Add Employee">Add Employee Account</button>
