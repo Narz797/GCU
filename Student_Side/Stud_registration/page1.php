@@ -17,7 +17,9 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!-- <link rel="stylesheet" href="../assets/css/stud_reg.css"> -->
-    <title>Responsive Regisration Form </title>
+    <link href="../assets/img/GCU_logo.png" rel="icon">
+
+    <title>Student Regisration Form </title>
 </head>
 <style>
     /* ===== Google Font Import - Poppins ===== */

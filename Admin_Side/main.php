@@ -1,7 +1,7 @@
 <?php
 include '../backend/connect_database.php';
 
-$daily=$pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE your_condition;');
+$daily = $pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE your_condition;');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +68,7 @@ $daily=$pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE y
                 <h2 class="title">Welcome back,&nbspAdmin</h2>
             </header>
             <hr>
+
             <div class="card-body">
                 <div class="card-image">
                     <img src="assets/images/sp.jpg" alt="">
@@ -85,8 +86,8 @@ $daily=$pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE y
                 <div class="card-image1">
                     <img src="./assets/images/map.png" alt="">
                 </div>
+
             </div>
-        </div>
     </section>
     <!-- Management-area -->
     <section class="management-area">
@@ -106,6 +107,9 @@ $daily=$pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE y
                     </a>
                     <a href="EmployeeProfiles.php" class="card-body-link">
                         <i class="ri-server-line"></i>Employee Profiles
+                    </a>
+                    <a href="exportimport.php" class="card-body-link">
+                        <i class="ri-server-line"></i>Export/Import of Database
                     </a>
                     <a href="../home?logout=true" class="card-body-link">
                         <i class="ri-user-3-line"></i>Log-Out

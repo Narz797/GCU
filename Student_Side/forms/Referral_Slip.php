@@ -13,7 +13,7 @@ $_SESSION['transact_type'] = 'ca'; //asign value to transact_type
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Feedback Slip</title>
+  <title>Admission Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
 
@@ -160,25 +160,25 @@ input[type="radio"]:checked + span {
       font-size:18px;
     }
 
-    .button {
+    /* .button {
       text-align: center;
     
       
-    }
+    } */
 
-   button {
+   /* button {
       padding: 10px 20px;
       background-color: green;
       color: #fff;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-    }
+    } */
 
 
-    button:hover {
+    /* button:hover {
       background-color: #008080;
-    }
+    } */
 
 
     .button-container {
@@ -188,7 +188,7 @@ input[type="radio"]:checked + span {
       
     }
     .button {
-      margin-right: 10px; /* Adjust the margin to create space between buttons */
+      margin-right: 10px; 
     }
 
 
@@ -320,6 +320,26 @@ select:focus {
       display: none;
     }
 
+    .reminder-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .icon {
+      font-size: 20px;
+      margin-right: 10px;
+      /* margin-right: 20px; */
+    }
+
+    
+    
+
+
+   
+
+
+
+
 
 
   
@@ -401,7 +421,9 @@ select:focus {
 
     <input type="radio" id="otherRadio" name="concern" value="others" > Others
     <br>
+    
     Specify: <input type="text" id="otherSpecify" class="hidden" name="specify" style="width: 100%;">
+    <br>
 </div>
   <div class="form1" id="rem">
           <label for="remark">Reason:</label><br>
@@ -415,6 +437,13 @@ select:focus {
 <br>
       <label for="fileUpload">Upload Required Files</label>
       <input type="file" id="fileUpload" name="fileUpload[]" required>
+      <br>
+   
+      <div class="reminder-container">
+  <i class="fas fa-exclamation-circle icon"></i>
+  <p style="margin-top: 12px; font-size: 12px; font-weight: bold;">Reminder: Zip multiple files before uploading them.</p>
+</div>
+
 
   <br>
   <br>
@@ -424,7 +453,7 @@ select:focus {
           <div class="button">
             <p>
               <!-- Change type from submit to button, and use onclick to handle the back button -->
-              <button type="button" class="btn btn-primary" onclick="window.location.href='../student-home'">Back</button>
+              <button type="button"  class="btn btn-primary" onclick="window.location.href='../student-home'">Back</button>
             </p>
           </div>
          

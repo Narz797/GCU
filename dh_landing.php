@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help Page</title>
+    <link href="./assets/img/GCU_logo.png" rel="icon">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -138,7 +140,7 @@
 
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>If you need help or have any questions, feel free to contact our support team at bsu.edu.com.</p>
+            <p>If you need help or have any questions, feel free to contact our support team at bsuossgcu205@gmail.com / 0907 905 0664 / Guidance & Counseling Unit - Benguet State University (FB PAGE).</p>
         </section>
     </main>
 

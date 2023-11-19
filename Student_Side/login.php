@@ -259,7 +259,7 @@ $_SESSION['origin'] = 'Student';
           <h1>LOGIN FORM</h1>
           <br>
           <div class="txt_field">
-            <input type="text" id="idno" name="idno" required />
+            <input type="text" id="idno"  name="idno" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required />
             <span></span>
             <label>ID Number</label>
           </div>
