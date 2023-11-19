@@ -19,6 +19,20 @@ if ( isset($_POST['Tid'])) { // Change key to "appointment_id"
         } else {
             echo "Event not found or already updated.";
         }
+
+                // Prepare and execute a SQL query to update the 'status' in the 'transact' table.
+        $sql2 = "UPDATE `referral` SET `status` = 'done' WHERE `transact_id` = :tid";
+
+        $stmt = $pdo->prepare($sql2);
+        $stmt->bindParam(':tid', $tID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        // Check if any rows were affected by the update.
+        if ($stmt->rowCount() > 0) {
+            echo "Event updated successfully.";
+        } else {
+            echo "Event not found or already updated.";
+        }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     } finally {

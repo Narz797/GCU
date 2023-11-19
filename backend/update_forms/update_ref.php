@@ -39,7 +39,27 @@ if (isset($_POST['stat']) && isset($_POST['id']) && isset($_POST['tid'])) {
                 echo "An unknown error occurred while processing your request. Please try again later.";
             }
         }
+                // Define your SQL update query to mark the transaction as done
+                $sql2 = "UPDATE `referral` SET `status` = :status WHERE `stud_id` = :id AND `transact_id` = :tid";
 
+                // Prepare and execute the SQL statement
+                $stmt = $pdo->prepare($sql2);
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt->bindParam(':tid', $tid, PDO::PARAM_INT);
+                $stmt->bindParam(':status', $stat, PDO::PARAM_STR); // Use PARAM_STR for remarks
+        
+                if ($stmt->execute()) {
+                    echo "Transaction marked as done successfully.";
+                } else {
+                    $errorInfo = $stmt->errorInfo();
+                
+                    // Check if there is an error message
+                    if (isset($errorInfo[2]) && is_string($errorInfo[2])) {
+                        echo "Error marking the transaction as done: " . $errorInfo[2];
+                    } else {
+                        echo "An unknown error occurred while processing your request. Please try again later.";
+                    }
+                }
         
         
         

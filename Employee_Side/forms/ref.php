@@ -160,7 +160,7 @@ session_start();
 
 <!--This will be pop-up-->
 
-                <a href="#divOne"><button class="yes" onclick="status_update('Recieved')">Received</button></a>
+                <button class="yes" onclick="status_update('Recieved')">Received</button>
                  </div>
             </div>
         </div>
@@ -334,7 +334,7 @@ function archive() {
             },
             success: function (data) {
                 console.log("Remarked:", data);
-                // window.location.href = "../subpage/rs-forms";
+                 window.location.href = "../subpage/rs-forms";
             },
             error: function (xhr, status, error) {
                 console.error("Error marking event as done:", error);
