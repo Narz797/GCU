@@ -566,7 +566,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                     <div class="fields">
                         <div class="input-field">
                             <label for="idno">ID Number</label>
-                            <input type="text" name='idno' id="idno"  oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                            <input type="text" name='idno' id="idno" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                         </div>
                         <div class="input-field">
                             <label for='course'>Course</label>
@@ -638,7 +638,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                         </div>
                         <div class="input-field">
                             <label>Contact Number</label>
-                            <input type="text" id="cn" name="cn" value="09" oninput="formatPhoneNumber(this);"  placeholder="Please enter only numbers." required>
+                            <input type="text" id="cn" name="cn" value="09" oninput="formatPhoneNumber(this);" placeholder="Please enter only numbers." required>
                         </div>
                         <div class="input-field">
                             <label>Email</label>
@@ -646,7 +646,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                         </div>
                         <div class="input-field">
                             <label>Year Enrolled</label>
-                            <input type="text" id="year_enroll" name="year_enroll"  oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                            <input type="text" id="year_enroll" name="year_enroll" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                         </div>
                         <!-- <div class="input-field">
                             <label>Section</label>
@@ -656,7 +656,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <label for="section">Section</label>
                             <input type="text" id="section" name="section" oninput="capitalizeInput()" required>
                         </div>
-                                                <div class="input-field">
+                        <div class="input-field">
                             <label>Civil Status</label>
                             <select required id="civs" name='civil_status'>
                                 <option disabled selected>Select</option>
@@ -735,7 +735,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                         </div>
                                         <div class="input-field">
                                             <label>Age</label>
-                                            <input type="text" id="Fage" name="Fage"  oninput="this.value = this.value.replace(/[^0-9]/g, '');"   required>
+                                            <input type="text" id="Fage" name="Fage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                                         </div>
                                         <div class="input-field">
                                             <label>Occupational</label>
@@ -747,7 +747,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                         </div>
                                         <div class="input-field">
                                             <label>Contact Number</label>
-                                            <input type="text" id="Fcontact" name="Fcontact"  value="09" oninput="formatPhoneNumber(this);" required>
+                                            <input type="text" id="Fcontact" name="Fcontact" value="09" oninput="formatPhoneNumber(this);" required>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -770,7 +770,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                         </div>
                                         <div class="input-field">
                                             <label>Age</label>
-                                            <input type="text" id="Mage" name="Mage"  oninput="this.value = this.value.replace(/[^0-9]/g, '');"   required>
+                                            <input type="text" id="Mage" name="Mage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                                         </div>
                                         <div class="input-field">
                                             <label>Occupational</label>
@@ -782,7 +782,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                         </div>
                                         <div class="input-field">
                                             <label>Contact Number</label>
-                                            <input type="text" id="Mcontact" name="Mcontact" value="09" oninput="formatPhoneNumber(this);"  required>
+                                            <input type="text" id="Mcontact" name="Mcontact" value="09" oninput="formatPhoneNumber(this);" required>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -805,7 +805,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                         </div>
                                         <div class="input-field">
                                             <label>Age</label>
-                                            <input type="text" id="Gage" name="Gage"  oninput="this.value = this.value.replace(/[^0-9]/g, '');"  required>
+                                            <input type="text" id="Gage" name="Gage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                                         </div>
                                         <div class="input-field">
                                             <label>Occupational</label>
@@ -817,7 +817,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                         </div>
                                         <div class="input-field">
                                             <label>Contact Number</label>
-                                            <input type="text" id="Gcontact" name="Gcontact"  value="09" oninput="formatPhoneNumber(this);"  required>
+                                            <input type="text" id="Gcontact" name="Gcontact" value="09" oninput="formatPhoneNumber(this);" required>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -825,163 +825,162 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             </div>
                         </div>
 
-                <div style="width: 100%;">
-                    <p><b><i>List the names of your siblings (brothers & sisters)
-                                including yourself, arranged from the eldest to the youngest.</i></b></p>
-                    <br>
-                    <label for="total_number"><b>Your total number: </b></label>
-                    <select id="total_number" name="total_number" onchange="createTable()">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    <br><br>
-                    <table id="siblingsTable" name='siblings' class="responsive-table">
-                        <thead>
-                            <tr>
-                                <!-- <th>No.</th> -->
-                                <th>Last Name</th>
-                                <th>First Name</th>
-                                <th>Middle Name</th>
-                                <th>Age</th>
-                                <th>Highest Educational Attainment</th>
-                                <th>Civil Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                        <div style="width: 100%;">
+                            <p><b><i>List the names of your siblings (brothers & sisters)
+                                        including yourself, arranged from the eldest to the youngest.</i></b></p>
+                            <br>
+                            <label for="total_number"><b>Your total number: </b></label>
+                            <select id="total_number" name="total_number" onchange="createTable()">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <br><br>
+                            <table id="siblingsTable" name='siblings' class="responsive-table">
+                                <thead>
+                                    <tr>
+                                        <!-- <th>No.</th> -->
+                                        <th>Last Name</th>
+                                        <th>First Name</th>
+                                        <th>Middle Name</th>
+                                        <th>Age</th>
+                                        <th>Highest Educational Attainment</th>
+                                        <th>Civil Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                        </tbody>
-                    </table>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <button class="nextBtn" id="next" type="submit" onclick="getTableValues()">
+                            <span class="btnText">Next</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+
+                    </div>
                 </div>
-
-
-                <button class="nextBtn" id="next" type="submit" onclick="getTableValues()">
-                    <span class="btnText">Next</span>
-                    <i class="uil uil-navigator"></i>
-                </button>
-
             </div>
-    </div>
-    </div>
-    </form>
+        </form>
 
     </div>
 
     <script>
-    function capitalizeInput() {
-        var input = document.getElementById('section');
-        input.value = input.value.toUpperCase();
-    }
-</script>
-<script>
-    var insertStatements;
-    let siblingsData = [];
+        function capitalizeInput() {
+            var input = document.getElementById('section');
+            input.value = input.value.toUpperCase();
+        }
+    </script>
+    <script>
+        var insertStatements;
+        let siblingsData = [];
 
-    function createTable() {
-        var totalNumber = parseInt(document.getElementById("total_number").value);
+        function createTable() {
+            var totalNumber = parseInt(document.getElementById("total_number").value);
 
-        var table = document.getElementById("siblingsTable");
-        var current_row = table.rows.length - 1;
-        if (current_row < totalNumber) {
-            table.getElementsByTagName("tbody")[0].innerHTML = "";
-            siblingsData = [];
+            var table = document.getElementById("siblingsTable");
+            var current_row = table.rows.length - 1;
+            if (current_row < totalNumber) {
+                table.getElementsByTagName("tbody")[0].innerHTML = "";
+                siblingsData = [];
 
-            for (var i = current_row; i < totalNumber; i++) {
-                var row = table.insertRow(i + 1);
-                var names = [
-                    {
-                        name: 'sib_lname[]',
-                        pattern: /^[a-zA-Z]+$/,
-                        // placeholder: 'Last Name'
-                    },
-                    {
-                        name: 'sib_fname[]',
-                        pattern: /^[a-zA-Z]+$/,
-                        // placeholder: 'First Name'
-                    },
-                    {
-                        name: 'sib_mname[]',
-                        pattern: /^[a-zA-Z]+$/,
-                        // placeholder: 'Middle Name'
-                    },
-                    {
-                        name: 'sib_age[]',
-                        pattern: /^[0-9]+$/,
-                        oninput: onlyNumbersInput
-                    },
-                    {
-                        name: 'sib_educ_attainment[]',
-                        options: ['Elementary', 'Highschool', 'College', 'Bachelor\'s Degree', 'Master\'s Degree', 'Doctorate']
-                    },
-                    {
-                        name: 'sib_civil_status[]',
-                        options: ['Single', 'Married', 'Divorced', 'Widowed']
-                    }
-                ];
-
-                for (var j = 0; j < 6; j++) {
-                    var cell = row.insertCell(j);
-                    var input = document.createElement("input");
-
-                    if (names[j].options) {
-                        var select = document.createElement("select");
-                        select.name = names[j].name;
-                        for (var k = 0; k < names[j].options.length; k++) {
-                            var option = document.createElement("option");
-                            option.value = names[j].options[k];
-                            option.text = names[j].options[k];
-                            select.appendChild(option);
+                for (var i = current_row; i < totalNumber; i++) {
+                    var row = table.insertRow(i + 1);
+                    var names = [{
+                            name: 'sib_lname[]',
+                            // pattern: /^[a-zA-Z\s]+$/,
+                            // placeholder: 'Last Name'
+                        },
+                        {
+                            name: 'sib_fname[]',
+                            // pattern: /^[a-zA-Z\s]+$/,
+                            // placeholder: 'First Name'
+                        },
+                        {
+                            name: 'sib_mname[]',
+                            // pattern: /^[a-zA-Z\s]+$/,
+                            // placeholder: 'Middle Name'
+                        },
+                        {
+                            name: 'sib_age[]',
+                            // pattern: /^[0-9]+$/,
+                            // oninput: onlyNumbersInput
+                        },
+                        {
+                            name: 'sib_educ_attainment[]',
+                            options: ['Elementary', 'Highschool', 'College', 'Bachelor\'s Degree', 'Master\'s Degree', 'Doctorate']
+                        },
+                        {
+                            name: 'sib_civil_status[]',
+                            options: ['Single', 'Married', 'Divorced', 'Widowed']
                         }
-                        cell.appendChild(select);
-                    } else {
-                        input.type = "text";
-                        input.name = names[j].name;
-                        input.pattern = names[j].pattern;
-                        input.placeholder = names[j].placeholder;
-                        input.addEventListener("input", names[j].oninput);
-                        cell.appendChild(input);
+                    ];
+
+                    for (var j = 0; j < 6; j++) {
+                        var cell = row.insertCell(j);
+                        var input = document.createElement("input");
+
+                        if (names[j].options) {
+                            var select = document.createElement("select");
+                            select.name = names[j].name;
+                            for (var k = 0; k < names[j].options.length; k++) {
+                                var option = document.createElement("option");
+                                option.value = names[j].options[k];
+                                option.text = names[j].options[k];
+                                select.appendChild(option);
+                            }
+                            cell.appendChild(select);
+                        } else {
+                            input.type = "text";
+                            input.name = names[j].name;
+                            // input.pattern = names[j].pattern;
+                            // input.pattern = /^[a-zA-Z\s]+$/;
+                            // input.addEventListener("input", names[j].oninput);
+                            cell.appendChild(input);
+                        }
                     }
                 }
-            }
-        } else {
-            var remove_row = current_row - totalNumber;
-            while (remove_row > 0) {
-                table.deleteRow(table.rows.length - 1);
-                remove_row--;
+            } else {
+                var remove_row = current_row - totalNumber;
+                while (remove_row > 0) {
+                    table.deleteRow(table.rows.length - 1);
+                    remove_row--;
+                }
             }
         }
-    }
 
-    function onlyNumbersInput() {
-        this.value = this.value.replace(/[^0-9]/g, "");
-    }
-
-    function getTableValues() {
-        var table = document.getElementById('siblingsTable');
-        siblingsData = [];
-
-        for (var i = 1; i < table.rows.length; i++) {
-            var rowData = {};
-            for (var j = 0; j < table.rows[i].cells.length; j++) {
-                var cell = table.rows[i].cells[j];
-                var input = cell.querySelector("input,select");
-                rowData[input.name] = input.value;
-            }
-            siblingsData.push(rowData);
+        function onlyNumbersInput() {
+            this.value = this.value.replace(/[^0-9]/g, "");
         }
 
-        // The rest of your AJAX code
-    }
-</script>
+        function getTableValues() {
+            var table = document.getElementById('siblingsTable');
+            siblingsData = [];
+
+            for (var i = 1; i < table.rows.length; i++) {
+                var rowData = {};
+                for (var j = 0; j < table.rows[i].cells.length; j++) {
+                    var cell = table.rows[i].cells[j];
+                    var input = cell.querySelector("input,select");
+                    rowData[input.name] = input.value;
+                }
+                siblingsData.push(rowData);
+            }
+
+            // The rest of your AJAX code
+        }
+    </script>
 
 
 
@@ -1117,20 +1116,20 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
         }
     </script>
 
-<script>
-    function formatPhoneNumber(input) {
-        // Remove non-numeric characters
-        let phoneNumber = input.value.replace(/[^0-9]/g, '');
+    <script>
+        function formatPhoneNumber(input) {
+            // Remove non-numeric characters
+            let phoneNumber = input.value.replace(/[^0-9]/g, '');
 
-        // Ensure that the number starts with "+63"
-        if (phoneNumber.length >= 2) {
-            phoneNumber = "09" + phoneNumber.slice(2);
+            // Ensure that the number starts with "+63"
+            if (phoneNumber.length >= 2) {
+                phoneNumber = "09" + phoneNumber.slice(2);
+            }
+
+            // Update the input value
+            input.value = phoneNumber;
         }
-
-        // Update the input value
-        input.value = phoneNumber;
-    }
-</script>
+    </script>
 </body>
 
 </html>
