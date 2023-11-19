@@ -1,6 +1,7 @@
 <?php 
 session_start();
   // Check if the session variable is empty
+  include '../backend/log_audit2.php';
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
@@ -10,6 +11,7 @@ session_start();
   }
   // include 'main2.php';
 $id = $_SESSION['session_id'];
+logAudit($id, 'access_teacher', $id .' has accessed the teacher home page');
 $_SESSION['transact_type'] = 'referral';
 ?>
 <!DOCTYPE html>
@@ -330,7 +332,21 @@ $_SESSION['transact_type'] = 'referral';
   </div>          
 </body>
 <script>
+  var tID = "<?php echo $_SESSION['session_id'];?>";
 function logout() {
+  $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: tID,
+              action: 'logged out',
+              details: tID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = '../home?logout=true';
 }
 function search() {
@@ -459,7 +475,21 @@ $("#form_transact").on("submit", function (event) {
         success: function (data) {
           console.log('Success!');
           alert(data);
+          
           window.location.reload();
+          $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: tID,
+              action: 'reffered',
+              details: tID + ' reffered '+sID
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
 
         },
     error: function (xhr, status, error) {
@@ -488,6 +518,19 @@ $("#form_transact").on("submit", function (event) {
         success: function (data) {
           alert(data);
           fetchData()
+          $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: tID,
+              action: 'edit info',
+              details: tID + ' edited their personal info'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
         },
     error: function (xhr, status, error) {
       alert("Error: " + error);
@@ -540,6 +583,8 @@ $("#form_transact").on("submit", function (event) {
          }
          console.log("data",data);
          $('#dynamicTable').DataTable();
+
+
 
     },
     error: function(xhr, status, error) {
@@ -635,6 +680,19 @@ $('#datepicker').datepicker({
             console.log("Remarked:", data);
             document.getElementById("divTwo").style.display = "none";
             window.location.href = "index.php";
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: tID,
+              action: 'done',
+              details: tID + ' removed '+sID +' from table'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);

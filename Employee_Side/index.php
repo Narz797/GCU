@@ -1,5 +1,7 @@
 <?php 
 session_start();
+// Include the log_audit.php file
+include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
@@ -8,6 +10,11 @@ session_start();
     exit; // Make sure to exit the script after a header redirect
   }
 $id = $_SESSION['session_id'];
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_employee', $id .' has accessed the employee home page');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

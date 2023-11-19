@@ -245,7 +245,8 @@ function getAvailability(year, month, date) {
             month: month + 1, // Note that JavaScript months are zero-based
             year: year,
             title: event.event_title,
-            time: `${event.start_time} - ${event.end_time}`,
+            Stime: event.start_time,
+            Etime: event.end_time,
             counselor: event.first_name,
             appointmentId: event.appointment_id,
             transactId: event.transact_id
@@ -272,18 +273,22 @@ function updateEvents(year, month, date, events) {
 
   if (Array.isArray(events) && events.length > 0) {
     events.forEach((event) => {
+      const startTime = convertTime(event.Stime);
+      const endTime = convertTime(event.Etime);
       eventsHTML += `<div class="event" data-appointment-id="${event.appointmentId}" data-transact-id="${event.transactId}">
         <div class="title">
           <i class="fas fa-circle"></i>
-          <h3 class="event-title">${event.title}</h3>
-        </div>
+        
+        
         <div class="event-time">
-        <span class="event-time">Counserlor: ${event.counselor}</span>
+        <h3 class="eventS-time">Counserlor: ${event.counselor}</h3>
+      </div>
       </div>
         <div class="event-time">
-          <span class="event-time">${event.time}</span>
+        <h2 class="eventS-time">${startTime} - ${endTime}</h2>
         </div>
-      </div><br>`;
+      </div><br>
+      `;
     });
   } else {
     eventsHTML = `<div class="no-event">

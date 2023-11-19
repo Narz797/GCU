@@ -1,6 +1,6 @@
 <?php
   session_start();
-
+  include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
@@ -11,7 +11,11 @@
 
   $_SESSION['transact_type']='appointment';//asign value to transact_type/
   $_SESSION['form_type']='appointment';//
-  $eid = $_SESSION['session_id']
+  $eid = $_SESSION['session_id'];
+  $id = $_SESSION['session_id'];
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
   
 ?>
 <!DOCTYPE html>
@@ -145,24 +149,28 @@
             <i class="fas fa-times close"></i>
           </div>
           <div class="add-event-body">
-            <div class="add-event-input">
+            <!-- <div class="add-event-input">
               <input type="text" placeholder="Event Name" class="event-name" />
-            </div>
+            </div> -->
             <!-- <div class="add-event-input">
               <input type="text" placeholder="Student Name" class="event-student-name"/>
             </div> -->
+            <label for="from">From: </label>
             <div class="add-event-input">
               <input
-                type="text"
+                type="time"
                 placeholder="Event Time From: 00:00"
                 class="event-time-from"
+                name="from"
               />
             </div>
+            <label for="to">To: </label>
             <div class="add-event-input">
               <input
-                type="text"
+                type="time"
                 placeholder="Event Time To: 00:00"
                 class="event-time-to"
+                name="to"
               />
             </div>
           </div>
@@ -290,12 +298,39 @@
   var trans_id
 var app_id
 var eid = "<?php echo $eid; ?>";
+var eID = "<?php echo $_SESSION['session_id'];?>";
 console.log(eid);
   var sessionID = <?php echo json_encode($_SESSION['session_id']); ?>;
   function logout() {
+    $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = '../home?logout=true';
 }
 function archive() {
+  $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'archive',
+              details: eID + ' Clicked archive'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = './subpage/archive.php';
         }
 
@@ -346,6 +381,21 @@ function searchTable() { //searches in all column
 
     // Export the workbook to an Excel file
     XLSX.writeFile(workbook, "List of All Requested Appointments.xlsx");
+
+    $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'clicked export',
+              details: eID + 'clicked export apopinment table to excel'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+
 }
 
 $(document).ready(function () {
@@ -468,6 +518,20 @@ $(document).ready(function () {
       success: function (data) {
         console.log("Event marked as done:", data);
         document.getElementById("divOne").style.display = "none";
+        $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'remarked',
+              details: eID + ' remarked appointment' 
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+
       },
       error: function (xhr, status, error) {
         console.error("Error marking event as done:", error);

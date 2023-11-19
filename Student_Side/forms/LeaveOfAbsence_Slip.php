@@ -1,6 +1,7 @@
 <!doctype html>
 <?php 
 session_start();
+include '../../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
@@ -10,6 +11,7 @@ session_start();
   }
 // include 'formstyle.php';
 $_SESSION['transact_type']='leave_of_absence';//asign value to transact_type 
+logAudit($_SESSION['session_id'], 'access_leave_of_absence form', $_SESSION['session_id'] .' has accessed the leave_of_absence page');
 ?>
 <html>
 <head>
@@ -284,7 +286,7 @@ label, span {
     </div>
   </div>
   <script>
-   
+     var sID = "<?php echo $_SESSION['session_id'];?>";
     $("#form_transact").on("submit", function (event) {
       if (window.confirm("Do you want to proceed?")) {
       event.preventDefault();
@@ -299,6 +301,32 @@ label, span {
           do_leave: $("#do_leave").val()
         },
         success: function (data) {
+          $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: sID,
+              action: 'sent request',
+              details: sID + ' sent WDS request' 
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+          $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: sID,
+              action: 'sent request',
+              details: sID + ' sent leave_of_absence request' 
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
           alert("Request Sent");
         }
       });

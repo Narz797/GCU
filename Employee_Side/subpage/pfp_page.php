@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../../backend/log_audit2.php';
 // include '../backend/validate_user.php';
 // include '../backend/connect_database.php';
   // Check if the session variable is empty
@@ -10,6 +11,10 @@ session_start();
     exit; // Make sure to exit the script after a header redirect
   }
 // Retrieve stud_id from the session
+$id = $_SESSION['session_id'];
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile page');
 
 ?>
 <!DOCTYPE html>
@@ -374,11 +379,39 @@ $student = $_SESSION['stud_user_id'];
     <script>
 
 var trans_id
+var stud_name
 var app_id
+var eID = '<?php echo $id;?>';
             function logout() {
+                $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = '../../home?logout=true';
 }
 function archive() {
+    $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'archive',
+              details: eID + ' Clicked archive'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = 'archive.php';
         }
 // remarks
@@ -439,6 +472,19 @@ function openModal2(id) {
             remark: textareaValue2
           },
           success: function (data) {
+            $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'edit remark',
+              details: eID + ' edited remark of ' + stud_name
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
             console.log("Remarked:", data);
           },
           error: function (xhr, status, error) {
@@ -461,6 +507,19 @@ function openModal2(id) {
             remark: textareaValue
           },
           success: function (data) {
+            $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'add remark',
+              details: eID + ' added remark for ' + stud_name
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
             console.log("Remarked:", data);
           },
           error: function (xhr, status, error) {
@@ -513,6 +572,7 @@ function openModal2(id) {
             if (data.length > 0) {
                 var studentData = data[0]; // Assuming you expect a single row
                 var fname = studentData.first_name;
+                stud_name = studentData.first_name + ' ' + studentData.last_name;
                 var lname = studentData.last_name;
                 var email = studentData.email;
                 var year_level = studentData.Year_level;

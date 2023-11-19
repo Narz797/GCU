@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
@@ -8,6 +9,10 @@ session_start();
     exit; // Make sure to exit the script after a header redirect
   }
     $_SESSION['form_type']='all';//
+    $id = $_SESSION['session_id'];
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_form', $id .' has accessed the form page');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -237,6 +242,7 @@ session_start();
 </body>
  
 <script>
+     var eID = "<?php echo $_SESSION['session_id'];?>";
         function searchTable() { //searches in all column
             var input, filter, table, tr, td, i, j, txtValue;
             input = document.getElementById("searchInput");
@@ -269,9 +275,35 @@ session_start();
    
     }
     function logout() {
+        $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = '../home?logout=true';
 }
 function archive() {
+    $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'archive',
+              details: eID + ' Clicked archive'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = './subpage/archive.php';
         }
 function fetchData() { //getting total
@@ -419,6 +451,20 @@ function exportToExcel() {
 
     // Export the workbook to an Excel file
     XLSX.writeFile(workbook, "All transactions.xlsx");
+
+    $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'clicked export',
+              details: eID + 'clicked export apopinment table to excel'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
 }
 
 

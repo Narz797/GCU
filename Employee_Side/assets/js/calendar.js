@@ -253,7 +253,8 @@ function getAvailability(year, month, date) {
             month: month + 1, // Note that JavaScript months are zero-based
             year: year,
             title: event.event_title,
-            time: `${event.start_time} - ${event.end_time}`,
+            Stime: event.start_time,
+            Etime: event.end_time,
             stime: event.start_time,
             etime: event.end_time,
             appointmentId: event.appointment_id 
@@ -278,13 +279,15 @@ function updateEvents(year, month, date, events) {
 
   if (Array.isArray(events) && events.length > 0) {
     events.forEach((event) => {
+      const startTime = convertTime(event.Stime);
+      const endTime = convertTime(event.Etime);
       eventsHTML += `<div class="event" data-appointment-id="${event.appointmentId}">
-        <div class="title">
-          <i class="fas fa-circle"></i>
-          <h3 class="event-title">${event.title}</h3>
-        </div>
+      <div class="title">
+      <i class="fas fa-circle"></i>
+    
+    </div>
         <div class="event-time">
-          <span class="eventS-time">${event.time}</span>
+        <h2 class="eventS-time">${startTime} - ${endTime}</h2>
         </div>
 
       </div> <br>`;
@@ -449,9 +452,7 @@ document.addEventListener("click", (e) => {
 });
 
 //allow 50 chars in eventtitle
-addEventTitle.addEventListener("input", (e) => {
-  addEventTitle.value = addEventTitle.value.slice(0, 60);
-});
+
 
 // addEventStudentName.addEventListener("input", (e) =>{
 //   addEventStudentName.value = addEventStudentName.value.slice(0,60);
@@ -481,7 +482,7 @@ addEventTo.addEventListener("input", (e) => {
 
 //function to add event to eventsArr
 addEventSubmit.addEventListener("click", () => {
-  const eventTitle = addEventTitle.value;
+ 
   const eventDate = `${year}-${month + 1}-${activeDay}`;
   const eventTimeFrom = addEventFrom.value;
   const eventTimeTo = addEventTo.value;
@@ -493,7 +494,7 @@ addEventSubmit.addEventListener("click", () => {
     type: 'POST',
     url: '../backend/add_availablity.php',
     data: {
-      title: eventTitle,
+  
       date: eventDate,
       start_time: eventTimeFrom,
       end_time: eventTimeTo,
@@ -503,7 +504,6 @@ addEventSubmit.addEventListener("click", () => {
       // You can handle the response from the PHP script here, e.g., displaying a success message.
       alert(data);
       // Clear the input fields and refresh events to fetch the new data.
-      addEventTitle.value = "";
       addEventFrom.value = "";
       addEventTo.value = "";
       refreshEvents();

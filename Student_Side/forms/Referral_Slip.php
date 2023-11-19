@@ -1,6 +1,7 @@
 <!doctype html>
 <?php
 session_start();
+include '../../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
@@ -9,6 +10,7 @@ session_start();
     exit; // Make sure to exit the script after a header redirect
   }
 $_SESSION['transact_type'] = 'ca'; //asign value to transact_type
+logAudit($_SESSION['session_id'], 'access_class admisison form', $_SESSION['session_id'] .' has accessed the class admission page');
 ?>
 <html>
 <head>
@@ -468,10 +470,12 @@ select:focus {
     </div>
   </div>
   <script>
+      var sID = "<?php echo $_SESSION['session_id'];?>";
       var LA = $("#dates");
     var AO = $("#rem");
     var COA = $('#COA');
     var selectedConcern;
+    var sID = "<?php echo $_SESSION['session_id'];?>";
     
     $(".hidden").hide();
     LA.hide();
@@ -671,7 +675,21 @@ $("#form_transact").on("submit", function (event) {
         contentType: false,
         processData: false,
         success: function (data) {
+          $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: sID,
+              action: 'sent request',
+              details: sID + ' sent Class Admission request' 
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
           alert("Request Sent");
+
         },
         error: function (xhr, status, error) {
             console.error('Error: ' + error);

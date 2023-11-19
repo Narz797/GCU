@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+include '../../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
@@ -10,6 +11,10 @@ session_start();
   }
   
     $_SESSION['form_type']='withdrawal';//
+    $id = $_SESSION['session_id'];
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_wds page', $id .' has accessed the wds page');
 ?>
 <html lang="en">
 <head>

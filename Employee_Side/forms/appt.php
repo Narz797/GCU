@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../../backend/log_audit2.php';
 // include '../backend/validate_user.php';
 // include '../backend/connect_database.php';
   // Check if the session variable is empty
@@ -12,10 +13,14 @@ session_start();
 
   $id = $_SESSION['stud_id'];
   $tran = $_SESSION['tran_id'];
+  $form=$_SESSION['form_type'];
+
+  logAudit($_SESSION['session_id'], 'access_'.$form=$_SESSION['form_type'].' form', $_SESSION['session_id'] .' has accessed the wds form of'. $id);
 
   echo '<script>
         console.log("clicked, ' . $id . '");
         console.log("clicked, ' . $tran . '");
+        console.log("clicked, ' . $form . '");
         </script>';
   
 ?>
@@ -161,10 +166,38 @@ session_start();
     var sid;
     var tid;
     var aid;
+    var eID = "<?php echo $_SESSION['session_id'];?>";
+    var frm = "<?php echo $form=$_SESSION['form_type'];?>";
         function logout() {
+            $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = '../../home?logout=true';
 }
 function archive() {
+    $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'archive',
+              details: eID + ' Clicked archive'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = '../subpage/archive.php';
         }
   // Function to update the HTML elements
@@ -220,26 +253,6 @@ function archive() {
     });
     }
 
-    function status_update(status){
-            // update status to pendig here
-            $.ajax({
-          type: 'POST',
-          url: '../../backend/update_forms/update_loa.php',
-          data: {
-            stat: status,
-            id: sid,
-            tid: tid
-          },
-          success: function (data) {
-            console.log("Remarked:", data);
-            location.reload();// change it to something similar to refresh
-          },
-          error: function (xhr, status, error) {
-            console.error("Error marking event as done:", error);
-            alert("Error marking event as done: " + error);
-          },
-        });
-        }
         function status_update(status){
             // update status to pendig here
             $.ajax({
@@ -254,6 +267,19 @@ function archive() {
           success: function (data) {
             console.log("Remarked:", data);
             window.location.href = "../appointment";
+            $.ajax({
+                    type: 'POST',
+                    url: '../../backend/log_audit.php',
+                    data: {
+                    userId: eID,
+                    action: 'update '+frm +' status',
+                    details: eID + ' updated '+frm +' status to ' + status
+                    },
+                    success: function(response) {
+                    // Handle the response if needed
+                    console.log("logged", response);
+                    }
+                });
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
@@ -298,6 +324,19 @@ function archive() {
           success: function (data) {
             console.log("Remarked:", data);
             window.location.href = "../appointment";
+            $.ajax({
+                    type: 'POST',
+                    url: '../../backend/log_audit.php',
+                    data: {
+                    userId: eID,
+                    action: 'resched '+frm,
+                    details: eID + ' resched '+frm +' to ' + date
+                    },
+                    success: function(response) {
+                    // Handle the response if needed
+                    console.log("logged", response);
+                    }
+                });
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);

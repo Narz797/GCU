@@ -1,6 +1,7 @@
 <!doctype html>
 <?php
 session_start();
+include '../../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
@@ -9,6 +10,7 @@ session_start();
     exit; // Make sure to exit the script after a header redirect
   }
 $_SESSION['transact_type']='WDS';//asign value to transact_type
+logAudit($_SESSION['session_id'], 'access_wds form', $_SESSION['session_id'] .' has accessed the WDS page');
 ?>
 <html>
 <head>
@@ -285,6 +287,7 @@ select:focus {
     </div>
   </div>
   <script>
+    var sID = "<?php echo $_SESSION['session_id'];?>";
     const dropdown = document.getElementById('action');
     const textfield = document.getElementById('for-shift');
     dropdown.addEventListener('change', function () {
@@ -313,7 +316,21 @@ $("#form_transact").on("submit", function (event) {
       course_to: course_to
     },
     success: function (data) {
+      $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: sID,
+              action: 'sent request',
+              details: sID + ' sent WDS request' 
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
       alert("Request Sent");
+
     }
   });
 }

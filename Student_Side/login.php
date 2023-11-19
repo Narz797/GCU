@@ -3,6 +3,8 @@ session_start();
 // include '../backend/validate_user.php';
 // include '../backend/connect_database.php';
 $_SESSION['origin'] = 'Student';
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -291,9 +293,37 @@ $_SESSION['origin'] = 'Student';
       },
       success: function(data) {
         if (data === "success_student") {
+          // Log successful login on the server-side
+          $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: $("#idno").val(),
+              action: 'login_success',
+              details: 'Successful login for student with ID: ' + $("#idno").val()
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
           window.location.href = "student-home";
         } else {
-          alert('Error, Sutdent not registered');
+          // Log unsuccessful login on the server-side
+          $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: 0,
+              action: 'login_failure',
+              details: 'Unsuccessful login attempt for student with ID: ' + $("#idno").val()
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("error logged", response); 
+            }
+          });
+          alert('Error, Student not registered');
         }
       }
     });

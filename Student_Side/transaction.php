@@ -1,6 +1,7 @@
 <?php 
 
 session_start();
+include '../backend/log_audit2.php';
 // include '../backend/validate_user.php';
 // include '../backend/connect_database.php';
   // Check if the session variable is empty
@@ -12,6 +13,7 @@ session_start();
   }
   
 $id = $_SESSION['session_id'];
+logAudit($id, 'access_transaction', $id .' has accessed the transaction page');
   echo "<script>console.log('$id');</script>";
 include 'includes/main2.php';
  ?>

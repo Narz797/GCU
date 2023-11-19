@@ -3,6 +3,7 @@ session_start();
 // include '../backend/validate_user.php';
 // include '../backend/connect_database.php';
 $_SESSION['origin'] = 'Employee';
+// logAudit('Employee login', 'Login_attemp', 'Employee side');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -227,10 +228,51 @@ $_SESSION['origin'] = 'Employee';
       },
       success: function(data) {
         if (data === "success_employee") {
+                   // Log successful login on the server-side
+                   $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: $("#email").val(),
+              action: 'login_success',
+              details: 'Successful login for emplployee with ID: ' + $("#email").val()
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
           window.location.href = "../Employee_Side/employee-home";
         } else if (data === "success_admin") {
+                    // Log successful login on the server-side
+                    $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: $("#email").val(),
+              action: 'login_success',
+              details: 'Successful login for admin with ID: ' + $("#email").val()
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
           window.location.href = "../Admin_Side/main.php";
         } else {
+          $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: 0,
+              action: 'login_failure',
+              details: 'Unsuccessful login attempt for employee with ID: ' + $("#email").val()
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("error logged", response); 
+            }
+          });
           alert("Invalid username or password.");
         }
       }

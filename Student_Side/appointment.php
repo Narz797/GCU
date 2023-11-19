@@ -1,6 +1,7 @@
 <?php 
 
 session_start();
+include '../backend/log_audit2.php';
 // include '../backend/validate_user.php';
 // include '../backend/connect_database.php';
   // Check if the session variable is empty
@@ -11,6 +12,7 @@ session_start();
     exit; // Make sure to exit the script after a header redirect
   }
 $id = $_SESSION['session_id'];
+logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
 echo "<script>console.log('$id');</script>";
 
 include 'includes/main2.php';
@@ -28,7 +30,7 @@ include 'includes/main2.php';
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="./assets/apmt.css">
+    <link rel="stylesheet" href="assets/apmt.css">
     <!-- <link rel="stylesheet" href="./assets/css/forms.css"> -->
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../Employee_Side/assets/css/slips2.css">
@@ -109,9 +111,6 @@ include 'includes/main2.php';
           <i class="fas fa-times close"></i>
         </div>
         <div class="add-event-body">
-          <div class="add-event-input">
-            <input type="text" placeholder="Event Name" class="event-name" />
-          </div>
           <div class="add-event-input">
             <input
               type="text"
@@ -274,6 +273,7 @@ include 'includes/main2.php';
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="assets/js/calendar.js"></script>   
 <script>
+  
         var id = "<?php echo $id; ?>";
         var aid;
         var reasons;
@@ -298,7 +298,21 @@ include 'includes/main2.php';
                     console.log("slot taken:", data);
                     alert("Slot taken for: ",aid);
                     document.getElementById("divOne").style.display = "none";
+                    $.ajax({
+                        type: 'POST',
+                        url: '../../backend/log_audit.php',
+                        data: {
+                          userId: id,
+                          action: 'get appointment slot',
+                          details: id + ' accuired appointment slot'
+                        },
+                        success: function(response) {
+                          // Handle the response if needed
+                          console.log("logged", response);
+                        }
+                      });
                     window.location.href = "appointment.php";
+            
 
                   },
                   error: function (xhr, status, error) {

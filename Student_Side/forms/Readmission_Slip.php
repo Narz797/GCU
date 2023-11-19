@@ -1,6 +1,7 @@
 <!doctype html>
 <?php
 session_start();
+include '../../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
@@ -10,6 +11,7 @@ session_start();
   }
   // include 'formstyle.php';
   $_SESSION['transact_type'] = 'readmission'; // Assign value to transact_type
+  logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_id'] .' has accessed the readmission page');
 ?>
 <html>
 <head>
@@ -202,6 +204,7 @@ session_start();
     </div>
 
     <script>
+        var sID = "<?php echo $_SESSION['session_id'];?>";
       function submitForm() {
         // Check if the form is filled before submitting
         if ($('#reason_stop').val() === '' || $('#motivation_enroll').val() === '') {
@@ -217,6 +220,19 @@ session_start();
               motivation: $("#motivation_enroll").val(),
             },
             success: function (data) {
+              $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: sID,
+              action: 'sent request',
+              details: sID + ' sent Readmission request' 
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
               alert("Request Sent");
             }
           });

@@ -246,9 +246,35 @@ $_SESSION['origin'] = 'Teacher';
       },
       success: function(data) {
         if (data === "success_teacher") {
+          $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: $("#idno").val(),
+              action: 'login_success',
+              details: 'Successful login for teacher with ID: ' + $("#idno").val()
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
           window.location.href = "index.php";
         } else {
-          alert(data);
+          $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: 0,
+              action: 'login_failure',
+              details: 'Unsuccessful login attempt for teacher with ID: ' + $("#idno").val()
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("error logged", response); 
+            }
+          });
+          alert('Error, teacher not registered');
         }
       }
     });
