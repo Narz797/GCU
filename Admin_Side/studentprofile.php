@@ -2,14 +2,14 @@
 session_start();
 // include '../backend/validate_user.php';
 // include '../backend/connect_database.php';
-// Check if the session variable is empty
-if (empty($_SESSION['session_id'])) {
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-
+    
     exit; // Make sure to exit the script after a header redirect
-}
-
+  }
+  
 ?>
 
 <!DOCTYPE html>
@@ -378,7 +378,7 @@ if (empty($_SESSION['session_id'])) {
         }
     </script>
     <script src="./assets/main.js"></script>
-    <script src="./assets/js/table.js"></script>
+    <!-- <script src="assets/js/table.js"></script>    -->
 </body>
 
 </html>
