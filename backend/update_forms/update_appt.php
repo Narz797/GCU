@@ -5,7 +5,8 @@ if (isset($_POST['stat']) && isset($_POST['id']) && isset($_POST['tid']) && isse
     $id = intval($_POST['id']);
     $tid = intval($_POST['tid']);
     $aid = intval($_POST['aid']);
-    $stat = $_POST['stat']; // Don't use intval for remarks as it may be non-numeric
+    $stat = $_POST['stat'];
+    $res = $_POST['res']; // Don't use intval for remarks as it may be non-numeric
 
     try {
         $pdo = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
@@ -38,6 +39,42 @@ if (isset($_POST['stat']) && isset($_POST['id']) && isset($_POST['tid']) && isse
         } else {
             echo "Error marking the appointment as done: " . implode(' ', $stmt2->errorInfo());
         }
+
+        $sql3 = "SELECT `referred` FROM `appointment` WHERE `student_id` = :id AND `appointment_id` = :aid";
+        $stmt3 = $pdo->prepare($sql3);
+        $stmt3->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt3->bindParam(':aid', $aid, PDO::PARAM_INT);
+        
+        // Execute the select query
+        if ($stmt3->execute()) {
+            // Fetch the value
+            $referredValue = $stmt3->fetchColumn();
+        
+            // Check if a matching record was found with 'yes' value
+            if ($referredValue == 'yes') {
+                echo 'Referred: ' . $referredValue;
+                        // Define your SQL update query to mark the appointment as done
+                    $sql4 = "UPDATE `referral` SET `status` = :status WHERE `stud_id` = :id AND `reason` = :res";
+                    $stmt4 = $pdo->prepare($sql4);
+                    $stmt4->bindParam(':id', $id, PDO::PARAM_INT);
+                    $stmt4->bindParam(':res', $res, PDO::PARAM_INT);
+                    $stmt4->bindParam(':status', $stat, PDO::PARAM_STR);
+
+                    // Execute the second SQL statement
+                    if ($stmt4->execute()) {
+                        echo "Appointment marked as done successfully.";
+                    } else {
+                        echo "Error marking the appointment as done: " . implode(' ', $stmt4->errorInfo());
+                    }
+
+            } else {
+                echo 'No matching record found or not referred';
+            }
+        } else {
+            // Handle the case where the query execution failed
+            echo 'Error executing query';
+        }
+
     } catch (PDOException $e) {
         echo "Database error: " . $e->getMessage();
     } finally {

@@ -7,17 +7,24 @@ if (isset($_POST['event_id']) && isset($_POST['stud_id']) && isset($_POST['trans
     $stud_id = intval($_POST['stud_id']);
     $trans_id = intval($_POST['trans_id']);
     $reason = ($_POST['reason']);
+    $refer = ($_POST['reffered']);
 
     try {
         $pdo = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        //check if reffered
+                // Define your SQL update query for the first table
+
+
+
         // Define your SQL update query for the first table
-        $sql1 = "UPDATE `appointment` SET `status` = 'taken', `student_id`= :stud_id, `Reason`= :reason WHERE `appointment_id` = :event_id";
+        $sql1 = "UPDATE `appointment` SET `status` = 'taken', `student_id`= :stud_id, `Reason`= :reason, `referred`= :ref WHERE `appointment_id` = :event_id";
         $stmt1 = $pdo->prepare($sql1);
         $stmt1->bindParam(':event_id', $event_id, PDO::PARAM_INT);
         $stmt1->bindParam(':stud_id', $stud_id, PDO::PARAM_INT);
         $stmt1->bindParam(':reason', $reason, PDO::PARAM_STR);
+        $stmt1->bindParam(':ref', $refer, PDO::PARAM_STR);
 
         // Execute the first SQL statement
         $stmt1->execute();

@@ -297,6 +297,8 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
 <script>
   var trans_id
 var app_id
+var sid
+var res
 var eid = "<?php echo $eid; ?>";
 var eID = "<?php echo $_SESSION['session_id'];?>";
 console.log(eid);
@@ -424,11 +426,12 @@ $(document).ready(function () {
                     row.append("<td>" + entry.date + "</td>");
                     row.append("<td>" + entry.start_time + " - "+ entry.end_time + "</td>");
                     row.append("<td>" + entry.Reason + "</td>");
+                    res = entry.Reason;
                     var statusCell = $("<td></td>");
                     var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", "+ entry.student_id +")'><i class='ri-eye-fill'></i></button>");//page
                     
                     var statusCell2 = $("<td></td>");
-                    var statusLink2 = $("<a href='#divOne'><button onclick='openModal("+entry.transact_id+", "+entry.appointment_id+")'><i class='ri-check-double-line'></i></button></a>");//poppu
+                    var statusLink2 = $("<a href='#divOne'><button onclick='openModal("+entry.transact_id+", "+entry.appointment_id+", "+ entry.student_id +")'><i class='ri-check-double-line'></i></button></a>");//poppu
                     statusCell2.append(statusLink2);
                     statusCell.append(statusLink);
                     row.append(statusCell)
@@ -490,11 +493,12 @@ $(document).ready(function () {
             });
     }
 
-    function openModal(tid, aid) {
+    function openModal(tid, aid, sidd) {
     //document.getElementById("divOne").style.display = "block";
 
     trans_id = tid;
     app_id = aid;
+    sid = sidd
   }
 
   function closeModal() {
@@ -513,6 +517,8 @@ $(document).ready(function () {
       data: {
         event_id: app_id,
         trans_id: trans_id,
+        S_id: sid,
+        Res: res,
         remark: textareaValue
       },
       success: function (data) {

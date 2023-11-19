@@ -236,10 +236,15 @@ include 'includes/main2.php';
                                     <br>
                                     <select name="textfield" id="refer">
                                       <option disabled selected>Select</option>
-                                        <option value="Tardy">Late</option>
-                                        <option value="Absent">Absent</option>
+                                        <option value="Academic Deficiency/ies">Academic Deficiency/ies</option>
+                                        <option value="Others">Counseling</option>
+                                        <option value="Others">Others</option>
                                       
                                       </select>
+                                      <br>
+                                      <label>Reffered</label>
+                                      <br>
+                                      <input type="checkbox" id="chkbx" name="referred" value="yes">
                                     <br>
                                     <hr>
                                     <div class="tsk">
@@ -286,7 +291,18 @@ include 'includes/main2.php';
         
           function reason()
           {
-            reasons = document.getElementById("reason").value;
+            var ref
+            var checkbox = document.getElementById("chkbx");
+              // Check if the checkbox is checked
+              if (checkbox.checked) {
+                // If checked, get the value
+               ref = checkbox.value;
+                console.log("Checkbox is checked. Value: " + ref);
+              } else {
+                ref = checkbox.value;
+                console.log("Checkbox is not checked.");
+              }
+            reasons = document.getElementById("refer").value;
 
             if (window.confirm("Do you want to proceed?")) {
 
@@ -297,7 +313,8 @@ include 'includes/main2.php';
                     event_id: aid,
                     stud_id: id,
                     trans_id: tid,
-                    reason: reasons
+                    reason: reasons,
+                    reffered: ref
                   },
                   success: function (data) {
                     console.log("slot taken:", data);

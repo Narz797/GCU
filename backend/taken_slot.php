@@ -2,6 +2,7 @@
 session_start();
 include '../backend/connect_database.php';
 $type = $_SESSION['form_type'];
+$id = $_SESSION['session_id'];
 if ($type == 'appointment') {
 $sql = "SELECT 
     appointment.appointment_id, 
@@ -27,10 +28,11 @@ $sql = "SELECT
     transact ON appointment.transact_id = transact.transact_id
     INNER JOIN
     courses ON student_user.course = courses.Acronym
-    WHERE appointment.status != 'done' AND appointment.status != 'open';
+    WHERE appointment.status != 'done' AND appointment.status != 'open' AND appointment.employee_id = :id;
 ";
 
 $stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
 
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);

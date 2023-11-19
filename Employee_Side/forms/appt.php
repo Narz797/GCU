@@ -166,6 +166,7 @@ include '../../backend/log_audit2.php';
     var sid;
     var tid;
     var aid;
+    var red;
     var eID = "<?php echo $_SESSION['session_id'];?>";
     var frm = "<?php echo $form=$_SESSION['form_type'];?>";
         function logout() {
@@ -236,6 +237,7 @@ function archive() {
             var pgname = studentData.ParentGuardianName;
             var relation = studentData.Relation;
             var reason = studentData.Reason;
+            res = studentData.Reason;
 
             console.log(fname);
             updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason);
@@ -262,11 +264,12 @@ function archive() {
             stat: status,
             id: sid,
             tid: tid,
-            aid: aid
+            aid: aid,
+            res:res
           },
           success: function (data) {
             console.log("Remarked:", data);
-            window.location.href = "../appointment";
+            // window.location.href = "../appointment";
             $.ajax({
                     type: 'POST',
                     url: '../../backend/log_audit.php',
