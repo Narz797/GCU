@@ -52,6 +52,9 @@
                 <li class="list-item hov">
                     <a href="logreport.php" class="list-link current1">Log Report</a>
                 </li>
+                <li class="list-item hov">
+                    <a href="exportimport.php" class="list-link current1">Export/Import of Database</a>
+                </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
                 <i class="ri-close-line"></i>
@@ -131,7 +134,7 @@
                 <tbody>
                   
                   <td>
-                    <button><a href="editemployee.php">Edit</button></a>
+                    
                     <button>Delete</button>
                   </td>
                   

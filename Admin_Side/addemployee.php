@@ -63,6 +63,9 @@
                 <li class="list-item hov">
                     <a href="logreport.php" class="list-link current1">Log Report</a>
                 </li>
+                <li class="list-item hov">
+                    <a href="exportimport.php" class="list-link current1">Export/Import of Database</a>
+                </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
                 <i class="ri-close-line"></i>
@@ -91,39 +94,76 @@
     <h2>Add Employee Account</h2>
     </div>
      <!-- Section -->
+    
     <section class="table-body">
     <section  id="table">
-    <form method="post" action="../backend/register_user.php">
-        <label for="employeeid">Employee ID Number:</label>
-        <input type="number" name="employeeid"  required><br>
+    
+    <form method="post" action="#">
         <br>
-        <label for="lname">Last Name:</label>
-        <input type="text" name="lname"  required>
-        <label for="fname">First Name:</label>
-        <input type="text" name="fname"  required>
-        <label for="mname">Middle Name:</label>
-        <input type="text" name="mname"  required><br>
+        <center>
+        <div class="input-group input-group-lg">
+              <input type="number" class="form-control" placeholder="Employee ID No." 
+              aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" required>
+              </div>
         <br>
-        <label for="sex">Sex:</label>
-        <select id="gender" name="sex"  required>
-            <option></option>
-            <option>Female</option>
-            <option>Male</option>
-        <select>
-        <label for="email">Email Address:</label>
-        <input type="text" name="email"  required>
-        <label for="contactnumber">Contact Number:</label>
-        <input type="text" name="contactnumber"  required>
-        <label for="position">Position:</label>
-        <input type="text" name="position"  required><br>
+        <div class="input-group input-group-lg">
+              <input type="text" class="form-control" placeholder="Last Name" 
+              aria-label="Last Name" aria-describedby="inputGroup-sizing-lg" required>
+              <input type="text" class="form-control" placeholder="Middle Name" 
+              aria-label="Middle Name" aria-describedby="inputGroup-sizing-lg" required>
+              <input type="text" class="form-control" placeholder="First Name" 
+              aria-label="First Name" aria-describedby="inputGroup-sizing-lg" required>
+        </div>
         <br>
-        
+        <div class="input-group input-group-lg">
+            <label class="input-group-text" for="inputgroupselect">Sex</label>
+            <select class="form-select" id="inputgroupselect" required>
+                <option selected>Choose...</option>
+                <option value="F">Female</option>
+                <option value="M">Male</option>
+            </select>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+              <input type="text" class="form-control" placeholder="Email" 
+              aria-label="Email" aria-describedby="inputGroup-sizing-lg" required>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+              <input type="number" class="form-control" placeholder="Contact No." 
+              aria-label="Contact No." aria-describedby="inputGroup-sizing-lg" required>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+              <input type="text" class="form-control" placeholder="Position" 
+              aria-label="Position" aria-describedby="inputGroup-sizing-lg" required>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+              <input type="text" class="form-control" placeholder="Username" 
+              aria-label="Username" aria-describedby="inputGroup-sizing-lg" required>
+              <input type="text" class="form-control" placeholder="Password" 
+              aria-label="Password" aria-describedby="inputGroup-sizing-lg" required>
+        </div>
+    </center>
+
+        <br>
         <button type="submit" value="Add Employee">Add Employee Account</button>
     </form>
     </section>
 
 </section>
 <br>
+</div>
+
+<style>
+.table-body{
+    background-color: darkolivegreen;  
+    
+}
+
+
+</style>
 
     <!-- Footer -->
     <footer id="footer" class="footer">
