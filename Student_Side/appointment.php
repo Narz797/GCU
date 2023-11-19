@@ -234,7 +234,12 @@ include 'includes/main2.php';
                                 <form>
                                     <h1>Reason for Appointment?</h1>
                                     <br>
-                                    <textarea placeholder="Type here your reason" id="reason"></textarea>
+                                    <select name="textfield" id="refer">
+                                      <option disabled selected>Select</option>
+                                        <option value="Tardy">Late</option>
+                                        <option value="Absent">Absent</option>
+                                      
+                                      </select>
                                     <br>
                                     <hr>
                                     <div class="tsk">

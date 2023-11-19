@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2023 at 04:27 PM
+-- Generation Time: Nov 19, 2023 at 04:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -231,7 +231,9 @@ INSERT INTO `audit_log` (`id`, `timestamp`, `user_id`, `action`, `details`) VALU
 (147, '2023-11-19 15:26:17', 111, 'login_success', 'Successful login for student with ID: 111'),
 (148, '2023-11-19 15:26:17', 111, 'access_transaction', '111 has accessed the transaction page'),
 (149, '2023-11-19 15:26:19', 111, 'access_appointment', '111 has accessed the appointment page'),
-(150, '2023-11-19 15:26:31', 111, 'access_appointment', '111 has accessed the appointment page');
+(150, '2023-11-19 15:26:31', 111, 'access_appointment', '111 has accessed the appointment page'),
+(151, '2023-11-19 15:41:05', NULL, 'login_success', 'Successful login for teacher with ID: undefined'),
+(152, '2023-11-19 15:41:05', 20010101, 'access_teacher', '20010101 has accessed the teacher home page');
 
 -- --------------------------------------------------------
 
@@ -367,7 +369,7 @@ CREATE TABLE `father` (
   `age` int(11) NOT NULL,
   `occupation` text NOT NULL,
   `educ_background` text NOT NULL,
-  `contact` int(11) NOT NULL
+  `contact` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -375,15 +377,15 @@ CREATE TABLE `father` (
 --
 
 INSERT INTO `father` (`father_id`, `stud_user_id`, `fname`, `mname`, `lname`, `age`, `occupation`, `educ_background`, `contact`) VALUES
-(1, 2, 'RAMOS', 'EDA', 'TACUDOG', 12, '21', '12', 0),
-(2, 7, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', 0),
-(3, 90, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', 0),
-(4, 1, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', 0),
-(5, 2, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', 0),
-(6, 6, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', 0),
-(7, 4, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', 0),
-(8, 12, 'Hazel Joy', 'B', 'Tacudog', 12, '12', '12', 2147483647),
-(9, 2001519, 'lkjh', 'lkjh', 'lkjh', 0, 'lkjh', 'lkjh', 0);
+(1, 2, 'RAMOS', 'EDA', 'TACUDOG', 12, '21', '12', '0'),
+(2, 7, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', '0'),
+(3, 90, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', '0'),
+(4, 1, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', '0'),
+(5, 2, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', '0'),
+(6, 6, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', '0'),
+(7, 4, 'AILEEN KATE', 'BERNARD', 'DELMAS', 21, '12', '12', '0'),
+(8, 12, 'Hazel Joy', 'B', 'Tacudog', 12, '12', '12', '2147483647'),
+(9, 2001519, 'lkjh', 'lkjh', 'lkjh', 0, 'lkjh', 'lkjh', '0');
 
 -- --------------------------------------------------------
 
@@ -400,7 +402,7 @@ CREATE TABLE `guardian` (
   `age` int(11) NOT NULL,
   `occupation` text NOT NULL,
   `educ_background` text NOT NULL,
-  `contact` int(11) NOT NULL
+  `contact` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -408,7 +410,7 @@ CREATE TABLE `guardian` (
 --
 
 INSERT INTO `guardian` (`guardian_id`, `stud_user_id`, `fname`, `mname`, `lname`, `age`, `occupation`, `educ_background`, `contact`) VALUES
-(1, 77, 'HILDA', 'MONTES', '21', 12, '3', '1', 2147483647);
+(1, 77, 'HILDA', 'MONTES', '21', 12, '3', '1', '2147483647');
 
 -- --------------------------------------------------------
 
@@ -454,7 +456,7 @@ CREATE TABLE `mother` (
   `age` int(11) NOT NULL,
   `occupation` text NOT NULL,
   `educ_background` text NOT NULL,
-  `contact` int(11) NOT NULL
+  `contact` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -462,15 +464,15 @@ CREATE TABLE `mother` (
 --
 
 INSERT INTO `mother` (`mother_id`, `stud_user_id`, `fname`, `mname`, `lname`, `age`, `occupation`, `educ_background`, `contact`) VALUES
-(1, 2, 'BENGUET', 'STATE', 'UNIVERSITY', 21, '12', '21', 0),
-(2, 7, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', 0),
-(3, 90, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', 0),
-(4, 1, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', 0),
-(5, 2, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', 0),
-(6, 6, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', 0),
-(7, 4, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', 0),
-(8, 12, 'BENGUET', 'STATE', 'UNIVERSITY', 12, '21', '21', 2147483647),
-(9, 2001519, 'lkjh', 'kljh', 'lkjh', 0, 'lkjh', 'kljh', 0);
+(1, 2, 'BENGUET', 'STATE', 'UNIVERSITY', 21, '12', '21', '0'),
+(2, 7, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', '0'),
+(3, 90, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', '0'),
+(4, 1, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', '0'),
+(5, 2, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', '0'),
+(6, 6, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', '0'),
+(7, 4, 'HILDA', 'MONTES', 'BERNARD', 12, '21', '12', '0'),
+(8, 12, 'BENGUET', 'STATE', 'UNIVERSITY', 12, '21', '21', '2147483647'),
+(9, 2001519, 'lkjh', 'kljh', 'lkjh', 0, 'lkjh', 'kljh', '0');
 
 -- --------------------------------------------------------
 
@@ -752,9 +754,9 @@ CREATE TABLE `student_user` (
   `last_name` text DEFAULT NULL,
   `first_name` text DEFAULT NULL,
   `middle_name` text DEFAULT NULL,
-  `Contact_number` int(11) NOT NULL,
+  `Contact_number` text NOT NULL,
   `ParentGuardianName` varchar(255) NOT NULL,
-  `ParentGuardianNumber` bigint(255) NOT NULL,
+  `ParentGuardianNumber` text NOT NULL,
   `Relation` varchar(255) NOT NULL,
   `year_enrolled` year(4) DEFAULT NULL,
   `Section` text NOT NULL,
@@ -780,39 +782,39 @@ CREATE TABLE `student_user` (
 --
 
 INSERT INTO `student_user` (`stud_user_id`, `course`, `Year_level`, `last_name`, `first_name`, `middle_name`, `Contact_number`, `ParentGuardianName`, `ParentGuardianNumber`, `Relation`, `year_enrolled`, `Section`, `Civil_status`, `gender`, `birth_date`, `Birth_place`, `Nationality`, `Languages_and_dialects`, `Address`, `email`, `IG`, `specificIG`, `PWD`, `Student_parent`, `Marital_status_of_parents`, `username`, `password`) VALUES
-(1, 'BSA', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2003', 'B', 'Others', 'Female', '2023-11-15', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'yes', NULL, 'yes', 'yes', 'married', 'qwerty', '$2y$10$MAZpuotf.jLhmtt2ebzGsODgAf8HOfB4NkQga/BVEVE62ENgioyKS'),
-(2, 'BA Comm', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Married', 'Female', '2023-11-01', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'annulled', 'qwerty', '$2y$10$BPec.uhMtAXza4ISWnZWL.V0Wdjvf7miNs/TorlbULXPVauYCqA/2'),
-(3, 'BAFL', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2003', 'B', 'Others', 'Female', '2023-11-17', '21', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerrty', '$2y$10$4ZdRkhRDZY2BSmao/j6ggeL5tuwq6nRR.Qm2k6951gQVsGFWs9wPW'),
-(4, 'BSABE', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Others', 'Male', '2023-10-31', '12', '12', '12', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$eikmJRNet5WHOArpKr1f.ec/Uzsu1AVV763WqOxb6DOxg6fSTNApu'),
-(5, 'BAFL', 3, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Others', 'Male', '2023-11-15', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$tduX.X2zIWdtyWnVjEd8fOaL6Lf0oE8d4VtTiKunTOMZT9hbmSiq.'),
-(6, 'BAEL', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Married', 'Female', '2023-11-21', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$UvcmnP36QrcdF3YxDq5IdOgEb0htFxvSK4v3lqfzudSQyVE8Uhbg6'),
-(7, 'BAFL', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Others', 'Female', '2023-11-19', '12', '12', '21', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'livingTogether', 'tacudog.jonray@gmail.com', '$2y$10$We.0nCl288lfrx74EEejF.korYfMtuHw5UCDXrl2djvHFz8CnK3BO'),
-(8, 'BAFL', 5, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2003', '12', 'Married', 'Male', '2023-11-15', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'annulled', 'tacudog.jonray@gmail.com', '$2y$10$8I66P7Nhq/uV5LVA8ddliuZn0e6c0x.PXBgqfME9tBY5M39i09Zom'),
-(9, 'BAFL', 6, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Others', 'Male', '2023-11-20', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'yes', 'qwertt', 'yes', 'yes', 'annulled', 'qwerty', '$2y$10$XTCqSQB2S0811sYADx7RNupxPj73B5x0i/Nj4turnewsTqflD1IpK'),
-(10, 'BA Comm', 3, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Single', 'Male', '2023-11-14', '12', '12', '2112', 'IP address', 'tacudog.jonray@gmail.com', 'yes', 'qwertt', 'yes', 'yes', 'married', 'qwerty', '$2y$10$tQRoH1SVsK0PpIexB9B5Seua4K7yZsvAUlggNXp9Ka19esOgq0w4W'),
-(11, 'BSET', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Married', 'Female', '2023-11-30', '12', '12', '12', 'IP address', 'tacudog.jonray@gmail.com', 'yes', 'qwertt', 'no', 'yes', 'married', 'qwerty', '$2y$10$I8ePXCMjNfZPastoiETBiOk7TboXndDI7vS0HU/pf6ViSeUx.Oaoy'),
-(12, 'BA Comm', 2, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Married', 'Male', '2023-11-18', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerrty', '$2y$10$mJWvpPU7s31Z5mnYimg0LOiA2bwUMRDSE93NY7zYzNYiPrdf6EnEq'),
-(13, 'BAFL', 5, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Others', 'Male', '2023-11-14', '12', '12', '2112', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$0W650ug87kFzqq3LuUMS7u/kHOHt0zeCum/eaeHz2vTnnxkms.num'),
-(15, 'BAFL', 3, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', '12', 'Others', 'Female', '2023-11-08', '12', '12', 'wqeqwe', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'tacudog.jonray@gmail.com', '$2y$10$F9eVpw4lzbdcZPBl.u6i4uN.HcbWZhpTJdW4f8SWRIBRamVHGSH6y'),
-(17, 'BAFL', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Others', 'Female', '2023-11-22', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$f3zlUhFJGzTpzan0HUwdCeuLxpl8iAZoAfAEfkQRtlN8veiWfrKuq'),
-(21, 'BSCE', 5, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Married', 'Male', '2023-11-22', '12', '12', 'wqeqwe', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$JrdNeWcJqsgFwCg5Nk8TC.EaOELOmwF./.6lua1fYgG17vmCskbIi'),
-(23, 'BA Comm', 5, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Married', 'Male', '2023-11-20', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'annulled', 'qwerty', '$2y$10$C4YUHRGm/VyfTZsMdh7wROU.mxUWCodgLTwJEQwBh6OTrmBPcEFvy'),
-(31, 'BAEL', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Married', 'Male', '2023-11-16', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'annulled', 'qwerty', '$2y$10$u8T7GBbN5B1LdUxfKhjdy.Drt1hokvXM3kaHv5VeUwFgRiNGXYwZm'),
-(35, 'BAEL', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Married', 'Female', '2023-11-02', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$IGknBRdyEwYtGwxPQVY8J.EFECtyWnls.Wu72TFC3glVGBLleYxN.'),
-(36, 'BAEL', 3, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Married', 'Female', '2023-11-22', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'yes', NULL, 'yes', 'yes', 'married', 'qwerty', '$2y$10$ewnhtJbVGz7l1axvOnD6i.oX.yKYmtRtv4AOcI5eS1BXp8lNak4yK'),
-(43, 'BAFL', 3, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Married', 'Female', '2023-11-23', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'yes', NULL, 'no', 'no', 'married', '', '$2y$10$nx10UB71ynhH/Ei14Fqv7.GKx.FfoFZQvBfg17eL09HYaOXWvWk66'),
-(64, 'BSABE', 4, 'Tacudog', 'Jonray', 'Bernard', 2147483647, '', 0, '', '2002', 'B', 'Others', 'Male', '2023-11-20', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$n7GDEneyMS59V5WazwbLsO6TJH2CIVtxlxr1tp1/zjfvD0CGTr3ne'),
-(111, 'BLIS', 0, 'Doe', 'John', 'D', 0, '', 0, '', '2020', '', '', 'Male', '2023-08-15', '', '', '', '', 'user2@gmail.com', '', NULL, '', '', '', 'user2', '$2y$10$SczVZE3o64M8ZhuB1.NtG.AEY38qQFypzZ/FCW2m1sHyIR0eVEeSO'),
-(112, 'BSDC', 0, 'D.', 'Jane', 'Doe', 0, '', 0, '', '2019', '', '', 'Female', '2023-08-21', '', '', '', '', 'user3@gmail.com', '', NULL, '', '', '', 'user3', '$2y$10$jU4Y./C62dj97yonb5Wk7u02Spu3cnzv5sjNJXBj.8U1M77T7ScOy'),
-(114, 'BSIT', 0, 'Kun', 'Josh', 'S', 0, '', 0, '', '2020', '', '', 'Male', '2023-08-11', '', '', '', '', 'user4@gmail.com', '', NULL, '', '', '', 'user4', '$2y$10$4c3P3QQ2hUkIu8hffGl0ZewQB3ZHzfu1uNV76W9fiy/A/IhELhD5q'),
-(115, 'BSDC', 0, 'Kaguya', 'Shinomiya', 'S', 0, '', 0, '', '2019', '', '', 'Female', '2023-08-11', '', '', '', '', 'user5@gmail.com', '', NULL, '', '', '', 'user4', '$2y$10$Bc5xD1fwgVaDhyfodnoRpeWEqq3wys7oO1rEXODkS6bLBFxwxkPH.'),
-(116, 'BSIT', 0, 'Shirogane', 'Miyuki', 'S.', 0, '', 0, '', '2019', '', '', 'Male', '2023-08-18', '', '', '', '', 'user6@gmail.com', '', NULL, '', '', '', 'user6', '$2y$10$ijDxvfz1Nwj/W71jek9d1Oi/E3glb8U/HAqoCq9vqCHPwp3/BraT2'),
-(117, 'BLIS', 0, 'Monkey', 'Luffy', 'D', 0, '', 0, '', '2020', '', '', 'Male', '2023-08-18', '', '', '', '', 'user7@gmail.com', '', NULL, '', '', '', 'user7', '$2y$10$tu1lLwa.V8I728aNkNnpbuwdBckqpv46jpwAPJpVkwDDdPvqIQYmC'),
-(118, 'qwer', 0, 'test', 'test8', 't', 0, '', 0, '', '2020', '', '', 'Female', '2023-08-17', '', '', '', '', 'user8@gmail.com', '', NULL, '', '', '', 'user8', '$2y$10$RKW1IMlG82XCHHjAevPL0e.YPsPzqFv6ibl70MIvXTheK90sQtf0a'),
-(432, 'BSIT', 0, 'Taquio', 'Narz Josef', 'L.', 0, '', 0, '', '2020', '', '', 'Male', '0000-00-00', '', '', '', '', 'josefnarz2011@gmail.com', '', NULL, '', '', '', 'Narz', '$2y$10$Qsu.qwvkZ1ProVhvKXzCceopW3769HusjdHNfgzrouJH43BH0jISy'),
-(6543, 'BSIT', 0, 'test', 'test', 't', 0, '', 0, '', '2005', '', '', 'Male', '2023-08-23', '', '', '', '', 'narz@gmail.com', '', NULL, '', '', '', 'student2', 'pass2'),
-(2001518, NULL, 0, 'Tacudog', 'Jonray', 'Bernard', 0, '', 0, '', NULL, '', '', 'Male', NULL, '', '', '', '', 'tacudog.jonray@gmail.com', '', NULL, '', '', '', 'spellarj', '12345'),
-(2002529, 'BSIT', 0, 'asdfasd', 'asdfasd', 'f', 0, '', 0, '', '2020', '', '', 'Female', '2023-09-07', '', '', '', '', 'jo@gmail.com', '', NULL, '', '', '', 'zzz', 'pass');
+(1, 'BSA', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2003', 'B', 'Others', 'Female', '2023-11-15', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'yes', NULL, 'yes', 'yes', 'married', 'qwerty', '$2y$10$MAZpuotf.jLhmtt2ebzGsODgAf8HOfB4NkQga/BVEVE62ENgioyKS'),
+(2, 'BA Comm', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Married', 'Female', '2023-11-01', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'annulled', 'qwerty', '$2y$10$BPec.uhMtAXza4ISWnZWL.V0Wdjvf7miNs/TorlbULXPVauYCqA/2'),
+(3, 'BAFL', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2003', 'B', 'Others', 'Female', '2023-11-17', '21', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerrty', '$2y$10$4ZdRkhRDZY2BSmao/j6ggeL5tuwq6nRR.Qm2k6951gQVsGFWs9wPW'),
+(4, 'BSABE', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Others', 'Male', '2023-10-31', '12', '12', '12', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$eikmJRNet5WHOArpKr1f.ec/Uzsu1AVV763WqOxb6DOxg6fSTNApu'),
+(5, 'BAFL', 3, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Others', 'Male', '2023-11-15', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$tduX.X2zIWdtyWnVjEd8fOaL6Lf0oE8d4VtTiKunTOMZT9hbmSiq.'),
+(6, 'BAEL', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Married', 'Female', '2023-11-21', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$UvcmnP36QrcdF3YxDq5IdOgEb0htFxvSK4v3lqfzudSQyVE8Uhbg6'),
+(7, 'BAFL', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Others', 'Female', '2023-11-19', '12', '12', '21', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'livingTogether', 'tacudog.jonray@gmail.com', '$2y$10$We.0nCl288lfrx74EEejF.korYfMtuHw5UCDXrl2djvHFz8CnK3BO'),
+(8, 'BAFL', 5, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2003', '12', 'Married', 'Male', '2023-11-15', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'annulled', 'tacudog.jonray@gmail.com', '$2y$10$8I66P7Nhq/uV5LVA8ddliuZn0e6c0x.PXBgqfME9tBY5M39i09Zom'),
+(9, 'BAFL', 6, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Others', 'Male', '2023-11-20', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'yes', 'qwertt', 'yes', 'yes', 'annulled', 'qwerty', '$2y$10$XTCqSQB2S0811sYADx7RNupxPj73B5x0i/Nj4turnewsTqflD1IpK'),
+(10, 'BA Comm', 3, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Single', 'Male', '2023-11-14', '12', '12', '2112', 'IP address', 'tacudog.jonray@gmail.com', 'yes', 'qwertt', 'yes', 'yes', 'married', 'qwerty', '$2y$10$tQRoH1SVsK0PpIexB9B5Seua4K7yZsvAUlggNXp9Ka19esOgq0w4W'),
+(11, 'BSET', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Married', 'Female', '2023-11-30', '12', '12', '12', 'IP address', 'tacudog.jonray@gmail.com', 'yes', 'qwertt', 'no', 'yes', 'married', 'qwerty', '$2y$10$I8ePXCMjNfZPastoiETBiOk7TboXndDI7vS0HU/pf6ViSeUx.Oaoy'),
+(12, 'BA Comm', 2, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Married', 'Male', '2023-11-18', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerrty', '$2y$10$mJWvpPU7s31Z5mnYimg0LOiA2bwUMRDSE93NY7zYzNYiPrdf6EnEq'),
+(13, 'BAFL', 5, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Others', 'Male', '2023-11-14', '12', '12', '2112', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$0W650ug87kFzqq3LuUMS7u/kHOHt0zeCum/eaeHz2vTnnxkms.num'),
+(15, 'BAFL', 3, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', '12', 'Others', 'Female', '2023-11-08', '12', '12', 'wqeqwe', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'tacudog.jonray@gmail.com', '$2y$10$F9eVpw4lzbdcZPBl.u6i4uN.HcbWZhpTJdW4f8SWRIBRamVHGSH6y'),
+(17, 'BAFL', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Others', 'Female', '2023-11-22', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$f3zlUhFJGzTpzan0HUwdCeuLxpl8iAZoAfAEfkQRtlN8veiWfrKuq'),
+(21, 'BSCE', 5, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Married', 'Male', '2023-11-22', '12', '12', 'wqeqwe', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$JrdNeWcJqsgFwCg5Nk8TC.EaOELOmwF./.6lua1fYgG17vmCskbIi'),
+(23, 'BA Comm', 5, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Married', 'Male', '2023-11-20', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'annulled', 'qwerty', '$2y$10$C4YUHRGm/VyfTZsMdh7wROU.mxUWCodgLTwJEQwBh6OTrmBPcEFvy'),
+(31, 'BAEL', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Married', 'Male', '2023-11-16', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'annulled', 'qwerty', '$2y$10$u8T7GBbN5B1LdUxfKhjdy.Drt1hokvXM3kaHv5VeUwFgRiNGXYwZm'),
+(35, 'BAEL', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Married', 'Female', '2023-11-02', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$IGknBRdyEwYtGwxPQVY8J.EFECtyWnls.Wu72TFC3glVGBLleYxN.'),
+(36, 'BAEL', 3, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Married', 'Female', '2023-11-22', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'yes', NULL, 'yes', 'yes', 'married', 'qwerty', '$2y$10$ewnhtJbVGz7l1axvOnD6i.oX.yKYmtRtv4AOcI5eS1BXp8lNak4yK'),
+(43, 'BAFL', 3, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Married', 'Female', '2023-11-23', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'yes', NULL, 'no', 'no', 'married', '', '$2y$10$nx10UB71ynhH/Ei14Fqv7.GKx.FfoFZQvBfg17eL09HYaOXWvWk66'),
+(64, 'BSABE', 4, 'Tacudog', 'Jonray', 'Bernard', '2147483647', '', '0', '', '2002', 'B', 'Others', 'Male', '2023-11-20', '12', '12', 'asdasd', 'IP address', 'tacudog.jonray@gmail.com', 'no', NULL, 'no', 'no', 'married', 'qwerty', '$2y$10$n7GDEneyMS59V5WazwbLsO6TJH2CIVtxlxr1tp1/zjfvD0CGTr3ne'),
+(111, 'BLIS', 0, 'Doe', 'John', 'D', '0', '', '0', '', '2020', '', '', 'Male', '2023-08-15', '', '', '', '', 'user2@gmail.com', '', NULL, '', '', '', 'user2', '$2y$10$SczVZE3o64M8ZhuB1.NtG.AEY38qQFypzZ/FCW2m1sHyIR0eVEeSO'),
+(112, 'BSDC', 0, 'D.', 'Jane', 'Doe', '0', '', '0', '', '2019', '', '', 'Female', '2023-08-21', '', '', '', '', 'user3@gmail.com', '', NULL, '', '', '', 'user3', '$2y$10$jU4Y./C62dj97yonb5Wk7u02Spu3cnzv5sjNJXBj.8U1M77T7ScOy'),
+(114, 'BSIT', 0, 'Kun', 'Josh', 'S', '0', '', '0', '', '2020', '', '', 'Male', '2023-08-11', '', '', '', '', 'user4@gmail.com', '', NULL, '', '', '', 'user4', '$2y$10$4c3P3QQ2hUkIu8hffGl0ZewQB3ZHzfu1uNV76W9fiy/A/IhELhD5q'),
+(115, 'BSDC', 0, 'Kaguya', 'Shinomiya', 'S', '0', '', '0', '', '2019', '', '', 'Female', '2023-08-11', '', '', '', '', 'user5@gmail.com', '', NULL, '', '', '', 'user4', '$2y$10$Bc5xD1fwgVaDhyfodnoRpeWEqq3wys7oO1rEXODkS6bLBFxwxkPH.'),
+(116, 'BSIT', 0, 'Shirogane', 'Miyuki', 'S.', '0', '', '0', '', '2019', '', '', 'Male', '2023-08-18', '', '', '', '', 'user6@gmail.com', '', NULL, '', '', '', 'user6', '$2y$10$ijDxvfz1Nwj/W71jek9d1Oi/E3glb8U/HAqoCq9vqCHPwp3/BraT2'),
+(117, 'BLIS', 0, 'Monkey', 'Luffy', 'D', '0', '', '0', '', '2020', '', '', 'Male', '2023-08-18', '', '', '', '', 'user7@gmail.com', '', NULL, '', '', '', 'user7', '$2y$10$tu1lLwa.V8I728aNkNnpbuwdBckqpv46jpwAPJpVkwDDdPvqIQYmC'),
+(118, 'qwer', 0, 'test', 'test8', 't', '0', '', '0', '', '2020', '', '', 'Female', '2023-08-17', '', '', '', '', 'user8@gmail.com', '', NULL, '', '', '', 'user8', '$2y$10$RKW1IMlG82XCHHjAevPL0e.YPsPzqFv6ibl70MIvXTheK90sQtf0a'),
+(432, 'BSIT', 0, 'Taquio', 'Narz Josef', 'L.', '0', '', '0', '', '2020', '', '', 'Male', '0000-00-00', '', '', '', '', 'josefnarz2011@gmail.com', '', NULL, '', '', '', 'Narz', '$2y$10$Qsu.qwvkZ1ProVhvKXzCceopW3769HusjdHNfgzrouJH43BH0jISy'),
+(6543, 'BSIT', 0, 'test', 'test', 't', '0', '', '0', '', '2005', '', '', 'Male', '2023-08-23', '', '', '', '', 'narz@gmail.com', '', NULL, '', '', '', 'student2', 'pass2'),
+(2001518, NULL, 0, 'Tacudog', 'Jonray', 'Bernard', '0', '', '0', '', NULL, '', '', 'Male', NULL, '', '', '', '', 'tacudog.jonray@gmail.com', '', NULL, '', '', '', 'spellarj', '12345'),
+(2002529, 'BSIT', 0, 'asdfasd', 'asdfasd', 'f', '0', '', '0', '', '2020', '', '', 'Female', '2023-09-07', '', '', '', '', 'jo@gmail.com', '', NULL, '', '', '', 'zzz', 'pass');
 
 -- --------------------------------------------------------
 
@@ -828,7 +830,7 @@ CREATE TABLE `teachers` (
   `last_name` varchar(50) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `middle_name` varchar(50) NOT NULL,
-  `contact_number` varchar(20) NOT NULL,
+  `contact_number` text NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `civil_status` varchar(20) NOT NULL
@@ -907,7 +909,7 @@ CREATE TABLE `tstable` (
   `course` varchar(255) NOT NULL,
   `year_level` varchar(50) NOT NULL,
   `gender` varchar(255) NOT NULL,
-  `contact_number` bigint(255) NOT NULL,
+  `contact_number` text NOT NULL,
   `reason` varchar(50) NOT NULL,
   `date` varchar(255) NOT NULL,
   `refer` varchar(255) NOT NULL,
@@ -919,11 +921,11 @@ CREATE TABLE `tstable` (
 --
 
 INSERT INTO `tstable` (`id`, `student_id`, `teacher_id`, `transact_id`, `email`, `first_name`, `middle_name`, `last_name`, `course`, `year_level`, `gender`, `contact_number`, `reason`, `date`, `refer`, `status`) VALUES
-(94, '432', 20010101, 413, 'user1@gmail.com', 'Narz Josef', 'L.', 'Taquio', 'BSIT', '3', 'Male', 0, 'Tardy', '2023-11-19 10:44:47', 'Fname Lname', 'pending'),
-(95, '111', 20010101, 415, 'user1@gmail.com', 'John', 'D', 'Doe', 'BLIS', '3', 'Male', 0, 'Absent', '2023-11-19 10:47:59', 'Fname Lname', 'pending'),
-(96, '111', 20010101, 416, 'user1@gmail.com', 'John', 'D', 'Doe', 'BLIS', '3', 'Male', 0, 'Tardy', '2023-11-19 10:48:07', 'Fname Lname', 'pending'),
-(97, '111', 20010101, 420, 'user1@gmail.com', 'John', 'D', 'Doe', 'BLIS', '3', 'Male', 0, 'Academic Deficiency/ies', '2023-11-19 11:19:28', 'Fname Lname', 'pending'),
-(98, '432', 20010101, 423, 'user1@gmail.com', 'Narz Josef', 'L.', 'Taquio', 'BSIT', '3', 'Male', 0, 'Academic Deficiency/ies', '2023-11-19 15:42:23', 'Fname Lname', 'pending');
+(94, '432', 20010101, 413, 'user1@gmail.com', 'Narz Josef', 'L.', 'Taquio', 'BSIT', '3', 'Male', '0', 'Tardy', '2023-11-19 10:44:47', 'Fname Lname', 'pending'),
+(95, '111', 20010101, 415, 'user1@gmail.com', 'John', 'D', 'Doe', 'BLIS', '3', 'Male', '0', 'Absent', '2023-11-19 10:47:59', 'Fname Lname', 'pending'),
+(96, '111', 20010101, 416, 'user1@gmail.com', 'John', 'D', 'Doe', 'BLIS', '3', 'Male', '0', 'Tardy', '2023-11-19 10:48:07', 'Fname Lname', 'pending'),
+(97, '111', 20010101, 420, 'user1@gmail.com', 'John', 'D', 'Doe', 'BLIS', '3', 'Male', '0', 'Academic Deficiency/ies', '2023-11-19 11:19:28', 'Fname Lname', 'pending'),
+(98, '432', 20010101, 423, 'user1@gmail.com', 'Narz Josef', 'L.', 'Taquio', 'BSIT', '3', 'Male', '0', 'Academic Deficiency/ies', '2023-11-19 15:42:23', 'Fname Lname', 'pending');
 
 -- --------------------------------------------------------
 
@@ -1141,7 +1143,7 @@ ALTER TABLE `appointment`
 -- AUTO_INCREMENT for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 
 --
 -- AUTO_INCREMENT for table `ca`
