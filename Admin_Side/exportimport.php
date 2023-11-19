@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Export and Import of Database</title>
@@ -21,8 +22,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
-    <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js" />
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
@@ -33,65 +34,99 @@
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 </head>
 <style>
-    </style>
+</style>
+
 <body>
     <!-- Header -->
     <header class="header">
-    <nav class="nav"> 
-        <div class="logo">
-            <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
-        </div>
-        <div class="nav-mobile">
-            <ul class="list">
-                <li class="list-item">
-                    <a href="main.php" class="list-link current">Home</a>
-                </li>
-                <li class="list-item hov">
-                    <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
-                </li>
-                <li class="list-item hov">
-                    <a href="EmployeeProfiles.php" class="list-link current1">Employee Profiles</a>
-                </li>
-                <li class="list-item hov">
-                    <a href="logreport.php" class="list-link current1">Log Report</a>
-                </li>
-            </ul>
-            <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
-                <i class="ri-close-line"></i>
-            </button>
-        </div>
-        <div class="align-right">
-            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
-                <i class="ri-function-line"></i>
-            </button>
-            <button class="icon-btn theme-toggle-btn place-items-center">
-                <i class="ri-sun-line theme-light-icon"></i>
-                <i class="ri-moon-line theme-dark-icon"></i>
-            </button>
-            <button class="icon-btn place-items-center">
-                <i class="ri-user-3-line"></i>
-            </button>
-        </div>
-    </nav>
-</header>
+        <nav class="nav">
+            <div class="logo">
+                <a href="./index.php"><img src="assets/images/bsu.png" alt=""></a>
+            </div>
+            <div class="nav-mobile">
+                <ul class="list">
+                    <li class="list-item">
+                        <a href="main.php" class="list-link current">Home</a>
+                    </li>
+                    <li class="list-item hov">
+                        <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
+                    </li>
+                    <li class="list-item hov">
+                        <a href="EmployeeProfiles.php" class="list-link current1">Employee Profiles</a>
+                    </li>
+                    <li class="list-item hov">
+                        <a href="logreport.php" class="list-link current1">Log Report</a>
+                    </li>
+                </ul>
+                <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="align-right">
+                <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
+                    <i class="ri-function-line"></i>
+                </button>
+                <button class="icon-btn theme-toggle-btn place-items-center">
+                    <i class="ri-sun-line theme-light-icon"></i>
+                    <i class="ri-moon-line theme-dark-icon"></i>
+                </button>
+                <button class="icon-btn place-items-center">
+                    <i class="ri-user-3-line"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
     <!-- Welcome-message -->
-    
-<section>
-<div class="title independent-title">
-    <h2>Export and Import of Database</h2>
-    </div>
-     
-</section>
-<br>
+
+    <section>
+        <div class="title independent-title">
+            <h2>Export and Import of Database</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card">
+                        <h2 class="card-title">Import Database</h2>
+                        <div class="card-body">
+                            <p class="card-text">Import Back Up Database.</p>
+                            <form action="../backend/import_database.php" method="post" enctype="multipart/form-data">
+                                <input type='file' name='import' accept=".sql">
+                                <br>
+                                <br>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Import</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card">
+                        <h2 class="card-title">Export Database</h2>
+                        <div class="card-body">
+                            <p class="card-text justify-content-center">Export Back Up Database.</p>
+                            <form action="../backend/export_database.php">
+                                <br>
+                                <br>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Export</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+    <br>
     <!-- Footer -->
     <footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
+        <div class="container" id="footercopyright">
+            <div class="copyright">
+                <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
+            </div>
+            <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
         </div>
-        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-    </div>
-</footer>
-<!-- Script     -->
-<script src="./assets/main.js"></script>
- <script src="assets/js/table.js"></script>   
+    </footer>
+    <!-- Script     -->
+    <script src="./assets/main.js"></script>
+    <script src="assets/js/table.js"></script>
