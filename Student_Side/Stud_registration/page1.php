@@ -28,6 +28,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+      
     }
 
     .autocomplete-container {
@@ -63,6 +64,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 
     body {
         height: auto;
+        /* width:auto; */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -73,6 +75,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
         position: relative;
         max-width: 900px;
         width: 100%;
+        height:auto;
         /* border-radius: 0px;  */
         padding: 10px;
         margin: 0 15px;
@@ -101,7 +104,10 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
     .container form {
         position: relative;
         margin-top: 16px;
-        min-height: 2000px;
+        min-height: 2800px;
+                /* min-height: 2000px; */
+
+
         /* background-color: #fff; */
         overflow: hidden;
     }

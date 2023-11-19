@@ -108,7 +108,7 @@ if ((isset($_GET['logout']) && $_GET['logout'] === 'true') || (isset($_SESSION) 
           <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box" style=" background: cream">
               <div class="icon"><i class="bi bi-clock-history"></i></div>
-              <h4 class="title"><a href="#Contacts" class="stretched-link">CONTACT</a></h4>
+              <h4 class="title"><a href="https://www.facebook.com/profile.php?id=61553066382035" class="stretched-link">CONTACT</a></h4>
             </div>
           </div><!--End Icon Box -->
         </div>

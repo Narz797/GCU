@@ -13,7 +13,7 @@ tstable.contact_number,
 tstable.gender,
 tstable.reason,
 tstable.refer,
-transact.status,
+referral.status,
 transact.date_created AS date,
 transact.transact_id
 FROM

@@ -154,9 +154,9 @@ session_start();
                   <p class="card-description refer" id="rem">Remarks</p>
                 </div>
                 <div class="action">
-                 <a href="form.php"><button class="yes" onclick="status_update('Excused')">Excused</button></a>
-                 <a href="form.php"><button class="no" onclick="status_update('Unexcused')">Unexcused</button></a>
-                 <a href="form.php"><button class="pending" onclick="status_update('Lacking')">Lacking</button></a>
+                 <button class="yes" onclick="status_update('Excused')">Excused</button>
+                 <button class="no" onclick="status_update('Unexcused')">Unexcused</button>
+                 <button class="pending" onclick="status_update('Lacking')">Lacking</button>
                  </div>
             </div>
         </div>

@@ -63,7 +63,7 @@ if (
                 $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
             
                 $sql_1 = 'INSERT INTO transact(student_id, transact_type, teacher_id, date_created, status) VALUES (:sid, :reasons, :tid,  :date_created, :status)';
-                $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `remarks`, `Dates_for_AbsentTardy`, `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :sid, :reasons, :rem, :date, :refer, :tid, :RUR)';
+                $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `remarks`, `Dates_for_AbsentTardy`, `referred`, `teacher_id`, `reg`, `status`) VALUES (:transact_id, :sid, :reasons, :rem, :date, :refer, :tid, :RUR, :status)';
                 $sql_3 = 'INSERT INTO `tstable`(`student_id`, `teacher_id`,  `transact_id`, `email`, `first_name`, `middle_name`, `last_name`, `course`, `year_level`, `gender`, `contact_number`, `reason`, `date`,  `refer`, `status`) VALUES (:sid, :tid, :transact_id, :email, :fname, :mname, :lname, :course, :yrlvl, :gender, :cn, :reasons, :date, :tname, :status)';
             
             
@@ -87,6 +87,7 @@ if (
                     $code->bindParam(':refer', $tname);
                     $code->bindParam(':tid', $tid);
                     $code->bindParam(':RUR', $RUR);
+                    $code->bindParam(':status', $status);
                     $code->execute();
                 
                
@@ -138,7 +139,7 @@ if (
         $rem = $_POST['rem'];
 
         $sql_1 = 'INSERT INTO transact(student_id, transact_type, teacher_id, date_created, status) VALUES (:student_id, :transact_type, :tid,  :date_created, :status)';
-        $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `remarks`, `Dates_for_AbsentTardy`,  `referred`, `teacher_id`, `reg`) VALUES (:transact_id, :sidd, :reasons, :rem, :date, :refer, :tid, :RUR)';
+        $sql_2 = 'INSERT INTO referral(`transact_id`, `stud_id`, `reason`, `remarks`, `Dates_for_AbsentTardy`,  `referred`, `teacher_id`, `reg`, `status`) VALUES (:transact_id, :sidd, :reasons, :rem, :date, :refer, :tid, :RUR, :status)';
         $sql_3 = 'INSERT INTO `tstable`(`student_id`, `teacher_id`,  `transact_id`, `email`, `first_name`, `middle_name`, `last_name`, `course`, `year_level`, `gender`, `contact_number`, `reason`, `date`,  `refer`, `status`) VALUES (:sid, :tid, :transact_id, :email, :fname, :mname, :lname, :course, :yrlvl, :gender, :cn, :reasons, :date, :tname, :status)';
             
         try {
@@ -162,6 +163,7 @@ if (
         $code->bindParam(':refer', $tname); // Assuming $tname contains the full name
         $code->bindParam(':tid', $tid);
         $code->bindParam(':RUR', $RUR);
+        $code->bindParam(':status', $status);
         $code->execute();
     }
     $code = $pdo->prepare($sql_3);
