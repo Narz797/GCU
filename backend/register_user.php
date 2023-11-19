@@ -313,11 +313,11 @@ if (isset($_SESSION['origin'])) {
                 // $stmt7->execute();
 
                 if ($stmt->execute() && $stmt1->execute() && $stmt2->execute() && $stmt3->execute() && $stmt6->execute()) {
-                    echo "Registered Successfully";
+                    echo "<script> alert('Registered Successfully!')</scipt>";
                     header('Location: ../Student_Side/student-login');
                 } else {
-                    echo "Registration failed";
-                    header('Location: ../Student_Side/Stud_registration/page3.php');
+                    echo "<script> alert('Registration Failed!')</scipt>";
+                    header('Location: ../Student_Side/Stud_registration/page1.php');
                 }
             }
         }
@@ -422,7 +422,8 @@ if (isset($_SESSION['origin'])) {
         `username`, `password`) VALUES (?,?,?,?,?,?,?,?,?,?)");
 
         $joined_date = date("Y/m/d");
-
+        //temporary
+        $stmt->execute([$employee_id, $employee_fname, $employee_lname, $employee_mname, $employee_sex, $employee_position, $joined_date, $employee_email, 'username_placeholder', 'password_placeholder']);
 
     }
 }
