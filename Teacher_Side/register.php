@@ -15,6 +15,9 @@ $_SESSION['origin'] = 'Teacher_Register';
     <link rel="stylesheet" href="register.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <title>Teacher Regisration Form </title>
+   <link href="../assets/img/GCU_logo.png" rel="icon">
+
+
 </head>
 
 <body>
@@ -32,7 +35,7 @@ $_SESSION['origin'] = 'Teacher_Register';
                     <div class="fields">
                         <div class="input-field">
                             <label for="idNumber">Employee ID Number:</label>
-                            <input type="text" id="idNumber" name="idNumber" required>
+                            <input type="text" id="idNumber"  name="idNumber" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                         </div>
                         <div class="input-field">
                             <label>College</label>
@@ -75,7 +78,7 @@ $_SESSION['origin'] = 'Teacher_Register';
                         </div>
                         <div class="input-field">
                             <label>Contact Number</label>
-                            <input type="text" id="cn" name="cn" required>
+                            <input type="text" id="cn"  name="cn"oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                         </div>
                         <div class="input-field">
                             <label>Email</label>
@@ -88,13 +91,14 @@ $_SESSION['origin'] = 'Teacher_Register';
                         <div class="input-field">
                             <label>Civil Status</label>
                             <select required id="stat" name="stat">
-                                <option disabled selected>Select</option>
+                            <option disabled selected>Select</option>
                                 <option>Single</option>
                                 <option>Married</option>
-                                <option>Others</option>
+                                <option>Divorced</option>
+                                <option>Widowed</option>
                             </select>
                         </div>
-                        <button type="submit">BACK</button>
+                        <button type="submit" onclick="window.location.href='.././home'">BACK</button>
                         <button type="submit">SUBMIT</button>
                     </div>
                 </div>

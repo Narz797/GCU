@@ -38,10 +38,12 @@
 
         main {
             padding: 2em;
+            
         }
 
         section {
             margin-bottom: 2em;
+            
         }
 
         h2 {
@@ -88,9 +90,34 @@
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
+* {
+  box-sizing: border-box;
+  
+ 
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+
+  
+  height: auto; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+ 
+}
     </style>
 </head>
 <body>
+
 
     <header>
         <h1>Help Center</h1>
@@ -106,7 +133,10 @@
         <a  href="Student_Side/student-home" class="logout">Logout</a>
     </nav>
 
-    <main>
+    <div class="row">
+        <div class="column" style="background-color:white;">
+            <h2>TRANSACTION</h2>
+            <main>
         <section id="getting-started">
             <h2>Getting Started</h2>
             <p>Welcome to our platform! Follow these steps to get started:</p>
@@ -114,7 +144,7 @@
                 <li>Choose transaction</li>
                 <li>Fill Up the form</li>
                 <li>Submit the form</li>
-                <li>Wait for the reply of the Guidance and Counseling Unit.</li>
+                <li>Wait for the reply of the Guidance and Counseling Unit through text.</li>
 
             </ol>
         </section>
@@ -123,8 +153,8 @@
             <h2>Account</h2>
             <p>If you are facing issues with your account, please check the following:</p>
             <ul>
-                <li>Ensure your username and password are correct</li>
-                <li>Contact support if you forgot your password</li>
+                <li>Ensure that you are the person who logs in with that account.</li>
+                <li>Log out if you are not the person, as it may lead to dismissal from the school.</li>
             </ul>
         </section>
 
@@ -140,9 +170,54 @@
 
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>If you need help or have any questions, feel free to contact our support team at bsu.edu.com.</p>
+            <p>If you need help or have any questions, feel free to contact our support team at bsuossgcu205@gmail.com / 0907 905 0664 / Guidance & Counseling Unit - Benguet State University (FB PAGE).</p>
         </section>
     </main>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+            <h2>APPOINTMENT</h2>
+            <main>
+        <section id="getting-started">
+            <h2>Getting Started</h2>
+            <p>Welcome to our platform! Follow these steps to get started:</p>
+            <ol>
+                <li>Choose date of appointment</li>
+                <li>Book the available date and time.</li>
+                <li>State your reason for setting an appointment.</li>
+                <li>Submit your transaction.</li>
+                <li>Wait for the reply of the Guidance and Counseling Unit through text.</li>
+
+            </ol>
+        </section>
+
+        <section id="account">
+            <h2>Account</h2>
+            <p>If you are facing issues with your account, please check the following:</p>
+            <ul>
+                <li>Ensure that you are the person who logs in with that account</li>
+                <li>Log out if you are not the person, as it may lead to dismissal from the school.</li>
+            </ul>
+        </section>
+
+        <section id="troubleshooting">
+            <h2>Troubleshooting</h2>
+            <p>If you encounter any issues while using our platform, try the following:</p>
+            <ul>
+                <li>Clear your browser cache</li>
+                <li>Update your browser to the latest version</li>
+                <li>Contact support for further assistance</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you need help or have any questions, feel free to contact our support team at bsuossgcu205@gmail.com / 0907 905 0664 / Guidance & Counseling Unit - Benguet State University (FB PAGE).</p>
+        </section>
+    </main>
+        </div>
+    </div>
+
+    
 
     <footer>
         <p>&copy; 2023 Benguet State University - Guidance and Counseling Unit. All rights reserved.</p>

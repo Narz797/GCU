@@ -15,7 +15,8 @@ $_SESSION['transact_type']='leave_of_absence';//asign value to transact_type
 <head>
   <title>Leave Of Absence Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link href="assets/img/GCU_logo.png" rel="icon">
+  <link href="../assets/img/GCU_logo.png" rel="icon">
+  
 </head>
 <style>
     /* Your existing styles here */
@@ -255,13 +256,15 @@ label, span {
           <label for="textarea">Reason/s for stopping/filing a leave:</label>
         </p>
         <p>
-          <textarea name="textarea" class="textarea" id="reason_leave"></textarea>
+<!-- Corrected code -->
+        <textarea name="textarea" class="textarea" id="reason_leave" required></textarea>
         </p>
         <p>
           <label for="textarea">What to do when on-leave:</label>
         </p>
         <p>
-          <textarea name="textarea" class="textarea" id="do_leave"></textarea>
+<!-- Corrected code -->
+        <textarea name="textarea" class="textarea" id="do_leave" required></textarea>
         </p>
         <div class="button-container">
           <div class="button">
