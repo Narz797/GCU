@@ -462,6 +462,7 @@ $siblings = $siblings->fetchAll();
     margin-left: auto;
     padding-right: 15px;
     padding-left: 15px;
+   
   }
 
   @media (min-width: 576px) {
@@ -628,7 +629,7 @@ $siblings = $siblings->fetchAll();
 
   .form-control::-ms-expand {
     border: 0;
-    background-color: transparent;
+    background-color:transparent;
   }
 
   .form-control:focus {
@@ -2199,6 +2200,8 @@ $siblings = $siblings->fetchAll();
     border-radius: 10px;
     /* Set your desired border radius */
   }
+
+
 </style>
 
 <body>
@@ -2277,13 +2280,13 @@ $siblings = $siblings->fetchAll();
       </div> -->
     </div>
     <!-- Page content -->
-    <div class="container-fluid mt--7">
-      <div class="row">
-        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+    <div class="container-fluid mt--7" >
+      <div class="row" >
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0"  >
           <div class="card card-profile shadow">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center"  >
               <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
+                <div class="card-profile-image" >
                   <a href="#">
                     <img src="../assets/img/GCU_logo.png" alt="" width="450px" height="180px" class="rounded-circle">
                     <!-- <img class="image"src="../assets/img/ab.jpg" alt="Logo" class="logo" style="height: 100%; width: 20%; border-radius: 50%;"> -->
@@ -2314,16 +2317,16 @@ $siblings = $siblings->fetchAll();
               <br>
               <br>
               <br>
-              <div class="text-center">
+              <div class="text-center" >
                 <h3>
                   WELCOME TO
                 </h3>
 
 
-                <div>
+                <div >
                   <i class="ni education_hat mr-2"></i>Benguet State University-Guidance and Counseling Unit
                 </div>
-                <hr class="my-4">
+                <hr style=" border-width: 3px; background-color:black;">
                 <!-- <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p> -->
                 <?php
                 $filePath_jpg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
@@ -2331,7 +2334,7 @@ $siblings = $siblings->fetchAll();
                 $filePath_jpeg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpeg';
                 if (file_exists($filePath_jpg)) {
                   // Display the image
-                  echo '<img src="' . $filePath_jpg . '" alt="Photo" style="width: 50%; height: 50%">';
+                  echo '<img src="' . $filePath_jpg . '" alt="Photo" style="width: 50%; height: 50% ">';
                 }
                 elseif(file_exists($filePath_jpg)) {
                   // Display the image
@@ -2346,7 +2349,9 @@ $siblings = $siblings->fetchAll();
                 }
                 ?>
 
+
                 <br>
+                <hr style=" border-width: 3px; background-color:black;">
                 <br>
                 <?php
                       $filePath_jpg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
@@ -2378,7 +2383,7 @@ $siblings = $siblings->fetchAll();
         </div>
 
 
-        <div class="col-xl-8 order-xl-1">
+        <div class="col-xl-8 order-xl-1" >
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
@@ -2393,10 +2398,10 @@ $siblings = $siblings->fetchAll();
 
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="background-color:lightgray;">
               <form>
 
-                <h6 class="heading-small text-muted mb-4">User information </h6>
+                <h6 class="heading-small text-muted mb-4" style="color:black; font-weight:bold;" >User information </h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
@@ -2847,10 +2852,10 @@ $siblings = $siblings->fetchAll();
 
                 <hr class="my-4">
                 <!-- Description -->
-                <p><b><i>In view of the Indigenous People's Act (RA 8371), Magna Carta for
+                <p style="color:black; font-weight:bold;"><i>In view of the Indigenous People's Act (RA 8371), Magna Carta for
                       Persons with Disability (RA 7277, as amended by RA 9442), the (c) Solo Parents
                       Welfare Act of 2000 (RA 8972), and CHED Memorandum Order 9 s.2013, please answer
-                      the following items:</i></b></p>
+                      the following items:</i></p>
 
 
 
@@ -2895,7 +2900,8 @@ $siblings = $siblings->fetchAll();
 
           <hr class="my-4">
           <!-- Description -->
-          <h6 class="heading-small text-muted mb-4">SOURCES OF FINANCIAL SUPPORT</h6>
+          <h3 class="heading-small " style="color:black; font-weight: bold">SOURCES OF FINANCIAL SUPPORT</h3>
+         
 
           <input type="checkbox" id="FS_parent" disabled <?php echo $checkedOption1 ?>>
           <!-- <i class="fa fa-check"></i> -->
@@ -2924,7 +2930,7 @@ $siblings = $siblings->fetchAll();
 
           <hr class="my-4">
           <!-- Description -->
-          <h6 class="heading-small text-muted mb-4">MARITAL STATUS OF PARENT</h6>
+          <h6 class="heading-small" style="color:black; font-weight: bold">MARITAL STATUS OF PARENT</h6>
 
 
           <input type="checkbox" id="MS_pam" disabled <?php echo $checkmarital1; ?>>
@@ -2950,7 +2956,7 @@ $siblings = $siblings->fetchAll();
 
           <hr class="my-4">
           <!-- Description -->
-          <h6 class="heading-small text-muted mb-4">More About me</h6>
+          <h6 class="heading-small" style="color:black; font-weight: bold">More About me</h6>
           <div class="pl-lg-4">
             <div class="form-group focused">
 
