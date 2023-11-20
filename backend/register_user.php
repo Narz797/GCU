@@ -164,11 +164,18 @@ if (isset($_SESSION['origin'])) {
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if (count($result) === 1) {
-            echo "User Already Registered";
-            header('Location: ../Student_Side/Stud_registration/page3.php');
+            echo '<script>';
+            echo "alert('User Already Registered')";
+            echo 'window.location.href=" ../Student_Side/Stud_registration/page1.php";';
+            echo '</script>';
+            exit;
         } else {
             if ($_SESSION['pass'] != $_SESSION['conpass']) {
-                echo "The password is not equal to your confirm password. Please check your passwords";
+                echo '<script>';
+                echo "alert('The password is not equal to your confirm password. Please check your passwords')";
+                echo 'window.location.href=" ../Student_Side/Stud_registration/page1.php";';
+                echo '</script>';
+                exit;
             } else {
                 $hashedPassword = password_hash($_SESSION['pass'], PASSWORD_DEFAULT);
                 $sql = "INSERT INTO `student_user`(
@@ -313,11 +320,17 @@ if (isset($_SESSION['origin'])) {
                 // $stmt7->execute();
 
                 if ($stmt->execute() && $stmt1->execute() && $stmt2->execute() && $stmt3->execute() && $stmt6->execute()) {
-                    echo "<script> alert('Registered Successfully!')</scipt>";
-                    header('Location: ../Student_Side/student-login');
+                    echo '<script>';
+                    echo "alert('Registered Successfully!')</scipt>";
+                    echo 'window.location.href=" ../Student_Side/student-login";';
+                    echo '</script>';
+                    exit;
                 } else {
-                    echo "<script> alert('Registration Failed!')</scipt>";
-                    header('Location: ../Student_Side/Stud_registration/page1.php');
+                    echo '<script>';
+                    echo "alert('Registration Failed!')";
+                    echo 'window.location.href=" ../Student_Side/Stud_registration/page1.php";';
+                    echo '</script>';
+                    exit;
                 }
             }
         }
@@ -355,7 +368,10 @@ if (isset($_SESSION['origin'])) {
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if (count($result) === 1) {
-                echo "User Already Registered";
+                echo '<script>';
+                echo "alert('User Already Registered!')";
+                echo 'window.location.href=" ../Teacher_Side/register.php";';
+                echo '</script>';
             } else {
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 $sql = "INSERT INTO `teachers` (`employee_id`, `college`, `gender`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `password`, `civil_status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -372,21 +388,31 @@ if (isset($_SESSION['origin'])) {
                 $stmt->bindParam(10, $stat);
 
                 if ($stmt->execute()) {
-                    echo "success_teacher";
+                    echo '<script>';
+                    echo "alert('User Registration Successfully!')";
+                    echo 'window.location.href=" ../Teacher_Side/register.php";';
+                    echo '</script>';
                 } else {
-                    echo "Registration failed";
+                    echo '<script>';
+                    echo "alert('User Registration Failed!')";
+                    echo 'window.location.href=" ../Teacher_Side/register.php";';
+                    echo '</script>';
                 }
             }
         } else {
-            echo "Missing data fields.";
+            echo '<script>';
+            echo "alert('Missing data fields!')";
+            echo 'window.location.href=" ../Teacher_Side/register.php";';
+            echo '</script>';
         }
 
         // Close the database connection
         // $conn->close();
 
     } elseif ($origin === 'Employee') {
-        if (isset($_POST['employeeid'])) {
-            $employee_id = $_POST['employeeid'];
+        var_dump($_POST);
+        if (isset($_POST['empID'])) {
+            $employee_id = $_POST['empID'];
         }
 
         if (isset($_POST['lname'])) {
@@ -401,30 +427,57 @@ if (isset($_SESSION['origin'])) {
             $employee_mname = $_POST['mname'];
         }
 
-        if (isset($_POST['sex'])) {
-            $employee_sex = $_POST['sex'];
+        if (isset($_POST['gender'])) {
+            $employee_sex = $_POST['gender'];
         }
 
         if (isset($_POST['email'])) {
             $employee_email = $_POST['email'];
         }
 
-        if (isset($_POST['contactnumber'])) {
-            $employee_email = $_POST['contactnumber'];
+        if (isset($_POST['contactnum'])) {
+            $employee_contactnum = $_POST['contactnum'];
         }
 
         if (isset($_POST['position'])) {
-            $employee_email = $_POST['position'];
+            $employee_position = $_POST['position'];
+        }
+        if (isset($_POST['username'])) {
+            $employee_username = $_POST['username'];
+        }
+        if (isset($_POST['password'])) {
+            $employee_password = $_POST['password'];
         }
 
-        $stmt = $pdo->prepare("INSERT INTO `admin_user`(`admin_user_id`, `first_name`, 
-        `last_name`, `middle_name`, `gender`, `position`, `date_joined`, `email`, 
-        `username`, `password`) VALUES (?,?,?,?,?,?,?,?,?,?)");
+        $joined_date = date("Y-m-d");  // Use a common MySQL date format
 
-        $joined_date = date("Y/m/d");
-        //temporary
-        $stmt->execute([$employee_id, $employee_fname, $employee_lname, $employee_mname, $employee_sex, $employee_position, $joined_date, $employee_email, 'username_placeholder', 'password_placeholder']);
+        // Hash the password securely
+        $hashed_password = password_hash($employee_password, PASSWORD_DEFAULT);
 
+        $sql = "INSERT INTO `admin_user`(`admin_user_id`, `first_name`, 
+            `last_name`, `middle_name`, `gender`, `position`,`contact`, `email`, 
+            `username`, `password`, `date_joined`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(1, $employee_id);
+        $stmt->bindParam(2, $employee_fname);
+        $stmt->bindParam(3, $employee_lname);
+        $stmt->bindParam(4, $employee_mname);
+        $stmt->bindParam(5, $employee_sex);
+        $stmt->bindParam(6, $employee_position);
+        $stmt->bindParam(7,$employee_contactnum);
+        $stmt->bindParam(8, $joined_date);
+        $stmt->bindParam(9, $employee_email);
+        $stmt->bindParam(10, $employee_username);
+        $stmt->bindParam(11, $hashed_password);
+
+        if ($stmt->execute()){
+            echo '<script>';
+            echo 'alert("User Registration Successfully!");';
+            echo 'window.location.href="../Employee_Side/employee-login";';
+            echo '</script>';
+            exit;
+        }
     }
 }
 ob_end_flush();
