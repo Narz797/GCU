@@ -172,7 +172,7 @@ if (isset($_SESSION['origin'])) {
         } else {
             if ($_SESSION['pass'] != $_SESSION['conpass']) {
                 echo '<script>';
-                echo "alert('The password is not equal to your confirm password. Please check your passwords')";
+                echo "alert('The password is not equal to your confirm password. Please check your passwords');";
                 echo 'window.location.href=" ../Student_Side/Stud_registration/page1.php";';
                 echo '</script>';
                 exit;
@@ -321,13 +321,13 @@ if (isset($_SESSION['origin'])) {
 
                 if ($stmt->execute() && $stmt1->execute() && $stmt2->execute() && $stmt3->execute() && $stmt6->execute()) {
                     echo '<script>';
-                    echo "alert('Registered Successfully!')</scipt>";
+                    echo "alert('Registered Successfully!');";
                     echo 'window.location.href=" ../Student_Side/student-login";';
                     echo '</script>';
                     exit;
                 } else {
                     echo '<script>';
-                    echo "alert('Registration Failed!')";
+                    echo "alert('Registration Failed!');";
                     echo 'window.location.href=" ../Student_Side/Stud_registration/page1.php";';
                     echo '</script>';
                     exit;
@@ -369,7 +369,7 @@ if (isset($_SESSION['origin'])) {
 
             if (count($result) === 1) {
                 echo '<script>';
-                echo "alert('User Already Registered!')";
+                echo "alert('User Already Registered!');";
                 echo 'window.location.href=" ../Teacher_Side/register.php";';
                 echo '</script>';
             } else {
@@ -389,19 +389,19 @@ if (isset($_SESSION['origin'])) {
 
                 if ($stmt->execute()) {
                     echo '<script>';
-                    echo "alert('User Registration Successfully!')";
+                    echo "alert('User Registration Successfully!');";
                     echo 'window.location.href=" ../Teacher_Side/register.php";';
                     echo '</script>';
                 } else {
                     echo '<script>';
-                    echo "alert('User Registration Failed!')";
+                    echo "alert('User Registration Failed!');";
                     echo 'window.location.href=" ../Teacher_Side/register.php";';
                     echo '</script>';
                 }
             }
         } else {
             echo '<script>';
-            echo "alert('Missing data fields!')";
+            echo "alert('Missing data fields!');";
             echo 'window.location.href=" ../Teacher_Side/register.php";';
             echo '</script>';
         }
