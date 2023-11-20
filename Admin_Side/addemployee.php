@@ -1,6 +1,7 @@
 <?php 
-    // session_start();
-    // $_SESSION['origin'] = 'Employee';
+session_start();
+$_SESSION['origin']='Employee';
+
 ?>
 
 <!DOCTYPE html>
@@ -98,26 +99,26 @@
     <section class="table-body">
     <section  id="table">
     
-    <form method="post" action="#">
+    <form method="post" action="../backend/register_user.php">
         <br>
         <center>
         <div class="input-group input-group-lg">
-              <input type="number" class="form-control" placeholder="Employee ID No." 
+              <input type="number" class="form-control" name ='empID' placeholder="Employee ID No." 
               aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" required>
               </div>
         <br>
         <div class="input-group input-group-lg">
               <input type="text" class="form-control" placeholder="Last Name" 
-              aria-label="Last Name" aria-describedby="inputGroup-sizing-lg" required>
-              <input type="text" class="form-control" placeholder="Middle Name" 
+              aria-label="Last Name" name ='lname' aria-describedby="inputGroup-sizing-lg" required>
+              <input type="text" name ='mname' class="form-control" placeholder="Middle Name" 
               aria-label="Middle Name" aria-describedby="inputGroup-sizing-lg" required>
-              <input type="text" class="form-control" placeholder="First Name" 
+              <input type="text" name ='fname'class="form-control" placeholder="First Name" 
               aria-label="First Name" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
         <div class="input-group input-group-lg">
             <label class="input-group-text" for="inputgroupselect">Sex</label>
-            <select class="form-select" id="inputgroupselect" required>
+            <select class="form-select" name ='gender' id="inputgroupselect" required>
                 <option selected>Choose...</option>
                 <option value="F">Female</option>
                 <option value="M">Male</option>
@@ -125,24 +126,24 @@
         </div>
         <br>
         <div class="input-group input-group-lg">
-              <input type="text" class="form-control" placeholder="Email" 
+              <input type="text" name='email' class="form-control" placeholder="Email" 
               aria-label="Email" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
         <div class="input-group input-group-lg">
-              <input type="number" class="form-control" placeholder="Contact No." 
+              <input type="text" name='contactnum' class="form-control" placeholder="Contact No." 
               aria-label="Contact No." aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
         <div class="input-group input-group-lg">
-              <input type="text" class="form-control" placeholder="Position" 
+              <input type="text" name='position' class="form-control" placeholder="Position" 
               aria-label="Position" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
         <div class="input-group input-group-lg">
-              <input type="text" class="form-control" placeholder="Username" 
+              <input type="text" class="form-control" name='username' placeholder="Username" 
               aria-label="Username" aria-describedby="inputGroup-sizing-lg" required>
-              <input type="text" class="form-control" placeholder="Password" 
+              <input type="text" class="form-control" name='password' placeholder="Password" 
               aria-label="Password" aria-describedby="inputGroup-sizing-lg" required>
         </div>
     </center>

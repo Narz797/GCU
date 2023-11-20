@@ -1,10 +1,16 @@
+<?php 
+session_start();
+$_SESSION['origin']='Employee';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Employee Profile</title>
+    <title>Add Employee Account</title>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" href="assets/images/GCU_logo.png">
@@ -17,10 +23,13 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/profiles.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
     <!-- Export -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -31,10 +40,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
 </head>
 <style>
+
     </style>
 <body>
+
     <!-- Header -->
     <header class="header">
     <nav class="nav"> 
@@ -51,6 +63,9 @@
                 </li>
                 <li class="list-item hov">
                     <a href="logreport.php" class="list-link current1">Log Report</a>
+                </li>
+                <li class="list-item hov">
+                    <a href="exportimport.php" class="list-link current1">Export/Import of Database</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -77,40 +92,80 @@
   
       
     <div class="title independent-title">
-    <h2>Edit Employee Profiles</h2>
+    <h2>Edit Employee Account</h2>
     </div>
      <!-- Section -->
+    
     <section class="table-body">
     <section  id="table">
-    <form method="post" action="#">
-        <label for="employeeid">Employee ID Number:</label>
-        <input type="number" name="employeeid" value=""><br>
+    
+    <form method="post" action="../backend/edit_employee.php">
         <br>
-        <label for="lname">Last Name:</label>
-        <input type="text" name="lname" value="">
-        <label for="fname">First Name:</label>
-        <input type="text" name="fname" value="">
-        <label for="mname">Middle Name:</label>
-        <input type="text" name="mname" value=""><br>
+        <center>
+        <div class="input-group input-group-lg">
+              <input type="number" class="form-control" name ='empID' placeholder="Employee ID No." 
+              aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" required>
+              </div>
         <br>
-        <label for="sex">Sex:</label>
-        <select id="gender" name="sex" value="">
-            <option>Female</option>
-            <option>Male</option>
-        <select>
-        <label for="email">Email Address:</label>
-        <input type="text" name="email" value="">
-        <label for="contactnumber">Contact Number:</label>
-        <input type="number" name="contactnumber" value="">
-        <label for="position">Position:</label>
-        <input type="text" name="position" value=""><br>
+        <div class="input-group input-group-lg">
+              <input type="text" class="form-control" placeholder="Last Name" 
+              aria-label="Last Name" name ='lname' aria-describedby="inputGroup-sizing-lg" required>
+              <input type="text" name ='mname' class="form-control" placeholder="Middle Name" 
+              aria-label="Middle Name" aria-describedby="inputGroup-sizing-lg" required>
+              <input type="text" name ='fname'class="form-control" placeholder="First Name" 
+              aria-label="First Name" aria-describedby="inputGroup-sizing-lg" required>
+        </div>
         <br>
-        
-        <button type="submit" value="Save Changes">Save Changes</button>
+        <div class="input-group input-group-lg">
+            <label class="input-group-text" for="inputgroupselect">Sex</label>
+            <select class="form-select" name ='gender' id="inputgroupselect" required>
+                <option selected>Choose...</option>
+                <option value="F">Female</option>
+                <option value="M">Male</option>
+            </select>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+              <input type="text" name='email' class="form-control" placeholder="Email" 
+              aria-label="Email" aria-describedby="inputGroup-sizing-lg" required>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+              <input type="text" name='contactnum' class="form-control" placeholder="Contact No." 
+              aria-label="Contact No." aria-describedby="inputGroup-sizing-lg" required>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+              <input type="text" name='position' class="form-control" placeholder="Position" 
+              aria-label="Position" aria-describedby="inputGroup-sizing-lg" required>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+              <input type="text" class="form-control" name='username' placeholder="Username" 
+              aria-label="Username" aria-describedby="inputGroup-sizing-lg" required>
+              <input type="text" class="form-control" name='password' placeholder="Password" 
+              aria-label="Password" aria-describedby="inputGroup-sizing-lg" required>
+        </div>
+    </center>
+
+        <br>
+        <button type="submit" value="Add Employee">Edit Employee Account</button>
     </form>
     </section>
+
 </section>
 <br>
+</div>
+
+<style>
+.table-body{
+    background-color: darkolivegreen;  
+    
+}
+
+
+</style>
+
     <!-- Footer -->
     <footer id="footer" class="footer">
     <div class="container" id="footercopyright">
@@ -122,6 +177,7 @@
 </footer>
 <!-- Script     -->
 <script src="./assets/main.js"></script>
+
  <script src="assets/js/table.js"></script>   
 </body>
 </html>

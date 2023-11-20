@@ -2343,6 +2343,7 @@ $siblings = $siblings->fetchAll();
                   echo 'File not found.';
                 }
                 ?>
+
                 <br>
                 <br>
                 <?php
@@ -2362,10 +2363,9 @@ $siblings = $siblings->fetchAll();
                         echo '<img src="' . $filePath_jpeg . '" alt="Photo" style="width: 50%; height: 50%">';
                       }
                       else {
-                        echo 'File not found.';
-                      }
-                ?>
+                        echo 'File not found.';                      }
 
+                        ?>
 
               </div>
             </div>
