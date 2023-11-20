@@ -722,8 +722,8 @@ function openModal2(id) {
         });
     fetchData();
 </script>
-<script src="../assets/main.js"></script>
-<script src="../assets/js/tablesort.js"></script>
-<script src="../assets/js/notes.js"></script>
+<script src="./assets/main.js"></script>
+<script src="./assets/js/tablesort.js"></script>
+<script src="./assets/js/notes.js"></script>
 </body>
 </html>
