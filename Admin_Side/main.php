@@ -1,7 +1,11 @@
 <?php
-include '../backend/connect_database.php';
+session_start();
+// include '../backend/connect_database.php';
 
-$daily = $pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE your_condition;');
+// $daily = $pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE your_condition;');
+$id = $_SESSION['session_id'];
+echo "<script>console.log('ID: ',$id)</script>";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +15,9 @@ $daily = $pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" href="assets/images/GCU_logo.png">
@@ -65,23 +72,24 @@ $daily = $pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE
                 <!-- call employee id 
     number or 
     profession = "Admin"-->
-                <h2 class="title">Welcome back,&nbspAdmin</h2>
+                <h2 class="title">Welcome back, Admin</span></h2>
             </header>
             <hr>
 
             <div class="card-body">
                 <div class="card-image">
-                    <img src="assets/images/sp.jpg" alt="">
+                    <img src="assets/images/GCU_logo.png" alt="">
                 </div>
                 <div class="card-information">
                     <!-- call employee 
     registered data -->
-                    <h2 class="title">Welcome back,<span id="position"></span></h2>
-                    <p class="card-description1">Joined at <b id="date_joined"></b><br><br></p>
-                    <p class="card-description">
+            <!-- <h1 class="title main-title"><span class="title-lastname main-title" id="lname">uchiha,</span> <span id="fname"> Verlyn Rizz M.</span></h1>
+                        <p class="card-description1">Joined at <b id="date_joined"></b><br><br></p>
+                        <p class="card-description">
+                            
+                            <span>Position:</span><b id="employee_position"></b>
+                        </p> -->
                         <span>Email:</span><b id="employee_email"></b><br>
-                        <span>Position:</span><b id="employee_position"></b>
-                    </p>
                 </div>
                 <div class="card-image1">
                     <img src="./assets/images/map.png" alt="">
@@ -117,17 +125,11 @@ $daily = $pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE
                 </div>
             </div>
             <div class="card-group d-grid">
-                <div class="card border one">
-                    <div>
-                        <h2 class="title">DAILY ATTENDANCE RATE</h2>
-                        <p></p>
-                    </div>
-
-                </div>
 
                 <div class="card border one">
                     <div>
-                        <h2 class="title">TOTAL LOGINS FOR TODAY</h2>
+                        <h2 class="title" >TOTAL LOGINS FOR TODAY</h2>
+                        <span class="num"><b id="total">loading...</b></span>
                     </div>
 
                 </div>
@@ -143,12 +145,7 @@ $daily = $pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE
                 <div class="card border one">
                     <div>
                         <h2 class="title">HISTORY TRANSACTIONS</h2>
-                        <!-- honestly just copy paste 
-    the database so no need 
-    for it's design, just call
-    the student name and the 
-    action the employee had 
-    taken-->
+
                         <p class="card-description" id="list-history">
                             <!-- Data will be inserted here dynamically -->
                         </p>
@@ -167,6 +164,109 @@ $daily = $pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE
         </div>
     </footer>
 
-</body>
 
+<script>
+ function updateValues(total, employee_email) {
+       
+    console.log("logins2 ",total);
+
+       $('#total').text(total);//
+       $('#employee_email').text(employee_email);
+    //    $('#employee_position').text(employee_position);
+    //    $('#date_joined').text(employee_date_joined);
+    //    $('#totalAppointments').text(totalAppointments);
+    //    $('#position').text(ePosition);//
+    //    $('#fname').text(eFname);
+    //    $('#lname').text(eLname);
+               
+                       // Replace the content of the #gender div with the created image
+            //    const genderElement = document.getElementById('gender');
+            //    genderElement.innerHTML = ''; // Clear existing content
+            //    genderElement.appendChild(image);
+   }
+   // Function to fetch data from get_transaction.php
+   function fetchData() {
+       console.log('AJAX request started');
+   $.ajax({
+       type: 'GET',
+       url: '../backend/get_transaction_admin.php',
+       dataType: 'json',
+       success: function (data) {
+           processData(data);
+       },
+       error: function (xhr, status, error) {
+            console.error('Error: ' + error);
+            console.error('Status: ' + status);
+            console.error('Response: ' + xhr.responseText);
+            alert('An error occurred while fetching data. Please try again later.');
+        }
+
+   });
+   }
+
+
+   // Function to process the retrieved data
+function processData(data) {
+    console.log('Response Data:', data.total_logins);
+    if (data.total_logins !== undefined) {
+
+        var total = data.total_logins;
+
+       var employee_email = data.adminUserData[0].uname;
+
+
+       updateValues(total, employee_email);
+       console.log("logins:", total)
+    //    countAppointments(totalAppointments);
+ 
+      
+   } else {
+
+       var total = 0;
+
+       var employee_email = data.adminUserData[0].uname;
+
+
+    updateValues(total, employee_email);
+
+       console.log('No results found');
+   }
+}
+function updateCardDescription(data) {
+    const cardDescription = $('#list-history');
+    cardDescription.empty(); // Clear existing content
+    if (data.length > 0) {
+        data.forEach(item => {
+            cardDescription.append(`Student ${item.student_id}..........${item.transact_type}<br>`);
+        });
+    } else {
+        cardDescription.text('No finished transactions.');
+    }
+}
+// Function to fetch data from get_transaction.php
+function HistoryData() {
+    console.log('AJAX request started');
+    $.ajax({
+        type: 'GET',
+        url: '../backend/get_done_transaction.php',
+        dataType: 'json',
+        // ...
+        success: function (data) {
+            console.log(data);
+            updateCardDescription(data);
+        },
+        error: function (xhr, status, error) {
+            console.error('Error: ' + error);
+            console.error('Status: ' + status);
+            console.error('Response: ' + xhr.responseText);
+        }
+    });
+}
+
+// Call the fetchData function when the page loads
+HistoryData();
+    // Call the fetchData function when the page loads
+    fetchData();
+</script>
+</body>
 </html>
