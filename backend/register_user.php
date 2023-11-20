@@ -165,7 +165,7 @@ if (isset($_SESSION['origin'])) {
 
         if (count($result) === 1) {
             echo '<script>';
-            echo "alert('User Already Registered')";
+            echo "alert('User Already Registered');";
             echo 'window.location.href=" ../Student_Side/Stud_registration/page1.php";';
             echo '</script>';
             exit;
