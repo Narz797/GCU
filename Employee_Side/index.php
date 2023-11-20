@@ -404,6 +404,23 @@ function goto_recent(){
                 }
             });
 
+    }else if(tt === 'Absent' || tt === 'Tardy'){
+        console.log("student", sid);
+        console.log("transact", tid);
+        var type = 'admission';
+
+                    // Send stud_id to the server using an AJAX request
+                    $.ajax({
+                type: 'POST',  // You can use POST to send data securely
+                url: '../backend/session_forms/set_session_recent.php',  // PHP script that sets the session variable
+                data: { stud_id: sid, tran_id: tid, ttype: type},
+                success: function(response) {
+                    // Handle the response from the server, if needed
+                    console.log(response);
+                    window.location.href = 'forms/ca.php';
+                }
+            });
+
     }
 }
 // Call the fetchData function when the page loads

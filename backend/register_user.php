@@ -388,16 +388,8 @@ if (isset($_SESSION['origin'])) {
                 $stmt->bindParam(10, $stat);
 
                 if ($stmt->execute()) {
-                    echo '<script>';
-                    echo "alert('User Registration Successfully!');";
-                    echo 'window.location.href=" ../Teacher_Side/register.php";';
-                    echo '</script>';
-                } else {
-                    echo '<script>';
-                    echo "alert('User Registration Failed!');";
-                    echo 'window.location.href=" ../Teacher_Side/register.php";';
-                    echo '</script>';
-                }
+                    echo 'success_teacher';
+                } 
             }
         } else {
             echo '<script>';
