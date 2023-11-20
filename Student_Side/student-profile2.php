@@ -2212,7 +2212,7 @@ $siblings = $siblings->fetchAll();
         <!-- Form -->
         <form id="logoutForm" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
-            <a class="btn btn-outline-light" onclick="logout()">Logout</a>
+            <a class="btn btn-outline-light" style="background-color:white;" onclick="logout()">Logout</a>
           </div>
         </form>
 
@@ -2329,19 +2329,41 @@ $siblings = $siblings->fetchAll();
                 $filePath_jpeg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpeg';
                 if (file_exists($filePath_jpg)) {
                   // Display the image
-                  echo '<img src="' . $filePath_jpg . '" alt="Photo">';
+                  echo '<img src="' . $filePath_jpg . '" alt="Photo" style="width: 50%; height: 50%">';
                 }
                 elseif(file_exists($filePath_jpg)) {
                   // Display the image
-                  echo '<img src="' . $filePath_png . '" alt="Photo">';
+                  echo '<img src="' . $filePath_png . '" alt="Photo" style="width: 50%; height: 50%">';
                 }
                 elseif(file_exists($filePath_jpeg)) {
                   // Display the image
-                  echo '<img src="' . $filePath_jpeg . '" alt="Photo">';
+                  echo '<img src="' . $filePath_jpeg . '" alt="Photo" style="width: 50%; height: 50%">';
                 }
                 else {
                   echo 'File not found.';
                 }
+                ?>
+                <br>
+                <br>
+                <?php
+                      $filePath_jpg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
+                      $filePath_png = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.png';
+                      $filePath_jpeg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpeg';
+                      if (file_exists($filePath_jpg)) {
+                        // Display the image
+                        echo '<img src="' . $filePath_jpg . '" alt="Photo" style="width: 50%; height: 50%">';
+                      }
+                      elseif(file_exists($filePath_jpg)) {
+                        // Display the image
+                        echo '<img src="' . $filePath_png . '" alt="Photo" style="width: 50%; height: 50%">';
+                      }
+                      elseif(file_exists($filePath_jpeg)) {
+                        // Display the image
+                        echo '<img src="' . $filePath_jpeg . '" alt="Photo" style="width: 50%; height: 50%">';
+                      }
+                      else {
+                        echo 'File not found.';
+                      }
                 ?>
 
 
