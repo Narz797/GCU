@@ -92,7 +92,7 @@
 
                             </div>
                             <div class="export-file">
-                                <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/export.png" alt=""></label>
+                                <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/export.png" alt="" ></label>
                                 <input type="checkbox" id="export-file">
                                 <div class="export-file-options">
                                     <label>Export As &nbsp; &#10140;</label>
@@ -101,7 +101,7 @@
 
                                 </div>
                             </div>
-                            <button id="dl_log" onclick="dl_log()">Dowload entire log </button>
+                            <button id="dl_log" onclick="dl_log()"> </button>
                         </section>
 
                         <section class="table-body">

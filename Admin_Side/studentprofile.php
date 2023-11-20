@@ -304,7 +304,7 @@
                 success: function(response) {
                     // Handle the response from the server, if needed
                     console.log(response);
-                    window.location.href = 'subpage/pfp_page.php';
+                    window.location.href = 'pfp_page.php';
                 }
             });
         }
