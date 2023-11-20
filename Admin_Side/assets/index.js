@@ -15,3 +15,4 @@ themeToggleBtn.addEventListener('click', () => {
 		localStorage.removeItem('currentTheme', 'themeActive');
 	}
 });
+

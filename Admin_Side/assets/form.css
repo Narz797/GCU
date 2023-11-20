@@ -154,48 +154,6 @@ i{
     flex-direction: column;
     gap: var(--gap-small);
 }
-.table-body {
-    width: 95%;
-    max-height: calc(89% - 1.6rem);
-    background-color: #fffb;
-    color: black;
-    margin: .8rem auto;
-    border-radius: .6rem;
-
-    overflow: auto;
-    overflow: overlay;
-}
-
-.table-body::-webkit-scrollbar{
-    width: 0.5rem;
-    height: 0.5rem;
-}
-
-.table-body::-webkit-scrollbar-thumb{
-    border-radius: .5rem;
-    background-color: #0004;
-    visibility: hidden;
-}
-
-.table-body:hover::-webkit-scrollbar-thumb{ 
-    visibility: visible;
-}
-.table-body button{
-    text-align: center;
-    font-size: 15px;
-    font-weight: bold;
-    width: 100%;
-    padding: 15px;
-    border: 0;
-    outline: none;
-    cursor: pointer;
-    margin-top: 5px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px; 
-    background-color: var(--hover-color);}
-.table-body button:hover{
-    background-color: var(--accent-color);
-color: var(--banner-color);}
 
 .list-link{
     display: inline-block;

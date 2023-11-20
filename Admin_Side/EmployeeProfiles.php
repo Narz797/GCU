@@ -70,7 +70,7 @@
                     <i class="ri-sun-line theme-light-icon"></i>
                     <i class="ri-moon-line theme-dark-icon"></i>
                 </button>
-                <button class="icon-btn place-items-center">
+                <button class="icon-btn place-items-center" onclick="logout()">
                     <i class="ri-user-3-line"></i>
                 </button>
             </div>
@@ -93,7 +93,7 @@
                         <section class="table-header">
                             <h1>List of Employees</h1>
                             <div class="input-group">
-                                <input type="text" id="searchInput" placeholder="Search Data...">
+                            <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
 
                             </div>
                             <div class="export-file">
@@ -101,11 +101,10 @@
                                 <input type="checkbox" id="export-file">
                                 <div class="export-file-options">
                                     <label>Export As &nbsp; &#10140;</label>
-                                    <label for="export-file" id="toPDF">PDF <img src="assets/images/pdf.png" alt=""></label>
-                                    <label for="export-file" id="toEXCEL">EXCEL <img src="assets/images/excel.png" alt=""></label>
+                                    <label for="export-file" id="exportToExcel" onclick="exportToExcel()">EXCEL <img src="assets/images/excel.png" alt=""></label>
+                                    <label for="export-file" id="exportToPDF" onclick="exportToPDF()">PDF <img src="assets/images/pdf.png" alt=""></label>
+
                                 </div>
-
-
                             </div>
                         </section>
 
@@ -117,7 +116,7 @@
 
                         <section class="table-body">
 
-                            <table>
+                        <table id="dynamicTable">
                                 <thead>
                                     <tr>
                                         <th> Employee ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
@@ -133,9 +132,7 @@
                                 </thead>
                                 <tbody>
 
-                                    <td>
-                                    <button><a href="editemployee.php">Edit</a></button>
-                                    </td>
+
 
                                 </tbody>
 
@@ -159,18 +156,36 @@
     </footer>
     <!-- Script     -->
     <script src="./assets/main.js"></script>
-    <script src="assets/js/table.js"></script>
+    <!-- <script src="assets/js/table.js"></script> -->
 
     <script>
 
+function searchTable() { //searches in all column
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dynamicTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                tr[i].style.display = "none"; // Hide all rows initially
+                for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+                    td = tr[i].getElementsByTagName("td")[j];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = ""; // Display the row if any column matches the search criteria
+                            break; // Break out of the inner loop to avoid hiding the row again
+                        }
+                    }
+                }
+            }
+        }
 
         function logout() {
             window.location.href = '../home?logout=true';
         }
 
-        function archive() {
-            window.location.href = './subpage/archive.php';
-        }
 
         $(document).ready(function() {
             // Fetch data using $.ajax
@@ -181,7 +196,10 @@
                 success: function(data) {
                     const table = document.getElementById('data-table');
                     const searchInput = document.getElementById('searchInput');
-
+                    const genderImageMap = {
+                        'male': './assets/images/male.jpg',
+                        'female': './assets/images/female.jpg'
+                    };
                     console.log(data);
                     // if (data.status===0){
                     var tableBody = $("#dynamicTable tbody");
@@ -189,14 +207,26 @@
                     var noHistoryMessage1 = $("#noHistoryMessage1");
                     var noHistoryMessage2 = $("#noHistoryMessage2");
 
+
+                    
                     for (var i = 0; i < data.length; i++) {
                         var entry = data[i];
                         var status = entry.status;
                         var tableToAppend = tableBody;
                         // Determine which table to append to
                         // Create an image element based on gender
+
+                        const image = document.createElement('img');
+                        image.style.display = 'block'; // Display the image above the text
+                        if (entry.gender === 'Male') {
+                            image.src = genderImageMap['male'];
+                        } else if (entry.gender === 'Female') {
+                            image.src = genderImageMap['female'];
+                        }
+
                         var row = $("<tr></tr>");
                         var cell = $("<td></td>");
+                        cell.append(image); 
                         cell.append("</br>" + entry.admin_user_id);
                         row.append(cell);
                         row.append("<td>" + entry.last_name + "</td>");
@@ -204,11 +234,11 @@
                         row.append("<td>" + entry.middle_name + "</td>");
                         row.append("<td>" + entry.gender + "</td>");
                         row.append("<td>" + entry.email + "</td>");
-                        row.append("<td>" + entry.username + "</td>");
-                        row.append("<td>" + entry.password + "</td>");
+                        row.append("<td>" + entry.contact + "</td>");
+                        row.append("<td>" + entry.position + "</td>");
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
-                        var statusLink = $("<button onclick='view_student(" + entry.admin_user_id + ")'>View</button>");
+                        var statusLink = $("<button onclick='view_student(" + entry.admin_user_id + ")'>Edit</button> <button onclick='del_emp()'>Delete</button>");
                         row.append(statusLink);
                         tableBody.append(row);
 
@@ -259,14 +289,14 @@
             // Send stud_id to the server using an AJAX request
             $.ajax({
                 type: 'POST', // You can use POST to send data securely
-                url: '../backend/set_session_variable.php', // PHP script that sets the session variable
+                url: '../backend/session_employee.php', // PHP script that sets the session variable
                 data: {
-                    stud_user_id: stud_id
+                    user_id: stud_id
                 },
                 success: function(response) {
                     // Handle the response from the server, if needed
                     console.log(response);
-                    window.location.href = 'subpage/pfp_page.php';
+                    window.location.href = 'editemployee.php';
                 }
             });
         }

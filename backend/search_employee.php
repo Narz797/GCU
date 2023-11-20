@@ -7,8 +7,8 @@ admin_user.first_name,
 admin_user.middle_name,
 admin_user.gender,
 admin_user.email,
-admin_user.username,
-admin_user.password
+admin_user.contact,
+admin_user.position
 FROM
 admin_user";
 

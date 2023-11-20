@@ -1,15 +1,89 @@
-let valueDisplays = document.querySelectorAll(".num");
-let interval = 1000;
+function countAppointments(endValue) {
+    let valueDisplay = document.getElementById("totalAppointments");
+    let startValue = 0;
+    let duration = 50;
 
-valueDisplays.forEach((valueDisplays) => {
-	let startValue = 0;
-	let endValue = parseInt(valueDisplays.getAttribute("data-val"));
-	let duration = Math.floor(interval / endValue);
-	let counter = setInterval(function(){
-		startValue +=1;
-		valueDisplays.textContent = startValue;
-		if (startValue == endValue){
-			clearInterval(counter);
-		}
-	},duration);
-});
+    let counter = setInterval(function () {
+        valueDisplay.textContent = startValue; // Update the display immediately
+        if (startValue >= endValue) {
+            clearInterval(counter);
+        } else {
+            startValue += 1;
+        }
+    }, duration);
+}
+
+function countForms(endValue) {
+    let valueDisplay = document.getElementById("total");
+    let startValue = 0;
+    let duration = 50;
+
+    let counter = setInterval(function () {
+        valueDisplay.textContent = startValue; // Update the display immediately
+        if (startValue >= endValue) {
+            clearInterval(counter);
+        } else {
+            startValue += 1;
+        }
+    }, duration);
+}
+
+function countLOA(endValue) {
+    let valueDisplay = document.getElementById("total");
+    let startValue = 0;
+    let duration = 50;
+
+    let counter = setInterval(function () {
+        valueDisplay.textContent = startValue; // Update the display immediately
+        if (startValue >= endValue) {
+            clearInterval(counter);
+        } else {
+            startValue += 1;
+        }
+    }, duration);
+}
+
+function countRA(endValue) {
+    let valueDisplay = document.getElementById("total");
+    let startValue = 0;
+    let duration = 50;
+
+    let counter = setInterval(function () {
+        valueDisplay.textContent = startValue; // Update the display immediately
+        if (startValue >= endValue) {
+            clearInterval(counter);
+        } else {
+            startValue += 1;
+        }
+    }, duration);
+}
+
+function countRS(endValue) {
+    let valueDisplay = document.getElementById("total");
+    let startValue = 0;
+    let duration = 50;
+
+    let counter = setInterval(function () {
+        valueDisplay.textContent = startValue; // Update the display immediately
+        if (startValue >= endValue) {
+            clearInterval(counter);
+        } else {
+            startValue += 1;
+        }
+    }, duration);
+}
+
+function countWDS(endValue) {
+    let valueDisplay = document.getElementById("total");
+    let startValue = 0;
+    let duration = 50;
+
+    let counter = setInterval(function () {
+        valueDisplay.textContent = startValue; // Update the display immediately
+        if (startValue >= endValue) {
+            clearInterval(counter);
+        } else {
+            startValue += 1;
+        }
+    }, duration);
+}

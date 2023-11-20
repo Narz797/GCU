@@ -36,9 +36,9 @@ const search = document.querySelector('.input-group input'),
                            // Create an image element based on gender
                             const image = document.createElement('img');
                             image.style.display = 'block'; // Display the image above the text
-                            if (row.gender === 'male') {
+                            if (row.gender === 'Male') {
                                 image.src = genderImageMap['male'];
-                            } else if (row.gender === 'female') {
+                            } else if (row.gender === 'Female') {
                                 image.src = genderImageMap['female'];
                             }
 
@@ -50,9 +50,9 @@ const search = document.querySelector('.input-group input'),
                             newRow.insertCell().textContent = row.last_name;
                             newRow.insertCell().textContent = row.year_enrolled;
                             newRow.insertCell().textContent = row.course;
-                            newRow.insertCell().textContent = row.contact_no;
-                            newRow.insertCell().textContent = row.GuardianParents_no;
-                            newRow.insertCell().textContent = row.service_requested;
+                            // newRow.insertCell().textContent = row.contact_no;
+                            // newRow.insertCell().textContent = row.GuardianParents_no;
+                            // newRow.insertCell().textContent = row.service_requested;
                 
                             const actionCell = newRow.insertCell();
                             const actionButton = document.createElement('button');
@@ -71,7 +71,7 @@ const search = document.querySelector('.input-group input'),
                 // Initial table population
                 filterData();
 
-                $('#table').DataTable({
+                $('#dynamicTable').DataTable({
                     dom: 'lrtip',
                     buttons: [
                         {
@@ -79,7 +79,7 @@ const search = document.querySelector('.input-group input'),
                             orientation: 'landscape',
                             title: 'Student data',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                                columns: [0, 1, 2, 3, 4]
                             }
                         },
                         {
@@ -95,7 +95,7 @@ const search = document.querySelector('.input-group input'),
                             orientation: 'landscape',
                             title: 'Student data',
                             exportOptions: {
-                                columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                                columns: [0, 1, 2, 3, 4]
                             }
                         },
                         // JSON export doesn't have a built-in button, you can implement it manually

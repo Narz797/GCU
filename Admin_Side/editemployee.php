@@ -2,6 +2,10 @@
 session_start();
 $_SESSION['origin']='Employee';
 
+$id = $_SESSION['user_id'];
+
+// echo "<script>console.log('id: " . $id . "')</script>";
+
 ?>
 
 <!DOCTYPE html>
@@ -99,51 +103,53 @@ $_SESSION['origin']='Employee';
     <section class="table-body">
     <section  id="table">
     
-    <form method="post" action="../backend/edit_employee.php">
+    <form id="edit_emp" name ="edit_emp"method="post">
         <br>
         <center>
         <div class="input-group input-group-lg">
-              <input type="number" class="form-control" name ='empID' placeholder="Employee ID No." 
-              aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" required>
+        <input type="number" class="form-control" id="id" name="empID" placeholder="Employee ID No." 
+            aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" 
+            value="<?php echo $id; ?>" readonly required>
+
               </div>
         <br>
         <div class="input-group input-group-lg">
-              <input type="text" class="form-control" placeholder="Last Name" 
+              <input type="text" class="form-control" placeholder="Last Name" id="lname" 
               aria-label="Last Name" name ='lname' aria-describedby="inputGroup-sizing-lg" required>
-              <input type="text" name ='mname' class="form-control" placeholder="Middle Name" 
+              <input type="text" name ='mname' class="form-control" placeholder="Middle Name" id="mname"
               aria-label="Middle Name" aria-describedby="inputGroup-sizing-lg" required>
-              <input type="text" name ='fname'class="form-control" placeholder="First Name" 
+              <input type="text" name ='fname'class="form-control" placeholder="First Name" id="fname"
               aria-label="First Name" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
         <div class="input-group input-group-lg">
             <label class="input-group-text" for="inputgroupselect">Sex</label>
             <select class="form-select" name ='gender' id="inputgroupselect" required>
-                <option selected>Choose...</option>
-                <option value="F">Female</option>
-                <option value="M">Male</option>
+                <option disabled selected >Choose...</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
             </select>
         </div>
         <br>
         <div class="input-group input-group-lg">
-              <input type="text" name='email' class="form-control" placeholder="Email" 
+              <input type="text" name='email' class="form-control" placeholder="Email" id="email" 
               aria-label="Email" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
         <div class="input-group input-group-lg">
-              <input type="text" name='contactnum' class="form-control" placeholder="Contact No." 
+              <input type="text" name='contactnum' class="form-control" placeholder="Contact No." id="contact"
               aria-label="Contact No." aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
         <div class="input-group input-group-lg">
-              <input type="text" name='position' class="form-control" placeholder="Position" 
+              <input type="text" name='position' class="form-control" placeholder="Position" id="position"
               aria-label="Position" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
         <div class="input-group input-group-lg">
-              <input type="text" class="form-control" name='username' placeholder="Username" 
+              <input type="text" class="form-control" name='username' placeholder="Username" id="username"
               aria-label="Username" aria-describedby="inputGroup-sizing-lg" required>
-              <input type="text" class="form-control" name='password' placeholder="Password" 
+              <input type="text" class="form-control" name='password' placeholder="Password" id="pass"
               aria-label="Password" aria-describedby="inputGroup-sizing-lg" required>
         </div>
     </center>
@@ -176,8 +182,54 @@ $_SESSION['origin']='Employee';
     </div>
 </footer>
 <!-- Script     -->
-<script src="./assets/main.js"></script>
 
- <script src="assets/js/table.js"></script>   
+<script>
+$("#edit_emp").on("submit", function (event) {
+      event.preventDefault();
+
+      console.log($("#Sid").val());
+      $.ajax({
+        type: 'POST',
+        url: '../backend/edit_emp.php',
+        data: {
+                          id: $("#id").val(),
+                          fname: $("#fname").val(),
+                          mname: $("#mname").val(),
+                          lname: $("#lname").val(),
+                          gender: $("#inputgroupselect").val(),
+                          email: $("#email").val(),
+                          cn: $("#contact").val(),
+                          position: $("#position").val(),
+                          un: $("#username").val(),
+                          pass: $("#pass").val() 
+                          
+                      },
+        success: function (data) {
+          console.log('Success!');
+          alert(data);
+          
+          window.location.reload();
+        //   $.ajax({
+        //     type: 'POST',
+        //     url: '../backend/log_audit.php',
+        //     data: {
+        //       userId: tID,
+        //       action: 'reffered',
+        //       details: tID + ' reffered '+sID
+        //     },
+        //     success: function(response) {
+        //       // Handle the response if needed
+        //       console.log("logged", response);
+        //     }
+        //   });
+
+        },
+    error: function (xhr, status, error) {
+      alert("Error: " + error);
+    }
+      });
+    });
+</script>  
+<script src="./assets/main.js"></script> 
 </body>
 </html>

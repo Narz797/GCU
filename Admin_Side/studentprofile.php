@@ -142,8 +142,7 @@
                                         <th> Department / College<br><span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Course Taken <br><span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                                        <th> Guardian Name<br><span class="icon-arrow">&UpArrow;</span></th>
-                                        <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
+
                                         <th> Action </th>
                                     </tr>
                                 </thead>
@@ -242,8 +241,6 @@
                         row.append("<td>" + entry.Colleges + "</td>");
                         row.append("<td>" + entry.course + "</td>");
                         row.append("<td>" + entry.Contact_number + "</td>");
-                        row.append("<td>" + entry.ParentGuardianNumber + "</td>");
-                        row.append("<td>" + entry.ParentGuardianName + "</td>");
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
                         var statusCell = $("<td></td>");
