@@ -856,7 +856,7 @@ if (isset($_POST['otherSchool'])) {
                         </div>
 
                         <h2>Create Account</h2>
-                        <br>
+                        
                         <div class="fields">
                             <div class="input-field">
                                 <label>Username</label>
@@ -871,43 +871,19 @@ if (isset($_POST['otherSchool'])) {
                                 <input type="text" id="conpass" name="conpass" required>
                             </div>
                         </div>
-
-                        <!-- <h2>Upload Signature</h2>
                         <br>
-                        <label for="imageUpload" class="custom-file-upload" style=" display: inline-block;
-                            background-color: #4CAF50;
-                            color: #fff;
-                            padding: 10px 20px;
-                            cursor: pointer;
-                            border: none;
-                            border-radius: 5px;
-                            margin-right: 10px;">
-                            <input type="file" id="signUpload" name="sign" accept="image/*">
-                            Upload Signature
-                        </label>
 
-                        <h2>Upload ID</h2>
-                        <br>
-                        <label for="imageUpload" class="custom-file-upload" style=" display: inline-block;
-                            background-color: #4CAF50;
-                            color: #fff;
-                            padding: 10px 20px;
-                            cursor: pointer;
-                            border: none;
-                            border-radius: 5px;
-                            margin-right: 10px;">
-                            <input type="file" id="imageUpload" name="image" accept="image/*">
-                            Upload BSU School ID
-                        </label> -->
+                   
 
                         <h2>Upload Signature</h2>
-                        <br>
+                       
                         <!-- <input type="file" name="sign" accept="image/*" required> -->
                         <div class="file-input-container">
                             <label for="file" class="file-label">Choose File</label>
                             <input type="file" name="sign" id="file" class="file-input" accept="image/*" required>
                         </div>
-
+                        <br>
+                        <br>
                         <!-- <h2>Upload ID</h2>
                         <input type="file" name="image" accept="image/*" required> -->
                         <h2>Upload ID</h2>
