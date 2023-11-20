@@ -2343,6 +2343,28 @@ $siblings = $siblings->fetchAll();
                   echo 'File not found.';
                 }
                 ?>
+                                <hr class="my-4">
+                <!-- <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p> -->
+                <?php
+                $filePath_jpg = '../backend/uploads/sign_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
+                $filePath_png = '../backend/uploads/sign_' . $id . '_' . $pers_info[0]['last_name'] . '.png';
+                $filePath_jpeg = '../backend/uploads/sign_' . $id . '_' . $pers_info[0]['last_name'] . '.jpeg';
+                if (file_exists($filePath_jpg)) {
+                  // Display the image
+                  echo '<img src="' . $filePath_jpg . '" alt="Photo">';
+                }
+                elseif(file_exists($filePath_jpg)) {
+                  // Display the image
+                  echo '<img src="' . $filePath_png . '" alt="Photo">';
+                }
+                elseif(file_exists($filePath_jpeg)) {
+                  // Display the image
+                  echo '<img src="' . $filePath_jpeg . '" alt="Photo">';
+                }
+                else {
+                  echo 'File not found.';
+                }
+                ?>
 
 
               </div>
