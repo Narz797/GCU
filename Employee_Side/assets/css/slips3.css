@@ -295,7 +295,7 @@ i{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     min-height: 17.5rem;
     border-radius: .4rem;}
 .card-group .card::after {
@@ -395,7 +395,7 @@ i{
 .title1 u{
     font-weight: bold;}
 .main-box{
-    display: flex;
+
     width: 100%;
     height: 50%;
     margin-top: 10px;}

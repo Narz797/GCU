@@ -343,7 +343,9 @@ main.table {
 .table-body button:hover{
     background-color: var(--accent-color);
     color: var(--banner-color);}
-
+.hover:hover{
+    color:aqua;
+}
 
 .table-body::-webkit-scrollbar{
     width: 1rem;

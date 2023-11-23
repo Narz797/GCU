@@ -9,12 +9,27 @@ student_user.course,
 student_user.gender,
 courses.Colleges,
 student_user.Contact_number,
-student_user.ParentGuardianNumber,
-student_user.ParentGuardianName
+COALESCE(
+        CASE
+            WHEN guardian.contact IS NOT NULL AND guardian.contact > 0 THEN guardian.fname
+            ELSE mother.fname
+        END,
+        'None'
+    ) AS ParentGuardianName,
+    COALESCE(
+        CASE
+            WHEN guardian.contact IS NOT NULL AND guardian.contact > 0 THEN guardian.contact
+            ELSE mother.contact
+        END,
+        'None'
+    ) AS ParentGuardianNumber
 FROM
 student_user
 INNER JOIN
-courses ON student_user.course = courses.Acronym";
+courses ON student_user.course = courses.Acronym
+LEFT JOIN guardian ON student_user.stud_user_id = guardian.stud_user_id
+LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id"
+;
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute();

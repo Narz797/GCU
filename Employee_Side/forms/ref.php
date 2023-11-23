@@ -51,7 +51,7 @@ include '../../backend/log_audit2.php';
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="../assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -142,7 +142,7 @@ include '../../backend/log_audit2.php';
                 </div>
                 <br>
 
-                </div>
+
                 <div>
                   <h2 class="title" id="DAT">Dates Absent/Tardy:</h2>
                   <!-- <p class="card-description refer">Counseling</p>
@@ -151,6 +151,8 @@ include '../../backend/log_audit2.php';
                   <p class="card-description refer">Tardy on October 5, 2025</p> -->
                   <p class="card-description refer" id="dates">Counseling</p>
                 </div>
+                <br>
+
                 <div>
                   <h2 class="title" id="TR">Teacher's Remarks</h2>
                   <!-- <p class="card-description refer">Counseling</p>
@@ -160,9 +162,11 @@ include '../../backend/log_audit2.php';
                   <p class="card-description refer" id="rem">Teacher's Remarks</p>
                 </div>
                 <!-- <div class="action"> -->
-
+                </div>
 <!--This will be pop-up-->
-
+                <br>
+                <br>
+                <br>
                 <button class="yes" onclick="status_update('Recieved')">Received</button>
                  </div>
             </div>

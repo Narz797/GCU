@@ -64,7 +64,7 @@ logAudit($id, 'access_profile', $id .' has accessed the profile page');
     <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
+           <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -154,8 +154,8 @@ logAudit($id, 'access_profile', $id .' has accessed the profile page');
                         <th> Department / College<br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Course Taken <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Guardian Name<br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Guardian Number <br><span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Guardian Name<br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Action </th>
                     </tr>
                 </thead>

@@ -50,7 +50,7 @@ include '../../backend/log_audit2.php';
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="../assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -131,12 +131,7 @@ include '../../backend/log_audit2.php';
 <!-- Get student fill-up form data -->
 
                   <p class="card-description" id="reason">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
-                  <div class="center-attached">
-                    
-<!-- Get any uplaoded file or the real-time image -->
 
-                  <!-- <img src="" title="No Attached Document" id="attachment"> -->
-                  </div>
                 </div>
                 <div>
                     <h2 class="titleread"> Motavation for enrolling again:</h2>
@@ -146,12 +141,6 @@ include '../../backend/log_audit2.php';
 <!-- Get student fill-up form data -->
 
                   <p class="card-description" id="motiv">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
-                  <div class="center-attached">
-
-<!-- Get any uplaoded file or the real-time image -->
-
-                <!-- <img src="" title="No Attached Document" id="document"> -->
-                  </div>
                 </div>
                 </div>
                 <div class="action">

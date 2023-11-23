@@ -38,7 +38,7 @@ if (isset($_POST['stat']) && isset($_POST['id']) && isset($_POST['tid']) && isse
             }
         }
 
-        $sql2 = "UPDATE `transact` SET `status` = :status, `date_completed` = :date WHERE `transact_id` = :tid ";
+        $sql2 = "UPDATE `transact` SET `status` = :status, `date_completed` = :date, `date_edited` = :date WHERE `transact_id` = :tid ";
 
         $stmt = $pdo->prepare($sql2);
         $stmt->bindParam(':tid', $tid, PDO::PARAM_INT);

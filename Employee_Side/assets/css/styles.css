@@ -220,6 +220,9 @@ i{
     font-size: 12px;}
 .card-description1 span{
     color: var(--font-color);}
+.card-description1 b{
+    color: var(--accent-color);
+    }
 .card-description{
     font-size: 17px;
     margin-bottom: var(--margin-small);}
@@ -291,7 +294,9 @@ i{
     margin-bottom: var(--margin-medium);}
 .card-description b{
     font-family:var(--font-primary);
-    font-size: 20px;}
+    font-size: 20px;
+
+}
 .list-link{
     margin: 10px;
     font-size: var(--font-size-small);
@@ -309,8 +314,8 @@ i{
     display: flex;
     left: 8%;}
 .count{
-    width: 25vmin;
-    height: 15vmin;
+    width: 15vmin;
+    height: 12vmin;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -422,7 +427,7 @@ i{
         margin-left: 4rem;}
     .list-link,
     .card-body-link{
-        transition: color .25s, background-color: .25s;}
+        transition: color .25s; background-color: .25s;}
     .nav-mobile .list-link{
         border-radius: .4rem;}
     .card-image1 img{

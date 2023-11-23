@@ -8,6 +8,8 @@ if (isset($_POST['event_id']) && isset($_POST['trans_id']) && isset($_POST['rema
     $stud_id = intval($_POST['S_id']);
     $remark = $_POST['remark'];
     $reason = $_POST['Res']; // Assuming $remark is a string
+    $datetime = new DateTime();
+    $date = $datetime->format('Y-m-d');
 
     try {
         $pdo = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
@@ -23,9 +25,10 @@ if (isset($_POST['event_id']) && isset($_POST['trans_id']) && isset($_POST['rema
         $stmt1->execute();
 
         // Define your SQL update query for the second table
-        $sql2 = "UPDATE `transact` SET `status` = 'done' WHERE `transact_id` = :trans_id";
+        $sql2 = "UPDATE `transact` SET `status` = 'done', `date_completed` = :date WHERE `transact_id` = :trans_id";
         $stmt2 = $pdo->prepare($sql2);
         $stmt2->bindParam(':trans_id', $trans_id, PDO::PARAM_INT);
+        $stmt2->bindParam(':date', $date, PDO::PARAM_STR);
 
         // Execute the second SQL statement
         $stmt2->execute();

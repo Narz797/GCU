@@ -7,17 +7,21 @@ if (isset($_POST['stat']) && isset($_POST['id']) && isset($_POST['tid']) && isse
     $aid = intval($_POST['aid']);
     $stat = $_POST['stat'];
     $res = $_POST['res']; // Don't use intval for remarks as it may be non-numeric
+    $datetime = new DateTime();
+    $date = $datetime->format('Y-m-d');
 
     try {
         $pdo = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Define your SQL update query to mark the transaction as done
-        $sql = "UPDATE `transact` SET `status` = :status WHERE `student_id` = :id AND `transact_id` = :tid";
+        $sql = "UPDATE `transact` SET `status` = :status, `dated_edited` = :date WHERE `student_id` = :id AND `transact_id` = :tid";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':tid', $tid, PDO::PARAM_INT);
         $stmt->bindParam(':status', $stat, PDO::PARAM_STR);
+        $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+
 
         // Execute the first SQL statement
         if ($stmt->execute()) {

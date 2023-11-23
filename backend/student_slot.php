@@ -8,7 +8,8 @@ $sql = "SELECT
         appointment.Reason, 
         appointment.remarks, 
         appointment.action_taken, 
-        appointment.latest_update
+        appointment.latest_update,
+        appointment.transact_id
         FROM 
         appointment
         INNER JOIN 

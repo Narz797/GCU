@@ -40,7 +40,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
 <header class="header">
     <nav class="nav">
         <div class="logo">
-         <a href="./employee-home" ><img src="assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="align-right">
         <button class="icon-btn theme-toggle-btn place-items-center">
@@ -75,7 +75,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
 <!-- call employee id 
     number or 
     profession = "Admin"-->
-            <h2 class="title">Welcome back,<span id="position"></span></h2>
+            <h2 class="title">Welcome back, <span id="position"></span></h2>
         </header>
         <hr>
         <div class="card-body">

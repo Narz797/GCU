@@ -51,7 +51,7 @@ include '../../backend/log_audit2.php';
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="../assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -124,7 +124,7 @@ include '../../backend/log_audit2.php';
         <div class="card-group d-grid">
             <div class="card border one">
                 <div>
-                    <p class="title1"> Semester & School Year Intended to Come Back: <u>School Year <p id="start" style="display: inline;"></p>-<p id="end" style="display: inline;"></p> <p id="sem" style="display: inline;"></p> Semester</u></p>
+                    <p class="title1"> Semester & School Year Intended to Come Back: <u>Semester <span id="sem" style="display: inline;"> </span></u>, <u>School Year <span id="start" style="display: inline;"></span>-<span id="end" style="display: inline;"></span></u> </p>
                     <hr>
                     <h2 class="title"> Reason/s for stopping/filling a leave:</h2>
                 </div>

@@ -51,7 +51,7 @@ include '../../backend/log_audit2.php';
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="../assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -121,21 +121,13 @@ include '../../backend/log_audit2.php';
         <div class="card-group d-grid">
             <div class="card border one">
                 <div>
-                    <h2 class="title"> Reason/s for being Absent/Tardy:</h2>
+                    <h2 class="title">Absent/Tardy:</h2>
                 </div>
                 <div class="main-box">
                 <div class="box">
                   <p class="card-description" id="reason">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
-                  <div class="center-attached">
-                  <!-- <img src="" title="No Attached Document" id="attachment1"> -->
-                  <div id="attachmentContainer"></div>
-
-                  <!-- <img src="" title="No Attached Document" id="attachment2">
-                  <img src="" title="No Attached Document" id="attachment3"> -->
-                  </div>
-                </div>
-                </div>
-                <div>
+                  
+                  <div>
                   <h2 class="title" id="DAT"> Dates Absent/Tardy:</h2>
                   <!-- <p class="card-description refer">Counseling</p>
                   <p class="card-description refer">Academic Deficiency/ies</p>
@@ -144,18 +136,39 @@ include '../../backend/log_audit2.php';
                   <p class="card-description refer" id="dates">Counseling</p>
                   
                   <br>
-                  <h2 class="title" id="cause">Couse/s of absence:</h2>
+                  <h2 class="title" id="cause">CAUSE/S OF ABSENCE:</h2>
                   <h3 id="COA"><b>COA</b></h3>
                   <p class="card-description refer" id="specs">Counseling</p>
                 </div>
-                <div>
+                  
+                  <div class="center-attached">
+                  <!-- <img src="" title="No Attached Document" id="attachment1"> -->
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <div id="attachmentContainer" class="DA" >
+                  <i class="ri-file-4-fill"></i>
+                  </div>
+
+                  <!-- <img src="" title="No Attached Document" id="attachment2">
+                  <img src="" title="No Attached Document" id="attachment3"> -->
+                  </div>
+                </div>
+                </div>
+
+                <!-- <div>
                   <h2 class="title" id="TR">Remarks</h2>
-                  <!-- <p class="card-description refer">Counseling</p>
+                  <p class="card-description refer">Counseling</p>
                   <p class="card-description refer">Academic Deficiency/ies</p>
                   <p class="card-description refer">Absent on October 5 - 8, 2025</p>
-                  <p class="card-description refer">Tardy on October 5, 2025</p> -->
+                  <p class="card-description refer">Tardy on October 5, 2025</p>
                   <p class="card-description refer" id="rem">Remarks</p>
-                </div>
+                </div> -->
                 <div class="action">
                  <button class="yes" onclick="status_update('Excused')">Excused</button>
                  <button class="no" onclick="status_update('Unexcused')">Unexcused</button>
@@ -270,7 +283,7 @@ if (data.length > 0) {
 
     // gets attachaments
     for (var key in studentData) {
-                if (studentData.hasOwnProperty(key) && !key.startsWith('attachment')) {
+                if (studentData.hasOwnProperty(key) && !key.startsWith('Attachment')) {
                     var element = document.getElementById(key);
                     if (element) {
                         element.innerText = studentData[key];
@@ -295,7 +308,7 @@ if (data.length > 0) {
     var reason = studentData.reason;
     rsn = studentData.reason;
     ext =studentData.file_extension;
-    var att1 = studentData.attachment1;
+    var att1 = studentData.Attachment;
     var coa = studentData.COA;
     var specs = studentData.specifics;
     var rem = studentData.remarks;
@@ -378,7 +391,7 @@ function displayBlobFiles(studentData) {
     });
 
     for (var key in studentData) {
-        if (studentData.hasOwnProperty(key) && key.startsWith('attachment')) {
+        if (studentData.hasOwnProperty(key) && key.startsWith('Attachment')) {
             const downloadLink = document.createElement('a');
             downloadLink.innerText = 'Download ' + key; // Text for the download link
 

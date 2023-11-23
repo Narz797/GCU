@@ -49,7 +49,7 @@ include '../../backend/log_audit2.php';
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="../assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">

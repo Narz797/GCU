@@ -10,7 +10,7 @@ if ($transact == 'readmission') {
     $reason = $_POST['reason'];
     $motivation = $_POST['motivation'];
     $datetime = new DateTime();
-    $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
+    $dateCreated = $datetime->format('Y-m-d'); // Convert DateTime to a string in MySQL DATETIME format
 
     $sql_1 = "INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :transact_type, :date_created, :status)";
     $sql_2 = 'INSERT INTO readmission(`transact_id`, `motivation`, `reason`) VALUES (:transact_id, :motivation, :reason)';
@@ -40,7 +40,7 @@ if ($transact == 'readmission') {
 
     $explain = $_POST['explain'];
     $datetime = new DateTime();
-    $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
+    $dateCreated = $datetime->format('Y-m-d'); // Convert DateTime to a string in MySQL DATETIME format
 
     $course_frm = $_POST['course_frm'];
     $course_to = $_POST['course_to'];
@@ -112,7 +112,7 @@ if ($transact == 'readmission') {
     $reason_leave = $_POST['reason_leave'];
     $do_leave = $_POST['do_leave'];
     $datetime = new DateTime();
-    $dateCreated = $datetime->format('Y-m-d H:i:s'); // Convert DateTime to a string in MySQL DATETIME format
+    $dateCreated = $datetime->format('Y-m-d'); // Convert DateTime to a string in MySQL DATETIME format
 
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :transact_type, :date_created,:status)';
     $sql_2 = 'INSERT INTO absence(`transact_id`, `semester`, `start_year`, `end_year`, `reason`, `leave`) VALUES (:transact_id, :semester, :start, :end, :reason, :do)';
@@ -151,7 +151,7 @@ if ($transact == 'readmission') {
     $status = 'pending';
 
     $datetime = new DateTime();
-    $dateCreated = $datetime->format('Y-m-d H:i:s');
+    $dateCreated = $datetime->format('Y-m-d');
 
     // Assuming 'attachment1' field is a BLOB in your database
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :transact_type, :date_created, :status)';

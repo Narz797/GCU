@@ -66,7 +66,7 @@ logAudit($id, 'access_referral slip page', $id .' has accessed the referral slip
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="../assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -144,7 +144,7 @@ logAudit($id, 'access_referral slip page', $id .' has accessed the referral slip
                                     <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
                                     <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
                                     <th> Course Taken <br><span class="icon-arrow">&UpArrow;</span></th>
-                                    <th> Department / College <br><span class="icon-arrow">&UpArrow;</span></th>
+                            
                                     <th> Registered/Unregistered <br><span class="icon-arrow">&UpArrow;</span></th>
                                     <th> Referred By <br><span class="icon-arrow">&UpArrow;</span></th>
                                     <th> Action </th>
@@ -226,7 +226,6 @@ function searchTable() { //searches in all column
                     row.append("<td>" + entry.first_name +"</td>");
                     row.append("<td>" + entry.Year_level +"</td>");
                     row.append("<td>" + entry.course + "</td>");
-                    row.append("<td>" + entry.Colleges + "</td>");
                     // row.append("<td>" + entry.RUR + "</td>");
                     if (reg == 'Registered') {
                             row.append("<td><p class='status'>Registered</p></td>");

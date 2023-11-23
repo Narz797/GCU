@@ -19,7 +19,25 @@ $_SESSION['origin'] = 'Teacher_Register';
 
 
 </head>
+<style>
+      .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
 
+  .modal_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
 <body>
 
     <!-- Might as well put the header or banner here-->
@@ -98,26 +116,76 @@ $_SESSION['origin'] = 'Teacher_Register';
                                 <option>Widowed</option>
                             </select>
                         </div>
-                        <button type="submit" onclick="window.location.href='.././home'">BACK</button>
-                        <button type="submit">SUBMIT</button>
+                        <button onclick="window.location.href='.././home'">BACK</button>
+                        <!-- <button type="submit">SUBMIT</button> -->
+                        <button type="Submit" >Register</button>
                     </div>
                 </div>
             </div>
         </form>
+        <!-- verrify popup -->
+
+                <div id="modal" class="modal">
+            <div class="modal_content">
+                <div class="body">
+                <div class="container">
+                    <form>
+                    <h1>Email Verification</h1>
+                    <div class="id">
+                        <textarea cols="20" rows="7" placeholder="Enter your remarks here..." id="remarksTextarea"></textarea>
+                        <button onclick="add_remarks()"> Add </button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
     </div>
     <script>
+
+        function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+          // Add an event listener to close the modal when clicking outside of it
+                window.addEventListener("click", function (event) {
+                    var modal = document.getElementById("modal");
+                    if (event.target === modal) {
+                    closeModal();
+                    }
+                });
         $(document).ready(function () {
+
+            function verify(){
+            document.getElementById("modal").style.display = "block";
+                            // $.ajax({
+                //     type: 'POST',
+                //     url: '../backend/register_user.php',
+                //     data: $(this).serialize() + '&source=' + source,
+                //     success: function (data) {
+                //         if (data === "success_teacher") {
+                //             window.location.href = "teacher-login";
+                //             alert("Sign up successful");
+                //         } else {
+                //             alert(data);
+                //         }
+                //     },
+                //     error: function () {
+                //         alert("Connection error");
+                //     }
+                // });
+
+        }
             $("#registrationForm").on("submit", function (event) {
-                var source = "teacher_side_signup";
-                event.preventDefault();
+                
+                // var source = "teacher_side_signup";
+                // event.preventDefault();
                 $.ajax({
                     type: 'POST',
-                    url: '../backend/register_user.php',
-                    data: $(this).serialize() + '&source=' + source,
+                    url: '../backend/email_verify.php',
                     success: function (data) {
-                        if (data === "success_teacher") {
-                            window.location.href = "teacher-login";
-                            alert("Sign up successful");
+                        if (data === "code_sent") {
+                            verify();
+                            console.log("code sent: ", data);
                         } else {
                             alert(data);
                         }

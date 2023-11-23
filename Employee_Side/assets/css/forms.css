@@ -245,7 +245,7 @@ i{
     align-items: center;
     margin: 15px 0;}
 .content1 img{
-    display: flex;
+    /* display: flex; */
     border-radius: 2rem;
     padding: 1rem;
     width: 100%;

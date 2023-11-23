@@ -367,12 +367,12 @@ select:focus {
        
      
 
-      <label for="date">Range of days absent/tardy:</label><br>
+  
 
 
        
 
-<b style="font-family: Century Gothic, sans-serif; font-size:18px;">Reason:</b><br>
+<b style="font-family: Century Gothic, sans-serif; font-size:18px;">Late Or Absent:</b><br>
 
 <div class="reason-dropdown-container">
   <select name="textfield" id="refer">
@@ -388,6 +388,7 @@ select:focus {
 <br>
 <div class="date-range-container" id="dates">
   <div class="date-input">
+  <label for="date">Range of days absent/tardy:</label><br>
     <label for="Date">Date:</label>
     <div class="input-group date form-group" id="datepicker">
             <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days"  style="width: 50%;" autocomplete="off"/>
@@ -398,6 +399,7 @@ select:focus {
 
 
 <div id="COA">
+<b style="font-family: Century Gothic, sans-serif; font-size:18px;">Reason:</b><br>
     <input type="radio" id="health" name="concern" value="health"> Health-related concerns
     <br>
 

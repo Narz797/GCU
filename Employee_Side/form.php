@@ -55,7 +55,7 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
   <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./employee-home" ><img src="assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -122,7 +122,7 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
           <div class=" gallery">
 
           <div class="content1">
-                <img src="./assets/images/read.jpg">
+                <img src="./assets/images/ca.jpg">
                 <h4>CLASS ADMISSION SLIP</h4>
                 <p><span class="num"  id="CA">000</span>
                 <span class="text">pending...</span></p>

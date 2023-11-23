@@ -134,7 +134,7 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="../assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -214,15 +214,12 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
 	real-time signature
  	or ID picture-->
 
-            <img src="../assets/images/formtemp.png" alt="ID">
+            <img src="" alt="ID" id="idd">
             </div>
             <div class="card-image1">
 
-<!-- get student 
-    real-time signature
-    or ID picture-->
 
-            <img src="../assets/images/formtemp.png" alt="Signature">
+            <img src="" alt="Signature" id="sig">
             </div>
         </div>
     </div>
@@ -381,6 +378,7 @@ $student = $_SESSION['stud_user_id'];
 var trans_id
 var stud_name
 var app_id
+var tID
 var eID = '<?php echo $id;?>';
             function logout() {
                 $.ajax({
@@ -440,6 +438,7 @@ function openModal2(id) {
     document.getElementById("modal2").style.display = "block";
     console.log(id);
     app_id=id;
+    console.log("tid:", tID);
 
   }
 
@@ -458,6 +457,7 @@ function openModal2(id) {
 
     //appointment
     function edit_remarks(){
+      
         var textareaValue = document.getElementById("editTextarea").value;
         var textareaValue2 = document.getElementById("editTextarea2").value;
         console.log("ID:", app_id);
@@ -468,6 +468,7 @@ function openModal2(id) {
           url: '../../backend/appointment_remark.php',
           data: {
             id: app_id,
+            tid:tID,
             action: textareaValue,
             remark: textareaValue2
           },
@@ -569,6 +570,8 @@ function openModal2(id) {
         url: '../../backend/get_student.php',
         dataType: 'json',
         success: function (data) {
+          console.log(data);
+
             if (data.length > 0) {
                 var studentData = data[0]; // Assuming you expect a single row
                 var fname = studentData.first_name;
@@ -583,9 +586,14 @@ function openModal2(id) {
                 var pgn = studentData.ParentGuardianNumber;
                 var pgname = studentData.ParentGuardianName;
                 var relation = studentData.Relation;
+                var sig = studentData.signature;
+                var idd = studentData.id;
                 console.log(fname);
                 updateValues(fname, lname, email, year_level, course, gender, college, cn, pgn, pgname, relation);
                             
+                          // Display the blob data as images
+                displayBlobAsImage(sig, 'sig'); // Pass the image data and an element ID
+                displayBlobAsImage(idd, 'idd'); // Pass the image data and an element ID
             } else {
                 // Handle the case when no results are found
                 console.log('No results found');
@@ -594,9 +602,18 @@ function openModal2(id) {
         error: function (xhr, status, error) {
             console.error('Error: ' + error);
             console.error('Status: ' + status);
-            console.error('Response: ' + xhr.responseText);
+            console.error('Response: ' + xhr.responseText);     
         }
     });
+
+          function displayBlobAsImage(blobData, elementId) {
+            if (blobData) {
+                var imgElement = document.getElementById(elementId);
+                if (imgElement) {
+                    imgElement.src = 'data:image/jpeg;base64,' + blobData; // Assuming JPEG format
+                }
+            }
+        }
 }
 
 
@@ -661,7 +678,7 @@ function openModal2(id) {
 
 
         });
-
+// 
         $(document).ready(function() {
             // Fetch data using $.ajax
             $.ajax({
@@ -685,6 +702,7 @@ function openModal2(id) {
                     var entry = data[i];
                     var status = entry.status;
                     var tableToAppend = tableBody; 
+                    tID = entry.transact_id;
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.date + "</td>");
                     row.append("<td>" + entry.reason +"</td>");

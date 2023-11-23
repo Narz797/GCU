@@ -44,7 +44,7 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="../index.php" ><img src="../assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -261,8 +261,16 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
                     row.append("<td>" + entry.reason + "</td>");
                     if (status == 'done') {
                             row.append("<td><p class='status delivered'>Done</p></td>");
+                        }else if (status == 'Excused'){
+                            row.append("<td><p class='status delivered'>Excused</p></td>");
+                        }else if (status == 'Unexcused'){
+                            row.append("<td><p class='status cancelled'>Unexcused</p></td>");
+                        }else if (status == 'reconsider'){
+                            row.append("<td><p class='status cancelled'>Reconsider</p></td>");
                         }
-                    row.append("<td>" + entry.last_edited + "</td>");
+                   
+                    row.append("<td>" + entry.date_edited + "</td>");
+                    
 
                     // row.append("<td>" + entry.status + "</td>");
                      // Check the value of entry.status and set the class and text accordingly
