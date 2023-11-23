@@ -135,6 +135,7 @@ $_SESSION['origin'] = 'Teacher_Register';
                         <textarea cols="20" rows="7" placeholder="Enter your remarks here..." id="remarksTextarea"></textarea>
                         <button onclick="add_remarks()"> Add </button>
                     </div>
+                    <!-- fasdfas -->
                     </form>
                 </div>
                 </div>
