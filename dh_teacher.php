@@ -127,26 +127,28 @@
 
     <nav>
 
-       
+<!--        
         <a href="#getting-started">Getting Started</a>
         <a href="#account">Account</a>
-        <a href="#troubleshooting">Troubleshooting</a>
-        <a href="#contact">Contact Us</a>
-        <a  href="Student_Side/student-home" class="logout">Logout</a>
+        <a href="#troubleshooting">Troubleshooting</a> -->
+        <!-- <a href="#contact">Contact Us</a>
+        <a  href="Student_Side/student-home" class="logout">Logout</a> -->
     </nav>
 
     <div class="row">
         <div class="column" style="background-color:white;">
-            <h2>TRANSACTION</h2>
+        <h2>Getting Started</h2>
             <main>
         <section id="getting-started">
-            <h2>Getting Started</h2>
+            
+            <h2>What To Do?</h2>
+            <br>
             <p>Welcome to our platform! Follow these steps to get started:</p>
             <ol>
-                <li>Choose transaction</li>
-                <li>Fill Up the form</li>
-                <li>Submit the form</li>
-                <li>Wait for the reply of the Guidance and Counseling Unit through text.</li>
+                <li>Fill up the referral slip with the required stuent information.</li>
+                <li>Once you are done, click the Refer button</li>
+                <li>The GCU has successfully received your referred student!</li>
+                <li>Check the update of progress in the Status column in the table below</li>
 
             </ol>
         </section>
@@ -168,53 +170,41 @@
                 <li>Update your browser to the latest version</li>
                 <li>Contact support for further assistance</li>
             </ul>
+            <br> 
         </section>
 
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>If you need help or have any questions, feel free to contact our support team at bsuossgcu205@gmail.com / 0907 905 0664 / Guidance & Counseling Unit - Benguet State University (FB PAGE).</p>
-        </section>
     </main>
         </div>
         <div class="column" style="background-color:#bbb;">
-            <h2>APPOINTMENT</h2>
+            <h2>OTHERS</h2>
             <main>
         <section id="getting-started">
-            <h2>Getting Started</h2>
-            <p>Welcome to our platform! Follow these steps to get started:</p>
+            <h2>Getting More</h2>
+            <p>Wonder what you can do with the platform?</p>
             <ol>
-                <li>Choose date of appointment</li>
-                <li>Book the available date and time.</li>
-                <li>State your reason for setting an appointment.</li>
-                <li>Submit your transaction.</li>
-                <li>Wait for the reply of the Guidance and Counseling Unit through text.</li>
+                <li>In your profile account, you can edit your information by clicking the Edit button.</li>
+                <li>A pop-up will show where you can change your information. Fill up the form.</li>
+                <li>Submit the form or Click exit.</li>
+                <li>Yay! Your have successfully edited your information.</li>
 
             </ol>
         </section>
 
-        <section id="account">
-            <h2>Account</h2>
-            <p>If you are facing issues with your account, please check the following:</p>
-            <ul>
-                <li>Ensure that you are the person who logs in with that account</li>
-                <li>Log out if you are not the person, as it may lead to dismissal from the school.</li>
-            </ul>
-        </section>
-
-        <section id="troubleshooting">
-            <h2>Troubleshooting</h2>
-            <p>If you encounter any issues while using our platform, try the following:</p>
-            <ul>
-                <li>Clear your browser cache</li>
-                <li>Update your browser to the latest version</li>
-                <li>Contact support for further assistance</li>
-            </ul>
-        </section>
-
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>If you need help or have any questions, feel free to contact our support team at bsuossgcu205@gmail.com / 0907 905 0664 / Guidance & Counseling Unit - Benguet State University (FB PAGE).</p>
+            <p>Need assistance or inquiry about the platform?</p>
+            <p>Contact us through the following</p>
+            <ul>
+                <li>gcu@gmail.com</li>
+                <li>facebook.gcu.com</li>
+                <li>0000-0000-0000</li>
+            </ul>
+            <h2>About Us</h2>
+            <p>This platform was created by the College of Information Sciences <Br> dedicated fot the use of the Guidance Counseling Unit of Benguet State University </p>
+            <br> 
+            <br> 
         </section>
+      
     </main>
         </div>
     </div>
