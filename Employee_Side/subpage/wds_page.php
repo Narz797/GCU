@@ -94,6 +94,9 @@ logAudit($id, 'access_wds page', $id .' has accessed the wds page');
             <button class="icon-btn place-items-center" onclick="archive()">
            <i class="ri-archive-drawer-line"></i>
         </button>
+        <button class="icon-btn place-items-center" onclick="faq()">
+                <i class="ri-question-mark"></i>
+                </button>
         </div>
     </nav>
 </header>
@@ -211,6 +214,9 @@ logAudit($id, 'access_wds page', $id .' has accessed the wds page');
 
     <!-- Script     -->
 <script>
+        function faq(){
+        window.location.href="../FAQ.php"
+    }
     function logout() {
     window.location.href = '../../home?logout=true';
 }

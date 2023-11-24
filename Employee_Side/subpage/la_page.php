@@ -94,6 +94,9 @@ logAudit($id, 'access_LOA page', $id .' has accessed the LOA page');
             <button class="icon-btn place-items-center" onclick="archive()">
            <i class="ri-archive-drawer-line"></i>
         </button>
+        <button class="icon-btn place-items-center" onclick="faq()">
+                <i class="ri-question-mark"></i>
+                </button>
         </div>
     </nav>
 </header>
@@ -344,7 +347,9 @@ function archive() {
                 }
             });
     }
-
+    function faq(){
+        window.location.href="../FAQ.php"
+    }
    // export to excel
 function exportToExcel() {
     const table = document.getElementById("dynamicTable");

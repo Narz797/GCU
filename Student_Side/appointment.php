@@ -143,7 +143,7 @@ include 'includes/main2.php';
         <h2 class="title"></h2>
         <div >
             <header class="card-header" >
-                <p style="margin-left: 10%; font-size: 30px; font-weight: bold; color:yellowgreen;" > YOUR SCHEDULE OF APPOINTMENT </p>
+                <p style="margin-left: 10%; font-size: 30px; font-weight: bold; color:yellowgreen;" > PROCEEDING APPOINTMENT/S </p>
                
             </header>
             <hr>
@@ -189,7 +189,7 @@ include 'includes/main2.php';
             <div class=" gallery" >
             <main class="table" id="customers_table" style=" height: auto; ">
             <section >
-                <p style="margin-left: 2%; font-size: 25px; font-weight: bold; color:white;" >HISTORY OF APPOINTMENT</p>
+                <p style="margin-left: 2%; font-size: 25px; font-weight: bold; color:white;" >SETTLED APPOINMENT/S</p>
                
              
             </section>
@@ -242,11 +242,10 @@ include 'includes/main2.php';
                                       
                                       </select>
                                       <br>
-                                      <label>Reffered</label>
-                                      <br>
-                                      <input type="checkbox" id="chkbx" name="referred" value="yes">
+                                      <hr>
+                                      <input type="checkbox" id="chkbx" name="referred" value="yes"> <label> Reffered</label>
                                     <br>
-                                    <hr>
+                                    
                                     <div class="tsk">
                                     <a class="yes" onclick="reason()">Submit</a>
                                     </div>

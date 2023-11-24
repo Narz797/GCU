@@ -233,7 +233,7 @@ select:focus {
     <div class="card-body">
       <form id="form_transact" name="form1" method="post">
         <p>
-          <label>Reason:</label>
+          <label>Select your conern:</label>
           <!-- <label for="select2">:</label> -->
           <select name="select2" id="action">
             
@@ -244,21 +244,19 @@ select:focus {
         </p>
         <p>
        
-          <label>Reason/s for withdrawing enrollment/ dropping subject/s / shifting:</label>
+          <label>Reason/s:</label>
           <!-- <label for="textarea">:<br> -->
           </label>
           <textarea name="textarea" class="textarea" id="reason_explain" required ></textarea>
         </p>
         <div class="hidden" id="for-shift">
-            <label>Shifting from</label>
-            <label for="textfield4">:</label>
+            <label for="textfield4">Shifting from:</label>
             <div class="autocomplete-container">
                 <input type="text" name="textfield4" id="textfield4" onkeyup="showSuggestions('textfield4', 'autocomplete-suggestions1')" autocomplete="off">
                 <!-- Create a container to display autocomplete suggestions for the first input -->
                 <div id="autocomplete-suggestions1" class="autocomplete-popup"></div>
             </div>
-            <label>to</label>
-            <label for="textfield5">:</label>
+            <label for="textfield5">to:</label>
             <div class="autocomplete-container">
                 <input type="text" name="textfield5" id="textfield5" onkeyup="showSuggestions('textfield5', 'autocomplete-suggestions2')" autocomplete="off">
                 <!-- Create a container to display autocomplete suggestions for the second input -->

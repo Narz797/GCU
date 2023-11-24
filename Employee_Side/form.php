@@ -87,6 +87,9 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
             <button class="icon-btn place-items-center" onclick="archive()">
                 <i class="ri-archive-drawer-line"></i>
                 </button>
+                <button class="icon-btn place-items-center" onclick="faq()">
+                <i class="ri-question-mark"></i>
+                </button>
         </div>
     </nav>
 </header>
@@ -242,6 +245,10 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
 </body>
  
 <script>
+    function faq(){
+        window.location.href="FAQ.php"
+    }
+
      var eID = "<?php echo $_SESSION['session_id'];?>";
         function searchTable() { //searches in all column
             var input, filter, table, tr, td, i, j, txtValue;

@@ -42,6 +42,7 @@ body{
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  margin: 0 auto;
 }
 .users .card h4{
   font-size: 20px;
@@ -56,10 +57,11 @@ body{
   margin:  auto;
 }
 .users .per span{
-  display: flex;
-  padding: 5px;
+
+  padding: 10px;
   border-radius: 10px;
   background: rgb(223, 223, 223);
+  text-align: center;
 }
 .users td{
   font-size: 14px;
@@ -280,7 +282,7 @@ body{
     margin: 8px;
     cursor: pointer;
 }
-.slip button{
+.btn1{
   width: 50%;
   margin-top: 8px;
   padding: 7px;
@@ -290,7 +292,7 @@ body{
   border: 1px solid #4AD489;
   font-size: 18px;
 }
- .slip button:hover{
+ .btn1:hover{
   background: #4AD489;
   color: #fff;
   transition: 0.5s;
@@ -526,8 +528,16 @@ table.dataTable tbody tr:nth-of-type(odd) {
     background-color: black; 
     height:50px;}
 
-
+  footer a {
+    color: white;
+  }
+    footer{
+      background-color: black;
+      color: white;
+      padding: 10px;
+    }
 }
+
 /* Add this inside the existing media query for smaller screens */
 
 @media screen and (max-width: 768px) {

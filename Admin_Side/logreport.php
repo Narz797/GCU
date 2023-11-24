@@ -101,7 +101,7 @@
 
                                 </div>
                             </div>
-                            <button id="dl_log" class="hover" onclick="dl_log()">Download</button>
+                            <button id="dl_log" class="hover" onclick="dl_log()">Download All</button>
                         </section>
 
                         <section class="table-body">

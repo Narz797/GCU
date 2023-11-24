@@ -27,17 +27,14 @@ $_SESSION['transact_type'] = 'referral';
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <!-- jQuery UI and Bootstrap Datepicker -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
-    <!-- DataTables CSS and JS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
-    <!-- Font Awesome and Remix Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -57,6 +54,7 @@ $_SESSION['transact_type'] = 'referral';
         </div>
     </nav>
 </header>
+
 
     <!-- Welcome-message -->
     <section>
@@ -91,17 +89,18 @@ $_SESSION['transact_type'] = 'referral';
       <h4 id="name">Monkey Dulagan Luffy</h4>
       <p  id="college">College of Information Sciences</p>
       <div class="per">
-      <table>
-        <tr>
-        <td><span id="cn">000-000-0000</span></td>
-        <td><span id="email">strawhatluffy@pirate.com</span></td>
-        </tr>
-        <tr>
-        <td class="color">Contact Number</td>
-        <td class="color">Email</td>
-        </tr>
-      </table>
+      <p class="color">Contact Number</p>
+        <span id="cn">000-000-0000</span>
+        <br>
+        <br>
+        <p class="color">Email</p>
+        <span id="email">strawhatluffy@pirate.com</span>
+
+       
+     
+
       </div>
+      <br>
         <a href="#divOne"><button>EDIT</button></a>
     </div>
     <div class="slip">
@@ -180,7 +179,7 @@ $_SESSION['transact_type'] = 'referral';
 
 
         </div>
-        <input type="submit" class="btn btn-primary" name="submit" id="submit" value="REFER">
+        <input type="submit" class="btn1" name="submit" id="submit" value="REFER">
         </div>
 
         </form>
@@ -204,8 +203,8 @@ $_SESSION['transact_type'] = 'referral';
 
 <!-- I dont know if u need action here
  but just in case or just delete it-->
-
-          <th>Action</th>
+<!-- 
+          <th>Action</th> -->
           </tr>
         </thead>
         <tbody>
@@ -329,7 +328,14 @@ $_SESSION['transact_type'] = 'referral';
     </div>
     </div>
     </div>
-  </div>          
+  </div>  
+  <footer>
+  <a href="../dh_teacher.php"class="scroll-top d-flex align-items-center justify-content-center">
+  <i class="fa fa-question-circle"></i><br>
+    <span class="hover-text"> &nbsp;&nbsp;&nbsp;Need Help? Click here for assistance.</span></a> 
+
+  </footer>
+       
 </body>
 <script>
   var tID = "<?php echo $_SESSION['session_id'];?>";
@@ -572,11 +578,11 @@ $("#form_transact").on("submit", function (event) {
             row.append("<td>" + entry.status + "</td>");
 
 
-            var statusCell = $("<td></td>");
-            var statusLink = $("<a href='#divTwo'><button onclick='delete_stud( " + entry.transact_id + ")'><i class='ri-delete-bin-6-line'></i></button></a>");
+            // var statusCell = $("<td></td>");
+            // var statusLink = $("<a href='#divTwo'><button onclick='delete_stud( " + entry.transact_id + ")'><i class='ri-delete-bin-6-line'></i></button></a>");
 
-            statusCell.append(statusLink);
-            row.append(statusCell);
+            // statusCell.append(statusLink);
+            // row.append(statusCell);
 
             tableBody.append(row);
             // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)

@@ -71,6 +71,9 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
+            <button class="icon-btn place-items-center" onclick="faq()">
+                <i class="ri-question-mark"></i>
+                </button>
         </div>
     </nav>
 </header>
@@ -205,6 +208,9 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
 <br>
     <!-- Script     -->
     <script>
+            function faq(){
+        window.location.href="../FAQ.php"
+    }
                 function goBack() {
             window.history.back();
         }

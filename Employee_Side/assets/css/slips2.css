@@ -433,6 +433,10 @@ i{
 .overlay:target{
     visibility: visible;
     opacity: 1;}
+.mid{
+ align-items: center;
+ text-align: center;
+}
 .wrapper{
     margin: 70px auto;
     padding: 20px;

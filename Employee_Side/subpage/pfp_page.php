@@ -35,7 +35,7 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="../assets/css/view.css">
+    <link rel="stylesheet" href="../assets/view.css">
 </head>
 
 
@@ -67,16 +67,16 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
 		height: 50px;
 		margin: 4px 0;
 		border-radius: 3px;
-		border: 1px solid gray;
-		background-color: black;
+		border: 1px solid black;
+		background-color: gray;
 		padding: 0 15px;
 		font-size: 20px;
 	}
   form textarea {
     padding: 5px 15px;
     border-radius: 3px;
-    border: 1px solid gray;
-    background-color: black;
+		border: 1px solid black;
+		background-color: gray;
     font-size: 20px;
     width: 100%;
     margin: 4px 0;
@@ -163,6 +163,9 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
             <button class="icon-btn place-items-center" onclick="archive()">
            <i class="ri-archive-drawer-line"></i>
         </button>
+        <button class="icon-btn place-items-center" onclick="faq()">
+                <i class="ri-question-mark"></i>
+                </button>
         </div>
     </nav>
 </header>
@@ -396,6 +399,9 @@ var eID = '<?php echo $id;?>';
           });
     window.location.href = '../../home?logout=true';
 }
+function faq(){
+        window.location.href="../FAQ.php"
+    }
 function archive() {
     $.ajax({
             type: 'POST',
@@ -705,10 +711,12 @@ function openModal2(id) {
                     tID = entry.transact_id;
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.date + "</td>");
-                    row.append("<td>" + entry.reason +"</td>");
+                    row.append("<td>" + entry.Reason +"</td>");
                     row.append("<td>" + entry.remarks +"</td>");
-                    row.append("<td>" + entry.action_taken+ "</td>");
-                    row.append("<td>" + entry.latest_update + "</td>");
+                    var act =entry.action_taken ? entry.action_taken:"None";
+                    row.append("<td>" + act+ "</td>");
+                    var lates =entry.latest_update ? entry.latest_update:"None";
+                    row.append("<td>" + lates + "</td>");
                     // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     // var statusText = status == 'pending' ? 'Unread' : 'Read';
                     var statusCell = $("<td></td>");

@@ -234,6 +234,7 @@ function getAvailability(year, month, date) {
       console.log("get_availability data:", data);
       if (data === "Already Added!") {
         alert("data");
+        
     } else {
       //console.log("Raw data received from get_availability.php:", data);
       const availabilityData = JSON.parse(data);
@@ -284,12 +285,10 @@ function updateEvents(year, month, date, events) {
       eventsHTML += `<div class="event" data-appointment-id="${event.appointmentId}">
       <div class="title">
       <i class="fas fa-circle"></i>
-    
-    </div>
         <div class="event-time">
         <h2 class="eventS-time">${startTime} - ${endTime}</h2>
         </div>
-
+        </div>
       </div> <br>`;
   
     });
@@ -418,6 +417,7 @@ eventsContainer.addEventListener("click", function (e) {
           console.log("Event deleted successfully.");
           console.log(data);
           refreshEvents();
+          initCalendar();
           // Remove the event from the UI here.
           // Example: eventDiv.remove();
         },
@@ -507,6 +507,7 @@ addEventSubmit.addEventListener("click", () => {
       addEventFrom.value = "";
       addEventTo.value = "";
       refreshEvents();
+      initCalendar();
       // location.reload();
     }
   });

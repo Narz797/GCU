@@ -322,6 +322,7 @@ echo json_encode($data);
     student_user.Relation,
     appointment.Reason,
     appointment.appointment_id,
+    appointment.date,
     CASE
         WHEN guardian.contact IS NOT NULL AND guardian.contact > 0 THEN guardian.fname
         ELSE mother.fname

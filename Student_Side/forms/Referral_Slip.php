@@ -333,7 +333,15 @@ select:focus {
       /* margin-right: 20px; */
     }
 
-    
+    .btn{
+      background-color: #009000;
+      color: white;
+    }
+
+    .btn:hover{
+      background-color: #008080;
+      color: white;
+    }
     
 
 
@@ -388,7 +396,7 @@ select:focus {
 <br>
 <div class="date-range-container" id="dates">
   <div class="date-input">
-  <label for="date">Range of days absent/tardy:</label><br>
+  <label for="date">Number of days:</label><br>
     <label for="Date">Date:</label>
     <div class="input-group date form-group" id="datepicker">
             <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days"  style="width: 50%;" autocomplete="off"/>
@@ -418,15 +426,15 @@ select:focus {
     <input type="radio" id="environmentalRadio" name="concern" value="environmental"> Environmental
     <br>
 
-    <input type="radio" id="officialActivityRadio" name="concern" value="officialActivity" > Official co/extra-curricular activity:
-    <br>
-    Specify: <input type="text" id="officialActivitySpecify" class="hidden" name="specify" style="width: 100%;">
-    <br>
+    <input type="radio" id="officialActivityRadio" name="concern" value="officialActivity" > Official co/extra-curricular activity
+ 
+      <input type="text" id="officialActivitySpecify" class="hidden" name="specify" style="width: 100%;" placeholder="Please Specify">
 
+<br>
     <input type="radio" id="otherRadio" name="concern" value="others" > Others
-    <br>
+
     
-    Specify: <input type="text" id="otherSpecify" class="hidden" name="specify" style="width: 100%;">
+    <input type="text" id="otherSpecify" class="hidden" name="specify" style="width: 100%;"placeholder="Please Specify">
     <br>
 </div>
   <div class="form1" id="rem">
@@ -457,14 +465,14 @@ select:focus {
           <div class="button">
             <p>
               <!-- Change type from submit to button, and use onclick to handle the back button -->
-              <button type="button"  class="btn btn-primary" onclick="window.location.href='../student-home'">Back</button>
+              <button type="button"  class="btn" onclick="window.location.href='../student-home'">Back</button>
             </p>
           </div>
          
           <div class="button">
             <p>
               <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-              <button type="submit" class="btn btn-primary" id ="submit">Submit</button>
+              <button type="submit" class="btn" id ="submit">Submit</button>
             </p>
           </div>
         </div>

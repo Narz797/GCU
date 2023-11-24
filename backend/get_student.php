@@ -14,14 +14,27 @@ $sql = "SELECT
     student_user.gender,
     courses.Colleges,
     student_user.Contact_number,
-    student_user.ParentGuardianNumber,
-    student_user.ParentGuardianName,
-    student_user.Relation,
+
     photos.signature,
-    photos.id
+    photos.id,
+    CASE
+        WHEN guardian.contact IS NOT NULL AND guardian.contact > 0 THEN guardian.fname
+        ELSE mother.fname
+    END AS ParentGuardianName,
+    CASE
+        WHEN guardian.contact IS NOT NULL AND guardian.contact > 0 THEN guardian.contact
+        ELSE mother.contact
+    END AS ParentGuardianNumber,
+    CASE
+        WHEN guardian.contact IS NOT NULL AND guardian.contact > 0 THEN 'Guardian'
+        ELSE 'Mother'
+    END AS Relation
+
     FROM student_user
     INNER JOIN courses ON student_user.course = courses.Acronym
     INNER JOIN photos ON student_user.stud_user_id = photos.stud_user_id
+    LEFT JOIN guardian ON student_user.stud_user_id = guardian.stud_user_id
+LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
     WHERE student_user.stud_user_id = :id"; // Use a named placeholder
 
 $stmt = $pdo->prepare($sql);

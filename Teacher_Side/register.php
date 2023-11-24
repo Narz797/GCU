@@ -37,8 +37,12 @@ $_SESSION['origin'] = 'Teacher_Register';
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  
 </style>
 <body>
+
+
 
     <!-- Might as well put the header or banner here-->
 
@@ -116,7 +120,7 @@ $_SESSION['origin'] = 'Teacher_Register';
                                 <option>Widowed</option>
                             </select>
                         </div>
-                        <button onclick="window.location.href='.././home'">BACK</button>
+                        <!-- <button onclick="window.location.href='.././home'">BACK</button> -->
                         <!-- <button type="submit">SUBMIT</button> -->
                         <button type="Submit" >Register</button>
                     </div>

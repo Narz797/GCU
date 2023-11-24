@@ -124,6 +124,15 @@ include '../../backend/log_audit2.php';
                   <p class="card-description" id="reason">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
                 </div>
                 </div>
+
+                <div>
+                    <h2 class="title"> Date of Appointment:</h2>
+                </div>
+                <div class="main-box">
+                <div class="box">
+                  <p class="card-description" id="dte">Loading.. </p>
+                </div>
+                </div>
                 
 <div class="action">
                  <a href="#"><button class="yes" onclick="status_update('accepted')">Accept</button></a>
@@ -142,7 +151,7 @@ include '../../backend/log_audit2.php';
                         <a href="#" class="close">&times;</a>
                         <div class="popup">
                             <div class="popup2">
-                                <form>
+                                <form class = "mid">
                                     <!-- <label>Attending Personnel</label>
                                     <input type="text" placeholder="Your Name"> -->
                                     <!-- <label>Remarks</label>
@@ -152,7 +161,7 @@ include '../../backend/log_audit2.php';
                                     <br>
                                     <div class="tsk">
                                         <br>
-                                    <button onclick="resched()"> Apply </button>
+                                    <button class="yes" onclick="resched()"> Apply </button>
                                     <!-- <input type="submit" value="Apply"> -->
                                     </div>
                                 </form>
@@ -202,7 +211,7 @@ function archive() {
     window.location.href = '../subpage/archive.php';
         }
   // Function to update the HTML elements
-        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason) {
+        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, dat) {
 
         $('#id_no').text(id);
         $('#name').text(fname+ ' '+ lname);
@@ -210,6 +219,7 @@ function archive() {
         $('#gender').text(gender);
         $('#cn').text(cn);
         $('#reason').text(reason);
+        $('#dte').text(dat);
 
 
         }
@@ -237,10 +247,11 @@ function archive() {
             var pgname = studentData.ParentGuardianName;
             var relation = studentData.Relation;
             var reason = studentData.Reason;
+            var dat = studentData.date;
             res = studentData.Reason;
 
             console.log(fname);
-            updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason);
+            updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, dat);
                         
         } else {
             // Handle the case when no results are found
@@ -269,7 +280,7 @@ function archive() {
           },
           success: function (data) {
             console.log("Remarked:", data);
-            // window.location.href = "../appointment";
+            window.location.href = "../appointment";
             $.ajax({
                     type: 'POST',
                     url: '../../backend/log_audit.php',

@@ -15,7 +15,7 @@ if (isset($_POST['stat']) && isset($_POST['id']) && isset($_POST['tid']) && isse
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Define your SQL update query to mark the transaction as done
-        $sql = "UPDATE `transact` SET `status` = :status, `dated_edited` = :date WHERE `student_id` = :id AND `transact_id` = :tid";
+        $sql = "UPDATE `transact` SET `status` = :status, `date_edited` = :date WHERE `student_id` = :id AND `transact_id` = :tid";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':tid', $tid, PDO::PARAM_INT);

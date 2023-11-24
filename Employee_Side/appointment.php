@@ -79,10 +79,14 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
             </button>
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
+                </button>
             <button class="icon-btn place-items-center" onclick="archive()">
               <i class="ri-archive-drawer-line"></i>
             </button>
-            </button>
+            <button class="icon-btn place-items-center" onclick="faq()">
+                <i class="ri-question-mark"></i>
+                </button>
+            
         </div>
     </nav>
 </header>
@@ -274,7 +278,7 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
 <!-- popup -->
 <div class="overlay" id="divOne">
                     <div class="wrapper">
-                        <a href="#" class="close">&times;</a>
+                        <a class="close"  onclick ="closeModal()">&times;</a>
                         <div class="popup">
                             <div class="popup2">
                                 <form>
@@ -285,7 +289,7 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
                                     <hr>
                                     <div class="tsk">
                                     <button class="yes" onclick ="app_remarks ()">Yes</button>
-                                    <button class="no">No</button></a>
+                                    <button class="no" onclick ="closeModal()">No</button>
                                     </div>
                                 </form>
                             </div>
@@ -299,6 +303,9 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
 var app_id
 var sid
 var res
+function faq(){
+        window.location.href="FAQ.php"
+    }
 var eid = "<?php echo $eid; ?>";
 var eID = "<?php echo $_SESSION['session_id'];?>";
 console.log(eid);
@@ -494,7 +501,7 @@ $(document).ready(function () {
     }
 
     function openModal(tid, aid, sidd) {
-    //document.getElementById("divOne").style.display = "block";
+    document.getElementById("divOne").style.display = "block";
 
     trans_id = tid;
     app_id = aid;
@@ -502,10 +509,16 @@ $(document).ready(function () {
   }
 
   function closeModal() {
-  //  document.getElementById("divOne").style.display = "none";
+    document.getElementById("divOne").style.display = "none";
   }
 
-    
+          // Add an event listener to close the modal when clicking outside of it
+          window.addEventListener("click", function (event) {
+                    var modal = document.getElementById("modal");
+                    if (event.target === modal) {
+                    closeModal();
+                    }
+                });
     function app_remarks() {
   var textareaValue = document.getElementById("remarksTextarea").value;
   console.log("TID:", trans_id);

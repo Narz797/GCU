@@ -95,7 +95,7 @@ include 'includes/main2.php';
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
-              <h3>Withdrawal/Dropping/Shifting Form</h3>
+              <h3>Withdrawal/Dropping/Shifting Slip</h3>
               <br>
               <a href="./forms/withdrawal-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
@@ -105,7 +105,7 @@ include 'includes/main2.php';
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
-              <h3>Admission Slip</h3>
+              <h3>Class Admission Slip</h3>
               <br>
               <a href="./forms/referral-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
@@ -186,7 +186,7 @@ include 'includes/main2.php';
             var content = '<div class="post-item mt-3">';
             content += '<img src="assets/img/form.png" alt="" style="height:60px; ">';
             content += '<div>';
-            content += '<h4><a href="Form1.php">' + item.transact_type + '</a></h4>';
+            content += '<h4><p>' + item.transact_type + '</p></h4>';
             content += '<time datetime="2020-01-01">' + item.date_completed + '</time>';
             content += '</div>';
             content += '</div>';

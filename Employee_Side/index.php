@@ -47,6 +47,8 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
             <i class="ri-sun-line theme-light-icon"></i>
             <i class="ri-moon-line theme-dark-icon"></i>
         </button>
+
+        
         </div>
     </nav>
 </header>
@@ -119,6 +121,9 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
                 </a>
                 <a href="./subpage/archive.php" class="card-body-link">
                 <i class="ri-calendar-line"></i>Archive
+                </a>
+                <a href="FAQ.php" class="card-body-link">
+                <i class="ri-question-mark"></i>FAQ
                 </a>
                 <a href="../home?logout=true" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
