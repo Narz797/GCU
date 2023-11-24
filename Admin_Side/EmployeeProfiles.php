@@ -188,6 +188,7 @@ function searchTable() { //searches in all column
 
 
         $(document).ready(function() {
+            function get_data(){
             // Fetch data using $.ajax
             $.ajax({
                 url: '../backend/search_employee.php',
@@ -238,7 +239,7 @@ function searchTable() { //searches in all column
                         row.append("<td>" + entry.position + "</td>");
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
-                        var statusLink = $("<button onclick='view_student(" + entry.admin_user_id + ")'>Edit</button> <button onclick='del_emp()'>Delete</button>");
+                        var statusLink = $("<button onclick='view_student(" + entry.admin_user_id + ")'>Edit</button> <button onclick='del_emp(" + entry.admin_user_id + ")'>Delete</button>");
                         row.append(statusLink);
                         tableBody.append(row);
 
@@ -279,9 +280,29 @@ function searchTable() { //searches in all column
                     console.error('Error fetching data:', error);
                 }
             });
+        }
+        get_data()
+      
 
-
-        });
+    });
+    function del_emp(id) {
+                $.ajax({
+                    type: 'POST',
+                    url: '../backend/del_employee.php',
+                    data: {
+                        user_id: id
+                    },
+                    success: function(response) {
+                        alert("Deleted Successfully");
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("AJAX Error: " + textStatus, errorThrown);
+                        alert("An error occurred during the deletion. Please try again.");
+                    }
+                });
+            }
 
         function view_student(stud_id) {
             // alert(stud_id);
@@ -300,7 +321,6 @@ function searchTable() { //searches in all column
                 }
             });
         }
-
 
 
         // export to excel

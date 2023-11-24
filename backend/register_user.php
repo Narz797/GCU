@@ -466,7 +466,7 @@ if (isset($_SESSION['origin'])) {
         if ($stmt->execute()){
             echo '<script>';
             echo 'alert("User Registration Successfully!");';
-            echo 'window.location.href="../Employee_Side/employee-login";';
+            echo 'window.location.href = "../Admin_Side/EmployeeProfiles.php";';
             echo '</script>';
             exit;
         }

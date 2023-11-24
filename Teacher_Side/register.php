@@ -37,6 +37,16 @@ $_SESSION['origin'] = 'Teacher_Register';
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  #loading-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      transition: opacity 0.5s ease;
+      display: none;
+    
+    }
 
   
 </style>
@@ -122,22 +132,26 @@ $_SESSION['origin'] = 'Teacher_Register';
                         </div>
                         <!-- <button onclick="window.location.href='.././home'">BACK</button> -->
                         <!-- <button type="submit">SUBMIT</button> -->
-                        <button type="Submit" >Register</button>
+                        <button  onclick="add_remarks()">Register</button>
                     </div>
                 </div>
             </div>
-        </form>
+       
         <!-- verrify popup -->
 
                 <div id="modal" class="modal">
             <div class="modal_content">
                 <div class="body">
+                <div class="logo">
+                    <img id="loading-spinner" style="display: none;" src="../assets/img/GCU_LOGO.gif">
+                    </div>
                 <div class="container">
-                    <form>
-                    <h1>Email Verification</h1>
+                    <form id="verify_code" method="post">
+                    <h1>A verification code has been den to your email, please enter tthe code below to fully register your account</h1>
                     <div class="id">
-                        <textarea cols="20" rows="7" placeholder="Enter your remarks here..." id="remarksTextarea"></textarea>
-                        <button onclick="add_remarks()"> Add </button>
+                        <label for="email" style="color:black;">Verification Code:</label>
+                        <input type="number" id="code" name="code" oninput="validateInput(this)" required>
+                        <button onclick="verify()" >Verify</button>
                     </div>
                     <!-- fasdfas -->
                     </form>
@@ -145,9 +159,22 @@ $_SESSION['origin'] = 'Teacher_Register';
                 </div>
             </div>
             </div>
+            </form>
     </div>
     <script>
+            function validateInput(input) {
+            // Get the input value and remove any non-digit characters
+            let inputValue = input.value.replace(/\D/g, '');
 
+            // Limit the input to 4 digits
+            inputValue = inputValue.slice(0, 4);
+
+            // Update the input value
+            input.value = inputValue;
+            }
+</script>
+    <script>
+ 
         function closeModal() {
     document.getElementById("modal").style.display = "none";
   }
@@ -158,49 +185,112 @@ $_SESSION['origin'] = 'Teacher_Register';
                     closeModal();
                     }
                 });
-        $(document).ready(function () {
 
-            function verify(){
+
+
+    
+// --------------FOR EMAIL VERIFICATION--------------------
+        function add_remarks(){
             document.getElementById("modal").style.display = "block";
-                            // $.ajax({
-                //     type: 'POST',
-                //     url: '../backend/register_user.php',
-                //     data: $(this).serialize() + '&source=' + source,
-                //     success: function (data) {
-                //         if (data === "success_teacher") {
-                //             window.location.href = "teacher-login";
-                //             alert("Sign up successful");
-                //         } else {
-                //             alert(data);
-                //         }
-                //     },
-                //     error: function () {
-                //         alert("Connection error");
-                //     }
-                // });
+                // Show loading spinner
+    $("#loading-spinner").show();
+    
+    console.log("performing ajax");
+    $.ajax({
+      type: 'POST',
+      url: '../backend/email_verify.php',
+      data: {
+        email: $("#email").val()
+      },
+      success: function(data) {
+        // Hide loading spinner on success
+        $("#loading-spinner").hide();
+        if (data === "unregistered") {
+          alert("This Email is already registered")
+          console.log(data);
+          
+        } else {
+          alert("The code to change your password is sent to your email")
+        console.log("Success",data)
 
+                // verify();
+
+                    // --------------------------------------------
         }
-            $("#registrationForm").on("submit", function (event) {
-                
-                // var source = "teacher_side_signup";
-                // event.preventDefault();
-                $.ajax({
+
+        // add location to enter code
+      },
+      error: function(xhr, status, error) {
+        // Hide loading spinner on error
+       
+        
+        console.error("Error:", error);
+        alert("Error: " + error);
+
+        $("#loading-spinner").hide();
+      },
+    });
+       
+
+
+}
+    
+                   // Send code verificaion
+                    // ----------------------------------------------
+             function verify() {
+                    event.preventDefault();
+                    console.log("performing ajax for code verify");
+                    $.ajax({
                     type: 'POST',
-                    url: '../backend/email_verify.php',
-                    success: function (data) {
-                        if (data === "code_sent") {
-                            verify();
-                            console.log("code sent: ", data);
-                        } else {
-                            alert(data);
-                        }
+                    url: '../backend/verify.php',
+                    data: {
+                        code: $("#code").val()
                     },
-                    error: function () {
-                        alert("Connection error");
-                    }
-                });
-            });
-        });
+                    success: function(data) {
+                        console.log("code recieved", data)
+                        if (data === "Code Verified") {
+                        alert("Code Verified")
+                        console.log("verified",data)
+                        
+                            
+                                    // code to fully register
+                                    // --------------------------------------
+
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '../backend/register_user.php',
+                                                    data: $("#registrationForm").serialize(),
+                                                    success: function (data) {
+                                                        if (data === "success_teacher") {
+                                                            document.getElementById("modal").style.display = "none";
+                                                            window.location.href = "teacher-login";
+                                                            alert("Congratulation, you are now registered!");
+                                                        } else {
+                                                            document.getElementById("modal").style.display = "none";
+                                                            alert("Somehin went wrong, please try again");
+                                                            console.log("Error",data);
+                                                        }
+                                                    },
+                                                    error: function () {
+                                                        alert("Connection error");
+                                                    }
+                                                });
+                                    // --------------------------------------
+                        } else {
+                        alert('Error, Invalid Code, please try again', data);
+                        console.log(data);
+                        }
+                    
+                        // add location to enter code
+                    },
+                                error: function (xhr, status, error) {
+                                    console.error("Error:", error);
+                                    alert("Error: " + error);
+                                },
+                    });
+
+                };
+           
     </script>
 </body>
 </html>

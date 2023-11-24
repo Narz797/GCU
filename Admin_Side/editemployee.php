@@ -206,9 +206,10 @@ $("#edit_emp").on("submit", function (event) {
                       },
         success: function (data) {
           console.log('Success!');
-          alert(data);
+          console.log(data);
+          alert("Edited Successfully");
           
-          window.location.reload();
+          window.location.href="EmployeeProfiles.php";
         //   $.ajax({
         //     type: 'POST',
         //     url: '../backend/log_audit.php',

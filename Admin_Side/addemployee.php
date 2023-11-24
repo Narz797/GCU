@@ -120,8 +120,8 @@ $_SESSION['origin']='Employee';
             <label class="input-group-text" for="inputgroupselect">Sex</label>
             <select class="form-select" name ='gender' id="inputgroupselect" required>
                 <option selected>Choose...</option>
-                <option value="F">Female</option>
-                <option value="M">Male</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
             </select>
         </div>
         <br>

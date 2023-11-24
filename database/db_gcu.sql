@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2023 at 02:13 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Nov 24, 2023 at 03:44 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,210 +24,56 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `about_me`
---
--- Error reading structure for table db_gcu.about_me: #1932 - Table 'db_gcu.about_me' doesn't exist in engine
--- Error reading data for table db_gcu.about_me: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`about_me`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `absence`
---
--- Error reading structure for table db_gcu.absence: #1932 - Table 'db_gcu.absence' doesn't exist in engine
--- Error reading data for table db_gcu.absence: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`absence`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_admin`
---
--- Error reading structure for table db_gcu.admin_admin: #1932 - Table 'db_gcu.admin_admin' doesn't exist in engine
--- Error reading data for table db_gcu.admin_admin: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`admin_admin`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_user`
---
--- Error reading structure for table db_gcu.admin_user: #1932 - Table 'db_gcu.admin_user' doesn't exist in engine
--- Error reading data for table db_gcu.admin_user: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`admin_user`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `appointment`
---
--- Error reading structure for table db_gcu.appointment: #1932 - Table 'db_gcu.appointment' doesn't exist in engine
--- Error reading data for table db_gcu.appointment: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`appointment`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `audit_log`
---
--- Error reading structure for table db_gcu.audit_log: #1932 - Table 'db_gcu.audit_log' doesn't exist in engine
--- Error reading data for table db_gcu.audit_log: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`audit_log`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ca`
---
--- Error reading structure for table db_gcu.ca: #1932 - Table 'db_gcu.ca' doesn't exist in engine
--- Error reading data for table db_gcu.ca: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`ca`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `courses`
---
--- Error reading structure for table db_gcu.courses: #1932 - Table 'db_gcu.courses' doesn't exist in engine
--- Error reading data for table db_gcu.courses: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`courses`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `elementary_school`
---
--- Error reading structure for table db_gcu.elementary_school: #1932 - Table 'db_gcu.elementary_school' doesn't exist in engine
--- Error reading data for table db_gcu.elementary_school: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`elementary_school`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `father`
---
--- Error reading structure for table db_gcu.father: #1932 - Table 'db_gcu.father' doesn't exist in engine
--- Error reading data for table db_gcu.father: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`father`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `guardian`
---
--- Error reading structure for table db_gcu.guardian: #1932 - Table 'db_gcu.guardian' doesn't exist in engine
--- Error reading data for table db_gcu.guardian: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`guardian`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `junior_highschool`
---
--- Error reading structure for table db_gcu.junior_highschool: #1932 - Table 'db_gcu.junior_highschool' doesn't exist in engine
--- Error reading data for table db_gcu.junior_highschool: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`junior_highschool`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mother`
---
--- Error reading structure for table db_gcu.mother: #1932 - Table 'db_gcu.mother' doesn't exist in engine
--- Error reading data for table db_gcu.mother: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`mother`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `notes`
---
--- Error reading structure for table db_gcu.notes: #1932 - Table 'db_gcu.notes' doesn't exist in engine
--- Error reading data for table db_gcu.notes: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`notes`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `other_info`
---
--- Error reading structure for table db_gcu.other_info: #1932 - Table 'db_gcu.other_info' doesn't exist in engine
--- Error reading data for table db_gcu.other_info: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`other_info`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `other_school`
---
--- Error reading structure for table db_gcu.other_school: #1932 - Table 'db_gcu.other_school' doesn't exist in engine
--- Error reading data for table db_gcu.other_school: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`other_school`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `photos`
---
--- Error reading structure for table db_gcu.photos: #1932 - Table 'db_gcu.photos' doesn't exist in engine
--- Error reading data for table db_gcu.photos: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`photos`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `readmission`
---
--- Error reading structure for table db_gcu.readmission: #1932 - Table 'db_gcu.readmission' doesn't exist in engine
--- Error reading data for table db_gcu.readmission: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`readmission`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `referral`
---
--- Error reading structure for table db_gcu.referral: #1932 - Table 'db_gcu.referral' doesn't exist in engine
--- Error reading data for table db_gcu.referral: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`referral`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `senior_highschool`
---
--- Error reading structure for table db_gcu.senior_highschool: #1932 - Table 'db_gcu.senior_highschool' doesn't exist in engine
--- Error reading data for table db_gcu.senior_highschool: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`senior_highschool`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `siblings`
---
--- Error reading structure for table db_gcu.siblings: #1932 - Table 'db_gcu.siblings' doesn't exist in engine
--- Error reading data for table db_gcu.siblings: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`siblings`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `student_user`
---
--- Error reading structure for table db_gcu.student_user: #1932 - Table 'db_gcu.student_user' doesn't exist in engine
--- Error reading data for table db_gcu.student_user: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`student_user`' at line 1
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `teachers`
 --
--- Error reading structure for table db_gcu.teachers: #1932 - Table 'db_gcu.teachers' doesn't exist in engine
--- Error reading data for table db_gcu.teachers: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`teachers`' at line 1
 
--- --------------------------------------------------------
-
---
--- Table structure for table `transact`
---
--- Error reading structure for table db_gcu.transact: #1932 - Table 'db_gcu.transact' doesn't exist in engine
--- Error reading data for table db_gcu.transact: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`transact`' at line 1
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tstable`
---
--- Error reading structure for table db_gcu.tstable: #1932 - Table 'db_gcu.tstable' doesn't exist in engine
--- Error reading data for table db_gcu.tstable: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`tstable`' at line 1
-
--- --------------------------------------------------------
+CREATE TABLE `teachers` (
+  `id` int(11) NOT NULL,
+  `employee_id` varchar(20) NOT NULL,
+  `college` varchar(100) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `middle_name` varchar(50) NOT NULL,
+  `contact_number` text NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `civil_status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Table structure for table `withdrawal`
+-- Dumping data for table `teachers`
 --
--- Error reading structure for table db_gcu.withdrawal: #1932 - Table 'db_gcu.withdrawal' doesn't exist in engine
--- Error reading data for table db_gcu.withdrawal: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `db_gcu`.`withdrawal`' at line 1
+
+INSERT INTO `teachers` (`id`, `employee_id`, `college`, `gender`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `password`, `civil_status`) VALUES
+(1, '123456', 'College of Teacher Education', 'Male', 'Doe', 'John', 'Michael', '123-456-7890', 'john.doe@email.com', '', 'Married'),
+(2, '111', 'College of Information Sciences', 'Male', 'Monkey', 'Dulagan', 'Luffy', '123-456-7890', 'luffy.d@email.com', '', 'Single'),
+(3, '31254', 'College of Agriculture', 'Female', 'Nami', 'Robin', 'Franky', '123-456-7890', 'namisan@email.com', '', 'Others'),
+(4, '0879', 'College of Nursing', 'Male', 'Trafalgar', 'Water', 'Law', '123-456-7890', 'ilovemywife@email.com', '', 'Married'),
+(5, '2555', 'College of Social Sciences', 'Male', 'Kid', 'Killer', 'Machine', '123-456-7890', 'tsundere@email.com', '', 'Others'),
+(6, '20010101', 'College of Nursing', 'Male', 'Lname', 'Fname', 'mname', '989898', 'user1@gmail.com', '$2y$10$Ziy0DCb6mv2AODMPned/zO7sZhgjaQHZmIL0J4.6rA48vUGTy/P8K', 'Single'),
+(7, '20010102', 'College of Nursing', 'Female', 'lasat', 'first', 'middle', '7654342', 'user2@gmail.com', '$2y$10$R4VlL7REMASrWXvN1.a3juHdZ7EWrnEoUNqWn3tR.9fdjhxgH9CG2', 'Married'),
+(9, '2001519', 'College of Information Sciences', 'Male', 'Taquio', 'Narz Josef', 'L.', '09995568797', 'josefnarz2011@gmail.com', '$2y$10$vpNlqag6KkL6dylpZyfliusXTx9iKOrX7/BVghPkf/guxjTrs4Zgi', 'Single');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `teachers`
+--
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
