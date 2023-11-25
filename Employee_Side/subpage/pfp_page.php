@@ -15,7 +15,7 @@ $id = $_SESSION['session_id'];
 
 // Log audit entry for accessing the home page
 logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile page');
-
+echo"<script>console.log('$id')</script>";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -191,30 +191,39 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
 
     <div class="card">
         <div class="card-body">
-            <div class="card-image">
-                <img src="../assets/images/male.jpg" alt="">
-            </div>
+          <div class="card-image" id="gender">
+              <!-- The initial image source should be empty -->
+              <img src="" alt="">
+          </div>
             <div class="card-information">
-                <h2>CHET PSYCHOLOGY</h2>
-                <h1 class="title main-title"><span class="title-lastname main-title">Rizzler,</span> Chad Vogn T.</h1>
-                <p class="card-description1"> <span>1st</span> Year Student<br><br></p>
+                <h2><span id="college">CHET</span><span  id="course"> PSYCHOLOGY</span></h2>
+                <h1 class="title main-title"><span class="title-lastname main-title" id="lname">Rizzler,</span> <span id="fname"> Chad Vogn T.</span></h1>
+                <p class="card-description1"> <span id="year_level">1st</span> Year Student<br><br></p>
                 <p class="card-description">
-                    <span>Email:</span> chad123@gmail.com<br>
-                    <span>Contact Number:</span>&nbsp0987-6543-211<br>
-                    <span>Address:</span> 123 Benguet State University La Trinidad<br>
-                    <span>Year Enrolled:</span> 2001<br>
-                    <span>Civil Status:</span> Married<br>
+                    <span>Email:</span> <span id="email" style="color:white;">chad123@gmail.com</span><br>
+                    <span>Contact Number:</span > <span id="number" style="color:white;"> &nbsp0987-6543-211</span><br>
+                    <!-- newly aded -->
+                    <span>Address:</span ><span id="address" style="color:white;"> 123 Benguet State University La Trinidad</span><br>
+                    <span>Year Enrolled:</span><span id="yr_enrolled" style="color:white;"> 2001</span><br>
+                    <span>Civil Status:</span><span id="cs" style="color:white;"> Married</span><br>
                     <hr>
-					<b>Date of Birth:</b> December 01, 2000<br>
-					<b>Birthplace:</b> Benguet State University La Trinidad<br>
-                    <b>Nationality:</b> Filipino<br>
+					<b>Date of Birth:</b><span id="DOB" style="color:white;"> December 01, 2000</span><br>
+					<b>Birthplace:</b><span id ="BP" style="color:white;"> Benguet State University La Trinidad</span><br>
+                    <b>Nationality:</b><span id="nationality" style="color:white;"> Filipino</span><br>
                 </p>
             </div>
             <div class="card-image1">
-            <img src="../assets/images/formtemp.png" alt="ID">
+
+<!-- get student 
+	real-time signature
+ 	or ID picture-->
+
+            <img src="" alt="ID" id="idd">
             </div>
             <div class="card-image1">
-            <img src="../assets/images/formtemp.png" alt="Signature">
+
+
+            <img src="" alt="Signature" id="sig">
             </div>
         </div>
 
@@ -224,19 +233,19 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
 <div class="card-information">
                  <h1 class="title main-title">FAMILY BACKGROUND</h1>
                 <p class="card-description">
-                    <b>Mother:</b> Narz Monkey Taquio
-                    <p class="card-description1"> <span>50</span> Years Old<br><br></p>
-                    000-000-0000 | HouseWife<br>
-                    High School<br>
+                    <b>Mother:</b><span id="mom" style="color:white;"> Narz Monkey Taquio</span>
+                    <p class="card-description1"> <span id="mage">50</span> Years Old<br><br></p>
+                    <span id="mom_cn">000-000-0000 </span>| <span id="mom_occ">HouseWife</span><br>
+                    <span id="mom_school">High School</span><br>
                     <hr>
-                    <b>Father:</b> Narz Monkey Taquio<br>
-                    <p class="card-description1"> <span>50</span> Years Old<br><br></p>
-                    000-000-0000 | CEO<br>
-                    Bachelor of Business Management<br>
+                    <b>Father:</b> <span id="dad" style="color:white;"> Narz Monkey Taquio</span><br>
+                    <p class="card-description1"> <span id="fage">50</span> Years Old<br><br></p>
+                    <span id="dad_cn">000-000-0000 </span> | <span id="dad_occ">CEO</span><br>
+                    <span id="dad_school">Bachelor of Business Management</span><br>
                     <hr>
-                    <b>Guardian:</b> Narz Monkey Taquio<br>
-                    <p class="card-description1"> <span>50</span> Years Old<br><br></p>
-                    000-000-0000 | Aunt<br>
+                    <b>Guardian:</b> <span id="grd" style="color:white;"> Narz Monkey Taquio</span><br>
+                    <p class="card-description1"> <span gage>50</span> Years Old<br><br></p>
+                    <span id="grd_cn">000-000-0000 </span> | <span id="grd_occ">Aunt</span><br>
                     High School<br>
                    
                 </p>
@@ -244,28 +253,28 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
            <div class="card-information">
                  <h1 class="title main-title">EDUCATIONAL BACKGROUND</h1>
                 <p class="card-description">
-                    <b>Senior Highschool:</b> Narz Monkey Taquio
-                    <p class="card-description1"> <span>2023</span> Years Graduated<br><br></p>
+                    <b>Senior Highschool:</b> <span id="HS">loading...</span>
+                    <p class="card-description1"> <span id="HS_YG">2023</span> Years Graduated<br><br></p>
                     <hr>
-                    <b>Junior Highschool:</b> Narz Monkey Taquio
-                    <p class="card-description1"> <span>2023</span> Years Graduated<br><br></p>
+                    <b>Junior Highschool:</b> <span id="JS">loading...</span>
+                    <p class="card-description1"> <span id="JS_YG">2023</span> Years Graduated<br><br></p>
                     <hr>
-                    <b>Elementary Highschool:</b> Narz Monkey Taquio
-                    <p class="card-description1"> <span>2023</span> Years Graduated<br><br></p>
+                    <b>Elementary School:</b> <span id="ES">loading...</span>
+                    <p class="card-description1"> <span  id="ES_YG">2023</span> Years Graduated<br><br></p>
                     <hr>
-                    <b>Other School Attended:</b> None
-                    <p class="card-description1"> <span>Hide</span> Hide<br><br></p>
+                    <b>Other School Attended:</b> <span id="OS">loading...</span>
+                    <p class="card-description1"> <span  id="OS_YG">Hide</span> Hide<br><br></p>
                     
                 </p>
             </div>
            <div class="card-information">
                 <h1 class="title main-title">MORE ABOUT ME</h1>
                 <p class="card-description">
-                    Member of Indigenous group?<b> YES</b><br>
-                    Person with Disability? <b>YES</b><br>
-                    A student parent? <b>YES</b><br>
-                    Sources of Financial Support? <b>Relatives and/or Guardian</b><br>
-                    Marital Status of Parents? <b>Marriage is legally annuled</b>
+                    Member of Indigenous group?<b id="IG"> YES</b><br>
+                    Person with Disability? <b id="PWD">YES</b><br>
+                    A student parent? <b id="SP">YES</b><br>
+                    Sources of Financial Support? <b id="FS">Relatives and/or Guardian</b><br>
+                    Marital Status of Parents? <b id="MS">Marriage is legally annuled</b>
                     <hr>
                     <a href="#divTwo"><button class="yes">Read More</button></a>
                 </p>  
@@ -281,31 +290,31 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
                         <h1>More About Me</h1>
                         <a href="#" class="close">&times;</a>
                         <p> <span class="pop">The 3 words that describes me are</span>
-                            <b>Hot, Sexy, A Chad</b></p>
+                            <b><span id="1">Hot</span>, <span id="2">Sexy</span>, <span   id="3">Chad</span></b></p>
                         <p> <span class="pop">My greatest goal is</span>
-                            <b>maintaining being Hot, Sexy, A Chad</b></p>
+                            <b id="goal">maintaining being Hot, Sexy, A Chad</b></p>
                             <br>
                             <hr><br>
                         <div class="float"> 
                         <div class="fixing">
                         <label>My Father is <br></label>
-                        <b>Hot, Sexy, A Chad Hot, Sexy, A Chad</b><br>
+                        <b id="fis">Hot, Sexy, A Chad Hot, Sexy, A Chad</b><br>
                         <label>My Mother is <br></label>
-                        <b>Hot, Sexy, A Chad Hot, Sexy, A Chad</b><br>
+                        <b id="mis">Hot, Sexy, A Chad Hot, Sexy, A Chad</b><br>
                         <label> The sibling I'm closest to is <br></label>
-                        <b>BILLY</b><br>
+                        <b id="closest">BILLY</b><br>
                         <label>Because <br></label>
-                        <b>Hot, Sexy, A Chad Hot, Sexy, A Chad</b>
+                        <b id="coz">Hot, Sexy, A Chad Hot, Sexy, A Chad</b>
                     </div>
                     <div class="fixing">
                            <label>When I was a child I<br></label> 
-                            <b>was Hot, Sexy, and a Chad</b><br>
+                            <b id="when_child">was Hot, Sexy, and a Chad</b><br>
                             <label>In school my teachers are <br> </label>
-                            <b>Hot, Sexy, A Chad</b><br>
+                            <b id="teachers_are">Hot, Sexy, A Chad</b><br>
                             <label>My friends don't know that <br> </label> 
-                            <b> I am Hot, Sexy, A Chad</b><br>
+                            <b id="dont_know"> I am Hot, Sexy, A Chad</b><br>
                             <label>When I think about the future, I <br></label>
-                            <b> dream to be Hot, Sexy, A Chad</b><br>
+                            <b id="future"> dream to be Hot, Sexy, A Chad</b><br>
                     </div>
                     </div>
                            
