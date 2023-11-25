@@ -1,3 +1,21 @@
+<?php 
+session_start();
+// Include the log_audit.php file
+include '../backend/log_audit2.php';
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
+$id = $_SESSION['session_id'];
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_log report',  'Admin has accessed the log report page');
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,7 +127,8 @@
                     <thead>
                         <tr>
                             <th> ID Number <span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Date/Time Logged In <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Date Logged In <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Time Logged In <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Name <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Position <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Phone Number <span class="icon-arrow">&UpArrow;</span></th>
@@ -136,7 +155,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
 
 <script>
- 
+ var eID = "<?php echo $_SESSION['session_id'];?>";
 //responsive date
 // function updateCurrentDate(){
 //     const currentDateElement = document.getElementById("currentDate");
@@ -169,19 +188,19 @@ function searchTable() { //searches in all column
             }
         }
 function logout() {
-        // $.ajax({
-        //     type: 'POST',
-        //     url: '../../backend/log_audit.php',
-        //     data: {
-        //       userId: eID,
-        //       action: 'logged out',
-        //       details: eID + ' Clicked log out'
-        //     },
-        //     success: function(response) {
-        //       // Handle the response if needed
-        //       console.log("logged", response);
-        //     }
-        //   });
+    $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + 'Admin Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = '../home?logout=true';
 }
 $(document).ready(function () {
@@ -200,10 +219,23 @@ $(document).ready(function () {
                     
                     var entry = data[i];
                     var status = entry.status;
-                    var tableToAppend = tableBody; // Determine which table to append to
+                    var tableToAppend = tableBody; 
+
+
+                    var dateObject = new Date(entry.timestamp);
+
+                    var date = dateObject.getDate();
+                    var month = dateObject.getMonth() + 1; // Months are zero-based, so we add 1
+                    var year = dateObject.getFullYear();
+
+                    var hours = dateObject.getHours();
+                    var minutes = dateObject.getMinutes();
+                    var seconds = dateObject.getSeconds();
+                    
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.user_id + "</td>");
-                    row.append("<td>" + entry.timestamp + "</td>");
+                    row.append("<td>" + year + "-" + month + "-" + date + "</td>");
+                    row.append("<td>" + hours + ":" + minutes + ":" + seconds + "</td>");
                     row.append("<td>" + entry.first_name + " " + entry.last_name +"</td>");
                     row.append("<td>" + entry.position + "</td>");
                     row.append("<td>" + entry.contact + "</td>");
@@ -330,19 +362,19 @@ function exportToPDF() {
     // Save the PDF to a file
     doc.save('Employee_log.pdf');
     
-    // $.ajax({
-    //         type: 'POST',
-    //         url: '../backend/log_audit.php',
-    //         data: {
-    //           userId: eID,
-    //           action: 'clicked export',
-    //           details: eID + 'clicked export apopinment table to PDF'
-    //         },
-    //         success: function(response) {
-    //           // Handle the response if needed
-    //           console.log("logged", response);
-    //         }
-    //       });
+    $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'Admin clicked export',
+              details: 'Admin clicked export apopinment table to excel'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
 }
 
 function dl_log() {
@@ -364,6 +396,20 @@ function dl_log() {
 
       // Remove the link from the body
       document.body.removeChild(link);
+
+      $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'Admin downloaded log',
+              details: 'Admin downloaded log report'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     }
   });
 }

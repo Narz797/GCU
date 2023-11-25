@@ -465,8 +465,21 @@ if (isset($_SESSION['origin'])) {
 
         if ($stmt->execute()){
             echo '<script>';
+            echo 'var eID = "<?php echo $_SESSION["session_id"];?>";';
             echo 'alert("User Registration Successfully!");';
             echo 'window.location.href = "../Admin_Side/EmployeeProfiles.php";';
+            echo' $.ajax({';
+                echo'type: "POST",';
+                echo'url: "../backend/log_audit.php",';
+                echo'data: {';
+                echo'userId: eID,';
+                echo'action: "Admin added employee",';
+                echo'details: A"dmin added employee"';
+                echo'},';
+                echo'success: function(response) {';
+                echo'console.log("logged", response);';
+                echo'     }';
+                echo'   });';
             echo '</script>';
             exit;
         }

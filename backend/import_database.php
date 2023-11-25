@@ -19,8 +19,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             var_dump($returnVar);
             if ($returnVar === 1) {
                 echo '<script>';
+
+                echo 'var eID = "<?php echo $_SESSION["session_id"];?>";';
                 echo 'alert("Database Import Successfully!");';
                 echo 'window.location.href="../Admin_Side/exportimport.php";';
+                echo' $.ajax({';
+                    echo'type: "POST",';
+                    echo'url: "../backend/log_audit.php",';
+                    echo'data: {';
+                    echo'userId: eID,';
+                    echo'action: "Admin imported database",';
+                    echo'details: A"dmin imported database"';
+                    echo'},';
+                    echo'success: function(response) {';
+                    echo'console.log("logged", response);';
+                    echo'     }';
+                    echo'   });';
                 echo '</script>';
                 exit; // Terminate script execution after the alert
             } else {

@@ -1,10 +1,19 @@
-<?php
+<?php 
 session_start();
-// include '../backend/connect_database.php';
-
-// $daily = $pdo->prepare('SELECT COUNT(*) as user_count FROM your_table_name WHERE your_condition;');
+// Include the log_audit.php file
+include '../backend/log_audit2.php';
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
 $id = $_SESSION['session_id'];
-echo "<script>console.log('ID: ',$id)</script>";
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
+
 
 ?>
 <!DOCTYPE html>

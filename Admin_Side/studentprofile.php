@@ -1,3 +1,22 @@
+<?php 
+session_start();
+// Include the log_audit.php file
+include '../backend/log_audit2.php';
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
+$id = $_SESSION['session_id'];
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_student profile',  'Admin has accessed the student profile page');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -154,6 +173,7 @@
 
     <!-- Script     -->
     <script>
+        var eID = "<?php echo $_SESSION['session_id'];?>";
         function searchTable() { //searches in all column
             var input, filter, table, tr, td, i, j, txtValue;
             input = document.getElementById("searchInput");
@@ -177,6 +197,20 @@
         }
 
         function logout() {
+
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + 'Admin Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
             window.location.href = '../home?logout=true';
         }
 
@@ -294,6 +328,19 @@
                     // Handle the response from the server, if needed
                     console.log(response);
                     window.location.href = 'pfp_page.php';
+                    $.ajax({
+                        type: 'POST',
+                        url: '../backend/log_audit.php',
+                        data: {
+                        userId: eID,
+                        action: 'Admin viewed student',
+                        details: 'Admin vaccessed view student in student profile'
+                        },
+                        success: function(response) {
+                        // Handle the response if needed
+                        console.log("logged", response);
+                        }
+                    });
                 }
             });
         }
@@ -327,6 +374,22 @@
 
             // Export the workbook to an Excel file
             XLSX.writeFile(workbook, "Filtered_Students.xlsx");
+
+
+
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'Admin exported student list to excel',
+              details: 'Admin exported student list to excel'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
         }
 
 
@@ -364,6 +427,20 @@
 
             // Save the PDF to a file
             doc.save('Filtered_Students.pdf');
+            
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'Admin exported student list to pdf',
+              details: 'Admin exported student list to pdf'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
         }
 
         //moving arrow

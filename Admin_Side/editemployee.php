@@ -1,10 +1,19 @@
 <?php 
 session_start();
-$_SESSION['origin']='Employee';
+// Include the log_audit.php file
+include '../backend/log_audit2.php';
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
+$id = $_SESSION['session_id'];
 
-$id = $_SESSION['user_id'];
+// Log audit entry for accessing the home page
+logAudit($id, 'access_edit employee',  'Admin has accessed the edit employee page');
 
-// echo "<script>console.log('id: " . $id . "')</script>";
 
 ?>
 
@@ -202,19 +211,19 @@ $("#edit_emp").on("submit", function (event) {
           alert("Edited Successfully");
           
           window.location.href="EmployeeProfiles.php";
-        //   $.ajax({
-        //     type: 'POST',
-        //     url: '../backend/log_audit.php',
-        //     data: {
-        //       userId: tID,
-        //       action: 'reffered',
-        //       details: tID + ' reffered '+sID
-        //     },
-        //     success: function(response) {
-        //       // Handle the response if needed
-        //       console.log("logged", response);
-        //     }
-        //   });
+          $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'Admin edited employee',
+              details: 'Admin edited employee' . $("#id").val()
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
 
         },
     error: function (xhr, status, error) {

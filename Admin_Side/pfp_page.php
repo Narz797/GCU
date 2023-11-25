@@ -14,7 +14,7 @@ include '../backend/log_audit2.php';
 $id = $_SESSION['session_id'];
 
 // Log audit entry for accessing the home page
-logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile page');
+logAudit($id, 'access_sudent_profile', 'Admin has accessed the sudent_profile page');
 
 ?>
 <!DOCTYPE html>
@@ -378,7 +378,7 @@ var eID = '<?php echo $id;?>';
             data: {
               userId: eID,
               action: 'logged out',
-              details: eID + ' Clicked log out'
+              details: eID + 'Admin Clicked log out'
             },
             success: function(response) {
               // Handle the response if needed
@@ -387,22 +387,22 @@ var eID = '<?php echo $id;?>';
           });
     window.location.href = '../../home?logout=true';
 }
-function archive() {
-    $.ajax({
-            type: 'POST',
-            url: '../../backend/log_audit.php',
-            data: {
-              userId: eID,
-              action: 'archive',
-              details: eID + ' Clicked archive'
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
-    window.location.href = 'archive.php';
-        }
+// function archive() {
+//     $.ajax({
+//             type: 'POST',
+//             url: '../../backend/log_audit.php',
+//             data: {
+//               userId: eID,
+//               action: 'archive',
+//               details: eID + ' Clicked archive'
+//             },
+//             success: function(response) {
+//               // Handle the response if needed
+//               console.log("logged", response);
+//             }
+//           });
+//     window.location.href = 'archive.php';
+//         }
 // remarks
 function openModal(id) {
     document.getElementById("modal").style.display = "block";
@@ -466,8 +466,8 @@ function openModal2(id) {
             url: '../../backend/log_audit.php',
             data: {
               userId: eID,
-              action: 'edit remark',
-              details: eID + ' edited remark of ' + stud_name
+              action: 'Admin edit remark',
+              details: eID + 'Admin edited remark of ' + stud_name
             },
             success: function(response) {
               // Handle the response if needed
@@ -501,8 +501,8 @@ function openModal2(id) {
             url: '../../backend/log_audit.php',
             data: {
               userId: eID,
-              action: 'add remark',
-              details: eID + ' added remark for ' + stud_name
+              action: 'Admin add remark',
+              details: eID + 'Admin added remark for ' + stud_name
             },
             success: function(response) {
               // Handle the response if needed

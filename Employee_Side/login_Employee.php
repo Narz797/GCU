@@ -267,7 +267,6 @@ $_SESSION['origin'] = 'Employee';
             <span></span>
             <label>Password</label>
           </div>
-          <div class="pass"><a href="../ForgotPassword.php"><b>Forgot Password?</b></a></div>
           <input type="submit" value="Login" id="submitButton" />
           <br>
           <br>

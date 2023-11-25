@@ -16,9 +16,23 @@ try {
     // Check if the command executed successfully
     if ($return_var === 1) {
         echo '<script>';
+        echo 'var eID = "<?php echo $_SESSION["session_id"];?>";';
         echo 'alert("Database Export Successfully!");';
         echo 'window.location.href="../Admin_Side/exportimport.php";';
+       echo' $.ajax({';
+       echo'type: "POST",';
+       echo'url: "../backend/log_audit.php",';
+       echo'data: {';
+       echo'userId: eID,';
+       echo'action: "Admin exported database",';
+       echo'details: A"dmin exported database"';
+       echo'},';
+       echo'success: function(response) {';
+       echo'console.log("logged", response);';
+       echo'     }';
+       echo'   });';
         echo '</script>';
+        
         exit;
     } else {
         echo '<script>';

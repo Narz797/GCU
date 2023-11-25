@@ -1,3 +1,22 @@
+<?php 
+session_start();
+// Include the log_audit.php file
+include '../backend/log_audit2.php';
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
+$id = $_SESSION['session_id'];
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_export import',  'Admin has accessed the export import page');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,7 +89,7 @@
                     <i class="ri-sun-line theme-light-icon"></i>
                     <i class="ri-moon-line theme-dark-icon"></i>
                 </button>
-                <button class="icon-btn place-items-center">
+                <button class="icon-btn place-items-center" onclick="logout()">
                     <i class="ri-user-3-line"></i>
                 </button>
             </div>
@@ -120,5 +139,23 @@
     <br>
     
     <!-- Script     -->
+    <script>
+                function logout() {
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + 'Admin Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+            window.location.href = '../home?logout=true';
+        }
+    </script>
     <script src="./assets/main.js"></script>
     <script src="assets/js/table.js"></script>

@@ -1,3 +1,22 @@
+<?php 
+session_start();
+// Include the log_audit.php file
+include '../backend/log_audit2.php';
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
+    
+    exit; // Make sure to exit the script after a header redirect
+  }
+$id = $_SESSION['session_id'];
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile page');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -153,8 +172,7 @@
     <script src="assets/main.js"></script>
     <!-- <script src="assets/js/table.js"></script> -->
 
-    <script>
-
+    <script>var eID = "<?php echo $_SESSION['session_id'];?>";
 function searchTable() { //searches in all column
             var input, filter, table, tr, td, i, j, txtValue;
             input = document.getElementById("searchInput");
@@ -178,6 +196,19 @@ function searchTable() { //searches in all column
         }
 
         function logout() {
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + 'Admin Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
             window.location.href = '../home?logout=true';
         }
 
@@ -291,6 +322,21 @@ function searchTable() { //searches in all column
                         alert("Deleted Successfully");
                         console.log(response);
                         location.reload();
+
+                        
+                            $.ajax({
+                            type: 'POST',
+                            url: '../backend/log_audit.php',
+                            data: {
+                            userId: eID,
+                            action: 'Admin deleted employee account',
+                            details: 'Admin deleted employee account'
+                            },
+                            success: function(response) {
+                            // Handle the response if needed
+                            console.log("logged", response);
+                            }
+                        });
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.error("AJAX Error: " + textStatus, errorThrown);
@@ -345,6 +391,21 @@ function searchTable() { //searches in all column
 
             // Export the workbook to an Excel file
             XLSX.writeFile(workbook, "Filtered_Employees.xlsx");
+
+
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'Admin exported employee list to excel',
+              details: 'Admin exported employee list to excel'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
         }
 
 
@@ -382,6 +443,20 @@ function searchTable() { //searches in all column
 
             // Save the PDF to a file
             doc.save('Filtered_Employees.pdf');
+
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'Admin exported employee list to pdf',
+              details: 'Admin exported employee list to pdf'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
         }
 
         //moving arrow
