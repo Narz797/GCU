@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="assets/contact.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -25,6 +26,19 @@
         </div>
     </nav>
 </header>
+<style>
+      #loading-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      transition: opacity 0.5s ease;
+      display: none;
+    
+    }
+
+</style>
     <!-- Welcome-message -->
 <section>
     <section class="banner">
@@ -126,20 +140,21 @@
         <div class="topic-text">SEND US A MESSAGE</div>
         <p>Good Day! If you have any queries, you can send us a message from here.</p>
         <p>It is our pleasure to be of help to you!</p>
+        <img src="../assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
       <form id="send_help" method="post">
         <div class="input-box">
-          <input type="text" placeholder="Enter your name">
+          <input type="text" id="name" placeholder="Enter your name">
         </div>
         <div class="input-box">
-          <input type="text" placeholder="Enter your email">
+          <input type="text"  id="email" placeholder="Enter your email">
         </div>
         <div class="input-box message-box">
           <div class="input-box1">
-          <textarea type="text" placeholder="What can we help you with?"></textarea>
+          <textarea type="text"  id="msg" placeholder="What can we help you with?"></textarea>
         </div>
         </div>
         <div class="button">
-          <input type="button" value="Send Now" >
+          <input type="submit" value="Send Now" >
         </div>
       </form>
     </div>
@@ -180,22 +195,20 @@
     console.log("performing ajax");
     $.ajax({
       type: 'POST',
-      url: 'backend/forgot_pass.php',
+      url: '../backend/send_help.php',
       data: {
-        email: $("#email").val()
+        name: $("#name").val(),
+        email: $("#email").val(),
+        msg: $("#msg").val()
       },
       success: function(data) {
         // Hide loading spinner on success
         $("#loading-spinner").hide();
-        if (data === "unregistered") {
-          alert("This Email in not registered, please use a registered email")
-          console.log(data);
-          
-        } else {
+  
           alert("The code to change your password is sent to your email")
-        console.log(data)
-        window.location.href = "verify_code.php";
-        }
+        console.log("data",data)
+        // window.location.href = "verify_code.php";
+        
 
         // add location to enter code
       },
