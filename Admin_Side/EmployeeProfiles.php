@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +42,7 @@
     <header class="header">
         <nav class="nav">
             <div class="logo">
-                <a href="./index.php"><img src="assets/images/bsu.png" alt=""></a>
+                <img src="assets/images/bsu.png" alt="">
             </div>
             <div class="nav-mobile">
                 <ul class="list">
@@ -79,12 +80,19 @@
     <!-- Welcome-message -->
 
     <section>
-
+   
         <div class="block">
         </div>
         <div class="title independent-title">
             <h2>Employee Profiles</h2>
+            <br>
+            <div class="container">
+            <a href="main.php"><button type=submit class="button1">Back</button></a>
+            <a href="addemployee.php"><button type=submit class="button">Add Employee Account</button></a>
+            </div>
+                       
         </div>
+       
         <!-- Section -->
         <div class="container">
             <div class="card">
@@ -108,12 +116,7 @@
                             </div>
                         </section>
 
-                        <section class="table-body">
-
-                            <a href="addemployee.php"><button type=submit>Add Employee Account</button></a>
-
-                        </section>
-
+                
                         <section class="table-body">
 
                         <table id="dynamicTable">
@@ -145,17 +148,9 @@
         </div>
     </section>
     <br>
-    <!-- Footer -->
-    <footer id="footer" class="footer">
-        <div class="container" id="footercopyright">
-            <div class="copyright">
-                <?php echo '&copy; ' . date('Y') . ' <strong><span>BSIT</span></strong>. All Rights Reserved'; ?>
-            </div>
-            <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-        </div>
-    </footer>
+    
     <!-- Script     -->
-    <script src="./assets/main.js"></script>
+    <script src="assets/main.js"></script>
     <!-- <script src="assets/js/table.js"></script> -->
 
     <script>
@@ -191,7 +186,7 @@ function searchTable() { //searches in all column
             function get_data(){
             // Fetch data using $.ajax
             $.ajax({
-                url: '../backend/search_employee.php',
+                url: "../backend/search_employee.php",
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
@@ -391,6 +386,78 @@ function searchTable() { //searches in all column
 
         //moving arrow
     </script>
+
+
+<style>
+        
+        .container{
+           
+           
+
+        }
+        .button{
+           
+           text-align: center;
+           
+           border:none;
+           color:white;
+           padding:12px 32px;
+           text-decoration: none;
+           margin:2px 2px;
+           cursor:pointer;
+           height:60px;
+           width:300px;
+           border-style: outset;
+           background-color: darkgreen;
+           border-radius:50px;
+
+       }
+       .button1{
+           
+           text-align: center;
+           border:none;
+           color:white;
+           padding:10px 32px;
+           text-decoration: none;
+           margin:1px 2px;
+           cursor:pointer;
+           height:60px;
+           width:100px;
+           border-style: outset;
+           background-color: darkgreen;
+           border-radius:50px;
+
+       }
+        .button:hover{
+            text-align: center;
+           background-color: green;
+           border:none;
+           color:black;
+           padding:12px 32px;
+           text-decoration: none;
+           margin:2px 2px;
+           cursor:pointer;
+           height:60px;
+           width:300px;
+           border-style: outset;
+           border-radius:50px;
+           
+        }
+        .button1:hover{
+            text-align: center;
+           background-color: green;
+           border:none;
+           color:black;
+           padding:10px 32px;
+           text-decoration: none;
+           margin:1px 2px;
+           cursor:pointer;
+           height:60px;
+           width:100px;
+           border-style: outset;
+           border-radius:50px;
+           
+    </style>
 </body>
 
 </html>

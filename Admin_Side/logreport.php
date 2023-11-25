@@ -39,7 +39,7 @@
   <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./main.php" ><img src="assets/images/bsu.png" alt=""></a>
+            <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -129,15 +129,7 @@
         </div>
 </section>
 <br>
-    <!-- Footer -->
-    <footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-        </div>
-        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-    </div>
-</footer>
+    
 <!-- Script     -->
 <script src="../backend/jsPDF-1.3.2/dist/jspdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>

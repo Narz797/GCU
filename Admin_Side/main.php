@@ -30,6 +30,7 @@ echo "<script>console.log('ID: ',$id)</script>";
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </head>
 
 <body>
@@ -37,7 +38,7 @@ echo "<script>console.log('ID: ',$id)</script>";
     <header class="header">
         <nav class="nav">
             <div class="logo">
-                <a href="./index.php"><img src="assets/images/bsu.png" alt=""></a>
+                <img src="assets/images/bsu.png" alt="">
             </div>
             <div class="align-right">
                 <button class="icon-btn theme-toggle-btn place-items-center">
@@ -76,26 +77,7 @@ echo "<script>console.log('ID: ',$id)</script>";
             </header>
             <hr>
 
-            <div class="card-body">
-                <div class="card-image">
-                    <img src="assets/images/GCU_logo.png" alt="">
-                </div>
-                <div class="card-information">
-                    <!-- call employee 
-    registered data -->
-            <!-- <h1 class="title main-title"><span class="title-lastname main-title" id="lname">uchiha,</span> <span id="fname"> Verlyn Rizz M.</span></h1>
-                        <p class="card-description1">Joined at <b id="date_joined"></b><br><br></p>
-                        <p class="card-description">
-                            
-                            <span>Position:</span><b id="employee_position"></b>
-                        </p> -->
-                        <span>Email:</span><b id="employee_email"></b><br>
-                </div>
-                <div class="card-image1">
-                    <img src="./assets/images/map.png" alt="">
-                </div>
-
-            </div>
+            
     </section>
     <!-- Management-area -->
     <section class="management-area">
@@ -154,15 +136,7 @@ echo "<script>console.log('ID: ',$id)</script>";
             </div>
         </div>
     </section>
-    <!-- Footer -->
-    <footer id="footer" class="footer">
-        <div class="container" id="footercopyright">
-            <div class="copyright">
-                <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-            </div>
-            <div class="credits">Designed by <a class="dev" href="https://www.facebook.com/">BSIT</a></div>
-        </div>
-    </footer>
+   
 
 
 <script>
@@ -268,5 +242,6 @@ HistoryData();
     // Call the fetchData function when the page loads
     fetchData();
 </script>
+
 </body>
 </html>
