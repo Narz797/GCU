@@ -41,7 +41,7 @@
     <header class="header">
         <nav class="nav">
             <div class="logo">
-                <a href="./index.php"><img src="assets/images/bsu.png" alt=""></a>
+                <img src="assets/images/bsu.png" alt="">
             </div>
             <div class="nav-mobile">
                 <ul class="list">
@@ -118,15 +118,7 @@
 
     </section>
     <br>
-    <!-- Footer -->
-    <footer id="footer" class="footer">
-        <div class="container" id="footercopyright">
-            <div class="copyright">
-                <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-            </div>
-            <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-        </div>
-    </footer>
+    
     <!-- Script     -->
     <script src="./assets/main.js"></script>
     <script src="assets/js/table.js"></script>

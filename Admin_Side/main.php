@@ -109,7 +109,7 @@ echo "<script>console.log('ID: ',$id)</script>";
             <div class="card-group d-grid">
 
                 <div class="card border one">
-                    <div>
+                    <div class="design">
                         <h2 class="title" >TOTAL LOGINS FOR TODAY</h2>
                         <span class="num"><b id="total">loading...</b></span>
                     </div>
@@ -125,7 +125,7 @@ echo "<script>console.log('ID: ',$id)</script>";
                 <a href="appointment.php"><button class="list-link">Read More</button></a>
             </div> -->
                 <div class="card border one">
-                    <div>
+                    <div class="design">
                         <h2 class="title">HISTORY TRANSACTIONS</h2>
 
                         <p class="card-description" id="list-history">
@@ -242,6 +242,15 @@ HistoryData();
     // Call the fetchData function when the page loads
     fetchData();
 </script>
+<style>
+.design{
+    background-color:darkgreen;
+    margin:10px 10px;
+    padding:20px 20px;
+    border-style:solid;
+    border-radius:20px;
+}
 
+</style>
 </body>
 </html>

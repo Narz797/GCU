@@ -391,7 +391,7 @@ function searchTable() { //searches in all column
 <style>
         
         .container{
-           
+           font-size:17px;
            
 
         }

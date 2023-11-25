@@ -24,27 +24,10 @@ $_SESSION['origin']='Employee';
     <link rel="stylesheet" href="assets/css/profiles.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
-    <!-- Export -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
-    <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    
 
 </head>
-<style>
 
-    </style>
 <body>
 
     <!-- Header -->
@@ -54,19 +37,17 @@ $_SESSION['origin']='Employee';
             <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
         </div>
         <div class="nav-mobile">
-            <ul class="list">
+        <ul class="list">
                 <li class="list-item">
-                    <a href="main.php" class="list-link current">Home</a>
+                    <a href="../employee-home" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
+                    <a href="EmployeeProfiles.php" class="list-link current1">Back</a>
                 </li>
-                <li class="list-item hov">
-                    <a href="logreport.php" class="list-link current1">Log Report</a>
-                </li>
-                <li class="list-item hov">
-                    <a href="exportimport.php" class="list-link current1">Export/Import of Database</a>
-                </li>
+            </ul>
+            <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
+                <i class="ri-close-line"></i>
+            </button>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
                 <i class="ri-close-line"></i>
@@ -88,20 +69,18 @@ $_SESSION['origin']='Employee';
 </header>
     <!-- Welcome-message -->
     
-<section>
-  
-      
+
     <div class="title independent-title">
     <h2>Add Employee Account</h2>
     </div>
-     <!-- Section -->
     
+   
     <section class="table-body">
     <section  id="table">
-    
+    <center>
     <form method="post" action="../backend/register_user.php">
         <br>
-        <center>
+       
         <div class="input-group input-group-lg">
               <input type="number" class="form-control" name ='empID' placeholder="Employee ID No." 
               aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" required>
@@ -146,38 +125,54 @@ $_SESSION['origin']='Employee';
               <input type="text" class="form-control" name='password' placeholder="Password" 
               aria-label="Password" aria-describedby="inputGroup-sizing-lg" required>
         </div>
-    </center>
+</center>
+</div>
+<br>
+<center>
+    <div class="addemployee">
+    
+    <button type="submit" class="button" value="Add Employee">Add Employee Account</button>
+   
+    </div>
+</center>
+</form>
 
-        <br>
-        <button type="submit" value="Add Employee">Add Employee Account</button>
-    </form>
-    </section>
-
-</section>
+  
 <br>
 </div>
 
-<style>
-.table-body{
-    background-color: darkolivegreen;  
-    
-}
 
 
-</style>
 
-    <!-- Footer -->
-    <footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-        </div>
-        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-    </div>
-</footer>
 <!-- Script     -->
 <script src="./assets/main.js"></script>
 
  <script src="assets/js/table.js"></script>   
-</body>
+
+<style>
+.table-body{
+    background-color: darkgreen;
+}
+
+.button{
+        
+        border:none;
+           color:black;
+           padding:12px 32px;
+           text-decoration: none;
+           margin:12px 2px;
+           cursor:pointer;
+           height:60px;
+           width:100px;
+           border-style: outset;
+           background-color: blue;
+           border-radius:20px;
+
+           
+    }
+
+
+
+</style>
+    </body>
 </html>
