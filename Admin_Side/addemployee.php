@@ -21,7 +21,7 @@ $_SESSION['origin']='Employee';
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/profiles.css">
+    <link rel="stylesheet" href="assets/css/sub.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
     
@@ -34,7 +34,7 @@ $_SESSION['origin']='Employee';
     <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
+        <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
         <ul class="list">

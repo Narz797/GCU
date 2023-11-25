@@ -336,27 +336,33 @@ main.table {
     height: auto;}
 
 .table-body {
-    width: 95%;
+    width: 60%;
     max-height: calc(89% - 1.6rem);
     background-color: #fffb;
     color: black;
     margin: .8rem auto;
     border-radius: .6rem;
     overflow: auto;
-    overflow: overlay;}
+    overflow: overlay;
+    text-align: center;
+}
 .table-body button{
     text-align: center;
     font-size: 15px;
     font-weight: bold;
-    width: 100%;
+    width: 20%;
     padding: 15px;
     border: 0;
     outline: none;
     cursor: pointer;
     margin-top: 5px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px; 
-    /* background-color: var(--hover-color); */
+    color: var(--light-color);
+    background-color: var(--positive-color);
+    margin-bottom: 15px;
+}
+.table-body button:hover{
+    background-color: var(--hover-color);
+    color: var(--dark-color);
 }
 
 .hover:hover{

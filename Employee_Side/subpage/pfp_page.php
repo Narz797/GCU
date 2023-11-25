@@ -29,13 +29,13 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="../assets/view.css">
+    <link rel="stylesheet" href="../assets/css/view.css">
 </head>
 
 
@@ -188,45 +188,130 @@ logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile pa
     <div class="title independent-title">
         <h2> STUDENT PROFILE</h2>
     </div>
+
     <div class="card">
         <div class="card-body">
-        <div class="card-image" id="gender">
-            <!-- The initial image source should be empty -->
-            <img src="" alt="">
-        </div>
+            <div class="card-image">
+                <img src="../assets/images/male.jpg" alt="">
+            </div>
             <div class="card-information">
-
-<!-- call student 
-    registered data -->
-
-                <h2><p id="college"></p><p id="course"></p></h2>
-                <h1 class="title main-title"><span class="title-lastname main-title" id="lname">, </span><p id="fname" style="display: inline;"></p></h1>
-                <p class="card-description1"> <span id="year_level">1st</span> Year Student<br><br></p>
+                <h2>CHET PSYCHOLOGY</h2>
+                <h1 class="title main-title"><span class="title-lastname main-title">Rizzler,</span> Chad Vogn T.</h1>
+                <p class="card-description1"> <span>1st</span> Year Student<br><br></p>
                 <p class="card-description">
-                    <span>Email:</span id="email"> chad123@gmail.com<br>
-                    <span>Contact Number:</span id="number">&nbsp0987-6543-211
+                    <span>Email:</span> chad123@gmail.com<br>
+                    <span>Contact Number:</span>&nbsp0987-6543-211<br>
+                    <span>Address:</span> 123 Benguet State University La Trinidad<br>
+                    <span>Year Enrolled:</span> 2001<br>
+                    <span>Civil Status:</span> Married<br>
                     <hr>
-					<b>Guardian:</b> <p style="display: inline;" id="guardian">Jihyo Rizzler</p><br>
-					<b>Relation:</b><p style="display: inline;" id="relation"> Sister</p><br>
-                    <b>Contact Number:</b><p style="display: inline;" id="guardian_number">&nbsp0912-3456-789</p><br>
+					<b>Date of Birth:</b> December 01, 2000<br>
+					<b>Birthplace:</b> Benguet State University La Trinidad<br>
+                    <b>Nationality:</b> Filipino<br>
                 </p>
             </div>
             <div class="card-image1">
-
-<!-- get student 
-	real-time signature
- 	or ID picture-->
-
-            <img src="" alt="ID" id="idd">
+            <img src="../assets/images/formtemp.png" alt="ID">
             </div>
             <div class="card-image1">
-
-
-            <img src="" alt="Signature" id="sig">
+            <img src="../assets/images/formtemp.png" alt="Signature">
             </div>
         </div>
-    </div>
+
+
+
+<div class="card-body">
+<div class="card-information">
+                 <h1 class="title main-title">FAMILY BACKGROUND</h1>
+                <p class="card-description">
+                    <b>Mother:</b> Narz Monkey Taquio
+                    <p class="card-description1"> <span>50</span> Years Old<br><br></p>
+                    000-000-0000 | HouseWife<br>
+                    High School<br>
+                    <hr>
+                    <b>Father:</b> Narz Monkey Taquio<br>
+                    <p class="card-description1"> <span>50</span> Years Old<br><br></p>
+                    000-000-0000 | CEO<br>
+                    Bachelor of Business Management<br>
+                    <hr>
+                    <b>Guardian:</b> Narz Monkey Taquio<br>
+                    <p class="card-description1"> <span>50</span> Years Old<br><br></p>
+                    000-000-0000 | Aunt<br>
+                    High School<br>
+                   
+                </p>
+            </div>
+           <div class="card-information">
+                 <h1 class="title main-title">EDUCATIONAL BACKGROUND</h1>
+                <p class="card-description">
+                    <b>Senior Highschool:</b> Narz Monkey Taquio
+                    <p class="card-description1"> <span>2023</span> Years Graduated<br><br></p>
+                    <hr>
+                    <b>Junior Highschool:</b> Narz Monkey Taquio
+                    <p class="card-description1"> <span>2023</span> Years Graduated<br><br></p>
+                    <hr>
+                    <b>Elementary Highschool:</b> Narz Monkey Taquio
+                    <p class="card-description1"> <span>2023</span> Years Graduated<br><br></p>
+                    <hr>
+                    <b>Other School Attended:</b> None
+                    <p class="card-description1"> <span>Hide</span> Hide<br><br></p>
+                    
+                </p>
+            </div>
+           <div class="card-information">
+                <h1 class="title main-title">MORE ABOUT ME</h1>
+                <p class="card-description">
+                    Member of Indigenous group?<b> YES</b><br>
+                    Person with Disability? <b>YES</b><br>
+                    A student parent? <b>YES</b><br>
+                    Sources of Financial Support? <b>Relatives and/or Guardian</b><br>
+                    Marital Status of Parents? <b>Marriage is legally annuled</b>
+                    <hr>
+                    <a href="#divTwo"><button class="yes">Read More</button></a>
+                </p>  
+            </div>
+        </div>
+
+
+
+    </div> 
 </section>
+<div class="overlay" id="divTwo">
+                    <div class="moreabout">
+                        <h1>More About Me</h1>
+                        <a href="#" class="close">&times;</a>
+                        <p> <span class="pop">The 3 words that describes me are</span>
+                            <b>Hot, Sexy, A Chad</b></p>
+                        <p> <span class="pop">My greatest goal is</span>
+                            <b>maintaining being Hot, Sexy, A Chad</b></p>
+                            <br>
+                            <hr><br>
+                        <div class="float"> 
+                        <div class="fixing">
+                        <label>My Father is <br></label>
+                        <b>Hot, Sexy, A Chad Hot, Sexy, A Chad</b><br>
+                        <label>My Mother is <br></label>
+                        <b>Hot, Sexy, A Chad Hot, Sexy, A Chad</b><br>
+                        <label> The sibling I'm closest to is <br></label>
+                        <b>BILLY</b><br>
+                        <label>Because <br></label>
+                        <b>Hot, Sexy, A Chad Hot, Sexy, A Chad</b>
+                    </div>
+                    <div class="fixing">
+                           <label>When I was a child I<br></label> 
+                            <b>was Hot, Sexy, and a Chad</b><br>
+                            <label>In school my teachers are <br> </label>
+                            <b>Hot, Sexy, A Chad</b><br>
+                            <label>My friends don't know that <br> </label> 
+                            <b> I am Hot, Sexy, A Chad</b><br>
+                            <label>When I think about the future, I <br></label>
+                            <b> dream to be Hot, Sexy, A Chad</b><br>
+                    </div>
+                    </div>
+                           
+                            
+                        </div>
+                    </div>
     <!-- Management-area -->
 <section class="management-area">
     <div class="management-area-container d-grid">

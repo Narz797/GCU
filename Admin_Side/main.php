@@ -75,7 +75,7 @@ echo "<script>console.log('ID: ',$id)</script>";
     profession = "Admin"-->
                 <h2 class="title">Welcome back, Admin</span></h2>
             </header>
-            <hr>
+    
 
             
     </section>

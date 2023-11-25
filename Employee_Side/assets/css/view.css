@@ -274,7 +274,65 @@ i{
     padding: 1rem;
     margin: 10px;}
 
-
+    Dulagan Nichole
+    .card-description button{
+        padding: 2rem 6rem;}
+    .yes{
+        margin: 10px;
+        font-size: var(--font-size-small);
+        background-color: green;
+        color: var(--dark-color);
+        padding: 1rem 1.5rem;}
+    .yes:hover{
+        color: var(--light-color);
+        background-color: var(--hover-color);}
+    .overlay{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        transition: opacity 500ms;
+        visibility: hidden;
+        opacity: 0;}
+    .overlay:target{
+        visibility: visible;
+        opacity: 1;}
+    .moreabout{
+        text-align: center;
+        margin: 5% auto;
+        padding: 20px;
+        background-color: var(--body-background-color);
+        border-radius: 5px;
+        width: 70%;
+        position: relative;
+        transition: all 4s ease-in-out;}
+    .moreabout h1{
+        margin-top: 0;
+        text-align: center;}
+    .moreabout .close{
+        position: absolute;
+        top: 0;
+        right: 10px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: red;}
+    .moreabout .close:hover{
+        color: var(--negative-color);}
+    .moreabout .pop{
+        color: var(--accent-color);}
+    .moreabout .fixing{
+        padding: 30px;
+        text-align: center;}
+    .moreabout .float{
+        display: flex;
+        align-items: center;
+        justify-content: center;}
+    .moreabout label{
+        color: var(--accent-color);}
 /* Management area */
 .management-area{
     padding-block: 2.5rem;}
@@ -284,7 +342,7 @@ i{
 .card-group{
     gap: var(--gap-medium);}
 .card-group .card{
-    position: relative;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -553,14 +611,18 @@ table{
     align-items: center;
     width: 60vw;
     height: 60vh;
-    backdrop-filter: blur(7px);
+   
     border-radius: .8rem;
     overflow: hidden;
-    padding: 2rem;}}
+    padding: 2rem;
+    table-layout: fixed;
+}
 .table-sortable th {
     cursor: pointer;}
 .table-sortable td {
-    align-items: center;}
+    align-items: center;
+    word-wrap: break-word;
+}
 .table-sortable .th-sort-asc::after {
     content: "\25b4";}
 .table-sortable .th-sort-desc::after {
@@ -680,12 +742,12 @@ tbody td.active {
         margin-left: 4rem;}
     .list-link,
     .card-body-link{
-        transition: color .25s, background-color: .25s;}
+        transition: color .25s; background-color: .25s;}
     .nav-mobile .list-link{
         border-radius: .4rem;}
     .card-image1 img{
         margin-left: 1%;}
-    .current: hover{
+    .current:hover{
         background-color: var(--hover-color);
         color: black;
     }

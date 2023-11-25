@@ -234,7 +234,7 @@ function searchTable() { //searches in all column
                         row.append("<td>" + entry.position + "</td>");
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
-                        var statusLink = $("<button onclick='view_student(" + entry.admin_user_id + ")'>Edit</button> <button onclick='del_emp(" + entry.admin_user_id + ")'>Delete</button>");
+                        var statusLink = $("<button class ='yes' onclick='view_student(" + entry.admin_user_id + ")'>Edit</button> <button class='no' onclick='del_emp(" + entry.admin_user_id + ")'>Delete</button>");
                         row.append(statusLink);
                         tableBody.append(row);
 
@@ -456,7 +456,7 @@ function searchTable() { //searches in all column
            width:100px;
            border-style: outset;
            border-radius:50px;
-           
+        }
     </style>
 </body>
 

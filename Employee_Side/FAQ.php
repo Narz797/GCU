@@ -126,7 +126,7 @@
         <div class="topic-text">SEND US A MESSAGE</div>
         <p>Good Day! If you have any queries, you can send us a message from here.</p>
         <p>It is our pleasure to be of help to you!</p>
-      <form action="#">
+      <form id="send_help" method="post">
         <div class="input-box">
           <input type="text" placeholder="Enter your name">
         </div>
@@ -170,6 +170,44 @@
        clickedLi.classList.toggle("showAnswer");
       });
     }
+
+    $("#send_help").on("submit", function(event) {
+    event.preventDefault();
+    
+    // Show loading spinner
+    $("#loading-spinner").show();
+    
+    console.log("performing ajax");
+    $.ajax({
+      type: 'POST',
+      url: 'backend/forgot_pass.php',
+      data: {
+        email: $("#email").val()
+      },
+      success: function(data) {
+        // Hide loading spinner on success
+        $("#loading-spinner").hide();
+        if (data === "unregistered") {
+          alert("This Email in not registered, please use a registered email")
+          console.log(data);
+          
+        } else {
+          alert("The code to change your password is sent to your email")
+        console.log(data)
+        window.location.href = "verify_code.php";
+        }
+
+        // add location to enter code
+      },
+      error: function(xhr, status, error) {
+        // Hide loading spinner on error
+        $("#loading-spinner").hide();
+        
+        console.error("Error:", error);
+        alert("Error: " + error);
+      },
+    });
+  });
   </script>
 </body>
 </html>

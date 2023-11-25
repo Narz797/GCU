@@ -25,7 +25,7 @@ $id = $_SESSION['user_id'];
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/profiles.css">
+    <link rel="stylesheet" href="assets/css/sub.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
     <!-- Export -->
@@ -55,7 +55,7 @@ $id = $_SESSION['user_id'];
     <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="assets/images/bsu.png" alt=""></a>
+         <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -155,7 +155,7 @@ $id = $_SESSION['user_id'];
     </center>
 
         <br>
-        <button type="submit" value="Add Employee">Edit Employee Account</button>
+        <button class="yes1" type="submit" value="Add Employee">Edit Employee Account</button>
     </form>
     </section>
 
@@ -172,15 +172,7 @@ $id = $_SESSION['user_id'];
 
 </style>
 
-    <!-- Footer -->
-    <footer id="footer" class="footer">
-    <div class="container" id="footercopyright">
-        <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
-        </div>
-        <div class="credits">Designed by <a href="https://www.facebook.com/">BSIT</a></div>
-    </div>
-</footer>
+
 <!-- Script     -->
 
 <script>
