@@ -45,8 +45,60 @@ $_SESSION['origin'] = 'Teacher_Register';
       z-index: 1;
       transition: opacity 0.5s ease;
       display: none;
+      
     
     }
+
+    .container1 {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    font-size: 18px;
+    color: #333;
+}
+
+.id {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #3457D5;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color:#5D8AA8;
+}
+
+/* Add additional styles as needed */
+
+
+    
 
   
 </style>
@@ -130,9 +182,9 @@ $_SESSION['origin'] = 'Teacher_Register';
                                 <option>Widowed</option>
                             </select>
                         </div>
-                        <!-- <button onclick="window.location.href='.././home'">BACK</button> -->
+                        <button onclick="window.location.href='.././home'">BACK</button>
                         <!-- <button type="submit">SUBMIT</button> -->
-                        <button  onclick="add_remarks()">Register</button>
+                        <button  onclick="add_remarks()">REGISTER</button>
                     </div>
                 </div>
             </div>
@@ -143,11 +195,11 @@ $_SESSION['origin'] = 'Teacher_Register';
             <div class="modal_content">
                 <div class="body">
                 <div class="logo">
-                    <img id="loading-spinner" style="display: none;" src="../assets/img/GCU_LOGO.gif">
+                    <!-- <img id="loading-spinner" style="display: none;" src="../assets/img/GCU_LOGO.gif"> -->
                     </div>
-                <div class="container">
+                <div class="container1">
                     <form id="verify_code" method="post">
-                    <h1>A verification code has been den to your email, please enter tthe code below to fully register your account</h1>
+                    <h1>A verification code has been den to your email, please enter the code below to fully register your account</h1>
                     <div class="id">
                         <label for="email" style="color:black;">Verification Code:</label>
                         <input type="number" id="code" name="code" oninput="validateInput(this)" required>
@@ -210,7 +262,7 @@ $_SESSION['origin'] = 'Teacher_Register';
           console.log(data);
           
         } else {
-          alert("The code to change your password is sent to your email")
+          alert("The verification code has sent to your email.")
         console.log("Success",data)
 
                 // verify();

@@ -6,6 +6,8 @@
   <title>Agreement</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
+
+  
   <style>
 
 @media only screen and (max-width: 600px) {
