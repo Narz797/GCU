@@ -1,5 +1,5 @@
 <!doctype html>
-<?php
+<?php 
 session_start();
 include '../../backend/log_audit2.php';
   // Check if the session variable is empty
@@ -9,19 +9,26 @@ include '../../backend/log_audit2.php';
     
     exit; // Make sure to exit the script after a header redirect
   }
-  // include 'formstyle.php';
-  $_SESSION['transact_type'] = 'readmission'; // Assign value to transact_type
-  logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_id'] .' has accessed the readmission page');
+// include 'formstyle.php';
+$_SESSION['transact_type']='leave_of_absence';//asign value to transact_type 
+logAudit($_SESSION['session_id'], 'access_leave_of_absence form', $_SESSION['session_id'] .' has accessed the leave_of_absence page');
 ?>
 <html>
 <head>
-  <meta charset="utf-8">
+  <title>Readmission Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
-  <title>Readmission Slip</title>
+  
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+</head>
+<style>
     /* Your existing styles here */
     body {
       /* font-family: Arial, sans-serif; */
@@ -155,13 +162,77 @@ include '../../backend/log_audit2.php';
 
 
     }
-  </style>
-</head>
+    /* Style for the container of semester and year inputs */
+.semester-year-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
+/* Style for the semester dropdown */
+select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px; /* Adjust the width as needed */
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
+}
+option{
+  font-family: "Century Gothic", sans-serif;
+  font-size: 16px;
+
+}
+
+/* Style for the container of year inputs */
+.year-input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+ 
+
+}
+
+/* Style for the group of year inputs and label */
+.year-input-group {
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the year labels */
+label, span {
+  margin-right: 5px;
+}
+
+/* Style for the year inputs */
+.year-input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80px; /* Adjust the width as needed */
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
+
+}
+
+/* Style for the year inputs when focused */
+.year-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+
+
+  </style>
 <body>
   <div class="card">
-    <!-- Other card content goes here -->
-    <div class="logo-container" >
+
+   <!-- Other card content goes here -->
+   <div class="logo-container" >
     <img  src="../assets/img/GCU_logo.png" alt="GCU Logo">
    
    <!-- <h1  id="Title" style="font-family: Papyrus, fantasy;">Readmission Slip</h1> -->
@@ -172,19 +243,44 @@ include '../../backend/log_audit2.php';
 
   <h1 stly=" font-family: Consolas;" id="Title" >Readmission Slip</h1>
   <hr>
+    
     <div class="card-body">
       <form id="form_transact" method="post">
         <p>
-          <label for="textarea">Reason/s for stopping:</label>
+        <label for="select2">Semester and School Year Intended to Come Back:</label>
+
+<div class="semester-year-container">
+  <select name="select2" id="semester">
+    <option value="1">First Semester</option>
+    <option value="2">Second Semester</option>
+  </select>
+
+  <label>Year:</label>
+  <!-- <input type="number" placeholder="YYYY" id="start_year" class="year-input" name="datepicker" id="datepicker"> -->
+  <input type="text" class="form-control" name="datepicker" id="datepicker"  required/>/>
+  <label>-</label>
+  <!-- <input type="number" placeholder="YYYY" id="end_year" class="year-input"> -->
+  <input type="text" class="form-control" name="datepicker" id="datepicker2"  required/>/>
+
+  
+</div>
+<br>
+<br>
+
         </p>
         <p>
-          <textarea name="textarea" class="textarea" id="reason_stop" required></textarea>
+        <label for="textarea">Reason/s for stopping:</label>
         </p>
         <p>
-          <label for="textarea">Motivation for enrolling again:</label>
+<!-- Corrected code -->
+        <textarea name="textarea" class="textarea" id="reason_stop" required></textarea>
         </p>
         <p>
-          <textarea name="textarea" class="textarea" id="motivation_enroll" required></textarea>
+        <label for="textarea">Motivation for enrolling again:</label>
+        </p>
+        <p>
+<!-- Corrected code -->
+        <textarea name="textarea" class="textarea" id="motivation_enroll" required></textarea>
         </p>
         <div class="button-container">
           <div class="button">
@@ -196,14 +292,35 @@ include '../../backend/log_audit2.php';
           <div class="button">
             <p>
               <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-              <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+              <button type="submit" class="btn btn-primary" is = "submit">Submit</button>
             </p>
           </div>
         </div>
       </form>
     </div>
+  </div>
+  <script>
+    $("#datepicker").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
+    </script>
 
-    <script>
+<script>
+    $("#datepicker2").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
+    </script>
+  
+  
+
+  
+  <script>
         var sID = "<?php echo $_SESSION['session_id'];?>";
       function submitForm() {
         // Check if the form is filled before submitting
@@ -240,6 +357,6 @@ include '../../backend/log_audit2.php';
         }
       }
     </script>
-  </div>
+
 </body>
 </html>

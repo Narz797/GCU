@@ -712,7 +712,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 
                             <p><b>Whom do you live?</b></p>
                             <br>
-                            <div class="radio-group">
+                            <div class="radio-group" required>
                                 <label>
                                     <input type="radio" id="yesRadio" name="whom" value="parents" onclick="showParentsInput();" required>
                                     Parents
@@ -731,31 +731,31 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                     <div class="fields">
                                         <div class="input-field">
                                             <label>Last Name</label>
-                                            <input type="text" id="Flname" name="Flname" required>
+                                            <input type="text" id="Flname" name="Flname" >
                                         </div>
                                         <div class="input-field">
                                             <label>First Name</label>
-                                            <input type="text" id="Ffname" name="Ffname" required>
+                                            <input type="text" id="Ffname" name="Ffname" >
                                         </div>
                                         <div class="input-field">
                                             <label>Middle Name</label>
-                                            <input type="text" id="Fmname" name="Fmname" required>
+                                            <input type="text" id="Fmname" name="Fmname">
                                         </div>
                                         <div class="input-field">
                                             <label>Age</label>
-                                            <input type="text" id="Fage" name="Fage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                                            <input type="text" id="Fage" name="Fage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" >
                                         </div>
                                         <div class="input-field">
                                             <label>Occupational</label>
-                                            <input type="text" id="Focc" name="Focc" required>
+                                            <input type="text" id="Focc" name="Focc" >
                                         </div>
                                         <div class="input-field">
                                             <label>Educational Attainment</label>
-                                            <input type="text" id="Fedu" name="Fedu" required>
+                                            <input type="text" id="Fedu" name="Fedu" >
                                         </div>
                                         <div class="input-field">
                                             <label>Contact Number</label>
-                                            <input type="text" id="Fcontact" name="Fcontact" value="09" oninput="formatPhoneNumber(this);" required>
+                                            <input type="text" id="Fcontact" name="Fcontact" value="09" oninput="formatPhoneNumber(this);" >
                                         </div>
                                     </div>
                                 </fieldset>
@@ -766,31 +766,31 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                     <div class="fields">
                                         <div class="input-field">
                                             <label>Last Name</label>
-                                            <input type="text" id="Mlname" name="Mlname" required>
+                                            <input type="text" id="Mlname" name="Mlname" >
                                         </div>
                                         <div class="input-field">
                                             <label>First Name</label>
-                                            <input type="text" id="Mfname" name="Mfname" required>
+                                            <input type="text" id="Mfname" name="Mfname" >
                                         </div>
                                         <div class="input-field">
                                             <label>Middle Name</label>
-                                            <input type="text" id="Mmname" name="Mmname" required>
+                                            <input type="text" id="Mmname" name="Mmname" >
                                         </div>
                                         <div class="input-field">
                                             <label>Age</label>
-                                            <input type="text" id="Mage" name="Mage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                                            <input type="text" id="Mage" name="Mage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" >
                                         </div>
                                         <div class="input-field">
                                             <label>Occupational</label>
-                                            <input type="text" id="Mocc" name="Mocc" required>
+                                            <input type="text" id="Mocc" name="Mocc" >
                                         </div>
                                         <div class="input-field">
                                             <label>Educational Attainment</label>
-                                            <input type="text" id="Medu" name="Medu" required>
+                                            <input type="text" id="Medu" name="Medu">
                                         </div>
                                         <div class="input-field">
                                             <label>Contact Number</label>
-                                            <input type="text" id="Mcontact" name="Mcontact" value="09" oninput="formatPhoneNumber(this);" required>
+                                            <input type="text" id="Mcontact" name="Mcontact" value="09" oninput="formatPhoneNumber(this);" >
                                         </div>
                                     </div>
                                 </fieldset>
@@ -801,31 +801,31 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                                     <div class="fields">
                                         <div class="input-field">
                                             <label>Last Name</label>
-                                            <input type="text" id="Glname" name="Glname" required>
+                                            <input type="text" id="Glname" name="Glname" >
                                         </div>
                                         <div class="input-field">
                                             <label>First Name</label>
-                                            <input type="text" id="Gfname" name="Gfname" required>
+                                            <input type="text" id="Gfname" name="Gfname" >
                                         </div>
                                         <div class="input-field">
                                             <label>Middle Name</label>
-                                            <input type="text" id="Gmname" name="Gmname" required>
+                                            <input type="text" id="Gmname" name="Gmname" >
                                         </div>
                                         <div class="input-field">
                                             <label>Age</label>
-                                            <input type="text" id="Gage" name="Gage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                                            <input type="text" id="Gage" name="Gage" oninput="this.value = this.value.replace(/[^0-9]/g, '');" >
                                         </div>
                                         <div class="input-field">
                                             <label>Occupational</label>
-                                            <input type="text" id="Gocc" name="Gocc" required>
+                                            <input type="text" id="Gocc" name="Gocc" >
                                         </div>
                                         <div class="input-field">
                                             <label>Educational Attainment</label>
-                                            <input type="text" id="Gedu" name="Gedu" required>
+                                            <input type="text" id="Gedu" name="Gedu" >
                                         </div>
                                         <div class="input-field">
                                             <label>Contact Number</label>
-                                            <input type="text" id="Gcontact" name="Gcontact" value="09" oninput="formatPhoneNumber(this);" required>
+                                            <input type="text" id="Gcontact" name="Gcontact" value="09" oninput="formatPhoneNumber(this);" >
                                         </div>
                                     </div>
                                 </fieldset>

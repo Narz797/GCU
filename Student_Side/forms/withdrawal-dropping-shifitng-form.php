@@ -18,6 +18,15 @@ logAudit($_SESSION['session_id'], 'access_wds form', $_SESSION['session_id'] .' 
   <title>Withdrawal/Dropping/Shifting slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
+
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+
   <style>
     .hidden {
       display: none;
@@ -230,12 +239,12 @@ select:focus {
     <!-- <div class="card-header">
       <h1 id="Title">Withdrawal/Dropping/Shifting Slip</h1>
     </div> -->
-    <div class="card-body">
+    <div class="card-body" >
       <form id="form_transact" name="form1" method="post">
         <p>
-          <label>Select your conern:</label>
+          <label>Select your concern:</label>
           <!-- <label for="select2">:</label> -->
-          <select name="select2" id="action">
+          <select name="select2" id="action" style="height:auto;">
             
             <option value="Withdrawing Enrollment">Withdrawing Enrollment</option>
             <option value="Dropping Subjects">Dropping Subjects</option>
@@ -252,14 +261,93 @@ select:focus {
         <div class="hidden" id="for-shift">
             <label for="textfield4">Shifting from:</label>
             <div class="autocomplete-container">
-                <input type="text" name="textfield4" id="textfield4" onkeyup="showSuggestions('textfield4', 'autocomplete-suggestions1')" autocomplete="off">
+                <!-- <input type="text" name="textfield4" id="textfield4" onkeyup="showSuggestions('textfield4', 'autocomplete-suggestions1')" autocomplete="off"> -->
+                <select name="courseSelect" id="courseSelect" style="height:auto;" onchange="showSuggestions('courseSelect', 'autocomplete-suggestions1')">
+                <option disabled selected>Select Course</option>
+                                <option value='BSAB'>Bachelor of Science in Agribusiness</option>
+                                <option value='BSA'>Bachelor of Science in Agriculture</option>
+                                <option value='BA Comm'>Bachelor of Arts in Communication</option>
+                                <option value='BAEL'>Bachelor of Arts in English Language</option>
+                                <option value='BAFL'>Bachelor of Arts in Filipino Language</option>
+                                <option value='BSABE'>Bachelor of Science in Agriculture and Biosystems Engineering</option>
+                                <option value='BSCE'>Bachelor of Science in Civil Engineering</option>
+                                <option value='BSEE'>Bachelor of Science in Electrical Engineering</option>
+                                <option value='BSIE'>Bachelor of Science in Industrial Engineering</option>
+                                <option value='BSF'>Bachelor of Science in Forestry</option>
+                                <option value='BSET'>Bachelor of Science in Entrepreneurship</option>
+                                <option value='BSFT'>Bachelor of Science in Food Technology</option>
+                                <option value='BSHM'>Bachelor of Science in Hospitality Management</option>
+                                <option value='BSND'>Bachelor of Science in Nutrition and Dietetics</option>
+                                <option value='BSTM'>Bachelor of Science in Tourism Management</option>
+                                <option value='BPeD'>Bachelor of Physical Education</option>
+                                <option value='BSESS'>Bachelor of Science in Exercise and Sports Sciences</option>
+                                <option value='BLIS'>Bachelor in Library and Information Sciences</option>
+                                <option value='BSDC'>Bachelor of Science in Development Communication</option>
+                                <option value='BSIT'>Bachelor of Science in Information Technology</option>
+                                <option value='BS Bio'>Bachelor of Science in Biology</option>
+                                <option value='BS Chem'>Bachelor of Science in Chemistry</option>
+                                <option value='BSES'>Bachelor of Science in Environmental Science</option>
+                                <option value='BS Math'>Bachelor of Science in Mathematics</option>
+                                <option value='BSS'>Bachelor of Science in Statistics</option>
+                                <option value='BSN'>Bachelor of Science in Nursing</option>
+                                <option value='BPA'>Bachelor of Public Administration</option>
+                                <option value='BS Psych'>Bachelor of Science in Psychology</option>
+                                <option value='BECED'>Bachelor of Early Childhood Education</option>
+                                <option value='BEED'>Bachelor of Elementary Education</option>
+                                <option value='BSED'>Bachelor of Secondary Education</option>
+                                <option value='BTLED'>Bachelor of Technology and Livelihood Education</option>
+                                <option value='DVM'>Doctor of Veterinary Medicine</option>
+                                <option value='BA Hist'>Bachelor of Arts in History</option>
+    <!-- Add more options as needed -->
+</select>
+
+                
                 <!-- Create a container to display autocomplete suggestions for the first input -->
                 <div id="autocomplete-suggestions1" class="autocomplete-popup"></div>
             </div>
             <label for="textfield5">to:</label>
             <div class="autocomplete-container">
-                <input type="text" name="textfield5" id="textfield5" onkeyup="showSuggestions('textfield5', 'autocomplete-suggestions2')" autocomplete="off">
-                <!-- Create a container to display autocomplete suggestions for the second input -->
+                <select type="text" name="textfield5" id="textfield5" style="height:auto;" onkeyup="showSuggestions('textfield5', 'autocomplete-suggestions2')" autocomplete="off">
+                <option disabled selected>Select Course</option>
+                                <option value='BSAB'>Bachelor of Science in Agribusiness</option>
+                                <option value='BSA'>Bachelor of Science in Agriculture</option>
+                                <option value='BA Comm'>Bachelor of Arts in Communication</option>
+                                <option value='BAEL'>Bachelor of Arts in English Language</option>
+                                <option value='BAFL'>Bachelor of Arts in Filipino Language</option>
+                                <option value='BSABE'>Bachelor of Science in Agriculture and Biosystems Engineering</option>
+                                <option value='BSCE'>Bachelor of Science in Civil Engineering</option>
+                                <option value='BSEE'>Bachelor of Science in Electrical Engineering</option>
+                                <option value='BSIE'>Bachelor of Science in Industrial Engineering</option>
+                                <option value='BSF'>Bachelor of Science in Forestry</option>
+                                <option value='BSET'>Bachelor of Science in Entrepreneurship</option>
+                                <option value='BSFT'>Bachelor of Science in Food Technology</option>
+                                <option value='BSHM'>Bachelor of Science in Hospitality Management</option>
+                                <option value='BSND'>Bachelor of Science in Nutrition and Dietetics</option>
+                                <option value='BSTM'>Bachelor of Science in Tourism Management</option>
+                                <option value='BPeD'>Bachelor of Physical Education</option>
+                                <option value='BSESS'>Bachelor of Science in Exercise and Sports Sciences</option>
+                                <option value='BLIS'>Bachelor in Library and Information Sciences</option>
+                                <option value='BSDC'>Bachelor of Science in Development Communication</option>
+                                <option value='BSIT'>Bachelor of Science in Information Technology</option>
+                                <option value='BS Bio'>Bachelor of Science in Biology</option>
+                                <option value='BS Chem'>Bachelor of Science in Chemistry</option>
+                                <option value='BSES'>Bachelor of Science in Environmental Science</option>
+                                <option value='BS Math'>Bachelor of Science in Mathematics</option>
+                                <option value='BSS'>Bachelor of Science in Statistics</option>
+                                <option value='BSN'>Bachelor of Science in Nursing</option>
+                                <option value='BPA'>Bachelor of Public Administration</option>
+                                <option value='BS Psych'>Bachelor of Science in Psychology</option>
+                                <option value='BECED'>Bachelor of Early Childhood Education</option>
+                                <option value='BEED'>Bachelor of Elementary Education</option>
+                                <option value='BSED'>Bachelor of Secondary Education</option>
+                                <option value='BTLED'>Bachelor of Technology and Livelihood Education</option>
+                                <option value='DVM'>Doctor of Veterinary Medicine</option>
+                                <option value='BA Hist'>Bachelor of Arts in History</option>
+    <!-- Add more options as needed -->
+</select>
+
+
+
                 <div id="autocomplete-suggestions2" class="autocomplete-popup"></div>
             </div>
         </div>

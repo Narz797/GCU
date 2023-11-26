@@ -18,6 +18,14 @@ logAudit($_SESSION['session_id'], 'access_leave_of_absence form', $_SESSION['ses
   <title>Leave Of Absence Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
+
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
   
 </head>
 <style>
@@ -217,6 +225,8 @@ label, span {
 }
 
 
+
+
   </style>
 <body>
   <div class="card">
@@ -245,10 +255,18 @@ label, span {
     <option value="2">Second Semester</option>
   </select>
 
-  <label>Year:</label>
+  <!-- <label>Year:</label>
   <input type="number" placeholder="YYYY" id="start_year" class="year-input">
   <label>-</label>
-  <input type="number" placeholder="YYYY" id="end_year" class="year-input">
+  <input type="number" placeholder="YYYY" id="end_year" class="year-input"> -->
+
+  <label>Year:</label>
+  <!-- <input type="number" placeholder="YYYY" id="start_year" class="year-input" name="datepicker" id="datepicker"> -->
+  <input type="text" class="form-control" name="datepicker" id="datepicker"  required/>
+  <label>-</label>
+  <!-- <input type="number" placeholder="YYYY" id="end_year" class="year-input"> -->
+  <input type="text" class="form-control" name="datepicker" id="datepicker2"required/>
+
 </div>
 <br>
 <br>
@@ -285,6 +303,25 @@ label, span {
       </form>
     </div>
   </div>
+
+  <script>
+    $("#datepicker").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
+    </script>
+
+<script>
+    $("#datepicker2").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
+    </script>
+
   <script>
      var sID = "<?php echo $_SESSION['session_id'];?>";
     $("#form_transact").on("submit", function (event) {

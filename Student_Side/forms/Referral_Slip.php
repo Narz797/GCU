@@ -37,6 +37,8 @@ logAudit($_SESSION['session_id'], 'access_class admisison form', $_SESSION['sess
     <!-- Font Awesome and Remix Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    
 </head>
 <style>
 
@@ -334,12 +336,12 @@ select:focus {
     }
 
     .btn{
-      background-color: #009000;
+      background-color: #0039a6;
       color: white;
     }
 
     .btn:hover{
-      background-color: #008080;
+      background-color: #318CE7;
       color: white;
     }
     
