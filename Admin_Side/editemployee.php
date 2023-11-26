@@ -185,6 +185,7 @@ logAudit($id, 'access_edit employee',  'Admin has accessed the edit employee pag
 <!-- Script     -->
 
 <script>
+    var eID = "<?php echo $_SESSION['session_id'];?>";
 $("#edit_emp").on("submit", function (event) {
       event.preventDefault();
 

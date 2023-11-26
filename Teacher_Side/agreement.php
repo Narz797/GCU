@@ -265,7 +265,7 @@ p {
           <div class="button">
             <p>
               <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-              <button type="button" class="btn btn-primary" onclick="window.location.href='../home'">DISAGREE</button>
+              <button type="button" class="btn btn-primary" onclick="goBack()">DISAGREE</button>
 
             </p>
           </div>
@@ -277,6 +277,12 @@ p {
     
     </div>
   </div>
+  <script>
+
+function goBack() {
+            window.history.back();
+        }
+</script>
 
 
 
