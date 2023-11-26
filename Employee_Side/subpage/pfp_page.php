@@ -469,6 +469,7 @@ $student = $_SESSION['stud_user_id'];
 
 // echo "<script>alert('$student_transacts')</script>";
 ?>
+
     <!-- Script -->
     <script>
 
@@ -775,15 +776,15 @@ function openModal2(id) {
                 var frst =studentData.first;
                 var scnd =studentData.second;
                 var thrd =studentData.third;
-                var ggoal =studentData.greatest_goal;
-                var afather = studentData.father;
-                var amother = studentData.mother;
-                var closest =studentData.closest_sibling;
-                var bcoz =studentData.because;
-                var child =studentData.when_i_was_a_child;
-                var tch =studentData.teachers_are;
-                var dkt = dont_know_that;
-                var ftr = future;
+                var ggoal =studentData.goal;
+                var afather = studentData.fis;
+                var amother = studentData.mis;
+                var closest =studentData.kapatid;
+                var bcoz =studentData.kap_res;
+                var child =studentData.whenChild;
+                var tch =studentData.teachAre;
+                var dkt = studentData.friendsDuno;
+                var ftr = studentData.future;
                 var pgn = studentData.ParentGuardianNumber;
                 var pgname = studentData.ParentGuardianName;
                 var relation = studentData.Relation;
@@ -792,9 +793,77 @@ function openModal2(id) {
                 console.log(fname);
                 updateValues(fname, lname, email, year_level, course, gender, college, cn, address, year_enrolled, cs, bday, bplace, nat, ig, pwd, studpar, marit, src, mfname, mlname, mocc, medu, mcn, mage, ffname, flname, focc,fedu, fcn, fage, gfname, glname, gocc, gedu, gcn, gage, hs, hs_yg, js, js_yg, es, es_yg, os, os_yg, frst, scnd, thrd, ggoal, afather, amother, closest, bcoz, child, tch, dkt, ftr, pgn, pgname, relation);
                             
-                          // Display the blob data as images
-                displayBlobAsImage(sig, 'sig'); // Pass the image data and an element ID
-                displayBlobAsImage(idd, 'idd'); // Pass the image data and an element ID
+                const id = <?php echo $_SESSION['stud_user_id']; ?>;
+
+                const pers_info = lname;
+
+                const filePath_jpg = `../../backend/uploads/id_${id}_${pers_info}.jpg`;
+                const filePath_png = `../../backend/uploads/id_${id}_${pers_info}.png`;
+                const filePath_jpeg = `../../backend/uploads/id_${id}_${pers_info}.jpeg`;
+
+                const imgElement = document.getElementById('idd');
+                // imgElement.style.width = '50%';
+                // imgElement.style.height = '50%';
+
+                if (fileExists(filePath_jpg)) {
+                  // Display the image
+                  imgElement.src = filePath_jpg;
+                  imgElement.alt = 'Photo';
+                } else if (fileExists(filePath_png)) {
+                  // Display the image
+                  imgElement.src = filePath_png;
+                  imgElement.alt = 'Photo';
+                } else if (fileExists(filePath_jpeg)) {
+                  // Display the image
+                  imgElement.src = filePath_jpeg;
+                  imgElement.alt = 'Photo';
+                } else {
+                  console.log('File not found.');
+                }
+
+                function fileExists(url) {
+                  var http = new XMLHttpRequest();
+                  http.open('HEAD', url, false);
+                  http.send();
+                  return http.status !== 404;
+                }
+
+
+
+
+                const filePath2_jpg = `../../backend/uploads/sign_${id}_${pers_info}.jpg`;
+                const filePath2_png = `../../backend/uploads/sign_${id}_${pers_info}.png`;
+                const filePath2_jpeg = `../../backend/uploads/sign_${id}_${pers_info}.jpeg`;
+
+                const imgElement2 = document.getElementById('sig');
+                // imgElement.style.width = '50%';
+                // imgElement.style.height = '50%';
+
+                if (fileExists(filePath2_jpg)) {
+                  // Display the image
+                  imgElement2.src = filePath2_jpg;
+                  imgElement2.alt = 'Photo';
+                } else if (fileExists(filePath2_png)) {
+                  // Display the image
+                  imgElement2.src = filePath2_png;
+                  imgElement2.alt = 'Photo';
+                } else if (fileExists(filePath2_jpeg)) {
+                  // Display the image
+                  imgElement2.src = filePath2_jpeg;
+                  imgElement2.alt = 'Photo';
+                } else {
+                  console.log('File not found.');
+                }
+
+                function fileExists(url) {
+                  var http = new XMLHttpRequest();
+                  http.open('HEAD', url, false);
+                  http.send();
+                  return http.status !== 404;
+                }
+
+                
+
             } else {
                 // Handle the case when no results are found
                 console.log('No results found');
@@ -807,14 +876,7 @@ function openModal2(id) {
         }
     });
 
-          function displayBlobAsImage(blobData, elementId) {
-            if (blobData) {
-                var imgElement = document.getElementById(elementId);
-                if (imgElement) {
-                    imgElement.src = 'data:image/jpeg;base64,' + blobData; // Assuming JPEG format
-                }
-            }
-        }
+
 }
 
 
