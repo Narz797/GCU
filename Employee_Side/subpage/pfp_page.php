@@ -246,7 +246,7 @@ echo"<script>console.log('$id')</script>";
                     <b>Guardian:</b> <span id="grd" style="color:white;"> Narz Monkey Taquio</span><br>
                     <p class="card-description1"> <span gage>50</span> Years Old<br><br></p>
                     <span id="grd_cn">000-000-0000 </span> | <span id="grd_occ">Aunt</span><br>
-                    High School<br>
+                    <span id="grd_school">High School</span><br>
                    
                 </p>
             </div>
@@ -631,7 +631,7 @@ function openModal2(id) {
         }
 
     // Function to update the HTML elements
-    function updateValues(fname, lname, email, year_level, course, gender, college, cn, pgn, pgname, relation) {
+    function updateValues(fname, lname, email, year_level, course, gender, college, cn, address, year_enrolled, cs, bday, bplace, nat, ig, pwd, studpar, marit, src, mfname, mlname, mocc, medu, mcn, mage, ffname, flname, focc,fedu, fcn, fage, gfname, glname, gocc, gedu, gcn, gage, hs, hs_yg, js, js_yg, es, es_yg, os, os_yg, frst, scnd, thrd, ggoal, afather, amother, closest, bcoz, child, tch, dkt, ftr, pgn, pgname, relation) {
 
         const genderImageMap = {
             'male': '../assets/images/male.jpg',
@@ -647,16 +647,68 @@ function openModal2(id) {
             image.src = genderImageMap['female'];
         }
 
-        $('#lname').text(lname+ ', ');
-        $('#fname').text(fname);
-        $('#year_level').text(year_level+ ' ');
-        $('#email').text(' '+email);
-        $('#number').text(' '+cn);
+        $('#lname').text(lname+ ', ');//
+        $('#fname').text(fname);//
+        $('#year_level').text(year_level+ ' ');//
+        $('#email').text(' '+email);//
+        $('#number').text(' '+cn);//
+        // 
+        $('#address').text(' '+address);//
+        $('#yr_enrolled').text(' '+year_enrolled);//
+        $('#cs').text(' '+cs);//
+        $('#DOB').text(' '+bday);//
+        $('#BP').text(' '+bplace);//
+        $('#nationality').text(' '+nat);//
+        $('#mom').text(' '+mfname +' '+mlname);//
+        $('#mage').text(' '+mage);//
+        $('#mom_cn').text(' '+mcn);//
+        $('#mom_occ').text(' '+mocc);//
+        $('#mom_school').text(' '+medu);//
+        $('#dad').text(' '+ffname +' '+flname);//
+        $('#fage').text(' '+fage);//
+        $('#dad_cn').text(' '+fcn);//
+        $('#dad_occ').text(' '+focc);//
+        $('#dad_school').text(' '+fedu);//
+        $('#grd').text(' '+gfname +' '+glname);//
+        $('#gage').text(' '+gage);//
+        $('#grd_cn').text(' '+gcn);//
+        $('#grd_occ').text(' '+gocc);//
+        $('#grd_school').text(' '+gedu);//
+        
+        $('#HS').text(' '+hs);//
+        $('#HS_YG').text(' '+hs_yg);//
+        $('#JS').text(' '+js);//
+        $('#JS_YG').text(' '+js_yg);//
+        $('#ES').text(' '+es);//
+        $('#ES_YG').text(' '+es_yg);//
+        $('#OS').text(' '+os);//
+        $('#OS_YG').text(' '+os_yg);//
+
+        $('#IG').text(' '+ig);//
+        $('#PWD').text(' '+pwd);//
+        $('#SP').text(' '+studpar);//
+        $('#FS').text(' '+src);//
+        $('#MS').text(' '+marit);//
+
+        // 
         $('#guardian').text(' '+pgname);
         $('#relation').text(' '+relation);
         $('#guardian_number').text(' '+pgn);
-        $('#college').text(college+ ' ');
-        $('#course').text(course);
+        $('#college').text(college+ ' ');//
+        $('#course').text(course);//
+
+        $('#1').text(' '+frst);//
+        $('#2').text(' '+scnd);//
+        $('#3').text(' '+thrd);//
+        $('#goal').text(' '+ggoal);//
+        $('#fis').text(' '+afather);//
+        $('#mis').text(' '+amother);//
+        $('#closest').text(' '+closest);//
+        $('#coz').text(' '+bcoz);//
+        $('#when_child').text(' '+child);//
+        $('#teachers_are').text(' '+tch);//
+        $('#dont_know').text(' '+dkt);//
+        $('#future').text(' '+ftr);//
         // Replace the content of the #gender div with the created image
         const genderElement = document.getElementById('gender');
         genderElement.innerHTML = ''; // Clear existing content
@@ -683,13 +735,62 @@ function openModal2(id) {
                 var gender = studentData.gender;
                 var college = studentData.Colleges;
                 var cn = studentData.Contact_number;
+                var address =studentData.Address;
+                var year_enrolled =studentData.year_enrolled;
+                var cs =studentData.Civil_status;
+                var bday =studentData.birth_date;
+                var bplace =studentData.Birth_place;
+                var nat =studentData.Nationality;
+                var ig =studentData.IG;
+                var pwd =studentData.PWD;
+                var studpar =studentData.Student_parent;
+                var marit =studentData.Marital_status_of_parents;
+                var src =studentData.source;
+                var mfname =studentData.mfname;
+                var mlname =studentData.mlname;
+                var mocc =studentData.mocc;
+                var medu =studentData.medu;
+                var mcn =studentData.mcn;
+                var mage =studentData.mage;
+                var ffname =studentData.ffname;
+                var flname =studentData.flname;
+                var focc =studentData.focc;
+                var fedu =studentData.fedu;
+                var fcn =studentData.fcn;
+                var fage =studentData.fage;
+                var gfname =studentData.gfname;
+                var glname =studentData.glname;
+                var gocc =studentData.gocc;
+                var gedu =studentData.gedu;
+                var gcn =studentData.gcn;
+                var gage =studentData.gage;
+                var hs = studentData.HS;
+                var hs_yg =studentData.HS_YG;
+                var js =studentData.JS;
+                var js_yg =studentData.JS_YG;
+                var es =studentData.ES;
+                var es_yg =studentData.ES_YG;
+                var os =studentData.OS;
+                var os_yg = studentData.OS_YG;
+                var frst =studentData.first;
+                var scnd =studentData.second;
+                var thrd =studentData.third;
+                var ggoal =studentData.greatest_goal;
+                var afather = studentData.father;
+                var amother = studentData.mother;
+                var closest =studentData.closest_sibling;
+                var bcoz =studentData.because;
+                var child =studentData.when_i_was_a_child;
+                var tch =studentData.teachers_are;
+                var dkt = dont_know_that;
+                var ftr = future;
                 var pgn = studentData.ParentGuardianNumber;
                 var pgname = studentData.ParentGuardianName;
                 var relation = studentData.Relation;
                 var sig = studentData.signature;
                 var idd = studentData.id;
                 console.log(fname);
-                updateValues(fname, lname, email, year_level, course, gender, college, cn, pgn, pgname, relation);
+                updateValues(fname, lname, email, year_level, course, gender, college, cn, address, year_enrolled, cs, bday, bplace, nat, ig, pwd, studpar, marit, src, mfname, mlname, mocc, medu, mcn, mage, ffname, flname, focc,fedu, fcn, fage, gfname, glname, gocc, gedu, gcn, gage, hs, hs_yg, js, js_yg, es, es_yg, os, os_yg, frst, scnd, thrd, ggoal, afather, amother, closest, bcoz, child, tch, dkt, ftr, pgn, pgname, relation);
                             
                           // Display the blob data as images
                 displayBlobAsImage(sig, 'sig'); // Pass the image data and an element ID
