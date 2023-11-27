@@ -16,6 +16,10 @@ $id = $_SESSION['session_id'];
 // Log audit entry for accessing the home page
 logAudit($id, 'access_sudent_profile', 'Admin has accessed the sudent_profile page');
 
+$stud_id = $_SESSION['stud_user_id'];
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

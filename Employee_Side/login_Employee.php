@@ -260,7 +260,7 @@ $_SESSION['origin'] = 'Employee';
           <div class="txt_field">
             <input type="text" id="email" name="email" required />
             <span></span>
-            <label>Username</label>
+            <label>Email</label>
           </div>
           <div class="txt_field">
             <input type="password" id="password" name="password" required />

@@ -440,8 +440,8 @@ if (isset($_SESSION['origin'])) {
         $hashed_password = password_hash($employee_password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO `admin_user`(`admin_user_id`, `first_name`, 
-            `last_name`, `middle_name`, `gender`, `position`,`contact`, `email`, 
-            `username`, `password`, `date_joined`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            `last_name`, `middle_name`, `gender`, `position`,`contact`, `date_joined`, `email`, 
+            `username`, `password`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(1, $employee_id);
