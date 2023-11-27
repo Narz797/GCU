@@ -9,7 +9,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
 
-    <div class="container1" style="margin-left: 2%; max-width: 1200px;">
+    <div class="container1" style="margin-left: 15%; max-width: 1200px;">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <span id="titlefooter" style="font-size: 2rem;"><b>Guidance and Counseling Unit</b></span>

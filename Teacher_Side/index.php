@@ -39,13 +39,20 @@ $_SESSION['transact_type'] = 'referral';
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
 </head>
+<style>
+
+  /* Add these styles to your existing stylesheet or in a new <style> tag in your HTML document */
+
+
+
+  </style>
 
 <body>
     <!-- Header -->
     <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <a href="./index.php" ><img src="bsu.png" alt=""></a>
+            <!-- <a href="./index.php" ><img src="bsu.png" alt=""></a> -->
         </div>
         <div class="align-right">
             <button class="icon-btn place-items-center" onclick="logout()" value="logout">
@@ -56,9 +63,11 @@ $_SESSION['transact_type'] = 'referral';
 </header>
 
 
+
+
     <!-- Welcome-message -->
     <section>
-    <section class="banner">
+    <!-- <section class="banner">
         <div class="banner-container">
     <br>
             <img src="GCU_logo.png" alt="">
@@ -69,7 +78,13 @@ $_SESSION['transact_type'] = 'referral';
                 <h1>GUIDANCE AND COUNSELING UNIT</h1>
             </div>
         </div>
-    </section>
+    </section> -->
+    <?php include 'banner.php' ?>
+
+    
+
+    
+
     <div class="block"> 
     </div>
     <div class="block"></div>
@@ -103,6 +118,8 @@ $_SESSION['transact_type'] = 'referral';
       <br>
         <a href="#divOne"><button>EDIT</button></a>
     </div>
+
+
     <div class="slip">
 
 <!-- Save data -->

@@ -67,18 +67,12 @@ logAudit($id, 'access_edit employee',  'Admin has accessed the edit employee pag
          <img src="assets/images/bsu.png" alt="">
         </div>
         <div class="nav-mobile">
-            <ul class="list">
+        <ul class="list">
                 <li class="list-item">
-                    <a href="main.php" class="list-link current">Home</a>
+                    <a href="EmployeProfiles.php" class="list-link current">Home</a>
                 </li>
                 <li class="list-item hov">
-                    <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
-                </li>
-                <li class="list-item hov">
-                    <a href="logreport.php" class="list-link current1">Log Report</a>
-                </li>
-                <li class="list-item hov">
-                    <a href="exportimport.php" class="list-link current1">Export/Import of Database</a>
+                    <a href="EmployeeProfiles.php" class="list-link current1">Back</a>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">

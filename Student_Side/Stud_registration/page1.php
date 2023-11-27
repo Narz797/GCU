@@ -20,6 +20,15 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
     <link href="../assets/img/GCU_logo.png" rel="icon">
 
     <title>Student Regisration Form </title>
+
+
+    <!-- <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script> -->
 </head>
 <style>
     /* ===== Google Font Import - Poppins ===== */
@@ -654,6 +663,9 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                         </div>
                         <div class="input-field">
                             <label>Year Enrolled</label>
+                            <!-- <input type="text" class="form-control" id="year_enroll" name="year_enroll" required/> -->
+
+                            <!-- <input type="text" class="form-control" name="datepicker" id="datepicker"  required/> -->
                             <input type="text" id="year_enroll" name="year_enroll" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                         </div>
                         <!-- <div class="input-field">
@@ -883,6 +895,15 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
         </form>
 
     </div>
+
+    <!-- <script>
+    $("#year_enroll").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true 
+});
+    </script> -->
 
     <script>
         function capitalizeInput() {
