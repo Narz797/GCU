@@ -106,7 +106,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
             <h2>Employee Profiles</h2>
             <br>
             <div class="container">
-            <a href="main.php"><button type=submit class="button1">Back</button></a>
+            
             <a href="addemployee.php"><button type=submit class="button">Add Employee Account</button></a>
             </div>
                        
@@ -487,22 +487,7 @@ function searchTable() { //searches in all column
            border-radius:50px;
 
        }
-       .button1{
-           
-           text-align: center;
-           border:none;
-           color:white;
-           padding:10px 32px;
-           text-decoration: none;
-           margin:1px 2px;
-           cursor:pointer;
-           height:60px;
-           width:100px;
-           border-style: outset;
-           background-color: darkgreen;
-           border-radius:50px;
-
-       }
+       
         .button:hover{
             text-align: center;
            background-color: green;
@@ -518,20 +503,7 @@ function searchTable() { //searches in all column
            border-radius:50px;
            
         }
-        .button1:hover{
-            text-align: center;
-           background-color: green;
-           border:none;
-           color:black;
-           padding:10px 32px;
-           text-decoration: none;
-           margin:1px 2px;
-           cursor:pointer;
-           height:60px;
-           width:100px;
-           border-style: outset;
-           border-radius:50px;
-        }
+        
     </style>
 </body>
 
