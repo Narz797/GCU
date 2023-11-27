@@ -15,6 +15,7 @@ body{
 }
 .container{
   display: flex;
+
 }
 .main{
   position: relative;
