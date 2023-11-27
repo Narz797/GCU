@@ -1,14 +1,14 @@
-<?php 
+<?php
 session_start();
 // Include the log_audit.php file
 include '../backend/log_audit2.php';
-  // Check if the session variable is empty
-  if (empty($_SESSION['session_id'])) {
+// Check if the session variable is empty
+if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
+
     exit; // Make sure to exit the script after a header redirect
-  }
+}
 $id = $_SESSION['session_id'];
 
 // Log audit entry for accessing the home page
@@ -39,7 +39,22 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+    <!-- Export -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js" />
+    <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
 </head>
 
 <body>
@@ -50,9 +65,15 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
                 <img src="assets/images/bsu.png" alt="">
             </div>
             <div class="align-right">
+                <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
+                    <i class="ri-function-line"></i>
+                </button>
                 <button class="icon-btn theme-toggle-btn place-items-center">
                     <i class="ri-sun-line theme-light-icon"></i>
                     <i class="ri-moon-line theme-dark-icon"></i>
+                </button>
+                <button class="icon-btn place-items-center" onclick="logout()">
+                    <i class="ri-user-3-line"></i>
                 </button>
             </div>
         </nav>
@@ -84,9 +105,9 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     profession = "Admin"-->
                 <h2 class="title">Welcome back, Admin</span></h2>
             </header>
-    
 
-            
+
+
     </section>
     <!-- Management-area -->
     <section class="management-area">
@@ -119,7 +140,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
 
                 <div class="card border one">
                     <div class="design">
-                        <h2 class="title" >TOTAL LOGINS FOR TODAY</h2>
+                        <h2 class="title">TOTAL LOGINS FOR TODAY</h2>
                         <span class="num"><b id="total">loading...</b></span>
                     </div>
 
@@ -145,121 +166,124 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
             </div>
         </div>
     </section>
-   
 
 
-<script>
- function updateValues(total, employee_email) {
-       
-    console.log("logins2 ",total);
 
-       $('#total').text(total);//
-       $('#employee_email').text(employee_email);
-    //    $('#employee_position').text(employee_position);
-    //    $('#date_joined').text(employee_date_joined);
-    //    $('#totalAppointments').text(totalAppointments);
-    //    $('#position').text(ePosition);//
-    //    $('#fname').text(eFname);
-    //    $('#lname').text(eLname);
-               
-                       // Replace the content of the #gender div with the created image
+    <script>
+        function updateValues(total, employee_email) {
+
+            console.log("logins2 ", total);
+
+            $('#total').text(total); //
+            $('#employee_email').text(employee_email);
+            //    $('#employee_position').text(employee_position);
+            //    $('#date_joined').text(employee_date_joined);
+            //    $('#totalAppointments').text(totalAppointments);
+            //    $('#position').text(ePosition);//
+            //    $('#fname').text(eFname);
+            //    $('#lname').text(eLname);
+
+            // Replace the content of the #gender div with the created image
             //    const genderElement = document.getElementById('gender');
             //    genderElement.innerHTML = ''; // Clear existing content
             //    genderElement.appendChild(image);
-   }
-   // Function to fetch data from get_transaction.php
-   function fetchData() {
-       console.log('AJAX request started');
-   $.ajax({
-       type: 'GET',
-       url: '../backend/get_transaction_admin.php',
-       dataType: 'json',
-       success: function (data) {
-           processData(data);
-       },
-       error: function (xhr, status, error) {
-            console.error('Error: ' + error);
-            console.error('Status: ' + status);
-            console.error('Response: ' + xhr.responseText);
-            alert('An error occurred while fetching data. Please try again later.');
+        }
+        // Function to fetch data from get_transaction.php
+        function fetchData() {
+            console.log('AJAX request started');
+            $.ajax({
+                type: 'GET',
+                url: '../backend/get_transaction_admin.php',
+                dataType: 'json',
+                success: function(data) {
+                    processData(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error: ' + error);
+                    console.error('Status: ' + status);
+                    console.error('Response: ' + xhr.responseText);
+                    alert('An error occurred while fetching data. Please try again later.');
+                }
+
+            });
         }
 
-   });
-   }
+
+        // Function to process the retrieved data
+        function processData(data) {
+            console.log('Response Data:', data.total_logins);
+            if (data.total_logins !== undefined) {
+
+                var total = data.total_logins;
+
+                var employee_email = data.adminUserData[0].uname;
 
 
-   // Function to process the retrieved data
-function processData(data) {
-    console.log('Response Data:', data.total_logins);
-    if (data.total_logins !== undefined) {
-
-        var total = data.total_logins;
-
-       var employee_email = data.adminUserData[0].uname;
+                updateValues(total, employee_email);
+                console.log("logins:", total)
+                //    countAppointments(totalAppointments);
 
 
-       updateValues(total, employee_email);
-       console.log("logins:", total)
-    //    countAppointments(totalAppointments);
- 
-      
-   } else {
+            } else {
 
-       var total = 0;
+                var total = 0;
 
-       var employee_email = data.adminUserData[0].uname;
+                var employee_email = data.adminUserData[0].uname;
 
 
-    updateValues(total, employee_email);
+                updateValues(total, employee_email);
 
-       console.log('No results found');
-   }
-}
-function updateCardDescription(data) {
-    const cardDescription = $('#list-history');
-    cardDescription.empty(); // Clear existing content
-    if (data.length > 0) {
-        data.forEach(item => {
-            cardDescription.append(`Student ${item.student_id}..........${item.transact_type}<br>`);
-        });
-    } else {
-        cardDescription.text('No finished transactions.');
-    }
-}
-// Function to fetch data from get_transaction.php
-function HistoryData() {
-    console.log('AJAX request started');
-    $.ajax({
-        type: 'GET',
-        url: '../backend/get_done_transaction.php',
-        dataType: 'json',
-        // ...
-        success: function (data) {
-            console.log(data);
-            updateCardDescription(data);
-        },
-        error: function (xhr, status, error) {
-            console.error('Error: ' + error);
-            console.error('Status: ' + status);
-            console.error('Response: ' + xhr.responseText);
+                console.log('No results found');
+            }
         }
-    });
-}
 
-// Call the fetchData function when the page loads
-HistoryData();
-    // Call the fetchData function when the page loads
-    fetchData();
-</script>
-<style>
-.design{
-    background-color:darkgreen;
-    margin:10px 10px;
-    padding:20px 20px;
-    border-style:solid;
-    border-radius:20px;
-}
+        function updateCardDescription(data) {
+            const cardDescription = $('#list-history');
+            cardDescription.empty(); // Clear existing content
+            if (data.length > 0) {
+                data.forEach(item => {
+                    cardDescription.append(`Student ${item.student_id}..........${item.transact_type}<br>`);
+                });
+            } else {
+                cardDescription.text('No finished transactions.');
+            }
+        }
+        // Function to fetch data from get_transaction.php
+        function HistoryData() {
+            console.log('AJAX request started');
+            $.ajax({
+                type: 'GET',
+                url: '../backend/get_done_transaction.php',
+                dataType: 'json',
+                // ...
+                success: function(data) {
+                    console.log(data);
+                    updateCardDescription(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error: ' + error);
+                    console.error('Status: ' + status);
+                    console.error('Response: ' + xhr.responseText);
+                }
+            });
+        }
 
-</style>
+        // Call the fetchData function when the page loads
+        HistoryData();
+        // Call the fetchData function when the page loads
+        fetchData();
+    </script>
+    <script src="./assets/main.js"></script>
+    <script src="assets/js/table.js"></script>
+    <style>
+        .design {
+            background-color: darkgreen;
+            margin: 10px 10px;
+            padding: 20px 20px;
+            border-style: solid;
+            border-radius: 20px;
+        }
+    </style>
 </body>
+
 </html>

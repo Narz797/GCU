@@ -89,7 +89,6 @@ $siblings->bindParam(':id', $id, PDO::PARAM_INT);
 $siblings->execute();
 $siblings = $siblings->fetchAll();
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -462,7 +461,7 @@ $siblings = $siblings->fetchAll();
     margin-left: auto;
     padding-right: 15px;
     padding-left: 15px;
-   
+
   }
 
   @media (min-width: 576px) {
@@ -629,7 +628,7 @@ $siblings = $siblings->fetchAll();
 
   .form-control::-ms-expand {
     border: 0;
-    background-color:transparent;
+    background-color: transparent;
   }
 
   .form-control:focus {
@@ -2200,8 +2199,6 @@ $siblings = $siblings->fetchAll();
     border-radius: 10px;
     /* Set your desired border radius */
   }
-
-
 </style>
 
 <body>
@@ -2217,7 +2214,7 @@ $siblings = $siblings->fetchAll();
         <!-- Form -->
         <form id="logoutForm" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
-            <a class="btn btn-outline-light" style="background-color:white;" onclick="logout()">Logout</a>
+            <a class="btn btn-outline-light" style="background-color:white;" onclick="logout()">Back</a>
           </div>
         </form>
 
@@ -2280,13 +2277,13 @@ $siblings = $siblings->fetchAll();
       </div> -->
     </div>
     <!-- Page content -->
-    <div class="container-fluid mt--7" >
-      <div class="row" >
-        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0"  >
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
           <div class="card card-profile shadow">
-            <div class="row justify-content-center"  >
+            <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image" >
+                <div class="card-profile-image">
                   <a href="#">
                     <img src="../assets/img/GCU_logo.png" alt="" width="450px" height="180px" class="rounded-circle">
                     <!-- <img class="image"src="../assets/img/ab.jpg" alt="Logo" class="logo" style="height: 100%; width: 20%; border-radius: 50%;"> -->
@@ -2317,35 +2314,45 @@ $siblings = $siblings->fetchAll();
               <br>
               <br>
               <br>
-              <div class="text-center" >
+              <div class="text-center">
                 <h3>
                   WELCOME TO
                 </h3>
 
 
-                <div >
+                <div>
                   <i class="ni education_hat mr-2"></i>Benguet State University-Guidance and Counseling Unit
                 </div>
                 <hr style=" border-width: 3px; background-color:black;">
                 <!-- <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p> -->
                 <?php
-                $filePath_jpg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
-                $filePath_png = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.png';
-                $filePath_jpeg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpeg';
-                if (file_exists($filePath_jpg)) {
+                // $filePath_jpg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
+                // $filePath_png = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.png';
+                // $filePath_jpeg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpeg';
+                // if (file_exists($filePath_jpg)) {
+                //   // Display the image
+                //   echo '<img src="' . $filePath_jpg . '" alt="Photo" style="width: 50%; height: 50% ">';
+                // } elseif (file_exists($filePath_jpg)) {
+                //   // Display the image
+                //   echo '<img src="' . $filePath_png . '" alt="Photo" style="width: 50%; height: 50%">';
+                // } elseif (file_exists($filePath_jpeg)) {
+                //   // Display the image
+                //   echo '<img src="' . $filePath_jpeg . '" alt="Photo" style="width: 50%; height: 50%">';
+                // } else {
+                //   echo 'File not found.';
+                // }
+
+                $stmt = $pdo->prepare("SELECT * FROM photos WHERE stud_user_id = :id");
+                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+                $stmt->execute();
+                
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  // $filename = $row['filename'];
+                  $id_type = $row['sign_type'];
+                  $id_data = $row['sign'];
+
                   // Display the image
-                  echo '<img src="' . $filePath_jpg . '" alt="Photo" style="width: 50%; height: 50% ">';
-                }
-                elseif(file_exists($filePath_jpg)) {
-                  // Display the image
-                  echo '<img src="' . $filePath_png . '" alt="Photo" style="width: 50%; height: 50%">';
-                }
-                elseif(file_exists($filePath_jpeg)) {
-                  // Display the image
-                  echo '<img src="' . $filePath_jpeg . '" alt="Photo" style="width: 50%; height: 50%">';
-                }
-                else {
-                  echo 'File not found.';
+                  echo '<img src="data:' . $id_type . ';base64,' . base64_encode($id_data) . '" alt="id">';
                 }
                 ?>
 
@@ -2354,26 +2361,39 @@ $siblings = $siblings->fetchAll();
                 <hr style=" border-width: 3px; background-color:black;">
                 <br>
                 <?php
-                      $filePath_jpg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
-                      $filePath_png = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.png';
-                      $filePath_jpeg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpeg';
-                      if (file_exists($filePath_jpg)) {
-                        // Display the image
-                        echo '<img src="' . $filePath_jpg . '" alt="Photo" style="width: 50%; height: 50%">';
-                      }
-                      elseif(file_exists($filePath_jpg)) {
-                        // Display the image
-                        echo '<img src="' . $filePath_png . '" alt="Photo" style="width: 50%; height: 50%">';
-                      }
-                      elseif(file_exists($filePath_jpeg)) {
-                        // Display the image
-                        echo '<img src="' . $filePath_jpeg . '" alt="Photo" style="width: 50%; height: 50%">';
-                      }
-                      else {
-                        echo 'File not found.';                      
-                      }
+                // $filePath_jpg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
+                // $filePath_png = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.png';
+                // $filePath_jpeg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpeg';
+                // if (file_exists($filePath_jpg)) {
+                //   // Display the image
+                //   echo '<img src="' . $filePath_jpg . '" alt="Photo" style="width: 50%; height: 50%">';
+                // }
+                // elseif(file_exists($filePath_jpg)) {
+                //   // Display the image
+                //   echo '<img src="' . $filePath_png . '" alt="Photo" style="width: 50%; height: 50%">';
+                // }
+                // elseif(file_exists($filePath_jpeg)) {
+                //   // Display the image
+                //   echo '<img src="' . $filePath_jpeg . '" alt="Photo" style="width: 50%; height: 50%">';
+                // }
+                // else {
+                //   echo 'File not found.';                      
+                // }
+                $stmt = $pdo->prepare("SELECT * FROM photos WHERE stud_user_id = :id");
+                $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+                $stmt->execute();
 
-                        ?>
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  // $filename = $row['filename'];
+                  $id_type = $row['image_type'];
+                  $id_data = $row['id'];
+
+                  // Display the image
+                  echo '<img src="data:' . $id_type . ';base64,' . base64_encode($id_data) . '" alt="id">';
+                }
+
+
+                ?>
 
               </div>
             </div>
@@ -2383,7 +2403,7 @@ $siblings = $siblings->fetchAll();
         </div>
 
 
-        <div class="col-xl-8 order-xl-1" >
+        <div class="col-xl-8 order-xl-1">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
@@ -2401,7 +2421,7 @@ $siblings = $siblings->fetchAll();
             <div class="card-body" style="background-color:lightgray;">
               <form>
 
-                <h6 class="heading-small text-muted mb-4" style="color:black; font-weight:bold;" >User information </h6>
+                <h6 class="heading-small text-muted mb-4" style="color:black; font-weight:bold;">User information </h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
@@ -2853,9 +2873,9 @@ $siblings = $siblings->fetchAll();
                 <hr class="my-4">
                 <!-- Description -->
                 <p style="color:black; font-weight:bold;"><i>In view of the Indigenous People's Act (RA 8371), Magna Carta for
-                      Persons with Disability (RA 7277, as amended by RA 9442), the (c) Solo Parents
-                      Welfare Act of 2000 (RA 8972), and CHED Memorandum Order 9 s.2013, please answer
-                      the following items:</i></p>
+                    Persons with Disability (RA 7277, as amended by RA 9442), the (c) Solo Parents
+                    Welfare Act of 2000 (RA 8972), and CHED Memorandum Order 9 s.2013, please answer
+                    the following items:</i></p>
 
 
 
@@ -2901,7 +2921,7 @@ $siblings = $siblings->fetchAll();
           <hr class="my-4">
           <!-- Description -->
           <h3 class="heading-small " style="color:black; font-weight: bold">SOURCES OF FINANCIAL SUPPORT</h3>
-         
+
 
           <input type="checkbox" id="FS_parent" disabled <?php echo $checkedOption1 ?>>
           <!-- <i class="fa fa-check"></i> -->
@@ -2920,12 +2940,16 @@ $siblings = $siblings->fetchAll();
 
           <input type="checkbox" id="FS_sch" disabled <?php echo $checkedOption4; ?>>
           <!-- <i class="fa fa-check"></i> -->
-          <label for="checkbox4">Scholarship - <span id="FS_sch2"><?php if($oth_info[0]['specific_scholar']){ echo $oth_info[0]['specific_scholar'];} ?></span></label>
+          <label for="checkbox4">Scholarship - <span id="FS_sch2"><?php if ($oth_info[0]['specific_scholar']) {
+                                                                    echo $oth_info[0]['specific_scholar'];
+                                                                  } ?></span></label>
           <br>
 
           <input type="checkbox" id="FS_oth" disabled <?php echo $checkedOption5; ?>>
           <!-- <i class="fa fa-check"></i> -->
-          <label for="checkbox5">Others - <span id="FS_oth2"><?php if($oth_info[0]['specific_other']){ echo $oth_info[0]['specific_other'];} ?></span></label>
+          <label for="checkbox5">Others - <span id="FS_oth2"><?php if ($oth_info[0]['specific_other']) {
+                                                                echo $oth_info[0]['specific_other'];
+                                                              } ?></span></label>
 
 
           <hr class="my-4">
@@ -3037,7 +3061,7 @@ $siblings = $siblings->fetchAll();
       // // Check if the user clicked "Yes"
       // if (confirmation) {
       // Redirect to appointment.php
-      window.location.href = '../home?logout=true';
+      window.location.href = '../Student_Side/student-home';
       // } else {
       //   // The user clicked "No," you can add additional handling if needed
       //   console.log('Logout canceled');

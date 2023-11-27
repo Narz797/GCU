@@ -1,14 +1,14 @@
-<?php 
+<?php
 session_start();
 // Include the log_audit.php file
 include '../backend/log_audit2.php';
-  // Check if the session variable is empty
-  if (empty($_SESSION['session_id'])) {
+// Check if the session variable is empty
+if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
+
     exit; // Make sure to exit the script after a header redirect
-  }
+}
 $id = $_SESSION['session_id'];
 
 // Log audit entry for accessing the home page
@@ -102,7 +102,7 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
             <h2>Export and Import of Database</h2>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center text-center">
                 <div class="col-sm">
                     <div class="card">
                         <h2 class="card-title">Import Database</h2>
@@ -121,7 +121,7 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
                     <div class="card">
                         <h2 class="card-title">Export Database</h2>
                         <div class="card-body">
-                            <p class="card-text justify-content-center">Export Back Up Database.</p>
+                            <p class="card-text">Export Back Up Database.</p>
                             <form action="../backend/export_database.php">
                                 <br>
                                 <br>
@@ -131,31 +131,33 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
                     </div>
                 </div>
             </div>
-
+        </div>
 
         </div>
 
     </section>
     <br>
-    
+
     <!-- Script     -->
     <script>
-                function logout() {
+        function logout() {
             $.ajax({
-            type: 'POST',
-            url: '../backend/log_audit.php',
-            data: {
-              userId: eID,
-              action: 'logged out',
-              details: eID + 'Admin Clicked log out'
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
+                type: 'POST',
+                url: '../backend/log_audit.php',
+                data: {
+                    userId: eID,
+                    action: 'logged out',
+                    details: eID + 'Admin Clicked log out'
+                },
+                success: function(response) {
+                    // Handle the response if needed
+                    console.log("logged", response);
+                }
+            });
             window.location.href = '../home?logout=true';
         }
     </script>
     <script src="./assets/main.js"></script>
     <script src="assets/js/table.js"></script>
+</body>
+</html>

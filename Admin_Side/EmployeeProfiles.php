@@ -312,7 +312,8 @@ function searchTable() { //searches in all column
 
     });
     function del_emp(id) {
-                $.ajax({
+                if(confirm("Are you sure do you want to delete this account?")){
+                    $.ajax({
                     type: 'POST',
                     url: '../backend/del_employee.php',
                     data: {
@@ -343,6 +344,11 @@ function searchTable() { //searches in all column
                         alert("An error occurred during the deletion. Please try again.");
                     }
                 });
+                }
+                else{
+                    
+                }
+
             }
 
         function view_student(stud_id) {

@@ -1,4 +1,16 @@
 <?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if a file was uploaded without errors
     if (isset($_FILES['import']) && $_FILES['import']['error'] === UPLOAD_ERR_OK) {
@@ -15,26 +27,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $command = "mysql -u root -p'' db_gcu < $uploadPath";
             exec($command, $output, $returnVar);
-            var_dump($output);
-            var_dump($returnVar);
             if ($returnVar === 1) {
                 echo '<script>';
 
-                echo 'var eID = "<?php echo $_SESSION["session_id"];?>";';
-                echo 'alert("Database Import Successfully!");';
-                echo 'window.location.href="../Admin_Side/exportimport.php";';
+                echo 'var eID = "' . $_SESSION["session_id"] . '";';
                 echo' $.ajax({';
                     echo'type: "POST",';
                     echo'url: "../backend/log_audit.php",';
                     echo'data: {';
                     echo'userId: eID,';
                     echo'action: "Admin imported database",';
-                    echo'details: A"dmin imported database"';
+                    echo'details: "Admin imported database"';
                     echo'},';
                     echo'success: function(response) {';
                     echo'console.log("logged", response);';
                     echo'     }';
                     echo'   });';
+                    echo 'alert("Database Import Successfully!");';
+                    echo 'window.location.href="../Admin_Side/exportimport.php";';
                 echo '</script>';
                 exit; // Terminate script execution after the alert
             } else {
@@ -68,3 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo '</script>';
     exit; // Terminate script execution after the alert
 }
+?>
+</body>
+</html>

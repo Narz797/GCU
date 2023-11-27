@@ -93,44 +93,38 @@ if (isset($_SESSION['origin'])) {
         if (isset($_POST['conpass'])) {
             $_SESSION['conpass'] = $_POST['conpass'];
         }
-
-        if (isset($_FILES['sign']) && $_FILES['sign']['error'] === UPLOAD_ERR_OK) {
-            $signContent = file_get_contents($_FILES['sign']['tmp_name']);
-            $signType = $_FILES['sign']['type'];
-        }
         if (
             isset($_FILES['sign']) && $_FILES['sign']['error'] === UPLOAD_ERR_OK &&
             isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK
         ) {
 
             $studUserId = $_SESSION['idno']; // replace with the actual user ID
-            $studlastName = $_SESSION['lastname'];
+            // $studlastName = $_SESSION['lastname'];
 
-            // Save the signature file
-            $signContent = file_get_contents($_FILES['sign']['tmp_name']);
-            $signType = $_FILES['sign']['type'];
-            $signFileName = "uploads/sign_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['sign']['name'], PATHINFO_EXTENSION);
-            file_put_contents($signFileName, $signContent);
+            // // Save the signature file
+            // $signContent = file_get_contents($_FILES['sign']['tmp_name']);
+            // $signType = $_FILES['sign']['type'];
+            // $signFileName = "uploads/sign_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['sign']['name'], PATHINFO_EXTENSION);
+            // file_put_contents($signFileName, $signContent);
 
-            // Save the ID picture file
-            $imageContent = file_get_contents($_FILES['image']['tmp_name']);
-            $imageType = $_FILES['image']['type'];
-            $imageFileName = "uploads/id_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-            file_put_contents($imageFileName, $imageContent);
+            // // Save the ID picture file
+            // $imageContent = file_get_contents($_FILES['image']['tmp_name']);
+            // $imageType = $_FILES['image']['type'];
+            // $imageFileName = "uploads/id_" . $studUserId . "_" . $studlastName . "." . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            // file_put_contents($imageFileName, $imageContent);
 
-            // // Save file paths to the database
-            // $stmtsave = $pdo->prepare("INSERT INTO `photos`(`stud_user_id`, `signature`, `sign_type`, `id_picture`, `image_type`) VALUES (?, ?, ?, ?, ?)");
+            $photoId = file_get_contents($_FILES['sign']['tmp_name']);
+            $photosign = file_get_contents($_FILES['image']['tmp_name']);
 
-            // // Bind parameters or use bindValue
-            // $stmtsave->bindParam(1, $studUserId, PDO::PARAM_INT);
-            // $stmtsave->bindParam(2, $signFileName, PDO::PARAM_STR);
-            // $stmtsave->bindParam(3, $signType, PDO::PARAM_STR);
-            // $stmtsave->bindParam(4, $imageFileName, PDO::PARAM_STR);
-            // $stmtsave->bindParam(5, $imageType, PDO::PARAM_STR);
+            $stmt = $pdo->prepare("INSERT INTO `photos` (stud_user_id, sign,sign_type,id,image_type) VALUES (:stud_user_id, :sign,:sign_type,:id,:image_type)");
+            $stmt->bindParam(":stud_user_id", $studUserId);
+            $stmt->bindParam(":sign",$photosign, PDO::PARAM_LOB);
+            $stmt->bindParam(":sign_type",$_FILES['sign']['type']);
+            $stmt->bindParam(":id",$photoId, PDO::PARAM_LOB);
+            $stmt->bindParam(":image_type",$_FILES['image']['type']);
 
-            // $stmtsave->execute();
+            $stmt->execute();
 
-            // $stmtsave->close();
         } else {
             echo "Error uploading files.";
         }
@@ -402,7 +396,6 @@ if (isset($_SESSION['origin'])) {
         // $conn->close();
 
     } elseif ($origin === 'Employee') {
-        var_dump($_POST);
         if (isset($_POST['empID'])) {
             $employee_id = $_POST['empID'];
         }
@@ -463,26 +456,27 @@ if (isset($_SESSION['origin'])) {
         $stmt->bindParam(10, $employee_username);
         $stmt->bindParam(11, $hashed_password);
 
-        if ($stmt->execute()){
+        if ($stmt->execute()) {
             echo '<script>';
-            echo 'var eID = "<?php echo $_SESSION["session_id"];?>";';
+            echo 'var eID = "' . $_SESSION["session_id"] . '";';
             echo 'alert("User Registration Successfully!");';
             echo 'window.location.href = "../Admin_Side/EmployeeProfiles.php";';
-            echo' $.ajax({';
-                echo'type: "POST",';
-                echo'url: "../backend/log_audit.php",';
-                echo'data: {';
-                echo'userId: eID,';
-                echo'action: "Admin added employee",';
-                echo'details: A"dmin added employee"';
-                echo'},';
-                echo'success: function(response) {';
-                echo'console.log("logged", response);';
-                echo'     }';
-                echo'   });';
+            echo ' $.ajax({';
+            echo '    type: "POST",';
+            echo '    url: "../backend/log_audit.php",';
+            echo '    data: {';
+            echo '        userId: eID,';
+            echo '        action: "Admin added employee",';
+            echo '        details: "Admin added employee"';
+            echo '    },';
+            echo '    success: function(response) {';
+            echo '        console.log("logged", response);';
+            echo '    }';
+            echo ' });';
             echo '</script>';
             exit;
         }
+        
     }
 }
 ob_end_flush();

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include '../backend/connect_database.php';
 
@@ -15,33 +16,37 @@ try {
 
     // Check if the command executed successfully
     if ($return_var === 1) {
-        echo '<script>';
-        echo 'var eID = "<?php echo $_SESSION["session_id"];?>";';
-        echo 'alert("Database Export Successfully!");';
-        echo 'window.location.href="../Admin_Side/exportimport.php";';
-       echo' $.ajax({';
-       echo'type: "POST",';
-       echo'url: "../backend/log_audit.php",';
-       echo'data: {';
-       echo'userId: eID,';
-       echo'action: "Admin exported database",';
-       echo'details: A"dmin exported database"';
-       echo'},';
-       echo'success: function(response) {';
-       echo'console.log("logged", response);';
-       echo'     }';
-       echo'   });';
-        echo '</script>';
-        
+        $session_id = $_SESSION["session_id"];
+        echo <<<HTML
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    var eID = "$session_id";
+    $.ajax({
+        type: "POST",
+        url: "../backend/log_audit.php",
+        data: {
+            userId: eID,
+            action: "Admin exported database",
+            details: "Admin exported database"
+        },
+        success: function(response) {
+            console.log("logged", response);
+        }
+    });
+    alert("Database Export Successfully!");
+    window.location.href="../Admin_Side/exportimport.php";
+</script>
+HTML;
         exit;
     } else {
-        echo '<script>';
-        echo 'alert("Database Export Failed!");';
-        echo 'window.location.href="../Admin_Side/exportimport.php";';
-        echo '</script>';
+        echo <<<HTML
+<script>
+    alert("Database Export Failed!");
+    window.location.href="../Admin_Side/exportimport.php";
+</script>
+HTML;
     }
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }
-
 ?>
