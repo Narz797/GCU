@@ -132,7 +132,7 @@
         <a href="#account">Account</a>
         <a href="#troubleshooting">Troubleshooting</a>
         <a href="#contact">Contact Us</a>
-        <a  href="Student_Side/student-home" class="logout">Logout</a>
+        <a onclick="goBack()" class="logout">Back</a>
     </nav>
 
     <div class="row">
@@ -230,7 +230,14 @@
             // Replace '#' with the actual URL of your home page
             window.location.href = '#';
         }
+        
     </script>
+<script>
+
+function goBack() {
+            window.history.back();
+        }
+</script>
 
 </body>
 </html>

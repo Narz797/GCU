@@ -91,6 +91,8 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
                 <p class="card-description1">Joined at <b id="date_joined"></b><br><br></p>
                 <p class="card-description">
                     <span>Email:</span><b id="employee_email"></b><br>
+
+                    <span>Contact:</span><b id="employee_cn"></b><br>
                     <span>Position:</span><b id="employee_position"></b>
                 </p>
             </div>
@@ -189,7 +191,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     window.location.href = '';
         }
     // Function to update the HTML elements
-    function updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, gender) {
+    function updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, gender, eCN) {
        
         const genderImageMap = {
                   'Male': 'assets/images/sp.jpg',
@@ -214,6 +216,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
         $('#position').text(ePosition);
         $('#fname').text(eFname);
         $('#lname').text(eLname);
+        $('#employee_cn').text(eCN);
                 
                         // Replace the content of the #gender div with the created image
                 const genderElement = document.getElementById('gender');
@@ -259,8 +262,9 @@ function processData(data) {
         var eLname = data.adminUserData[0].last_name;
         var ePosition = data.adminUserData[0].position;
         var eGender = data.adminUserData[0].gender;
+        var eCN = data.adminUserData[0].contact;
 
-        updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
+        updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender, eCN);
 
         countAppointments(totalAppointments);
         countForms(total);

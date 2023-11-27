@@ -181,27 +181,50 @@ logAudit($id, 'access_referral slip page', $id .' has accessed the referral slip
 function archive() {
     window.location.href = 'archive.php';
         }
-function searchTable() { //searches in all column
-            var input, filter, table, tr, td, i, j, txtValue;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("dynamicTable");
-            tr = table.getElementsByTagName("tr");
+        function searchTable() {
+    var input, filter, table, tr, th, td, i, j, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("dynamicTable");
+    tr = table.getElementsByTagName("tr");
 
-            for (i = 0; i < tr.length; i++) {
-                tr[i].style.display = "none"; // Hide all rows initially
-                for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
-                    td = tr[i].getElementsByTagName("td")[j];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = ""; // Display the row if any column matches the search criteria
-                            break; // Break out of the inner loop to avoid hiding the row again
-                        }
+    // Hide all rows initially, excluding header rows
+    for (i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "none";
+        }
+    }
+
+    // Display the header row ("th") if the search term is found
+    th = table.getElementsByTagName("th");
+    for (i = 0; i < th.length; i++) {
+        txtValue = th[i].textContent || th[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            for (j = 0; j < tr.length; j++) {
+                tr[j].style.display = "";
+            }
+            break;
+        }
+    }
+
+    // Display data rows if any column matches the search criteria
+    for (i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+                td = tr[i].getElementsByTagName("td")[j];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
                     }
                 }
             }
         }
+    }
+}
 
 
       $(document).ready(function () {

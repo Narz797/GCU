@@ -296,7 +296,7 @@ i{
 
 main.table {
     width: 82vw;
-    height: 200vh;
+    height: 100vh;
     backdrop-filter: blur(7px);
     border-radius: .8rem;
     overflow: hidden;}

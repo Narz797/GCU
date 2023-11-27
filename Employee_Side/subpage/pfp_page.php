@@ -233,21 +233,27 @@ echo"<script>console.log('$id')</script>";
 <div class="card-information">
                  <h1 class="title main-title">FAMILY BACKGROUND</h1>
                 <p class="card-description">
+                  <div id = "ma">
                     <b>Mother:</b><span id="mom" style="color:white;"> Narz Monkey Taquio</span>
                     <p class="card-description1"> <span id="mage">50</span> Years Old<br><br></p>
                     <span id="mom_cn">000-000-0000 </span>| <span id="mom_occ">HouseWife</span><br>
                     <span id="mom_school">High School</span><br>
                     <hr>
+                    </div>
+                    <div id="da">
                     <b>Father:</b> <span id="dad" style="color:white;"> Narz Monkey Taquio</span><br>
                     <p class="card-description1"> <span id="fage">50</span> Years Old<br><br></p>
                     <span id="dad_cn">000-000-0000 </span> | <span id="dad_occ">CEO</span><br>
                     <span id="dad_school">Bachelor of Business Management</span><br>
                     <hr>
+                    </div>
+
+                    <div id="gd">
                     <b>Guardian:</b> <span id="grd" style="color:white;"> Narz Monkey Taquio</span><br>
                     <p class="card-description1"> <span gage>50</span> Years Old<br><br></p>
                     <span id="grd_cn">000-000-0000 </span> | <span id="grd_occ">Aunt</span><br>
                     <span id="grd_school">High School</span><br>
-                   
+                    </div>
                 </p>
             </div>
            <div class="card-information">
@@ -373,7 +379,7 @@ echo"<script>console.log('$id')</script>";
             <tr>
                 <th>Date of Transaction</th>
                 <th>Form / Slip</th>
-                <th>Reason/s</th>
+                <!-- <th>Reason/s</th> -->
                 <th>Action Taken</th>
                 <th>Last Updated</th>
                 <th>Remarks</th>
@@ -862,7 +868,36 @@ function openModal2(id) {
                   return http.status !== 404;
                 }
 
-                
+                var ma = $("#ma");
+                var fa = $("#da");
+                var gua = $("#gd");
+                // Combine mother's information
+                var motherInfo = [mfname, mlname, mocc, medu, mcn, mage].join(' ').trim();
+                if (motherInfo === '') {
+                    // Handle the case where any of the mother's information is null, undefined, or empty
+                    console.log("ma empty");
+
+                    ma.hide();
+                }
+
+                // Combine father's information
+                var fatherInfo = [ffname, flname, focc, fedu, fcn, fage].join(' ').trim();
+                if (fatherInfo === '') {
+                    // Handle the case where any of the father's information is null, undefined, or empty
+
+                    console.log("da empty");
+                    fa.hide();
+                }
+
+                // Combine guardian's information
+                var guardianInfo = [gfname, glname, gocc, gedu, gcn, gage].join(' ').trim();
+                if (guardianInfo === '') {
+                    // Handle the case where any of the guardian's information is null, undefined, or empty
+                    console.log("gua  empty");
+                    gua.hide();
+
+                }
+
 
             } else {
                 // Handle the case when no results are found
@@ -909,7 +944,7 @@ function openModal2(id) {
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.date_created + "</td>");
                     row.append("<td>" + entry.transact_type +"</td>");
-                    row.append("<td>" + entry.reason +"</td>");
+                    // row.append("<td>" + entry.reason +"</td>");
                     row.append("<td>" + entry.status + "</td>");
                     row.append("<td>" + entry.date_edited + "</td>");
                     row.append("<td>" + entry.remarks + "</td>");

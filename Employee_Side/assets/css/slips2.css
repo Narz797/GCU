@@ -342,7 +342,7 @@ i{
 .list-link{
     margin: 10px;
     font-size: var(--font-size-small);
-    background-color: var(--accent-color);
+    
     padding: 1rem 1.5rem;}
 .list-link:hover{
     color: var(--dark-color);

@@ -59,6 +59,7 @@ LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
     transact.status,
     transact.transact_type,
     transact.date_created,
+    ca.reason,
     CASE
         WHEN guardian.contact IS NOT NULL AND guardian.contact > 0 THEN guardian.fname
         ELSE mother.fname

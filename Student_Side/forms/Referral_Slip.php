@@ -398,8 +398,8 @@ select:focus {
 <br>
 <div class="date-range-container" id="dates">
   <div class="date-input">
-  <label for="date">Number of days:</label><br>
-    <label for="Date">Date:</label>
+
+    <label for="Date">Number of Days:</label>
     <div class="input-group date form-group" id="datepicker">
             <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days"  style="width: 50%;" autocomplete="off"/>
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>

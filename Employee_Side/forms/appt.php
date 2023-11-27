@@ -136,7 +136,7 @@ include '../../backend/log_audit2.php';
                 
 <div class="action">
                  <a href="#"><button class="yes" onclick="status_update('accepted')">Accept</button></a>
-                 <a href="#divTwo"><button class="no" onclick="status_update('rescheduled')">Reschedule</button></a>
+                 <a href="#divTwo"><button class="no" >Reschedule</button></a>
                  </div>
             </div>
         </div>
@@ -213,13 +213,23 @@ function archive() {
   // Function to update the HTML elements
         function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, dat) {
 
+            var dateFromDatabase = new Date(dat);
+        // Define options for formatting the date
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+        // Convert the date to a string with the month in words
+        var formattedDate = dateFromDatabase.toLocaleDateString('en-US', options);
+
+        // Display the result
+        console.log(formattedDate);
+
         $('#id_no').text(id);
         $('#name').text(fname+ ' '+ lname);
         $('#ys').text(course+ ' '+year_level);
         $('#gender').text(gender);
         $('#cn').text(cn);
         $('#reason').text(reason);
-        $('#dte').text(dat);
+        $('#dte').text(formattedDate);
 
 
         }
@@ -303,7 +313,6 @@ function archive() {
         }
 
         function resched(){
-        var remarks = document.getElementById("remarks").value;
         var dateTimeInput = document.getElementById("date").value;
 
         // separate date and time
@@ -331,12 +340,12 @@ function archive() {
           data: {
             aid: aid,
             tid: tid,
-            remark: remarks,
             date: date,
             time: time
           },
           success: function (data) {
             console.log("Remarked:", data);
+            status_update('resched')
             window.location.href = "../appointment";
             $.ajax({
                     type: 'POST',

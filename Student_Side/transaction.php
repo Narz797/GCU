@@ -133,13 +133,13 @@ include 'includes/main2.php';
         <div  style="background-color:transparent; height: auto;">
             <header class="card-header" >
                 <p style="margin-left: 2%; font-size: 30px; font-weight: bold; color:yellowgreen;" > HISTORY</p>
-                <p>&nbsp&nbsp The following are the previous requested forms.</p>
+                <p>&nbsp&nbsp The following are the concluded requested forms.</p>
             </header>
             <hr>
             <div class=" gallery">
             <main class="table" id="customers_table">
             <section class="table-header">
-                <h1>List of Requested Forms</h1>
+                <h1>List of Acknowledged Forms</h1>
                 <div class="input-group">
                     <input type="search" placeholder="Search.....">
                 </div>

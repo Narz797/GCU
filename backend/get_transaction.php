@@ -69,7 +69,7 @@ try {
     // Fetch admin user data
     $id = $_SESSION['session_id'];
 
-    $adminUserDataSql = "SELECT `email`, `position`, `date_joined`, `first_name`, `last_name`, `gender` FROM admin_user WHERE `admin_user_id` = :adminUserId";
+    $adminUserDataSql = "SELECT `email`, `position`, `date_joined`, `contact`, `first_name`, `last_name`, `gender` FROM admin_user WHERE `admin_user_id` = :adminUserId";
     $stmt7 = $pdo->prepare($adminUserDataSql);
     $stmt7->bindParam(':adminUserId', $id); // Bind the session id to the parameter
     $stmt7->execute();

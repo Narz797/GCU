@@ -155,7 +155,7 @@ if ($transact == 'readmission') {
 
     // Assuming 'attachment1' field is a BLOB in your database
     $sql_1 = 'INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:sid, :transact_type, :date_created, :status)';
-    $sql_2 = 'INSERT INTO ca(transact_id, stud_id, Reason, attachment1, file_extension, COA, specifics, remarks, date_of_AbsentOrTardy, status) 
+    $sql_2 = 'INSERT INTO ca(transact_id, stud_id, Reason, Attachment, file_extension, COA, specifics, remarks, date_of_AbsentOrTardy, status) 
             VALUES (:transact_id, :sid, :reasons, :file, :file_extension, :coa, :specs, :rem, :date, :status)';
 
     try {
