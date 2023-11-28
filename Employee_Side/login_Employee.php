@@ -270,7 +270,7 @@ $_SESSION['origin'] = 'Employee';
           <input type="submit" value="Login" id="submitButton" />
           <br>
           <br>
-          <div><a href="/gcu/home" class="back-to-home-button">BACK TO HOME</a></div>
+          <div><a href="../home" class="back-to-home-button">BACK TO HOME</a></div>
         </form>
        
         <!-- <a</a> -->

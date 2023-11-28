@@ -227,7 +227,7 @@ $_SESSION['origin'] = 'Teacher';
           <input type="submit" value="Login" id="submitButton" />
           <div class="signup_link">Not a member? <a href="agreement.php"><b>Signup</b></a></div>
         </form>
-        <a href="/gcu/home" class="back-to-home-button">BACK TO HOME</a>
+        <a href="../home" class="back-to-home-button">BACK TO HOME</a>
       </div>
     </div>
   </div>
