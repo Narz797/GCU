@@ -39,7 +39,13 @@ if (isset($_POST['othawards'])) {
 }
 if (isset($_POST['otherSchool'])) {
     $_SESSION['otherSchool'] = $_POST['otherSchool'];
+
+  
+
+
 }
+
+$_SESSION['origin'] = 'Student';
 // echo var_dump($_SESSION);
 ?>
 
@@ -663,6 +669,34 @@ if (isset($_POST['otherSchool'])) {
             border-radius: 4px;
             cursor: pointer;
         }
+
+
+        /* popup */
+        
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+
+  .modal_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+.container2 label{
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+
 </style>
 
 <body>
@@ -863,6 +897,10 @@ if (isset($_POST['otherSchool'])) {
                                 <label>Username</label>
                                 <input type="text" id="eu" name="eu" required>
                             </div>
+                     <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" id="email" name="email" required>
+                        </div>
                             <div class="input-field">
                                 <label>Password</label>
                                 <input type="text" id="pass" name="pass" required>
@@ -902,7 +940,8 @@ if (isset($_POST['otherSchool'])) {
                                 <span class="btnText">Back</span>
                             </div>
 
-                            <button class="nextBtn" id="next" type="submit" value="Submit">
+                            <!-- <button class="nextBtn" id="next" type="submit" value="Submit"> -->
+                            <button class="nextBtn" onclick="add_remarks()">
                                 <span class="btnText">Submit</span>
                                 <i class="uil uil-navigator"></i>
                             </button>
@@ -910,6 +949,29 @@ if (isset($_POST['otherSchool'])) {
                     </div>
                 </div>
             </div>
+
+                    <!-- verrify popup -->
+
+                    <div id="modal" class="modal">
+    <div class="modal_content">
+        <div class="body">
+            <div class="logo">
+                <img id="loading-spinner" style="display: none;" src="../assets/img/GCU_LOGO.gif">
+            </div>
+            <div class="container2">
+                <form id="verify_code" method="post">
+                    <h1>A verification code has been sent to your email. Please enter the code below to fully register your account</h1>
+                    <div class="id">
+                        <label for="code" style="color: black;">Verification Code:</label>
+                        <input type="number" id="code" name="code" class="code" required>
+                        <button onclick="verify()">Verify</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
         </form>
     </div>
 
@@ -941,7 +1003,93 @@ if (isset($_POST['otherSchool'])) {
     }
 </script> -->
 
+<script>
+    // --------------FOR EMAIL VERIFICATION--------------------
+    function add_remarks(){
+console.log("Email", $("#email").val())
 
+            document.getElementById("modal").style.display = "block";
+                // Show loading spinner
+    $("#loading-spinner").show();
+    
+    console.log("performing ajax");
+    $.ajax({
+      type: 'POST',
+      url: '../../backend/email_verify.php',
+      data: {
+        email: $("#email").val()
+      },
+      success: function(data) {
+        // Hide loading spinner on success
+        $("#loading-spinner").hide();
+        if (data === "unregistered") {
+          alert("This Email is already registered")
+          console.log(data);
+          
+        } else {
+          alert("The verification code has sent to your email.")
+        console.log("Success",data)
+
+                // verify();
+
+                    // --------------------------------------------
+        }
+
+        // add location to enter code
+      },
+      error: function(xhr, status, error) {
+        // Hide loading spinner on error
+       
+        
+        console.error("Error:", error);
+        alert("Error: " + error);
+
+        $("#loading-spinner").hide();
+      },
+    });
+       
+
+
+}
+
+                   // Send code verificaion
+                    // ----------------------------------------------
+                    function verify() {
+                    event.preventDefault();
+                    console.log("performing ajax for code verify");
+                    $.ajax({
+                    type: 'POST',
+                    url: '../../backend/verify.php',
+                    data: {
+                        code: $("#code").val()
+                    },
+                    success: function(data) {
+                        console.log("code recieved", data)
+                        if (data === "Code Verified") {
+                        alert("Code Verified")
+                        console.log("verified",data)
+                        
+                            
+                                    // code to fully register
+                                    // --------------------------------------
+                                    $("#registrationForm").submit();
+                                    // --------------------------------------
+                        } else {
+                        alert('Error, Invalid Code, please try again', data);
+                        console.log(data);
+                        }
+                    
+                        // add location to enter code
+                    },
+                                error: function (xhr, status, error) {
+                                    console.error("Error:", error);
+                                    alert("Error: " + error);
+                                },
+                    });
+
+                };
+    
+</script>
 
     <script>
         function createTable() {

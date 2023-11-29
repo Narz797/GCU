@@ -195,7 +195,7 @@ button:hover {
             <div class="modal_content">
                 <div class="body">
                 <div class="logo">
-                    <!-- <img id="loading-spinner" style="display: none;" src="../assets/img/GCU_LOGO.gif"> -->
+                    <img id="loading-spinner" style="display: none;" src="../assets/img/GCU_LOGO.gif">
                     </div>
                 <div class="container1">
                     <form id="verify_code" method="post">

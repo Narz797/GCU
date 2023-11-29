@@ -660,10 +660,10 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <label>Contact Number</label>
                             <input type="text" id="cn" name="cn" value="09" oninput="formatPhoneNumber(this);" placeholder="Please enter only numbers." required>
                         </div>
-                        <div class="input-field">
+                        <!-- <div class="input-field">
                             <label>Email</label>
                             <input type="text" id="email" name="email" required>
-                        </div>
+                        </div> -->
                         <div class="input-field">
                             <label>Year Enrolled</label>
                             <!-- <input type="text" class="form-control" id="year_enroll" name="year_enroll" required/> -->
