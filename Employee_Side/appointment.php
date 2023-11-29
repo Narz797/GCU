@@ -4,10 +4,22 @@
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
-    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
-    exit; // Make sure to exit the script after a header redirect
-  }
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Credentials',
+                text: 'Please try again'
+            }).then(function () {
+                window.location.href = 'http://localhost/GCU/home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
 
   $_SESSION['transact_type']='appointment';//asign value to transact_type/
   $_SESSION['form_type']='appointment';//
@@ -298,6 +310,7 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
                  </div>
             <!--  -->
 <!-- Script     -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   var trans_id
 var app_id
@@ -558,6 +571,11 @@ $(document).ready(function () {
         remark: textareaValue
       },
       success: function (data) {
+        Swal.fire({
+              icon: "success",
+              title: "Marked as Done"
+              
+            });
         console.log("Event marked as done:", data);
         document.getElementById("divOne").style.display = "none";
         $.ajax({
@@ -577,7 +595,12 @@ $(document).ready(function () {
       },
       error: function (xhr, status, error) {
         console.error("Error marking event as done:", error);
-        alert("Error marking event as done: " + error);
+        // alert("Error marking event as done: " + error);
+        Swal.fire({
+              icon: "error",
+              title: "Something went wrong",
+              text: "Please try again",
+            });
       },
     });
       }

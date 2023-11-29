@@ -4,10 +4,22 @@ include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
-    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
-    exit; // Make sure to exit the script after a header redirect
-  }
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Credentials',
+                text: 'Please try again'
+            }).then(function () {
+                window.location.href = 'http://localhost/GCU/home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
     $_SESSION['form_type']='all';//
     $id = $_SESSION['session_id'];
 

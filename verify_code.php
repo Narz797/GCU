@@ -9,7 +9,7 @@ echo "<script>console.log($randomNumber)</script>";
 <head>
   <title>Forgot Password</title>
   <link href="assets/css/forgot_password_style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
   <style>
@@ -122,13 +122,20 @@ function validateInput(input) {
 <script>
     function resend(){
           // Show loading spinner
-    $("#loading-spinner").show();
+          Swal.fire({
+                title: 'Sending Email',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+            });
         $.ajax({
       type: 'POST',
       url: 'backend/resend.php',
       success: function(data) {
                 // Hide loading spinner on success
-                $("#loading-spinner").hide();
+                swal.close();
 
                 Swal.fire({
               icon: "sucess",

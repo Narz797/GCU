@@ -10,7 +10,7 @@ $origin = $_SESSION['origin'];
 <head>
   <title>Forgot Password</title>
   <link href="assets/css/forgot_password_style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <style>
     .container {
@@ -79,7 +79,14 @@ $origin = $_SESSION['origin'];
     event.preventDefault();
     
     // Show loading spinner
-    $("#loading-spinner").show();
+    Swal.fire({
+                title: 'Sending Email',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+            });
     
     console.log("performing ajax");
     $.ajax({
@@ -90,7 +97,7 @@ $origin = $_SESSION['origin'];
       },
       success: function(data) {
         // Hide loading spinner on success
-        $("#loading-spinner").hide();
+        swal.close();
         if (data === "unregistered") {
           // alert("This Email in not registered, please use a registered email")
           Swal.fire({
@@ -117,7 +124,7 @@ $origin = $_SESSION['origin'];
       },
       error: function(xhr, status, error) {
         // Hide loading spinner on error
-        $("#loading-spinner").hide();
+        swal.close();
         
         console.error("Error:", error);
         alert("Error: " + error);
