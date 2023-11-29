@@ -34,6 +34,8 @@ include 'includes/main2.php';
     <link rel="stylesheet" href="../Employee_Side/assets/css/forms.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 </head>
 <style>
@@ -204,4 +206,23 @@ include 'includes/main2.php';
     // Call the function to load data when the page loads
     loadDataFromDatabase();
   });
+</script>
+
+<script>
+alert
+
+          swal({
+                    title: 'pag error',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+          swal({
+                    title: 'Page success',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+    
+
 </script>

@@ -19,6 +19,9 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
     <!-- <link rel="stylesheet" href="../assets/css/stud_reg.css"> -->
     <link href="../assets/img/GCU_logo.png" rel="icon">
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
     <title>Student Regisration Form </title>
 
 
@@ -1159,6 +1162,30 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
             input.value = phoneNumber;
         }
     </script>
+
+    
+<script>
+alert
+
+          swal({
+                    title: 'pag error',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+          swal({
+                    title: 'Page success',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+    
+
+</script>
+
+
 </body>
+
+
 
 </html>

@@ -2212,11 +2212,11 @@ $siblings = $siblings->fetchAll();
         <!-- Brand -->
         <!-- <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">User profile</a> -->
         <!-- Form -->
-        <form id="logoutForm" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <!-- <form id="logoutForm" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
             <a class="btn btn-outline-light" style="background-color:white;" onclick="logout()">Back</a>
           </div>
-        </form>
+        </form> -->
 
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
@@ -2292,12 +2292,13 @@ $siblings = $siblings->fetchAll();
                 </div>
               </div>
             </div>
-            <!-- <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               <div class="d-flex justify-content-between">
-                <a href="#" class="btn btn-sm btn-info mr-4">Connect</a>
-                <a href="#" class="btn btn-sm btn-default float-right">Message</a>
+              <a href="#" ></a>
+                <!-- <a href="#" class="btn btn-sm btn-info mr-4">Connect</a> -->
+                <a href="#" class="btn btn-sm btn-default float-right" onclick="logout()">Logout</a>
               </div>
-            </div> -->
+            </div>
             <br>
             <br>
             <div class="card-body pt-0 pt-md-4">
@@ -2760,14 +2761,14 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative" id="sen_school"><?php echo $senschool_info[0]['school_name'] ?></section>
+                        <section style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="sen_school"><?php echo $senschool_info[0]['school_name'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="sen_school_yg"><?php echo $senschool_info[0]['year'] ?><section>
+                        <section style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="sen_school_yg"><?php echo $senschool_info[0]['year'] ?><section>
                       </div>
                     </div>
                   </div>
@@ -2776,7 +2777,7 @@ $siblings = $siblings->fetchAll();
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="sen_school_awards"><?php echo $senschool_info[0]['awards'] ?></section>
+                    <section style="height:auto;" id="award" class="form-control form-control-alternative" id="sen_school_awards"><?php echo $senschool_info[0]['awards'] ?></section>
 
                   </div>
                 </div>
@@ -2788,14 +2789,14 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative" id="jun_school"><?php echo $junschool_info[0]['school_name'] ?></section>
+                        <section style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="jun_school"><?php echo $junschool_info[0]['school_name'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="jun_school_yg"><?php echo $junschool_info[0]['year'] ?><section>
+                        <section style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="jun_school_yg"><?php echo $junschool_info[0]['year'] ?><section>
                       </div>
                     </div>
                   </div>
@@ -2804,7 +2805,7 @@ $siblings = $siblings->fetchAll();
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="jun_school_awards"><?php echo $junschool_info[0]['awards'] ?></section>
+                    <section style="height:auto;" id="award" class="form-control form-control-alternative" id="jun_school_awards"><?php echo $junschool_info[0]['awards'] ?></section>
 
                   </div>
                 </div>
@@ -2817,14 +2818,14 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <section type="text" id="s_name" class="form-control form-control-alternative" id="elm_school"><?php echo $elemschool_info[0]['school_name'] ?></section>
+                        <section style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="elm_school"><?php echo $elemschool_info[0]['school_name'] ?></section>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <section type="text" id="y_grad" class="form-control form-control-alternative" id="elm_school_yg"><?php echo $elemschool_info[0]['year'] ?><section>
+                        <section style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="elm_school_yg"><?php echo $elemschool_info[0]['year'] ?><section>
                       </div>
                     </div>
                   </div>
@@ -2833,7 +2834,7 @@ $siblings = $siblings->fetchAll();
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <section style="height:100px;" id="award" class="form-control form-control-alternative" id="elm_school_awards"><?php echo $elemschool_info[0]['awards'] ?></section>
+                    <section style="height:auto;" id="award" class="form-control form-control-alternative" id="elm_school_awards"><?php echo $elemschool_info[0]['awards'] ?></section>
 
                   </div>
                 </div>
@@ -2846,14 +2847,14 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-username">Name of the School</label>
-                          <section type="text" id="s_name" class="form-control form-control-alternative" id="oth_school"><?php echo $othschool_info[0]['school_name'] ?></section>
+                          <section style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="oth_school"><?php echo $othschool_info[0]['school_name'] ?></section>
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Year Graduated</label>
-                          <section type="text" id="y_grad" class="form-control form-control-alternative" id="oth_school_yg"><?php echo $othschool_info[0]['year'] ?><section>
+                          <section style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="oth_school_yg"><?php echo $othschool_info[0]['year'] ?><section>
                         </div>
                       </div>
                     </div>
@@ -2863,7 +2864,7 @@ $siblings = $siblings->fetchAll();
                   <div class="pl-lg-4">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-email">Awards Received</label>
-                      <section style="height:100px;" id="award" class="form-control form-control-alternative" id="oth_school_awards"><?php echo $othschool_info[0]['awards'] ?></section>
+                      <section style="height:auto;" id="award" class="form-control form-control-alternative" id="oth_school_awards"><?php echo $othschool_info[0]['awards'] ?></section>
 
                     </div>
                   </div>

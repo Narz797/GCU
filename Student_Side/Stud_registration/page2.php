@@ -170,6 +170,14 @@ if (isset($_POST['total_number'])) {
     <title>Student Regisration Form </title>
     <link href="../assets/img/GCU_logo.png" rel="icon">
 
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+
 </head>
 <style>
     /* ===== Google Font Import - Poppins ===== */
@@ -714,7 +722,21 @@ if (isset($_POST['total_number'])) {
     .custom-file-upload input[type="file"] {
         display: none;
     }
+
+    #otherSchoolCheckbox {
+        display: inline-block;
+        vertical-align: middle;
+        margin-top:1%;
+    }
+
+    #otherSchoolLabel {
+        display: inline-block;
+        vertical-align: middle;
+        margin-top:2%;
+        margin-left:1%;
+    }
 </style>
+
 
 
 <body>
@@ -736,11 +758,13 @@ if (isset($_POST['total_number'])) {
                 </div>
                 <div class="input-field1">
                     <label>Year Graduated: </label>
-                    <input type="text" id="address" name="senyear" required>
+                    <input  style="width:100%;" type="text" class="form-control" name="datepicker" id="senyear"  required/>
+
+                    <!-- <input type="text" id="address" name="datepicker" id="datepicker" required> -->
                 </div>
                 <div class="input-field1">
                     <label for="awards">Awards Received:</label>
-                    <input type="text" id="awards" name="senawards">
+                    <input  style="width:100%;" type="text" id="awards" name="senawards">
                 </div>
             </div>
             <br>
@@ -749,18 +773,20 @@ if (isset($_POST['total_number'])) {
 
             <br>
 
-            <div class="fields">
+            <div class="fields" >
                 <div class="input-field1">
                     <label>Name of School:</label>
                     <input style="width:100%; " type="text" id="lang" name="junschool" required>
                 </div>
                 <div class="input-field1">
                     <label>Year Graduated: </label>
-                    <input type="text" id="address" name="junyear" required>
+                    <!-- <input style="width:100%;" type="text" id="address" name="junyear" required> -->
+                    <input  style="width:100%;" type="text" class="form-control" name="datepicker" id="junyear"  required/>
+
                 </div>
                 <div class="input-field1">
                     <label for="awards">Awards Received:</label>
-                    <input  type="text" id="awards" name="junawards" >
+                    <input  style="width:100%;" type="text" id="awards" name="junawards" >
                 </div>
             </div>
             <br>
@@ -776,16 +802,20 @@ if (isset($_POST['total_number'])) {
                 </div>
                 <div class="input-field1">
                     <label>Year Graduated: </label>
-                    <input type="text" id="address" name="elemyear" required>
+                    <!-- <input type="text" id="address" name="elemyear" required> -->
+                    <input  style="width:100%;" type="text" class="form-control" name="datepicker" id="elemyear"  required/>
+
                 </div>
                 <div class="input-field1">
                     <label for="awards">Awards Received:</label>
-                    <input  type="text" id="awards" name="elemawards">
+                    <input style="width:100%;" type="text" id="awards" name="elemawards">
                 </div>
             </div>
             <br>
+            <!-- <input type="checkbox" id="otherSchoolCheckbox" name='otherSchool'>
+            <label for="otherSchoolCheckbox">Other School Attended</label> -->
             <input type="checkbox" id="otherSchoolCheckbox" name='otherSchool'>
-            <label for="otherSchoolCheckbox">Other School Attended</label>
+            <label for="otherSchoolCheckbox" id="otherSchoolLabel">Other School Attended</label>
             <br>
             <br>
             <div id="otherSchoolSection" style="display: none;">
@@ -798,11 +828,13 @@ if (isset($_POST['total_number'])) {
                     </div>
                     <div class="input-field1">
                         <label>Year Graduated: </label>
-                        <input type="text" id="address" name="othyear">
+                        <!-- <input type="text" id="address" name="othyear"> -->
+                        <input  style="width:100%;" type="text" class="form-control" name="datepicker" id="othyear"  />
+
                     </div>
                     <div class="input-field1">
                         <label for="awards">Awards Received:</label>
-                        <input style="height: 150px; vertical-align: top;" type="text" id="awards" name="othawards">
+                        <input style="width:100%; vertical-align: top;" type="text" id="awards" name="othawards">
                     </div>
                 </div>
             </div>
@@ -886,5 +918,73 @@ if (isset($_POST['total_number'])) {
         }
     });
 </script>
+<script>
 
-</html>
+$("#senyear").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
+    </script>
+
+?<script>
+
+$("#junyear").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
+    </script>
+
+<script>
+
+$("#senyear").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
+    </script>
+
+<script>
+
+$("#elemyear").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
+    </script>
+
+<script>
+
+$("#othyear").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
+    </script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+alert
+
+          swal({
+                    title: 'pag error',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+          swal({
+                    title: 'Page success',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+    
+
+</script>

@@ -59,6 +59,7 @@ if (isset($_POST['otherSchool'])) {
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <title>Student Regisration Form </title>
     <link href="../assets/img/GCU_logo.png" rel="icon">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 <style>
@@ -1119,6 +1120,27 @@ if (isset($_POST['otherSchool'])) {
             }
         }
     </script>
+
+    
+<script>
+alert
+
+          swal({
+                    title: 'pag error',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+          swal({
+                    title: 'Page success',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+    
+
+</script>
+
 </body>
 
 </html>
