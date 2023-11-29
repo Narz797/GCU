@@ -68,6 +68,9 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
                     <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
                 </li>
                 <li class="list-item hov">
+                    <a href="teacherprofiles.php" class="list-link current1">Teacher Profiles</a>
+                </li>
+                <li class="list-item hov">
                     <a href="EmployeeProfiles.php" class="list-link current1">Employee Profiles</a>
                 </li>
                 <li class="list-item hov">

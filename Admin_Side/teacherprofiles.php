@@ -25,7 +25,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Profile</title>
+    <title>Teacher Profile</title>
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" href="assets/images/GCU_logo.png">
@@ -72,7 +72,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
                         <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
                     </li>
                     <li class="list-item hov">
-                    <a href="teacherprofiles.php" class="list-link current1">Teacher Profiles</a>
+                        <a href="EmployeeProfiles.php" class="list-link current1">Employee Profiles</a>
                     </li>
                     <li class="list-item hov">
                         <a href="logreport.php" class="list-link current1">Log Report</a>
@@ -106,12 +106,9 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
         <div class="block">
         </div>
         <div class="title independent-title">
-            <h2>Employee Profiles</h2>
+            <h2>Teacher Profiles</h2>
             <br>
-            <div class="container">
             
-            <a href="addemployee.php"><button type=submit class="button">Add Employee Account</button></a>
-            </div>
                        
         </div>
        
@@ -121,7 +118,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
                 <div class="gallery">
                     <main class="table" id="customers_table">
                         <section class="table-header">
-                            <h1>List of Employees</h1>
+                            <h1>List of Teachers</h1>
                             <div class="input-group">
                             <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
 
@@ -144,7 +141,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
                         <table id="dynamicTable">
                                 <thead>
                                     <tr>
-                                        <th> Employee ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Teacher ID # <br> <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
                                         <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Middle Name <br><span class="icon-arrow">&UpArrow;</span></th>
@@ -472,48 +469,7 @@ function searchTable() { //searches in all column
     </script>
 
 
-<style>
-        
-        .container{
-           font-size:17px;
-           
 
-        }
-        .button{
-           
-           text-align: center;
-           
-           border:none;
-           color:white;
-           padding:12px 32px;
-           text-decoration: none;
-           margin:2px 2px;
-           cursor:pointer;
-           height:60px;
-           width:300px;
-           border-style: outset;
-           background-color: darkgreen;
-           border-radius:50px;
-
-       }
-       
-        .button:hover{
-            text-align: center;
-           background-color: green;
-           border:none;
-           color:black;
-           padding:12px 32px;
-           text-decoration: none;
-           margin:2px 2px;
-           cursor:pointer;
-           height:60px;
-           width:300px;
-           border-style: outset;
-           border-radius:50px;
-           
-        }
-        
-    </style>
 </body>
 
 </html>

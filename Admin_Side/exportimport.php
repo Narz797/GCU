@@ -71,8 +71,12 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
                         <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
                     </li>
                     <li class="list-item hov">
+                    <a href="teacherprofiles.php" class="list-link current1">Teacher Profiles</a>
+                    </li>
+                    <li class="list-item hov">
                         <a href="EmployeeProfiles.php" class="list-link current1">Employee Profiles</a>
                     </li>
+                   
                     <li class="list-item hov">
                         <a href="logreport.php" class="list-link current1">Log Report</a>
                     </li>
