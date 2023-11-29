@@ -257,10 +257,10 @@ label, span {
 
   <label>Year:</label>
   <!-- <input type="number" placeholder="YYYY" id="start_year" class="year-input" name="datepicker" id="datepicker"> -->
-  <input type="text" class="form-control" name="datepicker" id="datepicker"  required/>/>
+  <input type="text" class="form-control" name="datepicker" id="datepicker"  required/>
   <label>-</label>
   <!-- <input type="number" placeholder="YYYY" id="end_year" class="year-input"> -->
-  <input type="text" class="form-control" name="datepicker" id="datepicker2"  required/>/>
+  <input type="text" class="form-control" name="datepicker" id="datepicker2"  required/>
 
   
 </div>
