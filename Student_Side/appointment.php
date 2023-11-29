@@ -254,6 +254,22 @@ include 'includes/main2.php';
                         </div>
                     </div>
                  </div>
+
+                 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: auto;">
+    
+    <footer class="d-flex justify-content-center" style="width: 100%;">
+    
+     
+
+        <p style="text-align: center; margin: 0; display: block;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>. Guidance and Counseling Unit. All rights reserved.</p>
+        
+        <br>
+        <br>
+        <br>
+    </footer>
+ 
+</section>
+
 <!-- 
                  <div class="overlay" id="divThree">
                     <div class="wrapper">
