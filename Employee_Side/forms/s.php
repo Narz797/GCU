@@ -349,14 +349,17 @@ function archive() {
                 window.location.href = "../subpage/wds-forms";
                 Swal.fire({
               icon: "success",
-              title: "transation remarked"
+              title: "transation remarked",
+              timer: 1500
             });
             },
             error: function (xhr, status, error) {
                 console.error("Error marking event as done:", error);
                 Swal.fire({
-              icon: "success",
-              title: "transation remarked"
+              icon: "error",
+              title: "something went wrong",
+              text: "Please try again",
+              timer: 1500
             });
                 // alert(data);
                 $.ajax({

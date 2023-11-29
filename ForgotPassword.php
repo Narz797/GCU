@@ -104,6 +104,7 @@ $origin = $_SESSION['origin'];
               icon: "error",
               title: "Oops...",
               text: "This Email in not registered, please use a registered email",
+              timer: 1500
              
             });
           console.log(data);
@@ -114,6 +115,7 @@ $origin = $_SESSION['origin'];
               icon: "sucess",
               title: "Code Sent!",
               text: "Go to your email to retrieve the code",
+              timer: 1500
 
             });
         console.log(data)

@@ -344,6 +344,7 @@ $_SESSION['origin'] = 'Employee';
               icon: "error",
               title: "Invalid Credentials",
               text: "Please try again",
+              timer: 1500
             });
         }
       }

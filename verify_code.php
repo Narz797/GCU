@@ -141,6 +141,7 @@ function validateInput(input) {
               icon: "sucess",
               title: "Code Sent!",
               text: "Go to your email to retrieve the code",
+              timer: 1500
 
             });
         console.log(data)
@@ -170,6 +171,7 @@ function validateInput(input) {
                   Swal.fire({
               icon: "sucess",
               title: "Code verified",
+              timer: 1500
 
             });
         console.log(data)

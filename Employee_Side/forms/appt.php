@@ -305,7 +305,8 @@ function archive() {
             console.log("Remarked:", data);
             Swal.fire({
               icon: "success",
-              title: "appointment remarked"
+              title: "appointment remarked",
+              timer: 1500
             });
             window.location.href = "../appointment";
             $.ajax({
@@ -328,6 +329,7 @@ function archive() {
               icon: "error",
               title: "Something went wrong",
               text: "Please try again",
+              timer: 1500
             });
           },
         });
@@ -368,7 +370,8 @@ function archive() {
             console.log("Remarked:", data);
             Swal.fire({
               icon: "success",
-              title: "Appointment rescheduled"
+              title: "Appointment rescheduled",
+              timer: 1500
             });
             status_update('resched')
             window.location.href = "../appointment";
@@ -392,6 +395,7 @@ function archive() {
               icon: "error",
               title: "Something went wrong",
               text: "Please try again",
+              timer: 1500
             });
           },
         });

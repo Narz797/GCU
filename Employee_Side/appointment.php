@@ -10,8 +10,8 @@
         document.addEventListener('DOMContentLoaded', function () {
             Swal.fire({
                 icon: 'error',
-                title: 'Invalid Credentials',
-                text: 'Please try again'
+                title: 'You already logged out',
+                text: 'Please tlogin again'
             }).then(function () {
                 window.location.href = 'http://localhost/GCU/home';
             });
@@ -573,7 +573,8 @@ $(document).ready(function () {
       success: function (data) {
         Swal.fire({
               icon: "success",
-              title: "Marked as Done"
+              title: "Marked as Done",
+              timer: 1500
               
             });
         console.log("Event marked as done:", data);
@@ -600,6 +601,7 @@ $(document).ready(function () {
               icon: "error",
               title: "Something went wrong",
               text: "Please try again",
+              timer: 1500
             });
       },
     });

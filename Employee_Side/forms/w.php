@@ -339,7 +339,8 @@ function archive() {
                 console.log("Remarked:", data);
                 Swal.fire({
               icon: "success",
-              title: "transation remarked"
+              title: "transation remarked",
+              timer: 1500
             });
                 window.location.href = "../subpage/wds-forms";
                 // alert(data);
@@ -363,6 +364,7 @@ function archive() {
               icon: "error",
               title: "Something went wrong",
               text: "Please try again",
+              timer: 1500
             });
             },
             });

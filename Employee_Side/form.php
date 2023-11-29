@@ -10,8 +10,8 @@ include '../backend/log_audit2.php';
         document.addEventListener('DOMContentLoaded', function () {
             Swal.fire({
                 icon: 'error',
-                title: 'Invalid Credentials',
-                text: 'Please try again'
+                title: 'You already logged out',
+                text: 'Please tlogin again'
             }).then(function () {
                 window.location.href = 'http://localhost/GCU/home';
             });

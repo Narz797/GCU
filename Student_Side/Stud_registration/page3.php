@@ -1081,30 +1081,29 @@ console.log("Email", $("#email").val())
                         code: $("#code").val()
                     },
                     success: function(data) {
-                        console.log("code recieved", data)
+                        console.log("code received", data);
                         if (data === "Code Verified") {
-                        // alert("Code Verified")
-                        Swal.fire({
-                            icon: "success",
-                            title: "Code Verified"
-          
+                            Swal.fire({
+                                icon: "success",
+                                title: "Code Verified"
                             });
-                        console.log("verified",data)
-                        
-                            
-                                    // code to fully register
-                                    // --------------------------------------
-                                    $("#registrationForm").submit();
-                                    // --------------------------------------
+                            console.log("verified", data);
+
+                            // code to fully register
+                            // --------------------------------------
+                            console.log("Before form submission");
+                            $("#registrationForm").submit();
+                            console.log("After form submission");
+                            // --------------------------------------
                         } else {
                             Swal.fire({
-                                icon: "Error",
+                                icon: "error",
                                 title: "Invalid Code",
                                 text: "Please try again",
-                                });
-                        console.log(data);
+                            });
+                            console.log(data);
                         }
-                    
+
                         // add location to enter code
                     },
                                 error: function (xhr, status, error) {

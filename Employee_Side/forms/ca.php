@@ -468,7 +468,8 @@ function status_update(status){
     console.log("Remarked:", data);
     Swal.fire({
               icon: "success",
-              title: "transation remarked"
+              title: "transation remarked",
+              timer: 1500
             });
     window.location.href = "../subpage/ca_page.php";
     $.ajax({
@@ -491,6 +492,7 @@ function status_update(status){
               icon: "error",
               title: "Something went wrong",
               text: "Please try again",
+              timer: 1500
             });
   },
 });

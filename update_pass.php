@@ -129,14 +129,16 @@ echo "<script>console.log($randomNumber)</script>";
         if (data === "Password Reset") {
           Swal.fire({
               icon: "success",
-              title: "Password changed"
+              title: "Password changed",
+              timer: 1500
             });
           window.location.href = "home?logout=true";
           
         } else {
           Swal.fire({
-              icon: "success",
-              title: "transation remarked"
+              icon: "error",
+              title: "Please try again",
+              timer: 1500
             });
           console.log(data);
         }
@@ -147,7 +149,8 @@ echo "<script>console.log($randomNumber)</script>";
                     console.error("Error:", error);
                     Swal.fire({
               icon: "success",
-              title: "transation remarked"
+              title: "transation remarked",
+              timer: 1500
             });
                   },
     });
