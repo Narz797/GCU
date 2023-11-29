@@ -7,6 +7,8 @@ $_SESSION['origin'] = 'Teacher';
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
   <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto');
     body {
@@ -232,6 +234,7 @@ $_SESSION['origin'] = 'Teacher';
     </div>
   </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   $("#Login_Teacher_User").on("submit", function(event) {
     var source = "teacher_side_login";
@@ -274,7 +277,12 @@ $_SESSION['origin'] = 'Teacher';
               console.log("error logged", response); 
             }
           });
-          alert('Error, teacher not registered');
+          // alert('Error, teacher not registered');
+          Swal.fire({
+              icon: "error",
+              title: "Invalid Credentials",
+              text: "Please try again",
+            });
         }
       }
     });

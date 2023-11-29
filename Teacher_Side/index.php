@@ -354,6 +354,7 @@ $_SESSION['transact_type'] = 'referral';
   </footer>
        
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   var tID = "<?php echo $_SESSION['session_id'];?>";
 function logout() {
@@ -497,7 +498,12 @@ $("#form_transact").on("submit", function (event) {
                       },
         success: function (data) {
           console.log('Success!');
-          alert(data);
+          // alert(data);
+          Swal.fire({
+              icon: "success",
+              title: "Student reffered",
+
+            });
           
           window.location.reload();
           $.ajax({
@@ -539,7 +545,11 @@ $("#form_transact").on("submit", function (event) {
                           
                       },
         success: function (data) {
-          alert(data);
+          Swal.fire({
+              icon: "success",
+              title: "Info Updated",
+
+            });
           fetchData()
           $.ajax({
             type: 'POST',
@@ -719,7 +729,12 @@ $('#datepicker').datepicker({
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
-            alert("Error marking event as done: " + error);
+            // alert("Error marking event as done: " + error);
+            Swal.fire({
+              icon: "error",
+              title: "Ooops...",
+              text: "Error removing student. Please try again",
+            });
             window.location.href = "index.php";
           },
         });

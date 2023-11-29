@@ -1002,7 +1002,7 @@ $_SESSION['origin'] = 'Student';
         }
     }
 </script> -->
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     // --------------FOR EMAIL VERIFICATION--------------------
     function add_remarks(){
@@ -1010,7 +1010,14 @@ console.log("Email", $("#email").val())
 
             document.getElementById("modal").style.display = "block";
                 // Show loading spinner
-    $("#loading-spinner").show();
+                Swal.fire({
+                title: 'Sending Email',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+            });
     
     console.log("performing ajax");
     $.ajax({
@@ -1021,13 +1028,23 @@ console.log("Email", $("#email").val())
       },
       success: function(data) {
         // Hide loading spinner on success
-        $("#loading-spinner").hide();
+        swal.close();
         if (data === "unregistered") {
-          alert("This Email is already registered")
+        //   alert("This Email is already registered")
+        Swal.fire({
+              icon: "error",
+              title: "This Email is already registered",
+              text: "Please use another",
+            });
           console.log(data);
           
         } else {
-          alert("The verification code has sent to your email.")
+        //   alert("The verification code has sent to your email.")
+        Swal.fire({
+              icon: "success",
+              title: "Code Sent",
+              text: "Please Check your email",
+            });
         console.log("Success",data)
 
                 // verify();
@@ -1044,7 +1061,7 @@ console.log("Email", $("#email").val())
         console.error("Error:", error);
         alert("Error: " + error);
 
-        $("#loading-spinner").hide();
+        swal.close();
       },
     });
        
@@ -1066,7 +1083,12 @@ console.log("Email", $("#email").val())
                     success: function(data) {
                         console.log("code recieved", data)
                         if (data === "Code Verified") {
-                        alert("Code Verified")
+                        // alert("Code Verified")
+                        Swal.fire({
+                            icon: "success",
+                            title: "Code Verified"
+          
+                            });
                         console.log("verified",data)
                         
                             
@@ -1075,7 +1097,11 @@ console.log("Email", $("#email").val())
                                     $("#registrationForm").submit();
                                     // --------------------------------------
                         } else {
-                        alert('Error, Invalid Code, please try again', data);
+                            Swal.fire({
+                                icon: "Error",
+                                title: "Invalid Code",
+                                text: "Please try again",
+                                });
                         console.log(data);
                         }
                     
@@ -1159,7 +1185,11 @@ console.log("Email", $("#email").val())
             if (inputFilled) {
                 form.classList.add('secActive');
             } else {
-                alert("Please fill in all required fields.");
+                // alert("Please fill in all required fields.");
+                Swal.fire({
+              icon: "error",
+              title: "Please fill in all required fields.",
+            });
             }
         });
         backBtn.addEventListener("click", () => {
@@ -1270,7 +1300,7 @@ console.log("Email", $("#email").val())
     </script>
 
     
-<script>
+<!-- <script>
 alert
 
           swal({
@@ -1287,7 +1317,7 @@ alert
                 })
     
 
-</script>
+</script> -->
 
 </body>
 

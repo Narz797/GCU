@@ -106,7 +106,7 @@ echo "<script>console.log($randomNumber)</script>";
     <button onclick="resend()">Resend Code</button>
   </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 function validateInput(input) {
   // Get the input value and remove any non-digit characters
@@ -129,7 +129,13 @@ function validateInput(input) {
       success: function(data) {
                 // Hide loading spinner on success
                 $("#loading-spinner").hide();
-        alert("The code to change your password is sent to your email")
+
+                Swal.fire({
+              icon: "sucess",
+              title: "Code Sent!",
+              text: "Go to your email to retrieve the code",
+
+            });
         console.log(data)
         window.location.reload();
 
@@ -154,7 +160,11 @@ function validateInput(input) {
       },
       success: function(data) {
         if (data === "Code Verified") {
-        alert("Code Verified")
+                  Swal.fire({
+              icon: "sucess",
+              title: "Code verified",
+
+            });
         console.log(data)
         window.location.href = "update_pass.php";
         } else {

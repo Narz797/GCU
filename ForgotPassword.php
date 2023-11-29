@@ -73,7 +73,7 @@ $origin = $_SESSION['origin'];
 
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   $("#forgot_pass").on("submit", function(event) {
     event.preventDefault();
@@ -92,11 +92,23 @@ $origin = $_SESSION['origin'];
         // Hide loading spinner on success
         $("#loading-spinner").hide();
         if (data === "unregistered") {
-          alert("This Email in not registered, please use a registered email")
+          // alert("This Email in not registered, please use a registered email")
+          Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "This Email in not registered, please use a registered email",
+             
+            });
           console.log(data);
           
         } else {
-          alert("The code to change your password is sent to your email")
+          // alert("The code to change your password is sent to your email")
+          Swal.fire({
+              icon: "sucess",
+              title: "Code Sent!",
+              text: "Go to your email to retrieve the code",
+
+            });
         console.log(data)
         window.location.href = "verify_code.php";
         }

@@ -885,7 +885,7 @@ if (isset($_POST['total_number'])) {
     //     window.location.href = "page3.php";
     // }
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function goToPage1() {
         window.location.href = "page1.php";
@@ -896,7 +896,11 @@ if (isset($_POST['total_number'])) {
         var inputs = document.querySelectorAll('input');
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].value.trim() === "") {
-                alert("Please fill in all the fields before proceeding to page3.php");
+                // alert("Please fill in all the fields before proceeding to page3.php");
+                Swal.fire({
+              icon: "error",
+              title: "Please fill in all required fields.",
+            });
                 return; // Stop the function if an empty input is found
             }
         }
