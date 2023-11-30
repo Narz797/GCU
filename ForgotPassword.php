@@ -104,9 +104,14 @@ $origin = $_SESSION['origin'];
               icon: "error",
               title: "Oops...",
               text: "This Email in not registered, please use a registered email",
-              timer: 1500
-             
-            });
+              confirmButtonText: "OK",
+
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      
+                    } 
+                  });
           console.log(data);
           
         } else {
@@ -115,11 +120,16 @@ $origin = $_SESSION['origin'];
               icon: "sucess",
               title: "Code Sent!",
               text: "Go to your email to retrieve the code",
-              timer: 1500
+              confirmButtonText: "OK",
 
-            });
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  window.location.href = "verify_code.php";
+                } 
+              });
         console.log(data)
-        window.location.href = "verify_code.php";
+        
         }
 
         // add location to enter code

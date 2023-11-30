@@ -141,11 +141,16 @@ function validateInput(input) {
               icon: "sucess",
               title: "Code Sent!",
               text: "Go to your email to retrieve the code",
-              timer: 1500
+              confirmButtonText: "OK",
 
-            });
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  window.location.reload();
+                } 
+              });
         console.log(data)
-        window.location.reload();
+  
 
      
         // add location to enter code
@@ -171,13 +176,30 @@ function validateInput(input) {
                   Swal.fire({
               icon: "sucess",
               title: "Code verified",
-              timer: 1500
+              confirmButtonText: "OK",
 
-            });
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  window.location.href = "update_pass.php";
+                } 
+              });
         console.log(data)
-        window.location.href = "update_pass.php";
+       
         } else {
-          alert('Error, Invalid Code', data);
+          // alert('Error, Invalid Code', data);
+          Swal.fire({
+              icon: "error",
+              title: "Invalid Code",
+              text:"please try again",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+          
+                } 
+              });
           console.log(data);
         }
      

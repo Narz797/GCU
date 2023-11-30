@@ -148,8 +148,8 @@ echo "<script>console.log($randomNumber)</script>";
                   error: function (xhr, status, error) {
                     console.error("Error:", error);
                     Swal.fire({
-              icon: "success",
-              title: "transation remarked",
+              icon: "error",
+              title: "Please try again",
               timer: 1500
             });
                   },
