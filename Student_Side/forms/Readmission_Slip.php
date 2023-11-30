@@ -18,6 +18,8 @@ logAudit($_SESSION['session_id'], 'access_leave_of_absence form', $_SESSION['ses
   <title>Readmission Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
 
   <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
@@ -337,6 +339,14 @@ label, span {
               motivation: $("#motivation_enroll").val(),
             },
             success: function (data) {
+              swal({
+                      title:'Form requested',
+                      icon: 'success',
+                      showConfirmButton: false,
+                      timer:1500
+              })
+
+
               $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
