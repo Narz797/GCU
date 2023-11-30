@@ -279,6 +279,7 @@ $_SESSION['origin'] = 'Student';
     </div>
   </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   $("#Login_Student_User").on("submit", function(event) {
     var source = "student_side_login";
@@ -323,7 +324,12 @@ $_SESSION['origin'] = 'Student';
               console.log("error logged", response); 
             }
           });
-          alert('Error, Student not registered');
+          Swal.fire({
+              icon: "error",
+              title: "Invalid Credentials",
+              text: "Please try again",
+              timer: 1500
+            });
         }
       }
     });

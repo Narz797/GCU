@@ -419,36 +419,55 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
 
             }
 
+        // function view_student(stud_id) {
+        //     // alert(stud_id);
+
+        //     // Send stud_id to the server using an AJAX request
+        //     $.ajax({
+        //         type: 'POST', // You can use POST to send data securely
+        //         url: '../backend/set_session_variable.php', // PHP script that sets the session variable
+        //         data: {
+        //             stud_user_id: stud_id
+        //         },
+        //         success: function(response) {
+        //             // Handle the response from the server, if needed
+        //             console.log(response);
+        //             window.location.href = 'pfp_page.php';
+        //             $.ajax({
+        //                 type: 'POST',
+        //                 url: '../backend/log_audit.php',
+        //                 data: {
+        //                 userId: eID,
+        //                 action: 'Admin viewed student',
+        //                 details: 'Admin vaccessed view student in student profile'
+        //                 },
+        //                 success: function(response) {
+        //                 // Handle the response if needed
+        //                 console.log("logged", response);
+        //                 }
+        //             });
+        //         }
+        //     });
+        // }
+
+       
         function view_student(stud_id) {
             // alert(stud_id);
 
             // Send stud_id to the server using an AJAX request
             $.ajax({
                 type: 'POST', // You can use POST to send data securely
-                url: '../backend/set_session_variable.php', // PHP script that sets the session variable
+                url: '../backend/session_employee.php', // PHP script that sets the session variable
                 data: {
-                    stud_user_id: stud_id
+                    user_id: stud_id
                 },
                 success: function(response) {
                     // Handle the response from the server, if needed
                     console.log(response);
-                    window.location.href = 'pfp_page.php';
-                    $.ajax({
-                        type: 'POST',
-                        url: '../backend/log_audit.php',
-                        data: {
-                        userId: eID,
-                        action: 'Admin viewed student',
-                        details: 'Admin vaccessed view student in student profile'
-                        },
-                        success: function(response) {
-                        // Handle the response if needed
-                        console.log("logged", response);
-                        }
-                    });
+                    window.location.href = 'editstudent.php';
                 }
             });
-        }
+        } 
 
 
 
