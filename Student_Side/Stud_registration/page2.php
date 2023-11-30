@@ -893,21 +893,6 @@ if (isset($_POST['total_number'])) {
 
     function goToPage3() {
         // Check if there are empty inputs before redirecting
-        var inputs = document.querySelectorAll('input');
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].value.trim() === "") {
-                // alert("Please fill in all the fields before proceeding to page3.php");
-                Swal.fire({
-              icon: "error",
-              title: "Please fill in all required fields.",
-              timer: 6000,
-
-
-            });
-                return; // Stop the function if an empty input is found
-            }
-        }
-
         // If no empty inputs, redirect to page3.php
         window.location.href = "page3.php";
     }
