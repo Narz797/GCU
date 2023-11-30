@@ -2,11 +2,13 @@
 session_start();
 ob_start();
 include '../backend/connect_database.php';
+echo "<script>console.log(Origin: ,'{$_SESSION['origin']}')</script>";
+
 if (isset($_SESSION['origin'])) {
 
     $origin = $_SESSION['origin'];
 
-    if ($origin === 'Student_Register') {
+    if ($origin === 'Student') {
 
         // if(isset($_POST['indigenousInfo'])){
         //     $_SESSION['indigenousInfo'] = $_POST['indigenousInfo'];

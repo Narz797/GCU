@@ -302,7 +302,7 @@ main.table {
     overflow: hidden;}
 .table-header {
     width: 100%;
-    height: 6%;
+    height: 15%;
     background-color: var(--accent-color);
     padding: .8rem 1rem;
     font-size: 18px;

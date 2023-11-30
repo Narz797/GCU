@@ -272,7 +272,7 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
 }
 
         function logout() {
-    window.location.href = '../home?logout=true';
+    window.location.href = '../../home?logout=true';
         }
         function archive() {
     window.location.href = './subpage/archive.php';
