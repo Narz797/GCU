@@ -271,7 +271,7 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
                         var statusCell = $("<td></td>");
-                        var statusLink = $("<button onclick='view_student(" + entry.stud_user_id + ")'>Edit</button> <button class='no' onclick='del_emp(" + entry.stud_user_id + ")'>Delete</button>" );
+                        var statusLink = $("<button class='yes' onclick='view_student(" + entry.stud_user_id + ")'>Edit</button> <button class='no' onclick='del_emp(" + entry.stud_user_id + ")'>Delete</button>" );
 
                         statusCell.append(statusLink);
                         row.append(statusCell);
