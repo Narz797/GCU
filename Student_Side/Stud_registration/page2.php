@@ -900,6 +900,9 @@ if (isset($_POST['total_number'])) {
                 Swal.fire({
               icon: "error",
               title: "Please fill in all required fields.",
+              timer: 6000,
+
+
             });
                 return; // Stop the function if an empty input is found
             }
