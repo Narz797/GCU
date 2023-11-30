@@ -54,6 +54,17 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
 
+    <!-- pagination -->
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+
 
 
 
@@ -280,6 +291,20 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
 
                     }
                     console.log("data", data);
+
+                    // to be used later
+                                // Initialize DataTables for pagination
+            // $('#dynamicTable').DataTable({
+            //     paging: true,
+            //     searching: false,
+            //     ordering: false,
+            //     lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+            //     pageLength: 5, // Initial number of rows per page
+            // });
+
+
+
+
                     var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                         noHistoryMessage1.hide(); // Hide the no history message if there is data
@@ -309,11 +334,23 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
                             })
                             .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
                     }
+
+            //         $('#dynamicTable').DataTable({
+            //     paging: true,
+            //     lengthMenu: [10, 25, 50, 100], // Customize the number of rows per page
+            //     pageLength: 10, // Initial number of rows per page
+            // });
                 },
                 error: function(xhr, status, error) {
                     console.error('Error fetching data:', error);
                 }
             });
+
+                        // Initialize DataTable
+            // $('#dynamicTable').DataTable({
+            //     "paging": true
+            // });
+
 
 
         });
