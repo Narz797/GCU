@@ -54,6 +54,17 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
 
+    <!-- pagination -->
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+
 
 
 
@@ -173,7 +184,7 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
     <script src="../backend/jsPDF-1.3.2/dist/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Script     -->
     <script>
@@ -271,7 +282,7 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
                         var statusCell = $("<td></td>");
-                        var statusLink = $("<button onclick='view_student(" + entry.stud_user_id + ")'>View</button>");
+                        var statusLink = $("<button class='yes' onclick='view_student(" + entry.stud_user_id + ")'>Edit</button> <button class='no' onclick='del_emp(" + entry.stud_user_id + ")'>Delete</button>" );
 
                         statusCell.append(statusLink);
                         row.append(statusCell);
@@ -280,6 +291,20 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
 
                     }
                     console.log("data", data);
+
+                    // to be used later
+                                // Initialize DataTables for pagination
+            // $('#dynamicTable').DataTable({
+            //     paging: true,
+            //     searching: false,
+            //     ordering: false,
+            //     lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+            //     pageLength: 5, // Initial number of rows per page
+            // });
+
+
+
+
                     var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                         noHistoryMessage1.hide(); // Hide the no history message if there is data
@@ -309,14 +334,90 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
                             })
                             .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
                     }
+
+            //         $('#dynamicTable').DataTable({
+            //     paging: true,
+            //     lengthMenu: [10, 25, 50, 100], // Customize the number of rows per page
+            //     pageLength: 10, // Initial number of rows per page
+            // });
                 },
                 error: function(xhr, status, error) {
                     console.error('Error fetching data:', error);
                 }
             });
 
+                        // Initialize DataTable
+            // $('#dynamicTable').DataTable({
+            //     "paging": true
+            // });
+
+
 
         });
+
+        function del_emp(id) {
+        Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+                    $.ajax({
+                    type: 'POST',
+                    url: '../backend/del_stud2.php',
+                    data: {
+                        user_id: id
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "The account has been deleted.",
+                            icon: "success",
+                            confirmButtonText: "OK",
+
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                } 
+                            });
+                        console.log(response);
+                   
+
+                        
+                            $.ajax({
+                            type: 'POST',
+                            url: '../backend/log_audit.php',
+                            data: {
+                            userId: eID,
+                            action: 'Admin deleted student account',
+                            details: 'Admin deleted student account'
+                            },
+                            success: function(response) {
+                            // Handle the response if needed
+                            console.log("logged", response);
+                            }
+                        });
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("AJAX Error: " + textStatus, errorThrown);
+                        alert("An error occurred during the deletion. Please try again.");
+                        Swal.fire({
+                            title: "Oops...",
+                            text: "An error occurred during the deletion. Please try again..",
+                            icon: "error"
+                        });
+                    }
+                });
+
+    }
+  });
+
+            }
 
         function view_student(stud_id) {
             // alert(stud_id);

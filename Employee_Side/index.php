@@ -5,17 +5,22 @@ include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
-    echo "<script> expired()</script>";
-    //  echo "<script>";
-    // echo "Swal.fire({";
-    // echo " icon: 'error',";
-    // echo "title: 'Invalid Credentials',";
-    // echo " text: 'Please try again'";
-    // echo " });";
-    // echo "window.location.href = 'http://localhost/GCU/home';";
-    // echo "</script>";
-    exit; // Make sure to exit the script after a header redirect
-  }
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'You already logged out',
+                text: 'Please tlogin again'
+            }).then(function () {
+                window.location.href = 'http://localhost/GCU/home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
 $id = $_SESSION['session_id'];
 
 // Log audit entry for accessing the home page
@@ -195,16 +200,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     var tt;
     var tid;
     var teachid;
-    function expired(){
 
-    Swal.fire({
-     icon: 'error',
-    title: 'You already logged out',
-     text: 'Please log in again'
-    });
-    window.location.href = 'http://localhost/GCU/home';
-
-    }
             function archive() {
     window.location.href = '';
         }

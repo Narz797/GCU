@@ -174,6 +174,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
     <!-- Script     -->
     <script src="assets/main.js"></script>
     <!-- <script src="assets/js/table.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>var eID = "<?php echo $_SESSION['session_id'];?>";
 function searchTable() { //searches in all column
@@ -315,7 +316,16 @@ function searchTable() { //searches in all column
 
     });
     function del_emp(id) {
-                if(confirm("Are you sure do you want to delete this account?")){
+        Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
                     $.ajax({
                     type: 'POST',
                     url: '../backend/del_employee.php',
@@ -323,9 +333,20 @@ function searchTable() { //searches in all column
                         user_id: id
                     },
                     success: function(response) {
-                        alert("Deleted Successfully");
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "The account has been deleted.",
+                            icon: "success",
+                            confirmButtonText: "OK",
+
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                } 
+                            });
                         console.log(response);
-                        location.reload();
+                       
 
                         
                             $.ajax({
@@ -347,10 +368,9 @@ function searchTable() { //searches in all column
                         alert("An error occurred during the deletion. Please try again.");
                     }
                 });
-                }
-                else{
-                    
-                }
+            }
+  });
+     
 
             }
 

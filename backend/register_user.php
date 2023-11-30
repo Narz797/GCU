@@ -2,11 +2,13 @@
 session_start();
 ob_start();
 include '../backend/connect_database.php';
+echo "<script>console.log(Origin: ,'{$_SESSION['origin']}')</script>";
+
 if (isset($_SESSION['origin'])) {
 
     $origin = $_SESSION['origin'];
 
-    if ($origin === 'Student_Register') {
+    if ($origin === 'Student') {
 
         // if(isset($_POST['indigenousInfo'])){
         //     $_SESSION['indigenousInfo'] = $_POST['indigenousInfo'];
@@ -21,6 +23,7 @@ if (isset($_SESSION['origin'])) {
         // }
 
         //register for student in here
+        
         if (isset($_POST['membership'])) {
             $_SESSION['membership'] = $_POST['membership'];
         }
@@ -86,6 +89,9 @@ if (isset($_SESSION['origin'])) {
         }
         if (isset($_POST['eu'])) {
             $_SESSION['eu'] = $_POST['eu'];
+        }
+        if (isset($_POST['email'])){
+            $_SESSION['email'] = $_POST['email'];
         }
         if (isset($_POST['pass'])) {
             $_SESSION['pass'] = $_POST['pass'];

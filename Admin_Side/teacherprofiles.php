@@ -148,7 +148,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
                                         <th> Sex <br><span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Email Address <br><span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Contact Number <br><span class="icon-arrow">&UpArrow;</span></th>
-                                        <th> Position <br><span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> College <br><span class="icon-arrow">&UpArrow;</span></th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -171,6 +171,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
     <!-- Script     -->
     <script src="assets/main.js"></script>
     <!-- <script src="assets/js/table.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>var eID = "<?php echo $_SESSION['session_id'];?>";
 function searchTable() { //searches in all column
@@ -217,7 +218,7 @@ function searchTable() { //searches in all column
             function get_data(){
             // Fetch data using $.ajax
             $.ajax({
-                url: "../backend/search_employee.php",
+                url: "../backend/search_teacher.php",
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
@@ -238,7 +239,7 @@ function searchTable() { //searches in all column
                     
                     for (var i = 0; i < data.length; i++) {
                         var entry = data[i];
-                        var status = entry.status;
+                  
                         var tableToAppend = tableBody;
                         // Determine which table to append to
                         // Create an image element based on gender
@@ -254,18 +255,18 @@ function searchTable() { //searches in all column
                         var row = $("<tr></tr>");
                         var cell = $("<td></td>");
                         cell.append(image); 
-                        cell.append("</br>" + entry.admin_user_id);
+                        cell.append("</br>" + entry.employee_id);//
                         row.append(cell);
-                        row.append("<td>" + entry.last_name + "</td>");
-                        row.append("<td>" + entry.first_name + "</td>");
+                        row.append("<td>" + entry.last_name + "</td>");//
+                        row.append("<td>" + entry.first_name + "</td>");//
                         row.append("<td>" + entry.middle_name + "</td>");
-                        row.append("<td>" + entry.gender + "</td>");
-                        row.append("<td>" + entry.email + "</td>");
-                        row.append("<td>" + entry.contact + "</td>");
-                        row.append("<td>" + entry.position + "</td>");
+                        row.append("<td>" + entry.gender + "</td>");//
+                        row.append("<td>" + entry.email + "</td>");//
+                        row.append("<td>" + entry.contact_number + "</td>");//
+                        row.append("<td>" + entry.college + "</td>");//college
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
-                        var statusLink = $("<button class ='yes' onclick='view_student(" + entry.admin_user_id + ")'>Edit</button> <button class='no' onclick='del_emp(" + entry.admin_user_id + ")'>Delete</button>");
+                        var statusLink = $("<button class='no' onclick='del_emp(" + entry.employee_id + ")'>Delete</button>");
                         row.append(statusLink);
                         tableBody.append(row);
 
@@ -312,17 +313,37 @@ function searchTable() { //searches in all column
 
     });
     function del_emp(id) {
-                if(confirm("Are you sure do you want to delete this account?")){
+        Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
                     $.ajax({
                     type: 'POST',
-                    url: '../backend/del_employee.php',
+                    url: '../backend/del_teach.php',
                     data: {
                         user_id: id
                     },
                     success: function(response) {
-                        alert("Deleted Successfully");
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "The account has been deleted.",
+                            icon: "success",
+                            confirmButtonText: "OK",
+
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                } 
+                            });
                         console.log(response);
-                        location.reload();
+                   
 
                         
                             $.ajax({
@@ -330,8 +351,8 @@ function searchTable() { //searches in all column
                             url: '../backend/log_audit.php',
                             data: {
                             userId: eID,
-                            action: 'Admin deleted employee account',
-                            details: 'Admin deleted employee account'
+                            action: 'Admin deleted teacher account',
+                            details: 'Admin deleted teacher account'
                             },
                             success: function(response) {
                             // Handle the response if needed
@@ -342,32 +363,36 @@ function searchTable() { //searches in all column
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.error("AJAX Error: " + textStatus, errorThrown);
                         alert("An error occurred during the deletion. Please try again.");
+                        Swal.fire({
+                            title: "Oops...",
+                            text: "An error occurred during the deletion. Please try again..",
+                            icon: "error"
+                        });
                     }
                 });
-                }
-                else{
-                    
-                }
+
+    }
+  });
 
             }
 
-        function view_student(stud_id) {
-            // alert(stud_id);
+        // function view_student(stud_id) {
+        //     // alert(stud_id);
 
-            // Send stud_id to the server using an AJAX request
-            $.ajax({
-                type: 'POST', // You can use POST to send data securely
-                url: '../backend/session_employee.php', // PHP script that sets the session variable
-                data: {
-                    user_id: stud_id
-                },
-                success: function(response) {
-                    // Handle the response from the server, if needed
-                    console.log(response);
-                    window.location.href = 'editemployee.php';
-                }
-            });
-        }
+        //     // Send stud_id to the server using an AJAX request
+        //     $.ajax({
+        //         type: 'POST', // You can use POST to send data securely
+        //         url: '../backend/session_teach.php', // PHP script that sets the session variable
+        //         data: {
+        //             user_id: stud_id
+        //         },
+        //         success: function(response) {
+        //             // Handle the response from the server, if needed
+        //             console.log(response);
+        //             window.location.href = 'editteach.php';
+        //         }
+        //     });
+        // }
 
 
         // export to excel

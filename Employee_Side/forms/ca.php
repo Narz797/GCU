@@ -6,10 +6,22 @@ include '../../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
-    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
-    exit; // Make sure to exit the script after a header redirect
-  }
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'You already logged out',
+                text: 'Please tlogin again'
+            }).then(function () {
+                window.location.href = 'http://localhost/GCU/home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
 
   
   $id = $_SESSION['stud_id'];
@@ -182,6 +194,7 @@ include '../../backend/log_audit2.php';
 
     <!-- Script     -->
 <script src="../assets/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     var tid;
     var sid;
@@ -453,6 +466,11 @@ function status_update(status){
   },
   success: function (data) {
     console.log("Remarked:", data);
+    Swal.fire({
+              icon: "success",
+              title: "transation remarked",
+              timer: 1500
+            });
     window.location.href = "../subpage/ca_page.php";
     $.ajax({
                     type: 'POST',
@@ -470,7 +488,12 @@ function status_update(status){
   },
   error: function (xhr, status, error) {
     console.error("Error marking event as done:", error);
-    alert("Error marking event as done: " + error);
+    Swal.fire({
+              icon: "error",
+              title: "Something went wrong",
+              text: "Please try again",
+              timer: 1500
+            });
   },
 });
 }

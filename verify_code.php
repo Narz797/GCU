@@ -9,7 +9,7 @@ echo "<script>console.log($randomNumber)</script>";
 <head>
   <title>Forgot Password</title>
   <link href="assets/css/forgot_password_style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
   <style>
@@ -122,22 +122,35 @@ function validateInput(input) {
 <script>
     function resend(){
           // Show loading spinner
-    $("#loading-spinner").show();
+          Swal.fire({
+                title: 'Sending Email',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+            });
         $.ajax({
       type: 'POST',
       url: 'backend/resend.php',
       success: function(data) {
                 // Hide loading spinner on success
-                $("#loading-spinner").hide();
+                swal.close();
 
                 Swal.fire({
               icon: "sucess",
               title: "Code Sent!",
               text: "Go to your email to retrieve the code",
+              confirmButtonText: "OK",
 
-            });
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  window.location.reload();
+                } 
+              });
         console.log(data)
-        window.location.reload();
+  
 
      
         // add location to enter code
@@ -163,12 +176,30 @@ function validateInput(input) {
                   Swal.fire({
               icon: "sucess",
               title: "Code verified",
+              confirmButtonText: "OK",
 
-            });
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  window.location.href = "update_pass.php";
+                } 
+              });
         console.log(data)
-        window.location.href = "update_pass.php";
+       
         } else {
-          alert('Error, Invalid Code', data);
+          // alert('Error, Invalid Code', data);
+          Swal.fire({
+              icon: "error",
+              title: "Invalid Code",
+              text:"please try again",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+          
+                } 
+              });
           console.log(data);
         }
      

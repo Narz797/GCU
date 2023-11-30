@@ -1,3 +1,5 @@
+
+
 var appID;
 $(document).ready(function () {
   const calendar = document.querySelector(".calendar"),
@@ -207,7 +209,12 @@ function gotoDate() {
       return;
     }
   }
-  alert("Invalid Date");
+  // alert("Invalid Date");
+  Swal.fire({
+    icon: "error",
+    title: "Invalid Date",
+    text: "Please try again",
+  });
 }
 
 //function get active day day name and date and update eventday eventdate
@@ -233,7 +240,12 @@ function getAvailability(year, month, date) {
     success: function (data) {
       console.log("get_availability data:", data);
       if (data === "Already Added!") {
-        alert("data");
+        // alert("data");
+        Swal.fire({
+          icon: "error",
+          title: "Date alreday added",
+          text: "Please add another",
+        });
         
     } else {
       //console.log("Raw data received from get_availability.php:", data);
@@ -402,7 +414,16 @@ eventsContainer.addEventListener("click", function (e) {
     // Construct the message to display
     // const eventData = `Event: ${eventTitle}\nCounselor: ${counselor}\nTime: ${eventTime}\nAppointment ID: ${appointmentId}`;
     console.log(appointmentId);
-    if (window.confirm("Do you want to delete?")) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
    
       $.ajax({
         type: "POST",
@@ -424,11 +445,17 @@ eventsContainer.addEventListener("click", function (e) {
         error: function (xhr, status, error) {
           // Handle the error case, e.g., show an error message to the user.
           console.error("Error deleting event:", error);
-          alert("Error deleting event: " + error);
+          // alert("Error deleting event: " + error);
         },
       });
 
-  }
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success"
+      });
+    }
+  });
     // Display the event data in an alert
     
 
@@ -502,7 +529,10 @@ addEventSubmit.addEventListener("click", () => {
     },
     success: function (data) {
       // You can handle the response from the PHP script here, e.g., displaying a success message.
-      alert(data);
+      Swal.fire({
+        icon: "success",
+        title: "Date added successfully"
+      });
       // Clear the input fields and refresh events to fetch the new data.
       addEventFrom.value = "";
       addEventTo.value = "";

@@ -6,10 +6,22 @@ include '../../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
-    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
-    exit; // Make sure to exit the script after a header redirect
-  }
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'You already logged out',
+                text: 'Please tlogin again'
+            }).then(function () {
+                window.location.href = 'http://localhost/GCU/home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
 // Retrieve stud_id from the session
 $id = $_SESSION['session_id'];
 
@@ -475,7 +487,7 @@ $student = $_SESSION['stud_user_id'];
 
 // echo "<script>alert('$student_transacts')</script>";
 ?>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Script -->
     <script>
 
@@ -580,6 +592,10 @@ function openModal2(id) {
             remark: textareaValue2
           },
           success: function (data) {
+            Swal.fire({
+              icon: "success",
+              title: "appointment remarked"
+            });
             $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
@@ -597,7 +613,12 @@ function openModal2(id) {
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
-            alert("Error marking event as done: " + error);
+            // alert("Error marking event as done: " + error);
+            Swal.fire({
+              icon: "error",
+              title: "Error remarking appointment",
+              text: "Please try again",
+            });
           },
         });
         
@@ -615,6 +636,10 @@ function openModal2(id) {
             remark: textareaValue
           },
           success: function (data) {
+            Swal.fire({
+              icon: "success",
+              title: "transation remarked"
+            });
             $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
@@ -632,7 +657,11 @@ function openModal2(id) {
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
-            alert("Error marking event as done: " + error);
+            Swal.fire({
+              icon: "error",
+              title: "Error remarking transation",
+              text: "Please try again",
+            });
           },
         });
         }

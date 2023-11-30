@@ -97,7 +97,7 @@ echo "<script>console.log($randomNumber)</script>";
     </form>
   </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function togglePasswordVisibility(inputId) {
         var passwordInput = document.getElementById(inputId);
@@ -127,11 +127,19 @@ echo "<script>console.log($randomNumber)</script>";
       success: function(data) {
         
         if (data === "Password Reset") {
-            alert("Password Changed")
+          Swal.fire({
+              icon: "success",
+              title: "Password changed",
+              timer: 1500
+            });
           window.location.href = "home?logout=true";
           
         } else {
-          alert('Error:', data);
+          Swal.fire({
+              icon: "error",
+              title: "Please try again",
+              timer: 1500
+            });
           console.log(data);
         }
      
@@ -139,7 +147,11 @@ echo "<script>console.log($randomNumber)</script>";
       },
                   error: function (xhr, status, error) {
                     console.error("Error:", error);
-                    alert("Error: " + error);
+                    Swal.fire({
+              icon: "error",
+              title: "Please try again",
+              timer: 1500
+            });
                   },
     });
   });
