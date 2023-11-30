@@ -87,7 +87,7 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
                         <a href="main.php" class="list-link current">Home</a>
                     </li>
                     <li class="list-item hov">
-                    <a href="teacherprofiles.php" class="list-link current1">Teacher Profiles</a>
+                    <a href="teacherprofiles.php" class="list-link current1">Teacher Accounts</a>
                     </li>
                     <li class="list-item hov">
                         <a href="EmployeeProfiles.php" class="list-link current1">Employee Profiles</a>
@@ -128,7 +128,7 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
         <div class="block">
         </div>
         <div class="title independent-title">
-            <h2>Student Profiles</h2>
+            <h2>Student Accounts</h2>
         </div>
         <!-- Section -->
         <div class="container">

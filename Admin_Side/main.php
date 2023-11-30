@@ -123,13 +123,13 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
                         <i class="ri-folder-line"></i>Log Report
                     </a>
                     <a href="studentprofile.php" class="card-body-link">
-                        <i class="ri-server-line"></i>Student Profiles
+                        <i class="ri-server-line"></i>Student Accounts
                     </a>
                     <a href="EmployeeProfiles.php" class="card-body-link">
                         <i class="ri-server-line"></i>Employee Profiles
                     </a>
                     <a href="teacherprofiles.php" class="card-body-link">
-                        <i class="ri-server-line"></i>Teacher Profiles
+                        <i class="ri-server-line"></i>Teacher Accounts
                     </a>
                     <a href="exportimport.php" class="card-body-link">
                         <i class="ri-server-line"></i>Export/Import of Database

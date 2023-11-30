@@ -135,15 +135,15 @@ $_SESSION['transact_type'] = 'referral';
           <input type="number" id="Sid" name="Sid" required onblur="search()">
         </div>
         <div class="form">
-          <label for="fname">First Name:</label>
+          <label for="fname">Student's First Name:</label>
           <input type="text"  id="fname" name="fname" required>
         </div>
         <div class="form">
-          <label for="mname">Middle Name:</label>
+          <label for="mname">Student's Middle Name:</label>
           <input type="text" id="mname" name="mname" required>
         </div>
         <div class="form">
-          <label for="lname">Last Name:</label>
+          <label for="lname">Student's Last Name:</label>
           <input type="text" id="lname" name="lname" required>
         </div>
         <div class="form">
@@ -151,7 +151,7 @@ $_SESSION['transact_type'] = 'referral';
           <input type="text" id="yl" name="yl" required>
         </div>
         <div class="form">
-          <label for="contact">Contact Number:</label>
+          <label for="contact">Student's Contact Number:</label>
           <input type="text" id="contact" name="contact" >
         </div>
         </div>

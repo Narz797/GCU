@@ -69,10 +69,10 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
                         <a href="main.php" class="list-link current">Home</a>
                     </li>
                     <li class="list-item hov">
-                        <a href="studentprofile.php" class="list-link current1">Student Profiles</a>
+                        <a href="studentprofile.php" class="list-link current1">Student Accounts</a>
                     </li>
                     <li class="list-item hov">
-                    <a href="teacherprofiles.php" class="list-link current1">Teacher Profiles</a>
+                    <a href="teacherprofiles.php" class="list-link current1">Teacher Accounts</a>
                     </li>
                     <li class="list-item hov">
                         <a href="logreport.php" class="list-link current1">Log Report</a>

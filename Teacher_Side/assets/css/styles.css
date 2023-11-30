@@ -325,7 +325,7 @@ body{
   margin: 25px 0;
   font-size: 15px;
   min-width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
   border-radius: 5px 5px 0 0;
 }
 table thead tr{
@@ -605,4 +605,15 @@ table.dataTable tbody tr:nth-of-type(odd) {
   padding: 10px;
   display: inherit;
       font-size: 14px;
-  }}
+  }
+
+  .form label{
+    padding: 10px;
+}
+.form{
+text-align: center;
+}
+.form1{
+text-align: center;}
+
+}

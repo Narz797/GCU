@@ -62,15 +62,46 @@
 
         /* Media Query for Responsive Design */
         @media only screen and (max-width: 600px) {
-            nav a {
-                display: block;
-                margin: 1em 0;
-            }
+   
 
-            main {
-                padding: 1em;
-            }
-        }
+   main {
+       padding: 1em;
+   }
+
+   .column {
+       width: 100%;
+   }
+
+   .row {
+       font-size: 10px;
+       display: flex;
+   }
+   section {
+       margin-bottom: 1em;
+   }
+   h2 {
+       font-size: 1.5em;
+   }
+   .banner-container img {
+       width: 15%;
+   }
+   .banner-text h5 {
+       font-size: 2vw;
+   }
+   .banner-text h2 {
+       font-size: 3vw;
+   }
+   .banner-text h1 {
+       font-size: 4vw;
+   }
+   .users .card {
+       width: 100%;
+       margin: 10px 0;
+   }
+   .slip {
+       width: 100%;
+   }
+}
 
         .logout {
   background-color: #4CAF50; /* Green background color */
@@ -131,8 +162,8 @@
         <a href="#getting-started">Getting Started</a>
         <a href="#account">Account</a>
         <a href="#troubleshooting">Troubleshooting</a> -->
-        <!-- <a href="#contact">Contact Us</a>
-        <a  href="Student_Side/student-home" class="logout">Logout</a> -->
+        <!-- <a href="#contact">Contact Us</a> -->
+        <a  href="Teacher_Side/index.php" class="logout">Back</a>
     </nav>
 
     <div class="row">
