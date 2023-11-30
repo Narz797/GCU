@@ -18,10 +18,12 @@ $_SESSION['transact_type'] = 'referral';
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome, Teacher/s</title>
     
     <!-- Your Custom CSS -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css"/>
     <!-- Bootstrap CSS and JS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -52,7 +54,7 @@ $_SESSION['transact_type'] = 'referral';
     <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <!-- <a href="./index.php" ><img src="bsu.png" alt=""></a> -->
+            <img src="bsu.png" alt="">
         </div>
         <div class="align-right">
             <button class="icon-btn place-items-center" onclick="logout()" value="logout">
@@ -133,15 +135,15 @@ $_SESSION['transact_type'] = 'referral';
           <input type="number" id="Sid" name="Sid" required onblur="search()">
         </div>
         <div class="form">
-          <label for="fname">Student's First Name:</label>
+          <label for="fname">First Name:</label>
           <input type="text"  id="fname" name="fname" required>
         </div>
         <div class="form">
-          <label for="mname">Student's Middle Name:</label>
+          <label for="mname">Middle Name:</label>
           <input type="text" id="mname" name="mname" required>
         </div>
         <div class="form">
-          <label for="lname">Student's Last Name:</label>
+          <label for="lname">Last Name:</label>
           <input type="text" id="lname" name="lname" required>
         </div>
         <div class="form">
@@ -149,7 +151,7 @@ $_SESSION['transact_type'] = 'referral';
           <input type="text" id="yl" name="yl" required>
         </div>
         <div class="form">
-          <label for="contact">Student's Contact Number:</label>
+          <label for="contact">Contact Number:</label>
           <input type="text" id="contact" name="contact" >
         </div>
         </div>

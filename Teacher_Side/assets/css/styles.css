@@ -1,4 +1,4 @@
-@media screen and (min-width: 767px) {
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 *{
@@ -533,40 +533,76 @@ table.dataTable tbody tr:nth-of-type(odd) {
     color: white;
   }
     footer{
-      background-color: black;
+      background-color: rgb(0, 0, 0);
       color: white;
       padding: 10px;
     }
-}
-
-/* Add this inside the existing media query for smaller screens */
 
 @media screen and (max-width: 768px) {
-  body {
-    font-size: 14px; /* Adjust the font size for smaller screens */
+  .logo img {
+      margin: 10px 0;
   }
 
-  .container {
-    flex-direction: column; /* Stack elements vertically on smaller screens */
+  .icon-btn {
+      margin-top: 10px;
+      margin-left: 10px; 
   }
-
-  .main {
-    padding: 10px; /* Adjust padding for smaller screens */
-  }
-
-  .users {
-    
-    flex-direction: column; 
-  }
-
-  .users .card,
-  .users .slip {
-    width: 100%; /* Make the card and slip take full width on smaller screens */
-    margin: 10px 0; /* Adjust margin for smaller screens */
-  }
-
-  .attendance-list {
-    width: 100%; /* Make the attendance list take full width on smaller screens */
-    margin-top: 10px; /* Adjust margin for smaller screens */
-  }
+  .banner-container img {
+  width: 20%;
 }
+
+  .banner-text h5 {
+  font-size: 3vw;
+}
+
+  .banner-text h2 {
+  font-size: 3vw;
+}
+
+  .banner-text h1 {
+  font-size: 4vw;
+}
+
+.users {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .users .card {
+      width: 80%; 
+      margin: 20px 0;
+  }
+.slip,
+.delete,.flex {
+  text-align: center;
+  width: 100%;
+}
+.overlay {
+      padding: 10px; /* Adjusted padding for smaller screens */
+  }
+
+  .wrapper {
+
+      max-height: 80vh; /* Set a maximum height for the pop-up */
+      overflow-y: auto; /* Enable vertical scrolling */
+      width: 90%; /* Adjusted width for smaller screens */
+  }
+
+  .popup2 {
+      padding: 15px; /* Adjusted padding for smaller screens */
+  }
+
+  .fields .input-field,
+  .fields .input-field1,
+  .fields .input-field2 {
+      width: 100%; /* Set input fields to full width for smaller screens */
+  }
+
+  .wrapper button {
+      width: 100%; /* Set button to full width for smaller screens */
+  }
+.table {
+  padding: 10px;
+  display: inherit;
+      font-size: 14px;
+  }}
