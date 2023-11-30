@@ -46,9 +46,9 @@ if (isset($_POST['middlename'])) {
 if (isset($_POST['cn'])) {
     $_SESSION['cn'] = $_POST['cn'];
 }
-if (isset($_POST['email'])){
-    $_SESSION['email'] = $_POST['email'];
-}
+// if (isset($_POST['email'])){
+//     $_SESSION['email'] = $_POST['email'];
+// }
 if (isset($_POST['year_enroll'])) {
     $_SESSION['year_enroll'] = $_POST['year_enroll'];
 }

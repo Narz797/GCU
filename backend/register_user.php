@@ -23,6 +23,7 @@ if (isset($_SESSION['origin'])) {
         // }
 
         //register for student in here
+        
         if (isset($_POST['membership'])) {
             $_SESSION['membership'] = $_POST['membership'];
         }
@@ -88,6 +89,9 @@ if (isset($_SESSION['origin'])) {
         }
         if (isset($_POST['eu'])) {
             $_SESSION['eu'] = $_POST['eu'];
+        }
+        if (isset($_POST['email'])){
+            $_SESSION['email'] = $_POST['email'];
         }
         if (isset($_POST['pass'])) {
             $_SESSION['pass'] = $_POST['pass'];

@@ -67,11 +67,18 @@ if (isset($_SESSION['origin'])) {
         
                 if ($stmt2->rowCount() === 1) {
                     $row = $stmt2->fetch(PDO::FETCH_ASSOC);
+                    $storedHashedPassword = $row['pass'];
                     $user_id = $row['admin_id']; // Retrieve user_id
-        
+                                    // Verify the password
+                if (password_verify($password, $storedHashedPassword)) {
                     // No password verification for admin
                     $_SESSION['session_id'] = $user_id;
                     echo "success_admin";
+                } else {
+                    // Password is incorrect
+                    echo "Invalid username or password.";
+                }
+
                 } else {
                     echo "Invalid username or password.";
                 }
