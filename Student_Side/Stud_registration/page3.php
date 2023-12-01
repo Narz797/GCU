@@ -1033,18 +1033,32 @@ console.log("Email", $("#email").val())
         //   alert("This Email is already registered")
         Swal.fire({
               icon: "error",
-              title: "This Email is already registered",
-              text: "Please use another",
-            });
+              title: "Oops...",
+              text: "This Email in already registered, please use a different email",
+              confirmButtonText: "OK",
+
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      
+                    } 
+                  });
           console.log(data);
           
         } else {
         //   alert("The verification code has sent to your email.")
         Swal.fire({
-              icon: "success",
-              title: "Code Sent",
-              text: "Please Check your email",
-            });
+              icon: "sucess",
+              title: "Code Sent!",
+              text: "Go to your email to retrieve the code",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                
+                } 
+              });
         console.log("Success",data)
 
                 // verify();
@@ -1084,9 +1098,13 @@ console.log("Email", $("#email").val())
                         console.log("code received", data);
                         if (data === "Code Verified") {
                             Swal.fire({
-                                icon: "success",
-                                title: "Code Verified"
-                            });
+                                icon: "sucess",
+                                title: "Code verified",
+                                confirmButtonText: "OK",
+
+                                }).then((result) => {
+                                    /* Read more about isConfirmed, isDenied below */
+                                    if (result.isConfirmed) {
                             console.log("verified", data);
 
                             // code to fully register
@@ -1095,12 +1113,22 @@ console.log("Email", $("#email").val())
                             $("#registrationForm").submit();
                             console.log("After form submission");
                             // --------------------------------------
+
+                        } 
+                                });
                         } else {
                             Swal.fire({
-                                icon: "error",
-                                title: "Invalid Code",
-                                text: "Please try again",
-                            });
+              icon: "error",
+              title: "Invalid Code",
+              text:"please try again",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+          
+                } 
+              });
                             console.log(data);
                         }
 

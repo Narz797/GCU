@@ -332,8 +332,8 @@ label, span {
         url: '../../backend/create_transaction.php',
         data: {
           semester: $("#semester").val(),
-          start_year: $("#start_year").val(),
-          end_year: $("#end_year").val(),
+          start_year: $("#datepicker").val(),
+          end_year: $("#datepicker2").val(),
           reason_leave: $("#reason_leave").val(),
           do_leave: $("#do_leave").val()
         },

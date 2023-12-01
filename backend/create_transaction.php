@@ -9,11 +9,14 @@ $status = 'pending';
 if ($transact == 'readmission') {
     $reason = $_POST['reason'];
     $motivation = $_POST['motivation'];
+    $sem = $_POST['sem'];
+    $frm = $_POST['frm'];
+    $to = $_POST['to'];
     $datetime = new DateTime();
     $dateCreated = $datetime->format('Y-m-d'); // Convert DateTime to a string in MySQL DATETIME format
 
     $sql_1 = "INSERT INTO transact(student_id, transact_type, date_created, status) VALUES (:student_id, :transact_type, :date_created, :status)";
-    $sql_2 = 'INSERT INTO readmission(`transact_id`, `motivation`, `reason`) VALUES (:transact_id, :motivation, :reason)';
+    $sql_2 = 'INSERT INTO readmission(`transact_id`, `motivation`, `reason`, `sem`, `sem_from`, `sem_to`) VALUES (:transact_id, :motivation, :reason, :sem, :frm, :to)';
     try {
         $code = $pdo->prepare($sql_1);
         $code->bindParam(':student_id', $id);
@@ -28,6 +31,9 @@ if ($transact == 'readmission') {
         $code->bindParam(':transact_id',$transact_id);
         $code->bindParam(':motivation', $reason);
         $code->bindParam(':reason',$motivation);
+        $code->bindParam(':sem',$sem);
+        $code->bindParam(':frm',$frm);
+        $code->bindParam(':to',$to);
         $code->execute();
 
         echo "Data inserted successfully";

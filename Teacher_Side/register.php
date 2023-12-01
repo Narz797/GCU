@@ -245,7 +245,14 @@ button:hover {
         function add_remarks(){
             document.getElementById("modal").style.display = "block";
                 // Show loading spinner
-    $("#loading-spinner").show();
+                Swal.fire({
+                title: 'Sending Email',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+            });
     
     console.log("performing ajax");
     $.ajax({
@@ -256,14 +263,36 @@ button:hover {
       },
       success: function(data) {
         // Hide loading spinner on success
-        $("#loading-spinner").hide();
+        swal.close();
         if (data === "unregistered") {
-          alert("This Email is already registered")
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "This Email in already registered, please use a different email",
+              confirmButtonText: "OK",
+
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      
+                    } 
+                  });
           console.log(data);
           
         } else {
-          alert("The verification code has sent to your email.")
-        console.log("Success",data)
+            Swal.fire({
+              icon: "sucess",
+              title: "Code Sent!",
+              text: "Go to your email to retrieve the code",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                
+                } 
+              });
+              console.log("Success",data)
 
                 // verify();
 
@@ -279,7 +308,7 @@ button:hover {
         console.error("Error:", error);
         alert("Error: " + error);
 
-        $("#loading-spinner").hide();
+        swal.close();
       },
     });
        
@@ -301,7 +330,16 @@ button:hover {
                     success: function(data) {
                         console.log("code recieved", data)
                         if (data === "Code Verified") {
-                        alert("Code Verified")
+                            Swal.fire({
+                                icon: "sucess",
+                                title: "Code verified",
+                                confirmButtonText: "OK",
+
+                                }).then((result) => {
+                                    /* Read more about isConfirmed, isDenied below */
+                                    if (result.isConfirmed) {
+                                
+                           
                         console.log("verified",data)
                         
                             
@@ -328,8 +366,22 @@ button:hover {
                                                     }
                                                 });
                                     // --------------------------------------
+
+                                } 
+                                });
                         } else {
-                        alert('Error, Invalid Code, please try again', data);
+                            Swal.fire({
+              icon: "error",
+              title: "Invalid Code",
+              text:"please try again",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+          
+                } 
+              });
                         console.log(data);
                         }
                     

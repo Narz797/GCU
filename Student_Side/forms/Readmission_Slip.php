@@ -10,8 +10,8 @@ include '../../backend/log_audit2.php';
     exit; // Make sure to exit the script after a header redirect
   }
 // include 'formstyle.php';
-$_SESSION['transact_type']='leave_of_absence';//asign value to transact_type 
-logAudit($_SESSION['session_id'], 'access_leave_of_absence form', $_SESSION['session_id'] .' has accessed the leave_of_absence page');
+$_SESSION['transact_type']='readmission';//asign value to transact_type 
+logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_id'] .' has accessed the readmission page');
 ?>
 <html>
 <head>
@@ -294,7 +294,7 @@ label, span {
           <div class="button">
             <p>
               <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-              <button type="submit" class="btn btn-primary" is = "submit">Submit</button>
+              <button type="submit" class="btn btn-primary" onclick="submitForm()">Submit</button>
             </p>
           </div>
         </div>
@@ -337,6 +337,9 @@ label, span {
             data: {
               reason: $("#reason_stop").val(),
               motivation: $("#motivation_enroll").val(),
+              sem: $("#semester").val(),
+              frm:$("#datepicker").val(),
+              to:$("#datepicker2").val()
             },
             success: function (data) {
               swal({

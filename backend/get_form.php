@@ -64,8 +64,9 @@ echo json_encode($data);
     student_user.Contact_number,
     readmission.motivation,
     readmission.reason,
-    readmission.attachment,
-    readmission.document,
+    readmission.sem,
+    readmission.sem_from,
+    readmission.sem_to,
     CASE
         WHEN guardian.contact IS NOT NULL AND guardian.contact > 0 THEN guardian.fname
         ELSE mother.fname
@@ -92,10 +93,7 @@ LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
  // Assuming your blob columns are named "image1_data" and "image2_data"
-foreach ($data as &$row) {
-    $row['attachment'] = base64_encode($row['attachment']);
-    $row['document'] = base64_encode($row['document']);
-}
+
 
 
 
