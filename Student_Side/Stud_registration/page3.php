@@ -844,7 +844,7 @@ $_SESSION['origin'] = 'Student';
                                             <label for="contactChoice5">Parents are separated (one or both have other partners)</label>
                                         </div>
                                         <div class="radio-item">
-                                            <input type="radio" id="contactChoice6" name="maritalStatus" value="widowWidower" />
+                                            <input type="radio" id="contactChoice6" name="maritalStatus" value="widow" />
                                             <label for="contactChoice6">Widow/widower</label>
                                         </div>
                                     </div>

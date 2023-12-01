@@ -2,238 +2,756 @@
 session_start(); // Ensure the session is started
 
 include '../backend/connect_database.php';
+if (isset($_POST['id']) && isset($_POST['lname'])) {
 
-if (isset($_POST['membership'])) {
-    $_SESSION['membership'] = $_POST['membership'];
+    $studID = $_POST['id'];
+    $lname = $_POST['lname'];
+
+    $sql = "UPDATE student_user SET 
+last_name = :last_name
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':last_name', $lname, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['indigenousInfo'])) {
-    $_SESSION['indigenousInfo'] = $_POST['indigenousInfo'];
+if (isset($_POST['id']) && isset($_POST['fname'])) {
+
+    $studID = $_POST['id'];
+    $fname = $_POST['fname'];
+
+    $sql = "UPDATE student_user SET 
+first_name = :first_name
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':first_name', $fname, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['pwd'])) {
-    $_SESSION['pwd'] = $_POST['pwd'];
+if (isset($_POST['id']) && isset($_POST['mname'])) {
+
+    $studID = $_POST['id'];
+    $mname = $_POST['mname'];
+
+    $sql = "UPDATE student_user SET 
+middle_name = :middle_name
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':middle_name', $mname, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['studpar'])) {
-    $_SESSION['studpar'] = $_POST['studpar'];
+if (isset($_POST['id']) && isset($_POST['course'])) {
+
+    $studID = $_POST['id'];
+    $course = $_POST['course'];
+
+    $sql = "UPDATE student_user SET 
+course = :course
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':course', $course, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['src']) && is_array($_POST['src'])) {
-    $_SESSION['src'] = implode(', ', $_POST['src']);
+if (isset($_POST['id']) && isset($_POST['YL'])) {
+
+    $studID = $_POST['id'];
+    $YL = $_POST['YL'];
+
+    $sql = "UPDATE student_user SET 
+Year_level = :Year_level
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':Year_level', $YL, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['specificScholar'])) {
-    $_SESSION['specificScholar'] = $_POST['specificScholar'];
+if (isset($_POST['id']) && isset($_POST['sec'])) {
+
+    $studID = $_POST['id'];
+    $sec = $_POST['sec'];
+
+    $sql = "UPDATE student_user SET 
+Section = :Section
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':Section', $sec, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['specificOther'])) {
-    $_SESSION['specificOther'] = $_POST['specificOther'];
+if (isset($_POST['id']) && isset($_POST['CN'])) {
+
+    $studID = $_POST['id'];
+    $CN = $_POST['CN'];
+
+    $sql = $sql = "UPDATE student_user SET 
+Contact_number = :Contact_number
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':Contact_number', $CN, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['maritalStatus'])) {
-    $_SESSION['maritalStatus'] = $_POST['maritalStatus'];
+if (isset($_POST['id']) && isset($_POST['CS'])) {
+
+    $studID = $_POST['id'];
+    $CS = $_POST['CS'];
+
+    $sql = "UPDATE student_user SET 
+Civil_status = :Civil_status
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':Civil_status', $CS, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['first'])) {
-    $_SESSION['first'] = $_POST['first'];
+if (isset($_POST['id']) && isset($_POST['bday'])) {
+
+    $studID = $_POST['id'];
+    $bday = $_POST['bday'];
+
+    $sql = "UPDATE student_user SET 
+birth_date = :birth_date
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':birth_date', $bday, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['second'])) {
-    $_SESSION['second'] = $_POST['second'];
+if (isset($_POST['id']) && isset($_POST['bplace'])) {
+
+    $studID = $_POST['id'];
+    $bplace = $_POST['bplace'];
+
+    $sql = "UPDATE student_user SET 
+Birth_place = :Birth_place
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':Birth_place', $bplace, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['third'])) {
-    $_SESSION['third'] = $_POST['third'];
+if (isset($_POST['id']) && isset($_POST['nation'])) {
+
+    $studID = $_POST['id'];
+    $nation = $_POST['nation'];
+
+    $sql = "UPDATE student_user SET 
+Nationality = :Nationality
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':Nationality', $nation, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['Fis'])) {
-    $_SESSION['Fis'] = $_POST['Fis'];
+if (isset($_POST['id']) && isset($_POST['lang'])) {
+
+    $studID = $_POST['id'];
+    $lang = $_POST['lang'];
+
+    $sql = "UPDATE student_user SET 
+Languages_and_dialects = :Languages_and_dialects
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':Languages_and_dialects', $lang, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['Mis'])) {
-    $_SESSION['Mis'] = $_POST['Mis'];
+if (isset($_POST['id']) && isset($_POST['address'])) {
+
+    $studID = $_POST['id'];
+    $address = $_POST['address'];
+
+    $sql = "UPDATE student_user SET 
+`Address` = :Address
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':Address', $address, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['kapatid'])) {
-    $_SESSION['kapatid'] = $_POST['kapatid'];
+if (isset($_POST['id']) && isset($_POST['Flname'])) {
+
+    $studID = $_POST['id'];
+    $Flname = $_POST['Flname'];
+
+    $sql = "UPDATE father SET 
+lname = :lname
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':lname', $Flname, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['kap_res'])) {
-    $_SESSION['kap_res'] = $_POST['kap_res'];
+if (isset($_POST['id']) && isset($_POST['Ffname'])) {
+
+    $studID = $_POST['id'];
+    $Ffname = $_POST['Ffname'];
+
+    $sql = "UPDATE father SET 
+fname = :fname
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':fname', $Ffname, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['abtFam'])) {
-    $_SESSION['abtFam'] = $_POST['abtFam'];
+if (isset($_POST['id']) && isset($_POST['Fmname'])) {
+
+    $studID = $_POST['id'];
+    $Fmname = $_POST['Fmname'];
+
+    $sql = "UPDATE father SET 
+mname = :mname
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':mname', $Fmname, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['whenChild'])) {
-    $_SESSION['whenChild'] = $_POST['whenChild'];
+if (isset($_POST['id']) && isset($_POST['Fage'])) {
+
+    $studID = $_POST['id'];
+    $Fage = $_POST['Fage'];
+
+    $sql = "UPDATE father SET 
+age = :age
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':age', $Fage, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['teachAre'])) {
-    $_SESSION['teachAre'] = $_POST['teachAre'];
+if (isset($_POST['id']) && isset($_POST['Focc'])) {
+
+    $studID = $_POST['id'];
+    $Focc = $_POST['Focc'];
+
+    $sql = "UPDATE father SET 
+occupation = :occupation
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':occupation', $Focc, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['friendsDunno'])) {
-    $_SESSION['friendsDunno'] = $_POST['friendsDunno'];
+if (isset($_POST['id']) && isset($_POST['Fcol'])) {
+
+    $studID = $_POST['id'];
+    $Fcol = $_POST['Fcol'];
+
+    $sql = "UPDATE father SET 
+educ_background = :educ_background
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':educ_background', $Fcol, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['future'])) {
-    $_SESSION['future'] = $_POST['future'];
+if (isset($_POST['id']) && isset($_POST['Fcn'])) {
+
+    $studID = $_POST['id'];
+    $Fcn = $_POST['Fcn'];
+
+    $sql = "UPDATE father SET 
+contact = :contact
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':contact', $Fcn, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['goal'])) {
-    $_SESSION['goal'] = $_POST['goal'];
+if (isset($_POST['id']) && isset($_POST['Mlname'])) {
+
+    $studID = $_POST['id'];
+    $Mlname = $_POST['Mlname'];
+
+    $sql ="UPDATE mother SET 
+lname = :lname
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':lname', $Mlname, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['eu'])) {
-    $_SESSION['eu'] = $_POST['eu'];
+if (isset($_POST['id']) && isset($_POST['Mfname'])) {
+
+    $studID = $_POST['id'];
+    $Mfname = $_POST['Mfname'];
+
+    $sql = "UPDATE mother SET 
+fname = :fname
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':fname', $Mfname, PDO::PARAM_STR);
+    $stmt->execute();
 }
-if (isset($_POST['email'])){
-    $_SESSION['email'] = $_POST['email'];
+if (isset($_POST['id']) && isset($_POST['Mmname'])) {
+
+    $studID = $_POST['id'];
+    $Mmname = $_POST['Mmname'];
+
+    $sql = "UPDATE mother SET 
+mname = :mname
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':mname', $Mmname, PDO::PARAM_STR);
+    $stmt->execute();
 }
-// if (isset($_POST['pass'])) {
-//     $_SESSION['pass'] = $_POST['pass'];
-// }
-if (isset($_POST['conpass'])) {
-    $_SESSION['conpass'] = $_POST['conpass'];
+if (isset($_POST['id']) && isset($_POST['Mage'])) {
+
+    $studID = $_POST['id'];
+    $Mage = $_POST['Mage'];
+
+    $sql = "UPDATE mother SET 
+age = :age
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':age', $Mage, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['Mocc'])) {
+
+    $studID = $_POST['id'];
+    $Mocc = $_POST['Mocc'];
+
+    $sql ="UPDATE mother SET 
+occupation = :occupation
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':occupation', $Mocc, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['Mcol'])) {
+
+    $studID = $_POST['id'];
+    $Mcol = $_POST['Mcol'];
+
+    $sql = "UPDATE mother SET 
+educ_background = :educ_background
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':educ_background', $Mcol, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['Mcn'])) {
+
+    $studID = $_POST['id'];
+    $Mcn = $_POST['Mcn'];
+
+    $sql = "UPDATE mother SET 
+contact = :contact
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':contact', $Mcn, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['Glname'])) {
+
+    $studID = $_POST['id'];
+    $Glname = $_POST['Glname'];
+
+    $sql = "UPDATE guardian SET 
+lname = :lname
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':lname', $Glname, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['Gfname'])) {
+
+    $studID = $_POST['id'];
+    $Gfname = $_POST['Gfname'];
+
+    $sql = "UPDATE guardian SET 
+fname = :fname
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':fname', $Gfname, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['Gmname'])) {
+
+    $studID = $_POST['id'];
+    $Gmname = $_POST['Gmname'];
+
+    $sql = "UPDATE guardian SET 
+mname = :mname
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':mname', $Gmname, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['Gage'])) {
+
+    $studID = $_POST['id'];
+    $Gage = $_POST['Gage'];
+
+    $sql = "UPDATE guardian SET 
+age = :age
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':age', $Gage, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['Gocc'])) {
+
+    $studID = $_POST['id'];
+    $Gocc = $_POST['Gocc'];
+
+    $sql = "UPDATE guardian SET 
+occupation = :occupation
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':occupation', $Gocc, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['Gcol'])) {
+
+    $studID = $_POST['id'];
+    $Gcol = $_POST['Gcol'];
+
+    $sql = "UPDATE guardian SET 
+educ_background = :educ_background
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':educ_background', $Gcol, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['Gcn'])) {
+
+    $studID = $_POST['id'];
+    $Gcn = $_POST['Gcn'];
+
+    $sql = "UPDATE guardian SET 
+contact = :contact
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':contact', $Gcn, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['sen_school'])) {
+
+    $studID = $_POST['id'];
+    $sen_school = $_POST['sen_school'];
+
+    $sql = "UPDATE senior_highschool SET 
+school_name = :school_name
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':school_name', $sen_school, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['sen_school_yg'])) {
+
+    $studID = $_POST['id'];
+    $sen_school_yg = $_POST['sen_school_yg'];
+
+    $sql = "UPDATE senior_highschool SET 
+`year` = :year
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':year', $sen_school_yg, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['sen_school_awards'])) {
+
+    $studID = $_POST['id'];
+    $sen_school_awards = $_POST['sen_school_awards'];
+
+    $sql = "UPDATE senior_highschool SET 
+awards = :awards
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':awards', $sen_school_awards, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['jun_school'])) {
+
+    $studID = $_POST['id'];
+    $jun_school = $_POST['jun_school'];
+
+    $sql = "UPDATE junior_highschool SET 
+school_name = :school_name
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':school_name', $jun_school, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['jun_school_yg'])) {
+
+    $studID = $_POST['id'];
+    $jun_school_yg = $_POST['jun_school_yg'];
+
+    $sql = "UPDATE junior_highschool SET 
+`year` = :year
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':year', $jun_school_yg, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['jun_school_awards'])) {
+
+    $studID = $_POST['id'];
+    $jun_school_awards = $_POST['jun_school_awards'];
+
+    $sql = "UPDATE junior_highschool SET 
+`awards` = :awards
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':awards', $jun_school_awards, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['elem_school'])) {
+
+    $studID = $_POST['id'];
+    $elem_school = $_POST['elem_school'];
+
+    $sql = "UPDATE elementary_school SET 
+`school_name` = :school_name
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':school_name', $elem_school, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['elem_school_yg'])) {
+
+    $studID = $_POST['id'];
+    $elem_school_yg = $_POST['elem_school_yg'];
+
+    $sql = "UPDATE elementary_school SET 
+`year` = :year
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':year', $elem_school_yg, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['elem_school_awards'])) {
+
+    $studID = $_POST['id'];
+    $elem_school_awards = $_POST['elem_school_awards'];
+
+    $sql = "UPDATE elementary_school SET 
+`awards` = :awards
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':awards', $elem_school_awards, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['oth_school'])) {
+
+    $studID = $_POST['id'];
+    $oth_school = $_POST['oth_school'];
+
+    $sql = "UPDATE other_school SET 
+`school_name` = :school_name
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':school_name', $oth_school, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['oth_school_yg'])) {
+
+    $studID = $_POST['id'];
+    $oth_school_yg = $_POST['oth_school_yg'];
+
+    $sql = "UPDATE other_school SET 
+`year` = :year
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':year', $oth_school_yg, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['oth_school_awards'])) {
+
+    $studID = $_POST['id'];
+    $oth_school_awards = $_POST['oth_school_awards'];
+
+    $sql = "UPDATE other_school SET 
+`awards` = :awards
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':awards', $oth_school_awards, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['indige'])) {
+
+    $studID = $_POST['id'];
+    $indige = $_POST['indige'];
+
+    $sql = "UPDATE student_user SET 
+`IG` = :IG
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':IG', $indige, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['pwd'])) {
+
+    $studID = $_POST['id'];
+    $pwd = $_POST['pwd'];
+
+    $sql = "UPDATE student_user SET 
+`PWD` = :PWD
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':PWD', $pwd, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['sp'])) {
+
+    $studID = $_POST['id'];
+    $sp = $_POST['sp'];
+
+    $sql = "UPDATE student_user SET 
+`Student_parent` = :Student_parent
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':Student_parent', $sp, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id'])) {
+
+    if(isset($_POST["#MS_pam"])){
+        $marital_status = $_POST['#MS_pam'];
+    }
+    elseif(isset($_POST["#MS_mla"])){
+        $marital_status = $_POST['#MS_mla'];
+    }
+    elseif(isset($_POST["#MS_notm"])){
+        $marital_status = $_POST['#MS_notm'];
+    }
+    elseif(isset($_POST["#MS_sp"])){
+        $marital_status = $_POST['#MS_sp'];
+    }
+    elseif(isset($_POST["#MS_ps"])){
+        $marital_status = $_POST['#MS_ps'];
+    }
+    elseif(isset($_POST["#MS_wid"])){
+        $marital_status = $_POST['#MS_wid'];
+    }
+    $studID = $_POST['id'];
+
+    $sql = "UPDATE student_user SET 
+`Marital_status_of_parents` = :Marital_status_of_parents
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':Marital_status_of_parents', $marital_status, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['pass'])) {
+
+    $studID = $_POST['id'];
+    $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+
+    $sql = "UPDATE student_user SET 
+`password` = :'password'
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':password', $pass, PDO::PARAM_STR);
+    $stmt->execute();
+}
+if (isset($_POST['id']) && isset($_POST['email'])) {
+
+    $studID = $_POST['id'];
+    $email =$_POST['email'];
+
+    $sql = "UPDATE student_user SET 
+`email` = :email
+WHERE stud_user_id = :stud_user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
 }
 
-
-
-
-
-        // $hashedPassword = password_hash($_SESSION['pass'], PASSWORD_DEFAULT);
-        $sql = "UPDATE `student_user`
-        SET `course` = ?, `Year_level` = ?, `last_name` = ?, `first_name` = ?, `middle_name` = ?,
-            `Contact_number` = ?, `year_enrolled` = ?, `Section` = ?, `Civil_status` = ?, `gender` = ?,
-            `birth_date` = ?, `Birth_place` = ?, `Nationality` = ?, `Languages_and_dialects` = ?,
-            `Address` = ?, `email` = ?, `IG` = ?, `specificIG` = ?, `PWD` = ?, `Student_parent` = ?,
-            `Marital_status_of_parents` = ?, `username` = ?, `password` = ?
-        WHERE `stud_user_id` = ?
-        ";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(1, $_POST['id']);
-        $stmt->bindParam(2, $_SESSION['course']);
-        $stmt->bindParam(3, $_SESSION['year_level']);
-        $stmt->bindParam(4, $_SESSION['lastname']);
-        $stmt->bindParam(5, $_SESSION['firstname']);
-        $stmt->bindParam(6, $_SESSION['middlename']);
-        $stmt->bindParam(7, $_SESSION['cn']);
-        $stmt->bindParam(8, $_SESSION['year_enroll']);
-        $stmt->bindParam(9, $_SESSION['section']);
-        $stmt->bindParam(10, $_SESSION['civil_status']);
-        $stmt->bindParam(11, $_SESSION['gender']);
-        $stmt->bindParam(12, $_SESSION['dob']);
-        $stmt->bindParam(13, $_SESSION['bp']);
-        $stmt->bindParam(14, $_SESSION['nationality']);
-        $stmt->bindParam(15, $_SESSION['lang']);
-        $stmt->bindParam(16, $_SESSION['address']);
-        $stmt->bindParam(17, $_SESSION['email']);
-        $stmt->bindParam(18, $_SESSION['membership']);
-        $stmt->bindParam(19, $_SESSION['indigenousInfo']);
-        $stmt->bindParam(20, $_SESSION['pwd']);
-        $stmt->bindParam(21, $_SESSION['studpar']);
-        $stmt->bindParam(22, $_SESSION['maritalStatus']);
-        $stmt->bindParam(23, $_SESSION['eu']);
-        $stmt->bindParam(24, $hashedPassword);
-
-        $sql1 = "UPDATE elementary_school SET school_name = ?, year = ?, awards = ? WHERE stud_user_id = ?";
-        $stmt1 = $pdo->prepare($sql1);
-        $stmt1->bindParam(1, $_POST['id']);
-        $stmt1->bindParam(2, $_SESSION['elemname']);
-        $stmt1->bindParam(3, $_SESSION['elemyear']);
-        $stmt1->bindParam(4, $_SESSION['elemawards']);
-
-        $sql2 = "UPDATE junior_highschool SET school_name = ?, year = ?, awards = ? WHERE stud_user_id = ?";
-        $stmt2 = $pdo->prepare($sql2);
-        $stmt2->bindParam(1, $_POST['id']);
-        $stmt2->bindParam(2, $_SESSION['junschool']);
-        $stmt2->bindParam(3, $_SESSION['junyear']);
-        $stmt2->bindParam(4, $_SESSION['junawards']);
-
-        $sql3 = "UPDATE senior_highschool SET school_name = ?, year = ?, awards = ? WHERE stud_user_id = ?";
-        $stmt3 = $pdo->prepare($sql3);
-        $stmt3->bindParam(1, $_POST['id']);
-        $stmt3->bindParam(2, $_SESSION['senschool']);
-        $stmt3->bindParam(3, $_SESSION['senyear']);
-        $stmt3->bindParam(4, $_SESSION['senawards']);
-
-        if (isset($_SESSION['othname']) && isset($_SESSION['othyear']) && isset($_SESSION['othawards'])) {
-            $sql6 = "UPDATE other_school SET school_name = ?, year = ?, awards = ? WHERE stud_user_id = ?";
-            $stmt6 = $pdo->prepare($sql6);
-            $stmt6->bindParam(1, $_POST['id']);
-            $stmt6->bindParam(2, $_SESSION['othname']);
-            $stmt6->bindParam(3, $_SESSION['othyear']);
-            $stmt6->bindParam(4, $_SESSION['othawards']);
-
-            $stmt6->execute();
-        }
-
-        // if ($_SESSION['whom'] == 'parents') {
-            $sql4 = "UPDATE father SET fname = ?, mname = ?, lname = ?, age = ?, occupation = ?, educ_background = ?, contact = ? WHERE stud_user_id = ?";
-            $stmt4 = $pdo->prepare($sql4);
-            $stmt4->bindParam(1, $_POST['id']);
-            $stmt4->bindParam(2, $_SESSION['Ffname']);
-            $stmt4->bindParam(3, $_SESSION['Fmname']);
-            $stmt4->bindParam(4, $_SESSION['Flname']);
-            $stmt4->bindParam(5, $_SESSION['Fage']);
-            $stmt4->bindParam(6, $_SESSION['Focc']);
-            $stmt4->bindParam(7, $_SESSION['Fedu']);
-            $stmt4->bindParam(8, $_SESSION['Fcontact']);
-
-            $stmt4->execute();
-
-            $sql5 = "UPDATE mother SET fname = ?, mname = ?, lname = ?, age = ?, occupation = ?, educ_background = ?, contact = ? WHERE stud_user_id = ?";
-            $stmt5 = $pdo->prepare($sql5);
-            $stmt5->bindParam(1, $_POST['id']);
-            $stmt5->bindParam(2, $_SESSION['Mfname']);
-            $stmt5->bindParam(3, $_SESSION['Mmname']);
-            $stmt5->bindParam(4, $_SESSION['Mlname']);
-            $stmt5->bindParam(5, $_SESSION['Mage']);
-            $stmt5->bindParam(6, $_SESSION['Mocc']);
-            $stmt5->bindParam(7, $_SESSION['Medu']);
-            $stmt5->bindParam(8, $_SESSION['Mcontact']);
-
-            $stmt5->execute();
-        // }
-        // if ($_SESSION['whom'] == 'guardian') {
-            $sql8 = "UPDATE guardian SET fname = ?, mname = ?, lname = ?, age = ?, occupation = ?, educ_background = ?, contact = ? WHERE stud_user_id = ?";
-            $stmt8 = $pdo->prepare($sql8);
-            $stmt8->bindParam(1, $_POST['id']);
-            $stmt8->bindParam(2, $_SESSION['Gfname']);
-            $stmt8->bindParam(3, $_SESSION['Gmname']);
-            $stmt8->bindParam(4, $_SESSION['Glname']);
-            $stmt8->bindParam(5, $_SESSION['Gage']);
-            $stmt8->bindParam(6, $_SESSION['Gocc']);
-            $stmt8->bindParam(7, $_SESSION['Gedu']);
-            $stmt8->bindParam(8, $_SESSION['Gcontact']);
-
-            $stmt8->execute();
-        // }
-
-        $sql6 = "UPDATE other_info SET source = ?, specific_scholar = ?, specific_other = ?, first = ?, second = ?, third = ?, Fis = ?, Mis = ?, kapatid = ?, kap_res = ?, abtFam = ?, whenChild = ?, teachAre = ?, friendsDuno = ?, future = ?, goal = ? WHERE stud_user_id = ?";
-        $stmt6 = $pdo->prepare($sql6);
-        $stmt6->bindParam(1, $_POST['id']);
-        $stmt6->bindParam(2, $_SESSION['src']);
-        $stmt6->bindParam(3, $_SESSION['specificScholar']);
-        $stmt6->bindParam(4, $_SESSION['scecificOther']);
-        $stmt6->bindParam(5, $_SESSION['first']);
-        $stmt6->bindParam(6, $_SESSION['second']);
-        $stmt6->bindParam(7, $_SESSION['third']);
-        $stmt6->bindParam(8, $_SESSION['Fis']);
-        $stmt6->bindParam(9, $_SESSION['Mis']);
-        $stmt6->bindParam(10, $_SESSION['kapatid']);
-        $stmt6->bindParam(11, $_SESSION['kap_res']);
-        $stmt6->bindParam(12, $_SESSION['abtFam']);
-        $stmt6->bindParam(13, $_SESSION['whenChild']);
-        $stmt6->bindParam(14, $_SESSION['teachAre']);
-        $stmt6->bindParam(15, $_SESSION['friendsDunno']);
-        $stmt6->bindParam(16, $_SESSION['future']);
-        $stmt6->bindParam(17, $_SESSION['goal']);
-
-        // $sql7 = "INSERT INTO `photos`(`stud_user_id`,`signature`,`sign_type`, `id_picture`, `image_type`) VALUES (?,?,?,?,?)";
-        // $stmt7 = $pdo->prepare($sql7);
-        // $stmt7->bindParam(1, $_POST['id']);
-        // $stmt7->bindParam(2, $signContent, PDO::PARAM_LOB);
-        // $stmt7->bindParam(3, $signType);
-        // $stmt7->bindParam(4, $imageContent, PDO::PARAM_LOB);
-        // $stmt7->bindParam(5, $imageType);
-
-        // $stmt7->execute();
-
-        if ($stmt->execute() && $stmt1->execute() && $stmt2->execute() && $stmt3->execute() && $stmt6->execute()) {
-            echo '<script>';
-            echo "alert('Updated Successfully!');";
-            // echo 'window.location.href=" ../Student_Side/student-login";';
-            echo '</script>';
-            exit;
-        } else {
-            echo '<script>';
-            echo "alert('Update Failed!');";
-            // echo 'window.location.href=" ../Student_Side/Stud_registration/page1.php";';
-            echo '</script>';
-            exit;
-        }
+echo '<script>';
+echo "alert('Updated Successfully!');";
+// echo 'window.location.href=" ../Student_Side/student-login";';
+echo '</script>';
+exit;
 
 ?>
