@@ -338,6 +338,7 @@ label, span {
   <script>
         var sID = "<?php echo $_SESSION['session_id'];?>";
       function submitForm() {
+        event.preventDefault();
         // Check if the form is filled before submitting
         if ($('#reason_stop').val() === '' || $('#motivation_enroll').val() === '') {
           alert('Please fill out all fields before submitting.');

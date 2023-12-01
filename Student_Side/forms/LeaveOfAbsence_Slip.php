@@ -337,6 +337,7 @@ label, span {
   <script>
      var sID = "<?php echo $_SESSION['session_id'];?>";
     $("#form_transact").on("submit", function (event) {
+      event.preventDefault();
       Swal.fire({
       title: "Are you sure?",
       text: "Do you wish to proceed?",
@@ -344,10 +345,10 @@ label, span {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes"
     }).then((result) => {
       if (result.isConfirmed) {
-      event.preventDefault();
+   
       $.ajax({
         type: 'POST',
         url: '../../backend/create_transaction.php',
@@ -385,7 +386,11 @@ label, span {
               console.log("logged", response);
             }
           });
-          alert("Request Sent");
+          Swal.fire({
+  title: "Request Sent!",
+  // text: "You clicked the button!",
+  icon: "success"
+});
         }
       });
     }

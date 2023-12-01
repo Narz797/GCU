@@ -410,7 +410,7 @@ $("#form_transact").on("submit", function (event) {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes"
     }).then((result) => {
       if (result.isConfirmed) {
   $.ajax({
@@ -445,8 +445,7 @@ $("#form_transact").on("submit", function (event) {
   });
 });
    
-  </script>
-  <script>
+
      // autcomplete
      function showSuggestions(inputId, suggestionContainerId) {
     var input = document.getElementById(inputId);
