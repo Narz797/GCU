@@ -136,6 +136,8 @@ include '../../backend/log_audit2.php';
             <div class="card border one">
                 <div class="main-box">
                   <div>
+                  <p class="title1"> Semester & School Year Intended to Come Back: <u>Semester <span id="sem" style="display: inline;"> </span></u>, <u>School Year <span id="start" style="display: inline;"></span>-<span id="end" style="display: inline;"></span></u> </p>
+                    <hr>
                     <h2 class="titleread"> Reason/s for stopping:</h2>
                 </div>
                 <div class="box">
@@ -256,7 +258,7 @@ function archive() {
     window.location.href = '../subpage/archive.php';
         }
         // Function to update the HTML elements
-        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, motiv, reason) {
+        function updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, motiv, reason, sem, frm, to) {
 
         $('#id_no').text(id);
         $('#name').text(fname+ ' '+ lname);
@@ -267,6 +269,9 @@ function archive() {
         $('#pgn').text(pgn);
         $('#reason').text(reason);
         $('#motiv').text(motiv);
+        $('#sem').text(sem);
+        $('#start').text(frm);
+        $('#end').text(to);
 
         }
         function fetchData() {
@@ -294,9 +299,12 @@ function archive() {
             var relation = studentData.Relation;
             var motiv = studentData.motivation;
             var reason = studentData.reason;
+            var sem = studentData.sem;
+            var frm = studentData.sem_from;
+            var to = studentData.sem_to;
 
             console.log(fname);
-            updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, motiv, reason);
+            updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, motiv, reason, sem, frm, to);
 
 
           
