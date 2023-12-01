@@ -315,7 +315,7 @@ select:focus {
 
                 
                 <!-- Create a container to display autocomplete suggestions for the first input -->
-                <div id="autocomplete-suggestions1" class="autocomplete-popup"></div>
+                <!-- <div id="autocomplete-suggestions1" class="autocomplete-popup"></div> -->
             </div>
             <label for="textfield5">to:</label>
             <div class="autocomplete-container">
@@ -360,7 +360,7 @@ select:focus {
 
 
 
-                <div id="autocomplete-suggestions2" class="autocomplete-popup"></div>
+                <!-- <div id="autocomplete-suggestions2" class="autocomplete-popup"></div> -->
             </div>
         </div>
         <div class="button-container">
@@ -400,8 +400,8 @@ $("#form_transact").on("submit", function (event) {
   event.preventDefault();
   var student_id = <?php echo $_SESSION['session_id']?>;
   var transact_type = "withdrawal";
-  var course_frm = dropdown.value === 'Shifting' ? textfield4.value : null;
-  var course_to = dropdown.value === 'Shifting' ? textfield5.value : null;
+  // var course_frm = dropdown.value === 'Shifting' ? courseSelect.value : null;
+  // var course_to = dropdown.value === 'Shifting' ? textfield5.value : null;
  
   Swal.fire({
       title: "Are you sure?",
@@ -420,8 +420,8 @@ $("#form_transact").on("submit", function (event) {
       reason: $('#action').find(":selected").val(),
 
       explain: $("#reason_explain").val(),
-      course_frm: course_frm,
-      course_to: course_to
+      course_frm: $("#courseSelect").val(),
+      course_to: $("#textfield5").val()
     },
     success: function (data) {
       $.ajax({
@@ -446,54 +446,54 @@ $("#form_transact").on("submit", function (event) {
 });
    
 
-     // autcomplete
-     function showSuggestions(inputId, suggestionContainerId) {
-    var input = document.getElementById(inputId);
-    var inputValue = input.value;
-    var suggestionsDiv = document.getElementById(suggestionContainerId);
-    if (inputValue.length === 0) {
-        suggestionsDiv.style.display = "none";
-        return;
-    }
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            var suggestions = JSON.parse(xmlhttp.responseText); // Assuming your suggestions are returned as a JSON array
-            displaySuggestions(suggestions, suggestionsDiv, input);
-        }
-    };
-    xmlhttp.open("GET", "../../backend/autocomplete.php?input=" + inputValue, true);
-    xmlhttp.send();
-}
-function displaySuggestions(suggestions, suggestionsDiv, input) {
-    if (suggestions.length === 0) {
-        suggestionsDiv.style.display = "none";
-        return;
-    }
-    suggestionsDiv.innerHTML = ""; // Clear previous suggestions
-    var ul = document.createElement("ul");
-    suggestions.forEach(function (suggestion) {
-        var li = document.createElement("li");
-        li.textContent = suggestion;
-        li.addEventListener("click", function () {
-            input.value = suggestion; // Fill in the input field with the selected suggestion
-            suggestionsDiv.style.display = "none"; // Hide the suggestions
-        });
-        ul.appendChild(li);
-    });
-    suggestionsDiv.appendChild(ul);
-    suggestionsDiv.style.display = "block"; // Show the suggestions
-}
-// Add an event listener to textfield4
-var textfield4 = document.getElementById('textfield4');
-textfield4.addEventListener('input', function () {
-    this.value = this.value.toUpperCase();
-});
-// Add an event listener to textfield5
-var textfield5 = document.getElementById('textfield5');
-textfield5.addEventListener('input', function () {
-    this.value = this.value.toUpperCase();
-});
+//      // autcomplete
+//      function showSuggestions(inputId, suggestionContainerId) {
+//     var input = document.getElementById(inputId);
+//     var inputValue = input.value;
+//     var suggestionsDiv = document.getElementById(suggestionContainerId);
+//     if (inputValue.length === 0) {
+//         suggestionsDiv.style.display = "none";
+//         return;
+//     }
+//     var xmlhttp = new XMLHttpRequest();
+//     xmlhttp.onreadystatechange = function () {
+//         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+//             var suggestions = JSON.parse(xmlhttp.responseText); // Assuming your suggestions are returned as a JSON array
+//             displaySuggestions(suggestions, suggestionsDiv, input);
+//         }
+//     };
+//     xmlhttp.open("GET", "../../backend/autocomplete.php?input=" + inputValue, true);
+//     xmlhttp.send();
+// }
+// function displaySuggestions(suggestions, suggestionsDiv, input) {
+//     if (suggestions.length === 0) {
+//         suggestionsDiv.style.display = "none";
+//         return;
+//     }
+//     suggestionsDiv.innerHTML = ""; // Clear previous suggestions
+//     var ul = document.createElement("ul");
+//     suggestions.forEach(function (suggestion) {
+//         var li = document.createElement("li");
+//         li.textContent = suggestion;
+//         li.addEventListener("click", function () {
+//             input.value = suggestion; // Fill in the input field with the selected suggestion
+//             suggestionsDiv.style.display = "none"; // Hide the suggestions
+//         });
+//         ul.appendChild(li);
+//     });
+//     suggestionsDiv.appendChild(ul);
+//     suggestionsDiv.style.display = "block"; // Show the suggestions
+// }
+// // Add an event listener to textfield4
+// var textfield4 = document.getElementById('textfield4');
+// textfield4.addEventListener('input', function () {
+//     this.value = this.value.toUpperCase();
+// });
+// // Add an event listener to textfield5
+// var textfield5 = document.getElementById('textfield5');
+// textfield5.addEventListener('input', function () {
+//     this.value = this.value.toUpperCase();
+// });
   </script>
 
 
