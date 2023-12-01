@@ -1164,7 +1164,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
     </script>
 
     
-<script>
+<!-- <script>
 alert
 
           swal({
@@ -1181,7 +1181,7 @@ alert
                 })
     
 
-</script>
+</script> -->
 
 
 </body>
