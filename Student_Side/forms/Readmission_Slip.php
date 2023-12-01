@@ -354,6 +354,8 @@ label, span {
     //   confirmButtonText: "Yes"
     // }).then((result) => {
     //   if (result.isConfirmed) {
+      console.log('from',$("#datepicker").val())
+      console.log('to',$("#datepicker2").val())
       Swal.fire({
       title: "Do you wish to proceed?",
       // text: "Do you wish to proceed?",
