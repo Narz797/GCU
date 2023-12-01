@@ -962,7 +962,7 @@ $("#othyear").datepicker({
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<script>
+<!-- <script>
 alert
 
           swal({
@@ -979,4 +979,4 @@ alert
                 })
     
 
-</script>
+</script> -->

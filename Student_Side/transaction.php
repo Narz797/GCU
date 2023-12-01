@@ -225,7 +225,7 @@ include 'includes/main2.php';
   });
 </script>
 
-<script>
+<!-- <script>
 alert
 
           swal({
@@ -242,5 +242,5 @@ alert
                 })
     
 
-</script>
+</script> -->
 

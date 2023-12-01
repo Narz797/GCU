@@ -2296,7 +2296,7 @@ $siblings = $siblings->fetchAll();
               <div class="d-flex justify-content-between">
               <a href="#" ></a>
                 <!-- <a href="#" class="btn btn-sm btn-info mr-4">Connect</a> -->
-                <a href="#" class="btn btn-sm btn-default float-right" onclick="logout()">Logout</a>
+                <a href="#" class="btn btn-sm btn-default float-right" onclick="logout()">Back</a>
               </div>
             </div>
             <br>
