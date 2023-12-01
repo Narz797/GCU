@@ -1,3 +1,32 @@
+<?php
+  session_start();
+  include '../backend/log_audit2.php';
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'You already logged out',
+                text: 'Please login again'
+            }).then(function () {
+                window.location.href = 'http://localhost/GCU/home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
+
+
+
+// Log audit entry for accessing the home page
+logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
+  
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

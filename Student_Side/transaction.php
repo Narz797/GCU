@@ -7,10 +7,22 @@ include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
-    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
-    exit; // Make sure to exit the script after a header redirect
-  }
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'You already logged out',
+                text: 'Please login again'
+            }).then(function () {
+                window.location.href = 'http://localhost/GCU/home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
   
 $id = $_SESSION['session_id'];
 logAudit($id, 'access_transaction', $id .' has accessed the transaction page');
@@ -225,7 +237,7 @@ include 'includes/main2.php';
   });
 </script>
 
-<script>
+<!-- <script>
 alert
 
           swal({
@@ -242,5 +254,5 @@ alert
                 })
     
 
-</script>
+</script> -->
 

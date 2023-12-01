@@ -5,10 +5,22 @@ include '../../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
-    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
-    exit; // Make sure to exit the script after a header redirect
-  }
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'You already logged out',
+                text: 'Please login again'
+            }).then(function () {
+                window.location.href = 'http://localhost/GCU/home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
 $_SESSION['transact_type']='WDS';//asign value to transact_type
 logAudit($_SESSION['session_id'], 'access_wds form', $_SESSION['session_id'] .' has accessed the WDS page');
 ?>
@@ -372,6 +384,7 @@ select:focus {
       <div id="suggestions"></div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     var sID = "<?php echo $_SESSION['session_id'];?>";
     const dropdown = document.getElementById('action');
@@ -390,7 +403,16 @@ $("#form_transact").on("submit", function (event) {
   var course_frm = dropdown.value === 'Shifting' ? textfield4.value : null;
   var course_to = dropdown.value === 'Shifting' ? textfield5.value : null;
  
-  if (window.confirm("Do you want to proceed?")) {
+  Swal.fire({
+      title: "Are you sure?",
+      text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
   $.ajax({
     type: 'POST',
     url: '../../backend/create_transaction.php',
@@ -420,6 +442,7 @@ $("#form_transact").on("submit", function (event) {
     }
   });
 }
+  });
 });
    
   </script>
