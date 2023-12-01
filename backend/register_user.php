@@ -294,7 +294,7 @@ if (isset($_SESSION['origin'])) {
                 $stmt6->bindParam(1, $_SESSION['idno']);
                 $stmt6->bindParam(2, $_SESSION['src']);
                 $stmt6->bindParam(3, $_SESSION['specificScholar']);
-                $stmt6->bindParam(4, $_SESSION['scecificOther']);
+                $stmt6->bindParam(4, $_SESSION['specificOther']);
                 $stmt6->bindParam(5, $_SESSION['first']);
                 $stmt6->bindParam(6, $_SESSION['second']);
                 $stmt6->bindParam(7, $_SESSION['third']);
