@@ -343,14 +343,26 @@ label, span {
           alert('Please fill out all fields before submitting.');
         } else {
           // If the form is filled, proceed with AJAX submission
-          Swal.fire({
-      title: "Are you sure?",
-      text: "Do you wish to proceed?",
+    //       Swal.fire({
+    //   title: "Are you sure?",
+    //   text: "Do you wish to proceed?",
+    //   icon: "question",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Yes"
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+      Swal.fire({
+      title: "Do you wish to proceed?",
+      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes"
+     
+              // })
     }).then((result) => {
       if (result.isConfirmed) {
           $.ajax({
@@ -364,12 +376,14 @@ label, span {
               to:$("#datepicker2").val()
             },
             success: function (data) {
-              swal({
-                      title:'Form requested',
-                      icon: 'success',
-                      showConfirmButton: false,
-                      timer:1500
-              })
+              // swal({
+              //         title:'Form requested',
+              //         icon: 'success',
+              //         showConfirmButton: false,
+              //         timer:1500
+              // })
+
+ 
 
 
               $.ajax({
@@ -385,7 +399,11 @@ label, span {
               console.log("logged", response);
             }
           });
-              alert("Request Sent");
+          Swal.fire({
+  title: "Request Sent!",
+  // text: "You clicked the button!",
+  icon: "success"
+});
             }
           });
         }

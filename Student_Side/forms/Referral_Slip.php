@@ -686,13 +686,13 @@ $("#form_transact").on("submit", function (event) {
         }
     }
     Swal.fire({
-      title: "Are you sure?",
-      text: "Do you wish to proceed?",
+      title: "Do you wish to proceed?",
+      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes"
     }).then((result) => {
       if (result.isConfirmed) {
     $.ajax({
@@ -715,7 +715,12 @@ $("#form_transact").on("submit", function (event) {
               console.log("logged", response);
             }
           });
-          alert("Request Sent");
+          // alert("Request Sent");
+          Swal.fire({
+  title: "Request Sent!",
+  // text: "You clicked the button!",
+  icon: "success"
+});
 
         },
         error: function (xhr, status, error) {
