@@ -23,7 +23,7 @@ if (isset($_SESSION['origin'])) {
         // }
 
         //register for student in here
-        
+        var_dump($_POST['studpar']);
         if (isset($_POST['membership'])) {
             $_SESSION['membership'] = $_POST['membership'];
         }

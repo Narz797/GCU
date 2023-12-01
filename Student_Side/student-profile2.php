@@ -2347,14 +2347,16 @@ $siblings = $siblings->fetchAll();
                 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
                 $stmt->execute();
                 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                  // $filename = $row['filename'];
-                  $id_type = $row['sign_type'];
-                  $id_data = $row['sign'];
+                // while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                //   // $filename = $row['filename'];
+                //   $id_type = $row['sign_type'];
+                //   $id_data = $row['sign'];
 
-                  // Display the image
-                  echo '<img src="data:' . $id_type . ';base64,' . base64_encode($id_data) . '" alt="id">';
-                }
+                //   // Display the image
+                //   echo '<img src="data:' . $id_type . ';base64,' . base64_encode($id_data) . '" alt="id">';
+                // }
+                $photo = $stmt->fetch(PDO::FETCH_ASSOC);
+                echo '<img src="data:' . $photo['sign_type'] . ';base64,' . base64_encode($photo['sign']) . '" alt="id">';
                 ?>
 
 
@@ -2384,14 +2386,16 @@ $siblings = $siblings->fetchAll();
                 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
                 $stmt->execute();
 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                  // $filename = $row['filename'];
-                  $id_type = $row['image_type'];
-                  $id_data = $row['id'];
+                // while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                //   // $filename = $row['filename'];
+                //   $id_type = $row['image_type'];
+                //   $id_data = $row['id'];
 
-                  // Display the image
-                  echo '<img src="data:' . $id_type . ';base64,' . base64_encode($id_data) . '" alt="id">';
-                }
+                //   // Display the image
+                //   echo '<img src="data:' . $id_type . ';base64,' . base64_encode($id_data) . '" alt="id">';
+                // }
+                $photo = $stmt->fetch(PDO::FETCH_ASSOC);
+                echo '<img src="data:' . $photo['image_type'] . ';base64,' . base64_encode($photo['id']) . '" alt="id">';
 
 
                 ?>

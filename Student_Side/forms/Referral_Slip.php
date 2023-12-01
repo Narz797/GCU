@@ -373,14 +373,7 @@ select:focus {
   <hr>
 
     <div class="card-body">
-      <form id="form_transact" name="form1" method="post" enctype="multipart/form-data">
-       
-     
-
-  
-
-
-       
+      <form id="form_transact" name="form1" action="../../backend/create_transaction.php" method="post" enctype="multipart/form-data">
 
 <b style="font-family: Century Gothic, sans-serif; font-size:18px;">Late Or Absent:</b><br>
 
