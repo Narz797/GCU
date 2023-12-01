@@ -7,10 +7,22 @@ include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
-    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
-    exit; // Make sure to exit the script after a header redirect
-  }
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'You already logged out',
+                text: 'Please login again'
+            }).then(function () {
+                window.location.href = 'http://localhost/GCU/home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
 $id = $_SESSION['session_id'];
 logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
 echo "<script>console.log('$id');</script>";
@@ -296,7 +308,8 @@ include 'includes/main2.php';
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="assets/js/calendar.js"></script>   
+<script src="assets/js/calendar.js"></script>  
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 <script>
   
         var id = "<?php echo $id; ?>";
@@ -333,7 +346,7 @@ include 'includes/main2.php';
                   },
                   success: function (data) {
                     console.log("slot taken:", data);
-                    alert("Slot taken for: ",aid);
+       
                     document.getElementById("divOne").style.display = "none";
                     $.ajax({
                         type: 'POST',
@@ -346,15 +359,39 @@ include 'includes/main2.php';
                         success: function(response) {
                           // Handle the response if needed
                           console.log("logged", response);
+                          
                         }
                       });
-                    window.location.href = "appointment.php";
+                      Swal.fire({
+                            title: "Slot taken",
+                            text: "You now have set an appointment request on the said scheduel, please wait for further notice",
+                            icon: "success",
+                            confirmButtonText: "OK",
+
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                  window.location.href = "appointment.php";
+                                } 
+                            });
+                    
             
 
                   },
                   error: function (xhr, status, error) {
                     console.error("Error marking event as done:", error);
-                    alert("Error in taking slot: " + error);
+                    Swal.fire({
+                            title: "Error",
+                            text: "Something happened, please try again",
+                            icon: "error",
+                            confirmButtonText: "OK",
+
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                    location.reload();
+                                } 
+                            });
                   },
                 });
               }

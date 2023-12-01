@@ -55,10 +55,10 @@ LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
     student_user.Contact_number,
     student_user.gender,
     courses.Colleges,
-    transact.transact_id,
-    transact.status,
-    transact.transact_type,
-    transact.date_created,
+    MIN(transact.transact_id) AS transact_id,
+    MIN(transact.status) AS status,
+    MIN(transact.transact_type) AS transact_type,
+    MIN(transact.date_created) AS date_created,
     ca.reason,
     CASE
         WHEN guardian.contact IS NOT NULL AND guardian.contact > 0 THEN guardian.fname
@@ -68,17 +68,33 @@ LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
         WHEN guardian.contact IS NOT NULL AND guardian.contact > 0 THEN guardian.contact
         ELSE mother.contact
     END AS ParentGuardianNumber
-    FROM
+FROM
     student_user
-    INNER JOIN
+INNER JOIN
     transact ON student_user.stud_user_id = transact.student_id
-    INNER JOIN ca ON transact.transact_id = ca.transact_id 
-    INNER JOIN
+INNER JOIN
+    ca ON transact.transact_id = ca.transact_id 
+INNER JOIN
     courses ON student_user.course = courses.Acronym
-    LEFT JOIN guardian ON student_user.stud_user_id = guardian.stud_user_id
-LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
-    WHERE
-    ca.reason = 'Absent' OR ca.reason = 'Tardy'OR ca.reason = 'Academic Deficiency/ies';";
+LEFT JOIN
+    guardian ON student_user.stud_user_id = guardian.stud_user_id
+LEFT JOIN
+    mother ON student_user.stud_user_id = mother.stud_user_id
+WHERE
+    ca.reason = 'Absent' OR ca.reason = 'Tardy' OR ca.reason = 'Academic Deficiency/ies'
+GROUP BY
+    student_user.stud_user_id,
+    student_user.first_name,
+    student_user.last_name,
+    student_user.Year_level,
+    student_user.course,
+    student_user.Contact_number,
+    student_user.gender,
+    courses.Colleges,
+    ca.reason,
+    ParentGuardianName,
+    ParentGuardianNumber;
+";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 

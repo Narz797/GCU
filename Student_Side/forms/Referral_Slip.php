@@ -5,10 +5,22 @@ include '../../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
-    echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-    
-    exit; // Make sure to exit the script after a header redirect
-  }
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'You already logged out',
+                text: 'Please login again'
+            }).then(function () {
+                window.location.href = 'http://localhost/GCU/home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
 $_SESSION['transact_type'] = 'ca'; //asign value to transact_type
 logAudit($_SESSION['session_id'], 'access_class admisison form', $_SESSION['session_id'] .' has accessed the class admission page');
 ?>
@@ -474,6 +486,7 @@ select:focus {
       </form>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
       var sID = "<?php echo $_SESSION['session_id'];?>";
       var LA = $("#dates");
@@ -672,7 +685,16 @@ $("#form_transact").on("submit", function (event) {
             console.log('Unsupported file:', file.name);
         }
     }
-    if (window.confirm("Do you want to proceed?")) {
+    Swal.fire({
+      title: "Do you wish to proceed?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
     $.ajax({
         type: 'POST',
         url: '../../backend/create_transaction.php',
@@ -693,7 +715,12 @@ $("#form_transact").on("submit", function (event) {
               console.log("logged", response);
             }
           });
-          alert("Request Sent");
+          // alert("Request Sent");
+          Swal.fire({
+  title: "Request Sent!",
+  // text: "You clicked the button!",
+  icon: "success"
+});
 
         },
         error: function (xhr, status, error) {
@@ -701,6 +728,8 @@ $("#form_transact").on("submit", function (event) {
         }
     });
   }
+  });
+    
 });
 $(document).ready(function() {
 

@@ -5,9 +5,21 @@ session_start();
 // Check if the session variable is empty
 if (empty($_SESSION['session_id'])) {
   // Redirect to the desired location
-  echo "<script>alert('You have already Logged out. You will be redirected.'); window.location.href = 'http://localhost/GCU/home';</script>";
-
-  exit; // Make sure to exit the script after a header redirect
+  ?>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          Swal.fire({
+              icon: 'error',
+              title: 'You already logged out',
+              text: 'Please login again'
+          }).then(function () {
+              window.location.href = 'http://localhost/GCU/home';
+          });
+      });
+  </script>
+  <?php
+  exit;
 }
 
 $id = $_SESSION['session_id'];
@@ -2296,7 +2308,7 @@ $siblings = $siblings->fetchAll();
               <div class="d-flex justify-content-between">
               <a href="#" ></a>
                 <!-- <a href="#" class="btn btn-sm btn-info mr-4">Connect</a> -->
-                <a href="#" class="btn btn-sm btn-default float-right" onclick="logout()">Logout</a>
+                <a href="#" class="btn btn-sm btn-default float-right" onclick="logout()">Back</a>
               </div>
             </div>
             <br>
