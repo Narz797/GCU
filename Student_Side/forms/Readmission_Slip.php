@@ -242,7 +242,7 @@ label, span {
 
 
   </style>
-<body  >
+<body style=" background: linear-gradient(to right,#ede0d4,#ffc971  );">
   <div class="card" >
 
    <!-- Other card content goes here -->

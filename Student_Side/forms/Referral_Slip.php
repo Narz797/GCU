@@ -370,7 +370,7 @@ select:focus {
  
 
 </style>
-<body>
+<body style=" background: linear-gradient(to right,#ede0d4,#ffc971  );">
   <div class="card">
   <div class="logo-container" >
     <img  src="../assets/img/GCU_logo.png" alt="GCU Logo">
