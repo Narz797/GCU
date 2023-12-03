@@ -249,7 +249,7 @@ if ((isset($_GET['logout']) && $_GET['logout'] === 'true') || (isset($_SESSION) 
     <section id="services" class="services sections-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-header">
-          <h2 style="color:black;">What is Guidance and Counseling Unit?</h2>
+          <h2 style="color:black; font-family:fantasy; color: #black; text-shadow: 2px 2px 4px rgba(255, 255, 0, 1);" >What is Guidance and Counseling Unit?</h2>
           <div class="text-box" style="text-align:justify;  font-family: var(--font-primary)">
             Republic Act No. 9258 Act of 2004 Guidance and Counseling is a profession that involves the use
             of an integrated approach to the development of a well-functioning individual primarily by helping him/her
