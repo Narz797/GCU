@@ -8,6 +8,14 @@
 </head>
 <style>
 
+.mobile-nav-show {
+    color: transparent;
+  }
+  
+  .mobile-nav-hide {
+    color: transparent;
+  }
+
 
 .scroll-top .hover-text {
   display: none;
@@ -55,9 +63,9 @@ li a:hover {
           <space style="width: 400px"> </space>
           <li class="dropdown"><a href="#" style="background-color:#f7b801; color:black;"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
-              <li><a href="Student_Side/student-login" style="background-color:#f7b801;color:black; ">STUDENT</a></li>
-              <li><a href="Employee_Side/employee-login" style="background-color:#f7b801;color:black;">EMPLOYEE</a></li>
-              <li><a href="Teacher_Side/teacher-login" style="background-color:#f7b801;color:black;">TEACHER</a></li>
+              <li><a href="Student_Side/student-login" style="background-color:#ffd166;color:black; ">STUDENT</a></li>
+              <li><a href="Employee_Side/employee-login" style="background-color:#ffd166;color:black;">EMPLOYEE</a></li>
+              <li><a href="Teacher_Side/teacher-login" style="background-color:#ffd166;color:black;">TEACHER</a></li>
 
 
             </ul>
@@ -66,8 +74,8 @@ li a:hover {
             REGISTER</a></li> -->
           <li class="dropdown" ><a style="background-color:#f7b801; color:black;"><span >REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
-              <li><a href="./Student_Side/Stud_registration/agreement.php" style="background-color:#80b918; color:black;">STUDENT</a></li>
-              <li><a href="Teacher_Side/agreement.php" style="background-color:#80b918; color:black;">TEACHER</a></li>
+              <li><a href="./Student_Side/Stud_registration/agreement.php" style="background-color:#ffd166; color:black;">STUDENT</a></li>
+              <li><a href="Teacher_Side/agreement.php" style="background-color:#ffd166; color:black;">TEACHER</a></li>
 
 
             </ul>
@@ -100,6 +108,7 @@ li a:hover {
 
   <div id="preloader"></div>
   <!-- Vendor JS Files -->
+  
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>

@@ -381,7 +381,7 @@ select:focus {
   </div>
   <hr>
 
-  <h1 id="Title" >Admission Slip</h1>
+  <h1 id="Title" style="font-family: fantasy; color: black; ">Admission Slip</h1>
   <hr>
 
     <div class="card-body">

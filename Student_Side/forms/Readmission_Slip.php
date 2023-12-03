@@ -242,8 +242,8 @@ label, span {
 
 
   </style>
-<body>
-  <div class="card">
+<body  >
+  <div class="card" >
 
    <!-- Other card content goes here -->
    <div class="logo-container" >
@@ -255,7 +255,7 @@ label, span {
   </div>
   <hr>
 
-  <h1 stly=" font-family: Consolas;" id="Title" >Readmission Slip</h1>
+  <h1 style="font-family: fantasy; color: black; " id="Title" >Readmission Slip</h1>
   <hr>
     
     <div class="card-body">

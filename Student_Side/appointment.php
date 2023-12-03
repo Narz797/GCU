@@ -67,8 +67,8 @@ include 'includes/main2.php';
   <body>
        
 </div>
-<section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section> 
-<section id="topbar" class="topbar d-flex align-items-center" style="background-color: #80b918; height: 80px; color: black; ">
+<!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section>  -->
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color:primary; height: 80px; color: black; ">
 <p style="margin-left: 2%; font-size: 30px; font-weight: bold;">APPOINTMENT SCHEDULE</p>
 </section> 
 <div class="row" style="background:white;">

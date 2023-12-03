@@ -233,8 +233,8 @@ select:focus {
 
   </style>
 </head>
-<body>
-  <div class="card">
+<body  style=" background: linear-gradient(to right,#ede0d4,#ffc971  );">
+  <div class="card" >
       <!-- Other card content goes here -->
       <div class="logo-container" >
     <img  src="../assets/img/GCU_logo.png" alt="GCU Logo">
@@ -245,7 +245,7 @@ select:focus {
   </div>
   <hr>
 
-  <h1 stly=" font-family: Consolas;" id="Title" >Withdrawal/Dropping/Shifting Slip</h1>
+  <h1 style="font-family: fantasy; color: black; "  id="Title" >Withdrawal/Dropping/Shifting Slip</h1>
   <hr>
 
     <!-- <div class="card-header">

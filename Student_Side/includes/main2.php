@@ -9,7 +9,7 @@
 </style>
 
 
-<body>
+<body> 
 
 <header id="header" class="header d-flex align-items-center" style="background-color: #008374; ">
 
@@ -22,10 +22,12 @@
 <nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
 <ul id="mob">
 <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
+<!-- <img src="assets/img/GCU_logo.png" class="bsu" alt="" style="width:7%; height:6%;" > -->
+
 
  
-<li ><a href="student-home" style="background-color:#f7b801;color:black;">TRANSACTION</a></li>
-<li><a href="appointment.php" style="background-color:#f7b801;color:black;">APPOINTMENT</a></li>
+<li ><a href="student-home" style="background-color:#e9d8a6;color:black;">TRANSACTION</a></li>
+<li><a href="appointment.php" style="background-color:#e9d8a6;color:black;">APPOINTMENT</a></li>
 
 
 
@@ -39,11 +41,11 @@
 <!-- <div class="account-icon"> -->
 
 <!-- <li class="dropdown"><a href="#"><span> <img src="assets/img/dp.png" alt="" height="40px"  ></span> <i class="bi bi-chevron-down dropdown-indicator"></i></a> -->
-       <li class="dropdown"><a href="#" style="background:#f7b801;"><span> <img src="assets/img/dp.png" alt="" height="40px"  ><i class="bi bi-chevron-down dropdown-indicator"></i></span> </a>
+       <li class="dropdown"><a href="#" style="background:#e9d8a6;"><span> <img src="assets/img/dp.png" alt="" height="40px"  ><i class="bi bi-chevron-down dropdown-indicator"></i></span> </a>
 
-<ul  style="background-color: transparent; ">
-          <li><a href="../Student_Side/student-profile2.php" style="background-color:#f7b801;color:black;">PROFILE</a></li>
-          <li><a href="../home?logout=true" style="background-color:#f7b801;color:black;">LOGOUT</a></li>
+<ul  style="background-color: transparent; "> 
+          <li><a href="../Student_Side/student-profile2.php" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">PROFILE</a></li>
+          <li><a href="../home?logout=true" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">LOGOUT</a></li>
         </ul>
       </li>
 

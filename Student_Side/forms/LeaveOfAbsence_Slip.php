@@ -253,7 +253,7 @@ label, span {
   </div>
   <hr>
 
-  <h1 stly=" font-family: Consolas;" id="Title" >Leave Of Absence Slip</h1>
+  <h1 style="font-family: fantasy; color: black; " id="Title" >Leave Of Absence Slip</h1>
   <hr>
     
     <div class="card-body">
