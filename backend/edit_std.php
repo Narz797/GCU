@@ -724,13 +724,13 @@ if (isset($_POST['id']) && isset($_POST['pass'])) {
     $studID = $_POST['id'];
     $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
-    $sql = "UPDATE student_user SET 
-`password` = :'password'
-WHERE stud_user_id = :stud_user_id";
+    $sql = "UPDATE `student_user` SET 
+`password`= :passwordd
+WHERE `stud_user_id` = :stud_user_id";
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':stud_user_id', $studID, PDO::PARAM_INT);
-    $stmt->bindParam(':password', $pass, PDO::PARAM_STR);
+    $stmt->bindParam(':passwordd', $pass, PDO::PARAM_STR);
     $stmt->execute();
 }
 if (isset($_POST['id']) && isset($_POST['email'])) {

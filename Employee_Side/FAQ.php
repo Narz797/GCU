@@ -22,7 +22,7 @@
 }
 
 
-
+$id = $_SESSION['session_id'];
 // Log audit entry for accessing the home page
 logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
   
@@ -197,7 +197,7 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
         <div class="credits">Designed by <a class="dev" href="https://www.facebook.com/">BSIT</a></div>
     </div>
 </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
                     function goBack() {
             window.history.back();
@@ -219,7 +219,14 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
     event.preventDefault();
     
     // Show loading spinner
-    $("#loading-spinner").show();
+    Swal.fire({
+                title: 'Sending Email',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+            });
     
     console.log("performing ajax");
     $.ajax({
@@ -232,9 +239,21 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
       },
       success: function(data) {
         // Hide loading spinner on success
-        $("#loading-spinner").hide();
+        swal.close();
   
-          alert("The code to change your password is sent to your email")
+          // alert("The code to change your password is sent to your email")
+          Swal.fire({
+              icon: "sucess",
+              title: "Help Sent!",
+              text: "Please await for further contactg",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  
+                } 
+              });
         console.log("data",data)
         // window.location.href = "verify_code.php";
         
