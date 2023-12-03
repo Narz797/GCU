@@ -67,17 +67,17 @@ include 'includes/main2.php';
   <body>
        
 </div>
-<section id="topbar" class="topbar d-flex align-items-center" style="background-color: black; height: 50px; "></section> 
-<section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 80px; ">
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section> 
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color: #80b918; height: 80px; color: black; ">
 <p style="margin-left: 2%; font-size: 30px; font-weight: bold;">APPOINTMENT SCHEDULE</p>
 </section> 
-<div class="row">
-<div class="container">
+<div class="row" style="background:white;">
+<div class="container" style="background: white;">
       <br>
      
    
   
-      <div class="card">
+      <div class="card" style= "background:white; color:black;">
           <hr>
       <div class="body-calendar">
        <div class="container-calendar">
@@ -154,15 +154,15 @@ include 'includes/main2.php';
         <br>
         <h2 class="title"></h2>
         <div >
-            <header class="card-header" >
-                <p style="margin-left: 10%; font-size: 30px; font-weight: bold; color:yellowgreen;" > PROCEEDING APPOINTMENT/S </p>
+            <header class="card-header"style="background:none" >
+                <p style="margin-left: 10%; font-size: 30px; font-weight: bold; color:black;" > PROCEEDING APPOINTMENT/S </p>
                
             </header>
             <hr>
-            <div class="gallery">
-            <main class="table" id="customers_table"  style=" height: auto; ">
+            <div class="gallery" >
+            <main class="table" id="customers_table"  style=" height: auto; " >
     
-            <section class="table-body">
+            <section class="table-body" style=" background: linear-gradient(to right,#ede0d4,#ffc971  );">
                 <table style="color:black;" id="dynamicTable">
                     <thead>
                         <tr>
@@ -195,18 +195,18 @@ include 'includes/main2.php';
     <div  >
         <br>
         <h2 class="title"></h2>
-        <div class="card" >
+        <div class="card" style="background:none;">
          
             <hr>
-            <div class=" gallery" >
+            <div class=" gallery"  >
             <main class="table" id="customers_table" style=" height: auto; ">
             <section >
-                <p style="margin-left: 2%; font-size: 25px; font-weight: bold; color:white;" >SETTLED APPOINMENT/S</p>
+                <p style="margin-left: 2%; font-size: 25px; font-weight: bold; color:black;" >SETTLED APPOINMENT/S</p>
                
              
             </section>
-            <section class="table-body" >
-                <table style="color:black;" id="dynamicTable2">
+            <section class="table-body"  style=" background: linear-gradient(to right,#ede0d4,#ffc971  );" >
+                <table style="color:black;" id="dynamicTable2" >
                     <thead>
                         <tr>
                             <th  > No. <span class="icon-arrow">&UpArrow;</span></th>

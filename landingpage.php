@@ -28,15 +28,17 @@
 .scroll-top:hover .hover-text {
   display: block;
 }
-
+li a:hover {
+  transform: scale(1.1);
+}
 
  
   
   </style>
 
 <body>
-  <header id="header" class="header d-flex align-items-center" style="background-color: black; ">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+  <header id="header" class="header d-flex align-items-center"  >
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between" >
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!--  <img src="/GCU.png" alt="">  -->
@@ -44,27 +46,28 @@
       </a>
       <nav id="navbar" class="navbar" style="margin: auto;">
         <ul>
-          <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; ">
-          <li><a href="/gcu/home">HOME</a></li>
-          <li><a href="/gcu/about">ABOUT</a></li>
-          <li><a href="/gcu/services">SERVICES</a></li>
+            <img src="assets/img/GCU_logo.png" alt="" style="width:4.5%; ">
+          <!-- <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; "> -->
+          <li ><a href="/gcu/home" style="background-color:#f7b801;color:black;" >HOME</a></li>
+          <li><a href="/gcu/about" style="background-color:#f7b801;color:black;">ABOUT</a></li>
+          <li><a href="/gcu/services" style="background-color:#f7b801;color:black;">SERVICES</a></li>
 
           <space style="width: 400px"> </space>
-          <li class="dropdown"><a href="#"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="#" style="background-color:#f7b801; color:black;"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
-              <li><a href="Student_Side/student-login">STUDENT</a></li>
-              <li><a href="Employee_Side/employee-login">EMPLOYEE</a></li>
-              <li><a href="Teacher_Side/teacher-login">TEACHER</a></li>
+              <li><a href="Student_Side/student-login" style="background-color:#f7b801;color:black; ">STUDENT</a></li>
+              <li><a href="Employee_Side/employee-login" style="background-color:#f7b801;color:black;">EMPLOYEE</a></li>
+              <li><a href="Teacher_Side/teacher-login" style="background-color:#f7b801;color:black;">TEACHER</a></li>
 
 
             </ul>
           </li>
           <!-- <li class="dropdown"><li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">
             REGISTER</a></li> -->
-          <li class="dropdown"><a><span>REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown" ><a style="background-color:#f7b801; color:black;"><span >REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
-              <li><a href="./Student_Side/Stud_registration/agreement.php">STUDENT</a></li>
-              <li><a href="Teacher_Side/agreement.php">TEACHER</a></li>
+              <li><a href="./Student_Side/Stud_registration/agreement.php" style="background-color:#80b918; color:black;">STUDENT</a></li>
+              <li><a href="Teacher_Side/agreement.php" style="background-color:#80b918; color:black;">TEACHER</a></li>
 
 
             </ul>

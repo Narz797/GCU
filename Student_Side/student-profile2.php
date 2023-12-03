@@ -2368,7 +2368,9 @@ $siblings = $siblings->fetchAll();
                 //   echo '<img src="data:' . $id_type . ';base64,' . base64_encode($id_data) . '" alt="id">';
                 // }
                 $photo = $stmt->fetch(PDO::FETCH_ASSOC);
-                echo '<img src="data:' . $photo['sign_type'] . ';base64,' . base64_encode($photo['sign']) . '" alt="id">';
+                // echo '<img src="data:' . $photo['sign_type'] . ';base64,' . base64_encode($photo['sign']) . '" alt="id">';
+                echo '<img src="data:' . $photo['sign_type'] . ';base64,' . base64_encode($photo['sign']) . '" alt="id" style="width: auto; height: auto;">';
+
                 ?>
 
 
@@ -2427,11 +2429,11 @@ $siblings = $siblings->fetchAll();
                 <div class="col-8">
                   <h3 class="mb-0">MY ACCOUNT</h3>
                 </div>
-                <!-- <div class="col-4 text-right">
+                <div class="col-4 text-right">
                   <a href="#!" class="btn btn-sm btn-primary">
                     <i class="fa fa-pencil"></i> Edit Account
                   </a>
-                </div> -->
+                </div>
 
               </div>
             </div>

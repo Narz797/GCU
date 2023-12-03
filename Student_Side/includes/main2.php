@@ -2,11 +2,16 @@
 <html lang="en">
 
 <?php include '../includes/head.php'; ?>
+<style>
+  li a:hover {
+  transform: scale(1.1);
+}
+</style>
 
 
 <body>
 
-<header id="header" class="header d-flex align-items-center" style="background-color: black; ">
+<header id="header" class="header d-flex align-items-center" style="background-color: #008374; ">
 
 <div class="container-fluid container-xl d-flex align-items-center justify-content-between" >
   <a href="index.html" class="logo d-flex align-items-center">
@@ -19,8 +24,8 @@
 <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
 
  
-<li ><a href="student-home">TRANSACTION</a></li>
-<li><a href="appointment.php">APPOINTMENT</a></li>
+<li ><a href="student-home" style="background-color:#f7b801;color:black;">TRANSACTION</a></li>
+<li><a href="appointment.php" style="background-color:#f7b801;color:black;">APPOINTMENT</a></li>
 
 
 
@@ -29,14 +34,16 @@
 <li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li> -->
 
 
-<div class="containerA" style="margin-right:3%; background-color:black;">
+<div class="containerA" style="margin-right:3%; background-color:transparent;">
 
-<div class="account-icon">
+<!-- <div class="account-icon"> -->
 
-<li class="dropdown"><a href="#"><span> <img src="assets/img/dp.png" alt="" height="40px"  ></span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-        <ul  style="background-color: transparent; ">
-          <li><a href="../Student_Side/student-profile2.php">PROFILE</a></li>
-          <li><a href="../home?logout=true">LOGOUT</a></li>
+<!-- <li class="dropdown"><a href="#"><span> <img src="assets/img/dp.png" alt="" height="40px"  ></span> <i class="bi bi-chevron-down dropdown-indicator"></i></a> -->
+       <li class="dropdown"><a href="#" style="background:#f7b801;"><span> <img src="assets/img/dp.png" alt="" height="40px"  ><i class="bi bi-chevron-down dropdown-indicator"></i></span> </a>
+
+<ul  style="background-color: transparent; ">
+          <li><a href="../Student_Side/student-profile2.php" style="background-color:#f7b801;color:black;">PROFILE</a></li>
+          <li><a href="../home?logout=true" style="background-color:#f7b801;color:black;">LOGOUT</a></li>
         </ul>
       </li>
 
@@ -79,7 +86,7 @@
   .containerA {
       max-width: 500px;
       margin: 0 auto;
-      background-color: #fff;
+      /* background-color: #f7b801; */
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       
@@ -87,7 +94,7 @@
 .dropdown-content {
       display: none;
       position: absolute;
-      background-color: black;
+      background-color:transparent;
       min-width: 150px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
       padding: 10px;
@@ -135,7 +142,7 @@
   #navbar ul li a {
     display: inline-block;
     padding: 10px 20px;
-    background-color: black;
+    /* background-color: black; */
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -190,7 +197,7 @@
   transform: translateX(-30%);
   width: 200px; /* Adjust the width of the tooltip as needed */
   padding: 10px;
-  background-color: #fff;
+  /* background-color: #fff; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow for a tooltip effect */
   border-radius: 5px;
   text-align: center;
