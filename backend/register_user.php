@@ -9,7 +9,7 @@ if (isset($_SESSION['origin'])) {
     $origin = $_SESSION['origin'];
 
     if ($origin === 'Student') {
-
+try{
         // if(isset($_POST['indigenousInfo'])){
         //     $_SESSION['indigenousInfo'] = $_POST['indigenousInfo'];
         // }
@@ -332,8 +332,24 @@ if (isset($_SESSION['origin'])) {
                     echo '</script>';
                     exit;
                 }
-            }
+            } 
         }
+    } catch (Exception $e) {
+        // Code to handle the exception
+        echo "An exception occurred: " . $e->getMessage();
+        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+        echo '<script>';
+        echo "Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Not all fields are filled, please fill them all',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                window.location.href='../Student_Side/Stud_registration/page1.php';
+            });";
+        echo '</script>';
+        
+    }
     } elseif ($origin === 'Teacher_Register') {
         if (
             isset(
