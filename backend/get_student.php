@@ -62,7 +62,11 @@ other_info.kap_res,
 other_info.whenChild,
 other_info.teachAre,
 other_info.friendsDuno,
-other_info.future
+other_info.future,
+photos.sign,
+photos.sign_type,
+photos.id,
+photos.image_type
 FROM student_user
 INNER JOIN courses ON student_user .course = courses.Acronym
 LEFT JOIN guardian ON student_user.stud_user_id = guardian.stud_user_id
@@ -72,7 +76,7 @@ INNER JOIN senior_highschool ON student_user.stud_user_id = senior_highschool.st
 INNER JOIN junior_highschool ON student_user.stud_user_id = junior_highschool.stud_user_id
 INNER JOIN elementary_school ON student_user.stud_user_id = elementary_school.stud_user_id
 INNER JOIN other_school ON student_user.stud_user_id = other_school.stud_user_id
-
+INNER JOIN photos ON student_user.stud_user_id = photos.stud_user_id
 INNER JOIN other_info ON student_user.stud_user_id = other_info.stud_user_id
     WHERE student_user.stud_user_id = :id"; // Use a named placeholder
 
@@ -82,10 +86,10 @@ $stmt->execute();
 
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// foreach ($data as &$row) {
-//     $row['signature'] = base64_encode($row['signature']);
-//     $row['id'] = base64_encode($row['id']);
-// }
+foreach ($data as &$row) {
+    $row['sign'] = base64_encode($row['sign']);
+    $row['id'] = base64_encode($row['id']);
+}
 
 
 // Prepare and echo data as JSON

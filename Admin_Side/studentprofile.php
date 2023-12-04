@@ -306,13 +306,13 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
 
                     // to be used later
                                 // Initialize DataTables for pagination
-            // $('#dynamicTable').DataTable({
-            //     paging: true,
-            //     searching: false,
-            //     ordering: false,
-            //     lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
-            //     pageLength: 5, // Initial number of rows per page
-            // });
+                            $('#dynamicTable').DataTable({
+                                paging: true,
+                                searching: false,
+                                ordering: false,
+                                lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+                                pageLength: 5, // Initial number of rows per page
+                            });
 
 
 

@@ -823,7 +823,7 @@ function openModal2(id) {
                 var pgn = studentData.ParentGuardianNumber;
                 var pgname = studentData.ParentGuardianName;
                 var relation = studentData.Relation;
-                var sig = studentData.signature;
+                var sign = studentData.sign;
                 var idd = studentData.id;
                 console.log(fname);
                 updateValues(fname, lname, email, year_level, course, gender, college, cn, address, year_enrolled, cs, bday, bplace, nat, ig, pwd, studpar, marit, src, mfname, mlname, mocc, medu, mcn, mage, ffname, flname, focc,fedu, fcn, fage, gfname, glname, gocc, gedu, gcn, gage, hs, hs_yg, js, js_yg, es, es_yg, os, os_yg, frst, scnd, thrd, ggoal, afather, amother, closest, bcoz, child, tch, dkt, ftr, pgn, pgname, relation);
@@ -832,70 +832,83 @@ function openModal2(id) {
 
                 const pers_info = lname;
 
-                const filePath_jpg = `../../backend/uploads/id_${id}_${pers_info}.jpg`;
-                const filePath_png = `../../backend/uploads/id_${id}_${pers_info}.png`;
-                const filePath_jpeg = `../../backend/uploads/id_${id}_${pers_info}.jpeg`;
+                displayBlobAsImage(sign, 'sig'); // Pass the image data and an element ID
+               displayBlobAsImage(idd, 'idd'); // Pass the image data and an element ID
 
-                const imgElement = document.getElementById('idd');
-                // imgElement.style.width = '50%';
-                // imgElement.style.height = '50%';
 
-                if (fileExists(filePath_jpg)) {
-                  // Display the image
-                  imgElement.src = filePath_jpg;
-                  imgElement.alt = 'Photo';
-                } else if (fileExists(filePath_png)) {
-                  // Display the image
-                  imgElement.src = filePath_png;
-                  imgElement.alt = 'Photo';
-                } else if (fileExists(filePath_jpeg)) {
-                  // Display the image
-                  imgElement.src = filePath_jpeg;
-                  imgElement.alt = 'Photo';
-                } else {
-                  console.log('File not found.');
+               function displayBlobAsImage(blobData, elementId) {
+            if (blobData) {
+                var imgElement = document.getElementById(elementId);
+                if (imgElement) {
+                    imgElement.src = 'data:image/jpeg;base64,' + blobData; // Assuming JPEG format
                 }
+            }
+        }
 
-                function fileExists(url) {
-                  var http = new XMLHttpRequest();
-                  http.open('HEAD', url, false);
-                  http.send();
-                  return http.status !== 404;
-                }
+                // const filePath_jpg = `../../backend/uploads/id_${id}_${pers_info}.jpg`;
+                // const filePath_png = `../../backend/uploads/id_${id}_${pers_info}.png`;
+                // const filePath_jpeg = `../../backend/uploads/id_${id}_${pers_info}.jpeg`;
+
+                // const imgElement = document.getElementById('idd');
+                // // imgElement.style.width = '50%';
+                // // imgElement.style.height = '50%';
+
+                // if (fileExists(filePath_jpg)) {
+                //   // Display the image
+                //   imgElement.src = filePath_jpg;
+                //   imgElement.alt = 'Photo';
+                // } else if (fileExists(filePath_png)) {
+                //   // Display the image
+                //   imgElement.src = filePath_png;
+                //   imgElement.alt = 'Photo';
+                // } else if (fileExists(filePath_jpeg)) {
+                //   // Display the image
+                //   imgElement.src = filePath_jpeg;
+                //   imgElement.alt = 'Photo';
+                // } else {
+                //   console.log('File not found.');
+                // }
+
+                // function fileExists(url) {
+                //   var http = new XMLHttpRequest();
+                //   http.open('HEAD', url, false);
+                //   http.send();
+                //   return http.status !== 404;
+                // }
 
 
 
 
-                const filePath2_jpg = `../../backend/uploads/sign_${id}_${pers_info}.jpg`;
-                const filePath2_png = `../../backend/uploads/sign_${id}_${pers_info}.png`;
-                const filePath2_jpeg = `../../backend/uploads/sign_${id}_${pers_info}.jpeg`;
+                // const filePath2_jpg = `../../backend/uploads/sign_${id}_${pers_info}.jpg`;
+                // const filePath2_png = `../../backend/uploads/sign_${id}_${pers_info}.png`;
+                // const filePath2_jpeg = `../../backend/uploads/sign_${id}_${pers_info}.jpeg`;
 
-                const imgElement2 = document.getElementById('sig');
-                // imgElement.style.width = '50%';
-                // imgElement.style.height = '50%';
+                // const imgElement2 = document.getElementById('sig');
+                // // imgElement.style.width = '50%';
+                // // imgElement.style.height = '50%';
 
-                if (fileExists(filePath2_jpg)) {
-                  // Display the image
-                  imgElement2.src = filePath2_jpg;
-                  imgElement2.alt = 'Photo';
-                } else if (fileExists(filePath2_png)) {
-                  // Display the image
-                  imgElement2.src = filePath2_png;
-                  imgElement2.alt = 'Photo';
-                } else if (fileExists(filePath2_jpeg)) {
-                  // Display the image
-                  imgElement2.src = filePath2_jpeg;
-                  imgElement2.alt = 'Photo';
-                } else {
-                  console.log('File not found.');
-                }
+                // if (fileExists(filePath2_jpg)) {
+                //   // Display the image
+                //   imgElement2.src = filePath2_jpg;
+                //   imgElement2.alt = 'Photo';
+                // } else if (fileExists(filePath2_png)) {
+                //   // Display the image
+                //   imgElement2.src = filePath2_png;
+                //   imgElement2.alt = 'Photo';
+                // } else if (fileExists(filePath2_jpeg)) {
+                //   // Display the image
+                //   imgElement2.src = filePath2_jpeg;
+                //   imgElement2.alt = 'Photo';
+                // } else {
+                //   console.log('File not found.');
+                // }
 
-                function fileExists(url) {
-                  var http = new XMLHttpRequest();
-                  http.open('HEAD', url, false);
-                  http.send();
-                  return http.status !== 404;
-                }
+                // function fileExists(url) {
+                //   var http = new XMLHttpRequest();
+                //   http.open('HEAD', url, false);
+                //   http.send();
+                //   return http.status !== 404;
+                // }
 
                 var ma = $("#ma");
                 var fa = $("#da");
@@ -975,8 +988,12 @@ function openModal2(id) {
                     row.append("<td>" + entry.transact_type +"</td>");
                     // row.append("<td>" + entry.reason +"</td>");
                     row.append("<td>" + entry.status + "</td>");
-                    row.append("<td>" + entry.date_edited + "</td>");
-                    row.append("<td>" + entry.remarks + "</td>");
+                    var latest =entry.date_edited ? entry.date_edited:"None";
+                    row.append("<td>" + latest + "</td>");
+                    // row.append("<td>" + entry.date_edited + "</td>");
+                    var rem =entry.remarks ? entry.remarks:"None";
+                    row.append("<td>" + rem + "</td>");
+                    // row.append("<td>" + entry.remarks + "</td>");
                     // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     // var statusText = status == 'pending' ? 'Unread' : 'Read';
                     var statusCell = $("<td></td>");
