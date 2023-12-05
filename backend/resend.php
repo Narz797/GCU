@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 // Load Composer's autoloader
-require 'C:\xampp\htdocs\GCU\phpmailer\phpmailer\vendor\autoload.php';
+require 'D:\xampp\htdocs\GCU\phpmailer\phpmailer\vendor\autoload.php';
 echo "Entered";
 
     // Check if the random number is already set in the session
