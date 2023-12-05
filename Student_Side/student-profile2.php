@@ -2430,7 +2430,7 @@ $siblings = $siblings->fetchAll();
                   <h3 class="mb-0">MY ACCOUNT</h3>
                 </div>
                 <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">
+                  <a href="#!" class="btn btn-sm btn-primary" onclick="edit()">
                     <i class="fa fa-pencil"></i> Edit Account
                   </a>
                 </div>
@@ -2438,22 +2438,22 @@ $siblings = $siblings->fetchAll();
               </div>
             </div>
             <div class="card-body" style="background-color:lightgray;">
-              <form>
+              <form id ="myForm">
 
                 <h6 class="heading-small text-muted mb-4" style="color:black; font-weight:bold;">User information </h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-username">ID No.</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" id="id" readonly data-value =  "<?php echo $pers_info[0]['stud_user_id'] ?>">
+                        <label class="form-control-label" for="input-username" id="stud_id">ID No.</label>
+                        <input type="text" id="input-username" class="form-control form-control-alternative" id="id" readonly value =  "<?php echo $pers_info[0]['stud_user_id'] ?>">
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Last Name</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" id="lname" readonly data-value =  "<?php echo $pers_info[0]['last_name'] ?>">
+                        <input type="text" id="input-email" class="form-control form-control-alternative" id="lname" readonly value =  "<?php echo $pers_info[0]['last_name'] ?>">
                       </div>
                     </div>
                   </div>
@@ -2461,20 +2461,57 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-first-name">First name</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" id="fname" readonly data-value =  "<?php echo $pers_info[0]['first_name'] ?>">
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative" id="fname" readonly value =  "<?php echo $pers_info[0]['first_name'] ?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Middle Name</label>
-                        <input type="text" class="form-control form-control-alternative" id="mname" readonly data-value =  "<?php echo $pers_info[0]['middle_name'] ?>">
+                        <input type="text" class="form-control form-control-alternative" id="mname" readonly value =  "<?php echo $pers_info[0]['middle_name'] ?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Course</label>
                         <!-- Editable -->
-                        <input type="text" class="form-control form-control-alternative" id="crse" readonly data-value =  "<?php echo $pers_info[0]['course'] ?>">
+                        <!-- <input type="text" class="form-control form-control-alternative" id="crse" readonly value =  "<?php echo $pers_info[0]['course'] ?>"> -->
+                        <select name='course' class="form-control form-control-alternative" id="crse" disabled>
+                                <option disabled selected><?php echo $pers_info[0]['course']; ?></option>
+                                <option value='BSAB'>Bachelor of Science in Agribusiness</option>
+                                <option value='BSA'>Bachelor of Science in Agriculture</option>
+                                <option value='BA Comm'>Bachelor of Arts in Communication</option>
+                                <option value='BAEL'>Bachelor of Arts in English Language</option>
+                                <option value='BAFL'>Bachelor of Arts in Filipino Language</option>
+                                <option value='BSABE'>Bachelor of Science in Agriculture and Biosystems Engineering</option>
+                                <option value='BSCE'>Bachelor of Science in Civil Engineering</option>
+                                <option value='BSEE'>Bachelor of Science in Electrical Engineering</option>
+                                <option value='BSIE'>Bachelor of Science in Industrial Engineering</option>
+                                <option value='BSF'>Bachelor of Science in Forestry</option>
+                                <option value='BSET'>Bachelor of Science in Entrepreneurship</option>
+                                <option value='BSFT'>Bachelor of Science in Food Technology</option>
+                                <option value='BSHM'>Bachelor of Science in Hospitality Management</option>
+                                <option value='BSND'>Bachelor of Science in Nutrition and Dietetics</option>
+                                <option value='BSTM'>Bachelor of Science in Tourism Management</option>
+                                <option value='BPeD'>Bachelor of Physical Education</option>
+                                <option value='BSESS'>Bachelor of Science in Exercise and Sports Sciences</option>
+                                <option value='BLIS'>Bachelor in Library and Information Sciences</option>
+                                <option value='BSDC'>Bachelor of Science in Development Communication</option>
+                                <option value='BSIT'>Bachelor of Science in Information Technology</option>
+                                <option value='BS Bio'>Bachelor of Science in Biology</option>
+                                <option value='BS Chem'>Bachelor of Science in Chemistry</option>
+                                <option value='BSES'>Bachelor of Science in Environmental Science</option>
+                                <option value='BS Math'>Bachelor of Science in Mathematics</option>
+                                <option value='BSS'>Bachelor of Science in Statistics</option>
+                                <option value='BSN'>Bachelor of Science in Nursing</option>
+                                <option value='BPA'>Bachelor of Public Administration</option>
+                                <option value='BS Psych'>Bachelor of Science in Psychology</option>
+                                <option value='BECED'>Bachelor of Early Childhood Education</option>
+                                <option value='BEED'>Bachelor of Elementary Education</option>
+                                <option value='BSED'>Bachelor of Secondary Education</option>
+                                <option value='BTLED'>Bachelor of Technology and Livelihood Education</option>
+                                <option value='DVM'>Doctor of Veterinary Medicine</option>
+                                <option value='BA Hist'>Bachelor of Arts in History</option>
+                            </select>
                       </div>
                     </div>
 
@@ -2482,7 +2519,16 @@ $siblings = $siblings->fetchAll();
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Year Level</label>
                         <!-- Editable -->
-                        <input type="text" class="form-control form-control-alternative" id="YL" readonly data-value =  "<?php echo $pers_info[0]['Year_level'] ?>">
+                        <!-- <input type="text" class="form-control form-control-alternative" id="YL" readonly value =  ""> -->
+                        <select class="form-control form-control-alternative" name='year_level' id="YL" disabled>
+                                <option disabled selected><?php echo $pers_info[0]['Year_level']; ?></option>
+                                <option value='1'>1st</option>
+                                <option value='2'>2nd</option>
+                                <option value='3'>3rd</option>
+                                <option value='4'>4th</option>
+                                <option value='5'>5th</option>
+                                <option value='6'>6th</option>
+                            </select>
                       </div>
                     </div>
 
@@ -2490,7 +2536,7 @@ $siblings = $siblings->fetchAll();
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Section</label>
                         <!-- Editable -->
-                        <input type="text" class="form-control form-control-alternative" id="sec" readonly data-value =  "<?php echo $pers_info[0]['Section'] ?>">
+                        <input type="text" class="form-control form-control-alternative" id="sec" readonly value =  "<?php echo $pers_info[0]['Section'] ?>">
                       </div>
                     </div>
 
@@ -2498,7 +2544,7 @@ $siblings = $siblings->fetchAll();
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Contact Number</label>
                         <!-- Editable -->
-                        <input type="text" class="form-control form-control-alternative" id="CN" readonly data-value =  "<?php echo $pers_info[0]['Contact_number'] ?>">
+                        <input type="text" class="form-control form-control-alternative" id="CN" readonly value =  "<?php echo $pers_info[0]['Contact_number'] ?>">
                       </div>
                     </div>
 
@@ -2506,39 +2552,47 @@ $siblings = $siblings->fetchAll();
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Civil Status</label>
                         <!-- Editable -->
-                        <input type="text" class="form-control form-control-alternative" id="CS" readonly data-value =  "<?php echo $pers_info[0]['Civil_status'] ?>">
+                        <!-- <input type="text" class="form-control form-control-alternative" id="CS" readonly value =  "<?php echo $pers_info[0]['Civil_status'] ?>"> -->
+                        <select class="form-control form-control-alternative" id="CS"  name='civil_status' disabled>
+                                <option disabled selected><?php echo $pers_info[0]['Civil_status'];?></option>
+                                <option>Single</option>
+                                <option>Married</option>
+                                <option>Divorced</option>
+                                <option>Widowed</option>
+                            </select>
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Date of Birth</label>
-                        <input type="text" class="form-control form-control-alternative" id="bday" readonly data-value =  "<?php echo $pers_info[0]['birth_date'] ?>">
+                        <input type="text" class="form-control form-control-alternative" id="bday" readonly value =  "<?php echo $pers_info[0]['birth_date'] ?>">
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Birthplace</label>
-                        <input type="text" class="form-control form-control-alternative" id="bplace" readonly data-value =  "<?php echo $pers_info[0]['Birth_place'] ?>">
+                        <input type="text" class="form-control form-control-alternative" id="bplace" readonly value =  "<?php echo $pers_info[0]['Birth_place'] ?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Nationality</label>
-                        <input type="text" class="form-control form-control-alternative" id="nationality" readonly data-value =  "<?php echo $pers_info[0]['Nationality'] ?>">
+                        <input type="text" class="form-control form-control-alternative" id="nationality" readonly value =  "<?php echo $pers_info[0]['Nationality'] ?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Languages/Dialects you can read, write, and understand</label>
-                        <input type="text" class="form-control form-control-alternative" id="lang" readonly data-value =  "<?php echo $pers_info[0]['Languages_and_dialects'] ?>">
+                        <input type="text" class="form-control form-control-alternative" id="lang" readonly value =  "<?php echo $pers_info[0]['Languages_and_dialects'] ?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">House Number/Street/Barangay/Municipality/Province/Zip Code</label>
-                        <input type="text" class="form-control form-control-alternative" id="address" readonly data-value =  "<?php echo $pers_info[0]['Address'] ?>">
+                        <!-- Editable -->
+                        <input type="text" class="form-control form-control-alternative" id="address" readonly value =  "<?php echo $pers_info[0]['Address'] ?>">
                       </div>
                     </div>
 
@@ -2557,7 +2611,7 @@ $siblings = $siblings->fetchAll();
     <div class="col-md-12">
       <div class="form-group focused">
         <label class="form-control-label" for="input-address">Parents (Father)</label>
-        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" data-value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
       
       </div>
     </div>
@@ -2568,19 +2622,19 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-city">Lastname</label>
-                          <input type="text" id="flast" class="form-control form-control-alternative" id="Flname" readonly data-value =  "<?php echo $father_info[0]['lname'] ?>">
+                          <input type="text" id="flast" class="form-control form-control-alternative" id="Flname" readonly value =  "<?php echo $father_info[0]['lname'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-country">Firstname</label>
-                          <input type="text" id="ffirst" class="form-control form-control-alternative" id="Fnlname" readonly data-value =  "<?php echo $father_info[0]['fname'] ?>">
+                          <input type="text" id="ffirst" class="form-control form-control-alternative" id="Fnlname" readonly value =  "<?php echo $father_info[0]['fname'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country">Middlename</label>
-                          <input type="number" id="fmiddle" class="form-control form-control-alternative" id="Fmname" readonly data-value =  "<?php echo $father_info[0]['mname'] ?>">
+                          <input type="text" id="fmiddle" class="form-control form-control-alternative" id="Fmname" readonly value =  "<?php echo $father_info[0]['mname'] ?>">
                         </div>
                       </div>
 
@@ -2588,28 +2642,28 @@ $siblings = $siblings->fetchAll();
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-city">Age</label>
                           <!-- Editable -->
-                          <input type="number" id="fage" class="form-control form-control-alternative" id="Fage" readonly data-value =  "<?php echo $father_info[0]['age'] ?>">
+                          <input type="number"  class="form-control form-control-alternative" id="Fage" readonly value =  "<?php echo $father_info[0]['age'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-country">Occupational</label>
                           <!-- Editable -->
-                          <input type="number" id="foccupational" class="form-control form-control-alternative" id="Focc" readonly data-value =  "<?php echo $father_info[0]['occupation'] ?>">
+                          <input type="text"  class="form-control form-control-alternative" id="Focc" readonly value =  "<?php echo $father_info[0]['occupation'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
                           
-                          <input type="number" id="feducation" class="form-control form-control-alternative" id="Fcol" readonly data-value =  "<?php echo $father_info[0]['educ_background'] ?>">
+                          <input type="text"  class="form-control form-control-alternative" id="Fcol" readonly value =  "<?php echo $father_info[0]['educ_background'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Contact Number</label>
                           <!-- Editable -->
-                          <input type="number" id="feducation" class="form-control form-control-alternative" id="Fcn" readonly data-value =  "<?php echo $father_info[0]['contact'] ?>">
+                          <input type="number"  class="form-control form-control-alternative" id="Fcn" readonly value =  "<?php echo $father_info[0]['contact'] ?>">
                         </div>
                       </div>
 
@@ -2625,7 +2679,7 @@ $siblings = $siblings->fetchAll();
                     <div class="col-md-12">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-address">Parents (Father)</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" data-value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
                       
                       </div>
                     </div>
@@ -2635,19 +2689,19 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-city">Lastname</label>
-                          <input type="text" id="flast" class="form-control form-control-alternative" id="Mlname" readonly data-value =  "<?php echo $mother_info[0]['lname'] ?>">
+                          <input type="text"  class="form-control form-control-alternative" id="Mlname" readonly value =  "<?php echo $mother_info[0]['lname'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-country">Firstname</label>
-                          <input type="text" id="ffirst" class="form-control form-control-alternative" id="Mfname" readonly data-value =  "<?php echo $mother_info[0]['fname'] ?>">
+                          <input type="text"  class="form-control form-control-alternative" id="Mfname" readonly value =  "<?php echo $mother_info[0]['fname'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country">Middlename</label>
-                          <input type="number" id="fmiddle" class="form-control form-control-alternative" id="Mmname" readonly data-value =  "<?php echo $mother_info[0]['mname'] ?>">
+                          <input type="text" class="form-control form-control-alternative" id="Mmname" readonly value =  "<?php echo $mother_info[0]['mname'] ?>">
                         </div>
                       </div>
 
@@ -2655,27 +2709,27 @@ $siblings = $siblings->fetchAll();
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-city">Age</label>
                           <!-- Editable -->
-                          <input type="number" id="fage" class="form-control form-control-alternative" id="Mage" readonly data-value =  "<?php echo $mother_info[0]['age'] ?>">
+                          <input type="number"  class="form-control form-control-alternative" id="Mage" readonly value =  "<?php echo $mother_info[0]['age'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-country">Occupational</label>
                           <!-- Editable -->
-                          <input type="number" id="foccupational" class="form-control form-control-alternative" id="Mocc" readonly data-value =  "<?php echo $mother_info[0]['occupation'] ?>">
+                          <input type="text"  class="form-control form-control-alternative" id="Mocc" readonly value = "<?php echo $mother_info[0]['occupation'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
-                          <input type="number" id="feducation" class="form-control form-control-alternative" id="Mcol" readonly data-value =  "<?php echo $mother_info[0]['educ_background'] ?>">
+                          <input type="text"  class="form-control form-control-alternative" id="Mcol" readonly value = "<?php echo $mother_info[0]['educ_background'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Contact Number</label>
                           <!-- Editable -->
-                          <input type="number" id="feducation" class="form-control form-control-alternative" id="Mcn" readonly data-value =  "<?php echo $mother_info[0]['contact'] ?>">
+                          <input type="number" class="form-control form-control-alternative" id="Mcn" readonly value = "<?php echo $mother_info[0]['contact'] ?>">
                         </div>
                       </div>
 
@@ -2695,7 +2749,7 @@ $siblings = $siblings->fetchAll();
       <div class="col-md-12">
         <div class="form-group focused">
           <label class="form-control-label" for="input-address">Parents (Father)</label>
-          <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" data-value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+          <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
         
         </div>
       </div>
@@ -2705,19 +2759,19 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-city">Lastname</label>
-                          <input type="text" id="flast" class="form-control form-control-alternative" id="Glname" readonly data-value =  "<?php echo $guardian_info[0]['lname'] ?>">
+                          <input type="text" class="form-control form-control-alternative" id="Glname" readonly value =  "<?php echo $guardian_info[0]['lname'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-country">Firstname</label>
-                          <input type="text" id="ffirst" class="form-control form-control-alternative" id="Gfname" readonly data-value =  "<?php echo $guardian_info[0]['fname'] ?>">
+                          <input type="text"  class="form-control form-control-alternative" id="Gfname" readonly value =  "<?php echo $guardian_info[0]['fname'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country">Middlename</label>
-                          <input type="number" id="fmiddle" class="form-control form-control-alternative" id="Gmname" readonly data-value =  "<?php echo $guardian_info[0]['mname'] ?>">
+                          <input type="text"  class="form-control form-control-alternative" id="Gmname" readonly value =  "<?php echo $guardian_info[0]['mname'] ?>">
                         </div>
                       </div>
 
@@ -2725,28 +2779,28 @@ $siblings = $siblings->fetchAll();
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-city">Age</label>
                           <!-- Editable -->
-                          <input type="number" id="fage" class="form-control form-control-alternative" id="Gage" readonly data-value =  "<?php echo $guardian_info[0]['age'] ?>">
+                          <input type="number" class="form-control form-control-alternative" id="Gage" readonly value =  "<?php echo $guardian_info[0]['age'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-country">Occupational</label>
                           <!-- Editable -->
-                          <input type="number" id="foccupational" class="form-control form-control-alternative" id="Gocc" readonly data-value =  "<?php echo $guardian_info[0]['occupation'] ?>">
+                          <input type="text"  class="form-control form-control-alternative" id="Gocc" readonly value =  "<?php echo $guardian_info[0]['occupation'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Highest Educational Attainment</label>
 
-                          <input type="number" id="feducation" class="form-control form-control-alternative" id="Gol" readonly data-value =  "<?php echo $guardian_info[0]['educ_background'] ?>">
+                          <input type="text"  class="form-control form-control-alternative" id="Gol" readonly value =  "<?php echo $guardian_info[0]['educ_background'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Contact Number</label>
                           <!-- Editable -->
-                          <input type="number" id="feducation" class="form-control form-control-alternative" id="Gcn" readonly data-value =  "<?php echo $guardian_info[0]['contact'] ?>">
+                          <input type="number"  class="form-control form-control-alternative" id="Gcn" readonly value =  "<?php echo $guardian_info[0]['contact'] ?>">
                         </div>
                       </div>
 
@@ -2795,14 +2849,14 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="sen_school" readonly data-value =  "<?php echo $senschool_info[0]['school_name'] ?>">
+                        <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="sen_school" readonly value =  "<?php echo $senschool_info[0]['school_name'] ?>">
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="sen_school_yg" readonly data-value =  "<?php echo $senschool_info[0]['year'] ?>">
+                        <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="sen_school_yg" readonly value =  "<?php echo $senschool_info[0]['year'] ?>">
                       </div>
                     </div>
                   </div>
@@ -2811,7 +2865,7 @@ $siblings = $siblings->fetchAll();
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <input style="height:auto;" id="award" class="form-control form-control-alternative" id="sen_school_awards" readonly data-value =  "<?php echo $senschool_info[0]['awards'] ?>">
+                    <input style="height:auto;" id="award" class="form-control form-control-alternative" id="sen_school_awards" readonly value =  "<?php echo $senschool_info[0]['awards'] ?>">
 
                   </div>
                 </div>
@@ -2823,14 +2877,14 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="jun_school" readonly data-value =  "<?php echo $junschool_info[0]['school_name'] ?>">
+                        <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="jun_school" readonly value =  "<?php echo $junschool_info[0]['school_name'] ?>">
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="jun_school_yg" readonly data-value =  "<?php echo $junschool_info[0]['year'] ?>">
+                        <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="jun_school_yg" readonly value =  "<?php echo $junschool_info[0]['year'] ?>">
                       </div>
                     </div>
                   </div>
@@ -2839,7 +2893,7 @@ $siblings = $siblings->fetchAll();
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <input style="height:auto;" id="award" class="form-control form-control-alternative" id="jun_school_awards"><?php echo $junschool_info[0]['awards'] ?>
+                    <input style="height:auto;" id="award" class="form-control form-control-alternative" id="jun_school_awards" readonly value =  "<?php echo $junschool_info[0]['awards'] ?>">
 
                   </div>
                 </div>
@@ -2852,14 +2906,14 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="elm_school"><?php echo $elemschool_info[0]['school_name'] ?>
+                        <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="elm_school" readonly value =  "<?php echo $elemschool_info[0]['school_name'] ?>">
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="elm_school_yg"><?php echo $elemschool_info[0]['year'] ?>
+                        <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="elm_school_yg" readonly value =  "<?php echo $elemschool_info[0]['year'] ?>">
                       </div>
                     </div>
                   </div>
@@ -2868,7 +2922,7 @@ $siblings = $siblings->fetchAll();
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <input style="height:auto;" id="award" class="form-control form-control-alternative" id="elm_school_awards"><?php echo $elemschool_info[0]['awards'] ?>
+                    <input style="height:auto;" id="award" class="form-control form-control-alternative" id="elm_school_awards" readonly value =  "<?php echo $elemschool_info[0]['awards'] ?>">
 
                   </div>
                 </div>
@@ -2881,14 +2935,14 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-username">Name of the School</label>
-                          <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="oth_school"><?php echo $othschool_info[0]['school_name'] ?>
+                          <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="oth_school" readonly value =  "<?php echo $othschool_info[0]['school_name'] ?>">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Year Graduated</label>
-                          <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="oth_school_yg"><?php echo $othschool_info[0]['year'] ?>
+                          <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="oth_school_yg" readonly value =  "<?php echo $othschool_info[0]['year'] ?>">
                         </div>
                       </div>
                     </div>
@@ -2898,7 +2952,7 @@ $siblings = $siblings->fetchAll();
                   <div class="pl-lg-4">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-email">Awards Received</label>
-                      <input style="height:auto;" id="award" class="form-control form-control-alternative" id="oth_school_awards"><?php echo $othschool_info[0]['awards'] ?>
+                      <input style="height:auto;" id="award" class="form-control form-control-alternative" id="oth_school_awards" readonly value =  "<?php echo $othschool_info[0]['awards'] ?>">
 
                     </div>
                   </div>
@@ -2919,7 +2973,7 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Are you a member of an Indigenous group?</label>
-                        <input type="text" id="indige" class="form-control form-control-alternative"><span id="ip"><?php echo $pers_info[0]['IG'] ?></span> - <span id="ip2"><?php echo $pers_info[0]['specificIG'] ?></span>
+                        <section type="text" id="indige" class="form-control form-control-alternative"><span id="ip"><?php echo $pers_info[0]['IG'] ?></span> - <span id="ip2"><?php echo $pers_info[0]['specificIG'] ?></span></section>
                         <!-- If yes, specify ilagay mo nalang beside yes example (Yes-Tas anong indigenous group belong) -->
                         <!-- <br>
                           <input type="text" id="s_name" class="form-control form-control-alternative">Yes -->
@@ -2931,7 +2985,7 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Are you a person with a disability (PWD)?</label>
-                        <input type="text" id="pwd" class="form-control form-control-alternative" id="pwd"><?php echo $pers_info[0]['PWD'] ?>
+                        <section type="text" id="pwd" class="form-control form-control-alternative" id="pwd"><?php echo $pers_info[0]['PWD'] ?></section>
                       </div>
                     </div>
                   </div>
@@ -2940,7 +2994,7 @@ $siblings = $siblings->fetchAll();
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">Are you a student parent ?</label>
-                    <input type="text" id="stud_parent" class="form-control form-control-alternative" id="sp"><?php echo $pers_info[0]['Student_parent'] ?>
+                    <input type="text" id="stud_parent" class="form-control form-control-alternative" id="sp" readonly value =  "<?php echo $pers_info[0]['Student_parent'] ?>">
                   </div>
                 </div>
             </div>
@@ -3070,7 +3124,15 @@ $siblings = $siblings->fetchAll();
 
             </div>
 
+            <!-- <button id="Update" onclick="upd()">Update</button> -->
+
+            <div class="col-4 text-right">
+                  <a class="btn btn-sm btn-primary" id="Update" onclick="update()">
+                    <i class="fa fa-pencil"></i> Update
+                  </a>
+                </div>
             </form>
+          
           </div>
         </div>
       </div>
@@ -3088,6 +3150,7 @@ $siblings = $siblings->fetchAll();
   </footer> -->
 
   <!-- Add this script tag to your HTML file -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     // Get the logout button element
     function logout() {
@@ -3106,100 +3169,193 @@ $siblings = $siblings->fetchAll();
     };
   </script>
   <script>
+     var upd = $("#Update");
+
+     upd.hide();
+    function edit(){
+      console.log("Edit btn clicked");
+              // Get the select element by its ID
+               var crse = document.getElementById('crse');
+               var yl = document.getElementById('YL');
+                    var sec = document.getElementById('sec');
+                    var cn = document.getElementById('CN');
+                    var cs = document.getElementById('CS');
+                    var adrs = document.getElementById('address');
+
+                    // father
+                    var fage = document.getElementById('Fage');
+                    var focc = document.getElementById('Focc');
+                    var fcn = document.getElementById('Fcn');
+
+                    // mother
+                    var mage = document.getElementById('Mage');
+                    var mocc = document.getElementById('Mocc');
+                    var mcn = document.getElementById('Mcn');
+
+                    // guardian
+                    var gage = document.getElementById('Gage');
+                    var gocc = document.getElementById('Gocc');
+                    var gcn = document.getElementById('Gcn');
+         
+
+              crse.disabled = false;
+              yl.disabled = false;
+              sec.removeAttribute('readonly');
+              cn.removeAttribute('readonly');
+              cs.disabled = false;
+              adrs.removeAttribute('readonly');
+              fage.removeAttribute('readonly');
+              focc.removeAttribute('readonly');
+              fcn.removeAttribute('readonly');
+              mage.removeAttribute('readonly');
+              mocc.removeAttribute('readonly');
+              mcn.removeAttribute('readonly');
+              gage.removeAttribute('readonly');
+              gocc.removeAttribute('readonly');
+              gcn.removeAttribute('readonly');
+
+
+
+      upd.show();
+    }
+
+    function update(){
+      console.log("Upd btn clicked");
+                    // Get the select element by its ID
+                    // student_user
+                    var crse = document.getElementById('crse').value;
+                    var id = "<?php echo $_SESSION['session_id']; ?>";
+                    var yl = document.getElementById('YL').value;
+                    var sec = document.getElementById('sec').value;
+                    var cn = document.getElementById('CN').value;
+                    var cs = document.getElementById('CS').value;
+                    var adrs = document.getElementById('address').value;
+
+                    // father
+                    var fage = document.getElementById('Fage').value;
+                    var focc = document.getElementById('Focc').value;
+                    var fcn = document.getElementById('Fcn').value;
+
+                    // mother
+                    var mage = document.getElementById('Mage').value;
+                    var mocc = document.getElementById('Mocc').value;
+                    var mcn = document.getElementById('Mcn').value;
+
+                    // guardian
+                    var gage = document.getElementById('Gage').value;
+                    var gocc = document.getElementById('Gocc').value;
+                    var gcn = document.getElementById('Gcn').value;
+
+
+                    console.log("id: ", id);
+                    console.log("crse: ", crse);
+                    
+              $.ajax({
+          type: 'POST',
+          url: '../backend/edit_std.php',
+          data: {
+            id: id,
+            course: crse,
+            YL: yl,
+            SEC: sec,
+            CN: cn,
+            CS: cs,
+            Adrs: adrs,
+            Fage:fage,
+            Focc: focc,
+            Fcn: fcn,
+            Mage: mage,
+            Mocc: mocc,
+            Mcn:mcn,
+            Gage: gage,
+            Gocc: gocc,
+            Gcn: gcn
+
+          },
+          success: function (data) {
+            console.log("Server Response:", data);
+            // Swal.fire({
+            //   icon: "success",
+            //   title: "Information Updated!"
+            // });
+            Swal.fire({
+              icon: "sucess",
+              title: "Information Updated!",
+              text: "Double Check your information if it is correct",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  location.reload();
+      
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: id,
+              action: 'Update Info',
+              details: id + ' Updated its info'
+            },
+            success: function(response) {
+              // Handle the response if needed
+            
+              console.log("logged", response);
+            }
+          });
+            console.log("Updated:", data);
+            // crse.disabled = true;
+
+            // 
+            // yl.setAttribute('readonly', true);
+            //   sec.setAttribute('readonly', true);
+            //   cn.setAttribute('readonly', true);
+            //   cs.setAttribute('readonly', true);
+            //   adrs.setAttribute('readonly', true);
+            //   fage.setAttribute('readonly', true);
+            //   focc.setAttribute('readonly', true);
+            //   fcn.setAttribute('readonly', true);
+            //   mage.setAttribute('readonly', true);
+            //   mocc.setAttribute('readonly', true);
+            //   mcn.setAttribute('readonly', true);
+            //   gage.setAttribute('readonly', true);
+            //   gocc.setAttribute('readonly', true);
+            //   gcn.setAttribute('readonly', true);
+
+            // 
+            
+            upd.hide();
+
+          } 
+              });
+           
+          },
+          error: function (xhr, status, error) {
+            console.error("Error marking event as done:", error);
+            Swal.fire({
+              icon: "error",
+              title: "Error updating",
+              text: "Please try again",
+            });
+          },
+        });
+    
+
+                      // Remove the 'disabled' attribute
+      //                 crse.disabled = true;
+
+      // upd.hide();
+
+    }
     // Function to update the HTML elements
-    function updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, gender) {
+    // 
+//     function reloadForm() {
+//     // Get the form element
+//     var form = document.getElementById('myForm');
 
-      const genderImageMap = {
-        'Male': 'assets/images/sp.jpg',
-        'Female': 'assets/images/sp2.jpg'
-      };
-      const image = document.createElement('img');
-      image.style.display = 'block'; // Display the image above the text
-
-      if (gender === 'Male') {
-        image.src = genderImageMap['Male'];
-      } else if (gender === 'Female') {
-        image.src = genderImageMap['Female'];
-      }
-
-      $('#studentId').text(fname + " " + lname);
-      $('#transactType').text(transactType);
-      $('#total').text(total);
-      $('#employee_email').text(employee_email);
-      $('#employee_position').text(employee_position);
-      $('#date_joined').text(employee_date_joined);
-      $('#totalAppointments').text(totalAppointments);
-      $('#position').text(ePosition);
-      $('#fname').text(eFname);
-      $('#lname').text(eLname);
-
-      // Replace the content of the #gender div with the created image
-      const genderElement = document.getElementById('gender');
-      genderElement.innerHTML = ''; // Clear existing content
-      genderElement.appendChild(image);
-    }
-    // Function to fetch data from get_transaction.php
-    function fetchData() {
-      console.log('AJAX request started');
-      $.ajax({
-        type: 'GET',
-        url: '../backend/get_transaction.php',
-        dataType: 'json',
-
-        // ...
-        success: function(data) {
-          console.log(data.latest_data);
-          if (data.latest_data && data.latest_data.length > 0) {
-            sid = data.latest_data[0].student_id;
-            var fname = data.latest_data[0].first_name;
-            var lname = data.latest_data[0].last_name;
-            var transactType = data.latest_data[0].transact_type;
-            tt = data.latest_data[0].transact_type;
-            tid = data.latest_data[0].transact_id;
-            var total = data.total_pending_transactions;
-            var totalAppointments = data.total_appointments; // Define total here
-            var employee_email = data.adminUserData[0].email;
-            var employee_position = data.adminUserData[0].position;
-            var employee_date_joined = data.adminUserData[0].date_joined;
-            var eFname = data.adminUserData[0].first_name;
-            var eLname = data.adminUserData[0].last_name;
-            var ePosition = data.adminUserData[0].position;
-            var eGender = data.adminUserData[0].gender;
-            console.log(totalAppointments);
-            updateValues(fname, lname, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
-            console.log(total);
-            // Start both counting animations
-            countAppointments(totalAppointments);
-            countForms(total);
-          } else {
-            // Handle the case when no results are found
-            // You can update the UI as needed
-            var studentId = "None";
-            var total = 0;
-            var totalAppointments = 0; // Define total here
-            var employee_email = data.adminUserData[0].email;
-            var employee_position = data.adminUserData[0].position;
-            var employee_date_joined = data.adminUserData[0].date_joined;
-            var eFname = data.adminUserData[0].first_name;
-            var eLname = data.adminUserData[0].last_name;
-            var ePosition = data.adminUserData[0].position;
-            var eGender = data.adminUserData[0].gender;
-            console.log(totalAppointments);
-            updateValues(studentId, transactType, total, totalAppointments, employee_email, employee_position, employee_date_joined, eFname, eLname, ePosition, eGender);
-            console.log(total);
-            // Start both counting animations
-            countAppointments(totalAppointments);
-            countForms(total);
-            console.log('No results found');
-          }
-        },
-        error: function(xhr, status, error) {
-          console.error('Error: ' + error);
-          console.error('Status: ' + status);
-          console.error('Response: ' + xhr.responseText);
-        }
-      });
-    }
+//     // Reset the form
+//     form.reset();
+// }
   </script>
 
 <!-- <input id="topbar" class="topbar d-flex align-items-center" style="background-color: #008B8B; height: auto;">

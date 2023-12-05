@@ -373,19 +373,7 @@ label, span {
               console.log("logged", response);
             }
           });
-          $.ajax({
-            type: 'POST',
-            url: '../../backend/log_audit.php',
-            data: {
-              userId: sID,
-              action: 'sent request',
-              details: sID + ' sent leave_of_absence request' 
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
+
           Swal.fire({
   title: "Request Sent!",
   // text: "You clicked the button!",
