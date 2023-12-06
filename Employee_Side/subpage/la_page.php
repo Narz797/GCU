@@ -70,6 +70,16 @@ logAudit($id, 'access_LOA page', $id .' has accessed the LOA page');
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
+
+        <!-- pagination -->
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -279,26 +289,18 @@ function archive() {
                     } else if (status == 'done') {
                         historyTableBody.append(row); // Append row to history table body
                     }
-                    // var statusCell = $("<td></td>");
-                    // var statusLink = $("<a href='#'></a>").addClass(statusClass).text(statusText);
-                    // statusCell.append(statusLink);
-                    // row.append(statusCell);
 
-                    // var deleteCell = $("<td></td>");
-                    // var deleteLink = $("<a href='#'></a>").html('<i class="ri-delete-bin-6-line"></i>');
-                    // deleteCell.append(deleteLink);
-                    // row.append(deleteCell);
-
-                    // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
-                    
-                    
-                    // if (status == 'pending') {
-                        
-                    // } else if (status == 'recieved') {
-                    //     historyTableBody.append(row); // Append row to history table body
-                    // }
 
                  }
+
+                                             // Initialize DataTables for pagination
+                                             $('#dynamicTable').DataTable({
+                                paging: true,
+                                searching: false,
+                                ordering: false,
+                                lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+                                pageLength: 5, // Initial number of rows per page
+                            });
 
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
 

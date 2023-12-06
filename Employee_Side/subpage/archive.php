@@ -44,11 +44,19 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../assets/css/forms.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
 
+        <!-- pagination -->
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -146,66 +154,7 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
                         </tr>
                     </thead>
                     <tbody  id="data-table">
-                        <!-- <tr>
-                            <td> 2 </td>
-                            <td> Jeet, Saru </td>
-                            <td> 27 Aug, 2023 </td>
-                            <td> Readmission </td>
-                            <td>
-                                <p class="status delivered">Done</p>
-                            </td>
-                            <td> 28 Aug, 2023 </td>
-                        </tr>
-                        <tr>
-                            <td> 3 </td>
-                            <td> Sarita, Limbu </td>
-                            <td> 23 Apr, 2023 </td>
-                            <td> Absent/Tardy </td>
-                            <td>
-                                <p class="status delivered">Done</p>
-                            </td>
-                            <td> 24 Apr, 2023 </td>
-                        </tr>
-                        <tr>
-                            <td> 4 </td>
-                            <td> Zinzu, Chan Lee</td>
-                            <td> 17 Dec, 2022 </td>
-                            <td> Dropping </td>
-                            <td>
-                                <p class="status delivered">Done</p>
-                            </td>
-                            <td> 17 Dec, 2022 </td>
-                        </tr>
-                        <tr>
-                            <td> 6 </td>
-                            <td> Zinzu, Chan Lee</td>
-                            <td> 17 Dec, 2022 </td>
-                            <td> Shifting </td>
-                            <td>
-                                <p class="status delivered">Done</p>
-                            </td>
-                            <td> 17 Dec, 2022 </td>
-                        </tr>
-                        <tr>
-                            <td> 7 </td>
-                            <td> Jeet, Saru </td>
-                            <td> 27 Aug, 2023 </td>
-                            <td> Academic Deficiency </td>
-                            <td>
-                                <p class="status delivered">Cattered</p>
-                            </td>
-                            <td> 27 Aug, 2023 </td>
-                        </tr>
-                        <tr>
-                            <td> 8 </td>
-                            <td> Jeet, Saru </td>
-                            <td> 27 Aug, 2023 </td>
-                            <td> Counseling </td>
-                            <td>
-                                <p class="status delivered">Cattered</p>
-                            </td>
-                            <td> 27 Aug, 2023 </td>
-                        </tr> -->
+               
                     </tbody>
                 </table>
                 <p id="noHistoryMessage2">Empty</p>
@@ -319,6 +268,14 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
                     tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                  }
+
+                 $('#dynamicTable').DataTable({
+                                paging: true,
+                                searching: false,
+                                ordering: false,
+                                lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+                                pageLength: 5, // Initial number of rows per page
+                            });
                  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {

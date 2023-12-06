@@ -347,21 +347,12 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
                             .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
                     }
 
-            //         $('#dynamicTable').DataTable({
-            //     paging: true,
-            //     lengthMenu: [10, 25, 50, 100], // Customize the number of rows per page
-            //     pageLength: 10, // Initial number of rows per page
-            // });
+
                 },
                 error: function(xhr, status, error) {
                     console.error('Error fetching data:', error);
                 }
             });
-
-                        // Initialize DataTable
-            // $('#dynamicTable').DataTable({
-            //     "paging": true
-            // });
 
 
 

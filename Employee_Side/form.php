@@ -61,6 +61,16 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
 
+            <!-- pagination -->
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
 </head>
 <body>
   <!-- Header -->
@@ -426,6 +436,13 @@ function fetchData() { //getting total
                     tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                  }
+                 $('#dynamicTable').DataTable({
+                                paging: true,
+                                searching: false,
+                                ordering: false,
+                                lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+                                pageLength: 5, // Initial number of rows per page
+                            });
                  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {

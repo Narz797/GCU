@@ -46,6 +46,16 @@ include 'includes/main2.php';
     <!-- <link rel="stylesheet" href="./assets/css/forms.css"> -->
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../Employee_Side/assets/css/slips2.css">
+
+            <!-- pagination -->
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
   
 </head>
 <style>
@@ -307,7 +317,7 @@ include 'includes/main2.php';
   </body>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="assets/js/calendar.js"></script>  
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 <script>
@@ -492,6 +502,20 @@ include 'includes/main2.php';
               }
                 
                   }
+                  $('#dynamicTable').DataTable({
+                                paging: true,
+                                searching: false,
+                                ordering: false,
+                                lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+                                pageLength: 5, // Initial number of rows per page
+                            });
+                            $('#dynamicTable2').DataTable({
+                                paging: true,
+                                searching: false,
+                                ordering: false,
+                                lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+                                pageLength: 5, // Initial number of rows per page
+                            });
 
         },
         error: function (xhr, status, error) {

@@ -39,9 +39,7 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
     <title>Appointment Schedule</title>
     <!-- icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-        <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
           <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -55,7 +53,18 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
     <link rel="stylesheet" href="assets/css/slips2.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+
+
+            <!-- pagination -->
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
   
 </head>
 <body>
@@ -275,7 +284,7 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
                             <th> Done<br><span class="icon-arrow">&UpArrow;</span></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="data-table">
                        
                     </tbody>
                 </table>
@@ -401,47 +410,7 @@ function archive() {
     }
 }
 
-        // export to excel
-    function exportToExcel() {
-    const table = document.getElementById("dynamicTable");
-    const rows = table.getElementsByTagName("tr");
-    const data = [];
 
-    // Iterate through the table rows and collect cell values
-    for (let i = 0; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName("td");
-        const rowData = [];
-        for (let j = 0; j < cells.length; j++) {
-            rowData.push(cells[j].textContent.trim());
-        }
-        data.push(rowData);
-    }
-
-    // Create a worksheet
-    const worksheet = XLSX.utils.aoa_to_sheet(data);
-
-    // Create a workbook with the worksheet
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Table Data");
-
-    // Export the workbook to an Excel file
-    XLSX.writeFile(workbook, "List of All Requested Appointments.xlsx");
-
-    $.ajax({
-            type: 'POST',
-            url: '../backend/log_audit.php',
-            data: {
-              userId: eID,
-              action: 'clicked export',
-              details: eID + 'clicked export apopinment table to excel'
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
-
-}
 
 $(document).ready(function () {
         $.ajax({
@@ -482,7 +451,16 @@ $(document).ready(function () {
                     tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                  }
-                 console.log("data",data);
+                 console.log("data ",data);
+                 $('#dynamicTable').DataTable({
+                                paging: true,
+                                searching: false,
+                                ordering: false,
+                                lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+                                pageLength: 5, // Initial number of rows per page
+                            });
+    
+             
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage2.hide(); // Hide the no history message if there is data
@@ -500,6 +478,7 @@ $(document).ready(function () {
                         sortTable(i, sort_asc);
                     };
                 });
+
                     // Sorting Function
                 function sortTable(column, sort_asc) {
                     [...table_rows].sort((a, b) => {
@@ -509,6 +488,8 @@ $(document).ready(function () {
                     })
                     .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
                 }
+
+
         },
         error: function (xhr, status, error) {
     console.error("AJAX Error:");
@@ -516,9 +497,53 @@ $(document).ready(function () {
     console.error("Error: " + error);
     console.error("Response Text: " + xhr.responseText);
 }
+
         });
+        
     
     });
+
+            // export to excel
+            function exportToExcel() {
+    const table = document.getElementById("dynamicTable");
+    const rows = table.getElementsByTagName("tr");
+    const data = [];
+
+    // Iterate through the table rows and collect cell values
+    for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        const rowData = [];
+        for (let j = 0; j < cells.length; j++) {
+            rowData.push(cells[j].textContent.trim());
+        }
+        data.push(rowData);
+    }
+
+    // Create a worksheet
+    const worksheet = XLSX.utils.aoa_to_sheet(data);
+
+    // Create a workbook with the worksheet
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Table Data");
+
+    // Export the workbook to an Excel file
+    XLSX.writeFile(workbook, "List of All Requested Appointments.xlsx");
+
+    $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'clicked export',
+              details: eID + 'clicked export apopinment table to excel'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+
+}
     function view_form(tid, sid){
         console.log("student", sid);
         console.log("transact", tid);
@@ -606,9 +631,10 @@ $(document).ready(function () {
       },
     });
       }
+      
 </script>
 <script src="assets/main.js"></script>   
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="assets/js/calendar.js"></script> 
 <!-- <script src="./assets/js/table.js"></script>    -->
 <style>
