@@ -403,9 +403,16 @@ label, span {
             }
           });
           Swal.fire({
-  title: "Request Sent!",
-  // text: "You clicked the button!",
-  icon: "success"
+    title: "Request Sent!",
+    icon: "success",
+    text: "Your request has been sent successfully.",
+    showConfirmButton: true,
+    confirmButtonText: "OK",
+}).then((result) => {
+    if (result.isConfirmed) {
+        // Redirect to the specified URL
+        window.location.href = "../student-home";
+    }
 });
             }
           });
