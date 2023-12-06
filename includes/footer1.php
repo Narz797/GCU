@@ -13,9 +13,13 @@
         <div class="col-lg-5 col-md-12 footer-info">
           <!-- <a href="index.html" class="logo d-flex align-items-center"> -->
             <span style="font-size:26px;"><b>Guidance and Counseling Unit</b></span>
-          </a>
+        
           <p>Benguet State University</p>
+          <p><i class="bi bi-geo-alt-fill"></i> &nbspLa Trinidad, Benguet</p>
+          <p><i class="bi bi-telephone-fill"></i>&nbsp0907 905 0664</p>
+          <p><i class="bi bi-envelope-fill"></i>&nbspbsuossgcu205@gmail.com</p>
           <div class="social-links d-flex mt-4">
+
             <a href="https://www.facebook.com/profile.php?id=61553066382035" class="facebook"><i class="bi bi-facebook"></i></a>
             <a href="http://www.bsu.edu.ph/?fbclid=IwAR3NT5ZWPZP38V1FsCX9l_r4zXgyjIxg6_AHDofQw43BkBAl-R-_vEaF2eM" target="_blank" class="website"><i class="bi bi-globe"></i></a>
 
