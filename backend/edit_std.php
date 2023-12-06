@@ -15,8 +15,13 @@ try {
         $parametersGuardian = [':id' => $id];
     
         // Check if the student fields are set
-        if (isset($_POST['course'], $_POST['YL'], $_POST['SEC'], $_POST['CN'], $_POST['CS'], $_POST['Adrs'])) {
+        if (isset($_POST['email'], $_POST['pass'], $_POST['pass2'], $_POST['course'], $_POST['YL'], $_POST['SEC'], $_POST['CN'], $_POST['CS'], $_POST['Adrs'])) {
+            if ($_POST['pass'] == $_POST['pass2']){
+                $password = $_POST['pass'];
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT); 
             $allowedFieldsStudent = array(
+                'email' => $_POST['email'],
+                'password' => $hashedPassword,
                 'course' => $_POST['course'],
                 'Year_level' => $_POST['YL'],
                 'Section' => $_POST['SEC'],
@@ -32,6 +37,9 @@ try {
                     $parametersStudent[":$key"] = $value;
                 }
             }
+        }else{
+            echo'not_match';
+        }
         }
     
         // Check if the father fields are set

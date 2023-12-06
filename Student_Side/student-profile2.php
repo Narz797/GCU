@@ -23,6 +23,7 @@ if (empty($_SESSION['session_id'])) {
 }
 
 $id = $_SESSION['session_id'];
+$_SESSION['origin'] = 'Student';
 
 $personal = $pdo->prepare("SELECT * FROM `student_user` WHERE  `stud_user_id` = :id");
 $personal->bindParam(':id', $id, PDO::PARAM_INT);
@@ -180,6 +181,56 @@ $siblings = $siblings->fetchAll();
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
+  .fa-eye {
+  position: absolute;
+  /* right: 10px; */
+  top: 40%;
+  right:1%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ccc; /* Set the initial color of the eye icon */
+}
+
+ .fa-eye {
+  color: black; /* Change color on focus to match the border color */
+}
+
+
+.fa-eye, .fa-eye-slash {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+
+  .modal_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
+    .container1 {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
 
   @-ms-viewport {
     width: device-width;
@@ -2452,6 +2503,29 @@ $siblings = $siblings->fetchAll();
 
                     <div class="col-lg-6">
                       <div class="form-group">
+                        <label class="form-control-label" for="email">Email</label>
+                        <input type="email"  class="form-control form-control-alternative" id="email" readonly value =  "<?php echo $pers_info[0]['email'] ?>">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6" id="ps">
+                      <div class="form-group">
+                        <label class="form-control-label" for="pass">Password</label>
+                        <input type="password"  class="form-control form-control-alternative" id="pass">
+                        <i class="fas fa-eye" onclick="togglePasswordVisibility('pass')"></i>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6" id="ps2">
+                      <div class="form-group">
+                        <label class="form-control-label" for="pass">Verify Password</label>
+                        <input type="password"  class="form-control form-control-alternative" id="pass2">
+                        <i class="fas fa-eye" onclick="togglePasswordVisibility('pass2')"></i>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <div class="form-group">
                         <label class="form-control-label" for="input-email">Last Name</label>
                         <input type="text" id="input-email" class="form-control form-control-alternative" id="lname" readonly value =  "<?php echo $pers_info[0]['last_name'] ?>">
                       </div>
@@ -3125,14 +3199,40 @@ $siblings = $siblings->fetchAll();
             </div>
 
             <!-- <button id="Update" onclick="upd()">Update</button> -->
-
+         
             <div class="col-4 text-right">
-                  <a class="btn btn-sm btn-primary" id="Update" onclick="update()">
+                  <a class="btn btn-sm btn-primary" id="Update" onclick="verify()">
                     <i class="fa fa-pencil"></i> Update
                   </a>
                 </div>
+
+                <div class="col-4 text-right">
+                  <a class="btn btn-sm btn-primary" id="Cancel" onclick="cancel()">
+                    <i class="fa fa-pencil"></i> Cancel
+                  </a>
+                </div>
+       
             </form>
-          
+            <div id="modal" class="modal">
+            <div class="modal_content">
+                <div class="body">
+                <div class="logo">
+                    <img id="loading-spinner" style="display: none;" src="../assets/img/GCU_LOGO.gif">
+                    </div>
+                <div class="container1">
+                    <form id="verify_code" method="post">
+                    <h1>A verification code has been den to your email, please enter the code below to fully register your account</h1>
+                    <div class="id">
+                        <label for="email" style="color:black;">Verification Code:</label>
+                        <input type="number" id="code" name="code" oninput="validateInput(this)" required>
+                        <button onclick="update()" >Verify</button>
+                    </div>
+                    <!-- fasdfas -->
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
           </div>
         </div>
       </div>
@@ -3151,6 +3251,7 @@ $siblings = $siblings->fetchAll();
 
   <!-- Add this script tag to your HTML file -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script>
     // Get the logout button element
     function logout() {
@@ -3168,13 +3269,33 @@ $siblings = $siblings->fetchAll();
       // }
     };
   </script>
+  
   <script>
      var upd = $("#Update");
-
+     var cnl = $("#Cancel");
+     var pass = $("#ps");
+     var pass2 = $("#ps2");
+     cnl.hide();
      upd.hide();
+     pass.hide();
+     pass2.hide();
+
+     function togglePasswordVisibility(inputId) {
+    var passwordInput = document.getElementById(inputId);
+    var icon = document.querySelector('i[onclick="togglePasswordVisibility(\'' + inputId + '\')"]');
+  
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      icon.className = "fas fa-eye-slash";
+    } else {
+      passwordInput.type = "password";
+      icon.className = "fas fa-eye";
+    }
+  }
     function edit(){
       console.log("Edit btn clicked");
               // Get the select element by its ID
+              var email = document.getElementById('email');
                var crse = document.getElementById('crse');
                var yl = document.getElementById('YL');
                     var sec = document.getElementById('sec');
@@ -3200,6 +3321,7 @@ $siblings = $siblings->fetchAll();
 
               crse.disabled = false;
               yl.disabled = false;
+              email.removeAttribute('readonly');
               sec.removeAttribute('readonly');
               cn.removeAttribute('readonly');
               cs.disabled = false;
@@ -3215,14 +3337,163 @@ $siblings = $siblings->fetchAll();
               gcn.removeAttribute('readonly');
 
 
-
+              cnl.show();
       upd.show();
+      pass.show();
+     pass2.show();
     }
+function cancel(){
 
+  location.reload();
+  cnl.hide();
+  upd.hide();
+     pass.hide();
+     pass2.hide();
+}
+
+function verify(){
+  document.getElementById("modal").style.display = "block";
+                // Show loading spinner
+                Swal.fire({
+                title: 'Sending Code',
+                text: "Please check your email for the code in order to procedd with the update",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+            });
+    
+    console.log("performing ajax");
+    $.ajax({
+      type: 'POST',
+      url: '../backend/forgot_pass.php',
+      data: {
+        email: $("#email").val()
+      },
+      success: function(data) {
+        // Hide loading spinner on success
+        swal.close();
+        if (data === "unregistered") {
+                  
+          Swal.fire({
+          title: "Email Changed?",
+          text: "It seems you changed your email. Do you wish to proceed?",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Sending Code',
+                text: "Please check your email for the code in order to procedd with the update",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+            });
+            $.ajax({
+      type: 'POST',
+      url: '../backend/email_verify.php',
+      data: {
+        email: $("#email").val()
+      },
+      success: function(data) {
+        // Hide loading spinner on success
+        swal.close();
+        if (data === "unregistered") {
+
+          
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "This Email in already registered, please use a different email",
+              confirmButtonText: "OK",
+
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      
+                    } 
+                  });
+          console.log(data);
+          
+        } else {
+            Swal.fire({
+              icon: "sucess",
+              title: "Code Sent!",
+              text: "Go to your email to retrieve the code",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                
+                } 
+              });
+              console.log("Success",data)
+
+
+        }
+
+      },
+      error: function(xhr, status, error) {
+        // Hide loading spinner on error
+       
+        
+        console.error("Error:", error);
+        alert("Error: " + error);
+
+        swal.close();
+      },
+    });
+          }else{
+
+          }
+      });
+          
+         
+          
+        } else {
+            Swal.fire({
+              icon: "sucess",
+              title: "Code Sent!",
+              text: "Go to your email to retrieve the code",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                
+                } 
+              });
+              console.log("Success",data)
+
+
+        }
+
+      },
+      error: function(xhr, status, error) {
+        // Hide loading spinner on error
+       
+        
+        console.error("Error:", error);
+        alert("Error: " + error);
+
+        swal.close();
+      },
+    });
+       
+
+}
     function update(){
       console.log("Upd btn clicked");
                     // Get the select element by its ID
                     // student_user
+                    var email = document.getElementById('email').value;
                     var crse = document.getElementById('crse').value;
                     var id = "<?php echo $_SESSION['session_id']; ?>";
                     var yl = document.getElementById('YL').value;
@@ -3230,6 +3501,8 @@ $siblings = $siblings->fetchAll();
                     var cn = document.getElementById('CN').value;
                     var cs = document.getElementById('CS').value;
                     var adrs = document.getElementById('address').value;
+                    var pass = document.getElementById('pass').value;
+                    var pass2 = document.getElementById('pass2').value;
 
                     // father
                     var fage = document.getElementById('Fage').value;
@@ -3249,12 +3522,16 @@ $siblings = $siblings->fetchAll();
 
                     console.log("id: ", id);
                     console.log("crse: ", crse);
+
                     
               $.ajax({
           type: 'POST',
           url: '../backend/edit_std.php',
           data: {
             id: id,
+            email:email,
+            pass: pass,
+            pass2: pass2,
             course: crse,
             YL: yl,
             SEC: sec,
@@ -3273,6 +3550,21 @@ $siblings = $siblings->fetchAll();
 
           },
           success: function (data) {
+            if (data === "no_match"){
+              Swal.fire({
+              icon: "error",
+              title: "Password does not match",
+              text: "Please Try Again",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                
+            }
+          });
+            }
+            else{
             console.log("Server Response:", data);
             // Swal.fire({
             //   icon: "success",
@@ -3323,11 +3615,13 @@ $siblings = $siblings->fetchAll();
             //   gcn.setAttribute('readonly', true);
 
             // 
-            
+            cnl.hide();
             upd.hide();
-
+     pass.hide();
+     pass2.hide();
           } 
               });
+            }
            
           },
           error: function (xhr, status, error) {
@@ -3347,32 +3641,10 @@ $siblings = $siblings->fetchAll();
       // upd.hide();
 
     }
-    // Function to update the HTML elements
-    // 
-//     function reloadForm() {
-//     // Get the form element
-//     var form = document.getElementById('myForm');
 
-//     // Reset the form
-//     form.reset();
-// }
   </script>
 
-<!-- <input id="topbar" class="topbar d-flex align-items-center" style="background-color: #008B8B; height: auto;">
-    
-    <footer class="d-flex justify-content-center" style="width: 100%;">
-    
-     
 
-        <p style="text-align: center; margin: 0; display: block;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>. Guidance and Counseling Unit. All rights reserved.</p>
-        
-        <br>
-        <br>
-        <br>
-    </footer>
- 
- -->
-<!-- Update -->
 
 
   <input id="topbar" class="topbar d-flex align-items-center" style="background-color:#008B8B; height: 50px; ">

@@ -37,17 +37,7 @@ $_SESSION['origin'] = 'Teacher_Register';
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  #loading-spinner {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      transition: opacity 0.5s ease;
-      display: none;
-      
-    
-    }
+
 
     .container1 {
     max-width: 400px;
@@ -352,13 +342,52 @@ button:hover {
                                                     data: $("#registrationForm").serialize(),
                                                     success: function (data) {
                                                         if (data === "success_teacher") {
-                                                            document.getElementById("modal").style.display = "none";
-                                                            window.location.href = "teacher-login";
-                                                            alert("Congratulation, you are now registered!");
-                                                        } else {
-                                                            document.getElementById("modal").style.display = "none";
-                                                            alert("Somehin went wrong, please try again");
-                                                            console.log("Error",data);
+                                                            Swal.fire({
+                                                                icon: "sucess",
+                                                                title: "Registered",
+                                                                text: "Congratulation, you are now registered!",
+                                                                confirmButtonText: "OK",
+
+                                                                }).then((result) => {
+                                                                    /* Read more about isConfirmed, isDenied below */
+                                                                    if (result.isConfirmed) {
+                                                                        document.getElementById("modal").style.display = "none";
+                                                                         window.location.href = "teacher-login";
+                                                                    } 
+                                                                });
+                                              
+                        
+                                                        } else if (data === "registered") {
+                                                            Swal.fire({
+                                                                icon: "error",
+                                                                title: "Email Already Used",
+                                                                text: "Please use a idfferent email",
+                                                                confirmButtonText: "OK",
+
+                                                                }).then((result) => {
+                                                                    /* Read more about isConfirmed, isDenied below */
+                                                                    if (result.isConfirmed) {
+                                                                        document.getElementById("modal").style.display = "none";
+                                                                         console.log("Error",data);
+                                                                    } 
+                                                                });
+                                        
+                                                        } else{
+                                                            Swal.fire({
+                                                                icon: "error",
+                                                                title: "Ooops...",
+                                                                text: "Something went wrong, please try again",
+                                                                confirmButtonText: "OK",
+
+                                                                }).then((result) => {
+                                                                    /* Read more about isConfirmed, isDenied below */
+                                                                    if (result.isConfirmed) {
+                                                                        document.getElementById("modal").style.display = "none";
+                                        
+                                                                        console.log("Error",data);
+                                                                    } 
+                                                                });
+
                                                         }
                                                     },
                                                     error: function () {

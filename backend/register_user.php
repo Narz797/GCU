@@ -384,10 +384,7 @@ try{
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if (count($result) === 1) {
-                echo '<script>';
-                echo "alert('User Already Registered!');";
-                echo 'window.location.href=" ../Teacher_Side/register.php";';
-                echo '</script>';
+                echo 'registered';
             } else {
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 $sql = "INSERT INTO `teachers` (`employee_id`, `college`, `gender`, `last_name`, `first_name`, `middle_name`, `contact_number`, `email`, `password`, `civil_status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -408,10 +405,7 @@ try{
                 } 
             }
         } else {
-            echo '<script>';
-            echo "alert('Missing data fields!');";
-            echo 'window.location.href=" ../Teacher_Side/register.php";';
-            echo '</script>';
+            echo 'missing';
         }
 
         // Close the database connection

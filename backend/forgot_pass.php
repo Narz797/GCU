@@ -58,10 +58,10 @@ require 'D:\xampp\htdocs\GCU\phpmailer\phpmailer\vendor\autoload.php';
                         $mail->addAddress($email); // User's email
 
                         $mail->isHTML(true);
-                        $mail->Subject = 'Reset Password';
+                        $mail->Subject = 'Email Verification';
                         $email_body = "
-                            <h2>This is an email for password reset for  $email</h2>
-                            <h5>If you did not request this password reset please ignore it or change your password </h5>
+                            <h2>This is to verify $email</h2>
+                            <h5>If you did not request this please ignore it or change your password </h5>
                             <br><br>
                             <p> Verification Code: <b>$randomNumber</b></p>
                         ";
