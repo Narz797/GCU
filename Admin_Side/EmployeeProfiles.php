@@ -56,14 +56,33 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js" />
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
+
+    <!-- pagination -->
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+
+
+
+
+
+
 </head>
 <style>
 </style>
@@ -73,7 +92,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
     <header class="header">
         <nav class="nav">
             <div class="logo">
-                <img src="assets/images/bsu.png" alt="">
+            <img src="assets/images/GCU_logo.png" alt="">
             </div>
             <div class="nav-mobile">
                 <ul class="list">
@@ -281,13 +300,23 @@ function searchTable() { //searches in all column
                         row.append("<td>" + entry.position + "</td>");
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
+                        var statusCell = $("<td></td>");
                         var statusLink = $("<button class ='yes' onclick='view_student(" + entry.admin_user_id + ")'>Edit</button> <button class='no' onclick='del_emp(" + entry.admin_user_id + ")'>Delete</button>");
-                        row.append(statusLink);
+                        statusCell.append(statusLink);
+                        row.append(statusCell);
                         tableBody.append(row);
 
 
                     }
-                    console.log("data", data);
+                                      console.log("data", data);      // Initialize DataTables for pagination
+                            $('#dynamicTable').DataTable({
+                                paging: true,
+                                searching: false,
+                                ordering: false,
+                                lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+                                pageLength: 5, // Initial number of rows per page
+                            });
+    
                     var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                         noHistoryMessage1.hide(); // Hide the no history message if there is data
@@ -546,6 +575,7 @@ function searchTable() { //searches in all column
         }
         
     </style>
+    <?php include 'includes/footer.php' ?>
 </body>
 
 </html>

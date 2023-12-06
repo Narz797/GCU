@@ -87,7 +87,7 @@ logAudit($id, 'access_LOA page', $id .' has accessed the LOA page');
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
-        <img src="assets/images/bsu.png" alt="">
+        <img src="assets/images/GCU_logo.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -124,18 +124,7 @@ logAudit($id, 'access_LOA page', $id .' has accessed the LOA page');
 </header>
     <!-- Welcome-message -->
 <section>
-    <section class="banner">
-        <div class="banner-container">
-    <br>
-            <img src="../assets/images/GCU_logo.png" alt="">
-            <div class="banner-text">
-                <h5>REPUBLIC OF THE PHILIPPINES</h5>
-                <hr class="banner-line">
-                <h2><span>BENGUET STATE UNIVERSITY</span></h2>
-                <h1>GUIDANCE AND COUNSELING UNIT</h1>
-            </div>
-        </div>
-    </section>
+<?php include '../../includes/banner.php' ?>
     <div class="block"> 
     </div>
     <div class="title independent-title">
@@ -146,7 +135,7 @@ logAudit($id, 'access_LOA page', $id .' has accessed the LOA page');
         <div class="card">
     <main class="table" id="customers_table">
         <section class="table-header">
-            <h1>List of Tardy Students</h1>
+            <h1>List of Students</h1>
             <div class="input-group">
                  <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
             </div>
@@ -420,5 +409,6 @@ function exportToExcel() {
 </script>
 <script src="../assets/main.js"></script>
  <!-- <script src="assets/js/table.js"></script>    -->
+ <?php include '../includes/footer.php' ?>
 </body>
 </html>

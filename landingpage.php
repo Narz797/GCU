@@ -59,8 +59,12 @@ li a:hover {
           <li ><a href="/gcu/home" style="background-color:#f7b801;color:black;" >HOME</a></li>
           <li><a href="/gcu/about" style="background-color:#f7b801;color:black;">ABOUT</a></li>
           <li><a href="/gcu/services" style="background-color:#f7b801;color:black;">SERVICES</a></li>
+<<<<<<< Updated upstream
           <li><a href="/gcu/faq_landing.php" style="background-color:#f7b801;color:black;">FAQ</a></li>
 
+=======
+          <li class="icons">  <a href="../dh_student.php" style="background-color:#f7b801;color:black; height:40px;">FAQ</a></li>
+>>>>>>> Stashed changes
 
           <space style="width: 400px"> </space>
           <li class="dropdown"><a href="#" style="background-color:#f7b801; color:black;"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -68,6 +72,7 @@ li a:hover {
               <li><a href="Student_Side/student-login" style="background-color:#ffd166;color:black; ">STUDENT</a></li>
               <li><a href="Employee_Side/employee-login" style="background-color:#ffd166;color:black;">EMPLOYEE</a></li>
               <li><a href="Teacher_Side/teacher-login" style="background-color:#ffd166;color:black;">TEACHER</a></li>
+
 
 
             </ul>
@@ -99,10 +104,7 @@ li a:hover {
       </style>
   </section>
   <!-- End Top Bar -->
-  <a href="dh_landing.php" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="fa fa-question-circle"></i>
-    <span class="hover-text">Need Help? Click here for assistance.</span>
-</a>
+ 
 
 
 

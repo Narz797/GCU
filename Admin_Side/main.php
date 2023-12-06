@@ -74,7 +74,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     <header class="header">
         <nav class="nav">
             <div class="logo">
-                <img src="assets/images/bsu.png" alt="">
+            <img src="assets/images/GCU_logo.png" alt="">
             </div>
             <div class="align-right">
                 <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
@@ -91,19 +91,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
         </nav>
     </header>
     <!-- Banner -->
-    <section>
-        <section class="banner">
-            <div class="banner-container">
-
-                <img src="assets/images/GCU_logo.png" alt="">
-                <div class="banner-text">
-                    <h5>REPUBLIC OF THE PHILIPPINES</h5>
-                    <hr class="banner-line">
-                    <h2><span>BENGUET STATE UNIVERSITY</span></h2>
-                    <h1>GUIDANCE AND COUNSELING UNIT</h1>
-                </div>
-            </div>
-        </section>
+    <?php include '../includes/banner.php' ?>
         <div class="block"></div>
         <!-- First Section -->
         <div class="title independent-title">
@@ -300,6 +288,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
             border-radius: 20px;
         }
     </style>
+    <?php include 'includes/footer.php' ?>
 </body>
 
 </html>

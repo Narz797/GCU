@@ -91,7 +91,7 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
     <header class="header">
         <nav class="nav">
             <div class="logo">
-                <img src="assets/images/bsu.png" alt="">
+            <img src="assets/images/GCU_logo.png" alt="">
             </div>
             <div class="nav-mobile">
                 <ul class="list">
@@ -294,7 +294,7 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
                         var statusCell = $("<td></td>");
-                        var statusLink = $("<button class='yes' onclick='view_student(" + entry.stud_user_id + ")'>Edit</button> <button class='no' onclick='del_emp(" + entry.stud_user_id + ")'>Delete</button>" );
+                        var statusLink = $("<button class='no' onclick='del_emp(" + entry.stud_user_id + ")'>Delete</button>" );
 
                         statusCell.append(statusLink);
                         row.append(statusCell);
@@ -574,6 +574,7 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
     </script>
     <script src="./assets/main.js"></script>
     <!-- <script src="assets/js/table.js"></script>    -->
+    <?php include 'includes/footer.php' ?>
 </body>
 
 </html>

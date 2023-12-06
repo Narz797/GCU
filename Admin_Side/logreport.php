@@ -63,13 +63,23 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
+
+        <!-- pagination -->
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <img src="assets/images/bsu.png" alt="">
+        <img src="assets/images/GCU_logo.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -260,6 +270,16 @@ $(document).ready(function () {
                     tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                  }
+
+                                                 // Initialize DataTables for pagination
+                                                 $('#dynamicTable').DataTable({
+                                paging: true,
+                                searching: false,
+                                ordering: false,
+                                lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
+                                pageLength: 5, // Initial number of rows per page
+                            });
+
                  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
@@ -432,5 +452,6 @@ function dl_log() {
 
 </script>  
 <script src="./assets/main.js"></script> 
+<?php include 'includes/footer.php' ?>
 </body>
 </html>

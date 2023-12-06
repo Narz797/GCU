@@ -40,8 +40,12 @@
  
 <li ><a href="student-home" style="background-color:#e9d8a6;color:black;">TRANSACTION</a></li>
 <li><a href="appointment.php" style="background-color:#e9d8a6;color:black;">APPOINTMENT</a></li>
+<<<<<<< Updated upstream
 <li><a href="appointment.php" style="background-color:#e9d8a6;color:black;">FAQ</a></li>
 
+=======
+<li class="icons">  <a href="../dh_student.php" style="background-color:#e9d8a6;color:black; height:40px;">FAQ</a></li>
+>>>>>>> Stashed changes
 
 
 
@@ -60,6 +64,7 @@
 <ul  style="background-color: transparent; "> 
           <li><a href="../Student_Side/student-profile2.php" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">PROFILE</a></li>
           <li><a href="../home?logout=true" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">LOGOUT</a></li>
+          
         </ul>
       </li>
 
@@ -231,9 +236,7 @@
 
 <!-- </section> -->
 
-  <a href="../dh_student.php"class="scroll-top d-flex align-items-center justify-content-center">
-  <i class="fa fa-question-circle"></i>
-    <span class="hover-text">Need Help? Click here for assistance.</span></a>
+
 
   <div id="preloader"></div>
 

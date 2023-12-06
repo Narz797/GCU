@@ -72,7 +72,7 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
     <header class="header">
         <nav class="nav">
             <div class="logo">
-                <img src="assets/images/bsu.png" alt="">
+            <img src="assets/images/GCU_logo.png" alt="">
             </div>
             <div class="nav-mobile">
                 <ul class="list">
@@ -175,5 +175,7 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
     </script>
     <script src="./assets/main.js"></script>
     <script src="assets/js/table.js"></script>
+    
 </body>
+<?php include 'includes/footer.php' ?>
 </html>

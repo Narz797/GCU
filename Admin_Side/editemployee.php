@@ -249,6 +249,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             });
         </script>
         <script src="./assets/main.js"></script>
+        <?php include 'includes/footer.php' ?>  
 </body>
 
 </html>

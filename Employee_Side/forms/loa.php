@@ -63,7 +63,7 @@ include '../../backend/log_audit2.php';
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
-        <img src="assets/images/bsu.png" alt="">
+        <img src="assets/images/GCU_logo.png" alt="">
         </div>
         <div class="nav-mobile">
             <ul class="list">
@@ -97,18 +97,7 @@ include '../../backend/log_audit2.php';
 </header>
     <!-- Banner -->
 <section>
-    <section class="banner">
-        <div class="banner-container">
-    <br>
-            <img src="../assets/images/GCU_logo.png" alt="">
-            <div class="banner-text">
-                <h5>REPUBLIC OF THE PHILIPPINES</h5>
-                <hr class="banner-line">
-                <h2><span>BENGUET STATE UNIVERSITY</span></h2>
-                <h1>GUIDANCE AND COUNSELING UNIT</h1>
-            </div>
-        </div>
-    </section>
+<?php include '../../includes/banner.php' ?>
     <div class="block"> 
     </div>
     <!-- Management-area -->
@@ -319,6 +308,7 @@ function archive() {
         }
 
     fetchData();
-</script>   
+</script> 
+<?php include '../includes/footer.php' ?>
 </body>
 </html>

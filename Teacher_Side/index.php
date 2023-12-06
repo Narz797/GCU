@@ -34,7 +34,7 @@ $_SESSION['transact_type'] = 'referral';
     <title>Welcome, Teacher/s</title>
     
     <!-- Your Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css"/>
+    <link rel="stylesheet" href="assets/css/teachers.css"/>
     <!-- Bootstrap CSS and JS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -67,7 +67,9 @@ $_SESSION['transact_type'] = 'referral';
         <div class="logo">
             <img src="bsu.png" alt="">
         </div>
+        
         <div class="align-right">
+        <button class="icon-btn place-items-center">  <a href="../dh_teacher.php" >FAQ</a></button>
             <button class="icon-btn place-items-center" onclick="logout()" value="logout">
                 <i class="ri-user-3-line"> Log-out</i>
             </button>
@@ -92,7 +94,7 @@ $_SESSION['transact_type'] = 'referral';
             </div>
         </div>
     </section> -->
-    <?php include 'banner.php' ?>
+    <?php include '../includes/banner.php' ?>
 
     
 
@@ -359,12 +361,7 @@ $_SESSION['transact_type'] = 'referral';
     </div>
     </div>
   </div>  
-  <footer>
-  <a href="../dh_teacher.php"class="scroll-top d-flex align-items-center justify-content-center">
-  <i class="fa fa-question-circle"></i><br>
-    <span class="hover-text"> &nbsp;&nbsp;&nbsp;Need Help? Click here for assistance.</span></a> 
-
-  </footer>
+  <?php include 'includes/footer.php' ?>
        
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

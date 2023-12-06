@@ -246,7 +246,7 @@ include 'includes/main2.php';
         </div>
     </div>
 </section>
-<section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section> 
+<!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section>  -->
 <!-- popup -->
 <div class="overlay" id="divOne">
                     <div class="wrapper">
@@ -277,18 +277,9 @@ include 'includes/main2.php';
                     </div>
                  </div>
 
-                 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: auto;">
+                 <!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: auto;"> -->
     
-    <footer class="d-flex justify-content-center" style="width: 100%;">
-    
-     
-
-        <p style="text-align: center; margin: 0; display: block;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>. Guidance and Counseling Unit. All rights reserved.</p>
-        
-        <br>
-        <br>
-        <br>
-    </footer>
+                 <?php include '../includes/footer.php' ?>
  
 </section>
 

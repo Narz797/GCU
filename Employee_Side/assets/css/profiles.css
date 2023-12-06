@@ -468,7 +468,7 @@ tbody td.active {
         transition: initial;}
     .nav-mobile > .list{
         flex-direction: row;
-        margin-left: 4rem;}
+        margin-left: 1rem;}
     .nav-mobile .list-link{
         border-radius: .4rem;}
     .current1{

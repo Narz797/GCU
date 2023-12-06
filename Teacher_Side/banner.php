@@ -1,3 +1,5 @@
+
+
 <div style="background-image: url('assets/img/bg.png'); background-repeat: no-repeat; background-size: cover; display:flex; justify-content:center; padding-top:2%; padding-bottom:2%;">
   <br>
   <img src="assets/img/GCU_logo.png" alt="" style="display: inline-block; vertical-align: middle;  width:10%; height:auto;">

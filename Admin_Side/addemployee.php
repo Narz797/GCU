@@ -199,5 +199,7 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
 
 
 </style>
+
     </body>
+    <?php include 'includes/footer.php' ?>
 </html>
