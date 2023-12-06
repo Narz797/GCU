@@ -166,7 +166,7 @@ include 'includes/main2.php';
                 <table style="color:black;" id="dynamicTable">
                     <thead>
                         <tr>
-                            <th> No. <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Councelor <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Title of appointment <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Date <span class="icon-arrow">&UpArrow;</span></th>
                             
@@ -209,7 +209,7 @@ include 'includes/main2.php';
                 <table style="color:black;" id="dynamicTable2" >
                     <thead>
                         <tr>
-                            <th  > No. <span class="icon-arrow">&UpArrow;</span></th>
+                            <th  > Councelor <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Title of appointment <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Date <span class="icon-arrow">&UpArrow;</span></th>
                             
@@ -419,7 +419,7 @@ include 'includes/main2.php';
                     if(entry.status === "taken"){
                     var tableToAppend = tableBody; // Determine which table to append to
                     var row = $("<tr></tr>");
-                    row.append("<td>" + entry.appointment_id+ "</td>");
+                    row.append("<td>" + entry.first_name+ " " + entry.last_name+ "</td>");
                     row.append("<td>" + entry.Reason + "</td>");
                     row.append("<td>" + entry.date+"</td>");
 
@@ -456,7 +456,7 @@ include 'includes/main2.php';
               {
                 var tableToAppend2 = tableBody2; // Determine which table to append to
                    var row = $("<tr></tr>");
-                    row.append("<td>" + entry.appointment_id+ "</td>");
+                   row.append("<td>" + entry.first_name+ " " + entry.last_name+ "</td>");
                     row.append("<td>" + entry.Reason + "</td>");
                     row.append("<td>" + entry.date+"</td>");
 

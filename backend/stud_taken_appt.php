@@ -5,12 +5,16 @@ $id=$_SESSION['session_id'] ;
 
 
 $sql = "SELECT 
-    appointment_id, 
-    date, 
-    Reason,
-    status
+    appointment.appointment_id, 
+    appointment.date, 
+    appointment.Reason,
+    appointment.status,
+    admin_user.first_name,
+    admin_user.last_name
     FROM 
     appointment
+    INNER JOIN 
+        admin_user ON appointment.employee_id = admin_user.admin_user_id
     WHERE student_id = :id;
 ";
 
