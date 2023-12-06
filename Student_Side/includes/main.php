@@ -19,6 +19,7 @@
           <li><a href="../index.php">HOME</a></li>
           <li><a href="../about.php">ABOUT</a></li>
           <li><a href="../services.php">SERVICES</a></li>
+          
 
           <!-- Show when Mobile view -->
           <!-- <li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
@@ -55,6 +56,7 @@
       <ul>
         <li><a href="transaction1.php">TRANSACTION</a></li>
         <li><a href="appointment.php">APPOINTMENT</a></li>
+        
       </ul>
     </nav><!-- .navbar -->
 

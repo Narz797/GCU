@@ -2,10 +2,22 @@
 <html lang="en">
 
 <?php include '../includes/head.php'; ?>
+<heead>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
 <style>
   li a:hover {
   transform: scale(1.1);
 }
+
+.mobile-nav-show {
+    color: transparent;
+  }
+  
+  .mobile-nav-hide {
+    color: transparent;
+  }
 </style>
 
 
@@ -28,6 +40,8 @@
  
 <li ><a href="student-home" style="background-color:#e9d8a6;color:black;">TRANSACTION</a></li>
 <li><a href="appointment.php" style="background-color:#e9d8a6;color:black;">APPOINTMENT</a></li>
+<li><a href="appointment.php" style="background-color:#e9d8a6;color:black;">FAQ</a></li>
+
 
 
 
@@ -41,7 +55,7 @@
 <!-- <div class="account-icon"> -->
 
 <!-- <li class="dropdown"><a href="#"><span> <img src="assets/img/dp.png" alt="" height="40px"  ></span> <i class="bi bi-chevron-down dropdown-indicator"></i></a> -->
-       <li class="dropdown"><a href="#" style="background:#e9d8a6;"><span> <img src="assets/img/dp.png" alt="" height="40px"  ><i class="bi bi-chevron-down dropdown-indicator"></i></span> </a>
+       <li class="dropdown"><a href="#" ><span> <img src="assets/img/dp.png" alt="" height="40px"  ><i class="bi bi-chevron-down dropdown-indicator"></i></span> </a>
 
 <ul  style="background-color: transparent; "> 
           <li><a href="../Student_Side/student-profile2.php" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">PROFILE</a></li>

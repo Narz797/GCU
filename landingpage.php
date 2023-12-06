@@ -59,6 +59,8 @@ li a:hover {
           <li ><a href="/gcu/home" style="background-color:#f7b801;color:black;" >HOME</a></li>
           <li><a href="/gcu/about" style="background-color:#f7b801;color:black;">ABOUT</a></li>
           <li><a href="/gcu/services" style="background-color:#f7b801;color:black;">SERVICES</a></li>
+          <li><a href="/gcu/faq_landing.php" style="background-color:#f7b801;color:black;">FAQ</a></li>
+
 
           <space style="width: 400px"> </space>
           <li class="dropdown"><a href="#" style="background-color:#f7b801; color:black;"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
