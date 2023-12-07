@@ -30,17 +30,22 @@
         }
 
         .mobile-nav-hide {
-            display: none; /* Hide the close icon initially on small screens */
+            display: block; /* Hide the close icon initially on small screens */
         }
     }
 
-.mobile-nav-show {
+/* .mobile-nav-show {
     color: transparent;
+   
+  }
+
+  .mobile-nav-show:hover{
+    color: #f7b801;
   }
   
   .mobile-nav-hide {
     color: transparent;
-  }
+  } */
 
 
 .scroll-top .hover-text {
@@ -80,21 +85,22 @@ li a:hover {
       </a>
       <nav id="navbar" class="navbar" >
         <ul >
-            <img src="assets/img/GCU_logo.png" alt="" style="margin-left:auto; width:4%; ">
-            <space style="width: 600px"> </space> 
+            <img src="assets/img/GCU_logo.png" alt="" style="display:flex;">
+            <i class="mobile-nav-toggle mobile-nav-hide bi bi-x d-none"></i>
+            <space style="width: 10%"> </space> 
           <!-- <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; "> -->
-          <li ><a href="/gcu/home" style="background-color:#e9d8a6;color:black;" >HOME</a></li>
-          <li><a href="/gcu/about" style="background-color:#e9d8a6;color:black;">ABOUT</a></li>
-          <li><a href="/gcu/services" style="background-color:#e9d8a6;color:black;">SERVICES</a></li>
+          <li ><a href="home" style="background-color:#e9d8a6;color:black; height:2%;" >HOME</a></li>
+          <li><a href="about" style="background-color:#e9d8a6;color:black;">ABOUT</a></li>
+          <li><a href="services" style="background-color:#e9d8a6;color:black;">SERVICES</a></li>
           <li><a href="dh_landing.php" style="background-color:#e9d8a6;color:black;">FAQ</a></li>
 
 
           <!-- <space style="width: 400px"> </space> -->
-          <li class="dropdown"><a href="#" style="background-color:#e9d8a6;color:black;"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="#" style="background-color:#e9d8a6; color:black;"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
-              <li><a href="Student_Side/student-login" style="background-color:#ffd166;color:black; ">STUDENT</a></li>
-              <li><a href="Employee_Side/employee-login" style="background-color:#ffd166;color:black;">EMPLOYEE</a></li>
-              <li><a href="Teacher_Side/teacher-login" style="background-color:#ffd166;color:black;">TEACHER</a></li>
+              <li><a href="Student_Side/student-login" style="background-color:#e9d8a6;color:black; ">STUDENT</a></li>
+              <li><a href="Employee_Side/employee-login" style="background-color:#e9d8a6;color:black;">EMPLOYEE</a></li>
+              <li><a href="Teacher_Side/teacher-login" style="background-color:#e9d8a6;color:black;">TEACHER</a></li>
 
 
 
@@ -102,10 +108,10 @@ li a:hover {
           </li>
           <!-- <li class="dropdown"><li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">
             REGISTER</a></li> -->
-          <li class="dropdown" ><a style="background-color:#e9d8a6;color:black;"><span >REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown" ><a style="background-color:#e9d8a6; color:black;"><span >REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
-              <li><a href="./Student_Side/Stud_registration/agreement.php" style="background-color:#ffd166; color:black;">STUDENT</a></li>
-              <li><a href="Teacher_Side/agreement.php" style="background-color:#ffd166; color:black;">TEACHER</a></li>
+              <li><a href="./Student_Side/Stud_registration/agreement.php" style="background-color:#e9d8a6; color:black;">STUDENT</a></li>
+              <li><a href="Teacher_Side/agreement.php" style="background-color:#e9d8a6; color:black;">TEACHER</a></li>
 
 
             </ul>
@@ -113,7 +119,7 @@ li a:hover {
         </ul>
       </nav><!-- .navbar -->
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <!-- <i class="mobile-nav-toggle mobile-nav-hide bi bi-x"></i> -->
     </div>
   </header><!-- End Header -->
   <!-- End Header -->

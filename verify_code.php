@@ -3,7 +3,7 @@
 session_start();
 $randomNumber = $_SESSION['random_number'];
 
- ?>s
+ ?>
 
 <!DOCTYPE html>
 <html>
