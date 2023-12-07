@@ -10,10 +10,8 @@
 }
 
 @media (max-width: 767px) {
-  #navbar {
-    display: none;
-  }
 
+/* 
   .mobile-nav-toggle {
     display: block;
     font-size: 24px;
@@ -42,7 +40,7 @@
 
   #navbar ul li a {
     width: 100%;
-  }
+  } */
 }
 
 
@@ -56,14 +54,12 @@
 
 <div class="container-fluid container-xl d-flex align-items-center justify-content-between" >
   <a href="index.html" class="logo d-flex align-items-center">
-    <!-- Uncomment the line below if you also wish to use an image logo -->
-    <!--  <img src="/GCU.png" alt="">  -->
-    <!-- <h1>Impact<span>.</span></h1> -->
+
   </a>
 <nav id="navbar" class="navbar" >
 <ul >
 <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
-<!-- <img src="assets/img/GCU_logo.png" class="bsu" alt="" style="width:7%; height:6%;" > -->
+
 
 
  
@@ -72,24 +68,11 @@
 
 <li class="icons">  <a href="../dh_student.php" style="background-color:#e9d8a6;color:black; height:40px;">FAQ</a></li>
 
-
-
-
-<!-- Show when Mobile view -->
-
-            <ul style="background-color: transparent; ">
-<li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
-<li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li>
-
-
-</ul>
-          </li>
+        
 
 <div class="containerA" style="margin-right:3%; background-color:transparent;">
 
-<!-- <div class="account-icon"> -->
 
-<!-- <li class="dropdown"><a href="#"><span> <img src="assets/img/dp.png" alt="" height="40px"  ></span> <i class="bi bi-chevron-down dropdown-indicator"></i></a> -->
        <li class="dropdown"><a href="#" style="background:#e9d8a6;"><span> <img src="assets/img/dp.png" alt="" height="40px"  ><i class="bi bi-chevron-down dropdown-indicator"></i></span> </a>
 
 <ul  style="background-color: transparent; "> 
@@ -98,22 +81,13 @@
           
         </ul>
       </li>
-
-</div>
-
-</div>
-
-</ul>
-</nav>
+      </ul>
+      </nav>
 
 <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-
-
- 
-
 </div>
+
 </header>
   
 
