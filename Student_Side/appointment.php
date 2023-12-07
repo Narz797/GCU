@@ -79,7 +79,7 @@ include 'includes/main2.php';
 </div>
 <!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section>  -->
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color:primary; height: 80px; color: black; ">
-<p style="margin-left: 2%; font-size: 30px; font-weight: bold;">APPOINTMENT SCHEDULE</p>
+<p style="margin-left: 2%; font-size: 30px; font-weight: bold; color: white;">APPOINTMENT SCHEDULE</p>
 </section> 
 <div class="row" style="background:white;">
 <div class="container" style="background: white;">
@@ -279,8 +279,21 @@ include 'includes/main2.php';
 
                  <!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: auto;"> -->
     
-                 <?php include '../includes/footer.php' ?>
- 
+                 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: auto;">
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="d-flex justify-content-center" style="width: 100%;">
+    
+        <br>
+
+        <p style="text-align: center; margin: 0; display: block; ">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>.
+         Guidance and Counseling Unit. All rights reserved.</p>
+        <br>
+        
+    </footer>
+</section>
 </section>
 
 <!-- 
