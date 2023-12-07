@@ -18,7 +18,7 @@
    </head>
 <body>
   <!-- Header -->
-<header class="header">
+<header class="header" style="background: #007f5f;">
     <nav class="nav"> 
         <div class="logo">
         <img src="assets/img/GCU_logo.png" alt="">
@@ -42,22 +42,109 @@
     
     }
 
+        /* Your existing styles */
+        #RBG h5 {
+      font-size: 1vw;
+    }
+    #RBG h3 {
+      font-size: 1.8vw;
+    }
+    #RBG h1 {
+      font-size: 2vw;
+    }
+   .banner_img {
+      max-width: 100%; /* Ensure the image doesn't exceed its original size */
+      height: auto;
+      display: block; /* Remove the inline-block display property */
+      margin-right: 3%;
+      vertical-align: middle; 
+      width: 10%; 
+    }
+
+    /* Media Query for screens with a max-width of 768px */
+    @media only screen and (max-width: 768px) {
+      #RBG h5 {
+        font-size: 3vw;
+      }
+
+      #RBG h3 {
+        font-size: 3vw;
+      }
+
+      #RBG h1 {
+        font-size: 4vw;
+      }
+      .banner{
+        height: auto;
+      }
+      .banner_img {
+      width: 20%; /* Adjust the percentage based on your design */
+      height: auto;
+      padding: 10px;
+      margin-right: 0; /* Remove the right margin on smaller screens */
+    }
+    }
+
+
 </style>
     <!-- Welcome-message -->
-<section>
-<?php include 'includes/banner.php' ?>
-    <div class="block"> 
+    <section class="banner">
+  
+  <div style="background-image: url('assets/img/bg.png'); background-repeat: no-repeat; background-size: cover; display:flex; justify-content:center; padding-top:2%; padding-bottom:2%;">
+    <br>
+    <img class = "banner_img" src="assets/img/bsu.png" class="bsu" alt="" >
+
+    <div id="RBG" style="display: inline-block; vertical-align: middle; margin-top:2%;">
+      <h5 style="font-family: 'Georgia', serif; color:black;">REPUBLIC OF THE PHILIPPINES</h5>
+      <hr class="line" style="width: 100%; border-color: black; margin-bottom: 0;">
+      <h1 style="font-family: 'fantasy'; color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);"><span>BENGUET STATE UNIVERSITY</span></h1>
+      <h1 style="font-family: 'Garamond', serif; font-weight: bold; color:black;">GUIDANCE AND COUNSELING UNIT</h1>
+    </div>
+  </div>
+</section>
+
+<section style="background: #ffefd3">
+    <div class="block" style="background: #007f5f;"> 
     </div>
  <div class="accordion">
     <div class="accordion-text">
       <div class="title">FAQ</div>
     <ul class="faq-text">
+
+    <li>
+        <div class="question-arrow">
+          <span class="question">What is the website all about?</span>
+          <i class="bx bxs-chevron-down arrow"></i>
+        </div>
+        <p>The website for Guidance and Counseling at Benguet State University facilitates quick and efficient transactions at GCU.
+          <br><br>For students<br> - through the 
+      the digitized forms it is now easier for them to request forms such as :
+        <br> ✔ admission slip <br>
+        ✔ leave of absence slip <br>
+        ✔withdrawal, dropping and shifting slip <br>
+        ✔ readmission slip. <br>
+        <br>
+        For teachers,<br>
+      -Referring students has become effortless for them with the utilization of the digitized referral slip,
+       eliminating the necessity to visit GCU for transactions
+      <br>
+      <br>
+        For Employees,<br>
+        - They can now expedite the processing of client requests more efficiently using the website
+
+    
+    </p>
+        <span class="line"></span>
+      </li>
+
       <li>
         <div class="question-arrow">
           <span class="question">What do you mainly do in the system?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p>You have a simple dashboard for monitoring requested forms and appointed counseling. The system having atleast four Actions to be taken.</p>
+        <p>You have a simple dashboard to read the services rendered by Benguet Sate Univeersity-Guidance and Counseling Unit. 
+        The system incorporates a log-in and registration feature, requiring users to register initially if they do not have
+         an account before logging in.</p>
         <span class="line"></span>
       </li>
       <li>
@@ -65,36 +152,9 @@
           <span class="question">How to know if one is clickable?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p>Anything that the cursor hovers and changes color means that that area in display is responsive.</p>
+        <p>Any area that becomes visible and interactive as the cursor hovers and moves over it indicates that it is responsive.</p>
         <span class="line"></span>
-      </li>
-      <li>
-        <div class="question-arrow">
-          <span class="question">From where should I add remarks regarding a students?</span>
-          <i class="bx bxs-chevron-down arrow"></i>
-        </div>
-        <p>You can add remarks or comment regarding a student on the "Student Profiles" page.</p>
-        <p>Student Profiles > View > Add Notes</p>
-        <p>You can also add remarks on a student's specific transacted form/slip or edit a student's specific appointment.</p>
-        <p>Student Profiles > View > Add Remarks Table or Edit Table</p>
-        <span class="line"></span>
-      </li>
-      <li>
-        <div class="question-arrow">
-          <span class="question">Where can I change my display to dark mode/light mode?</span>
-          <i class="bx bxs-chevron-down arrow"></i>
-        </div>
-        <p>You can switch to dark mode or light mode with the icon on your top right corner screen.</p>
-        <span class="line"></span>
-      </li>
-      <li>
-        <div class="question-arrow">
-          <span class="question">Can I export my data?</span>
-          <i class="bx bxs-chevron-down arrow"></i>
-        </div>
-        <p>Yes, Certainly. All tables in the system has an export function. You can export your data as an excel or a pdf.</p>
-        <span class="line"></span>
-      </li>
+      
       <li>
         <div class="question-arrow">
           <span class="question">I'm having technical issues where should I ask help?</span>
@@ -119,14 +179,14 @@
         <div class="phone details">
           <i class="fas fa-phone-alt"></i>
           <div class="topic">Phone</div>
-          <div class="text-one">+0098 9893 5647</div>
-          <div class="text-two">+0096 3434 5678</div>
+          <div class="text-one">+63907 905 0664</div>
+          <!-- <div class="text-two">+0096 3434 5678</div> -->
         </div>
         <div class="email details">
           <i class="fas fa-envelope"></i>
           <div class="topic">Email</div>
-          <div class="text-one">bsit2024@gmail.com</div>
-          <div class="text-two">nichole00@gmail.com</div>
+          <div class="text-one">bsuossgcu205@gmail.com</div>
+         
         </div>
       </div>
       <div class="right-side">
@@ -153,14 +213,25 @@
     </div>
     </div>
   </div>
-<footer id="footer" class="footer">
+<!-- <footer id="footer" class="footer" style="background: #007f5f;">
     <div class="foot" id="footercopyright">
         <div class="copyright">
-            <?php echo '&copy; ' . date('Y') . ' <strong><span>Impact</span></strong>. All Rights Reserved'; ?>
+           
         </div>
         <div class="credits">Designed by <a class="dev" href="https://www.facebook.com/BSUCollegeofInformationSciences">BSIT</a></div>
     </div>
-</footer>
+</footer> -->
+
+<footer class="d-flex justify-content-center" style="width: 100%; background:  #007f5f;">
+    
+        <br>
+
+        <p style="text-align: center; margin: 0; display: block; color:white;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>.
+         Guidance and Counseling Unit. All rights reserved.</p>
+        <br>
+        
+    </footer>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
                     function goBack() {

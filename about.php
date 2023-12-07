@@ -122,8 +122,8 @@ include 'landingpage.php';
     potentials. As such, the BSU-OSS-GCU gratefully welcomes comments and suggestions from the same clients.</p>
 </div>
 </div>
-    </section><!-- End Recent Blog Posts Section -->
-     <!-- ======= Testimonials Section ======= -->
+    <!-- </section>
+     
      <section id="testimonials" class="testimonials">
       <div class="container" data-aos="fade-up">
         <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
@@ -148,7 +148,7 @@ include 'landingpage.php';
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
@@ -167,7 +167,7 @@ include 'landingpage.php';
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
@@ -186,7 +186,7 @@ include 'landingpage.php';
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
@@ -205,7 +205,7 @@ include 'landingpage.php';
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
@@ -224,11 +224,11 @@ include 'landingpage.php';
                   </p>
                 </div>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
           </div>
           <div class="swiper-pagination"></div>
         </div>
       </div>
-    </section><!-- End Testimonials Section -->
+    </section> -->
 </body>
 <?php include 'includes/footer.php' ?>

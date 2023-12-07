@@ -14,8 +14,10 @@ include 'landingpage.php';
         .text-box i {
             font-style: italic; 
         } */
+
+        
   </style>
-<body>
+<body >
   <!-- ======= Our Services Section ======= -->
   <section id="services" class="services sections-bg" >
       <div class="container" data-aos="fade-up">
@@ -40,7 +42,7 @@ include 'landingpage.php';
       <div class="container" data-aos="fade-up">
         <div class="row gy-4 align-items-center">
           <div class="col-lg-6">
-          <img src="assets/img/vb.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 600px; height: 450px;">
+          <img src="assets/img/vb.png" class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="max-width: 100%; height: auto;">
           </div>
           
           <div class="col-lg-6">
@@ -111,7 +113,7 @@ include 'landingpage.php';
           </div>
           
           <div class="col-lg-6">
-          <img src="assets/img/info.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 500px; height: 300px;">
+          <img src="assets/img/info.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
@@ -121,7 +123,7 @@ include 'landingpage.php';
       <div class="container" data-aos="fade-up">
         <div class="row gy-4 align-items-center">
           <div class="col-lg-6">
-          <img src="assets/img/ge.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 500px; height: 300px;">
+          <img src="assets/img/ge.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="max-width: 100%; height: auto;">
           </div>
           <div class="col-lg-6">
             <div class="stats-item d-flex align-items-center">
@@ -166,7 +168,7 @@ include 'landingpage.php';
             </div><!-- End Stats Item -->
           </div>
           <div class="col-lg-6">
-          <img src="assets/img/hh.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 500px; height: 300px;"> 
+          <img src="assets/img/hh.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="max-width: 100%; height: auto;"> 
       
           </div>
         </div>
@@ -178,7 +180,7 @@ include 'landingpage.php';
       <div class="container" data-aos="fade-up">
         <div class="row gy-4 align-items-center">
           <div class="col-lg-6">
-          <img src="assets/img/cc.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 300px; height: 300px;">
+          <img src="assets/img/cc.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="max-width: 100%; height: auto;">
           </div>
           <div class="col-lg-6">
             <div class="stats-item d-flex align-items-center">
@@ -230,7 +232,7 @@ include 'landingpage.php';
             </div>
           </div>
           <div class="col-lg-6">
-          <img src="assets/img/kk.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 500px; height: 300px;"> 
+          <img src="assets/img/kk.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="max-width: 100%; height: auto;"> 
       
           </div>
         </div>
@@ -261,7 +263,7 @@ include 'landingpage.php';
            
           </div>
           <div class="col-lg-6">
-          <img src="assets/img/hu.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 500px; height: 300px;"> 
+          <img src="assets/img/hu.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="max-width: 100%; height: auto;"> 
           </div>
         </div>
       </div>
@@ -284,7 +286,7 @@ include 'landingpage.php';
         with difficult circumstances. 
             
             </p> -->
-            <img src="assets/img/ffl.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 500px; height: 300px;"> 
+            <img src="assets/img/ffl.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100"style="max-width: 100%; height: auto;"> 
             </div><!-- End Stats Item -->
            
           </div>
@@ -317,7 +319,7 @@ include 'landingpage.php';
            
           </div>
           <div class="col-lg-6">
-          <img src="assets/img/cs.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 500px; height: 300px;"> 
+          <img src="assets/img/cs.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="max-width: 100%; height: auto;"> 
           </div>
         </div>
       </div>
@@ -339,7 +341,7 @@ include 'landingpage.php';
         with difficult circumstances. 
             
             </p> -->
-            <img src="assets/img/ree.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 500px; height: 300px;"> 
+            <img src="assets/img/ree.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="max-width: 100%; height: auto;"> 
             </div><!-- End Stats Item -->
            
           </div>
@@ -386,7 +388,7 @@ include 'landingpage.php';
           </div>
           
           <div class="col-lg-6">
-          <img src="assets/img/df.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="width: 600px; height: 450px;">
+          <img src="assets/img/df.png"  class="logo" alt="" data-aos="zoom-out" data-aos-delay="100" style="max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
