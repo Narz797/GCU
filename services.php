@@ -394,4 +394,4 @@ include 'landingpage.php';
     </section><!-- End Our Services Section -->
     
 </body>
-<?php include 'includes/footer1.php' ?>
+<?php include 'includes/footer.php' ?>
