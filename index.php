@@ -189,6 +189,10 @@ if ((isset($_GET['logout']) && $_GET['logout'] === 'true') || (isset($_SESSION) 
     </section> -->
 
       <section id="hero" class="hero"  >
+      
+
+
+      </section>
 
 
 

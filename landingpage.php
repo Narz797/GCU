@@ -4,9 +4,35 @@
 <?php include 'includes/head.php'; ?>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <!-- Add a meta tag for viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <style>
+
+  /* Your existing styles */
+
+  @media (max-width: 768px) {
+        /* Add styles for small screens here */
+        body {
+            font-size: 14px; /* Adjust font size for smaller screens */
+        }
+
+        .navbar ul {
+            flex-direction: column; /* Stack navigation items vertically on small screens */
+        }
+
+        .navbar li {
+            margin-bottom: 10px; /* Add some spacing between navigation items on small screens */
+        }
+
+        .mobile-nav-toggle {
+            display: inline-block; /* Show the mobile nav toggle icon */
+        }
+
+        .mobile-nav-hide {
+            display: none; /* Hide the close icon initially on small screens */
+        }
+    }
 
 .mobile-nav-show {
     color: transparent;
@@ -52,17 +78,18 @@ li a:hover {
         <!--  <img src="/GCU.png" alt="">  -->
         <!-- <h1>Impact<span>.</span></h1> -->
       </a>
-      <nav id="navbar" class="navbar" style="margin: auto;">
-        <ul>
-            <img src="assets/img/GCU_logo.png" alt="" style="width:4.5%; ">
+      <nav id="navbar" class="navbar" >
+        <ul >
+            <img src="assets/img/GCU_logo.png" alt="" style="margin-left:auto; width:4%; ">
+            <space style="width: 600px"> </space> 
           <!-- <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; "> -->
-          <li ><a href="/gcu/home" style="background-color:#f7b801;color:black;" >HOME</a></li>
+          <li ><a href="/gcu/home" style="background-color:#f7b801;color:black; height:2%;" >HOME</a></li>
           <li><a href="/gcu/about" style="background-color:#f7b801;color:black;">ABOUT</a></li>
           <li><a href="/gcu/services" style="background-color:#f7b801;color:black;">SERVICES</a></li>
           <li><a href="dh_landing.php" style="background-color:#f7b801;color:black;">FAQ</a></li>
 
 
-          <space style="width: 400px"> </space>
+          <!-- <space style="width: 400px"> </space> -->
           <li class="dropdown"><a href="#" style="background-color:#f7b801; color:black;"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
               <li><a href="Student_Side/student-login" style="background-color:#ffd166;color:black; ">STUDENT</a></li>
@@ -94,11 +121,11 @@ li a:hover {
   include 'includes/banner.php';
   ?>
   <!-- Header section -->
-  <section id="topbar" class="topbar d-flex align-items-center" style="height: auto; ">
+  <!-- <section id="topbar" class="topbar d-flex align-items-center" style="height: auto; ">
     <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 1400px;">
       <style>
       </style>
-  </section>
+  </section> -->
   <!-- End Top Bar -->
  
 
