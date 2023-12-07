@@ -86,7 +86,7 @@ include 'includes/main2.php';
 </div>
 <!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: #008374; height: 50px; "></section>  -->
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color:  #008374; height: 80px; color: black; ">
-<p style="margin-left: 2%; font-size: 30px; font-weight: bold;">CHOOSE TRANSACTION</p>
+<p style="margin-left: 2%; font-size: 30px; font-weight: bold; color: white;">CHOOSE TRANSACTION</p>
 </section> 
 <div class="row">
   <div class="column" style="background-color:white">
@@ -101,6 +101,7 @@ include 'includes/main2.php';
               </div>
               <h3>Readmission Slip</h3>
               <br>
+              <p style="color: black;">Description: This form is intended for students seeking to return to school.</p>
               <a href="./forms/readmission-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -113,6 +114,7 @@ include 'includes/main2.php';
              
 
               <br>
+              <p style="color: black;">Description: This form is intended for students who wish to withdraw their enrollment, drop one or more subjects, and transfer to a different course.</p>
               <a href="./forms/withdrawal-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -123,6 +125,8 @@ include 'includes/main2.php';
               </div>
               <h3>Class Admission Slip</h3>
               <br>
+              <p style="color: black;">Description: This form is intended for students who are late and absent to their class.</p>
+
               <a href="./forms/referral-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -133,7 +137,7 @@ include 'includes/main2.php';
               </div>
               <h3>Leave Of Absence</h3>
               <br>
-              
+              <p style="color: black;">Description: This form is intended for students who want to stop for some reason.</p>
               <a href="./forms/leave-of-absence-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->

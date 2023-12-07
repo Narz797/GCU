@@ -9,6 +9,8 @@ $origin = $_SESSION['origin'];
 <html>
 <head>
   <title>Forgot Password</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link href="assets/css/forgot_password_style.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>

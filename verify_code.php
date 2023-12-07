@@ -3,11 +3,15 @@
 session_start();
 $randomNumber = $_SESSION['random_number'];
 
- ?>
+ ?>s
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Forgot Password</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
   <link href="assets/css/forgot_password_style.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -96,12 +100,16 @@ $randomNumber = $_SESSION['random_number'];
     <form id="verify_code" method="post">
         <label for="code" style="color:black;">Input 4 digit code*</label>
         <br>
+        
         <input type="number" id="code" name="number" oninput="validateInput(this)" required>
         
       <br>
       <br>
+      
 
       <input id="verify"style="background-color:black;color:white;" type="submit" value="Verify">
+      <br>
+      <br>
     </form>
     <button onclick="resend()">Resend Code</button>
   </div>

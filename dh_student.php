@@ -213,7 +213,7 @@
     
         <br>
 
-        <p style="text-align: center; margin: 0; display: block; color:white;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>.
+        <p style="text-align: center; margin: 0; display: block; color:white; font-family: 'Poppins' , sans-serif;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>.
          Guidance and Counseling Unit. All rights reserved.</p>
         <br>
         
