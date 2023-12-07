@@ -343,4 +343,4 @@ if ((isset($_GET['logout']) && $_GET['logout'] === 'true') || (isset($_SESSION) 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
     <body>
-      <?php include 'includes/footer1.php' ?>
+    <?php include 'includes/footer.php' ?>
