@@ -60,8 +60,8 @@
     <!--  <img src="/GCU.png" alt="">  -->
     <!-- <h1>Impact<span>.</span></h1> -->
   </a>
-<nav id="navbar" class="navbar" style="margin-right: auto; margin-left:auto;">
-<ul id="mob">
+<nav id="navbar" class="navbar" >
+<ul >
 <img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
 <!-- <img src="assets/img/GCU_logo.png" class="bsu" alt="" style="width:7%; height:6%;" > -->
 
@@ -76,9 +76,14 @@
 
 
 <!-- Show when Mobile view -->
-<!-- <li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
-<li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li> -->
 
+            <ul style="background-color: transparent; ">
+<li class="for-mobile"><a href="transaction.php">TRANSACTION</a></li>
+<li class="for-mobile"><a href="appointment.php">APPOINTMENT</a></li>
+
+
+</ul>
+          </li>
 
 <div class="containerA" style="margin-right:3%; background-color:transparent;">
 

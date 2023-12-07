@@ -30,17 +30,22 @@
         }
 
         .mobile-nav-hide {
-            display: none; /* Hide the close icon initially on small screens */
+            display: block; /* Hide the close icon initially on small screens */
         }
     }
 
-.mobile-nav-show {
+/* .mobile-nav-show {
     color: transparent;
+   
+  }
+
+  .mobile-nav-show:hover{
+    color: #f7b801;
   }
   
   .mobile-nav-hide {
     color: transparent;
-  }
+  } */
 
 
 .scroll-top .hover-text {
@@ -80,12 +85,13 @@ li a:hover {
       </a>
       <nav id="navbar" class="navbar" >
         <ul >
-            <img src="assets/img/GCU_logo.png" alt="" style="margin-left:auto; width:4%; ">
-            <space style="width: 600px"> </space> 
+            <img src="assets/img/GCU_logo.png" alt="" style="display:flex;">
+            <i class="mobile-nav-toggle mobile-nav-hide bi bi-x d-none"></i>
+            <space style="width: 10%"> </space> 
           <!-- <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; "> -->
-          <li ><a href="/gcu/home" style="background-color:#f7b801;color:black; height:2%;" >HOME</a></li>
-          <li><a href="/gcu/about" style="background-color:#f7b801;color:black;">ABOUT</a></li>
-          <li><a href="/gcu/services" style="background-color:#f7b801;color:black;">SERVICES</a></li>
+          <li ><a href="home" style="background-color:#f7b801;color:black; height:2%;" >HOME</a></li>
+          <li><a href="about" style="background-color:#f7b801;color:black;">ABOUT</a></li>
+          <li><a href="services" style="background-color:#f7b801;color:black;">SERVICES</a></li>
           <li><a href="dh_landing.php" style="background-color:#f7b801;color:black;">FAQ</a></li>
 
 
@@ -113,7 +119,7 @@ li a:hover {
         </ul>
       </nav><!-- .navbar -->
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <!-- <i class="mobile-nav-toggle mobile-nav-hide bi bi-x"></i> -->
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
