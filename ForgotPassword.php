@@ -114,7 +114,7 @@ $origin = $_SESSION['origin'];
                       
                     } 
                   });
-          
+          console.log(data);
           
         } else {
           // alert("The code to change your password is sent to your email")
