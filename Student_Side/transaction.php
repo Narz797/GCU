@@ -171,7 +171,7 @@ include 'includes/main2.php';
                     <div class="col-lg-4" style="width:auto;">
                       <div class="sidebar" style="background: linear-gradient(to right,#ede0d4,#ffc971  );">
                         <div class="sidebar-item recent-posts">
-                          <div class="mt-3" id="scrollable-container">
+                          <div class="mt-3" id="scrollable-container" style="overflow: auto; max-height: 90%;">
                             <!-- Content loaded via Ajax will be appended here -->
                           </div>
                         </div>
@@ -188,7 +188,7 @@ include 'includes/main2.php';
     
     </div>
   
-    <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: auto;">
+    <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: auto; ">
     <br>
     <br>
     <br>
