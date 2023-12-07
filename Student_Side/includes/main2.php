@@ -48,7 +48,7 @@
 
 <ul  style="background-color: transparent; "> 
           <li><a href="../Student_Side/student-profile2.php" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">PROFILE</a></li>
-          <li><a href="../home?logout=true" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">LOGOUT</a></li>
+          <li><a href="../home" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">LOGOUT</a></li>
           
         </ul>
       </li>

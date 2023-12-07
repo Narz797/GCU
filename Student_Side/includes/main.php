@@ -30,7 +30,7 @@
                     class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul style="background-color: transparent;">
                   <li><a href="Stud_registration/profile.php">PROFILE</a></li>
-                  <li><a href="../home?logout=true">LOGOUT</a></li>
+                  <li><a href="../home">LOGOUT</a></li>
                 </ul>
               </li>
             </div>

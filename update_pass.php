@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $randomNumber = $_SESSION['random_number'];
-echo "<script>console.log($randomNumber)</script>";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -140,7 +140,7 @@ echo "<script>console.log($randomNumber)</script>";
               title: "Please try again",
               timer: 1500
             });
-          console.log(data);
+         
         }
      
         // add location to enter code

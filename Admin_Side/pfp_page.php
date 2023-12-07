@@ -15,7 +15,7 @@ include '../backend/log_audit2.php';
                 title: 'You already logged out',
                 text: 'Please login again'
             }).then(function () {
-                window.location.href = 'http://localhost/GCU/home';
+                window.location.href = '../home';
             });
         });
     </script>
@@ -401,7 +401,7 @@ var eID = '<?php echo $id;?>';
               console.log("logged", response);
             }
           });
-    window.location.href = '../../home?logout=true';
+    window.location.href = '../../home';
 }
 // function archive() {
 //     $.ajax({

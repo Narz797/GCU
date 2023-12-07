@@ -13,7 +13,7 @@
                 title: 'You already logged out',
                 text: 'Please tlogin again'
             }).then(function () {
-                window.location.href = 'http://localhost/GCU/home';
+                window.location.href = '../home';
             });
         });
     </script>
@@ -314,6 +314,7 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
 var app_id
 var sid
 var res
+document.getElementById("divOne").style.display = "none";
 function faq(){
         window.location.href="FAQ.php"
     }
@@ -335,7 +336,7 @@ console.log(eid);
               console.log("logged", response);
             }
           });
-    window.location.href = '../home?logout=true';
+    window.location.href = '../home';
 }
 function archive() {
   $.ajax({
@@ -585,14 +586,18 @@ $(document).ready(function () {
         remark: textareaValue
       },
       success: function (data) {
-        Swal.fire({
+
+        location.reload();
+            Swal.fire({
               icon: "success",
               title: "Marked as Done",
-              timer: 1500
-              
-            });
-        console.log("Event marked as done:", data);
-        document.getElementById("divOne").style.display = "none";
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  console.log("Event marked as done:", data);
+       
         $.ajax({
             type: 'POST',
             url: '../backend/log_audit.php',
@@ -606,17 +611,27 @@ $(document).ready(function () {
               console.log("logged", response);
             }
           });
+                } 
+              });
+
+
 
       },
       error: function (xhr, status, error) {
         console.error("Error marking event as done:", error);
         // alert("Error marking event as done: " + error);
         Swal.fire({
-              icon: "error",
+                icon: "error",
               title: "Something went wrong",
               text: "Please try again",
-              timer: 1500
-            });
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                                                            
+                } 
+              });
       },
     });
       }

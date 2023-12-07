@@ -15,7 +15,7 @@ include '../../backend/log_audit2.php';
                 title: 'You already logged out',
                 text: 'Please tlogin again'
             }).then(function () {
-                window.location.href = 'http://localhost/GCU/home';
+                window.location.href = '../../home';
             });
         });
     </script>
@@ -499,7 +499,7 @@ var eID = '<?php echo $id;?>';
               console.log("logged", response);
             }
           });
-    window.location.href = '../../home?logout=true';
+    window.location.href = '../../home';
 }
 function faq(){
         window.location.href="../FAQ.php"
@@ -583,9 +583,13 @@ function openModal2(id) {
           success: function (data) {
             Swal.fire({
               icon: "success",
-              title: "appointment remarked"
-            });
-            $.ajax({
+              title: "appointment remarked",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
             data: {
@@ -599,15 +603,25 @@ function openModal2(id) {
             }
           });
             console.log("Remarked:", data);
+                } 
+              });
+
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
             // alert("Error marking event as done: " + error);
             Swal.fire({
-              icon: "error",
-              title: "Error remarking appointment",
+                icon: "error",
+              title: "Something went wrong",
               text: "Please try again",
-            });
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                                                            
+                } 
+              });
           },
         });
         
@@ -629,28 +643,46 @@ function openModal2(id) {
               icon: "success",
               title: "transation remarked"
             });
-            $.ajax({
-            type: 'POST',
-            url: '../../backend/log_audit.php',
-            data: {
-              userId: eID,
-              action: 'add remark',
-              details: eID + ' added remark for ' + stud_name
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
-            console.log("Remarked:", data);
+            Swal.fire({
+              icon: "success",
+              title: "transation remarked",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  $.ajax({
+                    type: 'POST',
+                    url: '../../backend/log_audit.php',
+                    data: {
+                      userId: eID,
+                      action: 'add remark',
+                      details: eID + ' added remark for ' + stud_name
+                    },
+                    success: function(response) {
+                      // Handle the response if needed
+                      console.log("logged", response);
+                    }
+                  });
+                    console.log("Remarked:", data);
+                } 
+              });
+
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
             Swal.fire({
-              icon: "error",
-              title: "Error remarking transation",
+                icon: "error",
+              title: "Something went wrong",
               text: "Please try again",
-            });
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                                                            
+                } 
+              });
           },
         });
         }

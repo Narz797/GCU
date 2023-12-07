@@ -14,7 +14,7 @@ include '../../backend/log_audit2.php';
                 title: 'You already logged out',
                 text: 'Please login again'
             }).then(function () {
-                window.location.href = 'http://localhost/GCU/home';
+                window.location.href = '../../home';
             });
         });
     </script>

@@ -15,7 +15,7 @@ if (empty($_SESSION['session_id'])) {
               title: 'You already logged out',
               text: 'Please login again'
           }).then(function () {
-              window.location.href = 'http://localhost/GCU/home';
+              window.location.href = '../home';
           });
       });
   </script>

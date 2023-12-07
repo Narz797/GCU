@@ -88,20 +88,7 @@
 
 </style>
     <!-- Welcome-message -->
-    <section class="banner">
-  
-  <div style="background-image: url('assets/img/bg.png'); background-repeat: no-repeat; background-size: cover; display:flex; justify-content:center; padding-top:2%; padding-bottom:2%;">
-    <br>
-    <img class = "banner_img" src="assets/img/bsu.png" class="bsu" alt="" >
-
-    <div id="RBG" style="display: inline-block; vertical-align: middle; margin-top:2%;">
-      <h5 style="font-family: 'Georgia', serif; color:black;">REPUBLIC OF THE PHILIPPINES</h5>
-      <hr class="line" style="width: 100%; border-color: black; margin-bottom: 0;">
-      <h1 style="font-family: 'fantasy'; color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);"><span>BENGUET STATE UNIVERSITY</span></h1>
-      <h1 style="font-family: 'Garamond', serif; font-weight: bold; color:black;">GUIDANCE AND COUNSELING UNIT</h1>
-    </div>
-  </div>
-</section>
+    <?php include 'includes/banner.php' ?>
 
 <section style="background: #ffefd3">
     <div class="block" style="background: #007f5f;"> 

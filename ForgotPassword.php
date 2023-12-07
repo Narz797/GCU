@@ -3,7 +3,7 @@
 session_start();
 // $randomNumber = $_SESSION['random_number'];
 $origin = $_SESSION['origin'];
- echo "<script>console.log($origin)</script>";
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -112,7 +112,7 @@ $origin = $_SESSION['origin'];
                       
                     } 
                   });
-          console.log(data);
+          
           
         } else {
           // alert("The code to change your password is sent to your email")

@@ -2,7 +2,7 @@
 
 session_start();
 $randomNumber = $_SESSION['random_number'];
-echo "<script>console.log($randomNumber)</script>";
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -149,7 +149,7 @@ function validateInput(input) {
                   window.location.reload();
                 } 
               });
-        console.log(data)
+   
   
 
      
@@ -184,7 +184,7 @@ function validateInput(input) {
                   window.location.href = "update_pass.php";
                 } 
               });
-        console.log(data)
+        
        
         } else {
           // alert('Error, Invalid Code', data);

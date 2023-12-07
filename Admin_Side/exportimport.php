@@ -14,7 +14,7 @@ if (empty($_SESSION['session_id'])) {
                 title: 'You already logged out',
                 text: 'Please login again'
             }).then(function () {
-                window.location.href = 'http://localhost/GCU/home';
+                window.location.href = '../home';
             });
         });
     </script>
@@ -170,7 +170,7 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
                     console.log("logged", response);
                 }
             });
-            window.location.href = '../home?logout=true';
+            window.location.href = '../home';
         }
     </script>
     <script src="./assets/main.js"></script>

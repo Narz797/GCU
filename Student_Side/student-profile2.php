@@ -14,7 +14,7 @@ if (empty($_SESSION['session_id'])) {
               title: 'You already logged out',
               text: 'Please login again'
           }).then(function () {
-              window.location.href = 'http://localhost/GCU/home';
+              window.location.href = '../home';
           });
       });
   </script>
@@ -195,6 +195,19 @@ $siblings = $siblings->fetchAll();
   color: black; /* Change color on focus to match the border color */
 }
 
+.fixed-buttons {
+    /* position: fixed;
+    bottom: 0; */
+    width: 100%;
+    /* padding: 10px; */
+    display: flex;
+    /* justify-content: center; Align buttons to the right and left */
+  /* Add a background color for better visibility */
+  }
+
+  .fixed-buttons .btn {
+    color: white;
+  }
 
 .fa-eye, .fa-eye-slash {
     position: absolute;
@@ -2420,7 +2433,7 @@ $siblings = $siblings->fetchAll();
                 // }
                 $photo = $stmt->fetch(PDO::FETCH_ASSOC);
                 // echo '<img src="data:' . $photo['sign_type'] . ';base64,' . base64_encode($photo['sign']) . '" alt="id">';
-                echo '<img src="data:' . $photo['sign_type'] . ';base64,' . base64_encode($photo['sign']) . '" alt="id" style="width: auto; height: auto;">';
+                echo '<img src="data:' . $photo['sign_type'] . ';base64,' . base64_encode($photo['sign']) . '" alt="id" style="width: 100%; height: auto;">';
 
                 ?>
 
@@ -2460,7 +2473,7 @@ $siblings = $siblings->fetchAll();
                 //   echo '<img src="data:' . $id_type . ';base64,' . base64_encode($id_data) . '" alt="id">';
                 // }
                 $photo = $stmt->fetch(PDO::FETCH_ASSOC);
-                echo '<img src="data:' . $photo['image_type'] . ';base64,' . base64_encode($photo['id']) . '" alt="id">';
+                echo '<img src="data:' . $photo['image_type'] . ';base64,' . base64_encode($photo['id']) . '" alt="id" style="width: 100%; height: auto;">';
 
 
                 ?>
@@ -2481,9 +2494,9 @@ $siblings = $siblings->fetchAll();
                   <h3 class="mb-0">MY ACCOUNT</h3>
                 </div>
                 <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-primary" onclick="edit()">
+                  <button class="btn btn-sm btn-primary" onclick="edit()">
                     <i class="fa fa-pencil"></i> Edit Account
-                  </a>
+                  </button>
                 </div>
 
               </div>
@@ -2511,7 +2524,7 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6" id="ps">
                       <div class="form-group">
                         <label class="form-control-label" for="pass">Password</label>
-                        <input type="password"  class="form-control form-control-alternative" id="pass">
+                        <input type="password"  class="form-control form-control-alternative" id="pass" style="border:2px solid yellow;">
                         <i class="fas fa-eye" onclick="togglePasswordVisibility('pass')"></i>
                       </div>
                     </div>
@@ -2519,7 +2532,7 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6" id="ps2">
                       <div class="form-group">
                         <label class="form-control-label" for="pass">Verify Password</label>
-                        <input type="password"  class="form-control form-control-alternative" id="pass2">
+                        <input type="password"  class="form-control form-control-alternative" id="pass2" style="border:2px solid yellow;">
                         <i class="fas fa-eye" onclick="togglePasswordVisibility('pass2')"></i>
                       </div>
                     </div>
@@ -3199,19 +3212,7 @@ $siblings = $siblings->fetchAll();
             </div>
 
             <!-- <button id="Update" onclick="upd()">Update</button> -->
-         
-            <div class="col-4 text-right">
-                  <a class="btn btn-sm btn-primary" id="Update" onclick="verify()">
-                    <i class="fa fa-pencil"></i> Update
-                  </a>
-                </div>
 
-                <div class="col-4 text-right">
-                  <a class="btn btn-sm btn-primary" id="Cancel" onclick="cancel()">
-                    <i class="fa fa-pencil"></i> Cancel
-                  </a>
-                </div>
-       
             </form>
             <div id="modal" class="modal">
             <div class="modal_content">
@@ -3238,6 +3239,21 @@ $siblings = $siblings->fetchAll();
       </div>
     </div>
   </div>
+  </div>
+  <div id="topbar" class="topbar d-flex align-items-center" style="background-color:#008B8B; height: 50px; ">
+  <div class="fixed-buttons">
+            <div class="col-4 text-right">
+                  <button class="btn btn-sm btn-primary" id="Update" onclick="verify()">
+                    <i class="fa fa-pencil"></i> Update
+                  </button>
+                </div>
+
+                <div class="col-4 text-right">
+                  <button class="btn btn-sm btn-primary" id="Cancel" onclick="cancel()">
+                    <i class="fa fa-pencil"></i> Cancel
+                  </button>
+                </div>
+            </div>
   </div>
   <!-- <footer class="footer">
     <div class="row align-items-center justify-content-xl-between">
@@ -3292,57 +3308,142 @@ $siblings = $siblings->fetchAll();
       icon.className = "fas fa-eye";
     }
   }
-    function edit(){
-      console.log("Edit btn clicked");
-              // Get the select element by its ID
-              var email = document.getElementById('email');
-               var crse = document.getElementById('crse');
-               var yl = document.getElementById('YL');
-                    var sec = document.getElementById('sec');
-                    var cn = document.getElementById('CN');
-                    var cs = document.getElementById('CS');
-                    var adrs = document.getElementById('address');
+  function addHighlight(element) {
+            element.classList.add('highlight');
+        }
 
-                    // father
-                    var fage = document.getElementById('Fage');
-                    var focc = document.getElementById('Focc');
-                    var fcn = document.getElementById('Fcn');
+        // Function to remove highlight class
+        function removeHighlight(element) {
+            element.classList.remove('highlight');
+        }
+        function edit() {
+    console.log("Edit btn clicked");
+    cnl.show();
+    upd.show();
+    pass.show();
+    pass2.show();
+    // Get the select and input elements by their IDs
+    var email = document.getElementById('email');
 
-                    // mother
-                    var mage = document.getElementById('Mage');
-                    var mocc = document.getElementById('Mocc');
-                    var mcn = document.getElementById('Mcn');
+    var crse = document.getElementById('crse');
+    var yl = document.getElementById('YL');
+    var sec = document.getElementById('sec');
+    var cn = document.getElementById('CN');
+    var cs = document.getElementById('CS');
+    var adrs = document.getElementById('address');
 
-                    // guardian
-                    var gage = document.getElementById('Gage');
-                    var gocc = document.getElementById('Gocc');
-                    var gcn = document.getElementById('Gcn');
-         
+    // father
+    var fage = document.getElementById('Fage');
+    var focc = document.getElementById('Focc');
+    var fcn = document.getElementById('Fcn');
 
-              crse.disabled = false;
-              yl.disabled = false;
-              email.removeAttribute('readonly');
-              sec.removeAttribute('readonly');
-              cn.removeAttribute('readonly');
-              cs.disabled = false;
-              adrs.removeAttribute('readonly');
-              fage.removeAttribute('readonly');
-              focc.removeAttribute('readonly');
-              fcn.removeAttribute('readonly');
-              mage.removeAttribute('readonly');
-              mocc.removeAttribute('readonly');
-              mcn.removeAttribute('readonly');
-              gage.removeAttribute('readonly');
-              gocc.removeAttribute('readonly');
-              gcn.removeAttribute('readonly');
+    // mother
+    var mage = document.getElementById('Mage');
+    var mocc = document.getElementById('Mocc');
+    var mcn = document.getElementById('Mcn');
 
+    // guardian
+    var gage = document.getElementById('Gage');
+    var gocc = document.getElementById('Gocc');
+    var gcn = document.getElementById('Gcn');
 
-              cnl.show();
-      upd.show();
-      pass.show();
-     pass2.show();
-    }
+    crse.disabled = false;
+    yl.disabled = false;
+    email.removeAttribute('readonly');
+    sec.removeAttribute('readonly');
+    cn.removeAttribute('readonly');
+    cs.disabled = false;
+    adrs.removeAttribute('readonly');
+    fage.removeAttribute('readonly');
+    focc.removeAttribute('readonly');
+    fcn.removeAttribute('readonly');
+    mage.removeAttribute('readonly');
+    mocc.removeAttribute('readonly');
+    mcn.removeAttribute('readonly');
+    gage.removeAttribute('readonly');
+    gocc.removeAttribute('readonly');
+    gcn.removeAttribute('readonly');
+
+    // Add event listeners for focus and blur events
+    // email.addEventListener('focus', function () {
+    //     addHighlight(email);
+    // });
+
+    email.style.border = '2px solid yellow';
+
+    // pass.style.border = '2px solid yellow';
+
+    // pass2.style.border = '2px solid yellow';
+
+    crse.style.border = '2px solid yellow';
+
+    yl.style.border = '2px solid yellow';
+
+    sec.style.border = '2px solid yellow';
+
+    cn.style.border = '2px solid yellow';
+
+    cs.style.border = '2px solid yellow';
+
+    adrs.style.border = '2px solid yellow';
+
+    fage.style.border = '2px solid yellow';
+
+    focc.style.border = '2px solid yellow';
+
+    fcn.style.border = '2px solid yellow';
+
+    mage.style.border = '2px solid yellow';
+
+    mocc.style.border = '2px solid yellow';
+
+    mcn.style.border = '2px solid yellow';
+
+    gage.style.border = '2px solid yellow';
+
+    gocc.style.border = '2px solid yellow';
+
+    gcn.style.border = '2px solid yellow';
+
+    // Show buttons or perform other actions as needed
+  
+}
 function cancel(){
+
+  // email.style.border = '';
+
+  //       crse.style.border = '';
+
+  //       yl.style.border = '';
+
+        
+  //       sec.style.border = '';
+
+  //       cn.style.border = '';
+
+  //       cs.style.border = '';
+
+  //       adrs.style.border = '';
+
+  //       fage.style.border = '';
+
+  //       focc.style.border = '';
+
+  //       fcn.style.border = '';
+
+  //       mage.style.border = '';
+
+  //       mocc.style.border = '';
+
+  //       mcn.style.border = '';
+
+  //       gage.style.border = '';
+
+  //       gocc.style.border = '';
+
+  //       gcn.style.border = '';
+
+
 
   location.reload();
   cnl.hide();
@@ -3647,9 +3748,7 @@ function verify(){
 
 
 
-  <div id="topbar" class="topbar d-flex align-items-center" style="background-color:#008B8B; height: 50px; ">
 
-  </div>
 
 
 

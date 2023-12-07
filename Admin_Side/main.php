@@ -14,7 +14,7 @@ if (empty($_SESSION['session_id'])) {
                 title: 'You already logged out',
                 text: 'Please login again'
             }).then(function () {
-                window.location.href = 'http://localhost/GCU/home';
+                window.location.href = '../home';
             });
         });
     </script>
@@ -135,7 +135,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
                         <i class="ri-server-line"></i>Export/Import of Database
                     </a>
                     
-                    <a href="../home?logout=true" class="card-body-link">
+                    <a href="../home" class="card-body-link">
                         <i class="ri-user-3-line"></i>Log-Out
                     </a>
                 </div>

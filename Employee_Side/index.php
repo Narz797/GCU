@@ -14,7 +14,7 @@ include '../backend/log_audit2.php';
                 title: 'You already logged out',
                 text: 'Please tlogin again'
             }).then(function () {
-                window.location.href = 'http://localhost/GCU/home';
+                window.location.href = '../home';
             });
         });
     </script>
@@ -129,7 +129,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
                 <a href="FAQ.php" class="card-body-link">
                 <i class="ri-question-mark"></i>FAQ
                 </a>
-                <a href="../home?logout=true" class="card-body-link">
+                <a href="../home" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>

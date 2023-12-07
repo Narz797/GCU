@@ -395,7 +395,7 @@ var eID = '<?php echo $id;?>';
           //     console.log("logged", response);
           //   }
           // });
-    window.location.href = '../../home?logout=true';
+    window.location.href = '../../home';
 }
 // function archive() {
 //     // $.ajax({

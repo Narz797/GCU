@@ -15,7 +15,7 @@ include '../../backend/log_audit2.php';
                 title: 'You already logged out',
                 text: 'Please tlogin again'
             }).then(function () {
-                window.location.href = 'http://localhost/GCU/home';
+                window.location.href = '../../home';
             });
         });
     </script>
@@ -237,7 +237,7 @@ include '../../backend/log_audit2.php';
               console.log("logged", response);
             }
           });
-    window.location.href = '../../home?logout=true';
+    window.location.href = '../../home';
 }
 function archive() {
     $.ajax({
@@ -327,11 +327,14 @@ function archive() {
             success: function (data) {
                 console.log("Remarked:", data);
                 Swal.fire({
-              icon: "success",
+                icon: "success",
               title: "transation remarked",
-              timer: 1500
-            });
-                window.location.href = "../subpage/wds-forms";
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    window.location.href = "../subpage/wds-forms";
                 // alert(data);
                 $.ajax({
                     type: 'POST',
@@ -346,15 +349,24 @@ function archive() {
                     console.log("logged", response);
                     }
                 });
+                } 
+              });
+
             },
             error: function (xhr, status, error) {
                 console.error("Error marking event as done:", error);
                 Swal.fire({
-              icon: "error",
+                icon: "error",
               title: "Something went wrong",
               text: "Please try again",
-              timer: 1500
-            });
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                                                            
+                } 
+              });
             },
             });
             }

@@ -13,7 +13,7 @@ include '../../backend/log_audit2.php';
                 title: 'You already logged out',
                 text: 'Please tlogin again'
             }).then(function () {
-                window.location.href = 'http://localhost/GCU/home';
+                window.location.href = '../../home';
             });
         });
     </script>
@@ -210,7 +210,7 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
 }
 
         function logout() {
-    window.location.href = '../../home?logout=true';
+    window.location.href = '../../home';
         }
         function archive() {
     window.location.href = './subpage/archive.php';
