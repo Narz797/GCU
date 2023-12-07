@@ -28,15 +28,9 @@
  
 <li ><a href="student-home" style="background-color:#e9d8a6;color:black;">TRANSACTION</a></li>
 <li><a href="appointment.php" style="background-color:#e9d8a6;color:black;">APPOINTMENT</a></li>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<li><a href="appointment.php" style="background-color:#e9d8a6;color:black;">FAQ</a></li>
 
-=======
 <li class="icons">  <a href="../dh_student.php" style="background-color:#e9d8a6;color:black; height:40px;">FAQ</a></li>
->>>>>>> Stashed changes
-=======
->>>>>>> parent of de08263 (QWQEWE)
+
 
 
 

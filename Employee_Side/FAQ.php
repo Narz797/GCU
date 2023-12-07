@@ -234,13 +234,23 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
           Swal.fire({
               icon: "sucess",
               title: "Help Sent!",
-              text: "Please await for further contactg",
+              text: "Please await for further contact",
               confirmButtonText: "OK",
 
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                  
+                                            // Assuming 'send_help' is the ID of your form
+                          var form = document.getElementById('send_help');
+
+                          // Loop through all form elements
+                          for (var i = 0; i < form.elements.length; i++) {
+                              // Check if the element is an input element or textarea
+                              if (form.elements[i].type === 'text' || form.elements[i].type === 'textarea') {
+                                  // Clear the value
+                                  form.elements[i].value = '';
+                              }
+                          }
                 } 
               });
         console.log("data",data)
