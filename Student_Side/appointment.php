@@ -198,7 +198,7 @@ include 'includes/main2.php';
                   -->
                     </tbody>
                 </table>
-                <p id="noHistoryMessage">Empty</p>
+              
             </section>
     </div>
     <!-- History of transaction -->
@@ -239,7 +239,7 @@ include 'includes/main2.php';
                   -->
                     </tbody>
                 </table>
-                <p id="noHistoryMessage2">Empty</p>
+    
             </section>
             </main>
             </div>
