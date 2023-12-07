@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function mobileNavToogle() {
     document.querySelector('body').classList.toggle('mobile-nav-active');
     mobileNavShow.classList.toggle('d-none');
-    mobileNavHide.classList.toggle('d-none');
+   mobileNavHide.classList.toggle('d-none');
   }
 
   /**
@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navbarlink.addEventListener('click', () => {
       if (document.querySelector('.mobile-nav-active')) {
         mobileNavToogle();
+        
       }
     });
 
