@@ -16,7 +16,7 @@ include '../backend/log_audit2.php';
                 title: 'You already logged out',
                 text: 'Please login again'
             }).then(function () {
-                window.location.href = '../home';
+                window.location.href = 'http://localhost/GCU/home';
             });
         });
     </script>
@@ -105,11 +105,13 @@ include 'includes/main2.php';
             </div>
           </div><!-- End Service Item -->
           <div class="col-lg-4 col-md-6" style="width:100%;">
-            <div class="service-item position-relative" style=" background: linear-gradient(to right,#ede0d4,#ffc971  );">> 
+            <div class="service-item position-relative" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; ">
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
-              <h3>Withdrawal/Dropping/Shifting Slip</h3>
+              <h3>Withdrawal /Dropping /Shifting Slip</h3>
+             
+
               <br>
               <a href="./forms/withdrawal-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
@@ -191,7 +193,8 @@ include 'includes/main2.php';
     
         <br>
 
-        <p style="text-align: center; margin: 0; display: block;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>. Guidance and Counseling Unit. All rights reserved.</p>
+        <p style="text-align: center; margin: 0; display: block;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>.
+         Guidance and Counseling Unit. All rights reserved.</p>
         <br>
         
     </footer>

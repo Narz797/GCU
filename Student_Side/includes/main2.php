@@ -2,10 +2,51 @@
 <html lang="en">
 
 <?php include '../includes/head.php'; ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 <style>
   li a:hover {
   transform: scale(1.1);
 }
+
+@media (max-width: 767px) {
+  #navbar {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+  }
+
+  #navbar ul {
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #008374;
+    z-index: 1000;
+    display: none;
+  }
+
+  #navbar ul.show {
+    display: flex;
+  }
+
+  #navbar ul li {
+    text-align: center;
+  }
+
+  #navbar ul li a {
+    width: 100%;
+  }
+}
+
+
+
 </style>
 
 
@@ -58,14 +99,18 @@
 </div>
 
 </ul>
-</nav><!-- .navbar -->
+</nav>
 
-  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+<i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+
+
+ 
 
 </div>
-</header><!-- End Header --><!-- End Header -->
-  <!-- End Header -->
+</header>
+  
 
 
     <?php 
@@ -79,7 +124,6 @@
 
 
 
-<!-- </section> -->
 <style>
   @media (min-width: 1280px) {
   .mobile-nav-toggle {
@@ -236,6 +280,25 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get the mobile tab toggle button
+    var mobileNavToggle = document.querySelector(".mobile-nav-toggle");
+
+    // Get the navigation menu
+    var navbar = document.getElementById("navbar");
+
+    // Toggle the 'show' class when the mobile tab toggle button is clicked
+    mobileNavToggle.addEventListener("click", function () {
+      navbar.classList.toggle("show");
+    });
+  });
+</script>
+
+
+
+
 
 </body>
 

@@ -100,10 +100,10 @@
 
     <li>
         <div class="question-arrow">
-          <span class="question">What is the website all about?</span>
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">What is the website all about?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p>The website for Guidance and Counseling at Benguet State University facilitates quick and efficient transactions at GCU.
+        <p style="font-family: 'Poppins' , sans-serif;">The website for Guidance and Counseling at Benguet State University facilitates quick and efficient transactions at GCU.
           <br><br>For students<br> - through the 
       the digitized forms it is now easier for them to request forms such as :
         <br> ✔ admission slip <br>
@@ -126,28 +126,28 @@
 
       <li>
         <div class="question-arrow">
-          <span class="question">What do you mainly do in the system?</span>
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">What do you mainly do in the system?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p>You have a simple dashboard to read the services rendered by Benguet Sate Univeersity-Guidance and Counseling Unit. 
+        <p style="font-family: 'Poppins' , sans-serif;">You have a simple dashboard to read the services rendered by Benguet Sate Univeersity-Guidance and Counseling Unit. 
         The system incorporates a log-in and registration feature, requiring users to register initially if they do not have
          an account before logging in.</p>
         <span class="line"></span>
       </li>
       <li>
         <div class="question-arrow">
-          <span class="question">How to know if one is clickable?</span>
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">How to know if one is clickable?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p>Any area that becomes visible and interactive as the cursor hovers and moves over it indicates that it is responsive.</p>
+        <p style="font-family: 'Poppins' , sans-serif;">Any area that becomes visible and interactive as the cursor hovers and moves over it indicates that it is responsive.</p>
         <span class="line"></span>
       
       <li>
         <div class="question-arrow">
-          <span class="question">I'm having technical issues where should I ask help?</span>
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">I'm having technical issues where should I ask help?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p>If you have any technical issues or more questions you wish to ask, feel free to contact us directly by filling the form below this FAQ.</p>
+        <p style="font-family: 'Poppins' , sans-serif;">If you have any technical issues or more questions you wish to ask, feel free to contact us directly by filling the form below this FAQ.</p>
         <span class="line"></span>
       </li>
     </ul>
@@ -159,27 +159,27 @@
       <div class="left-side">
         <div class="address details">
           <i class="fas fa-map-marker-alt"></i>
-          <div class="topic">Address</div>
-          <div class="text-one">IT Department</div>
-          <div class="text-two">College of Information Sciences</div>
+          <div class="topic" style="font-family: 'Poppins' , sans-serif;">Address</div>
+          <div class="text-one" style="font-family: 'Poppins' , sans-serif;">IT Department</div>
+          <div class="text-two" style="font-family: 'Poppins' , sans-serif;">College of Information Sciences</div>
         </div>
         <div class="phone details">
           <i class="fas fa-phone-alt"></i>
-          <div class="topic">Phone</div>
-          <div class="text-one">+63907 905 0664</div>
+          <div class="topic" style="font-family: 'Poppins' , sans-serif;">Phone</div>
+          <div class="text-one" style="font-family: 'Poppins' , sans-serif;">+63907 905 0664</div>
           <!-- <div class="text-two">+0096 3434 5678</div> -->
         </div>
         <div class="email details">
           <i class="fas fa-envelope"></i>
-          <div class="topic">Email</div>
-          <div class="text-one">bsuossgcu205@gmail.com</div>
+          <div class="topic"style="font-family: 'Poppins' , sans-serif;">Email</div>
+          <div class="text-one" style="font-family: 'Poppins' , sans-serif;">bsuossgcu205@gmail.com</div>
          
         </div>
       </div>
       <div class="right-side">
-        <div class="topic-text">SEND US A MESSAGE</div>
-        <p>Good Day! If you have any queries, you can send us a message from here.</p>
-        <p>It is our pleasure to be of help to you!</p>
+        <div class="topic-text" style="font-family: 'Poppins' , sans-serif;">SEND US A MESSAGE</div>
+        <p style="font-family: 'Poppins' , sans-serif;">Good Day! If you have any queries, you can send us a message from here.</p>
+        <p style="font-family: 'Poppins' , sans-serif;">It is our pleasure to be of help to you!</p>
         <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
       <form id="send_help" method="post">
         <div class="input-box">
@@ -190,7 +190,7 @@
         </div>
         <div class="input-box message-box">
           <div class="input-box1">
-          <textarea type="text"  id="msg" placeholder="What can we help you with?"></textarea>
+          <textarea style="font-family: 'Poppins' , sans-serif;" type="text"  id="msg" placeholder="Howcan we help you with?"></textarea>
         </div>
         </div>
         <div class="button">
