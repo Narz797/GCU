@@ -30,6 +30,8 @@ logAudit($_SESSION['session_id'], 'access_leave_of_absence form', $_SESSION['ses
   <title>Leave Of Absence Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
   <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
@@ -236,11 +238,45 @@ label, span {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+/* Media query for screens smaller than 768px (typical phones) */
+@media (max-width: 767px) {
+    #datepicker {
+      font-size: 14px; /* Adjust font size for smaller screens */
+    }
+  }
+
+  #datepicker {
+    width: 100%;
+    height:auto;
+    padding: 8px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Add margin for spacing */
+  }
+
+  #datepicker2 {
+    width: 100%;
+    height:auto;
+    padding: 8px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Add margin for spacing */
+  }
+  @media (max-width: 767px) {
+    #datepicker2 {
+      font-size: 14px; /* Adjust font size for smaller screens */
+    }
+  }
+
 
 
 
   </style>
-<body style=" background: linear-gradient(to right,#ede0d4,#ffc971  );"> 
+<body > 
   <div class="card">
 
    <!-- Other card content goes here -->
@@ -261,10 +297,10 @@ label, span {
         <p>
         <label for="select2">Semester and School Year Intended to Come Back:</label>
 
-<div class="semester-year-container">
-  <select name="select2" id="semester">
-    <option value="1">First Semester</option>
-    <option value="2">Second Semester</option>
+<div class="semester-year-container" >
+  <select name="select2" id="semester" style="height: auto; width: auto;">
+    <option value="1"  >First Semester</option>
+    <option value="2" >Second Semester</option>
   </select>
 
   <!-- <label>Year:</label>
@@ -275,6 +311,7 @@ label, span {
   <label>Year:</label>
   <!-- <input type="number" placeholder="YYYY" id="start_year" class="year-input" name="datepicker" id="datepicker"> -->
   <input type="text" class="form-control" name="datepicker" id="datepicker"  required/>
+  
   <label>-</label>
   <!-- <input type="number" placeholder="YYYY" id="end_year" class="year-input"> -->
   <input type="text" class="form-control" name="datepicker" id="datepicker2"required/>

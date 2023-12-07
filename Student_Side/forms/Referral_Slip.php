@@ -30,6 +30,8 @@ logAudit($_SESSION['session_id'], 'access_class admisison form', $_SESSION['sess
   <title>Admission Slip</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
    <!-- Bootstrap CSS and JS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -370,7 +372,7 @@ select:focus {
  
 
 </style>
-<body style=" background: linear-gradient(to right,#ede0d4,#ffc971  );">
+<body >
   <div class="card">
   <div class="logo-container" >
     <img  src="../assets/img/GCU_logo.png" alt="GCU Logo">

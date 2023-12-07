@@ -28,6 +28,10 @@ logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_
 <html>
 <head>
   <title>Readmission Slip</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
 
@@ -46,7 +50,7 @@ logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_
     /* Your existing styles here */
     body {
       /* font-family: Arial, sans-serif; */
-      background-color: #f4f4f4;
+      /* background-color: #f4f4f4; */
       
       padding: 0;
      
@@ -238,11 +242,28 @@ label, span {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+@media (max-width: 767px) {
+    #datepicker {
+      font-size: 12px; /* Adjust the font size for smaller screens */
+    }
+  }
+ /* Default styles for larger screens */
+ .form-control {
+      width: 200px; /* Adjust the width as needed */
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 767px) {
+      .form-control {
+        width: 100%; /* Make the input full width on smaller screens */
+      }
+    }
+
 
 
 
   </style>
-<body style=" background: linear-gradient(to right,#ede0d4,#ffc971  );">
+<body>
   <div class="card" >
 
    <!-- Other card content goes here -->
@@ -274,7 +295,7 @@ label, span {
   <input type="text" class="form-control" name="datepicker" id="datepicker"  required/>
   <label>-</label>
   <!-- <input type="number" placeholder="YYYY" id="end_year" class="year-input"> -->
-  <input type="text" class="form-control" name="datepicker" id="datepicker2"  required/>
+  <input type="text" class="form-control" name="datepicker" id="datepicker2" required/>
 
   
 </div>
@@ -290,7 +311,7 @@ label, span {
         <textarea name="textarea" class="textarea" id="reason_stop" required></textarea>
         </p>
         <p>
-        <label for="textarea">Motivation for enrolling again:</label>
+        <label for="textarea" >Motivation for enrolling again:</label>
         </p>
         <p>
 <!-- Corrected code -->

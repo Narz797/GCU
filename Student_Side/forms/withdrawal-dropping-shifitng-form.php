@@ -28,6 +28,8 @@ logAudit($_SESSION['session_id'], 'access_wds form', $_SESSION['session_id'] .' 
 <head>
   <meta charset="utf-8">
   <title>Withdrawal/Dropping/Shifting slip</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
 
@@ -230,10 +232,17 @@ select:focus {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow when focused */
 }
 
+/* Media query for screens smaller than 768px (typical phones) */
+@media (max-width: 767px) {
+    #Title {
+      font-size: 18px; /* Adjust the font size for smaller screens */
+    }
+  }
+
 
   </style>
 </head>
-<body  style=" background: linear-gradient(to right,#ede0d4,#ffc971  );">
+<body>
   <div class="card" >
       <!-- Other card content goes here -->
       <div class="logo-container" >
@@ -245,7 +254,7 @@ select:focus {
   </div>
   <hr>
 
-  <h1 style="font-family: fantasy; color: black; "  id="Title" >Withdrawal/Dropping/Shifting Slip</h1>
+  <h1 style="font-family: fantasy; color: black;" id="Title">Withdrawal/Dropping/Shifting Slip</h1>
   <hr>
 
     <!-- <div class="card-header">
