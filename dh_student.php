@@ -100,27 +100,27 @@
 
     <li>
         <div class="question-arrow">
-          <span class="question" style="font-family: 'Poppins' , sans-serif;">What is the website all about?</span>
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">What is the transaction page all about?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p style="font-family: 'Poppins' , sans-serif;">The website for Guidance and Counseling at Benguet State University facilitates quick and efficient transactions at GCU.
-          <br><br>For students<br> - through the 
-      the digitized forms it is now easier for them to request forms such as :
-        <br> ✔ admission slip <br>
-        ✔ leave of absence slip <br>
-        ✔withdrawal, dropping and shifting slip <br>
-        ✔ readmission slip. <br>
-        <br>
-        For teachers,<br>
-      -Referring students has become effortless for them with the utilization of the digitized referral slip,
-       eliminating the necessity to visit GCU for transactions
-      <br>
-      <br>
-        For Employees,<br>
-        - They can now expedite the processing of client requests more efficiently using the website
+        <p style="font-family: 'Poppins' , sans-serif;">Transaction page is designed to request request forms to the GCUS such as: <br>
+            ✔ Readmission <br>
+            ✔ Withdrawal/Dropping/Shifting <br>
+            ✔ Admission <br>
+            ✔ Leave of Absence <br>
+            ✔ Admission <br>
+            ✔ Class Admission <br>
+        </p>
+        <span class="line"></span>
+      </li>
 
-    
-    </p>
+      <li>
+        <div class="question-arrow">
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">What is the appointment page all about?</span>
+          <i class="bx bxs-chevron-down arrow"></i>
+        </div>
+        <p style="font-family: 'Poppins' , sans-serif;">The appointment page is created for scheduling appointment such as counseling, academic couching to the Guidance and Counseling Unit.
+        </p>
         <span class="line"></span>
       </li>
 
