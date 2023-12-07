@@ -58,7 +58,7 @@
   </a>
 <nav id="navbar" class="navbar" >
 <ul >
-<img src="assets/img/bsu.png" class="bsu" alt="" style="width:4%; height:4%;" >
+<img src="assets/img/bsu.png" class="bsu" alt="" style="display:flex;" >
 
 
 
@@ -73,7 +73,7 @@
 <div class="containerA" style="margin-right:3%; background-color:transparent;">
 
 
-       <li class="dropdown"><a href="#" style="background:#e9d8a6;"><span> <img src="assets/img/dp.png" alt="" height="40px"  ><i class="bi bi-chevron-down dropdown-indicator"></i></span> </a>
+       <li class="dropdown"><a href="#" style="background:#e9d8a6;"><span> <img src="assets/img/dp.png" alt="" style="width: 20%; height:auto;"  ><i class="bi bi-chevron-down dropdown-indicator"></i></span> </a>
 
 <ul  style="background-color: transparent; "> 
           <li><a href="../Student_Side/student-profile2.php" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">PROFILE</a></li>
