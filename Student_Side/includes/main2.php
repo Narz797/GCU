@@ -63,10 +63,10 @@
 
 
  
-<li ><a href="student-home" style="background-color:#e9d8a6;color:black;">TRANSACTION</a></li>
-<li><a href="appointment.php" style="background-color:#e9d8a6;color:black;">APPOINTMENT</a></li>
+<li ><a href="student-home"  style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;color:black;">TRANSACTION</a></li>
+<li><a href="appointment.php" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;color:black;">APPOINTMENT</a></li>
 
-<li class="icons">  <a href="../dh_student.php" style="background-color:#e9d8a6;color:black; height:40px;">FAQ</a></li>
+<li class="icons">  <a href="../dh_student.php" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;color:black;">FAQ</a></li>
 
         
 
@@ -76,7 +76,7 @@
        <li class="dropdown"><a href="#" style="background:#e9d8a6;"> <span><img src="assets/img/dp.png" alt="" style="width: 20px;" ></span><i class="bi bi-chevron-down dropdown-indicator"></i> </a>
 
 <ul  style="background-color: transparent; "> 
-          <li><a href="../Student_Side/student-profile2.php" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">PROFILE</a></li>
+          <li><a href="../Student_Side/student-profile2.php"style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;color:black;">PROFILE</a></li>
           <li><a href="../home" style="background: linear-gradient(to right,#ede0d4,#ffc971  );color:black;">LOGOUT</a></li>
           
         </ul>

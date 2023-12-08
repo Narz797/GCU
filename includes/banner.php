@@ -36,9 +36,7 @@
       #RBG h1 {
         font-size: 4vw;
       }
-      .banner{
-        height: auto;
-      }
+     
       .banner_img {
       width: 20%; /* Adjust the percentage based on your design */
       height: auto;
