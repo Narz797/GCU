@@ -87,16 +87,16 @@ li a:hover {
         <ul >
             <img src="assets/img/GCU_logo.png" alt="" style="display:flex;">
             <i class="mobile-nav-toggle mobile-nav-hide bi bi-x d-none"></i>
-            <space style="width: 10%"> </space> 
+            <space style="width: 90%"> </space> 
           <!-- <img src="assets/img/bsu.png" class="bsu" alt="" style="width:5.5%; "> -->
-          <li ><a href="home" style="background-color:#e9d8a6;color:black; height:2%;" >HOME</a></li>
-          <li><a href="about" style="background-color:#e9d8a6;color:black;">ABOUT</a></li>
-          <li><a href="services" style="background-color:#e9d8a6;color:black;">SERVICES</a></li>
-          <li><a href="dh_landing.php" style="background-color:#e9d8a6;color:black;">FAQ</a></li>
+          <li ><a href="home" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color: black;" >HOME</a></li>
+          <li><a href="about" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color: black;" >ABOUT</a></li>
+          <li><a href="services" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color: black;" >SERVICES</a></li>
+          <li><a href="dh_landing.php" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color: black;" >FAQ</a></li>
 
 
           <!-- <space style="width: 400px"> </space> -->
-          <li class="dropdown"><a href="#" style="background-color:#e9d8a6; color:black;"><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="#" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color: black;" ><span>LOGIN</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
             <li><a href="Student_Side/student-login" style="background-color:#ffd166;color:black; ">STUDENT</a></li>
               <li><a href="Employee_Side/employee-login" style="background-color:#ffd166;color:black;">EMPLOYEE</a></li>
@@ -108,7 +108,7 @@ li a:hover {
           </li>
           <!-- <li class="dropdown"><li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">
             REGISTER</a></li> -->
-          <li class="dropdown" ><a style="background-color:#e9d8a6; color:black;"><span >REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown" ><a style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color: black;" ><span >REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
             <li><a href="./Student_Side/Stud_registration/agreement.php" style="background-color:#ffd166; color:black;">STUDENT</a></li>
               <li><a href="Teacher_Side/agreement.php" style="background-color:#ffd166; color:black;">TEACHER</a></li>

@@ -103,13 +103,12 @@
           <span class="question" style="font-family: 'Poppins' , sans-serif;">What is the transaction page all about?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p style="font-family: 'Poppins' , sans-serif;">Transaction page is designed to request request forms to the GCUS such as: <br>
+        <p style="font-family: 'Poppins' , sans-serif;">Transaction page is designed to request forms to the GCUS such as: <br>
             ✔ Readmission <br>
             ✔ Withdrawal/Dropping/Shifting <br>
             ✔ Admission <br>
             ✔ Leave of Absence <br>
             ✔ Admission <br>
-            ✔ Class Admission <br>
         </p>
         <span class="line"></span>
       </li>

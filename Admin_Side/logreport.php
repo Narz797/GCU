@@ -76,7 +76,7 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
 </head>
 <body>
   <!-- Header -->
-  <header class="header">
+  <header class="header" style="background:#007f5f">
     <nav class="nav"> 
         <div class="logo">
         <img src="assets/images/GCU_logo.png" alt="">
@@ -107,25 +107,30 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
             <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
                 <i class="ri-function-line"></i>
             </button>
-            <button class="icon-btn theme-toggle-btn place-items-center">
+            <!-- <button class="icon-btn theme-toggle-btn place-items-center">
                 <i class="ri-sun-line theme-light-icon"></i>
                 <i class="ri-moon-line theme-dark-icon"></i>
+            </button> -->
+            <button class="icon-btn place-items-center" onclick="logout()" style="margin-right: 10px; ">
+                <i class="ri-user-3-line" style="margin-left:5px;"> </i>
             </button>
-            <button class="icon-btn place-items-center" onclick="logout()">
-                <i class="ri-user-3-line"></i>
-            </button>
+
+            <!-- <button class="icon-btn place-items-center" onclick="logout()" style="margin-right: 150px; background:yellow;">
+            <i class="ri-user-3-line" style="background:yellow;" ></i> 
+            </button> -->
+
+
         </div>
     </nav>
 </header>
     <!-- Welcome-message -->
 <section>
-    <div class="block"> 
+    
+    <div class="title independent-title" style="background:#80b918">
+        <h2 style="color:black;">LOG REPORT</h2>
     </div>
-    <div class="title independent-title">
-        <h2>LOG REPORT</h2>
-    </div>
-    <div class="container">
-            <div class="card">
+    <div class="container" >
+            <div class="card" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
                 <div class="gallery">
                     <main class="table" id="customers_table">
                         <section class="table-header">

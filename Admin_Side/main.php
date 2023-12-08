@@ -69,22 +69,25 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
 </head>
 
-<body>
+<body style="background:#70e000;"> 
     <!-- Header -->
-    <header class="header">
+    <header class="header" style="background:#007f5f">
         <nav class="nav">
             <div class="logo">
             <img src="assets/images/GCU_logo.png" alt="">
             </div>
             <div class="align-right">
-                <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
+                <!-- <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
                     <i class="ri-function-line"></i>
                 </button>
                 <button class="icon-btn theme-toggle-btn place-items-center">
                     <i class="ri-sun-line theme-light-icon"></i>
                     <i class="ri-moon-line theme-dark-icon"></i>
-                </button>
-                <button class="icon-btn place-items-center" onclick="logout()">
+                </button> -->
+                <!-- <button class="icon-btn place-items-center" onclick="logout()">
+                    <i class="ri-user-3-line"> </i>
+                </button> -->
+                   <button class="icon-btn place-items-center" onclick="logout()">
                     <i class="ri-user-3-line"></i>
                 </button>
             </div>
@@ -92,32 +95,32 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     </header>
     <!-- Banner -->
     <?php include '../includes/banner.php' ?>
-        <div class="block"></div>
+        <div class="block" style="background:#007f5f"></div>
         <!-- First Section -->
         <div class="title independent-title">
             <h2> Control Panel</h2>
         </div>
-        <div class="card">
-            <header class="card-header">
+        <div class="card" style="background:white;" >
+            <header class="card-header" style="background:#f9c74f;" >
                 <small>Profile Account</small>
                 <!-- call employee id 
     number or 
     profession = "Admin"-->
-                <h2 class="title">Welcome back, Admin</span></h2>
+                <h2 class="title" style="color:black;" >Welcome back, Admin</span></h2>
             </header>
 
 
 
     </section>
     <!-- Management-area -->
-    <section class="management-area">
+    <section class="management-area" >
         <div class="management-area-container d-grid">
-            <div class="card">
-                <header class="card-header header-side">
-                    <h2 class="title">ACTIONS</h2>
-                    <small>Choose what task to do today.</small>
+            <div class="card" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
+                <header class="card-header header-side"  style="background:#edae49;">
+                    <h2 class="title" style="color: black;">ACTIONS</h2>
+                    <small style="color: black;" >Choose what task to do today.</small>
                 </header>
-                <hr>
+                <hr style="border-color: gray; border-width: 2px;">
                 <div>
                     <a href="logreport.php" class="card-body-link">
                         <i class="ri-folder-line"></i>Log Report
@@ -142,8 +145,8 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
             </div>
             <div class="card-group d-grid">
 
-                <div class="card border one">
-                    <div class="design">
+                <div class="card border one" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
+                    <div class="design" >
                         <h2 class="title">TOTAL LOGINS FOR TODAY</h2>
                         <span class="num"><b id="total">loading...</b></span>
                     </div>
@@ -158,7 +161,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
                 </div>
                 <a href="appointment.php"><button class="list-link">Read More</button></a>
             </div> -->
-                <div class="card border one">
+                <div class="card border one" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
                     <div class="design">
                         <h2 class="title">HISTORY TRANSACTIONS</h2>
 
@@ -170,6 +173,8 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
             </div>
         </div>
     </section>
+
+    
 
 
 

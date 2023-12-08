@@ -69,7 +69,7 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
 
 <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header" style="background:#007f5f">
         <nav class="nav">
             <div class="logo">
             <img src="assets/images/GCU_logo.png" alt="">
@@ -101,10 +101,10 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
                 <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
                     <i class="ri-function-line"></i>
                 </button>
-                <button class="icon-btn theme-toggle-btn place-items-center">
+                <!-- <button class="icon-btn theme-toggle-btn place-items-center">
                     <i class="ri-sun-line theme-light-icon"></i>
                     <i class="ri-moon-line theme-dark-icon"></i>
-                </button>
+                </button> -->
                 <button class="icon-btn place-items-center" onclick="logout()">
                     <i class="ri-user-3-line"></i>
                 </button>
@@ -114,15 +114,15 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
     <!-- Welcome-message -->
 
     <section>
-        <div class="title independent-title">
-            <h2>Export and Import of Database</h2>
+        <div class="title independent-title" style="background:#80b918">
+            <h2 style="color:black;">Export and Import of Database</h2>
         </div>
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-sm">
-                    <div class="card">
+                    <div class="card"  style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
                         <h2 class="card-title">Import Database</h2>
-                        <div class="card-body">
+                        <div class="card-body" >
                             <p class="card-text">Import Back Up Database.</p>
                             <form action="../backend/import_database.php" method="post" enctype="multipart/form-data">
                                 <input type='file' name='import' accept=".sql">
@@ -134,7 +134,7 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
                     </div>
                 </div>
                 <div class="col-sm">
-                    <div class="card">
+                    <div class="card"  style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
                         <h2 class="card-title">Export Database</h2>
                         <div class="card-body">
                             <p class="card-text">Export Back Up Database.</p>
