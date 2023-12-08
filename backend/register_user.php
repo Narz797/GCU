@@ -321,14 +321,26 @@ try{
 
                 if ($stmt->execute() && $stmt1->execute() && $stmt2->execute() && $stmt3->execute() && $stmt6->execute()) {
                     echo '<script>';
-                    echo "alert('Registered Successfully!');";
-                    echo 'window.location.href=" ../Student_Side/student-login";';
+                    echo "Swal.fire({
+                            icon: 'success',
+                            title: 'Registered Successfully!',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            window.location.href=' ../Student_Side/student-login';
+                        });";
                     echo '</script>';
                     exit;
+                    
                 } else {
                     echo '<script>';
-                    echo "alert('Registration Failed!');";
-                    echo 'window.location.href=" ../Student_Side/Stud_registration/page1.php";';
+                    echo "Swal.fire({
+                            icon: 'error',
+                            title: 'Registration Failed!',
+                            text: 'please try again',
+                            confirmButtonText: 'OK'
+                        }).then(() => 
+                            window.location.href=' ../Student_Side/Stud_registration/page1.php';
+                        });";
                     echo '</script>';
                     exit;
                 }
@@ -475,20 +487,26 @@ try{
         if ($stmt->execute()) {
             echo '<script>';
             echo 'var eID = "' . $_SESSION["session_id"] . '";';
-            echo 'alert("User Registration Successfully!");';
-            echo 'window.location.href = "../Admin_Side/EmployeeProfiles.php";';
-            echo ' $.ajax({';
-            echo '    type: "POST",';
-            echo '    url: "../backend/log_audit.php",';
-            echo '    data: {';
-            echo '        userId: eID,';
-            echo '        action: "Admin added employee",';
-            echo '        details: "Admin added employee"';
-            echo '    },';
-            echo '    success: function(response) {';
-            echo '        console.log("logged", response);';
-            echo '    }';
-            echo ' });';
+            echo "Swal.fire({
+                    icon: 'success',
+                    title: 'Registered Successfully!',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    window.location.href='../Admin_Side/EmployeeProfiles.php';
+                    $.ajax({
+                        type: 'POST',
+                        url: '../backend/log_audit.php',
+                        data: {
+                            userId: eID,
+                            action: 'Admin added employee',
+                            details: 'Admin added employee'.$('#id').val()
+                        },
+                        success: function(response) {
+                            // Handle the response if needed
+                            console.log('logged', response);
+                        }
+                    });
+                });";
             echo '</script>';
             exit;
         }
