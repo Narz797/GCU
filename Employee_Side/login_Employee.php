@@ -9,22 +9,42 @@ $_SESSION['origin'] = 'Employee';
 <html lang="en">
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    @import url('https://fonts.googleapis.com/css?family=Roboto');
+     @import url('https://fonts.googleapis.com/css?family=Roboto');
     body {
-      /* background: #2980b9; */
+      
       font-family: 'Roboto', sans-serif;
-      /* background: rgb(51, 138, 11); */
-      /* background: rgb(51, 138, 11); */
-      /* background: -webkit-linear-gradient(left, #0c4401, #ebeeeb);  */
+      background: rgb(51, 138, 11);
+      background: -webkit-linear-gradient(331deg, #0c4401, #ebeeeb); 
+      /* background-image: linear-gradient(225deg, #0c4401, transparent, #ebeeeb); */
       display: flex;
       height: 110vh;
       justify-content: center;
       align-items: center;
       width: 100%;
     }
+    .fa-eye {
+  position: absolute;
+  /* right: 10px; */
+  top: 40%;
+  right:1%;
+ 
+  cursor: pointer;
+  color: #ccc; /* Set the initial color of the eye icon */
+}
+
+ .fa-eye {
+  color: black; /* Change color on focus to match the border color */
+}
+.fa-eye, .fa-eye-slash {
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    cursor: pointer;
+  }
     /* .field{ */
     /* background: -webkit-linear-gradient(left, #fefefe, #61c6be); */
     /* } */
@@ -32,8 +52,7 @@ $_SESSION['origin'] = 'Employee';
       width: 60%;
       margin: auto;
       padding-top: 100px;
-      -webkit-animation: mover 2s infinite alternate;
-      animation: mover 1s infinite alternate;
+ 
     }
     .container {
       margin: 0px;
@@ -181,7 +200,7 @@ $_SESSION['origin'] = 'Employee';
       /* background: -webkit-linear-gradient(left, #e7e7e2 , #0c4401); */
     }
     input[type="submit"]:hover {
-      border-color: #17f522;
+      background: #ffe2a5;
       /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
     }
     .signup_link {
@@ -190,11 +209,11 @@ $_SESSION['origin'] = 'Employee';
       font-size: 16px;
       color: #131212;
     }
-    /* .signup_link a {
+    .signup_link a {
       color: #105c06;
       text-decoration: none;
-    } */
-    .signup_link:hover {
+    }
+    .signup_link a:hover {
       text-decoration: underline;
     }
     #back_button {
@@ -255,7 +274,7 @@ $_SESSION['origin'] = 'Employee';
         <img id="logo-gcu" src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
       </div>
       <div class="column">
-        <form id="Login_Student_Employee" method="post" style="width: 90%;">
+        <form id="Login_Student_Employee" method="post" style="margin:10%">
           <h1>LOGIN FORM</h1>
           <br>
           <div class="txt_field">
@@ -265,15 +284,16 @@ $_SESSION['origin'] = 'Employee';
           </div>
           <div class="txt_field">
             <input type="password" id="password" name="password" required />
+            <i class="fas fa-eye" onclick="togglePasswordVisibility('password')"></i>
             <span></span>
             <label>Password</label>
           </div>
+          <!-- <div class="pass"><a href="../ForgotPassword.php"><b>Forgot Password?</b></a></div> -->
           <input type="submit" value="Login" id="submitButton" />
-          <br>
-          <br>
-          <div><a href="../home" class="back-to-home-button">BACK TO HOME</a></div>
+          <!-- <div class="signup_link">Not a member? <a href="Stud_registration/agreement.php"><b>Signup</b></a></div> -->
+        
         </form>
-       
+        <div><a href="../home" class="back-to-home-button">BACK TO HOME</a></div>
         <!-- <a</a> -->
       </div>
     </div>
@@ -350,6 +370,20 @@ $_SESSION['origin'] = 'Employee';
       }
     });
   });
+</script>
+<script>
+  function togglePasswordVisibility(inputId) {
+    var passwordInput = document.getElementById(inputId);
+    var icon = document.querySelector('i[onclick="togglePasswordVisibility(\'' + inputId + '\')"]');
+  
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      icon.className = "fas fa-eye-slash";
+    } else {
+      passwordInput.type = "password";
+      icon.className = "fas fa-eye";
+    }
+  }
 </script>
 </html>
 

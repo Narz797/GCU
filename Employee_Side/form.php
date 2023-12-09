@@ -118,8 +118,8 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
     <!-- Welcome-message -->
 <section>
 <?php include '../includes/banner.php' ?>
-    <div class="block"> 
-    </div>
+    <!-- <div class="block"> 
+    </div> -->
     <div class="title independent-title">
         <h2>REQUESTED FORMS</h2>
     </div>

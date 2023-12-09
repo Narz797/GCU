@@ -112,7 +112,7 @@ input[type="radio"]:checked + span {
     /* Your existing styles here */
     body {
       /* font-family: Arial, sans-serif; */
-      background-color: #f4f4f4;
+      background-color: #fffdd0;
       
       padding: 0;
      
@@ -383,7 +383,7 @@ select:focus {
   </div>
   <hr>
 
-  <h1 id="Title" style="font-family: fantasy; color: black; ">Admission Slip</h1>
+  <h1 id="Title" style="font-family: fantasy; color: black; ">Class Admission Slip</h1>
   <hr>
 
     <div class="card-body">

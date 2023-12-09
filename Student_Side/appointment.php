@@ -36,11 +36,11 @@ include 'includes/main2.php';
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
           <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/apmt.css">
     <!-- <link rel="stylesheet" href="./assets/css/forms.css"> -->
@@ -59,6 +59,17 @@ include 'includes/main2.php';
   
 </head>
 <style>
+  /* Add hover effect to DataTables pagination buttons */
+#dynamicTable_paginate .paginate_button:hover {
+    background-color: white; /* Change this to the desired hover color */
+    cursor: pointer;
+    border-radius: 10%;
+}
+#dynamicTable2_paginate .paginate_button:hover {
+    background-color: white; /* Change this to the desired hover color */
+    cursor: pointer;
+    border-radius: 10%;
+}
     .column {
   float: left;
   /* width: 40%; */
@@ -97,7 +108,7 @@ include 'includes/main2.php';
  
         <div class="month">
           <i class="fas fa-angle-left prev"></i>
-          <div class="date">month,year</div>
+          <div class="date" style="font-size: 30px; font-weight: bold; color:#008374; text-align: center;">month,year</div>
           <i class="fas fa-angle-right next"></i>
         </div>
  
@@ -253,7 +264,7 @@ include 'includes/main2.php';
                         <a href="#" class="close">&times;</a>
                         <div class="popup">
                             <div class="popup2">
-                                <form>
+                                <form class="former">
                                     <h1>Reason for Appointment?</h1>
                                     <br>
                                     <select name="textfield" id="refer">
@@ -265,7 +276,9 @@ include 'includes/main2.php';
                                       </select>
                                       <br>
                                       <hr>
+                                      <div >
                                       <input type="checkbox" id="chkbx" name="referred" value="yes"> <label> Reffered</label>
+                                      </div>
                                     <br>
                                     
                                     <div class="tsk">
@@ -513,7 +526,8 @@ include 'includes/main2.php';
                                 lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
                                 pageLength: 5, // Initial number of rows per page
                             });
-                            $('#dynamicTable2').DataTable({
+
+                   $('#dynamicTable2').DataTable({
                                 paging: true,
                                 searching: false,
                                 ordering: false,

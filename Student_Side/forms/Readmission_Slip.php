@@ -50,15 +50,15 @@ logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_
     /* Your existing styles here */
     body {
       /* font-family: Arial, sans-serif; */
-      /* background-color: #f4f4f4; */
+      background-color: #fffdd0;
       
       padding: 0;
      
      
       /* background: linear-gradient(
     142deg,
-    green  0%,
-    black 100%
+      0%,
+    white 100%
   ); */
  
 
@@ -189,8 +189,8 @@ logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_
 
 /* Style for the semester dropdown */
 select {
-  padding: 8px;
-  font-size: 14px;
+
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 200px; /* Adjust the width as needed */
@@ -245,6 +245,9 @@ label, span {
 @media (max-width: 767px) {
     #datepicker {
       font-size: 12px; /* Adjust the font size for smaller screens */
+    }
+    .semester-year-container{
+      display: block;
     }
   }
  /* Default styles for larger screens */

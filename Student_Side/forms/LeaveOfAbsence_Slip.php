@@ -46,7 +46,7 @@ logAudit($_SESSION['session_id'], 'access_leave_of_absence form', $_SESSION['ses
     /* Your existing styles here */
     body {
       /* font-family: Arial, sans-serif; */
-      background-color: #f4f4f4;
+      background-color: #fffdd0;
       
       padding: 0;
      
@@ -185,8 +185,8 @@ logAudit($_SESSION['session_id'], 'access_leave_of_absence form', $_SESSION['ses
 
 /* Style for the semester dropdown */
 select {
-  padding: 8px;
-  font-size: 14px;
+
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 200px; /* Adjust the width as needed */
@@ -269,6 +269,10 @@ label, span {
   @media (max-width: 767px) {
     #datepicker2 {
       font-size: 14px; /* Adjust font size for smaller screens */
+
+    }
+    .semester-year-container{
+      display: block;
     }
   }
 

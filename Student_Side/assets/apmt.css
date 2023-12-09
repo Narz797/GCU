@@ -280,7 +280,7 @@ i{
   cursor: pointer;}
 .calendar .month .prev:hover,
 .calendar .month .next:hover {
-  color: var(--positive-color);}
+  color: #008374;}
 .calendar .weekdays {
   width: 100%;
   height: 100px;
@@ -288,7 +288,7 @@ i{
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 500;
   text-transform: capitalize;}
 .weekdays div {
@@ -313,8 +313,10 @@ i{
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color:var(--accent-color);
+  color:black;
   border: 1px solid #f5f5f5;
+  font-size: 15px;
+  
 }
 .calendar .days .day:nth-child(7n + 1) {
   border-left: 2px solid #f5f5f5;
@@ -330,7 +332,7 @@ i{
 }
 
 .calendar .days .day:not(.prev-date, .next-date):hover {
-  color: var(--light-color);
+  color: #008374;
   background-color: var(--accent-color);
 }
 .calendar .days .prev-date,
@@ -340,7 +342,7 @@ i{
 .calendar .days .active {
   position: relative;
   font-size: 2rem;
-  color: var(--light-color);
+  color: black;
   background-color: var(--accent-color);
 }
 .calendar .days .active::before {
@@ -370,7 +372,7 @@ i{
   background-color: var(--accent-color);
 }
 .calendar .days .day:hover.event::after {
-  background-color: blue;
+  background-color: #008374;
 }
 
 
@@ -411,7 +413,7 @@ i{
   border: none;
   border-radius: 5px;
   padding: 0 20px;
-  color: var(--accent-color);
+  color: #3f4458;
   border-radius: 5px;
 }
 .calendar .goto-today button {
@@ -423,7 +425,7 @@ i{
   color: var(--accent-color);
 }
 .calendar .goto-today button:hover {
-  color: #fff;
+  color: black;
   background-color: var(--accent-color);
 }
 .calendar .goto-today .goto button {
@@ -518,7 +520,7 @@ i{
   pointer-events: none;
 }
 .events .event:hover .event-time {
-  color: #fff;
+  color: #000000;
 }
 
 /* add tick in event after */
@@ -903,13 +905,15 @@ thead th {
 tbody tr:nth-child(even) {
     background-color: lightgray;}
 tbody tr {
-    --delay: .1s;
+    
     transition: .5s ease-in-out var(--delay), background-color 0s;}
 tbody tr.hide {
     opacity: 0;
     transform: translateX(100%);}
 tbody tr:hover {
-    background-color: var(--shadow-color) !important;}
+    background-color: var(--shadow-color) !important;
+    color: white;
+  }
 tbody tr td,
 tbody tr td p,
 tbody tr td img {
@@ -934,9 +938,9 @@ thead th span.icon-arrow {
     margin-left: .5rem;
     transition: .2s ease-in-out;}
 thead th:hover span.icon-arrow{
-    border: 1px solid var(--hover-color);}
+    border: 1px solid #008374;}
 thead th:hover {
-    color: var(--hover-color);}
+    color: #008374;}
 thead th.active span.icon-arrow{
     color: var(--dark-color);
     background-color: var(--accent-color);}
@@ -1016,7 +1020,9 @@ tbody td.active {
 @media(max-width: 700px){
     .content1{
         width: 100%;}
+
 }
+
 
 @media screen and (min-width: 1024px) {
     .menu-toggle-btn{
@@ -1047,6 +1053,32 @@ tbody td.active {
         color: var(--dark-color);} 
     .footer hover{
         color: var(--accent-color);}
+
+        
+        .overlay {
+          padding: 10px; /* Adjusted padding for smaller screens */
+      }
+    
+      .wrapper {
+    
+          max-height: 80vh; /* Set a maximum height for the pop-up */
+          overflow-y: auto; /* Enable vertical scrolling */
+          width: 90%; /* Adjusted width for smaller screens */
+      }
+    
+      .popup2 {
+          padding: 15px; /* Adjusted padding for smaller screens */
+      }
+    
+      .fields .input-field,
+      .fields .input-field1,
+      .fields .input-field2 {
+          width: 100%; /* Set input fields to full width for smaller screens */
+      }
+    
+      .wrapper button {
+          width: 100%; /* Set button to full width for smaller screens */
+      }
 }
 
 @media (max-width: 1000px){

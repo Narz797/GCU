@@ -129,8 +129,8 @@ logAudit($id, 'access_profile', $id .' has accessed the profile page');
     <!-- Welcome-message -->
     
     <?php include '../includes/banner.php' ?>
-      <div class="block"> 
-    </div>
+      <!-- <div class="block"> 
+    </div> -->
     <div class="title independent-title">
     <h2>Student Profiles</h2>
     </div>

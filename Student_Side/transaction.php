@@ -35,19 +35,19 @@ include 'includes/main2.php';
         <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-          <!-- Vendor CSS Files -->
-  <link href="../Employee_Side/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../Employee_Side/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="../Employee_Side/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="../Employee_Side/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="../Employee_Side/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../Employee_Side/assets/apmt.css">
     <link rel="stylesheet" href="../Employee_Side/assets/css/forms.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+          <!-- Vendor CSS Files -->
+          <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+          <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+          <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+          <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+          <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
 
 </head>
 <style>
@@ -74,6 +74,10 @@ include 'includes/main2.php';
     .column {
       width: 100%;
     }
+
+    .input-group{
+      width: 100%;
+    }
     /* Add more responsive styles as needed */
   }
 
@@ -88,7 +92,10 @@ include 'includes/main2.php';
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color:  #008374; height: 80px; color: black; ">
 <p style="margin-left: 2%; font-size: 30px; font-weight: bold; color: white;">CHOOSE TRANSACTION</p>
 </section> 
-<div class="row">
+<div style="    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;">
   <div class="column" style="background-color:white">
   <section id="services" class="services sections-bg" style="background-color: transparent;">
       <div class="container" data-aos="fade-up">
@@ -101,7 +108,7 @@ include 'includes/main2.php';
               </div>
               <h3>Readmission Slip</h3>
               <br>
-              <p style="color: black;">Description: This form is intended for students seeking to return to school.</p>
+              <p style="color: black;">Description: This document is designed for individuals who are in the process of re-enrolling in an educational institution.</p>
               <a href="./forms/readmission-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -110,11 +117,11 @@ include 'includes/main2.php';
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
-              <h3>Withdrawal /Dropping /Shifting Slip</h3>
+              <h3>Withdrawal / Dropping / Shifting Slip</h3>
              
 
               <br>
-              <p style="color: black;">Description: This form is intended for students who wish to withdraw their enrollment, drop one or more subjects, and transfer to a different course.</p>
+              <p style="color: black;">Description: This document is designed for students seeking to initiate the withdrawal of their enrollment, modify their subject selections, or transition to an alternative academic program.</p>
               <a href="./forms/withdrawal-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -125,7 +132,7 @@ include 'includes/main2.php';
               </div>
               <h3>Class Admission Slip</h3>
               <br>
-              <p style="color: black;">Description: This form is intended for students who are late and absent to their class.</p>
+              <p style="color: black;">Description: This document is designed for students who may be experiencing absences or tardiness.</p>
 
               <a href="./forms/referral-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
@@ -135,9 +142,9 @@ include 'includes/main2.php';
               <div class="icon">
                 <i class="bi bi-file-text"></i>
               </div>
-              <h3>Leave Of Absence</h3>
+              <h3>Leave Of Absence Slip</h3>
               <br>
-              <p style="color: black;">Description: This form is intended for students who want to stop for some reason.</p>
+              <p style="color: black;">Description: This document is designated for students seeking to submit a request for a temporary leave of absence.</p>
               <a href="./forms/leave-of-absence-slip" class="readmore stretched-link">Open <i class="bi bi-arrow-right"></i></a>
             </div>
           </div><!-- End Service Item -->
@@ -158,8 +165,8 @@ include 'includes/main2.php';
             <hr>
             <div class=" gallery">
             <main class="table" id="customers_table">
-            <section class="table-header">
-                <h1>List of Acknowledged Forms</h1>
+            <section class="table-header" style="background-color: #008374;">
+                <h1>List of Confirmed Forms</h1>
                 <div class="input-group">
                     <input type="search" placeholder="Search.....">
                 </div>

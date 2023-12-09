@@ -4,6 +4,7 @@
 <?php include '../includes/head.php'; ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+
 <style>
   li a:hover {
   transform: scale(1.1);
@@ -58,7 +59,8 @@
   </a>
 <nav id="navbar" class="navbar" >
 <ul >
-<img src="assets/img/bsu.png" class="bsu" alt="" style="display:flex;" >
+<img src="assets/img/GCU_logo.png" class="bsu" alt="" style="display:flex;" >
+<i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
 
 
@@ -73,7 +75,7 @@
 <div class="containerA" style="margin-right:10%; background-color:transparent;">
 
 
-       <li class="dropdown"><a href="#" style="background:#e9d8a6;"> <span><img src="assets/img/dp.png" alt="" style="width: 20px;" ></span><i class="bi bi-chevron-down dropdown-indicator"></i> </a>
+       <li class="dropdown"><a href="#" style="background:#e9d8a6;"> <span class="large"><img src="assets/img/dp.png" alt="" style="width: 20px;" ></span><i class="bi bi-chevron-down dropdown-indicator"></i> </a>
 
 <ul  style="background-color: transparent; "> 
           <li><a href="../Student_Side/student-profile2.php"style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;color:black;">PROFILE</a></li>
@@ -86,7 +88,7 @@
       </nav>
 
 <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+     
 </div>
 
 </header>

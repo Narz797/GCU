@@ -209,12 +209,12 @@
     </div>
 </footer> -->
 
-<footer class="d-flex justify-content-center" style="width: 100%; background:  #007f5f;">
+<footer class="d-flex justify-content-center" style="width: 100%; background:  #007f5f; margin:auto 0;">
     
         <br>
 
-        <p style="text-align: center; margin: 0; display: block; color:white; font-family: 'Poppins' , sans-serif;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>.
-         Guidance and Counseling Unit. All rights reserved.</p>
+        <h5 style="text-align: center; margin: 0; display: block; color:white; font-family: 'Poppins' , sans-serif;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>.
+         Guidance and Counseling Unit. All rights reserved.</h5>
         <br>
         
     </footer>

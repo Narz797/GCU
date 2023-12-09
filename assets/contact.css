@@ -106,7 +106,7 @@ li{
   list-style: none;
 }
 p{
-  width: 92%;
+  /* width: 92%; */
   color: #595959;
   font-size: 15px;
   font-weight: 500;

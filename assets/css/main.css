@@ -163,7 +163,7 @@ h6 {
 # Sections & Section Header
 --------------------------------------------------------------*/
 section {
-  padding: 50px 0 0 0;
+  /* padding: 50px 0 0 0; */
   overflow: hidden;
 }
 
@@ -416,7 +416,7 @@ section {
 }
 
 .header.sticked {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   right: 0;
   left: 0;
@@ -644,6 +644,10 @@ section {
     z-index: 9997;
     
   }
+
+  .large img{
+    width: 30px;
+  }
   #navbar ul li form {
     margin-top: 10px;
   }
@@ -715,7 +719,7 @@ section {
     margin: 10px 20px;
     transition: all 0.5s ease-in-out;
     background-color: #007466;
-    border: 1px solid #006459;
+    /* border: 1px solid #006459; */
   }
 
   .navbar .dropdown>.dropdown-active,
@@ -745,6 +749,12 @@ section {
     right: 20px;
     top: 8px;
     z-index: 9999;
+  }
+  .mobile-nav-hide:hover{
+    color: red;
+  }
+  .mobile-nav-show:hover{
+    color: #fabd07;
   }
 
   .mobile-nav-active {

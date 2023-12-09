@@ -74,7 +74,7 @@ logAudit($_SESSION['session_id'], 'access_wds form', $_SESSION['session_id'] .' 
 
     body {
       /* font-family: Arial, sans-serif; */
-      background-color: #f4f4f4;
+      background-color: #fffdd0;
       
       padding: 0;
      
@@ -235,7 +235,7 @@ select:focus {
 /* Media query for screens smaller than 768px (typical phones) */
 @media (max-width: 767px) {
     #Title {
-      font-size: 18px; /* Adjust the font size for smaller screens */
+      font-size: 24px; /* Adjust the font size for smaller screens */
     }
   }
 
@@ -254,7 +254,7 @@ select:focus {
   </div>
   <hr>
 
-  <h1 style="font-family: fantasy; color: black;" id="Title">Withdrawal/Dropping/Shifting Slip</h1>
+  <h1 style="font-family: fantasy; color: black; letter-spacing:1px;" id="Title">Withdrawal / Dropping / Shifting Slip</h1>
   <hr>
 
     <!-- <div class="card-header">

@@ -15,11 +15,18 @@ $origin = $_SESSION['origin'];
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <style>
+    .D{
+
+      color: grey;
+    }
+    .DJ{
+      padding: 20px;
+    }
     .container {
       position: relative;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Change RGBA values to 0, 0, 0 for black */
 
-
+      
       animation: fadeInUp 1s ease-in-out; /* Animation */
 }
 
@@ -55,6 +62,7 @@ $origin = $_SESSION['origin'];
   </style>
 </head>
 <body>
+  <div class="D"></div>
   <div class="container">
   <div class="logo">
       <img src="assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
@@ -64,11 +72,13 @@ $origin = $_SESSION['origin'];
     </div>
     <img id="loading-spinner" src="assets/img/GCU_LOGO.gif">
     <h2  style="color:black; font-family: 'Lucida Console', Courier, monospace;">FORGOT PASSWORD</h2>
+    <h4 style="color:grey; ">Enter your email and we'll send you the verification code to reset your password</h4>
     <form id="forgot_pass" method="post">
       <label for="email" style="color:black;">Email*</label>
       <input type="email" id="email" name="email" required>
       
       <input id="reset"style="background-color:black;color:white;" type="submit" value="Reset Password">
+      <div class="DJ"> &#x2190; <a onclick="bck()" class="D"><b> Back to Log-in</b></a></div>
     </form>
   </div>
   <!--  -->
@@ -77,6 +87,9 @@ $origin = $_SESSION['origin'];
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+  function bck(){
+    window.history.back();
+  }
   $("#forgot_pass").on("submit", function(event) {
     event.preventDefault();
     

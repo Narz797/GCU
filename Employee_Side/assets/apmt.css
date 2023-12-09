@@ -7,9 +7,9 @@
 :root{
     --light-color: #fff;
     --dark-color: black;
-    --accent-color: #568203;
+    --accent-color: #ffc971;
     --body-background-color: #202028;
-    --hover-color: #87A96B;
+    --hover-color: #ffd166;
     --banner-color: #F5F5DC;
     --shadow-color: dimgray;
     --font-color: #568203;
@@ -97,7 +97,7 @@ i{
 /* Header */
 .header{
   transition: all 0.5s;
-  background-color: black;}
+  background-color: #008374;}
 .nav{
   height: 7rem;
   display: flex;
@@ -209,7 +209,7 @@ i{
     font-size: var(--font-size-medium);
     color: var(--light-color);
     padding: 2.5rem 0 1.25rem;
-    background-color: var(--accent-color);}
+    background-color: #008374;}
 .independent-title h2{
     font-size: 25px;
     font-weight: bold;

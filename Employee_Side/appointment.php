@@ -114,8 +114,8 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
       <!-- Welcome-message -->
 <section>
 <?php include '../includes/banner.php' ?>
-    <div class="block"> 
-    </div>
+    <!-- <div class="block"> 
+    </div> -->
     <div class="title independent-title">
         <h2>APPOINTMENT SCHEDULE</h2>
     </div>

@@ -189,7 +189,7 @@
         </div>
         <div class="input-box message-box">
           <div class="input-box1">
-          <textarea style="font-family: 'Poppins' , sans-serif;" type="text"  id="msg" placeholder="Howcan we help you with?"></textarea>
+          <textarea style="font-family: 'Poppins' , sans-serif;" type="text"  id="msg" placeholder="How can we help you with?"></textarea>
         </div>
         </div>
         <div class="button">

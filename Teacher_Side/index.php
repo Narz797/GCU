@@ -65,11 +65,11 @@ $_SESSION['transact_type'] = 'referral';
     <header class="header">
     <nav class="nav"> 
         <div class="logo">
-            <img src="bsu.png" alt="">
+            <img src="GCU_logo.png" alt="">
         </div>
         
         <div class="align-right">
-        <button class="icon-btn place-items-center">  <a href="../dh_teacher.php" >FAQ</a></button>
+        <button class="icon-btn place-items-center">  <a href="../dh_teacher.php" style="text-decoration: none; color:black;">FAQ</a></button>
             <button class="icon-btn place-items-center" onclick="logout()" value="logout">
                 <i class="ri-user-3-line"> Log-out</i>
             </button>
@@ -100,11 +100,9 @@ $_SESSION['transact_type'] = 'referral';
 
     
 
-    <div class="block"> 
-    </div>
     <div class="block"></div>
 
-<div class="container">
+<div class="container1">
 <section class="main">
   <div class="main-top">
     <h1>Teacher's Dashboard</h1>
@@ -114,7 +112,7 @@ $_SESSION['transact_type'] = 'referral';
 
 <!-- Get teacher's data with image or delete image -->
 
-<img src="bsu.png">
+<img src="assets/img/profile.png">
       <h6 id="EId">111000111</h6>
       <h4 id="name">Monkey Dulagan Luffy</h4>
       <p  id="college">College of Information Sciences</p>
@@ -153,7 +151,7 @@ $_SESSION['transact_type'] = 'referral';
         </div>
         <div class="form">
           <label for="mname">Student's Middle Name:</label>
-          <input type="text" id="mname" name="mname" required>
+          <input type="text" id="mname" name="mname" >
         </div>
         <div class="form">
           <label for="lname">Student's Last Name:</label>
@@ -181,7 +179,45 @@ $_SESSION['transact_type'] = 'referral';
         
         <div class="form1">
           <label for="crse">Course:</label>
-          <input type="text"id="crse" name="crse" required>
+          <!-- <input type="text"id="crse" name="crse" required> -->
+          <select type="text" name="textfield5" id="crse" style="width:150px;" autocomplete="off">
+                <option disabled selected>Select Course</option>
+                                <option value='BSAB'>Bachelor of Science in Agribusiness</option>
+                                <option value='BSA'>Bachelor of Science in Agriculture</option>
+                                <option value='BA Comm'>Bachelor of Arts in Communication</option>
+                                <option value='BAEL'>Bachelor of Arts in English Language</option>
+                                <option value='BAFL'>Bachelor of Arts in Filipino Language</option>
+                                <option value='BSABE'>Bachelor of Science in Agriculture and Biosystems Engineering</option>
+                                <option value='BSCE'>Bachelor of Science in Civil Engineering</option>
+                                <option value='BSEE'>Bachelor of Science in Electrical Engineering</option>
+                                <option value='BSIE'>Bachelor of Science in Industrial Engineering</option>
+                                <option value='BSF'>Bachelor of Science in Forestry</option>
+                                <option value='BSET'>Bachelor of Science in Entrepreneurship</option>
+                                <option value='BSFT'>Bachelor of Science in Food Technology</option>
+                                <option value='BSHM'>Bachelor of Science in Hospitality Management</option>
+                                <option value='BSND'>Bachelor of Science in Nutrition and Dietetics</option>
+                                <option value='BSTM'>Bachelor of Science in Tourism Management</option>
+                                <option value='BPeD'>Bachelor of Physical Education</option>
+                                <option value='BSESS'>Bachelor of Science in Exercise and Sports Sciences</option>
+                                <option value='BLIS'>Bachelor in Library and Information Sciences</option>
+                                <option value='BSDC'>Bachelor of Science in Development Communication</option>
+                                <option value='BSIT'>Bachelor of Science in Information Technology</option>
+                                <option value='BS Bio'>Bachelor of Science in Biology</option>
+                                <option value='BS Chem'>Bachelor of Science in Chemistry</option>
+                                <option value='BSES'>Bachelor of Science in Environmental Science</option>
+                                <option value='BS Math'>Bachelor of Science in Mathematics</option>
+                                <option value='BSS'>Bachelor of Science in Statistics</option>
+                                <option value='BSN'>Bachelor of Science in Nursing</option>
+                                <option value='BPA'>Bachelor of Public Administration</option>
+                                <option value='BS Psych'>Bachelor of Science in Psychology</option>
+                                <option value='BECED'>Bachelor of Early Childhood Education</option>
+                                <option value='BEED'>Bachelor of Elementary Education</option>
+                                <option value='BSED'>Bachelor of Secondary Education</option>
+                                <option value='BTLED'>Bachelor of Technology and Livelihood Education</option>
+                                <option value='DVM'>Doctor of Veterinary Medicine</option>
+                                <option value='BA Hist'>Bachelor of Arts in History</option>
+    <!-- Add more options as needed -->
+</select>
         </div>
         <div class="form1">
           <label>Reason:</label>
@@ -196,7 +232,7 @@ $_SESSION['transact_type'] = 'referral';
 
         <!-- show when reason is late or absent -->
         <div class="form1" id="dates">
-          <label for="date">Days absent:</label><br>
+          <label for="date">Days absent/tardy:</label><br>
           <!-- id = date -->
           <div class="input-group date form-group" id="datepicker">
             <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days" autocomplete="off"/>

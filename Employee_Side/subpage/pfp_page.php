@@ -184,8 +184,8 @@ echo"<script>console.log('$id')</script>";
     <!-- Banner -->
 <section>
 <?php include '../../includes/banner.php' ?>
-   <div class="block"> 
-    </div>
+   <!-- <div class="block"> 
+    </div> -->
     <div class="title independent-title">
         <h2> STUDENT PROFILE</h2>
     </div>

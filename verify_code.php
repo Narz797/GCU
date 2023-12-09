@@ -99,7 +99,7 @@ $randomNumber = $_SESSION['random_number'];
     <h2  style="color:black; font-family: 'Lucida Console', Courier, monospace;">FORGOT PASSWORD</h2>
     <form id="verify_code" method="post">
         <label for="code" style="color:black;">Input 4 digit code*</label>
-        <br>
+        
         
         <input type="number" id="code" name="number" oninput="validateInput(this)" required>
         

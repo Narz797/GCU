@@ -68,9 +68,9 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     <!-- Banner -->
 <section>
 <?php include '../includes/banner.php' ?>
-    <div class="block"></div>
+    <!-- <div class="block"></div> -->
     <!-- First Section -->
-    <div class="title independent-title">
+    <div class="title independent-title ">
         <h2 > Control Panel</h2>
     </div>
     <div class="card">

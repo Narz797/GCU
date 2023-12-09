@@ -37,8 +37,8 @@ $randomNumber = $_SESSION['random_number'];
   
   .fa-eye, .fa-eye-slash {
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 1px;
+    top: 12px;
     cursor: pointer;
   }
   input {
@@ -129,12 +129,19 @@ $randomNumber = $_SESSION['random_number'];
       success: function(data) {
         
         if (data === "Password Reset") {
-          Swal.fire({
-              icon: "success",
+
+            Swal.fire({
+              icon: "sucess",
               title: "Password changed",
-              timer: 1500
-            });
-          window.location.href = "home?logout=true";
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  window.location.href = "home?logout=true";
+                } 
+              });
+        
           
         } else {
           Swal.fire({

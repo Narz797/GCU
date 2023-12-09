@@ -31,3 +31,9 @@
 </section>
 
 </html>
+<style>
+    footer i:hover{
+        color: #e9d8a6;
+    }
+
+</style>

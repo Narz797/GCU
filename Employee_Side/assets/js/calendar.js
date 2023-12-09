@@ -533,11 +533,13 @@ addEventSubmit.addEventListener("click", () => {
         icon: "success",
         title: "Date added successfully"
       });
+      initCalendar();
+      refreshEvents();
+     
       // Clear the input fields and refresh events to fetch the new data.
       addEventFrom.value = "";
       addEventTo.value = "";
-      refreshEvents();
-      initCalendar();
+ 
       // location.reload();
     }
   });

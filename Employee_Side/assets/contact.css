@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins" , sans-serif;
+  /* font-family: "Poppins" , sans-serif; */
 }
 
 body{
@@ -18,7 +18,7 @@ body{
 /* Header */
 .header{
     transition: all 0.5s;
-    background-color: black;}
+    background-color: #008374;}
 .nav{
     height: 5rem;
     display: flex;
@@ -35,7 +35,7 @@ body{
     height: 2rem;}
 .icon-btn:hover{
     color: white;
-    background-color: #87A96B;}
+    background-color: #ffd166;}
 .align-right{
     margin-left: auto;
     border-radius: .4rem;}
@@ -64,7 +64,7 @@ body{
     font-family: 'Georgia', serif;}
 .banner-line{
     width: 100%; 
-    border-color: black; 
+    border-color: #008374; 
     margin-bottom: 0;}
 .banner-text h2{
     font-size: 1.8vw;
@@ -74,7 +74,7 @@ body{
     font-family: 'Garamond', serif;
     font-weight: bold;}
 .block{
-    background-color: black; 
+    background-color: #008374; 
     height:50px;}
 .accordion{
   margin: 50px auto;
