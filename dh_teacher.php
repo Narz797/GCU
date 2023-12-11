@@ -100,52 +100,55 @@
 
     <li>
         <div class="question-arrow">
-          <span class="question" style="font-family: 'Poppins' , sans-serif;">How does the Referral Slip work?</span>
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">What is the transaction page all about?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p style="font-family: 'Poppins' , sans-serif;">Welcome to our platform! Follow these steps to get started: <br>
-        ● Fill up the referral slip with the required student information. <br>
-        ● The GCU has successfully received your referred student! <br>
-        ● Check the update of progress in the Status column in the table below. <br>
-
+        <p style="font-family: 'Poppins' , sans-serif;">Transaction page is designed to request forms to the GCUS such as: <br>
+            ✔ Readmission <br>
+            ✔ Withdrawal/Dropping/Shifting <br>
+            ✔ Admission <br>
+            ✔ Leave of Absence <br>
+            ✔ Admission <br>
         </p>
         <span class="line"></span>
       </li>
 
       <li>
         <div class="question-arrow">
-          <span class="question" style="font-family: 'Poppins' , sans-serif;">Wonder what you can do with the platform?</span>
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">What is the appointment page all about?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p style="font-family: 'Poppins' , sans-serif;">● In your profile account, you can edit your information by clicking the Edit button.<br>
-        ● A pop-up will show where you can change your information. Fill up the form.<br>
-        ● Submit the form or Click exit.<br>
-        ● Yay! Your have successfully edited your information.<br>
+        <p style="font-family: 'Poppins' , sans-serif;">The appointment page is created for scheduling appointment such as counseling, academic couching to the Guidance and Counseling Unit.
         </p>
         <span class="line"></span>
       </li>
 
       <li>
         <div class="question-arrow">
-          <span class="question" style="font-family: 'Poppins' , sans-serif;">What is the website about?</span>
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">What do you mainly do in the system?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p style="font-family: 'Poppins' , sans-serif;">This platform was created by the College of Information Sciences dedicated for the use of the Guidance Counseling Unit of Benguet State University.
+        <p style="font-family: 'Poppins' , sans-serif;">You have a simple dashboard to read the services rendered by Benguet Sate Univeersity-Guidance and Counseling Unit. 
+        The system incorporates a log-in and registration feature, requiring users to register initially if they do not have
          an account before logging in.</p>
         <span class="line"></span>
       </li>
       <li>
         <div class="question-arrow">
-          <span class="question" style="font-family: 'Poppins' , sans-serif;">Having issues while using the website?</span>
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">How to know if one is clickable?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p style="font-family: 'Poppins' , sans-serif;">If you encounter any issues while using our platform, try the following:<br>
-        ● Clear your browser cache<br>
-        ● Update your browser to the latest version<br>
-        ● Contact support for further assistance<br>
-        </p>
+        <p style="font-family: 'Poppins' , sans-serif;">Any area that becomes visible and interactive as the cursor hovers and moves over it indicates that it is responsive.</p>
         <span class="line"></span>
       
+      <li>
+        <div class="question-arrow">
+          <span class="question" style="font-family: 'Poppins' , sans-serif;">I'm having technical issues where should I ask help?</span>
+          <i class="bx bxs-chevron-down arrow"></i>
+        </div>
+        <p style="font-family: 'Poppins' , sans-serif;">If you have any technical issues or more questions you wish to ask, feel free to contact us directly by filling the form below this FAQ.</p>
+        <span class="line"></span>
+      </li>
     </ul>
     </div>
   </div>

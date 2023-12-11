@@ -5,7 +5,7 @@ $id = $_SESSION['stud_id'];
 $form = $_SESSION['form_type'];
 $tid = $_SESSION['tran_id'];
 
-if ($form == 'Leave Of Absence') {
+if ($form == 'loa') {
 $sql = "SELECT
         student_user.stud_user_id,
         student_user.last_name,
@@ -36,7 +36,7 @@ $sql = "SELECT
         INNER JOIN absence ON transact.transact_id = absence.transact_id 
         LEFT JOIN guardian ON student_user.stud_user_id = guardian.stud_user_id
 LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
-        WHERE student_user.stud_user_id = :id AND transact.transact_type = 'Leave Of Absence'AND transact.transact_id = :tid;
+        WHERE student_user.stud_user_id = :id AND transact.transact_type = 'leave_of_absence'AND transact.transact_id = :tid;
 "; // Use a named placeholder
 
 $stmt = $pdo->prepare($sql);
@@ -50,7 +50,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Prepare and echo data as JSON
 echo json_encode($data);
 
-} else if ($form == 'Readmission') {
+} else if ($form == 'readmission') {
     $sql = "SELECT
     student_user.stud_user_id,
     student_user.last_name,
@@ -81,7 +81,7 @@ INNER JOIN transact ON student_user.stud_user_id = transact.student_id
 INNER JOIN readmission ON transact.transact_id = readmission.transact_id
 LEFT JOIN guardian ON student_user.stud_user_id = guardian.stud_user_id
 LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
-        WHERE student_user.stud_user_id = :id AND transact.transact_type = 'Readmission' AND transact.transact_id = :tid;
+        WHERE student_user.stud_user_id = :id AND transact.transact_type = 'readmission' AND transact.transact_id = :tid;
     ";
 
     $stmt = $pdo->prepare($sql);
@@ -156,7 +156,7 @@ echo json_encode($data);
     // Prepare and echo data as JSON
     echo json_encode($data);
 }
- else if ($form == 'Referral') {
+ else if ($form == 'referral') {
     $teachid = $_SESSION['teachid'];
 
     $sql = "SELECT
@@ -205,7 +205,7 @@ LEFT JOIN guardian ON student_user.stud_user_id = guardian.stud_user_id
 LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
 WHERE
     student_user.stud_user_id = :id
-    AND transact.transact_type = 'Referral' 
+    AND transact.transact_type = 'referral' 
     AND transact.transact_id = :tid 
     AND referral.teacher_id = :teachid
 

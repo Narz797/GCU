@@ -6,7 +6,7 @@ $id = $_SESSION['session_id'];// gets stud id from session
 $transact = $_SESSION['transact_type'];//gets value of transact_type
 $status = 'pending';
 
-if ($transact == 'Readmission') {
+if ($transact == 'readmission') {
     $reason = $_POST['reason'];
     $motivation = $_POST['motivation'];
     $sem = $_POST['sem'];
@@ -111,7 +111,7 @@ if ($transact == 'Readmission') {
     }
 }
 
- else if ($transact == 'Leave Of Absence') {
+ else if ($transact == 'leave_of_absence') {
     $semester = $_POST['semester'];
     $start_year = $_POST['start_year'];
     $end_year = $_POST['end_year'];

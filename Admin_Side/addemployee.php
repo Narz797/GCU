@@ -46,17 +46,17 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/profiles.css">
+    <link rel="stylesheet" href="assets/css/sub.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
     
 
 </head>
 
-<body style="background:white;">
+<body>
 
     <!-- Header -->
-    <header class="header" >
+    <header class="header" style="background:#007f5f">
     <nav class="nav" > 
         <div class="logo">
         <img src="assets/images/bsu.png" alt="">
@@ -95,7 +95,7 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
     <!-- Welcome-message -->
     
 
-    <div class="title independent-title" >
+    <div class="title independent-title" style="background:#80b918" >
     <h2>Add Employee Account</h2>
     </div>
     
@@ -106,12 +106,12 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
     <form method="post" action="../backend/register_user.php">
         <br>
        
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group input-group-lg" style="background:#80b918">
               <input type="number" class="form-control" name ='empID' placeholder="Employee ID No." 
               aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" required>
               </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group input-group-lg" style="background:#80b918">
               <input type="text" class="form-control" placeholder="Last Name" 
               aria-label="Last Name" name ='lname' aria-describedby="inputGroup-sizing-lg" required>
               <input type="text" name ='mname' class="form-control" placeholder="Middle Name" 
@@ -120,7 +120,7 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
               aria-label="First Name" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group input-group-lg" style="background:#80b918">
             <label class="input-group-text" for="inputgroupselect">Sex</label>
             <select class="form-select" name ='gender' id="inputgroupselect" required>
                 <option selected>Choose...</option>
@@ -129,22 +129,22 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
             </select>
         </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group input-group-lg" style="background:#80b918">
               <input type="text" name='email' class="form-control" placeholder="Email" 
               aria-label="Email" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group input-group-lg" style="background:#80b918">
               <input type="text" name='contactnum' class="form-control" placeholder="Contact No." 
               aria-label="Contact No." aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group input-group-lg" style="background:#80b918">
               <input type="text" name='position' class="form-control" placeholder="Position" 
               aria-label="Position" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group input-group-lg" style="background:#80b918">
               <input type="text" class="form-control" name='username' placeholder="Username" 
               aria-label="Username" aria-describedby="inputGroup-sizing-lg" required>
               <input type="text" class="form-control" name='password' placeholder="Password" 
@@ -156,7 +156,7 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
 <center>
     <div class="addemployee">
     
-    <button type="submit" class="button" value="Add Employee" style="background:#008374">Add Employee Account </button><br>
+    <button type="submit" class="button" value="Add Employee" style="background:#80b918">Add Employee Account </button><br>
    
     </div>
 </center>
@@ -165,10 +165,9 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
   
 <br>
 </div>
-    </section>
-    </section>
-    <?php include 'includes/footer.php' ?>
-</body>
+
+
+
 
 <!-- Script     -->
 <script src="./assets/main.js"></script>
@@ -201,6 +200,6 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
 
 </style>
 
-    
-
+    </body>
+    <?php include 'includes/footer.php' ?>
 </html>

@@ -7,16 +7,13 @@
 :root{
     --light-color: #fff;
     --dark-color: black;
-    --accent-color: #ffc971;
+    --accent-color: #FEBE10;
     --body-background-color: #202028;
     --hover-color: #fde7b4;
     --banner-color: #F5F5DC;
     --shadow-color: dimgray;
     --font-color: #568203;
-    --title-color: #FEBE10;
-    --positive-color: #86e49d;
-    --negative-color: #d893a3 ;
-    --pending-color: #ebc474;
+    --title-color: #ffc971;
     --transparent-button-color: var(--accent-color);
     --font-size-small: 1.4rem;
     --font-size-normal: 1.6rem;
@@ -116,14 +113,10 @@ i{
     border-radius: .4rem;
     padding: 2px;}
 .align-right:hover{
-    background-color: var(--hover-color);
-    color:black;
-}
+    background-color: var(--hover-color);}
 .icon-btn{
     width: 3.5rem;
-    height: 3.5rem;
-    color: black;
-}
+    height: 3.5rem;}
 .theme-dark-icon{
     display: none;}
 
@@ -221,7 +214,7 @@ i{
     text-transform: uppercase;}
 .main-title{
     font-size: 30px;
-    font-family: 'Arial', serif;
+    font-family: 'Garamond', serif;
     color: #e86100;}
 .card-description1{
     font-size: 12px;}
@@ -234,7 +227,7 @@ i{
     font-size: 17px;
     margin-bottom: var(--margin-small);}
 .card-description span{
-    color: #8c8c8c;}
+    color: var(--font-color);}
 .card-image1 img{
     max-width: 100%;
     height: 200px;
@@ -303,7 +296,7 @@ i{
     margin-bottom: var(--margin-medium);}
 .card-description b{
     font-family:var(--font-primary);
-    font-size: 18px;
+    font-size: 20px;
 
 }
 .list-link{

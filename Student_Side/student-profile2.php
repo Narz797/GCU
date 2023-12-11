@@ -2665,7 +2665,7 @@ $siblings = $siblings->fetchAll();
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Section</label>
                         <!-- Editable -->
-                        <input type="text" class="form-control form-control-alternative" id="sec" readonly value =  "<?php echo $pers_info[0]['Section'] ?>" oninput="limitToSingleCharacter(event)">
+                        <input type="text" class="form-control form-control-alternative" id="sec" readonly value =  "<?php echo $pers_info[0]['Section'] ?>">
                       </div>
                     </div>
 
@@ -2673,7 +2673,7 @@ $siblings = $siblings->fetchAll();
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Contact Number</label>
                         <!-- Editable -->
-                        <input type="text" class="form-control form-control-alternative" id="CN" readonly value =  "<?php echo $pers_info[0]['Contact_number'] ?>" oninput="limitTo11Digits(event)">
+                        <input type="text" class="form-control form-control-alternative" id="CN" readonly value =  "<?php echo $pers_info[0]['Contact_number'] ?>">
                       </div>
                     </div>
 
@@ -2792,7 +2792,7 @@ $siblings = $siblings->fetchAll();
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Contact Number</label>
                           <!-- Editable -->
-                          <input type="number"  class="form-control form-control-alternative" id="Fcn" readonly value =  "<?php echo $father_info[0]['contact'] ?>" oninput="limitTo11Digits(event)">
+                          <input type="number"  class="form-control form-control-alternative" id="Fcn" readonly value =  "<?php echo $father_info[0]['contact'] ?>">
                         </div>
                       </div>
 
@@ -2858,7 +2858,7 @@ $siblings = $siblings->fetchAll();
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Contact Number</label>
                           <!-- Editable -->
-                          <input type="number" class="form-control form-control-alternative" id="Mcn" readonly value = "<?php echo $mother_info[0]['contact'] ?>" oninput="limitTo11Digits(event)">
+                          <input type="number" class="form-control form-control-alternative" id="Mcn" readonly value = "<?php echo $mother_info[0]['contact'] ?>">
                         </div>
                       </div>
 
@@ -2929,7 +2929,7 @@ $siblings = $siblings->fetchAll();
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Contact Number</label>
                           <!-- Editable -->
-                          <input type="number"  class="form-control form-control-alternative" id="Gcn" readonly value =  "<?php echo $guardian_info[0]['contact'] ?>" oninput="limitTo11Digits(event)">
+                          <input type="number"  class="form-control form-control-alternative" id="Gcn" readonly value =  "<?php echo $guardian_info[0]['contact'] ?>">
                         </div>
                       </div>
 
@@ -3149,33 +3149,33 @@ $siblings = $siblings->fetchAll();
           <h3 class="heading-small " style="color:black; font-weight: bold">SOURCES OF FINANCIAL SUPPORT</h3>
 
 
-          <input type="checkbox" id="FS_parent" disabled value="<?php echo $checkedOption1 ?>">
+          <input type="checkbox" id="FS_parent" disabled <?php echo $checkedOption1 ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox1" class="custom-checkbox-label">Parent</label>
           <br>
 
-          <input type="checkbox" id="FS_ss" disabled value="<?php echo $checkedOption2; ?>">
+          <input type="checkbox" id="FS_ss" disabled <?php echo $checkedOption2; ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox2">Self Supporting</label>
           <br>
 
-          <input type="checkbox" id="FS_rg" disabled value="<?php echo $checkedOption3; ?>">
+          <input type="checkbox" id="FS_rg" disabled <?php echo $checkedOption3; ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox3">Relative and/or Guardian</label>
           <br>
 
-          <input type="checkbox" id="FS_sch" disabled value="<?php echo $checkedOption4; ?>">
+          <input type="checkbox" id="FS_sch" disabled <?php echo $checkedOption4; ?>>
           <!-- <i class="fa fa-check"></i> -->
-          <label for="checkbox4">Scholarship - <input id="FS_sch2"  readonly value="<?php if ($oth_info[0]['specific_scholar']) {
+          <label for="checkbox4">Scholarship - <span id="FS_sch2"><?php if ($oth_info[0]['specific_scholar']) {
                                                                     echo $oth_info[0]['specific_scholar'];
-                                                                  } ?>"></label>
+                                                                  } ?></span></label>
           <br>
 
           <input type="checkbox" id="FS_oth" disabled <?php echo $checkedOption5; ?>>
           <!-- <i class="fa fa-check"></i> -->
-          <label for="checkbox5">Others - <input id="FS_oth2"  readonly value="<?php if ($oth_info[0]['specific_other']) {
+          <label for="checkbox5">Others - <span id="FS_oth2"><?php if ($oth_info[0]['specific_other']) {
                                                                 echo $oth_info[0]['specific_other'];
-                                                              } ?>"></label>
+                                                              } ?></span></label>
 
 
           <hr class="my-4">
@@ -3184,24 +3184,24 @@ $siblings = $siblings->fetchAll();
           <h6 class="heading-small" style="color:black; font-weight: bold">MARITAL STATUS OF PARENT</h6>
 
 
-          <input type="radio" name="MS" id="MS_pam" disabled value="<?php echo $checkmarital1; ?>">
+          <input type="checkbox" id="MS_pam" disabled <?php echo $checkmarital1; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Parents are married.</label>
           <br>
-          <input type="radio" name="MS" id="MS_mla" disabled value="<?php echo $checkmarital2; ?>">
+          <input type="checkbox" id="MS_mla" disabled <?php echo $checkmarital2; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Marriage is legally annulled.</label>
           <br>
-          <input type="radio" name="MS" id="MS_notm" disabled value="<?php echo $checkmarital3; ?>">
+          <input type="checkbox" id="MS_notm" disabled <?php echo $checkmarital3; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Parents are not married but are living together.</label>
           <br>
-          <input type="radio" name="MS" id="MS_sp" disabled value="<?php echo $checkmarital4; ?>">
+          <input type="checkbox" id="MS_sp" disabled <?php echo $checkmarital4; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Single Parent.</label>
           <br>
           <div class="checkbox-container">
-          <input type="radio" name="MS" id="MS_ps" disabled value="<?php echo $checkmarital5; ?>">
+          <input type="checkbox" id="MS_ps" disabled <?php echo $checkmarital5; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Parents are separated (one or both have other partners).</label>
           </div>
           <br>
-          <input type="radio" name="MS" id="MS_wid" disabled value="<?php echo $checkmarital6; ?>">
+          <input type="checkbox" id="MS_wid" disabled <?php echo $checkmarital6; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Widow/widower.</label>
 
           <!-- </div> -->
@@ -3263,15 +3263,15 @@ $siblings = $siblings->fetchAll();
             </div>
             <div class="fixed-buttons">
             <div class="col-4 text-right">
-                  <a class="btn btn-sm btn-primary" id="Update" style="color: white;" onclick="verify()">
+                  <button class="btn btn-sm btn-primary" id="Update" onclick="verify()">
                     <i class="fa fa-pencil"></i> Update
-                  </a>
+                  </button>
                 </div>
 
                 <div class="col-4 text-right">
-                  <a class="btn btn-sm btn-primary" id="Cancel" style="color: white;" onclick="cancel()">
+                  <button class="btn btn-sm btn-primary" id="Cancel" onclick="cancel()">
                     <i class="fa fa-pencil"></i> Cancel
-                  </a>
+                  </button>
                 </div>
                                                             </div>
             <!-- <button id="Update" onclick="upd()">Update</button> -->
@@ -3317,9 +3317,8 @@ $siblings = $siblings->fetchAll();
   </footer> -->
 
   <!-- Add this script tag to your HTML file -->
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script>
     // Get the logout button element
     function logout() {
@@ -3360,22 +3359,6 @@ $siblings = $siblings->fetchAll();
       icon.className = "fas fa-eye";
     }
   }
-  function limitTo11Digits(event) {
-  var input = event.target;
-  var inputValue = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-
-  if (inputValue.length > 11) {
-    input.value = inputValue.slice(0, 11);
-  }
-}
-function limitToSingleCharacter(event) {
-  var input = event.target;
-  var inputValue = input.value.toUpperCase().replace(/[^A-Z]/g, '');
-
-  if (inputValue.length > 1) {
-    input.value = inputValue.slice(0, 1);
-  }
-}
   function addHighlight(element) {
             element.classList.add('highlight');
         }
@@ -3415,15 +3398,6 @@ function limitToSingleCharacter(event) {
     var gocc = document.getElementById('Gocc');
     var gcn = document.getElementById('Gcn');
 
-    // checkbox
-    var prnt = document.getElementById('FS_parent');
-    var ss = document.getElementById('FS_ss');
-    var rg = document.getElementById('FS_rg');
-    var sch = document.getElementById('FS_sch');
-    var sch2 = document.getElementById('FS_sch2');
-    var oth = document.getElementById('FS_oth');
-    var oth2 = document.getElementById('FS_oth2');
-
     crse.disabled = false;
     yl.disabled = false;
     email.removeAttribute('readonly');
@@ -3440,14 +3414,6 @@ function limitToSingleCharacter(event) {
     gage.removeAttribute('readonly');
     gocc.removeAttribute('readonly');
     gcn.removeAttribute('readonly');
-
-    prnt.removeAttribute('disabled');
-     ss.removeAttribute('disabled');
-     rg.removeAttribute('disabled');
-     sch.removeAttribute('disabled');
-     oth.removeAttribute('disabled');
-     sch2.removeAttribute('readonly');
-     oth2.removeAttribute('readonly');
 
     // Add event listeners for focus and blur events
     // email.addEventListener('focus', function () {
@@ -3609,7 +3575,7 @@ function verify(){
           
         } else {
             Swal.fire({
-              icon: "success",
+              icon: "sucess",
               title: "Code Sent!",
               text: "Go to your email to retrieve the code",
               confirmButtonText: "OK",
@@ -3645,7 +3611,7 @@ function verify(){
           
         } else {
             Swal.fire({
-              icon: "success",
+              icon: "sucess",
               title: "Code Sent!",
               text: "Go to your email to retrieve the code",
               confirmButtonText: "OK",
@@ -3757,7 +3723,7 @@ function verify(){
             //   title: "Information Updated!"
             // });
             Swal.fire({
-              icon: "success",
+              icon: "sucess",
               title: "Information Updated!",
               text: "Double Check your information if it is correct",
               confirmButtonText: "OK",

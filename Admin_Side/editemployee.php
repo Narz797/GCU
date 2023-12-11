@@ -55,7 +55,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/profiles.css">
+    <link rel="stylesheet" href="assets/css/sub.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
     <!-- Export -->
@@ -80,7 +80,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </style>
 
-<body style="background:white;">
+<body>
 
     <!-- Header -->
     <header class="header">
@@ -126,7 +126,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- Section -->
 
         <section class="table-body">
-            <section id="table" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
+            <section id="table">
 
                 <form id="edit_emp" name="edit_emp" method="post">
                     <br>
@@ -181,7 +181,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </center>
 
                     <br>
-                    <button type="submit" class="button" style="background:#008374" value="Edit Employee">Edit Employee Account</button>
+                    <button class="yes1" type="submit" value="Edit Employee">Edit Employee Account</button>
                 </form>
             </section>
 

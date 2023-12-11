@@ -168,7 +168,7 @@ include 'includes/main2.php';
             <section class="table-header" style="background-color: #008374;">
                 <h1>List of Confirmed Forms</h1>
                 <div class="input-group">
-                    <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search.....">
+                    <input type="search" placeholder="Search.....">
                 </div>
                 
             </section>
@@ -216,66 +216,39 @@ include 'includes/main2.php';
   </body>
 <!-- <script src="../Employee_Side/assets/js/calendar.js"></script>    
 <script src="../Employee_Side/assets/main.js"></script>  -->
-
 <script>
-    $(document).ready(function () {
-        // Function to load data from the database via Ajax
-        function loadDataFromDatabase() {
-            $.ajax({
-                url: '../backend/stud_history.php',
-                method: 'GET',
-                dataType: 'json', // Set the expected data type to JSON
-                success: function (data) {
-                    // Store the data in a variable accessible to the search function
-                    window.originalData = data;
-
-                    // Display the data
-                    displayData(data);
-                },
-                error: function (error) {
-                    console.error('Error fetching data: ' + error);
-                }
-            });
+  $(document).ready(function() {
+    // Function to load data from the database via Ajax
+    function loadDataFromDatabase() {
+      $.ajax({
+        url: '../backend/stud_history.php',
+        method: 'GET',
+        dataType: 'json', // Set the expected data type to JSON
+        success: function(data) {
+          // Iterate through the JSON data and append it to the scrollable container
+          data.forEach(function(item) {
+            // Create the HTML structure for each data item
+            var content = '<div class="post-item mt-3">';
+            content += '<img src="assets/img/form.png" alt="" style="height:60px; ">';
+            content += '<div>';
+            content += '<h4><p>' + item.transact_type + '</p></h4>';
+            content += '<time datetime="2020-01-01">' + item.date_completed + '</time>';
+            content += '</div>';
+            content += '</div>';
+            content += '<br>';
+            content += '<hr>';
+            $('#scrollable-container').append(content);
+          });
+        },
+        error: function(error) {
+          console.error('Error fetching data: ' + error);
         }
+      });
+    }
 
-        // Function to display data in the scrollable container
-        function displayData(data) {
-            // Clear the existing content
-            $('#scrollable-container').empty();
-
-            // Iterate through the JSON data and append it to the scrollable container
-            data.forEach(function (item) {
-                // Create the HTML structure for each data item
-                var content = '<div class="post-item mt-3">';
-                content += '<img src="assets/img/form.png" alt="" style="height:60px; ">';
-                content += '<div>';
-                content += '<h4><p>' + item.transact_type + '</p></h4>';
-                content += '<time datetime="2020-01-01">' + item.date_completed + '</time>';
-                content += '</div>';
-                content += '</div>';
-                content += '<br>';
-                content += '<hr>';
-                $('#scrollable-container').append(content);
-            });
-        }
-
-        // Function to search the table based on user input
-        window.searchTable = function () {
-            // Get the search input value
-            var searchInput = $('#searchInput').val().toLowerCase();
-
-            // Filter the original data based on the search input
-            var filteredData = window.originalData.filter(function (item) {
-                return item.transact_type.toLowerCase().includes(searchInput);
-            });
-
-            // Display the filtered data
-            displayData(filteredData);
-        };
-
-        // Call the function to load data when the page loads
-        loadDataFromDatabase();
-    });
+    // Call the function to load data when the page loads
+    loadDataFromDatabase();
+  });
 </script>
 
 <!-- <script>

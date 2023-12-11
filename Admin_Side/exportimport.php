@@ -67,9 +67,9 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
 <style>
 </style>
 
-<body style="background-color: white;">
+<body>
     <!-- Header -->
-    <header class="header" >
+    <header class="header" style="background:#007f5f">
         <nav class="nav">
             <div class="logo">
             <img src="assets/images/GCU_logo.png" alt="">
@@ -114,13 +114,13 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
     <!-- Welcome-message -->
 
     <section>
-        <div class="title independent-title" >
+        <div class="title independent-title" style="background:#80b918">
             <h2 style="color:black;">Export and Import of Database</h2>
         </div>
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-sm">
-                    <div class="card"  style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color:black;">
+                    <div class="card"  style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
                         <h2 class="card-title">Import Database</h2>
                         <div class="card-body" >
                             <p class="card-text">Import Back Up Database.</p>
@@ -134,7 +134,7 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
                     </div>
                 </div>
                 <div class="col-sm">
-                    <div class="card"  style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color:black;">
+                    <div class="card"  style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
                         <h2 class="card-title">Export Database</h2>
                         <div class="card-body">
                             <p class="card-text">Export Back Up Database.</p>

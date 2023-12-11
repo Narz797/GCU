@@ -7,16 +7,13 @@
 :root{
     --light-color: #fff;
     --dark-color: black;
-    --accent-color: #ffc971;
+    --accent-color: #568203;
     --body-background-color: #202028;
-    --hover-color: #fde7b4;
+    --hover-color: #87A96B;
     --banner-color: #F5F5DC;
     --shadow-color: dimgray;
     --font-color: #568203;
     --title-color: #FEBE10;
-    --positive-color: #86e49d;
-    --negative-color: #d893a3 ;
-    --pending-color: #ebc474;
     --transparent-button-color: var(--accent-color);
     --font-size-small: 1.4rem;
     --font-size-normal: 1.6rem;
@@ -63,7 +60,7 @@ ul{
 
 a{
     text-decoration: none;
-    color: var(--light-color);}
+    color: inherit;}
 
 img{
     max-width: 100%;
@@ -99,7 +96,7 @@ i{
 /* Header */
 .header{
     transition: all 0.5s;
-    background-color: #008374;}
+    background-color: black;}
 .nav{
     height: 10rem;
     display: flex;
@@ -116,14 +113,10 @@ i{
     border-radius: .4rem;
     padding: 2px;}
 .align-right:hover{
-    background-color: var(--hover-color);
-    color:black;
-}
+    background-color: var(--hover-color);}
 .icon-btn{
     width: 3.5rem;
-    height: 3.5rem;
-    color: black;
-}
+    height: 3.5rem;}
 .theme-dark-icon{
     display: none;}
 
@@ -167,7 +160,7 @@ i{
     font-weight: bold;}
 
 .block{
-    background-color: #008374; 
+    background-color: black; 
     height:50px;}
 
 
@@ -179,7 +172,7 @@ i{
     font-size: var(--font-size-medium);
     color: var(--light-color);
     padding: 2.5rem 0 1.25rem;
-    background-color: #008374;}
+    background-color: var(--accent-color);}
 .independent-title h2{
     font-size: 25px;
     font-weight: bold;
@@ -221,20 +214,17 @@ i{
     text-transform: uppercase;}
 .main-title{
     font-size: 30px;
-    font-family: 'Arial', serif;
+    font-family: 'Garamond', serif;
     color: #e86100;}
 .card-description1{
     font-size: 12px;}
 .card-description1 span{
     color: var(--font-color);}
-.card-description1 b{
-    color: var(--accent-color);
-    }
 .card-description{
     font-size: 17px;
     margin-bottom: var(--margin-small);}
 .card-description span{
-    color: #8c8c8c;}
+    color: var(--font-color);}
 .card-image1 img{
     max-width: 100%;
     height: 200px;
@@ -278,18 +268,16 @@ i{
      font-size: 15px;}
 .card-body-link{
     font-size: var(--font-size-small);
-    background-color: #ecad00;
+    background-color: var(--accent-color);
     margin-bottom: var(--margin-medium);
     padding: 1.5rem;
     border-radius: 4rem;
     display: flex;
     align-items: center;
-    gap: var(--gap-small);
-    color: white;
-}
+    gap: var(--gap-small);}
 .card-body-link:hover{
     background-color: var(--hover-color);
-    color: black;}
+    color: var(--dark-color);}
 
 .border{
     background-image: linear-gradient(225deg, var(--accent-color), transparent, var(--dark-color));}
@@ -303,19 +291,14 @@ i{
     margin-bottom: var(--margin-medium);}
 .card-description b{
     font-family:var(--font-primary);
-    font-size: 18px;
-
-}
+    font-size: 20px;}
 .list-link{
     margin: 10px;
     font-size: var(--font-size-small);
     background-color: var(--accent-color);
-    padding: 1rem 1.5rem;
-    color: white;
-}
-    
+    padding: 1rem 1.5rem;}
 .list-link:hover{
-    color: black;
+    color: var(--dark-color);
     background-color: var(--hover-color);}
 .card-group .list-link:hover{
         background-color: var(--hover-color);}
@@ -326,8 +309,8 @@ i{
     display: flex;
     left: 8%;}
 .count{
-    width: 15vmin;
-    height: 12vmin;
+    width: 25vmin;
+    height: 15vmin;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -404,12 +387,11 @@ i{
         margin-left: 1%;}
     .card-body-link:hover{
         background-color: var(--hover-color);
-        /* color: var(--dark-color);*/
-    }
+        color: var(--dark-color);}
     .management-area-container{
         grid-template-columns: 35rem 1fr;}
     .card-group .list-link:hover{
-            /* color: var(--dark-color); */
+            color: var(--dark-color);
         background-color: var(--hover-color);}
     .footer-container{
         flex-direction: row;
@@ -452,8 +434,7 @@ i{
         color: var(--light-color);}
     .card-body-link:hover{
         background-color: var(--hover-color);
-        /* color: var(--dark-color); */
-    }
+        color: var(--dark-color);}
     .card-group{
         grid-template-columns: repeat(2, 1fr);}
     .one{
@@ -466,7 +447,7 @@ i{
         grid-column: 2/-1;
         grid-row: 2/4;}
     .card-group .list-link:hover{
-        /* color: var(--dark-color); */
+        color: var(--dark-color);
         background-color: var(--hover-color);}
     .footer .list-item:hover{
         color: var(--accent-color);}

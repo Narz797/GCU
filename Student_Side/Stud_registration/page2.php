@@ -758,7 +758,7 @@ if (isset($_POST['total_number'])) {
                 </div>
                 <div class="input-field1">
                     <label>Year Graduated: </label>
-                    <input  style="width:100%;" type="text" class="form-control" name="senyear" id="senyear"  required autocomplete="off"/>
+                    <input  style="width:100%;" type="text" class="form-control" name="senyear" id="senyear"  required/>
 
                     <!-- <input type="text" id="address" name="datepicker" id="datepicker" required> -->
                 </div>
@@ -781,7 +781,7 @@ if (isset($_POST['total_number'])) {
                 <div class="input-field1">
                     <label>Year Graduated: </label>
                     <!-- <input style="width:100%;" type="text" id="address" name="junyear" required> -->
-                    <input  style="width:100%;" type="text" class="form-control" name="junyear" id="junyear"  required autocomplete="off"/>
+                    <input  style="width:100%;" type="text" class="form-control" name="junyear" id="junyear"  required/>
 
                 </div>
                 <div class="input-field1">
@@ -803,7 +803,7 @@ if (isset($_POST['total_number'])) {
                 <div class="input-field1">
                     <label>Year Graduated: </label>
                     <!-- <input type="text" id="address" name="elemyear" required> -->
-                    <input  style="width:100%;" type="text" class="form-control" name="elemyear" id="elemyear"  required autocomplete="off"/>
+                    <input  style="width:100%;" type="text" class="form-control" name="elemyear" id="elemyear"  required/>
 
                 </div>
                 <div class="input-field1">
@@ -829,7 +829,7 @@ if (isset($_POST['total_number'])) {
                     <div class="input-field1">
                         <label>Year Graduated: </label>
                         <!-- <input type="text" id="address" name="othyear"> -->
-                        <input  style="width:100%;" type="text" class="form-control" name="othyear" id="othyear" autocomplete="off" />
+                        <input  style="width:100%;" type="text" class="form-control" name="othyear" id="othyear"  />
 
                     </div>
                     <div class="input-field1">
@@ -920,7 +920,7 @@ $("#senyear").datepicker({
 });
     </script>
 
-<script>
+?<script>
 
 $("#junyear").datepicker({
     format: "yyyy",

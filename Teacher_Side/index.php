@@ -23,7 +23,7 @@ session_start();
   // include 'main2.php';
 $id = $_SESSION['session_id'];
 logAudit($id, 'access_teacher', $id .' has accessed the teacher home page');
-$_SESSION['transact_type'] = 'Referral';
+$_SESSION['transact_type'] = 'referral';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -163,7 +163,7 @@ $_SESSION['transact_type'] = 'Referral';
         </div>
         <div class="form">
           <label for="contact">Student's Contact Number:</label>
-          <input type="number" id="contact" name="contact" oninput="limitTo11Digits(event)">
+          <input type="text" id="contact" name="contact" >
         </div>
         </div>
 
@@ -356,11 +356,11 @@ $_SESSION['transact_type'] = 'Referral';
           </div>
           <div class="input-field">
             <label>Contact Number</label>
-            <input type="number" id="cn_edit" oninput="limitTo11Digits(event)">
+            <input type="text" id="cn_edit">
           </div>
           <div class="input-field">
             <label>Email</label>
-            <input type="email" id="email_edit">
+            <input type="text" id="email_edit">
           </div>
           <div class="input-field">
             <label>Civil Status</label>
@@ -403,14 +403,6 @@ $_SESSION['transact_type'] = 'Referral';
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   var tID = "<?php echo $_SESSION['session_id'];?>";
-  function limitTo11Digits(event) {
-  var input = event.target;
-  var inputValue = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-
-  if (inputValue.length > 11) {
-    input.value = inputValue.slice(0, 11);
-  }
-}
 function logout() {
   $.ajax({
             type: 'POST',
@@ -425,7 +417,7 @@ function logout() {
               console.log("logged", response);
             }
           });
-    window.location.href = '../home';
+    window.location.href = '../home?logout=true';
 }
 function search() {
     var studentId = $("#Sid").val();
@@ -528,7 +520,7 @@ $(document).ready(function() {
 $("#form_transact").on("submit", function (event) {
       event.preventDefault();
 
-      var transact_type = "Referral"
+      var transact_type = "referral"
       var studentContactNumber = document.getElementById("contact").value;
       console.log($("#Sid").val());
       $.ajax({
@@ -553,19 +545,13 @@ $("#form_transact").on("submit", function (event) {
         success: function (data) {
           console.log('Success!');
           // alert(data);
-            Swal.fire({
+          Swal.fire({
               icon: "success",
               title: "Student reffered",
-              confirmButtonText: "OK",
 
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                           
-                   window.location.reload()
-                } 
-              });
-;
+            });
+          
+          window.location.reload();
           $.ajax({
             type: 'POST',
             url: '../backend/log_audit.php',

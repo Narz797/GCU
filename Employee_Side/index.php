@@ -89,13 +89,13 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
             <div class="card-information">
 <!-- call employee 
     registered data -->
-                <h1 class="title main-title"><span class="title-lastname main-title" id="lname">uchiha,</span>, <span id="fname"> Verlyn Rizz M.</span></h1>
-                <p class="card-description1">Joined at <b id="date_joined"></b><br></p>
+                <h1 class="title main-title"><span class="title-lastname main-title" id="lname">uchiha,</span> <span id="fname"> Verlyn Rizz M.</span></h1>
+                <p class="card-description1">Joined at <b id="date_joined"></b><br><br></p>
                 <p class="card-description">
-                    <span>Email: </span><b id="employee_email"></b><br>
+                    <span>Email:</span><b id="employee_email"></b><br>
 
-                    <span>Contact: </span><b id="employee_cn"></b><br>
-                    <span>Position: </span><b id="employee_position"></b>
+                    <span>Contact:</span><b id="employee_cn"></b><br>
+                    <span>Position:</span><b id="employee_position"></b>
                 </p>
             </div>
             <div class="card-image1">
@@ -325,7 +325,7 @@ function HistoryData() {
 }
 
 function goto_recent(){
-    if (tt === 'Referral')
+    if (tt === 'referral')
     {
         console.log("student", sid);
         console.log("transact", tid);
@@ -333,7 +333,7 @@ function goto_recent(){
 
                     window.location.href = 'subpage/rs-forms';
           
-    }else if(tt === 'Readmission'){
+    }else if(tt === 'readmission'){
         console.log("student", sid);
         console.log("transact", tid);
 
@@ -400,7 +400,7 @@ function goto_recent(){
                 }
             });
 
-    }else if(tt === 'Leave Of Absence'){
+    }else if(tt === 'leave_of_absence'){
         console.log("student", sid);
         console.log("transact", tid);
         var type = 'loa';

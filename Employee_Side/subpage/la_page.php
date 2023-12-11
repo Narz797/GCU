@@ -22,7 +22,7 @@ include '../../backend/log_audit2.php';
     exit;
 }
   
-    $_SESSION['form_type']='Leave Of Absence';//
+    $_SESSION['form_type']='loa';//
     $id = $_SESSION['session_id'];
 
 // Log audit entry for accessing the home page
