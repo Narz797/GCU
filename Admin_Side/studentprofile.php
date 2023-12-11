@@ -88,7 +88,7 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
 
 <body style="background:white;">
     <!-- Header -->
-    <header class="header" style="background:#007f5f">
+    <header class="header" >
         <nav class="nav">
             <div class="logo">
             <img src="assets/images/GCU_logo.png" alt="">
@@ -139,12 +139,12 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
         
         <!-- <div class="block">
         </div> -->
-        <div class="title independent-title" style="background:#80b918">
+        <div class="title independent-title" >
             <h2 style="color:black;">Student Accounts</h2>
         </div>
         <!-- Section -->
         <div class="container">
-            <div class="card" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
+            <div class="card" style=" background: white;">
                 <div class="gallery">
                     <main class="table" id="customers_table" >
                         <section class="table-header">

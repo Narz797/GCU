@@ -758,7 +758,7 @@ if (isset($_POST['total_number'])) {
                 </div>
                 <div class="input-field1">
                     <label>Year Graduated: </label>
-                    <input  style="width:100%;" type="text" class="form-control" name="senyear" id="senyear"  required/>
+                    <input  style="width:100%;" type="text" class="form-control" name="senyear" id="senyear"  required autocomplete="off"/>
 
                     <!-- <input type="text" id="address" name="datepicker" id="datepicker" required> -->
                 </div>
@@ -781,7 +781,7 @@ if (isset($_POST['total_number'])) {
                 <div class="input-field1">
                     <label>Year Graduated: </label>
                     <!-- <input style="width:100%;" type="text" id="address" name="junyear" required> -->
-                    <input  style="width:100%;" type="text" class="form-control" name="junyear" id="junyear"  required/>
+                    <input  style="width:100%;" type="text" class="form-control" name="junyear" id="junyear"  required autocomplete="off"/>
 
                 </div>
                 <div class="input-field1">
@@ -803,7 +803,7 @@ if (isset($_POST['total_number'])) {
                 <div class="input-field1">
                     <label>Year Graduated: </label>
                     <!-- <input type="text" id="address" name="elemyear" required> -->
-                    <input  style="width:100%;" type="text" class="form-control" name="elemyear" id="elemyear"  required/>
+                    <input  style="width:100%;" type="text" class="form-control" name="elemyear" id="elemyear"  required autocomplete="off"/>
 
                 </div>
                 <div class="input-field1">
@@ -829,7 +829,7 @@ if (isset($_POST['total_number'])) {
                     <div class="input-field1">
                         <label>Year Graduated: </label>
                         <!-- <input type="text" id="address" name="othyear"> -->
-                        <input  style="width:100%;" type="text" class="form-control" name="othyear" id="othyear"  />
+                        <input  style="width:100%;" type="text" class="form-control" name="othyear" id="othyear" autocomplete="off" />
 
                     </div>
                     <div class="input-field1">
@@ -888,7 +888,7 @@ if (isset($_POST['total_number'])) {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function goToPage1() {
-        window.location.href = "page1.php";
+        window.location.replace(document.referrer);
     }
 
     function goToPage3() {
@@ -920,7 +920,7 @@ $("#senyear").datepicker({
 });
     </script>
 
-?<script>
+<script>
 
 $("#junyear").datepicker({
     format: "yyyy",

@@ -76,7 +76,7 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
 </head>
 <body>
   <!-- Header -->
-  <header class="header" style="background:#007f5f">
+  <header class="header" >
     <nav class="nav"> 
         <div class="logo">
         <img src="assets/images/GCU_logo.png" alt="">
@@ -126,11 +126,11 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
     <!-- Welcome-message -->
 <section>
     
-    <div class="title independent-title" style="background:#80b918">
+    <div class="title independent-title" >
         <h2 style="color:black;">LOG REPORT</h2>
     </div>
     <div class="container" >
-            <div class="card" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
+            <div class="card" style=" background: white">
                 <div class="gallery">
                     <main class="table" id="customers_table">
                         <section class="table-header">

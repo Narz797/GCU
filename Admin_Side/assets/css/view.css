@@ -556,7 +556,7 @@ table{
     backdrop-filter: blur(7px);
     border-radius: .8rem;
     overflow: hidden;
-    padding: 2rem;}}
+    padding: 2rem;}
 .table-sortable th {
     cursor: pointer;}
 .table-sortable td {
@@ -680,12 +680,12 @@ tbody td.active {
         margin-left: 4rem;}
     .list-link,
     .card-body-link{
-        transition: color .25s, background-color: .25s;}
+        transition: color .25s; background-color: .25s;}
     .nav-mobile .list-link{
         border-radius: .4rem;}
     .card-image1 img{
         margin-left: 1%;}
-    .current: hover{
+    .current:hover{
         background-color: var(--hover-color);
         color: black;
     }

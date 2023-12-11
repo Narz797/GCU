@@ -78,9 +78,9 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
 <style>
 </style>
 
-<body>
+<body style="background-color: white;">
     <!-- Header -->
-    <header class="header" style="background:#007f5f">
+    <header class="header" >
         <nav class="nav">
             <div class="logo">
             <img src="assets/images/GCU_logo.png" alt="">
@@ -127,7 +127,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
    
         <!-- <div class="block">
         </div> -->
-        <div class="title independent-title"  style="background:#80b918">
+        <div class="title independent-title"  >
             <h2>Teacher Accounts</h2>
             <br>
             
@@ -136,7 +136,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
        
         <!-- Section -->
         <div class="container">
-            <div class="card" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
+            <div class="card" style=" background: white;">
                 <div class="gallery">
                     <main class="table" id="customers_table">
                         <section class="table-header">

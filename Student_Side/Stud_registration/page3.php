@@ -979,8 +979,8 @@ $_SESSION['origin'] = 'Student';
 
     <script>
         function goToPage2() {
-            window.history.back();
-            // window.location.replace(document.referrer);
+          //  window.history.back();
+         window.location.replace(document.referrer);
         }
     </script>
     <!-- <script>

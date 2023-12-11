@@ -69,9 +69,9 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
 </head>
 
-<body style="background:#70e000;"> 
+<body style="background:white"> 
     <!-- Header -->
-    <header class="header" style="background:#007f5f">
+    <header class="header" >
         <nav class="nav">
             <div class="logo">
             <img src="assets/images/GCU_logo.png" alt="">
@@ -95,7 +95,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     </header>
     <!-- Banner -->
     <?php include '../includes/banner.php' ?>
-        <div class="block" style="background:#007f5f"></div>
+        <!-- <div class="block" style="background:#007f5f"></div> -->
         <!-- First Section -->
         <div class="title independent-title">
             <h2> Control Panel</h2>
@@ -115,7 +115,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     <!-- Management-area -->
     <section class="management-area" >
         <div class="management-area-container d-grid">
-            <div class="card" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
+            <div class="card" style=" background: white">
                 <header class="card-header header-side"  style="background:#edae49;">
                     <h2 class="title" style="color: black;">ACTIONS</h2>
                     <small style="color: black;" >Choose what task to do today.</small>

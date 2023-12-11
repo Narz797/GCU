@@ -143,9 +143,13 @@ i{
     color: var(--light-color);}
 .icon-btn{
     width: 3.5rem;
-    height: 3.5rem;}
+    height: 3.5rem;
+    color: white;
+}
 .icon-btn:hover{
-    background-color: var(--hover-color);}
+    background-color: var(--hover-color);
+    color: black;
+}
 .hov:hover{
     background-color: var(--hover-color);
     color: var(--dark-color);}
@@ -289,10 +293,12 @@ i{
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px; }
 .buy-1{
-    background-color: var(--accent-color);}
+    background-color: #ecb050;
+    color: white;
+}
 .content1 button:hover{
     background-color: var(--hover-color);
-    color: var(--dark-color);}
+    color: black;}
 
 main.table {
     width: 82vw;
@@ -622,9 +628,9 @@ tbody td.active {
         color: black;} 
     .current{
         background-color: var(--accent-color);
-        color: var(--light-color);}
+        color: black;}
     .current:hover{
-        background-color: var(--hover-color);
+        background-color: #dbab3b;
         color: var(--dark-color);} 
     .footer hover{
         color: var(--accent-color);}
