@@ -3,13 +3,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Rock+Salt&display=swap');
 
 
-/* Custom properties */
 :root{
   --light-color: #fff;
   --dark-color: black;
-  --accent-color: #ffc971;
+  --accent-color:  #ecad00;
+  --header-color:#008374;
   --body-background-color: #202028;
-  --hover-color: #fde7b4;
+  --date-color:#ecad00;
+  --hover-color: #fde7b4;;
+  --hover1-color: #fde7b4;
   --banner-color: #F5F5DC;
   --shadow-color: dimgray;
   --font-color: #568203;
@@ -30,14 +32,16 @@
   --gap-medium: 2.5rem;
 }
 .theme-light{
+  --date-color:#008374 ;
+  --hover1-color:#ecb050;
   --light-color: black;
   --dark-color: #fff;
   --body-background-color: #eef0f8;
   --shadow-color: lightblue;
   --font-color:#32CD32;
-  --title-color: darkgreen;
   --transparent-button-color: var(--accent-color);
 }
+
 
 
 /* Base styles */
@@ -127,25 +131,28 @@ i{
   display: inline-block;
   font-size: var(--font-size-small);
   padding: 1rem 1.5rem;}
-.current{
-  color: var(--dark-color);
-  background-color: var(--accent-color);}
+  .current{
+    background-color: var(--accent-color);}
 .current:hover{
-  background-color: var(--hover-color);
-  color: var(--light-color);}
+    color: var(--dark-color);
+    background-color: var(--hover-color);}
 .menu-toggle-close{
-  background-color: var(--accent-color);
-  position: absolute;
-  top: 2.5rem;
-  right: 2.5rem;}
+    background-color: var(--accent-color);
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;}
 .current1:hover{
-  background-color: var(--hover-color);
-  color: var(--light-color);}
+    background-color: var(--hover-color);
+    color: var(--light-color);}
 .icon-btn{
-  width: 3.5rem;
-  height: 3.5rem;}
+    width: 3.5rem;
+    height: 3.5rem;
+    color: white;
+}
 .icon-btn:hover{
-  background-color: var(--hover-color);}
+    background-color: var(--hover-color);
+    color: black;
+}
 .hov:hover{
   background-color: var(--hover-color);
   color: var(--dark-color);}
@@ -272,7 +279,7 @@ i{
   align-items: center;
   justify-content: space-between;
   padding: 0 50px;
-  font-size: 22px;
+  font-size: 34px;
   font-weight: 500;
   text-transform: capitalize;}
 .calendar .month .prev,
@@ -288,7 +295,7 @@ i{
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
   text-transform: capitalize;}
 .weekdays div {
@@ -298,12 +305,13 @@ i{
   align-items: center;
   justify-content: center;}
 .calendar .days {
+  font-size: 14px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 20px;
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 500;
   margin-bottom: 20px;}
 .calendar .days .day {
@@ -313,7 +321,7 @@ i{
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color:var(--accent-color);
+  color:var(--date-color);
   border: 1px solid #f5f5f5;
 }
 .calendar .days .day:nth-child(7n + 1) {
@@ -370,7 +378,7 @@ i{
   background-color: var(--accent-color);
 }
 .calendar .days .day:hover.event::after {
-  background-color: blue;
+  background-color: var(--header-color);
 }
 
 
@@ -411,7 +419,7 @@ i{
   border: none;
   border-radius: 5px;
   padding: 0 20px;
-  color: var(--accent-color);
+  color: var(--font-color);
   border-radius: 5px;
 }
 .calendar .goto-today button {
@@ -535,7 +543,7 @@ i{
   align-items: center;
   justify-content: center;
   opacity: 0.3;
-  color: var(--negative-color);
+  color: red;
   transform: translateY(-50%);
 }
 .events .event:hover::after {
@@ -555,7 +563,7 @@ i{
   border: 2px solid #878895;
   opacity: 0.5;
   border-radius: 50%;
-  background-color: lightgrey;
+  background-color: var(--light-color);
   cursor: pointer;
 }
 .add-event:hover {
@@ -605,11 +613,11 @@ i{
   color: var(--dark-color);
 }
 .add-event-header .close:hover {
-  color: var(--hover-color);
+  color: var(--negative-color);
 }
 .add-event-header .title {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 800;
 }
 .add-event-body {
   width: 100%;
@@ -619,7 +627,7 @@ i{
   gap: 5px;
   padding: 20px;
   background-color: var(--light-color);
-  color: black;
+  color:var(--dark-color);
 
 }
 .add-event-body .add-event-input {
@@ -669,7 +677,9 @@ i{
   padding: 5px 10px;
 }
 .add-event-footer .add-event-btn:hover {
-  background-color: var(--hover-color);
+  padding: 11px;
+  font-size: 14px;
+  margin-bottom: 10px;
   color: var(--dark-color);
 }
 
@@ -770,7 +780,7 @@ i{
 
 main.table {
     width: 82vw;
-    height: 200vh;
+    height: 100vh;
     backdrop-filter: blur(7px);
     border-radius: .8rem;
     overflow: hidden;}
@@ -935,13 +945,13 @@ thead th span.icon-arrow {
     font-size: 1.5rem;
     margin-left: .5rem;
     transition: .2s ease-in-out;}
-thead th:hover span.icon-arrow{
-    border: 1px solid var(--hover-color);}
-thead th:hover {
-    color: var(--hover-color);}
-thead th.active span.icon-arrow{
-    color: var(--dark-color);
-    background-color: var(--accent-color);}
+    thead th:hover span.icon-arrow{
+      border: 1px solid var(--hover1-color);}
+  thead th:hover {
+      color: var(--hover1-color);}
+  thead th.active span.icon-arrow{
+      color: var(--dark-color);
+      background-color: var(--accent-color);}
 thead th.asc span.icon-arrow{
     transform: rotate(180deg);}
 thead th.active{
@@ -1038,16 +1048,14 @@ tbody td.active {
         margin-left: 4rem;}
     .nav-mobile .list-link{
         border-radius: .4rem;}
-    .current1{
-        color: white;}
-    .current1:hover{
-        color: black;} 
-    .current{
-        background-color: var(--accent-color);
-        color: var(--light-color);}
-    .current:hover{
-        background-color: var(--hover-color);
-        color: var(--dark-color);} 
+        .current1{
+          color: white;}
+      .current1:hover{
+          color: black;} 
+      .current{
+          background-color: var(--accent-color);}
+      .current:hover{
+          background-color: var(--title-color);} 
     .footer hover{
         color: var(--accent-color);}
 }

@@ -33,7 +33,7 @@ logAudit($id, 'access_wds page', $id .' has accessed the wds page');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REFERRAL SLIPS</title>
+    <title>WITHDRAWAL/DROPPING/SHIFTING SLIPS</title>
      <!-- Stylesheet -->
      <link rel="stylesheet" href="../assets/slip.css">
  <!-- Remix icons -->
@@ -135,9 +135,10 @@ logAudit($id, 'access_wds page', $id .' has accessed the wds page');
         <div class="card">
         <main class="table" id="customers_table">
                     <section class="table-header">
-                        <h1>List of <u>Withdrawing</u>/ <u>Dropping</u> Students</h1>
+                        <h1>List of<u>Withdrawing</u>/<u>Dropping</u>students</h1>
                         <div class="input-group">
-                            <input type="search" id="searchInput1" placeholder="Search Table 1..." onkeyup="searchTable('dynamicTable1', 'searchInput1')">
+                            <!-- <input type="search" id="searchInput1" placeholder="Search Here..." onkeyup="searchTable('dynamicTable1', 'searchInput1')"> -->
+                            <input type="search" id="searchInput1" onkeyup="searchTable('dynamicTable1', 'searchInput1')" onblur="clearSearchResults('dynamicTable1', 'searchInput1')" onsearch="clearSearchResults2('dynamicTable1', 'searchInput1')" placeholder="Search Data...">
                         </div>
                         <div class="export-file">
                             <label for="export-file" class="export-file-btn" title="Export File"><img src="../assets/images/export.png" alt=""></label>
@@ -152,7 +153,7 @@ logAudit($id, 'access_wds page', $id .' has accessed the wds page');
                     <table id="dynamicTable1">
                     <thead>
                                 <tr>
-                                    <th> Student Id <br> <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Student ID <br> <span class="icon-arrow">&UpArrow;</span></th>
                                     <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
                                     <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
                                     <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
@@ -181,9 +182,10 @@ logAudit($id, 'access_wds page', $id .' has accessed the wds page');
         <div class="card">
  <main class="table" id="customers_table">
         <section class="table-header">
-            <h1>List of <u>Shifting</u> Students</h1>
+            <h1>List of<u>Shifting</u>Students</h1>
             <div class="input-group">
-                <input type="search" id="searchInput2" placeholder="Search Table 2..." onkeyup="searchTable('dynamicTable2', 'searchInput2')">
+                <!-- <input type="search" id="searchInput2" placeholder="Search Here..." onkeyup="searchTable('dynamicTable2', 'searchInput2')"> -->
+                <input type="search" id="searchInput2" onkeyup="searchTable('dynamicTable2', 'searchInput2')" onblur="clearSearchResults('dynamicTable2', 'searchInput2')" onsearch="clearSearchResults2('dynamicTable2', 'searchInput2')" placeholder="Search Data...">
             </div>
             <div class="export-file2">
                 <label for="export-file2" class="export-file-btn2" title="Export File"><img src="../assets/images/export.png" alt=""></label>
@@ -198,7 +200,7 @@ logAudit($id, 'access_wds page', $id .' has accessed the wds page');
             <table id="dynamicTable2">
                 <thead>
                     <tr>
-                        <th> Student Id <br> <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Student ID <br> <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
@@ -279,7 +281,37 @@ function archive() {
     }
 }
 
+function clearSearchResults(table1, srchinput) {
+    var table = document.getElementById(table1);
+    var tr = table.getElementsByTagName("tr");
+    var input = document.getElementById(srchinput);
 
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+    input.value = "";
+    // Check if the input value is empty (either on blur or "x" button click)
+    if (input.value === "") {
+        // Clear the search input value
+        input.value = "";
+    }
+}
+function clearSearchResults2(table1, srchinput) {
+    var table = document.getElementById(table1);
+    var tr = table.getElementsByTagName("tr");
+
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+}
 
 function exportToExcel(tableId) {
     const table = document.getElementById(tableId);
@@ -549,7 +581,7 @@ function exportToExcel(tableId) {
     }
 </script>
 <script src="../assets/main.js"></script>
-<?php include '../includes/footer.php' ?>
+<?php include '../includes/footer1.php' ?>
 </body>
 
 </html>

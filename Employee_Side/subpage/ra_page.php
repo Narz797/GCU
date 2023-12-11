@@ -33,7 +33,7 @@ logAudit($id, 'access_readmission page', $id .' has accessed the readmission pag
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REFERRAL SLIPS</title>
+    <title>READMISSION SLIPS</title>
      <!-- Stylesheet -->
      <link rel="stylesheet" href="../assets/slip.css">
  <!-- Remix icons -->
@@ -137,7 +137,7 @@ logAudit($id, 'access_readmission page', $id .' has accessed the readmission pag
         <section class="table-header">
             <h1>List of Students for Readmission</h1>
             <div class="input-group">
-                 <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
+            <input type="search" id="searchInput" onkeyup="searchTable()" onblur="clearSearchResults()" onsearch="clearSearchResults2()" placeholder="Search Data...">
             </div>
             <div class="export-file">
                 <label for="export-file" class="export-file-btn" title="Export File"><img src="../assets/images/export.png" alt=""></label>
@@ -152,7 +152,7 @@ logAudit($id, 'access_readmission page', $id .' has accessed the readmission pag
         <table id="dynamicTable">
                         <thead>
                                     <tr>
-                                        <th> Student Id <br> <span class="icon-arrow">&UpArrow;</span></th>
+                                        <th> Student ID <br> <span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
                                         <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
                                         <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
@@ -234,7 +234,37 @@ function archive() {
         }
     }
 }
+function clearSearchResults() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+    var input = document.getElementById("searchInput");
 
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+    input.value = "";
+    // Check if the input value is empty (either on blur or "x" button click)
+    if (input.value === "") {
+        // Clear the search input value
+        input.value = "";
+    }
+}
+function clearSearchResults2() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+}
       $(document).ready(function () {
         $.ajax({
             url: "../../backend/check_transaction.php",
@@ -415,6 +445,6 @@ function exportToExcel() {
 
 </script>
 <script src="../assets/main.js"></script>
-<?php include '../includes/footer.php' ?>
+<?php include '../includes/footer1.php' ?>
 </body>
 </html>

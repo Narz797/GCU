@@ -244,9 +244,9 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
             <div class=" gallery">
             <main class="table" id="customers_table">
             <section class="table-header">
-                <h1>List of <b>All Requested Appointments</b></h1>
+                <h1>List of<b>All Requested Appointments</b></h1>
                 <div class="input-group">
-                <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
+                <input type="search" id="searchInput" onkeyup="searchTable()" onblur="clearSearchResults()" onsearch="clearSearchResults2()" placeholder="Search Data...">
                 </div>
                 <div class="export-file">
                     <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/file-transfer-line.png" alt=""></label>
@@ -399,7 +399,37 @@ function archive() {
         }
     }
 }
+function clearSearchResults() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+    var input = document.getElementById("searchInput");
 
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+    input.value = "";
+    // Check if the input value is empty (either on blur or "x" button click)
+    if (input.value === "") {
+        // Clear the search input value
+        input.value = "";
+    }
+}
+function clearSearchResults2() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+}
 
 
 $(document).ready(function () {

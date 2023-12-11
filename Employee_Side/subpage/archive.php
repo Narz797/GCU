@@ -73,7 +73,7 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
 <!-- Back function once click goes back 
     to whatever page it opened before clicking archive -->
 
-    <button onclick="goBack()" class="list-link current">Back</button>
+    <button onclick="goBack()" class="list-link current">BACK</button>
                 </li>
             </ul>
             <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -114,9 +114,9 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
             <div class=" gallery">
             <main class="table" id="customers_table">
             <section class="table-header">
-                <h1>List of <b>All Transactions</b></h1>
+                <h1>List of<b>All Transactions</b></h1>
                 <div class="input-group">
-                    <input type="search" placeholder="Search Data..." id="searchInput" onkeyup="searchTable()">
+                <input type="search" id="searchInput" onkeyup="searchTable()" onblur="clearSearchResults()" onsearch="clearSearchResults2()" placeholder="Search Data...">
                 </div>
                 <div class="export-file">
                     <label for="export-file" class="export-file-btn" title="Export File"><img src="../assets/images/file-transfer-line.png" alt=""></label>
@@ -134,8 +134,8 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
 
 <!-- Do add even the appointment/calendar transaction-->
 
-                            <th> Id <br><span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Student <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Student ID <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Student Name<br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Date Requested / Appointment<br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Transaction<br> <span class="icon-arrow">&UpArrow;</span></th>
                             <th> Status<br> <span class="icon-arrow">&UpArrow;</span></th>
@@ -208,7 +208,37 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
         }
     }
 }
+function clearSearchResults() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+    var input = document.getElementById("searchInput");
 
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+    input.value = "";
+    // Check if the input value is empty (either on blur or "x" button click)
+    if (input.value === "") {
+        // Clear the search input value
+        input.value = "";
+    }
+}
+function clearSearchResults2() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+}
         function logout() {
     window.location.href = '../../home';
         }

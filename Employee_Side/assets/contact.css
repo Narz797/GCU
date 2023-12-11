@@ -34,8 +34,8 @@ body{
     width: 7rem;
     height: 2rem;}
 .icon-btn:hover{
-    color: white;
-    background-color: #ffd166;}
+    color: black;
+    background-color: #ecb050;}
 .align-right{
     margin-left: auto;
     border-radius: .4rem;}
@@ -266,7 +266,7 @@ p{
 /* Footer */
 .footer{
   padding: 20px 0;
-  background: black;
+  background: #008374;
   color: white;}
 .copyright{
   text-align: center;}

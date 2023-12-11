@@ -98,7 +98,7 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
           <span class="question">From where should I add remarks regarding a students?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p>You can add remarks or comment regarding a student on the "Student Profiles" page.</p>
+        <p>You can add remarks or comment regarding a student on the Student Profiles page.</p>
         <p>Student Profiles > View > Add Notes</p>
         <p>You can also add remarks on a student's specific transacted form/slip or edit a student's specific appointment.</p>
         <p>Student Profiles > View > Add Remarks Table or Edit Table</p>
@@ -106,7 +106,7 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
       </li>
       <li>
         <div class="question-arrow">
-          <span class="question">Where can I change my display to dark mode/light mode?</span>
+          <span class="question">Where can I change my display to dark/light mode?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
         <p>You can switch to dark mode or light mode with the icon on your top right corner screen.</p>
@@ -117,7 +117,7 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
           <span class="question">Can I export my data?</span>
           <i class="bx bxs-chevron-down arrow"></i>
         </div>
-        <p>Yes, Certainly. All tables in the system has an export function. You can export your data as an excel or a pdf.</p>
+        <p>Yes, Certainly. All tables in the system has an export function. You can export your data as an excel.</p>
         <span class="line"></span>
       </li>
       <li>

@@ -4,12 +4,15 @@
 
 
 /* Custom properties */
+
 :root{
     --light-color: #fff;
     --dark-color: black;
-    --accent-color: #ffc971;
+    --accent-color:  #ecad00;
     --body-background-color: #202028;
-    --hover-color: #fde7b4;
+    --header-color:#008374;
+    --hover-color: #fde7b4;;
+    --hover1-color: #fde7b4;
     --banner-color: #F5F5DC;
     --shadow-color: dimgray;
     --font-color: #568203;
@@ -30,12 +33,12 @@
     --gap-medium: 2.5rem;
 }
 .theme-light{
+    --hover1-color:#ecb050;
     --light-color: black;
     --dark-color: #fff;
     --body-background-color: #eef0f8;
     --shadow-color: lightblue;
     --font-color:#32CD32;
-    --title-color: darkgreen;
     --transparent-button-color: var(--accent-color);
 }
 
@@ -98,7 +101,7 @@ i{
 /* Header */
 .header{
     transition: all 0.5s;
-    background-color: #008374;}
+    background-color: var(--header-color);}
 .nav{
     height: 7rem;
     display: flex;
@@ -128,25 +131,28 @@ i{
     display: inline-block;
     font-size: var(--font-size-small);
     padding: 1rem 1.5rem;}
-.current{
-    color: var(--dark-color);
-    background-color: var(--accent-color);}
-.current:hover{
-    background-color: #dbab3b;
-    color: black;}
-.menu-toggle-close{
-    background-color: var(--accent-color);
-    position: absolute;
-    top: 2.5rem;
-    right: 2.5rem;}
-.current1:hover{
-    background-color: var(--hover-color);
-    color: var(--light-color);}
-.icon-btn{
-    width: 3.5rem;
-    height: 3.5rem;}
-.icon-btn:hover{
-    background-color: var(--hover-color);}
+    .current{
+        background-color: var(--accent-color);}
+    .current:hover{
+        color: var(--dark-color);
+        background-color: var(--hover-color);}
+    .menu-toggle-close{
+        background-color: var(--accent-color);
+        position: absolute;
+        top: 2.5rem;
+        right: 2.5rem;}
+    .current1:hover{
+        background-color: var(--hover-color);
+        color: var(--light-color);}
+        .icon-btn{
+            width: 3.5rem;
+            height: 3.5rem;
+            color: white;
+        }
+        .icon-btn:hover{
+            background-color: var(--hover-color);
+            color: black;
+        }
 .hov:hover{
     background-color: var(--hover-color);
     color: var(--dark-color);}
@@ -278,7 +284,7 @@ main.table {
     border-radius: 50%;
     transition: .2s ease-in-out;}
 .export-file .export-file-btn:hover { 
-    background-color: var(--accent-color);
+    background-color: var(--hover-color);
     transform: scale(1.15);
     cursor: pointer;}
 .export-file input {
@@ -339,10 +345,11 @@ main.table {
     margin-top: 5px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px; 
-    background-color: var(--hover-color);}
-.table-body button:hover{
     background-color: var(--accent-color);
-    color: var(--banner-color);}
+color: white;}
+.table-body button:hover{
+    color: black;
+    background-color: var(--hover-color);}
 
 
 .table-body::-webkit-scrollbar{
@@ -404,13 +411,13 @@ thead th span.icon-arrow {
     text-align: center;
     font-size: 1.5rem;
     transition: .2s ease-in-out;}
-thead th:hover span.icon-arrow{
-    border: 1px solid var(--hover-color);}
-thead th:hover {
-    color:var(--hover-color);}
-thead th.active span.icon-arrow{
-    background-color: var(--accent-color);
-    color: #fff;}
+    thead th:hover span.icon-arrow{
+        border: 1px solid var(--hover1-color);}
+    thead th:hover {
+        color: var(--hover1-color);}
+    thead th.active span.icon-arrow{
+        color: var(--dark-color);
+        background-color: var(--accent-color);}
 thead th.asc span.icon-arrow{
     transform: rotate(180deg);}
 thead th.active{
@@ -468,19 +475,17 @@ tbody td.active {
         transition: initial;}
     .nav-mobile > .list{
         flex-direction: row;
-        margin-left: 1rem;}
+        margin-left: 4rem;}
     .nav-mobile .list-link{
         border-radius: .4rem;}
-    .current1{
-        color: white;}
-    .current1:hover{
-        color: black;} 
-    .current{
-        background-color: var(--accent-color);
-        color: var(--light-color);}
-    .current:hover{
-        background-color: #dbab3b;
-        color: var(--dark-color);} 
+        .current1{
+            color: white;}
+        .current1:hover{
+            color: black;} 
+        .current{
+            background-color: var(--accent-color);}
+        .current:hover{
+            background-color: var(--title-color);} 
     .footer hover{
         color: var(--accent-color);}
 }

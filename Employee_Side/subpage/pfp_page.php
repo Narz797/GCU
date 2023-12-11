@@ -201,16 +201,16 @@ echo"<script>console.log('$id')</script>";
                 <h1 class="title main-title"><span class="title-lastname main-title" id="lname">Rizzler,</span> <span id="fname"> Chad Vogn T.</span></h1>
                 <p class="card-description1"> <span id="year_level">1st</span> Year Student<br><br></p>
                 <p class="card-description">
-                    <span>Email:</span> <span id="email" style="color:white;">chad123@gmail.com</span><br>
-                    <span>Contact Number:</span > <span id="number" style="color:white;"> &nbsp0987-6543-211</span><br>
+                    <span>Email:</span> <b id="email">chad123@gmail.com</b><br>
+                    <span>Contact Number:</span > <b id="number" > &nbsp0987-6543-211</b><br>
                     <!-- newly aded -->
-                    <span>Address:</span ><span id="address" style="color:white;"> 123 Benguet State University La Trinidad</span><br>
-                    <span>Year Enrolled:</span><span id="yr_enrolled" style="color:white;"> 2001</span><br>
-                    <span>Civil Status:</span><span id="cs" style="color:white;"> Married</span><br>
+                    <span>Address:</span ><b id="address" > 123 Benguet State University La Trinidad</b><br>
+                    <span>Year Enrolled:</span><b id="yr_enrolled" > 2001</b><br>
+                    <span>Civil Status:</span><b id="cs" > Married</b><br>
                     <hr>
-					<b>Date of Birth:</b><span id="DOB" style="color:white;"> December 01, 2000</span><br>
-					<b>Birthplace:</b><span id ="BP" style="color:white;"> Benguet State University La Trinidad</span><br>
-                    <b>Nationality:</b><span id="nationality" style="color:white;"> Filipino</span><br>
+					<b>Date of Birth:</b><span id="DOB" > December 01, 2000</span><br>
+					<b>Birthplace:</b><span id ="BP" > Benguet State University La Trinidad</span><br>
+                    <b>Nationality:</b><span id="nationality"> Filipino</span><br>
                 </p>
             </div>
             <div class="card-image1">
@@ -236,14 +236,14 @@ echo"<script>console.log('$id')</script>";
                 <p class="card-description">
                   <div id = "ma">
                     <b>Mother:</b><span id="mom" style="color:white;"> Narz Monkey Taquio</span>
-                    <p class="card-description1"> <span id="mage">50</span> Years Old<br><br></p>
+                    <p class="card-description1"> <span id="mage">50</span> Years Old<br></p>
                     <span id="mom_cn">000-000-0000 </span>| <span id="mom_occ">HouseWife</span><br>
                     <span id="mom_school">High School</span><br>
                     <hr>
                     </div>
                     <div id="da">
                     <b>Father:</b> <span id="dad" style="color:white;"> Narz Monkey Taquio</span><br>
-                    <p class="card-description1"> <span id="fage">50</span> Years Old<br><br></p>
+                    <p class="card-description1"> <span id="fage">50</span> Years Old<br></p>
                     <span id="dad_cn">000-000-0000 </span> | <span id="dad_occ">CEO</span><br>
                     <span id="dad_school">Bachelor of Business Management</span><br>
                     <hr>
@@ -251,7 +251,7 @@ echo"<script>console.log('$id')</script>";
 
                     <div id="gd">
                     <b>Guardian:</b> <span id="grd" style="color:white;"> Narz Monkey Taquio</span><br>
-                    <p class="card-description1"> <span gage>50</span> Years Old<br><br></p>
+                    <p class="card-description1"> <span gage>50</span> Years Old<br></p>
                     <span id="grd_cn">000-000-0000 </span> | <span id="grd_occ">Aunt</span><br>
                     <span id="grd_school">High School</span><br>
                     </div>
@@ -261,17 +261,18 @@ echo"<script>console.log('$id')</script>";
                  <h1 class="title main-title">EDUCATIONAL BACKGROUND</h1>
                 <p class="card-description">
                     <b>Senior Highschool:</b> <span id="HS">loading...</span>
-                    <p class="card-description1"> <span id="HS_YG">2023</span> Years Graduated<br><br></p>
+                    <p class="card-description1"> <span id="HS_YG">2023</span> Years Graduated<br></p>
                     <hr>
                     <b>Junior Highschool:</b> <span id="JS">loading...</span>
-                    <p class="card-description1"> <span id="JS_YG">2023</span> Years Graduated<br><br></p>
+                    <p class="card-description1"> <span id="JS_YG">2023</span> Years Graduated<br></p>
                     <hr>
                     <b>Elementary School:</b> <span id="ES">loading...</span>
-                    <p class="card-description1"> <span  id="ES_YG">2023</span> Years Graduated<br><br></p>
+                    <p class="card-description1"> <span  id="ES_YG">2023</span> Years Graduated<br></p>
                     <hr>
+                    <div id="OTH">
                     <b>Other School Attended:</b> <span id="OS">loading...</span>
-                    <p class="card-description1"> <span  id="OS_YG">Hide</span> Hide<br><br></p>
-                    
+                    <p class="card-description1"> <span  id="OS_YG">None</span> None<br></p>
+                    </div>
                 </p>
             </div>
            <div class="card-information">
@@ -934,6 +935,7 @@ function openModal2(id) {
                 var ma = $("#ma");
                 var fa = $("#da");
                 var gua = $("#gd");
+                var oth = $("#OTH");
                 // Combine mother's information
                 var motherInfo = [mfname, mlname, mocc, medu, mcn, mage].join(' ').trim();
                 if (motherInfo === '') {
@@ -960,8 +962,16 @@ function openModal2(id) {
                     gua.hide();
 
                 }
+                // var oth_schl = [os, os_yg].join(' ').trim();
+                if ((os === '' || os_yg === '') || (os === 'None' || os_yg === '0')) {
+                    // Handle the case where any of the guardian's information is null, undefined, or empty
+                    console.log("oth  empty");
+                    oth.hide();
 
+                }
 
+                console.log("os", os);
+                console.log("os_yg", os_yg);
             } else {
                 // Handle the case when no results are found
                 console.log('No results found');

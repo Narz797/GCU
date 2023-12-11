@@ -137,7 +137,8 @@ logAudit($id, 'access_class_admission page', $id .' has accessed the class_admis
         <section class="table-header">
             <h1>List of Tardy/Absent Students</h1>
             <div class="input-group">
-                <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data...">
+                <input type="search" id="searchInput" onkeyup="searchTable()" onblur="clearSearchResults()" onsearch="clearSearchResults2()" placeholder="Search Data...">
+                
             </div>
             <div class="export-file">
                 <label for="export-file" class="export-file-btn" title="Export File"><img src="../assets/images/export.png" alt=""></label>
@@ -152,7 +153,7 @@ logAudit($id, 'access_class_admission page', $id .' has accessed the class_admis
             <table id="dynamicTable">
                 <thead>
                     <tr>
-                        <th> Student Id <br> <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Student ID <br> <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Last Name <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> First Name <br><span class="icon-arrow">&UpArrow;</span></th>
                         <th> Year Level <br><span class="icon-arrow">&UpArrow;</span></th>
@@ -270,6 +271,38 @@ function archive() {
                     }
                 }
             }
+        }
+    }
+}
+
+function clearSearchResults() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+    var input = document.getElementById("searchInput");
+
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+    input.value = "";
+    // Check if the input value is empty (either on blur or "x" button click)
+    if (input.value === "") {
+        // Clear the search input value
+        input.value = "";
+    }
+}
+function clearSearchResults2() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
         }
     }
 }
@@ -462,6 +495,6 @@ function exportToExcel() {
 </script>
 <script src="../assets/main.js"></script>
 <!-- <script src="../assets/js/table.js"></script>    -->
-<?php include '../includes/footer.php' ?>
+<?php include '../includes/footer1.php' ?>
 </body>
 </html>

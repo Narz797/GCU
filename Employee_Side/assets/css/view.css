@@ -6,13 +6,16 @@
 :root{
     --light-color: #fff;
     --dark-color: black;
-    --accent-color: #ffc971;
+    --accent-color:  #ecad00;
     --body-background-color: #202028;
-    --hover-color: #fde7b4;
+    --header-color:#008374;
+    --hover-color: #fde7b4;;
+    --hover1-color: #fde7b4;
     --banner-color: #F5F5DC;
     --shadow-color: dimgray;
     --font-color: #568203;
     --title-color: #FEBE10;
+    --title1-color: green;
     --positive-color: #86e49d;
     --negative-color: #d893a3 ;
     --pending-color: #ebc474;
@@ -27,16 +30,18 @@
     --margin-medium: 1.5rem;
     --gap-small: 1rem;
     --gap-medium: 2.5rem;
-}
-.theme-light{
+  }
+  .theme-light{
+    --title1-color: #FEBE10;
+    --title-color: #008374;
+    --hover1-color:#ecb050;
     --light-color: black;
     --dark-color: #fff;
     --body-background-color: #eef0f8;
     --shadow-color: lightblue;
     --font-color:#32CD32;
-    --title-color: darkgreen;
     --transparent-button-color: var(--accent-color);
-}
+  }
 
 
 /* Base styles */
@@ -81,7 +86,7 @@ i{
 
 
 /* Reusable classes */
-.container{
+.container1{
     margin: 0 auto;
     padding: 0 1.5rem;}
 
@@ -127,26 +132,28 @@ i{
     display: inline-block;
     font-size: var(--font-size-small);
     padding: 1rem 1.5rem;}
-.current{
-    color: var(--light-color);
-    background-color: var(--accent-color);}
-.current:hover{
-    background-color: var(--hover-color);
-    color: var(--light-color);}
-.menu-toggle-close{
-    background-color: var(--accent-color);
-    position: absolute;
-    top: 2.5rem;
-    right: 2.5rem;}
-.current1:hover{
-    background-color: var(--hover-color);
-    color: var(--dark-color);}
-.icon-btn{
-    width: 3.5rem;
-    height: 3.5rem;}
-.icon-btn:hover{
-    color: var(--dark-color);
-    background-color: var(--hover-color);}
+    .current{
+        background-color: var(--accent-color);}
+    .current:hover{
+        color: var(--dark-color);
+        background-color: var(--hover-color);}
+    .menu-toggle-close{
+        background-color: var(--accent-color);
+        position: absolute;
+        top: 2.5rem;
+        right: 2.5rem;}
+    .current1:hover{
+        background-color: var(--hover-color);
+        color: var(--light-color);}
+    .icon-btn{
+        width: 3.5rem;
+        height: 3.5rem;
+        color: white;
+    }
+    .icon-btn:hover{
+        background-color: var(--hover-color);
+        color: black;
+    }
 .hov:hover{
     background-color: var(--hover-color);}
 .align-right{
@@ -254,14 +261,13 @@ i{
     font-family: 'Garamond', serif;
     color: #e86100;}
 .card-description1{
-    font-size: 12px;}
+    font-size: 15px;}
 .card-description1 span{
     color: var(--font-color);}
 .card-description{
-    font-size: 17px;
-    margin-bottom: var(--margin-small);}
+    font-size: 17px;}
 .card-description span{
-    color: var(--font-color);}
+    color: var(--header-color);}
 .card-image1 {
     border-radius: 5%;
     padding: 1rem;
@@ -280,11 +286,12 @@ i{
         margin: 10px;
         font-size: var(--font-size-small);
         background-color: green;
-        color: var(--dark-color);
+        color: white;
         padding: 1rem 1.5rem;}
     .yes:hover{
-        color: var(--light-color);
-        background-color: var(--hover-color);}
+        font-size: 16px;
+        padding: 12px;
+        background-color: var(--header-color);}
     .overlay{
         position: fixed;
         top: 0;
@@ -305,8 +312,7 @@ i{
         background-color: var(--body-background-color);
         border-radius: 5px;
         width: 70%;
-        position: relative;
-        transition: all 4s ease-in-out;}
+        position: relative;}
     .moreabout h1{
         margin-top: 0;
         text-align: center;}
@@ -322,7 +328,7 @@ i{
     .moreabout .close:hover{
         color: var(--negative-color);}
     .moreabout .pop{
-        color: var(--accent-color);}
+        color: var(--title-color);}
     .moreabout .fixing{
         padding: 30px;
         text-align: center;}
@@ -331,7 +337,7 @@ i{
         align-items: center;
         justify-content: center;}
     .moreabout label{
-        color: var(--accent-color);}
+        color: var(--title-color);}
 /* Management area */
 .management-area{
     padding-block: 2.5rem;}
@@ -373,7 +379,7 @@ i{
     margin-bottom: var(--margin-medium);}
 .card-description b{
     font-family:var(--font-primary);
-    font-size: 20px;}
+    font-size: 15px;}
 
 /* Remark Section */
 .wrapper{
@@ -412,7 +418,8 @@ i{
   border: 2px dashed var(--accent-color);
 }
 .add-box .icon:hover{
-    background-color: var(--hover-color);
+    color: var(--light-color);
+    background-color: var(--accent-color);
 }
 .add-box p{
   color: var(--dark-color);
@@ -446,7 +453,7 @@ i{
   border-radius: 25px;
 }
 .note p{
-    color: #FEBE10;
+    color: var(--title1-color);
   font-size: 22px;
   font-weight: 500;
 }
@@ -461,7 +468,7 @@ i{
   border-top: 1px solid var(--dark-color);
 }
 .bottom-content span{
-  color: var(--accent-color);
+  color: var(--title1-color);
   font-size: 14px;
 }
 .bottom-content .settings{
@@ -472,6 +479,9 @@ i{
   cursor: pointer;
   font-size: 15px;
 }
+.bottom-content .settings i:hover{
+   color: var(--accent-color);
+  }
 .settings .menu{
     color: var(--dark-color);
   z-index: 1;
@@ -503,7 +513,9 @@ i{
   margin-bottom: 0;
 }
 .menu li:hover{
-  background-color: var(--hover-color);
+    padding: 13px;
+  color: black;
+  background-color: var(--accent-color);
 }
 .menu li i{
   padding-right: 8px;
@@ -664,7 +676,7 @@ tbody tr.hide td img {
     height: 0;
     transition: .2s ease-in-out .5s;}
 thead th:hover {
-    color: var(--positive-color);}
+    color: var(--accent-color);}
 thead th.active{
     color: var(--accent-color);}
 tbody td.active {
@@ -746,27 +758,24 @@ tbody td.active {
         border-radius: .4rem;}
     .card-image1 img{
         margin-left: 1%;}
-    .current:hover{
-        background-color: var(--hover-color);
-        color: black;
-    }
-    .current1:hover{
-        background-color: var(--hover-color);
-        color: black;
-    }
-    .current1, .current{
-        color: white;
-    }
+        .current1{
+            color: white;}
+        .current1:hover{
+            color: black;} 
+        .current{
+            background-color: var(--accent-color);}
+        .current:hover{
+            background-color: var(--title-color);} 
     .nav-mobile .list-link:hover,
     .nav-mobile .list-link:focus{
-        background-color: var(--hover-color);}
+        background-color: var(--title-color);}
 }
 @media screen and (min-width: 768px) {
     .nav{
         height: 7rem;}
     .independent-title{
         font-size: var(--font-size-large);
-        padding: 4rem 0 2rem;}
+        padding: 2.5rem 0 1.25rem;}
     .card-body{
         grid-template-columns: repeat(2, 1fr);
         align-items: center;

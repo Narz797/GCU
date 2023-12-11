@@ -140,7 +140,7 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
                 <h4>CLASS ADMISSION SLIP</h4>
                 <p><span class="num"  id="CA">000</span>
                 <span class="text">pending...</span></p>
-                <h5>don't know the serial number</h5>
+                <h5>OSS-GCU-05</h5>
                 <br>
                 <h5><i class="ri-mail-unread-line"></i></h5>
                 <br>
@@ -213,9 +213,9 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
             <div class=" gallery">
             <main class="table" id="customers_table">
             <section class="table-header">
-                <h1>List of <b>All Unfinished Transactions</b></h1>
+                <h1>List of<b>All Unfinished Transactions</b></h1>
                 <div class="input-group">
-                    <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
+                     <input type="search" id="searchInput" onkeyup="searchTable()" onblur="clearSearchResults()" onsearch="clearSearchResults2()" placeholder="Search Data...">
                 </div>
                 <div class="export-file">
                     <label for="export-file" class="export-file-btn" title="Export File"><img src="assets/images/file-transfer-line.png" alt=""></label>
@@ -231,8 +231,8 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
                 <table id="dynamicTable">
                 <thead>
                         <tr>
-                            <th> Id <br><span class="icon-arrow">&UpArrow;</span></th>
-                            <th> Student <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Student ID <br><span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Student Name<br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> College <br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Course <br><span class="icon-arrow">&UpArrow;</span></th>
                             <th> Contact <br><span class="icon-arrow">&UpArrow;</span></th>
@@ -307,7 +307,37 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
         }
     }
 }
+function clearSearchResults() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+    var input = document.getElementById("searchInput");
 
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+    input.value = "";
+    // Check if the input value is empty (either on blur or "x" button click)
+    if (input.value === "") {
+        // Clear the search input value
+        input.value = "";
+    }
+}
+function clearSearchResults2() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+}
 
         function updateValues(CA, LOA, RA, RS, WDS) {
         $('#CA').text(CA);

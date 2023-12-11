@@ -443,6 +443,6 @@ HistoryData();
 
 </script>
 <script src="./assets/js/count.js"></script> 
-<?php include 'includes/footer.php' ?>
+<?php include 'includes/footer1.php' ?>
 </body>
 </html>

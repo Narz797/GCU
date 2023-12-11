@@ -132,7 +132,7 @@ logAudit($id, 'access_profile', $id .' has accessed the profile page');
       <!-- <div class="block"> 
     </div> -->
     <div class="title independent-title">
-    <h2>Student Profiles</h2>
+    <h2>STUDENT PROFILES</h2>
     </div>
      <!-- Section -->
     <div class="container">
@@ -142,7 +142,7 @@ logAudit($id, 'access_profile', $id .' has accessed the profile page');
         <section class="table-header">
             <h1>List of Students</h1>
             <div class="input-group">
-                 <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
+            <input type="search" id="searchInput" onkeyup="searchTable()" onblur="clearSearchResults()" onsearch="clearSearchResults2()" placeholder="Search Data...">
                 
             </div>
             <div class="export-file">
@@ -242,7 +242,37 @@ logAudit($id, 'access_profile', $id .' has accessed the profile page');
         }
     }
 }
+function clearSearchResults() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+    var input = document.getElementById("searchInput");
 
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+    input.value = "";
+    // Check if the input value is empty (either on blur or "x" button click)
+    if (input.value === "") {
+        // Clear the search input value
+        input.value = "";
+    }
+}
+function clearSearchResults2() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+}
 
     function logout() {
         $.ajax({
