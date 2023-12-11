@@ -2,49 +2,49 @@
 session_start();
 
 
-// if (isset($_POST['senschool'])) {
-//     $_SESSION['senschool'] = $_POST['senschool'];
-// }
-// if (isset($_POST['senyear'])) {
-//     $_SESSION['senyear'] = $_POST['senyear'];
-// }
-// if (isset($_POST['senawards'])) {
-//     $_SESSION['senawards'] = $_POST['senawards'];
-// }
-// if (isset($_POST['junschool'])) {
-//     $_SESSION['junschool'] = $_POST['junschool'];
-// }
-// if (isset($_POST['junyear'])) {
-//     $_SESSION['junyear'] = $_POST['junyear'];
-// }
-// if (isset($_POST['junawards'])) {
-//     $_SESSION['junawards'] = $_POST['junawards'];
-// }
-// if (isset($_POST['elemname'])) {
-//     $_SESSION['elemname'] = $_POST['elemname'];
-// }
-// if (isset($_POST['elemyear'])) {
-//     $_SESSION['elemyear'] = $_POST['elemyear'];
-// }
-// if (isset($_POST['elemawards'])) {
-//     $_SESSION['elemawards'] = $_POST['elemawards'];
-// }
-// if (isset($_POST['othname'])) {
-//     $_SESSION['othname'] = $_POST['othname'];
-// }
-// if (isset($_POST['othyear'])) {
-//     $_SESSION['othyear'] = $_POST['othyear'];
-// }
-// if (isset($_POST['othawards'])) {
-//     $_SESSION['othawards'] = $_POST['othawards'];
-// }
-// if (isset($_POST['otherSchool'])) {
-//     $_SESSION['otherSchool'] = $_POST['otherSchool'];
+if (isset($_POST['senschool'])) {
+    $_SESSION['senschool'] = $_POST['senschool'];
+}
+if (isset($_POST['senyear'])) {
+    $_SESSION['senyear'] = $_POST['senyear'];
+}
+if (isset($_POST['senawards'])) {
+    $_SESSION['senawards'] = $_POST['senawards'];
+}
+if (isset($_POST['junschool'])) {
+    $_SESSION['junschool'] = $_POST['junschool'];
+}
+if (isset($_POST['junyear'])) {
+    $_SESSION['junyear'] = $_POST['junyear'];
+}
+if (isset($_POST['junawards'])) {
+    $_SESSION['junawards'] = $_POST['junawards'];
+}
+if (isset($_POST['elemname'])) {
+    $_SESSION['elemname'] = $_POST['elemname'];
+}
+if (isset($_POST['elemyear'])) {
+    $_SESSION['elemyear'] = $_POST['elemyear'];
+}
+if (isset($_POST['elemawards'])) {
+    $_SESSION['elemawards'] = $_POST['elemawards'];
+}
+if (isset($_POST['othname'])) {
+    $_SESSION['othname'] = $_POST['othname'];
+}
+if (isset($_POST['othyear'])) {
+    $_SESSION['othyear'] = $_POST['othyear'];
+}
+if (isset($_POST['othawards'])) {
+    $_SESSION['othawards'] = $_POST['othawards'];
+}
+if (isset($_POST['otherSchool'])) {
+    $_SESSION['otherSchool'] = $_POST['otherSchool'];
 
   
 
 
-// }
+ }
 
 $_SESSION['origin'] = 'Student';
 // echo var_dump($_SESSION);

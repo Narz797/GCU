@@ -319,6 +319,7 @@ try{
                 // $stmt7->execute();
 
                 if ($stmt->execute() && $stmt1->execute() && $stmt2->execute() && $stmt3->execute() && $stmt6->execute()) {
+                    echo '  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
                     echo '<script>';
                     echo "Swal.fire({
                             icon: 'success',
