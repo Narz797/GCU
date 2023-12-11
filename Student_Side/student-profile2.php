@@ -3705,6 +3705,14 @@ function verify(){
                     var gocc = document.getElementById('Gocc').value;
                     var gcn = document.getElementById('Gcn').value;
 
+                    var checkboxValues = [];
+
+                  // Check each checkbox and add its value to the array if checked
+                  $("input[type='checkbox']").each(function() {
+                    if ($(this).is(":checked")) {
+                      checkboxValues.push($(this).val());
+                    }
+                  });
 
                     console.log("id: ", id);
                     console.log("crse: ", crse);
@@ -3732,7 +3740,8 @@ function verify(){
             Mcn:mcn,
             Gage: gage,
             Gocc: gocc,
-            Gcn: gcn
+            Gcn: gcn,
+            CHK: checkboxValues
 
           },
           success: function (data) {
