@@ -3,7 +3,7 @@
 
 
 /* Custom properties */
-:root{
+:root{ 
     --light-color: #fff;
     --dark-color: black;
     --accent-color:  #ecad00;
@@ -31,6 +31,7 @@
     --gap-medium: 2.5rem;
   }
   .theme-light{
+    --title-color:green;
     --hover1-color:#ecb050;
     --light-color: black;
     --dark-color: #fff;
@@ -99,7 +100,7 @@ i{
 /* Header */
 .header{
     transition: all 0.5s;
-    background-color: black;}
+    background-color: var(--header-color);}
 .nav{
     height: 7rem;
     display: flex;
@@ -129,25 +130,28 @@ i{
     display: inline-block;
     font-size: var(--font-size-small);
     padding: 1rem 1.5rem;}
-.current{
-    color: var(--dark-color);
-    background-color: var(--accent-color);}
-.current:hover{
-    background-color: var(--hover-color);
-    color: var(--light-color);}
-.menu-toggle-close{
-    background-color: var(--accent-color);
-    position: absolute;
-    top: 2.5rem;
-    right: 2.5rem;}
-.current1:hover{
-    background-color: var(--hover-color);
-    color: var(--light-color);}
-.icon-btn{
-    width: 3.5rem;
-    height: 3.5rem;}
-.icon-btn:hover{
-    background-color: var(--hover-color);}
+    .current{
+        background-color: var(--accent-color);}
+    .current:hover{
+        color: var(--dark-color);
+        background-color: var(--hover-color);}
+    .menu-toggle-close{
+        background-color: var(--accent-color);
+        position: absolute;
+        top: 2.5rem;
+        right: 2.5rem;}
+    .current1:hover{
+        background-color: var(--hover-color);
+        color: var(--light-color);}
+    .icon-btn{
+        width: 3.5rem;
+        height: 3.5rem;
+        color: white;
+    }
+    .icon-btn:hover{
+        background-color: var(--hover-color);
+        color: black;
+    }
 .hov:hover{
     background-color: var(--hover-color);
     color: var(--dark-color);}
@@ -229,9 +233,11 @@ i{
     background-color: var(--body-background-color);}
 .card-header small{
     font-size: 1.2rem;
-    color: var(--font-color);
     font-weight: bold;
     font-family: 'Georgia', serif;}
+.card-header u{
+        color: var(--font-color);
+    }
 .card-header .title{
     margin-bottom: 0;
     font-size: 20px;}
@@ -360,13 +366,13 @@ i{
     padding: 2rem 6rem;}
 .yes{
     margin: 10px;
-    font-size: var(--font-size-small);
+    font-size: 13px;
     background-color: green;
     color: var(--dark-color);
-    padding: 1rem 1.5rem;}
+    padding:1.5rem;}
 .yes:hover{
     color: var(--light-color);
-    background-color: var(--hover-color);}
+    background-color: var(--positive-color);}
 .no{
     margin: 10px;
     font-size: var(--font-size-small);
@@ -388,7 +394,7 @@ i{
 .teacher p{
         padding: 0.5rem;}
 .teacher b{
-    color: var(--accent-color);
+    color: var(--title-color);
 }
 .title1{
     padding: 0.8rem;
@@ -547,16 +553,14 @@ input[type="submit"]:hover{
         transition: color .25s; background-color: .25s;}
     .nav-mobile .list-link{
         border-radius: .4rem;}
-    .current1{
-        color: white;}
-    .current1:hover{
-        color: black;} 
-    .current{
-        background-color: var(--accent-color);
-        color: var(--light-color);}
-    .current:hover{
-        background-color: var(--hover-color);
-        color: var(--dark-color);} 
+        .current1{
+            color: white;}
+        .current1:hover{
+            color: black;} 
+        .current{
+            background-color: var(--accent-color);}
+        .current:hover{
+            background-color: var(--title1-color);} 
     .footer hover{
         color: var(--accent-color);}
 }

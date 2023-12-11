@@ -15,6 +15,7 @@
     --shadow-color: dimgray;
     --font-color: #568203;
     --title-color: #FEBE10;
+    --title1-color:#FEBE10;
     --positive-color: #86e49d;
     --negative-color: #d893a3 ;
     --pending-color: #ebc474;
@@ -31,6 +32,7 @@
     --gap-medium: 2.5rem;
   }
   .theme-light{
+    --title-color:green;
     --hover1-color:#ecb050;
     --light-color: black;
     --dark-color: #fff;
@@ -151,9 +153,6 @@ i{
         background-color: var(--hover-color);
         color: black;
     }
-.hov:hover{
-    background-color: var(--hover-color);
-    color: var(--dark-color);}
 .align-right{
     margin-left: auto;
     background-color: var(--accent-color);
@@ -230,11 +229,13 @@ i{
 .card-header{
     padding-block: 1rem;
     background-color: var(--body-background-color);}
-.card-header small{
-    font-size: 1.2rem;
-    color: var(--font-color);
-    font-weight: bold;
-    font-family: 'Georgia', serif;}
+    .card-header small{
+        font-size: 1.2rem;
+        font-weight: bold;
+        font-family: 'Georgia', serif;}
+    .card-header u{
+            color: var(--font-color);
+        }
 .card-header .title{
     margin-bottom: 0;
     font-size: 20px;}
@@ -379,7 +380,7 @@ i{
     padding: 1rem 1.5rem;}
 .yes:hover{
     color: black;
-    background-color: var(--hover-color);}
+    background-color: var(--positive-color);}
 .no{
     margin: 10px;
     font-size: var(--font-size-small);
@@ -388,7 +389,7 @@ i{
     padding: 1rem 1.5rem;}
 .no:hover{
     color: var(--light-color);
-    background-color: var(--hover-color);}
+    background-color: var(--negative-color);}
 .pending{
     margin: 10px;
     font-size: var(--font-size-small);
@@ -574,7 +575,7 @@ input[type="submit"]:hover{
         .current{
             background-color: var(--accent-color);}
         .current:hover{
-            background-color: var(--title-color);} 
+            background-color: var(--title1-color);} 
     .footer hover{
         color: var(--accent-color);}
 

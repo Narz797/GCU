@@ -118,13 +118,13 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
                 <i class="ri-folder-line"></i>Requested Forms
                 </a>
                 <a href="./student-profile" class="card-body-link">
-                <i class="ri-server-line"></i>Student Profiles
+                <i class="ri-profile-line"></i>Student Profiles
                 </a>
                 <a href="./appointment" class="card-body-link">
                 <i class="ri-calendar-line"></i>Appointment Schedules
                 </a>
                 <a href="./subpage/archive.php" class="card-body-link">
-                <i class="ri-calendar-line"></i>Archive
+                <i class="ri-server-line"></i>Archive
                 </a>
                 <a href="FAQ.php" class="card-body-link">
                 <i class="ri-question-mark"></i>FAQ

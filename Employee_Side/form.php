@@ -253,7 +253,7 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
     </div>
 </section>
 <br>
-<?php include 'includes/footer.php' ?>
+<?php include 'includes/footer1.php' ?>
 </body>
  
 <script>

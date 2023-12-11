@@ -423,7 +423,7 @@ select:focus {
     <input type="radio" id="personal" name="concern" value="personal"> Personal Concerns
     <br>
 
-    <input type="radio" id="socio-cultural" name="concern" value="socio-cultural"> Socio-Cultural Concerns
+    <input type="radio" id="socio-cultural" name="concern" value="socio-cultural">  Socio-Cultural Concerns
     <br>
 
     <input type="radio" id="behavioral" name="concern" value="behavioral"> Behavioral
@@ -456,13 +456,16 @@ select:focus {
        
 <p></p>
 <br>
+<div class="reminder-container">
+  <p style="margin-top: 12px; font-size: 12px; font-weight: bold;">You must upload required files such as Excuse letter, Medical credentials, etc. before clicking Submit.</p>
+</div>
       <label for="fileUpload">Upload Required Files</label>
       <input type="file" id="fileUpload" name="fileUpload[]" required>
       <br>
    
       <div class="reminder-container">
   <i class="fas fa-exclamation-circle icon"></i>
-  <p style="margin-top: 12px; font-size: 12px; font-weight: bold;">Reminder: Zip multiple files before uploading them.</p>
+  <p style="margin-top: 12px; font-size: 12px; font-weight: bold; color:red;">Reminder: Zip multiple files before uploading them.</p>
 </div>
 
 
@@ -621,6 +624,18 @@ select:focus {
     }
   </script>
   <script>
+     $("#refer").change(function () {
+      var selectedValue = $(this).val();
+
+      // Check if the selected value is "Absent"
+      if (selectedValue === "Absent") {
+        // Set "required" attribute for all radio buttons
+        $("input[name='concern']").prop("required", true);
+      } else {
+        // Remove "required" attribute for all radio buttons
+        $("input[name='concern']").prop("required", false);
+      }
+    });
 $("#form_transact").on("submit", function (event) {
     event.preventDefault();
     
@@ -630,6 +645,41 @@ $("#form_transact").on("submit", function (event) {
     var ECspecifics = $("#officialActivitySpecify").val();
     var OTHspecifics = $("#otherSpecify").val(); 
     var specifics;
+
+
+
+    // var lt = $("#refer").val();
+    // var hlth = document.getElementById('health');
+    // var prsnl = document.getElementById('personal');
+    // var sc = document.getElementById('socio-cultural');
+    // var bhv = document.getElementById('behavioral');
+    // var fl = document.getElementById('filial');
+    // var eR = document.getElementById('environmentalRadio');
+    // var oa = document.getElementById('officialActivityRadio');
+    // var oth = document.getElementById('otherRadio');
+    
+    // console.log("LT", lt);
+    // if (lt === 'Absent'){
+     
+    //   hlth.setAttribute('required', true);
+    //  prsnl.setAttribute('required', true);
+    //  sc.setAttribute('required', true);
+    //  bhv.setAttribute('required', true);
+    //  fl.setAttribute('required', true);
+    //  eR.setAttribute('required', true);
+    //  oa.setAttribute('required', true);
+    //  oth.setAttribute('required', true);
+    // }else if (lt === 'Tardy'){
+    //   hlth.setAttribute('required', false);
+    //  prsnl.setAttribute('required', false);
+    //  sc.setAttribute('required', false);
+    //  bhv.setAttribute('required', false);
+    //  fl.setAttribute('required', false);
+    //  eR.setAttribute('required', false);
+    //  oa.setAttribute('required', false);
+    //  oth.setAttribute('required', false);
+    // }
+
 
     if (ECspecifics !== undefined && ECspecifics !== null && ECspecifics.trim() !== "") {
                     // The variable 'rem' has a non-empty value

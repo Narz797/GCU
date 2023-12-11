@@ -337,6 +337,7 @@ include 'includes/main2.php';
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="assets/js/calendar.js"></script>  
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+
 <script>
   
         var id = "<?php echo $id; ?>";
@@ -346,6 +347,22 @@ include 'includes/main2.php';
         
           function reason()
           {
+            var selectInput = document.getElementById('refer').value;
+
+            console.log('selected: ', selectInput);
+        
+        // Check if the select input has a value
+        if (selectInput !== "Select") {
+            // Your additional logic here, e.g., submit the form or perform other actions
+           
+        } else {
+            // Display an error message or take appropriate action if the select input doesn't have a value
+            alert('Please select a reason before submitting.');
+            return false;
+        }
+
+
+
             var ref
             var checkbox = document.getElementById("chkbx");
               // Check if the checkbox is checked
@@ -359,7 +376,16 @@ include 'includes/main2.php';
               }
             reasons = document.getElementById("refer").value;
 
-            if (window.confirm("Do you want to proceed?")) {
+            Swal.fire({
+      title: "Do you wish to proceed?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
 
                 $.ajax({
                   type: 'POST',
@@ -422,6 +448,7 @@ include 'includes/main2.php';
                   },
                 });
               }
+  });
             
           }
 

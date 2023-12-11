@@ -15,7 +15,7 @@
     --shadow-color: dimgray;
     --font-color: #568203;
     --title-color: #FEBE10;
-    --title1-color: green;
+    --title1-color: #FEBE10;
     --positive-color: #86e49d;
     --negative-color: #d893a3 ;
     --pending-color: #ebc474;
@@ -32,8 +32,7 @@
     --gap-medium: 2.5rem;
   }
   .theme-light{
-    --title1-color: #FEBE10;
-    --title-color: #008374;
+    --title1-color: green;
     --hover1-color:#ecb050;
     --light-color: black;
     --dark-color: #fff;
@@ -136,7 +135,7 @@ i{
         background-color: var(--accent-color);}
     .current:hover{
         color: var(--dark-color);
-        background-color: var(--hover-color);}
+        background-color: var(--title-color);}
     .menu-toggle-close{
         background-color: var(--accent-color);
         position: absolute;
@@ -328,7 +327,7 @@ i{
     .moreabout .close:hover{
         color: var(--negative-color);}
     .moreabout .pop{
-        color: var(--title-color);}
+        color: var(--title1-color);}
     .moreabout .fixing{
         padding: 30px;
         text-align: center;}
@@ -337,7 +336,7 @@ i{
         align-items: center;
         justify-content: center;}
     .moreabout label{
-        color: var(--title-color);}
+        color: var(--title1-color);}
 /* Management area */
 .management-area{
     padding-block: 2.5rem;}
@@ -676,7 +675,8 @@ tbody tr.hide td img {
     height: 0;
     transition: .2s ease-in-out .5s;}
 thead th:hover {
-    color: var(--accent-color);}
+    background-color: var(--accent-color);
+    color: var(--dark-color);}
 thead th.active{
     color: var(--accent-color);}
 tbody td.active {
@@ -695,17 +695,18 @@ tbody td.active {
     color: #b30021;}
 .status.pending {
     background-color: var(--pending-color);}
+.add{
+    color: green;
+}
 .add:hover {
     padding: 10px;
-    background-color: var(--hover-color);
-    color: white;
+    color: var(--accent-color);
     border-radius: 1rem;}
 .edit{
-    color: red;}
+    color: green;}
 .edit:hover {
     padding: 10px;
-    background-color: var(--hover-color);
-    color: black;
+    color: var(--accent-color);
     border-radius: 1rem;}
 
 
@@ -766,9 +767,7 @@ tbody td.active {
             background-color: var(--accent-color);}
         .current:hover{
             background-color: var(--title-color);} 
-    .nav-mobile .list-link:hover,
-    .nav-mobile .list-link:focus{
-        background-color: var(--title-color);}
+   
 }
 @media screen and (min-width: 768px) {
     .nav{

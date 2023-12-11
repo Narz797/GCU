@@ -4,9 +4,18 @@
 <head>
   <meta charset="utf-8">
   <title>Agreement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="../assets/img/GCU_logo.png" rel="icon">
-  <style>
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+
+<style>
 
 @media only screen and (max-width: 600px) {
             body {
@@ -72,26 +81,20 @@
       
     }
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      /* font-weight: bold;
-      font-size:18px; */
-      text-align: justify;
-      font-family: "Century Gothic", sans-serif;
-    }
-
+  
     label {
       box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
       width: 100%;
       padding: 8px;
-      height:180px;
+      height:auto;
       margin-bottom: 16px;
       box-sizing: border-box;
       border: 1px solid #ccc;
       border-radius: 4px;
       resize: vertical;
       font-family: "Century Gothic", sans-serif;
+      display: block;
+      text-align: justify;
 
       font-size:18px;
     }
@@ -205,9 +208,42 @@ p {
       margin: auto; /* Center the image */
     }
 
-   
+    body {
+    font-size: 16px; /* Adjust the base font size */
+  }
 
+  /* Media query for screens smaller than 768px (typical phones) */
+  @media (max-width: 767px) {
+    body {
+      font-size: 14px; /* Adjust font size for smaller screens */
+    }
 
+    /* Add other responsive styles here */
+  }
+
+  /* Your regular styles here */
+
+  .card-body {
+            /* Your regular styles for the card body */
+
+            /* Add padding, margin, etc. */
+
+            /* Example width setting for larger screens */
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        /* Media query for screens smaller than 768 pixels (typical phones) */
+        @media only screen and (max-width: 768px) {
+            .card-body {
+                /* Adjust styles for smaller screens */
+
+                /* Example width setting for smaller screens */
+                width: 90%;
+            }
+        }
+
+  
   </style>
 </head>
 <body>
@@ -241,7 +277,7 @@ p {
         <p>
         CLIENT INFORMATION FORM
         <br>
-        <hr>
+        <hr style="border: 1px solid gray;">
         <b>DATA PRIVACY NOTICE:</b>
         <br>
         <br>
@@ -254,6 +290,8 @@ p {
              and does not waive any of my rights under the Data privacy Act of 2012 and other apllicable laws.
           </label>
         </p>
+       <br>
+       <br>
        
         <div class="button-container">
           <div class="button">

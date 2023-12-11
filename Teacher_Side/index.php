@@ -605,11 +605,15 @@ $("#form_transact").on("submit", function (event) {
                           
                       },
         success: function (data) {
-          Swal.fire({
-              icon: "success",
-              title: "Info Updated",
+               Swal.fire({
+                icon: "success",
+              title: "Updated remarked",
+              confirmButtonText: "OK",
 
-            });
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+
           fetchData()
           $.ajax({
             type: 'POST',
@@ -624,6 +628,9 @@ $("#form_transact").on("submit", function (event) {
               console.log("logged", response);
             }
           });
+          window.location.href = "index.php";
+        } 
+              });
         },
     error: function (xhr, status, error) {
       alert("Error: " + error);

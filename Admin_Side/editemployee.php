@@ -55,7 +55,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/profiles.css">
+    <link rel="stylesheet" href="assets/css/ap.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
     <!-- Export -->
@@ -102,13 +102,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </button>
             </div>
             <div class="align-right">
-                <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
-                    <i class="ri-function-line"></i>
-                </button>
-                <button class="icon-btn theme-toggle-btn place-items-center">
-                    <i class="ri-sun-line theme-light-icon"></i>
-                    <i class="ri-moon-line theme-dark-icon"></i>
-                </button>
                 <button class="icon-btn place-items-center">
                     <i class="ri-user-3-line"></i>
                 </button>
@@ -125,23 +118,23 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <!-- Section -->
 
-        <section class="table-body">
-            <section id="table" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
+
+            <section id="table" class="table-body">
 
                 <form id="edit_emp" name="edit_emp" method="post">
                     <br>
-                    <center>
-                        <div class="input-group input-group-lg">
+                    <center> 
+                        <div class="input-group1 input-group-lg">
                             <input type="number" class="form-control" id="id" name="empID" placeholder="Employee ID No." aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['admin_user_id'] ?>" readonly required>
                         </div>
                         <br>
-                        <div class="input-group input-group-lg">
+                        <div class="input-group1 input-group-lg">
                             <input type="text" class="form-control" placeholder="Last Name" id="lname" aria-label="Last Name" name='lname' aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['last_name'] ?>" required>
                             <input type="text" name='mname' class="form-control" placeholder="Middle Name" id="mname" aria-label="Middle Name" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['middle_name'] ?>" required>
                             <input type="text" name='fname' class="form-control" placeholder="First Name" id="fname" aria-label="First Name" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['first_name'] ?>" required>
                         </div>
                         <br>
-                        <div class="input-group input-group-lg">
+                        <div class="input-group1 input-group-lg">
                             <label class="input-group-text" for="inputgroupselect">Sex</label>
                             <select class="form-select" name='gender' id="inputgroupselect" required>
                                 <option disabled selected>Choose...</option>
@@ -162,19 +155,19 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </select>
                         </div>
                         <br>
-                        <div class="input-group input-group-lg">
+                        <div class="input-group1 input-group-lg">
                             <input type="text" name='email' class="form-control" placeholder="Email" id="email" aria-label="Email" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['email'] ?>" required>
                         </div>
                         <br>
-                        <div class="input-group input-group-lg">
+                        <div class="input-group1 input-group-lg">
                             <input type="text" name='contactnum' class="form-control" placeholder="Contact No." id="contact" aria-label="Contact No." aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['contact'] ?>" required>
                         </div>
                         <br>
-                        <div class="input-group input-group-lg">
+                        <div class="input-group1 input-group-lg">
                             <input type="text" name='position' class="form-control" placeholder="Position" id="position" aria-label="Position" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['position'] ?>" required>
                         </div>
                         <br>
-                        <div class="input-group input-group-lg">
+                        <div class="input-group1 input-group-lg">
                             <input type="text" class="form-control" name='username' placeholder="Username" id="username" aria-label="Username" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['username'] ?>" required>
                             <input type="text" class="form-control" name='password' placeholder="Password" id="pass" aria-label="Password" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['password'] ?>" required>
                         </div>
@@ -185,7 +178,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </form>
             </section>
 
-        </section>
+
         <br>
         </div>
 
@@ -263,7 +256,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             });
         </script>
         <script src="./assets/main.js"></script>
-        <?php include 'includes/footer.php' ?>  
+        <?php include 'includes/footer.php' ?>
 </body>
 
 </html>

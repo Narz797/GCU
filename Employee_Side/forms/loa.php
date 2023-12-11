@@ -70,7 +70,7 @@ include '../../backend/log_audit2.php';
                 <li class="list-item">
                     <a href="../employee-home" class="list-link current">Home</a>
                 </li>
-                <li class="list-item hov">
+                <li class="list-item">
                     <a href="../subpage/loa-forms" class="list-link current1">Back</a>
                 </li>
             </ul>
@@ -98,8 +98,7 @@ include '../../backend/log_audit2.php';
     <!-- Banner -->
 <section>
 <?php include '../../includes/banner.php' ?>
-    <div class="block"> 
-    </div>
+    
     <!-- Management-area -->
 <section class="management-area">
     <div class="management-area-container d-grid">
@@ -322,6 +321,6 @@ function archive() {
 
     fetchData();
 </script> 
-<?php include '../includes/footer.php' ?>
+<?php include '../includes/footer1.php' ?>
 </body>
 </html>

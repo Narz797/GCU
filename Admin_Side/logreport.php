@@ -45,7 +45,7 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/profiles.css">
+    <link rel="stylesheet" href="assets/css/report.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <!-- Export -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">

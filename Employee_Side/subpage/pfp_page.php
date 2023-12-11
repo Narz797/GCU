@@ -60,7 +60,8 @@ echo"<script>console.log('$id')</script>";
   }
   .container {
     width: 500px;
-    background-color: black;
+    color: black;
+    background-color: white;
     box-shadow: 0 0 8px rgba(250, 250, 250, 0.6);
   }
   .container form {
@@ -80,15 +81,16 @@ echo"<script>console.log('$id')</script>";
 		margin: 4px 0;
 		border-radius: 3px;
 		border: 1px solid black;
-		background-color: gray;
+		background-color: grey;
 		padding: 0 15px;
 		font-size: 20px;
 	}
   form textarea {
+    height: 50%;
     padding: 5px 15px;
     border-radius: 3px;
 		border: 1px solid black;
-		background-color: gray;
+		background-color: white;
     font-size: 20px;
     width: 100%;
     margin: 4px 0;
@@ -108,10 +110,12 @@ echo"<script>console.log('$id')</script>";
   form button:hover {
     background-color: green;
   }
+  form input::placeholder{
+color: white;
+  }
   form input:focus,
   form textarea:focus {
     border: 1px solid green;
-    color: white;
     transition: all 0.3s ease;
   }
   form input:focus::placeholder,

@@ -48,7 +48,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/profiles.css">
+    <link rel="stylesheet" href="assets/css/logreport.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <!-- Export -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
@@ -120,13 +120,6 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
                 </button>
             </div>
             <div class="align-right">
-                <!-- <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
-                    <i class="ri-function-line"></i>
-                </button>
-                <button class="icon-btn theme-toggle-btn place-items-center">
-                    <i class="ri-sun-line theme-light-icon"></i>
-                    <i class="ri-moon-line theme-dark-icon"></i>
-                </button> -->
                 <button class="icon-btn place-items-center" onclick="logout()">
                     <i class="ri-user-3-line"></i>
                 </button>
@@ -139,7 +132,7 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
    
         <!-- <div class="block">
         </div> -->
-        <div class="title independent-title" >
+        <div class="title independent-title" style="background:#008374;">
             <h2 style="color:black;">Employee Profiles</h2>
             <br>
             <div class="container"  style="display: flex; justify-content: flex-end;">

@@ -168,7 +168,7 @@ include 'includes/main2.php';
             <section class="table-header" style="background-color: #008374;">
                 <h1>List of Confirmed Forms</h1>
                 <div class="input-group">
-                    <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search.....">
+                <input type="search" id="searchInput" onkeyup="searchTable()" onblur="clearSearchResults()" onsearch="clearSearchResults2()" placeholder="Search Data...">
                 </div>
                 
             </section>
@@ -271,6 +271,20 @@ include 'includes/main2.php';
 
             // Display the filtered data
             displayData(filteredData);
+        };
+        // Function to search the table based on user input
+        window.searchTable = function () {
+            var searchInput = $('#searchInput').val().toLowerCase();
+            var filteredData = originalData.filter(function (item) {
+                return item.transact_type.toLowerCase().includes(searchInput);
+            });
+            displayData(filteredData);
+        };
+
+        // Function to clear search results
+        window.clearSearchResults = function () {
+            $('#searchInput').val('');
+            displayData(originalData);
         };
 
         // Call the function to load data when the page loads

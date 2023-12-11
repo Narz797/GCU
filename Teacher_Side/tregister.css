@@ -1,0 +1,137 @@
+/* Import the Google Fonts (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: -webkit-linear-gradient(331deg, #0c4401, #ebeeeb);
+    color: black;
+}
+
+.container {
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 10px;
+    margin: 0 15px;
+    background-color: rgba(105, 105, 105, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container header {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+    animation: moveContainer 1s infinite alternate;
+}
+
+.container hr {
+    color: black;
+    height: 4px;
+}
+
+.container form {
+    position: relative;
+    margin-top: 16px;
+    min-height: 450px;
+    overflow: hidden;
+}
+
+.container form .fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.details {
+    padding: 2rem;
+}
+
+form .fields .input-field {
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 6px;
+}
+
+.input-field label {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+
+.input-field select {
+    font-style: italic;
+    color: black;
+}
+
+.input-field input,
+.input-field select {
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+    font-weight: bold;
+}
+
+.input-field input:focus,
+.input-field select:focus {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+
+button {
+    font-size: 15px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px auto;
+    background-color: #4070f4;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #265df2;
+    color: black;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+    .container form .fields {
+        flex-direction: column;
+    }
+
+    .input-field {
+        width: 100%; /* Full width on smaller screens */
+    }
+    form .fields .input-field {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 15px;
+    }
+}

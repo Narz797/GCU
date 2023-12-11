@@ -3200,7 +3200,6 @@ $siblings = $siblings->fetchAll();
           <input type="radio" name="MS" id="MS_ps" disabled value="<?php echo $checkmarital5; ?>">
           <label for="checkbox1" class="custom-checkbox-label">Parents are separated (one or both have other partners).</label>
           </div>
-          <br>
           <input type="radio" name="MS" id="MS_wid" disabled value="<?php echo $checkmarital6; ?>">
           <label for="checkbox1" class="custom-checkbox-label">Widow/widower.</label>
 

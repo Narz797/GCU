@@ -366,9 +366,10 @@ function clearSearchResults2() {
                     
                     if (status == 'pending') {
                         tableBody.append(row);
-                    } else if (status == 'done') {
-                        historyTableBody.append(row); // Append row to history table body
                     }
+                    // else if (status == 'done') {
+                    //     historyTableBody.append(row); // Append row to history table body
+                    // }
 
                  }
 

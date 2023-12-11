@@ -97,8 +97,6 @@ include '../../backend/log_audit2.php';
     <!-- Banner -->
 <section>
 <?php include '../../includes/banner.php' ?>
-    <div class="block"> 
-    </div>
     <!-- Management-area -->
 <section class="management-area">
     <div class="management-area-container d-grid">
@@ -369,6 +367,6 @@ function archive() {
         }
         fetchData();
 </script>  
-<?php include '../includes/footer.php' ?>
+<?php include '../includes/footer1.php' ?>
 </body>
 </html>

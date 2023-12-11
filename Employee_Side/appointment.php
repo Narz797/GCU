@@ -117,7 +117,7 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
     <!-- <div class="block"> 
     </div> -->
     <div class="title independent-title">
-        <h2>APPOINTMENT SCHEDULE</h2>
+        <h2>APPOINTMENT SCHEDULES</h2>
     </div>
     <div class="container">
         <br>
@@ -674,6 +674,6 @@ $(document).ready(function () {
 <style>
   
 </style>
-<?php include 'includes/footer.php' ?>
+<?php include 'includes/footer1.php' ?>
 </body>
 </html>

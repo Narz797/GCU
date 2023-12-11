@@ -295,10 +295,10 @@ label, span {
 
   <label>Year:</label>
   <!-- <input type="number" placeholder="YYYY" id="start_year" class="year-input" name="datepicker" id="datepicker"> -->
-  <input type="text" class="form-control" name="datepicker" id="datepicker"  required/>
+  <input type="text" class="form-control" name="datepicker" id="datepicker"  autocomplete="off" required/>
   <label>-</label>
   <!-- <input type="number" placeholder="YYYY" id="end_year" class="year-input"> -->
-  <input type="text" class="form-control" name="datepicker" id="datepicker2" required/>
+  <input type="text" class="form-control" name="datepicker" id="datepicker2" autocomplete="off" required/>
 
   
 </div>
@@ -362,11 +362,14 @@ label, span {
   <script>
         var sID = "<?php echo $_SESSION['session_id'];?>";
       function submitForm() {
+        $("#form_transact").on("submit", function (event) {
         event.preventDefault();
+        var datepickerValue = $("#datepicker").val();
+      var datepicker2Value = $("#datepicker2").val();
         // Check if the form is filled before submitting
-        if ($('#reason_stop').val() === '' || $('#motivation_enroll').val() === '') {
-          alert('Please fill out all fields before submitting.');
-        } else {
+        // if (($('#reason_stop').val() === '' || $('#motivation_enroll').val() === '')||(!datepickerValue || !datepicker2Value)) {
+        //   alert('Please fill out all fields before submitting.');
+        // } else {
           // If the form is filled, proceed with AJAX submission
     //       Swal.fire({
     //   title: "Are you sure?",
@@ -442,7 +445,8 @@ label, span {
           });
         }
         });
-        }
+        // }
+      });
       }
     </script>
 

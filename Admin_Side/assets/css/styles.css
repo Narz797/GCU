@@ -29,16 +29,6 @@
     --gap-small: 1rem;
     --gap-medium: 2.5rem;
 }
-.theme-light{
-    --light-color: black;
-    --dark-color: #fff;
-    --body-background-color: #eef0f8;
-    --shadow-color: lightblue;
-    --font-color:#32CD32;
-    --title-color: darkgreen;
-    --transparent-button-color: var(--accent-color);
-}
-
 
 /* Base styles */
 *,
@@ -175,6 +165,9 @@ i{
 .title{
     font-size: var(--font-size-normal);
     margin-bottom: var(--margin-small);}
+    .title1{
+        font-size: var(--font-size-normal);
+        margin-bottom: var(--margin-small);}
 .independent-title{
     font-size: var(--font-size-medium);
     color: var(--light-color);
@@ -191,8 +184,7 @@ i{
     border-radius: .5rem;
     box-shadow:.5rem .5rem 1rem rgba(82, 63, 105, .0.5);}
 .card-header{
-    padding-block: 1rem;
-    background-color: var(--body-background-color);}
+    padding-block: 1rem;}
 .card-header small{
     font-size: 1.2rem;
     color: var(--font-color);
@@ -296,9 +288,14 @@ i{
 .two, .three{
     box-shadow: 10px 10px 4px var(--shadow-color);}
 .card-group .title{
+    text-align: center;
     font-family:var(--font-primary);
     color: var(--title-color);
     font-weight: bold;}
+.card-group .title1{
+        font-family:var(--font-primary);
+        color: var(--title-color);
+        font-weight: bold;}
 .card-group .card-description{
     margin-bottom: var(--margin-medium);}
 .card-description b{
@@ -454,8 +451,6 @@ i{
         background-color: var(--hover-color);
         /* color: var(--dark-color); */
     }
-    .card-group{
-        grid-template-columns: repeat(2, 1fr);}
     .one{
         grid-column: 1/-1;}
     .two,

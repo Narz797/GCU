@@ -786,7 +786,7 @@ main.table {
     overflow: hidden;}
 .table-header {
     width: 100%;
-    height: 6%;
+    height: 15%;
     background-color: var(--accent-color);
     padding: .8rem 1rem;
     font-size: 18px;
@@ -883,8 +883,8 @@ main.table {
 .table-body .ri-delete-bin-6-line{
     background-color: #b30021;}
 .table-body i:hover{
-    background-color: var(--hover-color);
-    color: white;}
+    background-color: var(--accent-color);
+    color: var(--hover-color);}
 
 .table-body::-webkit-scrollbar{
     width: 1rem;
@@ -972,9 +972,7 @@ tbody td.active {
     border-bottom-left-radius: 20px; 
     /* background-color: var(--hover-color); */
 }
-.table-body button:hover{
-    background-color: var(--accent-color);
-    color: var(--banner-color);}
+
 .status {
     padding: 10px;
     margin-right: 10px;

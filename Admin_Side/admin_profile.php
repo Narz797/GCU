@@ -55,7 +55,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/profiles.css">
+    <link rel="stylesheet" href="assets/css/ap.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
     <!-- Export -->
@@ -102,13 +102,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </button>
             </div>
             <div class="align-right">
-                <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
-                    <i class="ri-function-line"></i>
-                </button>
-                <button class="icon-btn theme-toggle-btn place-items-center">
-                    <i class="ri-sun-line theme-light-icon"></i>
-                    <i class="ri-moon-line theme-dark-icon"></i>
-                </button>
                 <button class="icon-btn place-items-center">
                     <i class="ri-user-3-line"></i>
                 </button>
@@ -121,42 +114,33 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
         <div class="title independent-title">
-            <h2>Edit Account</h2>
+            <h2>Admin Profile Edit</h2>
         </div>
         <!-- Section -->
 
-        <section class="table-body">
-            <section id="table" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
+            <section class="table-body" id="table">
 
                 <form id="edit_emp" name="edit_emp" method="post">
                     <br>
                     <center>
-                        <div class="input-group input-group-lg">
+                        <div class="input-group1 ">
                             <input type="number" class="form-control" id="id" name="empID" placeholder="Employee ID No." aria-label="Admin ID No." aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['admin_id'] ?>" readonly required>
                         </div>
                         <br>
-                        <div class="input-group input-group-lg">
+                        <div class="input-group1 ">
                             <input type="text" class="form-control" name='username' placeholder="Email" id="username" aria-label="Username" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['uname'] ?>" >
                             <input type="text" class="form-control" name='password' placeholder="Password" id="pass" aria-label="Password" aria-describedby="inputGroup-sizing-lg" >
                         </div>
                     </center>
 
                     <br>
-                    <button type="submit" class="button" style="background:#008374" value="Edit Employee">Edit Account</button>
+                    <button type="submit" value="Edit Employee">Edit Account</button>
                 </form>
             </section>
 
-        </section>
+
         <br>
         </div>
-
-        <style>
-            .table-body {
-                background-color: darkolivegreen;
-
-            }
-        </style>
-
 
         <!-- Script     -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -219,7 +203,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             });
         </script>
         <script src="./assets/main.js"></script>
-        <?php include 'includes/footer.php' ?>  
 </body>
 
 </html>

@@ -46,7 +46,7 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/profiles.css">
+    <link rel="stylesheet" href="assets/css/ap.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
     
@@ -82,36 +82,26 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
             <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
                 <i class="ri-function-line"></i>
             </button>
-            <!-- <button class="icon-btn theme-toggle-btn place-items-center">
-                <i class="ri-sun-line theme-light-icon"></i>
-                <i class="ri-moon-line theme-dark-icon"></i>
-            </button> -->
-            <!-- <button class="icon-btn place-items-center">
-                <i class="ri-user-3-line"></i>
-            </button> -->
         </div>
     </nav>
 </header>
-    <!-- Welcome-message -->
-    
-
     <div class="title independent-title" >
     <h2>Add Employee Account</h2>
     </div>
     
    
-    <section class="table-body">
-    <section  id="table" style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ;">
+
+    <section  id="table" class="table-body">
     <center>
     <form method="post" action="../backend/register_user.php">
         <br>
        
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group1 input-group-lg">
               <input type="number" class="form-control" name ='empID' placeholder="Employee ID No." 
               aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" required>
               </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group1 input-group-lg" style="background:#fff5;">
               <input type="text" class="form-control" placeholder="Last Name" 
               aria-label="Last Name" name ='lname' aria-describedby="inputGroup-sizing-lg" required>
               <input type="text" name ='mname' class="form-control" placeholder="Middle Name" 
@@ -120,7 +110,7 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
               aria-label="First Name" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group1 input-group-lg" >
             <label class="input-group-text" for="inputgroupselect">Sex</label>
             <select class="form-select" name ='gender' id="inputgroupselect" required>
                 <option selected>Choose...</option>
@@ -129,78 +119,39 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
             </select>
         </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group1 input-group-lg">
               <input type="text" name='email' class="form-control" placeholder="Email" 
               aria-label="Email" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group1 input-group-lg" >
               <input type="text" name='contactnum' class="form-control" placeholder="Contact No." 
               aria-label="Contact No." aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group1 input-group-lg" >
               <input type="text" name='position' class="form-control" placeholder="Position" 
               aria-label="Position" aria-describedby="inputGroup-sizing-lg" required>
         </div>
         <br>
-        <div class="input-group input-group-lg" style="background:#008374">
+        <div class="input-group1 input-group-lg" >
               <input type="text" class="form-control" name='username' placeholder="Username" 
               aria-label="Username" aria-describedby="inputGroup-sizing-lg" required>
               <input type="text" class="form-control" name='password' placeholder="Password" 
               aria-label="Password" aria-describedby="inputGroup-sizing-lg" required>
         </div>
 </center>
-</div>
 <br>
 <center>
     <div class="addemployee">
     
-    <button type="submit" class="button" value="Add Employee" style="background:#008374">Add Employee Account </button><br>
+    <button type="submit" class="button" value="Add Employee" >Add Employee Account </button><br>
    
     </div>
 </center>
 </form>
-
-  
+    </section>
 <br>
-</div>
-    </section>
-    </section>
     <?php include 'includes/footer.php' ?>
 </body>
-
-<!-- Script     -->
-<script src="./assets/main.js"></script>
-
- <script src="assets/js/table.js"></script>   
-
-<style>
-.table-body{
-    background-color: darkgreen;
-}
-
-.button{
-        
-        border:none;
-           color:black;
-           padding:12px 32px;
-           text-decoration: none;
-           margin:12px 2px;
-           cursor:pointer;
-           height:60px;
-           width:100px;
-           border-style: outset;
-           background-color: blue;
-           border-radius:20px;
-
-           
-    }
-
-
-
-</style>
-
-    
-
 </html>
