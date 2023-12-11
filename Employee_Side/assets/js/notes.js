@@ -81,8 +81,18 @@ function showMenu(elem) {
 
 
 function deleteNote(id) {
-    let confirmDel = confirm("Are you sure you want to delete this note?");
-    if (!confirmDel) return;
+    // let confirmDel = confirm("Are you sure you want to delete this note?");
+    // if (!confirmDel) return;
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
 
     // Send a DELETE request to the server to delete the note
     sendRequest('DELETE', `../../backend/notes.php?id=${id}`, data => {
@@ -90,6 +100,13 @@ function deleteNote(id) {
          // Refresh notes or handle success
     });
     showNotes();
+    Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success"
+      });
+}
+});
 }
 
 function updateNote(id, title, filterDesc) {
