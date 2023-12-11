@@ -3149,29 +3149,29 @@ $siblings = $siblings->fetchAll();
           <h3 class="heading-small " style="color:black; font-weight: bold">SOURCES OF FINANCIAL SUPPORT</h3>
 
 
-          <input type="checkbox" id="FS_parent" disabled value="<?php echo $checkedOption1 ?>">
+          <input type="checkbox" id="FS_parent" value="Parents" disabled <?php echo $checkedOption1 ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox1" class="custom-checkbox-label">Parent</label>
           <br>
 
-          <input type="checkbox" id="FS_ss" disabled value="<?php echo $checkedOption2; ?>">
+          <input type="checkbox" id="FS_ss" value="Self" disabled <?php echo $checkedOption2; ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox2">Self Supporting</label>
           <br>
 
-          <input type="checkbox" id="FS_rg" disabled value="<?php echo $checkedOption3; ?>">
+          <input type="checkbox" id="FS_rg" value="Relatives" disabled <?php echo $checkedOption3; ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox3">Relative and/or Guardian</label>
           <br>
 
-          <input type="checkbox" id="FS_sch" disabled value="<?php echo $checkedOption4; ?>">
+          <input type="checkbox" id="FS_sch" onchange="toggleInput('FS_sch', 'FS_sch2')" value="Scholarship" disabled <?php echo $checkedOption4; ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox4">Scholarship - <input id="FS_sch2"  readonly value="<?php if ($oth_info[0]['specific_scholar']) {
                                                                     echo $oth_info[0]['specific_scholar'];
                                                                   } ?>"></label>
           <br>
 
-          <input type="checkbox" id="FS_oth" disabled <?php echo $checkedOption5; ?>>
+          <input type="checkbox" id="FS_oth" onchange="toggleInput('FS_oth', 'FS_oth2')" value="Others" disabled <?php echo $checkedOption5; ?>>
           <!-- <i class="fa fa-check"></i> -->
           <label for="checkbox5">Others - <input id="FS_oth2"  readonly value="<?php if ($oth_info[0]['specific_other']) {
                                                                 echo $oth_info[0]['specific_other'];
@@ -3289,7 +3289,7 @@ $siblings = $siblings->fetchAll();
                     <div class="id">
                         <label for="email" style="color:black;">Verification Code:</label>
                         <input type="number" id="code" name="code" oninput="validateInput(this)" required>
-                        <button onclick="update()" >Verify</button>
+                        <a class="btn btn-sm btn-primary" style="color: white;" onclick="update()" >Verify</a>
                     </div>
                     <!-- fasdfas -->
                     </form>
@@ -3376,6 +3376,17 @@ function limitToSingleCharacter(event) {
     input.value = inputValue.slice(0, 1);
   }
 }
+function toggleInput(chk, lbl) {
+    var checkbox = document.getElementById(chk);
+    var input = document.getElementById(lbl);
+
+    if (!checkbox.checked) {
+      input.value = " ";
+    } 
+  }
+
+  
+
   function addHighlight(element) {
             element.classList.add('highlight');
         }
@@ -3713,9 +3724,20 @@ function verify(){
                       checkboxValues.push($(this).val());
                     }
                   });
+                  // var checkboxString = checkboxValues.join(', ');
+                  var sch = document.getElementById('FS_sch2').value;
+                  var oth = document.getElementById('FS_oth2').value;
 
+                  var ele = document.getElementsByName('MS');
+                  var ms;
+                    for (i = 0; i < ele.length; i++) {
+                        if (ele[i].checked)
+                            ms = ele[i].value;
+                    }
                     console.log("id: ", id);
                     console.log("crse: ", crse);
+                    console.log("chk: ", checkboxValues);
+                    console.log("MS: ", ms);
 
                     
               $.ajax({
@@ -3741,7 +3763,10 @@ function verify(){
             Gage: gage,
             Gocc: gocc,
             Gcn: gcn,
-            CHK: checkboxValues
+            CHK: checkboxValues,
+            SCH: sch,
+            OTH: oth
+
 
           },
           success: function (data) {

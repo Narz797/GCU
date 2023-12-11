@@ -9,10 +9,12 @@ try {
         $updateFieldsFather = [];
         $updateFieldsMother = [];
         $updateFieldsGuardian = [];
+        $updateFieldsOTH = [];
         $parametersStudent = [':id' => $id];
         $parametersFather = [':id' => $id];
         $parametersMother = [':id' => $id];
         $parametersGuardian = [':id' => $id];
+        $parametersOTH = [':id' => $id];
     
         // Check if the student fields are set
         if (isset($_POST['email'], $_POST['pass'], $_POST['pass2'], $_POST['course'], $_POST['YL'], $_POST['SEC'], $_POST['CN'], $_POST['CS'], $_POST['Adrs'])) {
@@ -96,6 +98,26 @@ try {
             }
     
         }
+        if (isset($_POST['CHK']) && isset($_POST['OTH']) && isset($_POST['SCH'])) { 
+            $checkboxValues = $_POST['CHK'];
+
+            // Convert the array to a comma-separated string
+            $checkboxString = implode(", ", $checkboxValues); 
+            $allowedOTH = array(
+                'source' => $checkboxString,
+                'specific_scholar' => $_POST['SCH'],
+                'specific_other' => $_POST['OTH']
+            );
+    
+            // Process father fields
+            foreach ($allowedOTH as $key => $value) {
+                if (!empty($value)) {
+                    $updateFieldsOTH[] = "`$key` = :$key";
+                    $parametersOTH[":$key"] = $value;
+                }
+            }
+    
+        }
     
         // Execute the student update
         if (!empty($updateFieldsStudent)) {
@@ -151,6 +173,18 @@ try {
                 }
             }
             $stmtGuardian->execute();
+        }
+        if (!empty($updateFieldsOTH)) {
+            $sqlOTH = "UPDATE `other_info` SET " . implode(", ", $updateFieldsOTH) . " WHERE stud_user_id = :id";
+            $stmtOTH = $pdo->prepare($sqlOTH);
+            foreach ($parametersOTH as $key => &$value) {
+                if ($key !== ':id') {
+                    $stmtOTH->bindParam($key, $value);
+                } else {
+                    $stmtOTH->bindParam($key, $value, PDO::PARAM_INT);
+                }
+            }
+            $stmtOTH->execute();
         }
     
         $data = array('success' => true);
