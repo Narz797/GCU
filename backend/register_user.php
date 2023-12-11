@@ -2,7 +2,6 @@
 session_start();
 ob_start();
 include '../backend/connect_database.php';
-echo "<script>console.log(Origin: ,'{$_SESSION['origin']}')</script>";
 
 if (isset($_SESSION['origin'])) {
 

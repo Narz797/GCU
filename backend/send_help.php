@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 // Load Composer's autoloader
-require 'D:\xampp\htdocs\GCU\phpmailer\phpmailer\vendor\autoload.php';
+require 'C:\xampp\htdocs\GCU\phpmailer\phpmailer\vendor\autoload.php';
 
 // Output the result
 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['msg'])) {

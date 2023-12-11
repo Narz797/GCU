@@ -109,6 +109,9 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
                         <a href="logreport.php" class="list-link current1">Log Report</a>
                     </li>
                     <li class="list-item hov">
+                <a href="admin_profile.php" class="list-link current1">Edit Profile</a>
+                </li>
+                    <li class="list-item hov">
                         <a href="exportimport.php" class="list-link current1">Export/Import of Database</a>
                     </li>
                 </ul>

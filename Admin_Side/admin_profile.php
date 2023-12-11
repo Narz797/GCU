@@ -25,11 +25,11 @@ if (empty($_SESSION['session_id'])) {
 $id = $_SESSION['session_id'];
 
 // Log audit entry for accessing the home page
-logAudit($id, 'access_edit employee',  'Admin has accessed the edit employee page');
+logAudit($id, 'access_edit profile',  'Admin has accessed the edit profile page');
 
-$emp_id = $_SESSION['user_id'];
-$stmt = $pdo->prepare("SELECT * FROM `admin_user` WHERE `admin_user_id`=:admin_user_id");
-$stmt->bindParam(':admin_user_id', $emp_id);
+// $emp_id = $_SESSION['user_id'];
+$stmt = $pdo->prepare("SELECT * FROM `admin_admin` WHERE `admin_id`=:admin_id");
+$stmt->bindParam(':admin_id', $id);
 $stmt->execute();
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -94,7 +94,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <a href="main.php" class="list-link current">Home</a>
                     </li>
                     <li class="list-item hov">
-                        <a href="EmployeeProfiles.php" class="list-link current1">Back</a>
+                        <a href="main.php" class="list-link current1">Back</a>
                     </li>
                 </ul>
                 <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -121,7 +121,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
         <div class="title independent-title">
-            <h2>Edit Employee Account</h2>
+            <h2>Edit Account</h2>
         </div>
         <!-- Section -->
 
@@ -132,56 +132,17 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <br>
                     <center>
                         <div class="input-group input-group-lg">
-                            <input type="number" class="form-control" id="id" name="empID" placeholder="Employee ID No." aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['admin_user_id'] ?>" readonly required>
+                            <input type="number" class="form-control" id="id" name="empID" placeholder="Employee ID No." aria-label="Admin ID No." aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['admin_id'] ?>" readonly required>
                         </div>
                         <br>
                         <div class="input-group input-group-lg">
-                            <input type="text" class="form-control" placeholder="Last Name" id="lname" aria-label="Last Name" name='lname' aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['last_name'] ?>" required>
-                            <input type="text" name='mname' class="form-control" placeholder="Middle Name" id="mname" aria-label="Middle Name" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['middle_name'] ?>" required>
-                            <input type="text" name='fname' class="form-control" placeholder="First Name" id="fname" aria-label="First Name" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['first_name'] ?>" required>
-                        </div>
-                        <br>
-                        <div class="input-group input-group-lg">
-                            <label class="input-group-text" for="inputgroupselect">Sex</label>
-                            <select class="form-select" name='gender' id="inputgroupselect" required>
-                                <option disabled selected>Choose...</option>
-                                <option value="Female" <?php
-                                                        $selectgender = $result[0]['gender'];
-
-                                                        if ($selectgender === 'Female') {
-                                                            echo ' selected';
-                                                        }
-                                                        ?>>Female</option>
-                                <option value="Male" <?php
-                                                        $selectgender = $result[0]['gender'];
-
-                                                        if ($selectgender === 'Male') {
-                                                            echo ' selected';
-                                                        }
-                                                        ?>>Male</option>
-                            </select>
-                        </div>
-                        <br>
-                        <div class="input-group input-group-lg">
-                            <input type="text" name='email' class="form-control" placeholder="Email" id="email" aria-label="Email" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['email'] ?>" required>
-                        </div>
-                        <br>
-                        <div class="input-group input-group-lg">
-                            <input type="text" name='contactnum' class="form-control" placeholder="Contact No." id="contact" aria-label="Contact No." aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['contact'] ?>" required>
-                        </div>
-                        <br>
-                        <div class="input-group input-group-lg">
-                            <input type="text" name='position' class="form-control" placeholder="Position" id="position" aria-label="Position" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['position'] ?>" required>
-                        </div>
-                        <br>
-                        <div class="input-group input-group-lg">
-                            <input type="text" class="form-control" name='username' placeholder="Username" id="username" aria-label="Username" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['username'] ?>" required>
-                            <input type="text" class="form-control" name='password' placeholder="Password" id="pass" aria-label="Password" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['password'] ?>" required>
+                            <input type="text" class="form-control" name='username' placeholder="Email" id="username" aria-label="Username" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['uname'] ?>" >
+                            <input type="text" class="form-control" name='password' placeholder="Password" id="pass" aria-label="Password" aria-describedby="inputGroup-sizing-lg" >
                         </div>
                     </center>
 
                     <br>
-                    <button type="submit" class="button" style="background:#008374" value="Edit Employee">Edit Employee Account</button>
+                    <button type="submit" class="button" style="background:#008374" value="Edit Employee">Edit Account</button>
                 </form>
             </section>
 
@@ -217,16 +178,9 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (result.isConfirmed) {
                 $.ajax({
                     type: 'POST',
-                    url: '../backend/edit_emp.php',
+                    url: '../backend/edit_adm.php',//change
                     data: {
                         id: $("#id").val(),
-                        fname: $("#fname").val(),
-                        mname: $("#mname").val(),
-                        lname: $("#lname").val(),
-                        gender: $("#inputgroupselect").val(),
-                        email: $("#email").val(),
-                        cn: $("#contact").val(),
-                        position: $("#position").val(),
                         un: $("#username").val(),
                         pass: $("#pass").val()
 
@@ -236,14 +190,14 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         console.log(data);
                         alert("Edited Successfully");
 
-                        window.location.href = "EmployeeProfiles.php";
+                        window.location.href = "main.php";
                         $.ajax({
                             type: 'POST',
                             url: '../backend/log_audit.php',
                             data: {
                                 userId: eID,
-                                action: 'Admin edited employee',
-                                details: 'Admin edited employee'.$("#id").val()
+                                action: 'Admin edited profile',
+                                details: 'Admin edited profile'.$("#id").val()
                             },
                             success: function(response) {
                                 // Handle the response if needed
@@ -260,6 +214,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 }
 });
+
+                
             });
         </script>
         <script src="./assets/main.js"></script>

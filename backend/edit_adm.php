@@ -5,26 +5,20 @@ include '../backend/connect_database.php';
 
 $id = ($_POST['id']);
 $pass = ($_POST['pass']);
+if(isset($_POST['un'])&&isset($_POST['pass'])){
+    if (!empty($_POST['pass'])) {
+        $password = $_POST['pass'];
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
-if (!empty($_POST['pass'])) {
+    }else{
     $password = $_POST['pass'];
-    $password = password_hash($password, PASSWORD_DEFAULT);
-
-}else{
-$password = $_POST['pass'];
 }
+
 
 $allowedFields = array(
    
-    'first_name' => $_POST['fname'],
-    'middle_name' => $_POST['mname'],
-    'last_name' => $_POST['lname'],
-    'gender' => $_POST['gender'],
-    'email' => $_POST['email'],
-    'contact' => $_POST['cn'],
-    'position' => $_POST['position'],
-    'username' => $_POST['un'],
-    'password' => $password 
+    'uname' => $_POST['un'],
+    'pass' => $password 
 );
 
 $updateFields = [];
@@ -38,8 +32,8 @@ foreach ($allowedFields as $key => $value) {
         $parameters[":$key"] = $value;
     }
 }
-
-$sql = "UPDATE `admin_user` SET " . implode(", ", $updateFields) . " WHERE admin_user_id  = :id";
+}
+$sql = "UPDATE `admin_admin` SET " . implode(", ", $updateFields) . " WHERE admin_id  = :id";
 
 $stmt = $pdo->prepare($sql);
 foreach ($parameters as $key => &$value) {

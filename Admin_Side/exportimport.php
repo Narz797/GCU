@@ -92,6 +92,9 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
                     <li class="list-item hov">
                         <a href="logreport.php" class="list-link current1">Log Report</a>
                     </li>
+                    <li class="list-item hov">
+                <a href="admin_profile.php" class="list-link current1">Edit Profile</a>
+                </li>
                 </ul>
                 <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
                     <i class="ri-close-line"></i>

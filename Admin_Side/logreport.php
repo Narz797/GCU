@@ -96,6 +96,10 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
                     <a href="EmployeeProfiles.php" class="list-link current1">Employee Profiles</a>
                 </li>
                 <li class="list-item hov">
+                <a href="admin_profile.php" class="list-link current1">Edit Profile</a>
+                </li>
+                
+                <li class="list-item hov">
                     <a href="exportimport.php" class="list-link current1">Export/Import of Database</a>
                 </li>
             </ul>

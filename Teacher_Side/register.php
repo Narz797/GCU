@@ -152,7 +152,7 @@ button:hover {
                         </div>
                         <div class="input-field">
                             <label>Contact Number</label>
-                            <input type="text" id="cn"  name="cn"oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                            <input type="number" id="cn"  name="cn" oninput="limitTo11Digits(event)" required>
                         </div>
                         <div class="input-field">
                             <label>Email</label>
@@ -203,7 +203,16 @@ button:hover {
             </div>
             </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+          function limitTo11Digits(event) {
+  var input = event.target;
+  var inputValue = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+
+  if (inputValue.length > 11) {
+    input.value = inputValue.slice(0, 11);
+  }
+}
             function validateInput(input) {
             // Get the input value and remove any non-digit characters
             let inputValue = input.value.replace(/\D/g, '');
@@ -382,7 +391,7 @@ button:hover {
                                                                 }).then((result) => {
                                                                     /* Read more about isConfirmed, isDenied below */
                                                                     if (result.isConfirmed) {
-                                                                        document.getElementById("modal").style.display = "none";
+                                                                        // document.getElementById("modal").style.display = "none";
                                         
                                                                         console.log("Error",data);
                                                                     } 

@@ -137,6 +137,9 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
                     <a href="exportimport.php" class="card-body-link">
                         <i class="ri-server-line"></i>Export/Import of Database
                     </a>
+                    <a href="admin_profile.php" class="card-body-link">
+                        <i class="ri-server-line"></i>Edit Profile
+                    </a>
                     
                     <a href="../home" class="card-body-link">
                         <i class="ri-user-3-line"></i>Log-Out
