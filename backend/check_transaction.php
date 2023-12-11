@@ -8,7 +8,7 @@ include '../backend/connect_database.php';
 
 $type = $_SESSION['form_type'];//gets value of transact_type
 
-if ($type == 'readmission') {
+if ($type == 'Readmission') {
     $sql = "SELECT
     student_user.stud_user_id,
     student_user.first_name,
@@ -36,7 +36,7 @@ if ($type == 'readmission') {
     LEFT JOIN guardian ON student_user.stud_user_id = guardian.stud_user_id
 LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
     WHERE
-    transact.transact_type = 'readmission';";
+    transact.transact_type = 'Readmission';";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
@@ -103,7 +103,7 @@ GROUP BY
     // Prepare and echo data as JSON
     echo json_encode($data);
 
-} else if ($type == 'referral') {
+} else if ($type == 'Referral') {
     $sql = "SELECT
     tstable.student_id AS stud_user_id,
     tstable.transact_id,
@@ -138,7 +138,7 @@ INNER JOIN
 LEFT JOIN mother ON tstable.student_id = mother.stud_user_id
 
 WHERE
-    transact.transact_type = 'referral';
+    transact.transact_type = 'Referral';
 ";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
@@ -191,7 +191,7 @@ WHERE
 
     // Prepare and echo data as JSON
     echo json_encode($data);
-} else if ($type == 'loa') {
+} else if ($type == 'Leave Of Absence') {
     $sql = "SELECT
     student_user.stud_user_id,
     transact.transact_id,
@@ -223,7 +223,7 @@ INNER JOIN
     LEFT JOIN guardian ON student_user.stud_user_id = guardian.stud_user_id
 LEFT JOIN mother ON student_user.stud_user_id = mother.stud_user_id
 WHERE
-    transact.transact_type = 'leave_of_absence';
+    transact.transact_type = 'Leave Of Absence';
 ";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();

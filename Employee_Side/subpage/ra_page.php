@@ -22,7 +22,7 @@ include '../../backend/log_audit2.php';
     exit;
 }
   
-    $_SESSION['form_type']='readmission';//
+    $_SESSION['form_type']='Readmission';//
     $id = $_SESSION['session_id'];
 
 // Log audit entry for accessing the home page

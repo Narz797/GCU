@@ -139,7 +139,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <!-- <input type="text" class="form-control" id="year_enroll" name="year_enroll" required/> -->
 
                             <!-- <input type="text" class="form-control" name="datepicker" id="datepicker"  required/> -->
-                            <input type="text" id="year_enroll" name="year_enroll" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                            <input type="text" id="year_enroll" name="year_enroll"  required autocomplete="off">
                         </div>
                         <!-- <div class="input-field">
                             <label>Section</label>
@@ -383,6 +383,12 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
             var input = document.getElementById('section');
             input.value = input.value.toUpperCase();
         }
+        $("#year_enroll").datepicker({
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years",
+    autoclose:true //to close picker once year is selected
+});
     </script>
     <script>
         var insertStatements;
@@ -619,18 +625,21 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
     </script>
 
     <script>
-        function formatPhoneNumber(input) {
-            // Remove non-numeric characters
-            let phoneNumber = input.value.replace(/[^0-9]/g, '');
+            function formatPhoneNumber(input) {
+                // Remove non-numeric characters
+                let phoneNumber = input.value.replace(/[^0-9]/g, '');
 
-            // Ensure that the number starts with "+63"
-            if (phoneNumber.length >= 2) {
-                phoneNumber = "09" + phoneNumber.slice(2);
+                // Limit input to 11 digits
+                phoneNumber = phoneNumber.slice(0, 11);
+
+                // Ensure that the number starts with "+63"
+                if (phoneNumber.length >= 2) {
+                    phoneNumber = "09" + phoneNumber.slice(2);
+                }
+
+                // Update the input value
+                input.value = phoneNumber;
             }
-
-            // Update the input value
-            input.value = phoneNumber;
-        }
     </script>
 
     

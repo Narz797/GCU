@@ -6,12 +6,18 @@
 /* Custom properties */
 :root{
     --light-color: #fff;
-    --dark-color: #171721;
-    --dark-color-lighter: #7E8299;
-    --accent-color: #008374;
+    --dark-color: black;
+    --accent-color: #ffc971;
     --body-background-color: #202028;
-    --border-bottom-color: rgba(255,255,255,.05);
-    --transparent-button-color: rgba(255,255,255,.1);
+    --hover-color: #fde7b4;
+    --banner-color: #F5F5DC;
+    --shadow-color: dimgray;
+    --font-color: #568203;
+    --title-color: #FEBE10;
+    --positive-color: #86e49d;
+    --negative-color: #d893a3 ;
+    --pending-color: #ebc474;
+    --transparent-button-color: var(--accent-color);
     --font-size-small: 1.4rem;
     --font-size-normal: 1.6rem;
     --font-size-medium: 2rem;
@@ -23,13 +29,13 @@
     --gap-small: 1rem;
     --gap-medium: 2.5rem;
 }
-
 .theme-light{
-    --light-color: #171721;
+    --light-color: black;
     --dark-color: #fff;
-    --dark-color-lighter: #7E8299;
     --body-background-color: #eef0f8;
-    --border-bottom-color: rgba(23,23,23,.05);
+    --shadow-color: lightblue;
+    --font-color:#32CD32;
+    --title-color: darkgreen;
     --transparent-button-color: var(--accent-color);
 }
 

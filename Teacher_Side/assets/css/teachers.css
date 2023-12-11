@@ -491,7 +491,7 @@ table.dataTable tbody tr:nth-of-type(odd) {
 /* Header */
 .header{
     transition: all 0.5s;
-    background-color: black;}
+    background-color: #008374;}
 .nav{
     height: 5rem;
     display: flex;
@@ -508,7 +508,7 @@ table.dataTable tbody tr:nth-of-type(odd) {
     height: 2rem;}
 .icon-btn:hover{
   
-    background-color: #34af6d;}
+    background-color: #ffd166;}
 .align-right{
     margin-left: auto;
     border-radius: .4rem;}
@@ -548,7 +548,7 @@ table.dataTable tbody tr:nth-of-type(odd) {
     font-family: 'Garamond', serif;
     font-weight: bold;}
 .block{
-    background-color: black; 
+    background-color: #008374; 
     height:50px;}
 
 

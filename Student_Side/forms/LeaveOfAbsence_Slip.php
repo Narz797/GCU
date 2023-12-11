@@ -22,7 +22,7 @@ include '../../backend/log_audit2.php';
     exit;
 }
 // include 'formstyle.php';
-$_SESSION['transact_type']='leave_of_absence';//asign value to transact_type 
+$_SESSION['transact_type']='Leave Of Absence';//asign value to transact_type 
 logAudit($_SESSION['session_id'], 'access_leave_of_absence form', $_SESSION['session_id'] .' has accessed the leave_of_absence page');
 ?>
 <html>

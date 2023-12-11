@@ -9,7 +9,7 @@
     --dark-color: black;
     --accent-color: #ffc971;
     --body-background-color: #202028;
-    --hover-color: #ffd166;
+    --hover-color: #fde7b4;
     --banner-color: #F5F5DC;
     --shadow-color: dimgray;
     --font-color: #568203;
@@ -132,8 +132,8 @@ i{
     color: var(--dark-color);
     background-color: var(--accent-color);}
 .current:hover{
-    background-color: var(--hover-color);
-    color: var(--light-color);}
+    background-color: #dbab3b;
+    color: black;}
 .menu-toggle-close{
     background-color: var(--accent-color);
     position: absolute;
@@ -479,7 +479,7 @@ tbody td.active {
         background-color: var(--accent-color);
         color: var(--light-color);}
     .current:hover{
-        background-color: var(--hover-color);
+        background-color: #dbab3b;
         color: var(--dark-color);} 
     .footer hover{
         color: var(--accent-color);}

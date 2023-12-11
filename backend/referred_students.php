@@ -25,7 +25,7 @@ INNER JOIN
 referral ON transact.transact_id = referral.transact_id
 
 WHERE
-transact.transact_type = 'referral' AND transact.status != 'done' AND referral.teacher_id = :id
+transact.transact_type = 'Referral' AND transact.status != 'done' AND referral.teacher_id = :id
 
 ";
 

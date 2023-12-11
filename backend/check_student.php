@@ -6,7 +6,7 @@ if (
     isset($_POST['sid'], $_POST['reasons'])
 ) {
     $id = $_POST['sid'];
-    $transact ='referral';
+    $transact ='Referral';
     $TCN = $_POST['Tcn'];
     $Temail = $_POST['TeachEmail'];
     $datetime = new DateTime();
@@ -56,7 +56,7 @@ if (
                 $cn = $_POST['cn'];
                 $rem = $_POST['rem'];
                 $date = $_POST['datee']; 
-                $transact ='referral';
+                $transact ='Referral';
             
                 // $refer = $_POST['refer'];
                 $datetime = new DateTime();
@@ -131,7 +131,7 @@ if (
         $cn = $_POST['cn'];
         $rem = $_POST['rem'];
         $date = $_POST['datee']; 
-        $transact ='referral';
+        $transact ='Referral';
         $RUR = 'Registered';
         $sid = $_POST['sid'];
         // $refer = $_POST['refer'];

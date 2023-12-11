@@ -22,7 +22,7 @@ include '../../backend/log_audit2.php';
     exit;
 }
 // include 'formstyle.php';
-$_SESSION['transact_type']='readmission';//asign value to transact_type 
+$_SESSION['transact_type']='Readmission';//asign value to transact_type 
 logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_id'] .' has accessed the readmission page');
 ?>
 <html>
