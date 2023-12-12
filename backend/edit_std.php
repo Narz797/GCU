@@ -17,7 +17,7 @@ try {
         $parametersOTH = [':id' => $id];
     
         // Check if the student fields are set
-        if (isset($_POST['email'], $_POST['pass'], $_POST['pass2'], $_POST['course'], $_POST['YL'], $_POST['SEC'], $_POST['CN'], $_POST['CS'], $_POST['Adrs'])) {
+        if (isset($_POST['email'], $_POST['pass'], $_POST['pass2'], $_POST['course'], $_POST['YL'], $_POST['SEC'], $_POST['CN'], $_POST['CS'], $_POST['Adrs'], $_POST['RAD'])) {
             if ($_POST['pass'] == $_POST['pass2']){
                 if (!empty($_POST['pass'])) {
                     $password = $_POST['pass'];
@@ -34,7 +34,8 @@ try {
                 'Section' => $_POST['SEC'],
                 'Contact_number' => $_POST['CN'],
                 'Civil_status' => $_POST['CS'],
-                'Address' => $_POST['Adrs']
+                'Address' => $_POST['Adrs'],
+                'Marital_status_of_parents' => $_POST['RAD']
             );
     
             // Process student fields

@@ -255,7 +255,7 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
 <br>
 <?php include 'includes/footer1.php' ?>
 </body>
- 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function faq(){
         window.location.href="FAQ.php"
@@ -348,6 +348,16 @@ function clearSearchResults2() {
    
     }
     function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
         $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
@@ -362,6 +372,9 @@ function clearSearchResults2() {
             }
           });
     window.location.href = '../home';
+
+}
+  });
 }
 function archive() {
     $.ajax({

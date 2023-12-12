@@ -147,7 +147,7 @@ include '../../backend/log_audit2.php';
                  <div class="overlay" id="divTwo">
                     <div class="wrapper">
                         <h1>The student's request will be <u class="Two">RESCHEDULED</u> .</h1>
-                        <a href="#" class="close">&times;</a>
+                        <a href="" class="close">&times;</a>
                         <div class="popup">
                             <div class="popup2">
                                 <form class = "mid">
@@ -178,8 +178,18 @@ include '../../backend/log_audit2.php';
     var red;
     var eID = "<?php echo $_SESSION['session_id'];?>";
     var frm = "<?php echo $form=$_SESSION['form_type'];?>";
-        function logout() {
-            $.ajax({
+    function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
             data: {
@@ -193,6 +203,9 @@ include '../../backend/log_audit2.php';
             }
           });
     window.location.href = '../../home';
+
+}
+  });
 }
 function archive() {
     $.ajax({
@@ -346,6 +359,7 @@ function archive() {
         }
 
         function resched(){
+            event.preventDefault();
         var dateTimeInput = document.getElementById("date").value;
 
         // separate date and time
@@ -380,8 +394,7 @@ function archive() {
             console.log("Remarked:", data);
 
             Swal.fire({
-              icon: "sucess",
-              icon: "success",
+                icon: "success",
               title: "Appointment rescheduled",
               confirmButtonText: "OK",
 
@@ -389,6 +402,7 @@ function archive() {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     status_update('resched')
+                    document.getElementById("divTwo").style.display = "none";
             window.location.href = "../appointment";
             $.ajax({
                     type: 'POST',

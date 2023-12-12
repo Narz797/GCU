@@ -323,7 +323,17 @@ var eID = "<?php echo $_SESSION['session_id'];?>";
 console.log(eid);
   var sessionID = <?php echo json_encode($_SESSION['session_id']); ?>;
   function logout() {
-    $.ajax({
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
             data: {
@@ -337,6 +347,9 @@ console.log(eid);
             }
           });
     window.location.href = '../home';
+
+}
+  });
 }
 function archive() {
   $.ajax({

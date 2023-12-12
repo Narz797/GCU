@@ -156,24 +156,36 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
 
     </section>
     <br>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Script     -->
     <script>
         function logout() {
+            Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
             $.ajax({
-                type: 'POST',
-                url: '../backend/log_audit.php',
-                data: {
-                    userId: eID,
-                    action: 'logged out',
-                    details: eID + 'Admin Clicked log out'
-                },
-                success: function(response) {
-                    // Handle the response if needed
-                    console.log("logged", response);
-                }
-            });
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + 'Admin Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
             window.location.href = '../home';
+        }
+  });
         }
     </script>
     <script src="./assets/main.js"></script>

@@ -3184,23 +3184,23 @@ $siblings = $siblings->fetchAll();
           <h6 class="heading-small" style="color:black; font-weight: bold">MARITAL STATUS OF PARENT</h6>
 
 
-          <input type="radio" name="MS" id="MS_pam" disabled value="<?php echo $checkmarital1; ?>">
+          <input type="radio" name="MS" id="MS_pam" value="married" disabled <?php echo $checkmarital1; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Parents are married.</label>
           <br>
-          <input type="radio" name="MS" id="MS_mla" disabled value="<?php echo $checkmarital2; ?>">
+          <input type="radio" name="MS" id="MS_mla" value="annulled" disabled <?php echo $checkmarital2; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Marriage is legally annulled.</label>
           <br>
-          <input type="radio" name="MS" id="MS_notm" disabled value="<?php echo $checkmarital3; ?>">
+          <input type="radio" name="MS" id="MS_notm" value="livingTogether" disabled <?php echo $checkmarital3; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Parents are not married but are living together.</label>
           <br>
-          <input type="radio" name="MS" id="MS_sp" disabled value="<?php echo $checkmarital4; ?>">
+          <input type="radio" name="MS" id="MS_sp" value="singleParent" disabled <?php echo $checkmarital4; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Single Parent.</label>
           <br>
           <div class="checkbox-container">
-          <input type="radio" name="MS" id="MS_ps" disabled value="<?php echo $checkmarital5; ?>">
+          <input type="radio" name="MS" id="MS_ps" value="separated" disabled <?php echo $checkmarital5; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Parents are separated (one or both have other partners).</label>
           </div>
-          <input type="radio" name="MS" id="MS_wid" disabled value="<?php echo $checkmarital6; ?>">
+          <input type="radio" name="MS" id="MS_wid" value="widow" disabled <?php echo $checkmarital6; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Widow/widower.</label>
 
           <!-- </div> -->
@@ -3347,6 +3347,8 @@ $siblings = $siblings->fetchAll();
      pass.hide();
      pass2.hide();
 
+     
+
      function togglePasswordVisibility(inputId) {
     var passwordInput = document.getElementById(inputId);
     var icon = document.querySelector('i[onclick="togglePasswordVisibility(\'' + inputId + '\')"]');
@@ -3434,6 +3436,14 @@ function toggleInput(chk, lbl) {
     var oth = document.getElementById('FS_oth');
     var oth2 = document.getElementById('FS_oth2');
 
+    //radio
+    var pam = document.getElementById('MS_pam');
+    var mla = document.getElementById('MS_mla');
+    var notm = document.getElementById('MS_notm');
+    var sp = document.getElementById('MS_sp');
+    var ps = document.getElementById('MS_ps');
+    var wid = document.getElementById('MS_wid');
+
     crse.disabled = false;
     yl.disabled = false;
     email.removeAttribute('readonly');
@@ -3458,6 +3468,13 @@ function toggleInput(chk, lbl) {
      oth.removeAttribute('disabled');
      sch2.removeAttribute('readonly');
      oth2.removeAttribute('readonly');
+
+     pam.removeAttribute('disabled');
+     mla.removeAttribute('disabled');
+     notm.removeAttribute('disabled');
+     sp.removeAttribute('disabled');
+     ps.removeAttribute('disabled');
+     wid.removeAttribute('disabled');
 
     // Add event listeners for focus and blur events
     // email.addEventListener('focus', function () {
@@ -3727,16 +3744,21 @@ function verify(){
                   var sch = document.getElementById('FS_sch2').value;
                   var oth = document.getElementById('FS_oth2').value;
 
-                  var ele = document.getElementsByName('MS');
-                  var ms;
-                    for (i = 0; i < ele.length; i++) {
-                        if (ele[i].checked)
-                            ms = ele[i].value;
-                    }
+                  
+
+                  var radios = document.getElementsByName('MS');
+                      var selectedValue = "";
+
+                      for (var i = 0; i < radios.length; i++) {
+                          if (radios[i].checked) {
+                              selectedValue = radios[i].value;
+                              break;
+                          }
+                      }
                     console.log("id: ", id);
                     console.log("crse: ", crse);
                     console.log("chk: ", checkboxValues);
-                    console.log("MS: ", ms);
+                    console.log("MS: ", selectedValue);
 
                     
               $.ajax({
@@ -3764,7 +3786,8 @@ function verify(){
             Gcn: gcn,
             CHK: checkboxValues,
             SCH: sch,
-            OTH: oth
+            OTH: oth,
+            RAD: selectedValue
 
 
           },

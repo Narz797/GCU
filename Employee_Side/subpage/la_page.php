@@ -182,9 +182,37 @@ logAudit($id, 'access_LOA page', $id .' has accessed the LOA page');
     <!-- Footer -->
 
     <!-- Script     -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-        function logout() {
+    var eID = "<?php echo $_SESSION['session_id'];?>";
+    function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
     window.location.href = '../../home';
+
+}
+  });
 }
 function archive() {
     window.location.href = 'archive.php';

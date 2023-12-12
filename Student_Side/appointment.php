@@ -470,7 +470,7 @@ include 'includes/main2.php';
                     
                     var entry = data[i];
                     
-                    if(entry.status === "taken"){
+                    if(entry.status !== "done"){
                     var tableToAppend = tableBody; // Determine which table to append to
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.first_name+ " " + entry.last_name+ "</td>");

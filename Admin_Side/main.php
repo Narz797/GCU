@@ -116,7 +116,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
                         <i class="ri-server-line"></i>Edit Profile
                     </a>
                     
-                    <a href="../home" class="card-body-link">
+                    <a onclick="logout()" class="card-body-link">
                         <i class="ri-user-3-line"></i>Log-Out
                     </a>
                 </div>
@@ -155,8 +155,36 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+                function logout() {
+            Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + 'Admin Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+            window.location.href = '../home';
+        }
+  });
+        }
         function updateValues(total, employee_email) {
 
             console.log("logins2 ", total);

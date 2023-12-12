@@ -483,33 +483,39 @@ try{
         $stmt->bindParam(9, $employee_email);
         $stmt->bindParam(10, $employee_username);
         $stmt->bindParam(11, $hashed_password);
-
         if ($stmt->execute()) {
+            // Move the script tags to the end of the HTML body
+            echo '<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>';
+            echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+            echo '</body>'; // Move the closing body tag here
             echo '<script>';
-            echo 'var eID = "' . $_SESSION["session_id"] . '";';
-            echo "Swal.fire({
-                    icon: 'success',
-                    title: 'Registered Successfully!',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    window.location.href='../Admin_Side/EmployeeProfiles.php';
-                    $.ajax({
-                        type: 'POST',
-                        url: '../backend/log_audit.php',
-                        data: {
-                            userId: eID,
-                            action: 'Admin added employee',
-                            details: 'Admin added employee'.$('#id').val()
-                        },
-                        success: function(response) {
-                            // Handle the response if needed
-                            console.log('logged', response);
-                        }
-                    });
-                });";
+            echo '$(document).ready(function() {';
+            echo "    Swal.fire({
+                            icon: 'success',
+                            title: 'Registered Successfully!',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            window.location.href='../Admin_Side/EmployeeProfiles.php';
+                            
+                            $.ajax({
+                                type: 'POST',
+                                url: '../backend/log_audit.php',
+                                data: {
+                                    userId: eID,
+                                    action: 'Admin added employee',
+                                    details: 'Admin added employee'
+                                },
+                                success: function(response) {
+                                    // Handle the response if needed
+                                    console.log('logged', response);
+                                }
+                            });
+                        });";
+            echo '});';
             echo '</script>';
             exit;
         }
+        
         
     }
 }

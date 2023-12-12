@@ -94,7 +94,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <a href="main.php" class="list-link current">Home</a>
                     </li>
                     <li class="list-item hov">
-                        <a href="main.php" class="list-link current1">Back</a>
+                        <a onclick="goBack()" class="list-link current1">Back</a>
                     </li>
                 </ul>
                 <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
@@ -145,6 +145,9 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- Script     -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
+                           function goBack() {
+            window.history.back();
+        }
             var eID = "<?php echo $_SESSION['session_id']; ?>";
             $("#edit_emp").on("submit", function(event) {
                 event.preventDefault();

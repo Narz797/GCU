@@ -212,8 +212,18 @@ include '../../backend/log_audit2.php';
     var tid;
     var eID = "<?php echo $_SESSION['session_id'];?>";
     var frm = "<?php echo $form=$_SESSION['form_type'];?>";
-        function logout() {
-            $.ajax({
+    function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
             data: {
@@ -227,6 +237,9 @@ include '../../backend/log_audit2.php';
             }
           });
     window.location.href = '../../home';
+
+}
+  });
 }
 function archive() {
     $.ajax({

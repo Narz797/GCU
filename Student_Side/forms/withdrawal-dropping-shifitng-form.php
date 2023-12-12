@@ -283,8 +283,8 @@ select:focus {
             <label for="textfield4">Shifting from:</label>
             <div class="autocomplete-container">
                 <!-- <input type="text" name="textfield4" id="textfield4" onkeyup="showSuggestions('textfield4', 'autocomplete-suggestions1')" autocomplete="off"> -->
-                <select name="courseSelect" id="courseSelect" style="height:auto;" onchange="showSuggestions('courseSelect', 'autocomplete-suggestions1')" autcomplete="off" required>
-                <option disabled selected>Select Course</option>
+                <select name="courseSelect" id="courseSelect" style="height:auto;"  autcomplete="off" >
+                <option value="" disabled selected>Select Course</option>
                                 <option value='BSAB'>Bachelor of Science in Agribusiness</option>
                                 <option value='BSA'>Bachelor of Science in Agriculture</option>
                                 <option value='BA Comm'>Bachelor of Arts in Communication</option>
@@ -328,8 +328,8 @@ select:focus {
             </div>
             <label for="textfield5">to:</label>
             <div class="autocomplete-container">
-                <select type="text" name="textfield5" id="textfield5" style="height:auto;" onkeyup="showSuggestions('textfield5', 'autocomplete-suggestions2')" autocomplete="off" required>
-                <option disabled selected>Select Course</option>
+                <select type="text" name="textfield5" id="textfield5" style="height:auto;" autocomplete="off" >
+                <option value="" disabled selected>Select Course</option>
                                 <option value='BSAB'>Bachelor of Science in Agribusiness</option>
                                 <option value='BSA'>Bachelor of Science in Agriculture</option>
                                 <option value='BA Comm'>Bachelor of Arts in Communication</option>
@@ -407,7 +407,22 @@ select:focus {
 });
 
 
+$("#action").change(function () {
+    var selectedValue = $(this).val();
+    var courseSelect = $("#courseSelect");
+    var courseSelect2 = $("#textfield5");
 
+    // Check if the selected value is "Shifting"
+    if (selectedValue === "Shifting") {
+        // Set "required" attribute for the elements
+        courseSelect.prop("required", true);
+        courseSelect2.prop("required", true);
+    } else {
+        // Remove "required" attribute for the elements
+        courseSelect.prop("required", false);
+        courseSelect2.prop("required", false);
+    }
+});
 $("#form_transact").on("submit", function (event) {
   event.preventDefault();
   var student_id = <?php echo $_SESSION['session_id']?>;
@@ -415,21 +430,7 @@ $("#form_transact").on("submit", function (event) {
   // var course_frm = dropdown.value === 'Shifting' ? courseSelect.value : null;
   // var course_to = dropdown.value === 'Shifting' ? textfield5.value : null;
  
-  $("#action").change(function () {
-      var selectedValue = $(this).val();
-      var courseSelect = document.getElementById("courseSelect");
-      var courseSelect2 = document.getElementById("textfield5");
-      // Check if the selected value is "Absent"
-      if (selectedValue === "Shifting") {
-        // Set "required" attribute for all radio buttons
-        courseSelect.setAttribute("required", "required");
-        courseSelect2.setAttribute("required", "required");
-      } else {
-        // Remove "required" attribute for all radio buttons
-        courseSelect.removeAttribute("required");
-        courseSelect2.removeAttribute("required");
-      }
-    });
+
 
   Swal.fire({
       title: "Are you sure?",

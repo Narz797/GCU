@@ -356,7 +356,11 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             </table>
                         </div>
 
-
+                        <!-- <div class="buttons"> -->
+                <button class="backBtn" onclick="goback()">
+                    <i class="uil uil-navigator"></i>
+                    <span class="btnText">Back</span>
+                </button>
                         <button class="nextBtn" id="next" type="submit" onclick="getTableValues()">
                             <span class="btnText">Next</span>
                             <i class="uil uil-navigator"></i>
@@ -379,6 +383,9 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
     </script> -->
 
     <script>
+        function goback(){
+            window.location.href = "../../home";
+        }
         function capitalizeInput() {
             var input = document.getElementById('section');
             input.value = input.value.toUpperCase();

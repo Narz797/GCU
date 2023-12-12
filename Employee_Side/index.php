@@ -129,7 +129,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
                 <a href="FAQ.php" class="card-body-link">
                 <i class="ri-question-mark"></i>FAQ
                 </a>
-                <a href="../home" class="card-body-link">
+                <a onclick="logout()" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
                 </a>
             </div>
@@ -190,6 +190,36 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     var tt;
     var tid;
     var teachid;
+    var eID = "<?php echo $_SESSION['session_id'];?>";
+    function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+    window.location.href = '../home';
+
+}
+  });
+}
 
             function archive() {
     window.location.href = '';

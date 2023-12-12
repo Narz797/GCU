@@ -189,7 +189,7 @@ logAudit($id, 'access_profile', $id .' has accessed the profile page');
 <script src="../backend/jsPDF-1.3.2/dist/jspdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Script     -->
 <script>
@@ -275,6 +275,16 @@ function clearSearchResults2() {
 }
 
     function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
         $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
@@ -289,6 +299,9 @@ function clearSearchResults2() {
             }
           });
     window.location.href = '../home';
+
+}
+  });
 }
 
 function archive() {

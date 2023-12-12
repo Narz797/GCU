@@ -153,7 +153,7 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
                         <section class="table-header">
                             <h1>List of Students</h1>
                             <div class="input-group">
-                                <input type="search" id="searchInput" onkeyup="searchTable()" placeholder="Search Data... ">
+                            <input type="search" id="searchInput" onkeyup="searchTable()" onblur="clearSearchResults()" onsearch="clearSearchResults2()" placeholder="Search Data...">
 
                             </div>
                             <div class="export-file">
@@ -204,30 +204,94 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
     <!-- Script     -->
     <script>
         var eID = "<?php echo $_SESSION['session_id'];?>";
-        function searchTable() { //searches in all column
-            var input, filter, table, tr, td, i, j, txtValue;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("dynamicTable");
-            tr = table.getElementsByTagName("tr");
+        function searchTable() {
+    var input, filter, table, tr, th, td, i, j, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("dynamicTable");
+    tr = table.getElementsByTagName("tr");
 
-            for (i = 0; i < tr.length; i++) {
-                tr[i].style.display = "none"; // Hide all rows initially
-                for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
-                    td = tr[i].getElementsByTagName("td")[j];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = ""; // Display the row if any column matches the search criteria
-                            break; // Break out of the inner loop to avoid hiding the row again
-                        }
+    // Hide all rows initially, excluding header rows
+    for (i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "none";
+        }
+    }
+
+    // Display the header row ("th") if the search term is found
+    th = table.getElementsByTagName("th");
+    for (i = 0; i < th.length; i++) {
+        txtValue = th[i].textContent || th[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            for (j = 0; j < tr.length; j++) {
+                tr[j].style.display = "";
+            }
+            break;
+        }
+    }
+
+    // Display data rows if any column matches the search criteria
+    for (i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            for (j = 0; j < tr[i].getElementsByTagName("td").length; j++) {
+                td = tr[i].getElementsByTagName("td")[j];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
                     }
                 }
             }
         }
+    }
+}
+function clearSearchResults() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
+    var input = document.getElementById("searchInput");
 
-        function logout() {
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+    input.value = "";
+    // Check if the input value is empty (either on blur or "x" button click)
+    if (input.value === "") {
+        // Clear the search input value
+        input.value = "";
+    }
+}
+function clearSearchResults2() {
+    var table = document.getElementById("dynamicTable");
+    var tr = table.getElementsByTagName("tr");
 
+    // Show all rows, excluding header rows
+    for (var i = 0; i < tr.length; i++) {
+        if (tr[i].getElementsByTagName("th").length === 0) {
+            // Exclude header rows
+            tr[i].style.display = "";
+        }
+    }
+}
+
+
+function logout() {
+            Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
             $.ajax({
             type: 'POST',
             url: '../backend/log_audit.php',
@@ -242,6 +306,8 @@ logAudit($id, 'access_student profile',  'Admin has accessed the student profile
             }
           });
             window.location.href = '../home';
+        }
+  });
         }
 
         function archive() {

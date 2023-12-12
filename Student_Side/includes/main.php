@@ -26,7 +26,7 @@
 
           <div class="containerA" style="margin-right:3%; background-color:black;">
             <div class="account-icon">
-              <li class="dropdown"><a href="#"><span> <img src="assets/img/dp.png" alt="" height="40px"></span> <i
+              <li class="dropdown"><a ><span> <img src="assets/img/dp.png" alt="" height="40px"></span> <i
                     class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul style="background-color: transparent;">
                   <li><a href="Stud_registration/profile.php">PROFILE</a></li>

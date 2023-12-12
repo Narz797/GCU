@@ -484,20 +484,30 @@ $student = $_SESSION['stud_user_id'];
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Script -->
     <script>
-
+var eID2 = "<?php echo $_SESSION['session_id'];?>";
 var trans_id
 var stud_name
 var app_id
 var tID
 var eID = '<?php echo $id;?>';
-            function logout() {
-                $.ajax({
+function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
             data: {
-              userId: eID,
+              userId: eID2,
               action: 'logged out',
-              details: eID + ' Clicked log out'
+              details: eID2+ ' Clicked log out'
             },
             success: function(response) {
               // Handle the response if needed
@@ -505,6 +515,9 @@ var eID = '<?php echo $id;?>';
             }
           });
     window.location.href = '../../home';
+
+}
+  });
 }
 function faq(){
         window.location.href="../FAQ.php"
