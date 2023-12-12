@@ -55,11 +55,11 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                     <br>
                     <div class="fields">
                         <div class="input-field">
-                            <label for="idno">ID Number</label>
+                            <label for="idno">ID Number*</label>
                             <input type="text" name='idno' id="idno" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                         </div>
                         <div class="input-field">
-                            <label for='course'>Course</label>
+                            <label for='course'>Course*</label>
                             <select name='course' id="cs">
                                 <option disabled selected>Select Course</option>
                                 <option value='BSAB'>Bachelor of Science in Agribusiness</option>
@@ -100,7 +100,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                         </div>
 
                         <div class="input-field">
-                            <label>Year Level</label>
+                            <label>Year Level*</label>
                             <select id="cs" name='year_level'>
                                 <option disabled selected>Select</option>
                                 <option value='1'>1st</option>
@@ -113,21 +113,21 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                         </div>
 
                         <div class="input-field">
-                            <label>Last Name</label>
+                            <label>Last Name*</label>
                             <input type="text" id="lastname" name="lastname" required>
                         </div>
 
                         <div class="input-field">
-                            <label>First Name</label>
+                            <label>First Name*</label>
                             <input type="text" id="firstname" name="firstname" required>
                         </div>
 
                         <div class="input-field">
-                            <label>Middle Name</label>
+                            <label>Middle Name*</label>
                             <input type="text" id="middlename" name="middlename" required>
                         </div>
                         <div class="input-field">
-                            <label>Contact Number</label>
+                            <label>Contact Number*</label>
                             <input type="text" id="cn" name="cn" value="09" oninput="formatPhoneNumber(this);" placeholder="Please enter only numbers." required>
                         </div>
                         <!-- <div class="input-field">
@@ -135,7 +135,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <input type="text" id="email" name="email" required>
                         </div> -->
                         <div class="input-field">
-                            <label>Year Enrolled</label>
+                            <label>Year Enrolled*</label>
                             <!-- <input type="text" class="form-control" id="year_enroll" name="year_enroll" required/> -->
 
                             <!-- <input type="text" class="form-control" name="datepicker" id="datepicker"  required/> -->
@@ -146,11 +146,11 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <input type="data" id="section" name="section" required>
                         </div> -->
                         <div class="input-field">
-                            <label for="section">Section</label>
+                            <label for="section">Section*</label>
                             <input type="text" id="section" name="section" oninput="capitalizeInput()" required>
                         </div>
                         <div class="input-field">
-                            <label>Civil Status</label>
+                            <label>Civil Status*</label>
                             <select required id="civs" name='civil_status'>
                                 <option disabled selected>Select</option>
                                 <option>Single</option>
@@ -160,7 +160,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             </select>
                         </div>
                         <div class="input-field">
-                            <label>Sex</label>
+                            <label>Sex*</label>
                             <select required id="gender" name='gender'>
                                 <option disabled selected>Select</option>
                                 <option>Male</option>
@@ -169,15 +169,15 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                         </div>
 
                         <div class="input-field">
-                            <label>Date of Birth</label>
+                            <label>Date of Birth*</label>
                             <input type="date" id="dob" name="dob" required>
                         </div>
                         <div class="input-field">
-                            <label>Birth Place</label>
+                            <label>Birth Place*</label>
                             <input type="text" id="bp" name="bp" required>
                         </div>
                         <div class="input-field">
-                            <label>Nationality</label>
+                            <label>Nationality*</label>
                             <input type="text" id="nationality" name="nationality" required>
                         </div>
 
@@ -197,7 +197,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 
                             <p><b>Whom do you live?</b></p>
                             <br>
-                            <div class="radio-group" required>
+                            <div class="radio-group" >
                                 <label>
                                     <input type="radio" id="yesRadio" name="whom" value="parents" onclick="showParentsInput();" required>
                                     Parents

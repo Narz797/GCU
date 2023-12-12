@@ -50,7 +50,7 @@
  
 <section class="banner">
   
-  <div style="background-image: url('assets/img/bg.png'); background-repeat: no-repeat; background-size: cover; display:flex; justify-content:center; padding-top:5%; padding-bottom:2%;">
+  <div style="background-image: url('assets/img/bg.png'); background-repeat: no-repeat; background-size: cover; display:flex; justify-content:center; padding-top:2%; padding-bottom:2%;">
     <br>
     <img class = "banner_img" src="assets/img/bsu.png" class="bsu" alt="" >
 

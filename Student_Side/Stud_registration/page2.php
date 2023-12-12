@@ -753,11 +753,11 @@ if (isset($_POST['total_number'])) {
         <form action="page3.php" method="POST" id="registrationForm" enctype="multipart/form-data">
             <div class="fields">
                 <div class="input-field1">
-                    <label>Name of School:</label>
+                    <label>Name of School:*</label>
                     <input style="width:100%; " type="text" id="lang" name="senschool" required>
                 </div>
                 <div class="input-field1">
-                    <label>Year Graduated: </label>
+                    <label>Year Graduated:* </label>
                     <input  style="width:100%;" type="text" class="form-control" name="senyear" id="senyear"  required autocomplete="off"/>
 
                     <!-- <input type="text" id="address" name="datepicker" id="datepicker" required> -->
@@ -775,11 +775,11 @@ if (isset($_POST['total_number'])) {
 
             <div class="fields" >
                 <div class="input-field1">
-                    <label>Name of School:</label>
+                    <label>Name of School:*</label>
                     <input style="width:100%; " type="text" id="lang" name="junschool" required>
                 </div>
                 <div class="input-field1">
-                    <label>Year Graduated: </label>
+                    <label>Year Graduated:* </label>
                     <!-- <input style="width:100%;" type="text" id="address" name="junyear" required> -->
                     <input  style="width:100%;" type="text" class="form-control" name="junyear" id="junyear"  required autocomplete="off"/>
 
@@ -797,11 +797,11 @@ if (isset($_POST['total_number'])) {
 
             <div class="fields">
                 <div class="input-field1">
-                    <label>Name of School:</label>
+                    <label>Name of School:*</label>
                     <input style="width:100%; " type="text" id="lang" name="elemname" required>
                 </div>
                 <div class="input-field1">
-                    <label>Year Graduated: </label>
+                    <label>Year Graduated:* </label>
                     <!-- <input type="text" id="address" name="elemyear" required> -->
                     <input  style="width:100%;" type="text" class="form-control" name="elemyear" id="elemyear"  required autocomplete="off"/>
 

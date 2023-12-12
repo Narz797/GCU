@@ -1453,7 +1453,7 @@ $siblings = $siblings->fetchAll();
   }
 
   .mt--7 {
-    margin-top: -6rem !important;
+    /* margin-top: -6rem !important; */
   }
 
   .pt-0 {
@@ -2316,130 +2316,57 @@ $siblings = $siblings->fetchAll();
     border-radius: 10px;
     /* Set your desired border radius */
   }
-</style>
 
+  .independent-title {
+    font-size: var(--font-size-medium);
+    color: var(--light-color);
+    padding: .5rem;
+    background-color: #008374;
+}
+.independent-title h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+</style>
+<?php include 'includes/stud_prof_head.php'; ?>
 <body>
   <!-- <input id="topbar" class="topbar d-flex align-items-center" style="background-color:#20B2AA; height: 50px; "><i class="fa fa-sign-out" style="font-size:48px;color:black; margin-left:1650px" ></i> -->
   <!--   -->
-
-  <div class="main-content">
-    <!-- Top navbar -->
-    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
-      <div class="container-fluid">
-        <!-- Brand -->
-        <!-- <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">User profile</a> -->
-        <!-- Form -->
-        <!-- <form id="logoutForm" class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-          <div class="form-group mb-0">
-            <a class="btn btn-outline-light" style="background-color:white;" onclick="logout()">Back</a>
-          </div>
-        </form> -->
-
-        <!-- User -->
-        <ul class="navbar-nav align-items-center d-none d-md-flex">
-          <li class="nav-item dropdown">
-            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <div class="media align-items-center">
-                <!-- <span class="avatar avatar-sm rounded-circle"> -->
-                <!-- <i class="fa fa-sign-out" style="font-size:48px;color:white; margin-left:1600px" ></i> -->
-                </span>
-                <!-- <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
-                </div> -->
-              </div>
-            </a>
-            <!-- <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-              <div class=" dropdown-header noti-title">
-                <h6 class="text-overflow m-0">Welcome!</h6>
-              </div>
-              <a href="../examples/profile.html" class="dropdown-item">
-                <i class="ni ni-single-02"></i>
-                <span>My profile</span>
-              </a>
-              <a href="../examples/profile.html" class="dropdown-item">
-                <i class="ni ni-settings-gear-65"></i>
-                <span>Settings</span>
-              </a>
-              <a href="../examples/profile.html" class="dropdown-item">
-                <i class="ni ni-calendar-grid-58"></i>
-                <span>Activity</span>
-              </a>
-              <a href="../examples/profile.html" class="dropdown-item">
-                <i class="ni ni-support-16"></i>
-                <span>Support</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#!" class="dropdown-item">
-                <i class="ni ni-user-run"></i>
-                <span>Logout</span>
-              </a>
-            </div> -->
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 400px; background-image: url(../assets/img/bsubg.jpg); background-size: cover; background-position: center top;">
-      <!-- Mask -->
-      <span class="mask bg-gradient-default opacity-8"></span>
-      <!-- Header container -->
-      <!-- <div class="container-fluid d-flex align-items-center">
-        <div class="row">
-          <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello</h1>
-            <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
-            <a href="#!" class="btn btn-info">Edit profile</a>
-          </div>
-        </div>
-      </div> -->
+  <div class="independent-title">
+        <h2>MY PROFILE</h2>
     </div>
+
+ 
     <!-- Page content -->
     <div class="container-fluid mt--7">
       <div class="row">
         <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
           <div class="card card-profile shadow">
-            <div class="row justify-content-center">
-              <div class="col-lg-3 order-lg-2">
-                <div class="card-profile-image">
-                  <a href="#">
-                    <img src="../assets/img/GCU_logo.png" alt="" width="450px" height="180px" class="rounded-circle">
-                    <!-- <img class="image"src="../assets/img/ab.jpg" alt="Logo" class="logo" style="height: 100%; width: 20%; border-radius: 50%;"> -->
-
-                  </a>
+              <!-- <div class="row justify-content-center">
+                <div class="col-lg-3 order-lg-2">
+                  <div class="card-profile-image">
+                    <a href="#">
+                      <img src="../assets/img/GCU_logo.png" alt="" width="450px" height="180px" class="rounded-circle">
+                    
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+              </div> -->
+            <!-- <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               <div class="d-flex justify-content-between">
               <a href="#" ></a>
-                <!-- <a href="#" class="btn btn-sm btn-info mr-4">Connect</a> -->
+                
                 <a href="#" class="btn btn-sm btn-default float-right" onclick="logout()">Back</a>
               </div>
-            </div>
+            </div> -->
 
             <div class="card-body pt-0 pt-md-4">
-              <div class="row">
-                <div class="col">
-                  <!-- <div class="card-profile-stats d-flex justify-content-center mt-md-5">
-                    
-                   
-                   
-                   
-                  </div> -->
-                </div>
-              </div>
-              <br>
+         
 
               <div class="text-center">
-                <h3>
-                  WELCOME TO
-                </h3>
-
-
-                <div>
-                  <i class="ni education_hat mr-2"></i>Benguet State University-Guidance and Counseling Unit
-                </div>
-                <hr style=" border-width: 3px; background-color:black;">
+        
+               
                 <!-- <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p> -->
                 <?php
                 // $filePath_jpg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
@@ -2527,21 +2454,9 @@ $siblings = $siblings->fetchAll();
 
         <div class="col-xl-8 order-xl-1">
           <div class="card bg-secondary shadow">
-            <div class="card-header bg-white border-0">
-              <div class="row align-items-center">
-                <div class="col-8">
-                  <h3 class="mb-0">MY ACCOUNT</h3>
-                </div>
-                <div class="col-4 text-right">
-                  <button class="btn btn-sm btn-primary" onclick="edit()">
-                    <i class="fa fa-pencil"></i> Edit Account
-                  </button>
-                </div>
-
-              </div>
-            </div>
+   
             <div class="card-body" style="background-color:lightgray;">
-              <form id ="myForm">
+              <form id ="myForm" style="width: 100%;">
 
                 <h6 class="heading-small text-muted mb-4" style="color:black; font-weight:bold;">User Information </h6>
                 <div class="pl-lg-4">
@@ -3260,7 +3175,7 @@ $siblings = $siblings->fetchAll();
               <span id="MAM_goal"><?php echo $oth_info[0]['goal'] ?>.</span>
 
             </div>
-            <div class="fixed-buttons">
+            <!-- <div class="fixed-buttons">
             <div class="col-4 text-right">
                   <a class="btn btn-sm btn-primary" id="Update" style="color: white;" onclick="verify()">
                     <i class="fa fa-pencil"></i> Update
@@ -3272,7 +3187,7 @@ $siblings = $siblings->fetchAll();
                     <i class="fa fa-pencil"></i> Cancel
                   </a>
                 </div>
-                                                            </div>
+                                                            </div> -->
             <!-- <button id="Update" onclick="upd()">Update</button> -->
 
             </form>

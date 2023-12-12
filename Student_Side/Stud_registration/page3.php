@@ -726,7 +726,7 @@ $_SESSION['origin'] = 'Student';
                                     the following items:</i></b></p>
                         <br>
                         <p><b>
-                                <p>Are you a member of an Indigenous group?</p>
+                                <p>Are you a member of an Indigenous group?*</p>
                                 <div class="radio-group">
                                     <label>
                                         <input type="radio" id="yesRadio" name="membership" value="yes" required onclick="showSpecifyInput()">
@@ -739,12 +739,12 @@ $_SESSION['origin'] = 'Student';
                                 </div>
                                 <div class="underline-input" id="indigenousInput" style="display:none;">
                                     <br>
-                                    <label for="indigenousInfo">If yes, please specify:</label>
+                                    <label for="indigenousInfo">If yes, please specify:*</label>
                                     <input type="text" id="indigenousInfo" name="indigenousInfo">
                                 </div>
                                 <br>
                                 <p><b>
-                                        Are you a person with a disability (PWD)?</b>
+                                        Are you a person with a disability (PWD)?*</b>
                                 <div class="radio-group">
                                     <label>
                                         <input type="radio" id="yesRadio2" name="pwd" value="yes" />
@@ -758,7 +758,7 @@ $_SESSION['origin'] = 'Student';
                         </p>
                         <br>
                         <p><b>
-                                Are you a student parent?</b>
+                                Are you a student parent?+</b>
                         <div class="radio-group">
                             <label>
                                 <input type="radio" id="yesRadio3" name="studpar" value="yes" />
@@ -773,7 +773,7 @@ $_SESSION['origin'] = 'Student';
                         <br>
 
                         <legend>
-                            <h3><b>Sources of Financial Support</b></h3>
+                            <h3><b>Sources of Financial Support*</b></h3>
                         </legend>
                         <div class="checkbox-group">
                             <label class="container1">Parents
@@ -814,7 +814,7 @@ $_SESSION['origin'] = 'Student';
                         <!-- Your submit button and other form sections here -->
                         <fieldset>
                             <legend>
-                                <h3><b>Marital Status of Parents</b></h3>
+                                <h3><b>Marital Status of Parents*</b></h3>
                             </legend>
                             <!-- <legend><b>Marital Status of Parents</b></legend> -->
                             <div class="fieldset-container">
