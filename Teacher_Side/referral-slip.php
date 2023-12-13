@@ -118,15 +118,15 @@ $_SESSION['transact_type'] = 'Referral';
 
    <form id="form_transact"  name="form2" method="post">
 
-    <p> <label for="Sid">Student ID:</label> </p> 
+    <p> <label for="Sid">* Student ID:</label> </p> 
     <p> <input class="form-control1" type="number" id="Sid" name="Sid" required onblur="search()"> </p>
-    <p> <label for="fname">Student's First Name:</label> </p>
+    <p> <label for="fname">* Student's First Name:</label> </p>
     <p> <input class="form-control1" type="text"  id="fname" name="fname" required> </p>
     <p> <label for="mname">Student's Middle Name:</label> </p>
     <p> <input class="form-control1" type="text" id="mname" name="mname" > </p>
-    <p> <label for="lname">Student's Last Name:</label> </p>
+    <p> <label for="lname">* Student's Last Name:</label> </p>
     <p> <input class="form-control1" type="text" id="lname" name="lname" required> </p>
-    <p> <label for="yl">Year/Level:</label> </p>
+    <p> <label for="yl">* Year/Level:</label> </p>
     <p> <input class="form-control1" type="text" id="yl" name="yl" required> </p>
     <p> <label for="contact">Student's Contact Number:</label> </p>
     <p>  <input class="form-control1" type="number" id="contact" name="contact" oninput="limitTo11Digits(event)"> </p>
@@ -139,9 +139,9 @@ $_SESSION['transact_type'] = 'Referral';
       </select>
     </div>
     </p>
-    <p> <label for="crse">Course:</label>
+    <p> <label for="crse">* Course:</label>
      <div class="semester-year-container">
-     <select type="text" name="textfield5" id="crse" autocomplete="off">
+     <select type="text" name="textfield5" id="crse" required>
                       <option disabled selected>Select Course</option>
                                       <option value='BSAB'>Bachelor of Science in Agribusiness</option>
                                       <option value='BSA'>Bachelor of Science in Agriculture</option>
@@ -180,7 +180,7 @@ $_SESSION['transact_type'] = 'Referral';
       </select>
     </div>
     </p>
-    <p> <label>Reason:</label>
+    <p> <label>* Reason:</label>
      <div class="semester-year-container">
      <select required id="reason">
         <option disabled selected>Select reason for referral</option>
@@ -192,7 +192,7 @@ $_SESSION['transact_type'] = 'Referral';
     </div>
     </p>
     <div class="date-range-container" id="dates">
-                <label for="date">Days absent/tardy:</label>
+                <label for="date">* Days absent/tardy:</label>
                 <!-- id = date -->
                 <div class=" date form-group" id="datepicker">
                 <span class="input-group-addon" style="color:black; font-size:x-small;"><i class="glyphicon glyphicon-calendar"></i><span class="count"> </span></span>

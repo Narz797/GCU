@@ -78,9 +78,6 @@ button{
     border-radius: .4rem;
     cursor: pointer;}
 
- i{
-    font-size: var(--font-size-large);
-    line-height: 0;}
 
 /* Reusable classes */
 .container{
@@ -125,13 +122,15 @@ button{
     flex-direction: column;
     gap: var(--gap-small);} 
 .list-link{
+    color: black;
     display: inline-block;
     font-size: var(--font-size-small);
     padding: 1rem 1.5rem;}
 .current{
-  color: white;
+  color: black;
     background-color: var(--accent-color);}
 .current:hover{
+    background-color: var(--title-color);
     color: var(--dark-color);}
 .menu-toggle-close{
     background-color: var(--accent-color);
@@ -568,21 +567,32 @@ tbody td.active {
     background-color: var(--hover-color);}
 
 
-/* Footer */
-.footer{
-  background-color: var(--accent-color);
-  padding: 20px 0;
-  color: white;}
-.copyright {
-  text-align: center;}
-.footer .credits {
-  padding-top: 4px;
-  text-align: center;
-  font-size: 12px;
-  font-style: var(--font-primary);}
-.footer .credits a:hover {
-  color: skyblue;}
-
+    .amen{
+        display: flex;
+        margin-right: 4.2rem;
+        margin-left: 4.2rem;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .btnText1:hover {
+        background-color: #265df2;
+    }
+    .btnText1 {
+        font-size: 14px;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        max-width: 200px;
+        width: 100%;
+        border: none;
+        outline: none;
+        color: #fff;
+        border-radius: 5px;
+        margin: 25px 0;
+        background-color: #4070f4;
+        transition: all 0.3s linear;
+        cursor: pointer;
+    }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
@@ -625,7 +635,7 @@ tbody td.active {
     .current1:hover{
         color: black;} 
     .current{
-      color: white;
+      color: black;
         background-color: var(--accent-color);}
     .current:hover{
         background-color: var(--title-color);} 
