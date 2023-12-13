@@ -2185,14 +2185,10 @@
     /* Set your desired border radius */
   }
 
-  .independent-title {
-    font-size: var(--font-size-medium);
-    color: var(--light-color);
-    padding: .5rem;
-    background-color: #008374;
+.italics{
+  font-size: 12px;
+  line-height: 3px;
 }
-.independent-title h2 {
-    font-size: 25px;
-    font-weight: bold;
-    margin-left: 40px;
-}
+
+
+

@@ -122,59 +122,63 @@ $siblings = $siblings->fetchAll();
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <!-- Stylesheet -->
-
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="../assets/img/GCU_logo.png" rel="icon">
-  <link rel="stylesheet" href="../assets/contact.css">
+  <link rel="stylesheet" href="assets/css/editprofile.css">
   <link rel="stylesheet" href="assets/stud_prof.css">
 
-      <!-- Fontawesome CDN Link -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-   
-     
-         <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    
-     <!-- Remix icons -->
-    
+  <!-- Fontawesome CDN Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<style>
-  
-</style>
-<?php //include 'includes/stud_prof_head.php'; ?>
-<header class="header">
+ <!-- Header -->
+ <header class="header">
     <nav class="nav"> 
         <div class="logo">
-        <img src="assets/img/GCU_logo.png" alt="">
+        <img src="assets/images/GCU_logo.png" alt="">
         </div>
         <div class="nav-mobile">
-            <div class="list">
-                <div class="list-item">
-                  <button onclick="goback()" class="list-link current">BACK</button>
-                  <button onclick="edit()" class="list-link current">EDIT ACCOUNT</button>
-                  <button onclick="verify()" class="list-link current" id="Update">UPDATE</button>
-                  <button onclick="cancel()" class="list-link current" id="Cancel">CANCEL</button>
-                </div>
-            </div>
+            <ul class="list">
+                <li class="list-item">
+                    <a href="./index.php" class="list-link current">Home</a>
+                </li>
+                <li class="list-item hov">
+                    <a href="./trans.php" class="list-link current1">Request a Form</a>
+                </li>
+                <li class="list-item hov">
+                    <a href="./appointment.php" class="list-link current1">Schedule an Appointment</a>
+                </li>
+            </ul>
+            <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
+                <i class="ri-close-line"></i>
+            </button> 
         </div>
         <div class="align-right">
-            <!-- <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center" onclick="goBack()" class="list-link current">
-            <i class="ri-arrow-left-circle-line"></i>
-            </button> -->
+          <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
+                <i class="ri-function-line"></i>
+            </button>
+            <button class="icon-btn place-items-center" onclick="edit()">
+              <i class="ri-edit-2-fill"></i>
+            </button>
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
-            
+            <button class="icon-btn place-items-center" onclick="faq()">
+                <i class="ri-question-mark"></i>
+            </button>
         </div>
     </nav>
 </header>
+<?php include '../includes/banner.php' ?>
+
+
 <body>
   <!-- <input id="topbar" class="topbar d-flex align-items-center" style="background-color:#20B2AA; height: 50px; "><i class="fa fa-sign-out" style="font-size:48px;color:black; margin-left:1650px" ></i> -->
   <!--   -->
-  <div class="independent-title">
+  <div class="independent-title1">
         <h2>MY PROFILE</h2>
     </div>
 
@@ -848,13 +852,10 @@ $siblings = $siblings->fetchAll();
 
                 <hr class="my-4">
                 <!-- Description -->
-                <p style="color:black; font-weight:bold;"><i>In view of the Indigenous People's Act (RA 8371), Magna Carta for
+                <p style="color:black; font-weight:bold;"><b>In view of the Indigenous People's Act (RA 8371), Magna Carta for
                     Persons with Disability (RA 7277, as amended by RA 9442), the (c) Solo Parents
                     Welfare Act of 2000 (RA 8972), and CHED Memorandum Order 9 s.2013, please answer
-                    the following items:</i></p>
-
-
-                 
+                    the following items:</b></p>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
@@ -1032,6 +1033,11 @@ $siblings = $siblings->fetchAll();
             <!-- <button id="Update" onclick="upd()">Update</button> -->
 
             </form>
+
+
+            <button onclick="verify()" class="list-link current" id="Update">UPDATE</button>
+                  <button onclick="cancel()" class="list-link current" id="Cancel">CANCEL</button>
+
             <div id="modal" class="modal">
             <div class="modal_content">
                 <div class="body">

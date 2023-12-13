@@ -24,7 +24,12 @@ include '../../backend/log_audit2.php';
 $_SESSION['transact_type'] = 'ca'; //asign value to transact_type
 logAudit($_SESSION['session_id'], 'access_class admisison form', $_SESSION['session_id'] .' has accessed the class admission page');
 ?>
+
+
+
 <html>
+
+
 <head>
   <meta charset="utf-8">
   <title>Admission Slip</title>
@@ -477,7 +482,7 @@ select:focus {
           <div class="button">
             <p>
               <!-- Change type from submit to button, and use onclick to handle the back button -->
-              <button type="button"  class="btn" onclick="window.location.href='../student-home'">Back</button>
+              <button type="button" class="btn btn-primary" onclick="window.history.back();">Back</button>
             </p>
           </div>
          
@@ -777,7 +782,7 @@ $("#form_transact").on("submit", function (event) {
 }).then((result) => {
     if (result.isConfirmed) {
         // Redirect to the specified URL
-        window.location.href = "../student-home";
+        window.location.href = "../trans.php";
     }
 });
 

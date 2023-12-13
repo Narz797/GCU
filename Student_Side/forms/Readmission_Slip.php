@@ -146,7 +146,7 @@ logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_
        <div class="button">
          <p>
            <!-- Change type from submit to button, and use onclick to handle the back button -->
-           <button type="button" class="btn btn-primary" onclick="window.location.href='../student-home'">Back</button>
+           <button type="button" class="btn btn-primary" onclick="window.history.back();">Back</button>
          </p>
        </div>
        <div class="button">
@@ -319,7 +319,7 @@ logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_
 }).then((result) => {
     if (result.isConfirmed) {
         // Redirect to the specified URL
-        window.location.href = "../student-home";
+        window.location.href = "../trans.php";
     }
 });
             }

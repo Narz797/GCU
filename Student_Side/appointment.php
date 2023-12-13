@@ -26,28 +26,18 @@ include '../backend/log_audit2.php';
 $id = $_SESSION['session_id'];
 logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
 echo "<script>console.log('$id');</script>";
-
-include 'includes/main2.php';
  ?>
+
 <head>
     <!-- icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-          <!-- Vendor CSS Files -->
-  <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/apmt.css">
-    <!-- <link rel="stylesheet" href="./assets/css/forms.css"> -->
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../Employee_Side/assets/css/slips2.css">
 
-            <!-- pagination -->
+    <!-- pagination -->
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 
@@ -58,6 +48,7 @@ include 'includes/main2.php';
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
   
 </head>
+
 <style>
   /* Add hover effect to DataTables pagination buttons */
 #dynamicTable_paginate .paginate_button:hover {
@@ -85,12 +76,52 @@ include 'includes/main2.php';
 
 
     </style>
+
+    
   <body>
        
 </div>
-<!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section>  -->
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav"> 
+        <div class="logo">
+        <img src="assets/images/GCU_logo.png" alt="">
+        </div>
+        <div class="nav-mobile">
+            <ul class="list">
+                <li class="list-item">
+                    <a href="./index.php" class="list-link current">Home</a>
+                </li>
+                <li class="list-item hov">
+                    <a href="./trans.php" class="list-link current1">Request a Form</a>
+                </li>
+                <li class="list-item hov">
+                    <a href="./student-profile2.php" class="list-link current1">Edit your Profiles</a>
+                </li>
+            </ul>
+            <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <div class="align-right">
+            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
+                <i class="ri-function-line"></i>
+            </button>
+            <button class="icon-btn place-items-center" onclick="logout()">
+                <i class="ri-user-3-line"></i>
+            </button>
+                <button class="icon-btn place-items-center" onclick="faq()">
+                <i class="ri-question-mark"></i>
+                </button>
+        </div>
+    </nav>
+</header>
+
+<?php include '../includes/banner.php' ?>
+
+
 <section id="topbar" class="topbar d-flex align-items-center" style="background-color:primary; height: 80px; color: black; ">
-<p style="margin-left: 2%; font-size: 30px; font-weight: bold; color: white;">APPOINTMENT SCHEDULE</p>
+<h2 style="margin-left: 2%; font-size: 24px; font-weight: bold;">APPOINTMENT</h2>
 </section> 
 <div class="row" style="background:white;">
 <div class="container" style="background: white;">

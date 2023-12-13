@@ -82,10 +82,6 @@ button{
     border: none;
     border-radius: .4rem;
     cursor: pointer;}
-
-i{
-    font-size: var(--font-size-large);
-    line-height: 0;}
 .form-control1{
     width: 115%;
     padding: 16px;
@@ -164,7 +160,12 @@ i{
     height: 3.5rem;
     color: white;
   }
+  .icon-btn i{
+        font-size: var(--font-size-large);
+        line-height: 0;
+  }
   .icon-btn:hover{
+    padding:10px;
     background-color: var(--hover-color);
     color: black;
   }
@@ -229,7 +230,17 @@ i{
     font-size: 25px;
     font-weight: bold;
     margin-left: 40px;}
-
+.independent-title1 {
+        font-size: var(--font-size-medium);
+        color: var(--light-color);
+        padding: 2.5rem 0 1.25rem;
+        background-color: #008374;
+    }
+.independent-title1 h2 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-left: 40px;
+    }
 .card{
     background-color: var(--light-color);
     padding: 2.5rem;
@@ -368,7 +379,7 @@ i{
     display: flex;
     left: 8%;}
 .count{
-    width: 15vmin;
+    width: 15vmin; 
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -460,9 +471,36 @@ i{
             font-size:18px;
           }
            .btnText {
+            padding-right: 4px;
               font-size: 14px;
               font-weight: 400;
           }
+          .amen{
+            display: flex;
+            margin-right: 5rem;
+            margin-left: 5rem;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .btnText1:hover {
+            background-color: #265df2;
+        }
+        .btnText1 {
+            font-size: 14px;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            max-width: 200px;
+            width: 100%;
+            border: none;
+            outline: none;
+            color: #fff;
+            border-radius: 5px;
+            margin: 25px 0;
+            background-color: #4070f4;
+            transition: all 0.3s linear;
+            cursor: pointer;
+        }
           .card1 button:hover {
               background-color: #265df2;
           }
@@ -622,7 +660,6 @@ i{
         color: var(--accent-color);}
 }
 
-
 @media screen and (min-width: 1025px) {
     .menu-toggle-btn{
         display: none !important;}
@@ -654,7 +691,7 @@ i{
     }
     .current:hover{
         color: var(--dark-color);
-        background-color: var(--title-color);}
+        background-color: var(--hover-color);}
     .card-group{
         grid-template-columns: repeat(2, 1fr);}
     .one{

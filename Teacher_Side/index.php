@@ -18,7 +18,7 @@ session_start();
         });
     </script>
     <?php
-    exit;
+    exit; 
 }
   // include 'main2.php';
 $id = $_SESSION['session_id'];
@@ -31,7 +31,7 @@ $_SESSION['transact_type'] = 'Referral';
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome, Teacher/s</title>
+    <title>TEACHER</title>
     
     <!-- Your Custom CSS -->
     <link rel="stylesheet" href="assets/css/teachers.css"/>
@@ -75,7 +75,7 @@ $_SESSION['transact_type'] = 'Referral';
     </div>
     <div class="card">
         <header class="card-header">
-            <small>Profile Account</small>
+            <small>Greetings!</small>
 <!-- call employee id 
     number or 
     profession = "Admin"-->
@@ -96,13 +96,13 @@ $_SESSION['transact_type'] = 'Referral';
             <hr>
             <div>
                 <a href="./referral-slip.php" class="card-body-link">
-                <i class="ri-calendar-line"></i>Referral Slip
+                <i class="ri-calendar-line"></i>Refer a student
                 </a>
-                <a href="./student-profile" class="card-body-link">
-                <i class="ri-profile-line"></i>Edit Profile
+                <a href="./teacher-profile.php" class="card-body-link">
+                <i class="ri-profile-line"></i>Edit your Profile
                 </a>
                 <a href="../dh_teacher.php" class="card-body-link"> 
-                <i class="ri-question-mark"></i>FAQ
+                <i class="ri-question-mark"></i>Need Help?
                 </a>
                 <a onclick="logout()" class="card-body-link">
                 <i class="ri-user-3-line"></i>Log-Out
@@ -117,7 +117,7 @@ $_SESSION['transact_type'] = 'Referral';
         <table class="table" id="dynamicTable">
         <thead>
           <tr>
-          <th>ID</th>
+          <th>Student's ID</th>
           <th>Full Name</th>
           <th>Course</th>
           <th>Year/Level</th>
@@ -133,26 +133,6 @@ $_SESSION['transact_type'] = 'Referral';
           </tr>
         </thead>
         <tbody>
-          <!-- <tr>
-          <td>010101</td>
-          <td>Sam Sam </td>
-          <td>Design</td>
-          <td>4th Year</td>
-          <td>Male</td>
-          <td>Tardy</td>
-          <td>03-24-22</td>
-          <td><a href="#divTwo"><button><i class="ri-delete-bin-6-line"></i></button></a></td>
-          </tr>
-          <tr>
-          <td>22222</td>
-          <td>Ann Sam </td>
-          <td>Architect</td>
-          <td>1st Year</td>
-          <td>Female</td>
-          <td>Academic Defieciency</td>
-          <td>03-24-22</td>
-          <td><a href="#divTwo"><button><i class="ri-delete-bin-6-line"></i></button></a></td>
-          </tr> -->
 
         </tbody>
         </table>
@@ -163,11 +143,10 @@ $_SESSION['transact_type'] = 'Referral';
 </div>
 </div>
 <br>
-
-
-  <?php include 'includes/footer.php' ?>
-       
+  <?php include 'includes/footer.php' ?>    
 </body>
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   var tID = "<?php echo $_SESSION['session_id'];?>";

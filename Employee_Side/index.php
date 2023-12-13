@@ -433,7 +433,7 @@ function goto_recent(){
     }else if(tt === 'Leave Of Absence'){
         console.log("student", sid);
         console.log("transact", tid);
-        var type = 'loa';
+        var type = 'Leave Of Absence';
 
                     // Send stud_id to the server using an AJAX request
                     $.ajax({

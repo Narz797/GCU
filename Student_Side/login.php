@@ -328,7 +328,7 @@ $_SESSION['origin'] = 'Student';
               console.log("logged", response);
             }
           });
-          window.location.href = "student-home";
+          window.location.href = "index.php";
         } else {
           // Log unsuccessful login on the server-side
           $.ajax({

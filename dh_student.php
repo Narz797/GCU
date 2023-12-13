@@ -233,6 +233,23 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
+    var tID = "<?php echo $_SESSION['session_id'];?>";
+        function logout() {
+  $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: tID,
+              action: 'logged out',
+              details: tID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+    window.location.href = '../home';
+}
                     function goBack() {
             window.history.back();
         }

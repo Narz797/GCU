@@ -314,11 +314,11 @@ label, span {
 
   <label>Year:</label>
   <!-- <input type="number" placeholder="YYYY" id="start_year" class="year-input" name="datepicker" id="datepicker"> -->
-  <input type="text" class="form-control" name="datepicker" id="datepicker"  required/>
+  <input type="text" class="form-control" name="datepicker" id="datepicker"  required autocomplete="off"/>
   
   <label>-</label>
   <!-- <input type="number" placeholder="YYYY" id="end_year" class="year-input"> -->
-  <input type="text" class="form-control" name="datepicker" id="datepicker2"required/>
+  <input type="text" class="form-control" name="datepicker" id="datepicker2"required autocomplete="off"/>
 
 </div>
 <br>
@@ -343,7 +343,7 @@ label, span {
           <div class="button">
             <p>
               <!-- Change type from submit to button, and use onclick to handle the back button -->
-              <button type="button" class="btn btn-primary" onclick="window.location.href='../student-home'">Back</button>
+              <button type="button" class="btn btn-primary" onclick="window.history.back();">Back</button>
             </p>
           </div>
           <div class="button">
@@ -424,7 +424,7 @@ label, span {
 }).then((result) => {
     if (result.isConfirmed) {
         // Redirect to the specified URL
-        window.location.href = "../student-home";
+        window.location.href = "../trans.php";
     }
 });
 

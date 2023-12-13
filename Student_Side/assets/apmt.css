@@ -210,10 +210,11 @@ i{
     color: var(--light-color);
     padding: 2.5rem 0 1.25rem;
     background-color: var(--accent-color);}
-.independent-title h2{
-    font-size: 25px;
-    font-weight: bold;
-    margin-left: 40px;}
+    .independent-title h2 {
+      font-size: 25px;
+      font-weight: bold;
+      margin-left: 40px;
+  }
 
 .card{
     background-color: var(--dark-color);

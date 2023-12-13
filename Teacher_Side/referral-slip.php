@@ -20,7 +20,6 @@ session_start();
     <?php
     exit;
 }
-  // include 'main2.php';
 $id = $_SESSION['session_id'];
 logAudit($id, 'access_teacher', $id .' has accessed the teacher home page');
 $_SESSION['transact_type'] = 'Referral';
@@ -65,6 +64,7 @@ $_SESSION['transact_type'] = 'Referral';
 </head>
 
 <body>
+  
   <header class="header">
     <nav class="nav"> 
         <div class="logo">
@@ -205,7 +205,7 @@ $_SESSION['transact_type'] = 'Referral';
     </p>
 
                <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-               <button type="submit" onclick="submitForm()"><span class="btnText">Submit</span></button>
+               <button type="submit" onclick="submitForm()"><span class="btnText">Submit</span><i class="ri-navigation-line"></i></button>
    </form>
 
  </div>
@@ -247,6 +247,8 @@ $_SESSION['transact_type'] = 'Referral';
                  </div> -->
 <br>
 
+<?php include 'includes/footer1.php' ?>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
         function goBack() {
@@ -270,8 +272,6 @@ $_SESSION['transact_type'] = 'Referral';
         }
 
     </script>
-
-<?php include 'includes/footer1.php' ?>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
