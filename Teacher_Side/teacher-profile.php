@@ -245,6 +245,8 @@ $_SESSION['transact_type'] = 'Referral';
                         <label for="email" style="color:black;">Verification Code:</label>
                         <input type="number" id="code" name="code" oninput="validateInput(this)" required>
                         <a class="btn btn-sm btn-primary" style="color: white;" onclick="update()" >Verify</a>
+                        <a class="btn btn-sm btn-primary" onclick="resend()">Resend Code</a>
+                    <a class="btn btn-sm btn-primary" onclick="cancel()">Cancel</a>
                     </div>
                   </div>
                 </div>
@@ -265,6 +267,52 @@ $_SESSION['transact_type'] = 'Referral';
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
       var tID = "<?php echo $_SESSION['session_id'];?>";
+      function resend(){
+      // document.getElementById("modal").style.display = "none";
+          // Show loading spinner
+          Swal.fire({
+                title: 'Sending Email',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+                    willClose: () => {
+        // Set the display property of the element with ID "modal" to "block"
+        document.getElementById("modal").style.display = "block";
+    }
+            });
+        $.ajax({
+      type: 'POST',
+      url: '../backend/resend.php',
+      success: function(data) {
+                // Hide loading spinner on success
+                swal.close();
+
+                Swal.fire({
+              icon: "sucess",
+              title: "Code Sent!",
+              text: "Go to your email to retrieve the code",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  // window.location.reload();
+                } 
+              });
+   
+  
+
+     
+        // add location to enter code
+      },
+                  error: function (xhr, status, error) {
+                    console.error("Error:", error);
+                    alert("Error: " + error);
+                  },
+    });
+    } 
         function goBack() {
             window.history.back();
         }
@@ -511,7 +559,7 @@ fn.style.border = '';
 mn.style.border = '';
 
 
-
+document.getElementById("modal").style.display = "none";
 fetchData();
   cnl.hide();
   upd.hide();
@@ -520,7 +568,7 @@ fetchData();
 }
 
 function verify(){
-  document.getElementById("modal").style.display = "block";
+
                 // Show loading spinner
                 Swal.fire({
                 title: 'Sending Code',
@@ -530,6 +578,10 @@ function verify(){
                 didOpen: () => {
                     Swal.showLoading();
                     },
+                    willClose: () => {
+        // Set the display property of the element with ID "modal" to "block"
+        document.getElementById("modal").style.display = "block";
+    }
             });
     
     console.log("performing ajax");
