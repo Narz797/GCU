@@ -204,7 +204,7 @@ function logout() {
       console.log(data);
       // if (data.status===0){
       var tableBody = $("#dynamicTable tbody");
- 
+
       for (var i = 0; i < data.length; i++) {
           
           var entry = data[i];

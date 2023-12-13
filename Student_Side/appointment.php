@@ -28,51 +28,25 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
 echo "<script>console.log('$id');</script>";
  ?>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-<meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment</title>
-    <!-- Remix icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/apmt.css">
-    <link rel="stylesheet" href="assets/css/popup.css">
-    <!-- Export -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
-    <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
-<!-- pagination -->
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../Employee_Side/assets/css/slips2.css">
+
+    <!-- pagination -->
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <!-- DataTables JS -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
-</head>
-
+  
 </head>
 
 <style>
@@ -101,14 +75,14 @@ echo "<script>console.log('$id');</script>";
 }
 
 
-</style>
+    </style>
 
-
-<body>
+    
+  <body>
        
 </div>
   <!-- Header -->
-<header class="header">
+  <header class="header">
     <nav class="nav"> 
         <div class="logo">
         <img src="assets/images/GCU_logo.png" alt="">
@@ -145,10 +119,16 @@ echo "<script>console.log('$id');</script>";
 
 <?php include '../includes/banner.php' ?>
 
-<div class="title independent-title">
-  <h2>APPOINTMENT</h2>
-</div>
-<br>
+
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color:primary; height: 80px; color: black; ">
+<h2 style="margin-left: 2%; font-size: 24px; font-weight: bold;">APPOINTMENT</h2>
+</section> 
+<div class="row" style="background:white;">
+<div class="container" style="background: white;">
+      <br>
+     
+   
+  
       <div class="card" style= "background:white; color:black;">
           <hr>
       <div class="body-calendar">
@@ -162,6 +142,8 @@ echo "<script>console.log('$id');</script>";
           <div class="date" style="font-size: 30px; font-weight: bold; color:#008374; text-align: center;">month,year</div>
           <i class="fas fa-angle-right next"></i>
         </div>
+ 
+        
         <div class="weekdays">
           <div>Sun</div>
           <div>Mon</div>
@@ -219,8 +201,8 @@ echo "<script>console.log('$id');</script>";
 <br>
 <div>
   </div>
-    <div>
-
+    <div  >
+    <!-- <div class="container" > -->
         <br>
         <h2 class="title"></h2>
         <div >
@@ -316,7 +298,7 @@ echo "<script>console.log('$id');</script>";
                                 <form class="former">
                                     <h1>Reason for Appointment?</h1>
                                     <br>
-                                    <select class="selection" name="textfield" id="refer">
+                                    <select name="textfield" id="refer">
                                       <option disabled selected>Select</option>
                                         <option value="Academic Deficiency/ies">Academic Deficiency/ies</option>
                                         <option value="Others">Counseling</option>
@@ -326,25 +308,64 @@ echo "<script>console.log('$id');</script>";
                                       <br>
                                       <hr>
                                       <div >
-                                      <input type="checkbox" id="chkbx" name="referred" value="yes"> <label> Referred</label>
+                                      <input type="checkbox" id="chkbx" name="referred" value="yes"> <label> Reffered</label>
                                       </div>
                                     <br>
                                     
                                     <div class="tsk">
-                                    <a class="yes" onclick="reason()">Submit&nbsp<i class="ri-navigation-line"></i></i></a>
+                                    <a class="yes" onclick="reason()">Submit</a>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                 </div>         
+                 </div>
+
+                 <!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: auto;"> -->
+    
+                 <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: auto;">
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="d-flex justify-content-center" style="width: 100%;">
+    
+        <br>
+
+        <p style="text-align: center; margin: 0; display: block; ">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>.
+         Guidance and Counseling Unit. All rights reserved.</p>
+        <br>
+        
+    </footer>
 </section>
-<br>
+</section>
 
-    <?php include 'includes/footer1.php' ?>
+<!-- 
+                 <div class="overlay" id="divThree">
+                    <div class="wrapper">
+                        <h1>Reason</h1>
+                        <a href="#" class="close">&times;</a>
+                        <div class="popup">
+                            <div class="popup2">
+                                <form>
+                                    <label>Attending Personnel</label>
+                                    <input type="text" placeholder="Your Name">
+                                    <label>Remarks</label>
+                                    <textarea placeholder="Type here if you have remarks..."></textarea>
+                                    <div class="tsk"> 
+
+                                    <input type="submit" value="send">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 </div> -->
            
-</body>
+  </body>
 
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="assets/js/calendar.js"></script>  
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 
@@ -583,5 +604,3 @@ echo "<script>console.log('$id');</script>";
     
     });
     </script> 
-    <script src="assets/main.js"></script> 
-    </html>
