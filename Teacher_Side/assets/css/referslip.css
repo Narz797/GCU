@@ -14,7 +14,7 @@
     --shadow-color: lightblue;
     --font-color: #568203;
     --title-color: #FEBE10;
-    --positive-color: #86e49d; 
+    --positive-color: #86e49d;
     --negative-color: #d893a3 ;
     --pending-color: #ebc474;
     --transparent-button-color: var(--accent-color);
@@ -477,8 +477,8 @@ button{
           }
           .amen{
             display: flex;
-            margin-right: 4.2rem;
-            margin-left: 4.2rem;
+            margin-right: 5rem;
+            margin-left: 5rem;
             align-items: center;
             justify-content: space-between;
           }
@@ -548,7 +548,6 @@ button{
       
       /* Style for the semester dropdown */
       select {
-        color: black;
           padding: 12px;
         font-size: 16px;
         border: 1px solid #ccc;

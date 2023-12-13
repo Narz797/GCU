@@ -314,7 +314,6 @@ function logout() {
           });
     window.location.href = '../home';
 }
-<<<<<<< Updated upstream
     var upd = $("#Update");
      var cnl = $("#Cancel");
      var pass = $("#ps");
@@ -763,9 +762,5 @@ function update(){
 
       // upd.hide();
 
-=======
-function faq(){
-        window.location.href="../dh_teacher.php"
->>>>>>> Stashed changes
     }
 </script>

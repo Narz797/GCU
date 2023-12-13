@@ -273,7 +273,7 @@ i{
     background-color: #ecad00;
     margin-bottom: var(--margin-medium);
     padding: 1.5rem;
-    border-radius: 5px;
+    border-radius: 4rem;
     display: flex;
     align-items: center;
     gap: var(--gap-small);

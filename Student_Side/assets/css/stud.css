@@ -191,13 +191,11 @@ i{
     padding-block: 1rem;
     background-color: var(--body-background-color);}
 .card-header small{
-    padding: 10px;
     font-size: 1.2rem;
     color: var(--font-color);
     font-weight: bold;
     font-family: 'Georgia', serif;}
 .card-header .title{
-    padding: 10px;
     color:black;
     margin-bottom: 0;
     font-size: 20px;}
@@ -275,7 +273,7 @@ i{
     background-color: #ecad00;
     margin-bottom: var(--margin-medium);
     padding: 1.5rem;
-    border-radius: 5px;
+    border-radius: 4rem;
     display: flex;
     align-items: center;
     gap: var(--gap-small);
