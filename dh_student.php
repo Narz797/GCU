@@ -1,7 +1,7 @@
 <?php
   session_start();
   
-?>
+?> 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -15,18 +15,31 @@
          <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Remix icons -->
+     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
    </head>
 <body>
   <!-- Header -->
-<header class="header" style="background: #007f5f;">
+  <header class="header">
     <nav class="nav"> 
         <div class="logo">
         <img src="assets/img/GCU_logo.png" alt="">
         </div>
+        <div class="nav-mobile">
+            <div class="list">
+                <div class="list-item">
+                  <button onclick="goBack()" class="list-link current">BACK</button>
+                </div>
+            </div>
+        </div>
         <div class="align-right">
-            <button class="icon-btn place-items-center" value="logout" onclick="goBack()">
-                <i class="bx bxs-chevron-left"> Back</i>
+            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center" onclick="goBack()" class="list-link current">
+            <i class="ri-arrow-left-circle-line"></i>
             </button>
+            <button class="icon-btn place-items-center" onclick="logout()">
+                <i class="ri-user-3-line"></i>
+            </button>
+            
         </div>
     </nav>
 </header>

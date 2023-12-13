@@ -166,7 +166,7 @@ include '../../backend/log_audit2.php';
                 <br>
                 <br>
                 <br>
-                <button class="yes" onclick="status_update('Recieved')">Received</button>
+                <button class="yes" onclick="status_update('Received')">Received</button>
                  </div>
             </div>
         </div>
@@ -385,7 +385,7 @@ function archive() {
 
             Swal.fire({
                 icon: "success",
-              title: "transation remarked",
+              title: "transaction remarked",
               confirmButtonText: "OK",
 
             }).then((result) => {

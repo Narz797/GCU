@@ -35,8 +35,12 @@ $_SESSION['transact_type'] = 'Referral';
     
     <!-- Your Custom CSS -->
     <link rel="stylesheet" href="assets/css/teachers.css"/>
+    <link rel="stylesheet" href="assets/css/teach.css"/>
+       <!-- Remix icons -->
+       <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+   
     <!-- Bootstrap CSS and JS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
@@ -52,209 +56,62 @@ $_SESSION['transact_type'] = 'Referral';
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
 </head>
-<style>
-
-  /* Add these styles to your existing stylesheet or in a new <style> tag in your HTML document */
-
-
-
-  </style>
 
 <body>
-    <!-- Header -->
-    <header class="header">
-    <nav class="nav"> 
+ <!-- Header -->
+ <header class="header">
+    <nav class="nav">
         <div class="logo">
-            <img src="GCU_logo.png" alt="">
-        </div>
-        
-        <div class="align-right">
-        <button class="icon-btn place-items-center">  <a href="../dh_teacher.php" style="text-decoration: none; color:black;">FAQ</a></button>
-            <button class="icon-btn place-items-center" onclick="logout()" value="logout">
-                <i class="ri-user-3-line"> Log-out</i>
-            </button>
+        <img src="GCU_logo.png" alt="">
+        <!-- <img src="assets/images/bsu.png" alt=""> -->
         </div>
     </nav>
 </header>
 
-
-
-
     <!-- Welcome-message -->
-    <section>
-    <!-- <section class="banner">
-        <div class="banner-container">
-    <br>
-            <img src="GCU_logo.png" alt="">
-            <div class="banner-text">
-                <h5>REPUBLIC OF THE PHILIPPINES</h5>
-                <hr class="banner-line">
-                <h2><span>BENGUET STATE UNIVERSITY</span></h2>
-                <h1>GUIDANCE AND COUNSELING UNIT</h1>
+<section> <?php include '../includes/banner.php' ?>
+<div class="title independent-title ">
+        <h2 > Teacher's Dashboard </h2>
+    </div>
+    <div class="card">
+        <header class="card-header">
+            <small>Profile Account</small>
+<!-- call employee id 
+    number or 
+    profession = "Admin"-->
+            <h2 class="title">Welcome back, <span> Professor!</span></h2>
+        </header>
+        <hr>
+    </div>
+</section>
+<br>
+    <!-- Management-area -->
+ 
+    <div class="management-area-container d-grid">
+        <div class="card">
+            <header class="card-header header-side">
+                <h2 class="title">ACTIONS</h2>
+                <small>Choose what task to do today.</small>
+            </header>
+            <hr>
+            <div>
+                <a href="./referral-slip.php" class="card-body-link">
+                <i class="ri-calendar-line"></i>Referral Slip
+                </a>
+                <a href="./student-profile" class="card-body-link">
+                <i class="ri-profile-line"></i>Edit Profile
+                </a>
+                <a href="../dh_teacher.php" class="card-body-link"> 
+                <i class="ri-question-mark"></i>FAQ
+                </a>
+                <a onclick="logout()" class="card-body-link">
+                <i class="ri-user-3-line"></i>Log-Out
+                </a>
             </div>
         </div>
-    </section> -->
-    <?php include '../includes/banner.php' ?>
-
-    
-
-    
-
-    <div class="block"></div>
-
-<div class="container1">
-<section class="main">
-  <div class="main-top">
-    <h1>Teacher's Dashboard</h1>
-  </div>
-  <div class="users">
-    <div class="card">
-
-<!-- Get teacher's data with image or delete image -->
-
-<img src="assets/img/profile.png">
-      <h6 id="EId">111000111</h6>
-      <h4 id="name">Monkey Dulagan Luffy</h4>
-      <p  id="college">College of Information Sciences</p>
-      <div class="per">
-      <p class="color">Contact Number</p>
-        <span id="cn">000-000-0000</span>
-        <br>
-        <br>
-        <p class="color">Email</p>
-        <span id="email">strawhatluffy@pirate.com</span>
-
-       
-     
-
-      </div>
-      <br>
-        <a href="#divOne"><button>EDIT</button></a>
-    </div>
-
-
-    <div class="slip">
-
-<!-- Save data -->
-
-        <h1>REFERRAL SLIP</h1>
-        <form id="form_transact" name="form2" method="post">
-       
-        <div class="flex">
-        <div class="form">    
-          <label for="Sid">Student ID:</label>
-          <input type="number" id="Sid" name="Sid" required onblur="search()">
-        </div>
-        <div class="form">
-          <label for="fname">Student's First Name:</label>
-          <input type="text"  id="fname" name="fname" required>
-        </div>
-        <div class="form">
-          <label for="mname">Student's Middle Name:</label>
-          <input type="text" id="mname" name="mname" >
-        </div>
-        <div class="form">
-          <label for="lname">Student's Last Name:</label>
-          <input type="text" id="lname" name="lname" required>
-        </div>
-        <div class="form">
-          <label for="yl">Year/Level:</label>
-          <input type="text" id="yl" name="yl" required>
-        </div>
-        <div class="form">
-          <label for="contact">Student's Contact Number:</label>
-          <input type="number" id="contact" name="contact" oninput="limitTo11Digits(event)">
-        </div>
-        </div>
-
-        <div class="flex">
-        <div class="form1">
-          <label>Gender:</label>
-          <select id="genderr" required >
-            <option disabled selected>Select gender</option>
-            <option>Male</option>
-            <option>Female</option>
-          </select>
-        </div>
-        
-        <div class="form1">
-          <label for="crse">Course:</label>
-          <!-- <input type="text"id="crse" name="crse" required> -->
-          <select type="text" name="textfield5" id="crse" style="width:150px;" autocomplete="off">
-                <option disabled selected>Select Course</option>
-                                <option value='BSAB'>Bachelor of Science in Agribusiness</option>
-                                <option value='BSA'>Bachelor of Science in Agriculture</option>
-                                <option value='BA Comm'>Bachelor of Arts in Communication</option>
-                                <option value='BAEL'>Bachelor of Arts in English Language</option>
-                                <option value='BAFL'>Bachelor of Arts in Filipino Language</option>
-                                <option value='BSABE'>Bachelor of Science in Agriculture and Biosystems Engineering</option>
-                                <option value='BSCE'>Bachelor of Science in Civil Engineering</option>
-                                <option value='BSEE'>Bachelor of Science in Electrical Engineering</option>
-                                <option value='BSIE'>Bachelor of Science in Industrial Engineering</option>
-                                <option value='BSF'>Bachelor of Science in Forestry</option>
-                                <option value='BSET'>Bachelor of Science in Entrepreneurship</option>
-                                <option value='BSFT'>Bachelor of Science in Food Technology</option>
-                                <option value='BSHM'>Bachelor of Science in Hospitality Management</option>
-                                <option value='BSND'>Bachelor of Science in Nutrition and Dietetics</option>
-                                <option value='BSTM'>Bachelor of Science in Tourism Management</option>
-                                <option value='BPeD'>Bachelor of Physical Education</option>
-                                <option value='BSESS'>Bachelor of Science in Exercise and Sports Sciences</option>
-                                <option value='BLIS'>Bachelor in Library and Information Sciences</option>
-                                <option value='BSDC'>Bachelor of Science in Development Communication</option>
-                                <option value='BSIT'>Bachelor of Science in Information Technology</option>
-                                <option value='BS Bio'>Bachelor of Science in Biology</option>
-                                <option value='BS Chem'>Bachelor of Science in Chemistry</option>
-                                <option value='BSES'>Bachelor of Science in Environmental Science</option>
-                                <option value='BS Math'>Bachelor of Science in Mathematics</option>
-                                <option value='BSS'>Bachelor of Science in Statistics</option>
-                                <option value='BSN'>Bachelor of Science in Nursing</option>
-                                <option value='BPA'>Bachelor of Public Administration</option>
-                                <option value='BS Psych'>Bachelor of Science in Psychology</option>
-                                <option value='BECED'>Bachelor of Early Childhood Education</option>
-                                <option value='BEED'>Bachelor of Elementary Education</option>
-                                <option value='BSED'>Bachelor of Secondary Education</option>
-                                <option value='BTLED'>Bachelor of Technology and Livelihood Education</option>
-                                <option value='DVM'>Doctor of Veterinary Medicine</option>
-                                <option value='BA Hist'>Bachelor of Arts in History</option>
-    <!-- Add more options as needed -->
-</select>
-        </div>
-        <div class="form1">
-          <label>Reason:</label>
-          <select required id="reason">
-            <option disabled selected>Select reason for referral</option>
-            <option>Academic Deficiency/ies</option>
-            <option>Absent</option>
-            <option>Tardy</option>
-            <option>Others</option>
-          </select>
-        </div>
-
-        <!-- show when reason is late or absent -->
-        <div class="form1" id="dates">
-          <label for="date">Days absent/tardy:</label><br>
-          <!-- id = date -->
-          <div class="input-group date form-group" id="datepicker">
-            <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days" autocomplete="off"/>
-            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
-        </div>
-
-
-        </div>
-        <div class="form1" id="rem">
-          <label for="remark">Remarks:</label><br>
-          <input type="text"id="remark" name="remark">
-
-
-        </div>
-        <input type="submit" class="btn1" name="submit" id="submit" value="REFER">
-        </div>
-
-        </form>
-        
-    </div>
-  </div>
-  <section class="attendance">
+<div class="container1 ">
+<section class="main  border">
+  <section class="attendance ">
     <div class="attendance-list">
       <h1>List of Referred Students</h1>
         <table class="table" id="dynamicTable">
@@ -304,99 +161,10 @@ $_SESSION['transact_type'] = 'Referral';
   </section>
 </section>
 </div>
+</div>
+<br>
 
-<!--This the pop-up-->
 
-  <div class="overlay" id="divOne">
-    <div class="wrapper">
-    <h1>Edit Profile</h1>
-    <a href="#" class="close">&times;</a>
-      <div class="popup">
-      <div class="popup2">
-        <form id="form_edit" name="form3" method="post">
-          <div class="fields">
-          <div class="input-field">
-            <label>College</label>
-              <select id="clg_edit">
-                <option disabled selected>Select College</option>
-                <option>College of Agriculture</option>
-                <option>College of Teacher Education</option>
-                <option>College of Home Economics & Technology</option>
-                <option>College of Forestry</option>
-                <option>College of Nursing</option>
-                <option>College of Veterinary Medicine</option>
-                <option>College of Human Kinetics</option>
-                <option>College of Public Administration & Governance</option>
-                <option>College of Information Sciences</option>
-                <option>College of Arts & Humanities</option>
-                <option>College of Social Sciences</option>
-                <option>College of Numeracy & Applied Sciences</option>
-                <option>College of Natural Sciences</option>
-              </select>
-          </div>
-          <div class="input-field">
-            <label>Gender</label>
-            <select id="gnder_edit">
-              <option disabled selected>Select gender</option>
-              <option>Male</option>
-              <option>Female</option>
-            </select>
-          </div>
-          <div class="input-field">
-            <label>Last Name</label>
-            <input type="text" id="lname_edit">
-          </div>
-          <div class="input-field">
-            <label>First Name</label>
-            <input type="text" id="fname_edit">
-          </div>
-          <div class="input-field">
-            <label>Middle Name</label>
-            <input type="text" id="mname_edit">
-          </div>
-          <div class="input-field">
-            <label>Contact Number</label>
-            <input type="number" id="cn_edit" oninput="limitTo11Digits(event)">
-          </div>
-          <div class="input-field">
-            <label>Email</label>
-            <input type="email" id="email_edit">
-          </div>
-          <div class="input-field">
-            <label>Civil Status</label>
-            <select id="cs_edit">
-              <option disabled selected>Select</option>
-              <option>Single</option>
-              <option>Married</option>
-              <option>Others</option>
-            </select>
-           </div>
-         </div>
-        
-      </div>
-      </div>
-      <button type="submit" name="submit">EDIT</button>
-      </form>
-    </div>
-  </div>
-  <div class="overlay" id="divTwo">
-    <div class="delete">
-    <h3>The student's data will be<u class="Two"> DELETED</u> .</h3>
-    <a href="#" class="close">&times;</a>
-    <div class="gg">
-    <div class="ss">
-      <form>
-        <h1>Are you sure?</h1>
-        <div class="action">
-          <a href="#"><button class="yes" onclick="dlete ()">Yes</button></a>
-          <a href="#"><button class="no" onclick="cancel ()">No</button></a>
-        </div>
-      </form>
-    </div>
-    </div>
-    </div>
-    </div>
-  </div>  
   <?php include 'includes/footer.php' ?>
        
 </body>

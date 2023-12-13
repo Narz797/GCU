@@ -470,7 +470,7 @@ function status_update(status){
     
             Swal.fire({
                 icon: "success",
-              title: "transation remarked",
+              title: "transaction remarked",
               confirmButtonText: "OK",
 
             }).then((result) => {

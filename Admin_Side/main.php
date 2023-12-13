@@ -157,6 +157,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+         var eID = "<?php echo $_SESSION['session_id'];?>";
                 function logout() {
             Swal.fire({
       title: "Are you sure you want to logout?",

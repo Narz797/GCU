@@ -27,316 +27,197 @@ logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_
 ?>
 <html>
 <head>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Readmission Slip</title>
+<!-- Remix icons -->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/slipnew.css">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <link href="../assets/img/GCU_logo.png" rel="icon">
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
-
-  <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
-
-
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+  
 </head>
-<style>
-    /* Your existing styles here */
-    body {
-      /* font-family: Arial, sans-serif; */
-      background-color: #fffdd0;
-      
-      padding: 0;
-     
-     
-      /* background: linear-gradient(
-    142deg,
-      0%,
-    white 100%
-  ); */
- 
 
-      
-    }
-
-    .card {
-      max-width: 800px;
-      margin: 50px auto;
-     background:white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      border-radius: 8px;
-      box-sizing: border-box;
-      
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 1); 
-      
-
-      animation: fadeInUp 1s ease-in-out; /* Animation */
-    }
-
-    .card-header {
-      background: #007bff;
-      color: #fff;
-      padding: 10px;
-      text-align: center;
-      border-radius: 8px 8px 0 0;
-    }
-
-    .card-body {
-      padding: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      font-size:18px;
-
-      font-family: "Century Gothic", sans-serif;
-    }
-
-    textarea {
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
-      width: 100%;
-      padding: 8px;
-      height:200px;
-      margin-bottom: 16px;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
-      font-family: "Century Gothic", sans-serif;
-      font-size:18px;
-    }
-
-    .button {
-      text-align: center;
-    
-      
-    }
-
-   button {
-      padding: 10px 20px;
-      background-color: green;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-
-    button:hover {
-      background-color: #008080;
-    }
-
-
-    .button-container {
-      display: flex;
-   
-      
-      
-    }
-    .button {
-      margin-right: 10px; /* Adjust the margin to create space between buttons */
-    }
-
-
-
-    /* Define the fadeInUp animation */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .logo-container {
-      display: flex;
-      /* text-align: center; */
-      
-    
-      animation: fadeInUp 1s ease-in-out; /* Animation */
-    }
-
-    .logo-container img {
-      width: 80px;
-      height: 80px;
-    }
-    h1
-    {
-      margin-left:10px;
-      text-align: center;
-      font-family: "Century Gothic", sans-serif;
-
-
-    }
-    /* Style for the container of semester and year inputs */
-.semester-year-container {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-/* Style for the semester dropdown */
-select {
-
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 200px; /* Adjust the width as needed */
-  box-sizing: border-box;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
-}
-option{
-  font-family: "Century Gothic", sans-serif;
-  font-size: 16px;
-
-}
-
-/* Style for the container of year inputs */
-.year-input-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
- 
-
-}
-
-/* Style for the group of year inputs and label */
-.year-input-group {
-  display: flex;
-  align-items: center;
-}
-
-/* Style for the year labels */
-label, span {
-  margin-right: 5px;
-}
-
-/* Style for the year inputs */
-.year-input {
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 80px; /* Adjust the width as needed */
-  box-sizing: border-box;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
-
-}
-
-/* Style for the year inputs when focused */
-.year-input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-@media (max-width: 767px) {
-    #datepicker {
-      font-size: 12px; /* Adjust the font size for smaller screens */
-    }
-    .semester-year-container{
-      display: block;
-    }
-  }
- /* Default styles for larger screens */
- .form-control {
-      width: 200px; /* Adjust the width as needed */
-    }
-
-    /* Media query for smaller screens */
-    @media (max-width: 767px) {
-      .form-control {
-        width: 100%; /* Make the input full width on smaller screens */
-      }
-    }
-
-
-
-
-  </style>
 <body>
-  <div class="card" >
 
-   <!-- Other card content goes here -->
-   <div class="logo-container" >
-    <img  src="../assets/img/GCU_logo.png" alt="GCU Logo">
-   
-   <!-- <h1  id="Title" style="font-family: Papyrus, fantasy;">Readmission Slip</h1> -->
- 
-    <img  style="margin-left:auto" src="../assets/img/bsu.png" alt="BSU Logo">
-  </div>
-  <hr>
-
-  <h1 style="font-family: fantasy; color: black; " id="Title" >Readmission Slip</h1>
-  <hr>
-    
-    <div class="card-body">
-      <form id="form_transact" method="post">
-        <p>
-        <label for="select2">Semester and School Year Intended to Come Back:</label>
-
-<div class="semester-year-container">
-  <select name="select2" id="semester">
-    <option value="1">First Semester</option>
-    <option value="2">Second Semester</option>
-  </select>
-
-  <label>Year:</label>
-  <!-- <input type="number" placeholder="YYYY" id="start_year" class="year-input" name="datepicker" id="datepicker"> -->
-  <input type="text" class="form-control" name="datepicker" id="datepicker"  autocomplete="off" required/>
-  <label>-</label>
-  <!-- <input type="number" placeholder="YYYY" id="end_year" class="year-input"> -->
-  <input type="text" class="form-control" name="datepicker" id="datepicker2" autocomplete="off" required/>
+<header class="header">
+    <nav class="nav"> 
+        <div class="logo">
+        <img src="../assets/img/GCU_logo.png" alt="">
+        </div>
+        <div class="nav-mobile">
+            <div class="list">
+                <div class="list-item">
+                    <button onclick="goBack()" class="list-link current">BACK</button>
+                </div>
+            </div>
+        </div>
+        <div class="align-right">
+            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center" onclick="goBack()" class="list-link current">
+            <i class="ri-arrow-left-circle-line"></i>
+            </button>
+            <button class="icon-btn place-items-center" onclick="logout()">
+                <i class="ri-user-3-line"></i>
+            </button>
+        </div>
+    </nav>
+</header>
 
   
+<section>
+    <section> <?php include '../banner.php' ?>
+
+<section class="management-area">
+    <div class="management-area-container d-grid">
+        <div class="card">
+            <header class="card-header header-side">
+                <h2 class="title">READMISSION Slip</h2>
+                <small>Date is <u><?php echo date('F j, Y'); ?></u></small>
+            </header>
+            <hr>
+            <div class="info">
+                <p><b>Referral slips serve as a crucial tool for educators, enabling them to recommend students who may require additional support or guidance.</b> </p>
+                 <p><b>   It is imperative that teachers diligently complete the accompanying form, providing comprehensive information pertaining to the students 
+                    they wish to refer to the Guidance and Counseling Unit (GCU) of BSU.</b></p>
+            </div>
+        </div>
+
+        <div class="card-group d-grid">
+            <div class="card border one">
+
+
+<div class="card1" >
+<hr>
+
+<h1 style="font-family: fantasy; color: black; " id="Title" >Referral Slip</h1>
+<hr>
+ 
+ <div class="card-body">
+   <form id="form_transact" method="post">
+     <p>
+     <label for="select2">Semester and School Year Intended to Come Back:</label>
+
+<div class="semester-year-container">
+<select name="select2" id="semester">
+ <option value="1">First Semester</option>
+ <option value="2">Second Semester</option>
+</select>
+
+<label>Year:</label>
+<!-- <input type="number" placeholder="YYYY" id="start_year" class="year-input" name="datepicker" id="datepicker"> -->
+<input type="text" class="form-control" name="datepicker" id="datepicker"  autocomplete="off" required/>
+<label>-</label>
+<!-- <input type="number" placeholder="YYYY" id="end_year" class="year-input"> -->
+<input type="text" class="form-control" name="datepicker" id="datepicker2" autocomplete="off" required/>
+
+
 </div>
 <br>
 <br>
 
-        </p>
-        <p>
-        <label for="textarea">Reason/s for stopping:</label>
-        </p>
-        <p>
+     </p>
+     <p>
+     <label for="textarea">Reason/s for stopping:</label>
+     </p>
+     <p>
 <!-- Corrected code -->
-        <textarea name="textarea" class="textarea" id="reason_stop" required></textarea>
-        </p>
-        <p>
-        <label for="textarea" >Motivation for enrolling again:</label>
-        </p>
-        <p>
+     <textarea name="textarea" class="textarea" id="reason_stop" required></textarea>
+     </p>
+     <p>
+     <label for="textarea" >Motivation for enrolling again:</label>
+     </p>
+     <p>
 <!-- Corrected code -->
-        <textarea name="textarea" class="textarea" id="motivation_enroll" required></textarea>
-        </p>
-        <div class="button-container">
-          <div class="button">
-            <p>
-              <!-- Change type from submit to button, and use onclick to handle the back button -->
-              <button type="button" class="btn btn-primary" onclick="window.location.href='../student-home'">Back</button>
-            </p>
-          </div>
-          <div class="button">
-            <p>
-              <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-              <button type="submit" class="btn btn-primary" onclick="submitForm()">Submit</button>
-            </p>
-          </div>
+     <textarea name="textarea" class="textarea" id="motivation_enroll" required></textarea>
+     </p>
+     <div class="button-container">
+       <div class="button">
+         <p>
+           <!-- Change type from submit to button, and use onclick to handle the back button -->
+           <button type="button" class="btn btn-primary" onclick="window.location.href='../student-home'">Back</button>
+         </p>
+       </div>
+       <div class="button">
+         <p>
+           <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
+           <button type="submit" class="btn btn-primary" onclick="submitForm()">Submit</button>
+         </p>
+       </div>
+     </div>
+   </form>
+ </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                 </div>
+            </div>
         </div>
-      </form>
     </div>
-  </div>
+</section> 
+<!-- This is the pop-up for the three buttons -->
+
+                <!-- <div class="overlay" id="divOne">
+                    <div class="wrapper">
+                        <h1>The referred student will be contacted. Clicking send will notify the teacher that the request was received.</h1>
+                        <a href="#" class="close">&times;</a>
+                        <div class="popup">
+                            <div class="popup2">
+                                <form>
+                                    <label>Attending Personnel</label>
+                                    <input type="text" placeholder="Your Name">
+                                    <label>Remarks</label>
+                                    <textarea placeholder="Type here if you have remarks..."></textarea>
+                                    <div class="tsk"> -->
+
+<!-- Add a function here where the data will be stored -->
+<!-- 
+                                    <input type="submit" value="send">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                 </div> -->
+<br>
+
+    
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color: #008374; height: auto; ">
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="d-flex justify-content-center" style="width: 100%;">
+    
+        <br>
+
+        <p style="text-align: center; margin: 0; display: block;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>.
+         Guidance and Counseling Unit. All rights reserved.</p>
+        <br>
+        
+    </footer>
+    </section>
+
+  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     $("#datepicker").datepicker({

@@ -12,7 +12,7 @@ $_SESSION['origin'] = 'Teacher_Register';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="stylesheet" href="tregister.css">
+    <link rel="stylesheet" href="assets/css/tregister.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <title>Teacher Regisration Form </title>
    <link href="../assets/img/GCU_logo.png" rel="icon">

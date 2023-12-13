@@ -115,8 +115,8 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
                 <i class="ri-sun-line theme-light-icon"></i>
                 <i class="ri-moon-line theme-dark-icon"></i>
             </button> -->
-            <button class="icon-btn place-items-center" onclick="logout()" style="margin-right: 10px; ">
-                <i class="ri-user-3-line" style="margin-left:5px;"> </i>
+            <button class="icon-btn place-items-center" onclick="logout()" >
+                <i class="ri-user-3-line" > </i>
             </button>
 
             <!-- <button class="icon-btn place-items-center" onclick="logout()" style="margin-right: 150px; background:yellow;">
@@ -187,7 +187,7 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
 <script src="../backend/jsPDF-1.3.2/dist/jspdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.6/jspdf.plugin.autotable.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
  var eID = "<?php echo $_SESSION['session_id'];?>";
 //responsive date

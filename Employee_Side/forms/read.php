@@ -337,7 +337,7 @@ function archive() {
             console.log("Remarked:", data);
             Swal.fire({
                 icon: "success",
-              title: "transation remarked",
+              title: "transaction remarked",
               confirmButtonText: "OK",
 
             }).then((result) => {

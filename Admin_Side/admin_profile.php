@@ -102,7 +102,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </button>
             </div>
             <div class="align-right">
-                <button class="icon-btn place-items-center">
+                <button class="icon-btn place-items-center" onclick="logout()" >
                     <i class="ri-user-3-line"></i>
                 </button>
             </div>
@@ -123,9 +123,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <form id="edit_emp" name="edit_emp" method="post">
                     <br>
                     <center>
-                        <div class="input-group1 ">
-                            <input type="number" class="form-control" id="id" name="empID" placeholder="Employee ID No." aria-label="Admin ID No." aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['admin_id'] ?>" readonly required>
-                        </div>
                         <br>
                         <div class="input-group1 ">
                             <input type="text" class="form-control" name='username' placeholder="Email" id="username" aria-label="Username" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['uname'] ?>" >
@@ -145,6 +142,34 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- Script     -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
+            function logout() {
+            Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+            $.ajax({
+            type: 'POST',
+            url: '../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + 'Admin Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+            window.location.href = '../home';
+        }
+  });
+        }
                            function goBack() {
             window.history.back();
         }

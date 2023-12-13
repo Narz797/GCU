@@ -69,24 +69,13 @@ logAudit($id, 'access_archive', $id .' has accessed the archive page');
         <div class="nav-mobile">
             <ul class="list">
                 <li class="list-item">
-
-<!-- Back function once click goes back 
-    to whatever page it opened before clicking archive -->
-
     <button onclick="goBack()" class="list-link current">BACK</button>
                 </li>
             </ul>
-            <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
-                <i class="ri-close-line"></i>
-            </button>
         </div>
         <div class="align-right">
-            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
-                <i class="ri-function-line"></i>
-            </button>
-            <button class="icon-btn theme-toggle-btn place-items-center">
-                <i class="ri-sun-line theme-light-icon"></i>
-                <i class="ri-moon-line theme-dark-icon"></i>
+            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center" onclick="goBack()" class="list-link current">
+            <i class="ri-arrow-left-circle-line"></i>
             </button>
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>

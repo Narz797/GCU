@@ -15,17 +15,29 @@
          <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Remix icons -->
+     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
    </head>
 <body>
   <!-- Header -->
-<header class="header" style="background: #007f5f;">
+<header class="header">
     <nav class="nav"> 
         <div class="logo">
         <img src="assets/img/GCU_logo.png" alt="">
         </div>
+        <div class="nav-mobile">
+            <div class="list">
+                <div class="list-item">
+                  <button onclick="goBack()" class="list-link current">BACK</button>
+                </div>
+            </div>
+        </div>
         <div class="align-right">
-            <button class="icon-btn place-items-center" value="logout" onclick="goBack()">
-                <i class="bx bxs-chevron-left"> Back</i>
+            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center" onclick="goBack()" class="list-link current">
+            <i class="ri-arrow-left-circle-line"></i>
+            </button>
+            <button class="icon-btn place-items-center" onclick="logout()">
+                <i class="ri-user-3-line"></i>
             </button>
         </div>
     </nav>
@@ -196,28 +208,33 @@
     </div>
     </div>
   </div>
-<!-- <footer id="footer" class="footer" style="background: #007f5f;">
-    <div class="foot" id="footercopyright">
-        <div class="copyright">
-           
-        </div>
-        <div class="credits">Designed by <a class="dev" href="https://www.facebook.com/BSUCollegeofInformationSciences">BSIT</a></div>
-    </div>
-</footer> -->
 
 <footer class="d-flex justify-content-center" style="width: 100%; background:  #007f5f;">
-    
         <br>
-
         <p style="text-align: center; margin: 0; display: block; color:white; font-family: 'Poppins' , sans-serif;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>.
          Guidance and Counseling Unit. All rights reserved.</p>
         <br>
-        
     </footer>
-
+ 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
-                    function goBack() {
+    function logout() {
+  $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: tID,
+              action: 'logged out',
+              details: tID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+    window.location.href = '../home';
+}
+          function goBack() {
             window.history.back();
         }
     let li = document.querySelectorAll(".faq-text li");

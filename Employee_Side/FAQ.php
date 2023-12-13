@@ -31,7 +31,9 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Digital Help </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> DIGITAL HELP </title>
     <link rel="stylesheet" href="assets/contact.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
@@ -40,21 +42,36 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
          <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Remix icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
    </head>
+   
 <body>
-  <!-- Header -->
+    <!-- Header -->
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
         <img src="assets/images/GCU_logo.png" alt="">
         </div>
+        <div class="nav-mobile">
+            <div class="list">
+                <div class="list-item">
+    <button onclick="goBack()" class="list-link current">BACK</button>
+                </div>
+            </div>
+        </div>
         <div class="align-right">
-            <button class="icon-btn place-items-center" value="logout" onclick="goBack()">
-                <i class="bx bxs-chevron-left"> Back</i>
+            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center" onclick="goBack()" class="list-link current">
+            <i class="ri-arrow-left-circle-line"></i>
             </button>
+            <button class="icon-btn place-items-center" onclick="logout()">
+                <i class="ri-user-3-line"></i>
+            </button>
+            
         </div>
     </nav>
 </header>
+
 <style>
       #loading-spinner {
       position: absolute;

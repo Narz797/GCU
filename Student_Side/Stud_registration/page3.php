@@ -681,7 +681,7 @@ $_SESSION['origin'] = 'Student';
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: white;
     z-index: 1;
   }
 
@@ -957,15 +957,15 @@ $_SESSION['origin'] = 'Student';
     <div class="modal_content">
         <div class="body">
             <div class="logo">
-                <img id="loading-spinner" style="display: none;" src="../assets/img/GCU_LOGO.gif">
+            <img src="../../assets/img/GCU_logo.png" alt="Logo" width="90" height="90">
             </div>
             <div class="container2">
                 <form id="verify_code" method="post">
-                    <h1>A verification code has been sent to your email. Please enter the code below to fully register your account</h1>
+                    <h2 style="color:black; font-family: 'Lucida Console', Courier, monospace;">A verification code has been sent to your email. Please enter the code below to fully register your account</h2>
                     <div class="id">
                         <label for="code" style="color: black;">Verification Code:</label>
                         <input type="number" id="code" name="code" class="code" required>
-                        <button onclick="verify()">Verify</button>
+                        <button onclick="verify()" style="background-color:black;color:white;">Verify</button>
                     </div>
                 </form>
             </div>
@@ -1010,7 +1010,16 @@ $_SESSION['origin'] = 'Student';
     function add_remarks(){
 console.log("Email", $("#email").val())
 
+
+// Disable scrolling for touch events
             document.getElementById("modal").style.display = "block";
+            window.addEventListener('wheel', preventDefault, { passive: false });
+    
+    window.addEventListener('touchmove', preventDefault, { passive: false });
+    document.attachEvent('onmousewheel', preventDefault);
+    document.body.style.overflow = 'hidden';
+// 
+
                 // Show loading spinner
                 Swal.fire({
                 title: 'Sending Email',
