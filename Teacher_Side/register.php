@@ -11,30 +11,11 @@ $_SESSION['origin'] = 'Teacher_Register';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Regisration Form </title>
-   <link href="../assets/img/GCU_logo.png" rel="icon">
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="assets/style.css">
-    <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <!-- <link rel="stylesheet" href="../assets/css/stud_reg.css"> -->
-  
-
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
-   
-
-
-    <!-- <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script> -->
+    <link rel="stylesheet" href="assets/css/tregister.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <title>Teacher Regisration Form </title>
+   <link href="../assets/img/GCU_logo.png" rel="icon">
 
 
 </head>
@@ -58,7 +39,7 @@ $_SESSION['origin'] = 'Teacher_Register';
   }
 
 
-    .container2 {
+    .container1 {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
@@ -83,7 +64,7 @@ label {
     color: #333;
 }
 
-.code {
+input {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
@@ -112,28 +93,25 @@ button:hover {
   
 </style>
 <body>
-    <!-- <div class="left-column">
-        <img src="assets/img/GCU_logo.png" alt="Logo" class="logo">
-    </div>
-     -->
+
+
+
+    <!-- Might as well put the header or banner here-->
+
     <div class="container">
         <header>TEACHER REGISTRATION FORM</header>
-        <form method="POST" id="registrationForm" enctype="multipart/form-data">
+        <form id="registrationForm" method="POST">
             <div class="form first">
                 <div class="details personal">
-                    <br>
                     <hr>
-                    <hr>
-                    <br>
-                    <br>
                     <br>
                     <div class="fields">
                         <div class="input-field">
-                        <label for="idNumber">Employee ID Number:</label>
-                        <input type="text" id="idNumber"  name="idNumber"  required>
+                            <label for="idNumber">Employee ID Number:</label>
+                            <input type="text" id="idNumber"  name="idNumber" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                         </div>
                         <div class="input-field">
-                            <label for='course'>College</label>
+                            <label>College</label>
                             <select required id="college" name="college">
                                 <option disabled selected>Select College</option>
                                 <option>College of Agriculture</option>
@@ -151,26 +129,22 @@ button:hover {
                                 <option>College of Natural Sciences</option>
                             </select>
                         </div>
-
                         <div class="input-field">
-                        <label>Gender</label>
+                            <label>Gender</label>
                             <select required id="gender" name="gender">
                                 <option disabled selected>Select gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>
                         </div>
-
                         <div class="input-field">
                             <label>Last Name</label>
                             <input type="text" id="lastname" name="lastname" required>
                         </div>
-
                         <div class="input-field">
                             <label>First Name</label>
                             <input type="text" id="firstname" name="firstname" required>
                         </div>
-
                         <div class="input-field">
                             <label>Middle Name</label>
                             <input type="text" id="middlename" name="middlename" required>
@@ -197,48 +171,39 @@ button:hover {
                                 <option>Widowed</option>
                             </select>
                         </div>
-                        <div class="input-field">
-                        </div>
-                        <div class="input-field">
-                        </div>
-                        <!-- <div class="buttons"> -->
-                <button class="backBtn" onclick="goback()">
-                    <i class="uil uil-navigator"></i>
-                    <span class="btnText">Back</span>
-                </button>
-                        <button class="nextBtn" id="next" onclick="add_remarks()">
-                            <span class="btnText">REGISTER</span>
-                            <i class="uil uil-navigator"></i>
-                        </button>
-
+                        <button onclick="window.location.href='.././home'">BACK</button>
+                        <!-- <button type="submit">SUBMIT</button> -->
+                        <button  onclick="add_remarks()">REGISTER</button>
                     </div>
                 </div>
             </div>
-                  <!-- verrify popup -->
+       
+        <!-- verrify popup -->
 
-                  <div id="modal" class="modal">
+                <div id="modal" class="modal">
             <div class="modal_content">
                 <div class="body">
                 <div class="logo">
                     <img id="loading-spinner" style="display: none;" src="../assets/img/GCU_LOGO.gif">
                     </div>
-                <div class="container2">
+                <div class="container1">
                     <form id="verify_code" method="post">
                     <h1>A verification code has been den to your email, please enter the code below to fully register your account</h1>
                     <div class="id">
                         <label for="email" style="color:black;">Verification Code:</label>
-                        <input type="number" class="code" id="code" name="code" oninput="validateInput(this)" required>
+                        <input type="number" id="code" name="code" oninput="validateInput(this)" required>
                         <button onclick="verify()" >Verify</button>
                     </div>
-        </form>
-
+                    <!-- fasdfas -->
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+            </form>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        function goback(){
-            window.location.href="../home";
-        }
           function limitTo11Digits(event) {
   var input = event.target;
   var inputValue = input.value.replace(/\D/g, ''); // Remove non-numeric characters

@@ -25,9 +25,8 @@ $id = $_SESSION['session_id'];
 
 // Log audit entry for accessing the home page
 logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,9 +35,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
     <!-- Remix icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="icon" href="assets/images/GCU_logo.png">
@@ -61,11 +58,8 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
 </head>
 
@@ -81,30 +75,28 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
     </header>
     <!-- Banner -->
     <?php include '../includes/banner.php' ?>
-        <!-- <div class="block" style="background:#007f5f"></div> -->
-        <!-- First Section -->
         <div class="title independent-title">
-            <h2> Welcom Back, Admin</h2>
+            <h2> Welcom Back, Admin!</h2>
         </div>
     </section>
     <!-- Management-area -->
     <section class="management-area" >
         <div class="management-area-container d-grid">
             <div class="card" style=" background: white">
-                <header class="card-header header-side"  style="background:#edae49;">
-                    <h2 class="title" style="color: black;">ACTIONS</h2>
-                    <small style="color: black;" >Choose what task to do today.</small>
+                <header class="card-header header-side"  style="background:lightgray;">
+                    <h2 class="title"  style=" color: black">ACTIONS</h2>
+                    <small >Choose what task to do today.</small>
                 </header>
                 <hr style="border-color: gray; border-width: 2px;">
                 <div>
                     <a href="logreport.php" class="card-body-link">
                         <i class="ri-folder-line"></i>Log Report
                     </a>
-                    <a href="studentprofile.php" class="card-body-link">
-                        <i class="ri-server-line"></i>Student Accounts
-                    </a>
                     <a href="EmployeeProfiles.php" class="card-body-link">
                         <i class="ri-server-line"></i>Employee Profiles
+                    </a>
+                    <a href="studentprofile.php" class="card-body-link">
+                        <i class="ri-server-line"></i>Student Accounts
                     </a>
                     <a href="teacherprofiles.php" class="card-body-link">
                         <i class="ri-server-line"></i>Teacher Accounts
