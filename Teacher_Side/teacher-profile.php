@@ -182,7 +182,7 @@ $_SESSION['transact_type'] = 'Referral';
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">College</label>
-                    <select required id="college" name="college" disabled>
+                    <select class="form-control form-control-alternative" required id="college" name="college" disabled>
                                 <option disabled selected>Select College</option>
                                 <option>College of Agriculture</option>
                                 <option>College of Teacher Education</option>
@@ -204,7 +204,7 @@ $_SESSION['transact_type'] = 'Referral';
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Gender</label>
-                        <select required id="gender" name="gender" disabled>
+                        <select class="form-control form-control-alternative" required id="gender" name="gender" disabled>
                                 <option disabled selected>Select gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -214,9 +214,9 @@ $_SESSION['transact_type'] = 'Referral';
 
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-last-name">Civil Status</label>
+                        <label  class="form-control-label" for="input-last-name">Civil Status</label>
                         <!-- Editable -->
-                        <select required id="stat" name="stat" disabled>
+                        <select class="form-control form-control-alternative" required id="stat" name="stat" disabled>
                             <option disabled selected>Select</option>
                                 <option>Single</option>
                                 <option>Married</option>
@@ -450,20 +450,28 @@ function addHighlight(element) {
     
 
     email.style.border = '2px solid yellow';
+    email.style.padding = '22px';
 
     clg.style.border = '2px solid yellow';
+    clg.style.padding = '22px';
 
     gndr.style.border = '2px solid yellow';
+    gndr.style.padding = '22px';
 
     ln.style.border = '2px solid yellow';
+    ln.style.padding = '22px';
 
     cn.style.border = '2px solid yellow';
+    cn.style.padding = '22px';
 
     cs.style.border = '2px solid yellow';
+    cs.style.padding = '22px';
 
     fn.style.border = '2px solid yellow';
+    fn.style.padding = '22px';
 
     mn.style.border = '2px solid yellow';
+    mn.style.padding = '22px';
 
     
 }
