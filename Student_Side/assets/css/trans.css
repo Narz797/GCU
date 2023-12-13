@@ -208,7 +208,7 @@ i{
     margin-bottom: var(--margin-small);}
 .independent-title{
     font-size: var(--font-size-medium);
-    color: var(--light-color);
+    color: white;
     padding: 2.5rem 0 1.25rem;
     background-color: #008374;}
 .independent-title h2{

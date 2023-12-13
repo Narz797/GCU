@@ -103,15 +103,15 @@ $siblings->execute();
 $siblings = $siblings->fetchAll();
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Profile</title>
-  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <!-- Remix icons -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -129,6 +129,7 @@ $siblings = $siblings->fetchAll();
   <link href="../assets/img/GCU_logo.png" rel="icon">
   <link rel="stylesheet" href="../assets/contact.css">
   <link rel="stylesheet" href="assets/stud_prof.css">
+<<<<<<< Updated upstream
 
       <!-- Fontawesome CDN Link -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
@@ -139,6 +140,33 @@ $siblings = $siblings->fetchAll();
     
      <!-- Remix icons -->
     
+=======
+  <!-- Fontawesome CDN Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Export -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
+    <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
+<!-- pagination -->
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- DataTables JS -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+>>>>>>> Stashed changes
 </head>
 
 <style>
@@ -171,10 +199,18 @@ $siblings = $siblings->fetchAll();
         </div>
     </nav>
 </header>
+<<<<<<< Updated upstream
 <body>
   <!-- <input id="topbar" class="topbar d-flex align-items-center" style="background-color:#20B2AA; height: 50px; "><i class="fa fa-sign-out" style="font-size:48px;color:black; margin-left:1650px" ></i> -->
   <!--   -->
   <div class="independent-title">
+=======
+
+<?php include '../includes/banner.php' ?>
+
+<body>
+  <div class="independent-title1">
+>>>>>>> Stashed changes
         <h2>MY PROFILE</h2>
     </div>
 
@@ -319,7 +355,7 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6" id="ps">
                       <div class="form-group">
                         <label class="form-control-label" for="pass">Password</label>
-                        <input type="password"  class="form-control form-control-alternative" id="pass" style="border:2px solid yellow;">
+                        <input type="password"  class="form-control form-control-alternative" id="pass" style="border:2px solid yellow; padding:22px;">
                         <i class="fas fa-eye" onclick="togglePasswordVisibility('pass')"></i>
                       </div>
                     </div>
@@ -327,7 +363,7 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6" id="ps2">
                       <div class="form-group">
                         <label class="form-control-label" for="pass">Verify Password</label>
-                        <input type="password"  class="form-control form-control-alternative" id="pass2" style="border:2px solid yellow;">
+                        <input type="password"  class="form-control form-control-alternative" id="pass2" style="border:2px solid yellow; padding:22px;">
                         <i class="fas fa-eye" onclick="togglePasswordVisibility('pass2')"></i>
                       </div>
                     </div>
@@ -475,7 +511,7 @@ $siblings = $siblings->fetchAll();
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-last-name">House#/Street/Barangay/Municipality/Province/Zip Code</label>
+                        <label class="form-control-label" for="input-last-name">House#/St./Brgy./Municipality/Province/Zip Code</label>
                         <!-- Editable -->
                         <input type="text" class="form-control form-control-alternative" id="address" readonly value =  "<?php echo $pers_info[0]['Address'] ?>">
                       </div>
@@ -736,14 +772,14 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="sen_school" readonly value =  "<?php echo $senschool_info[0]['school_name'] ?>">
+                        <input    type="text" id="s_name" class="form-control form-control-alternative" id="sen_school" readonly value =  "<?php echo $senschool_info[0]['school_name'] ?>">
                       </div>
                     </div>
 
                     <div class="col-lg-6" >
                       <div class="form-group id">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="sen_school_yg" readonly value =  "<?php echo $senschool_info[0]['year'] ?>">
+                        <input    type="text" id="y_grad" class="form-control form-control-alternative" id="sen_school_yg" readonly value =  "<?php echo $senschool_info[0]['year'] ?>">
                       </div>
                     </div>
                   </div>
@@ -752,7 +788,7 @@ $siblings = $siblings->fetchAll();
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <input style="height:auto;" id="award" class="form-control form-control-alternative" id="sen_school_awards" readonly value =  "<?php echo $senschool_info[0]['awards'] ?>">
+                    <input    id="award" class="form-control form-control-alternative" id="sen_school_awards" readonly value =  "<?php echo $senschool_info[0]['awards'] ?>">
 
                   </div>
                 </div>
@@ -764,14 +800,14 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="jun_school" readonly value =  "<?php echo $junschool_info[0]['school_name'] ?>">
+                        <input    type="text" id="s_name" class="form-control form-control-alternative" id="jun_school" readonly value =  "<?php echo $junschool_info[0]['school_name'] ?>">
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group id">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="jun_school_yg" readonly value =  "<?php echo $junschool_info[0]['year'] ?>">
+                        <input    type="text" id="y_grad" class="form-control form-control-alternative" id="jun_school_yg" readonly value =  "<?php echo $junschool_info[0]['year'] ?>">
                       </div>
                     </div>
                   </div>
@@ -780,7 +816,7 @@ $siblings = $siblings->fetchAll();
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <input style="height:auto;" id="award" class="form-control form-control-alternative" id="jun_school_awards" readonly value =  "<?php echo $junschool_info[0]['awards'] ?>">
+                    <input    id="award" class="form-control form-control-alternative" id="jun_school_awards" readonly value =  "<?php echo $junschool_info[0]['awards'] ?>">
 
                   </div>
                 </div>
@@ -793,14 +829,14 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name of the School</label>
-                        <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="elm_school" readonly value =  "<?php echo $elemschool_info[0]['school_name'] ?>">
+                        <input    type="text" id="s_name" class="form-control form-control-alternative" id="elm_school" readonly value =  "<?php echo $elemschool_info[0]['school_name'] ?>">
                       </div>
                     </div>
 
                     <div class="col-lg-6">
                       <div class="form-group id">
                         <label class="form-control-label" for="input-email">Year Graduated</label>
-                        <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="elm_school_yg" readonly value =  "<?php echo $elemschool_info[0]['year'] ?>">
+                        <input    type="text" id="y_grad" class="form-control form-control-alternative" id="elm_school_yg" readonly value =  "<?php echo $elemschool_info[0]['year'] ?>">
                       </div>
                     </div>
                   </div>
@@ -809,7 +845,7 @@ $siblings = $siblings->fetchAll();
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label class="form-control-label" for="input-email">Awards Received</label>
-                    <input style="height:auto;" id="award" class="form-control form-control-alternative" id="elm_school_awards" readonly value =  "<?php echo $elemschool_info[0]['awards'] ?>">
+                    <input    id="award" class="form-control form-control-alternative" id="elm_school_awards" readonly value =  "<?php echo $elemschool_info[0]['awards'] ?>">
 
                   </div>
                 </div>
@@ -822,14 +858,14 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-6">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-username">Name of the School</label>
-                          <input style="height:auto;" type="text" id="s_name" class="form-control form-control-alternative" id="oth_school" readonly value =  "<?php echo $othschool_info[0]['school_name'] ?>">
+                          <input    type="text" id="s_name" class="form-control form-control-alternative" id="oth_school" readonly value =  "<?php echo $othschool_info[0]['school_name'] ?>">
                         </div>
                       </div>
 
                       <div class="col-lg-6">
                         <div class="form-group id">
                           <label class="form-control-label" for="input-email">Year Graduated</label>
-                          <input style="height:auto;" type="text" id="y_grad" class="form-control form-control-alternative" id="oth_school_yg" readonly value =  "<?php echo $othschool_info[0]['year'] ?>">
+                          <input    type="text" id="y_grad" class="form-control form-control-alternative" id="oth_school_yg" readonly value =  "<?php echo $othschool_info[0]['year'] ?>">
                         </div>
                       </div>
                     </div>
@@ -839,7 +875,7 @@ $siblings = $siblings->fetchAll();
                   <div class="pl-lg-4">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-email">Awards Received</label>
-                      <input style="height:auto;" id="award" class="form-control form-control-alternative" id="oth_school_awards" readonly value =  "<?php echo $othschool_info[0]['awards'] ?>">
+                      <input    id="award" class="form-control form-control-alternative" id="oth_school_awards" readonly value =  "<?php echo $othschool_info[0]['awards'] ?>">
 
                     </div>
                   </div>
@@ -1032,6 +1068,13 @@ $siblings = $siblings->fetchAll();
             <!-- <button id="Update" onclick="upd()">Update</button> -->
 
             </form>
+<<<<<<< Updated upstream
+=======
+
+
+
+
+>>>>>>> Stashed changes
             <div id="modal" class="modal">
             <div class="modal_content">
                 <div class="body">
@@ -1046,7 +1089,6 @@ $siblings = $siblings->fetchAll();
                         <input type="number" id="code" name="code" oninput="validateInput(this)" required>
                         <a class="btn btn-sm btn-primary" style="color: white;" onclick="update()" >Verify</a>
                     </div>
-                    <!-- fasdfas -->
                     </form>
                 </div>
                 </div>
@@ -1058,9 +1100,11 @@ $siblings = $siblings->fetchAll();
     </div>
   </div>
   </div>
-  <div id="topbar" class="topbar d-flex align-items-center" style="background-color:#008B8B; height: 50px; ">
-
-  </div>
+  <div class="amen">
+    <button onclick="verify()" class="btnText1" id="Update"><span class="btnText">Update</span>&nbsp<i class="ri-edit-2-fill"></i></button>
+    <button onclick="cancel()" class="btnText1" id="Cancel"><span class="btnText">Cancel</span>&nbsp<i class="ri-arrow-left-circle-line"></i></button>  
+</div>
+  <div id="topbar" class="topbar d-flex align-items-center" style="background-color:#008B8B; height: 50px; "> </div>
   <!-- <footer class="footer">
     <div class="row align-items-center justify-content-xl-between">
       <div class="col-xl-6 m-auto text-center">
@@ -1241,40 +1285,56 @@ function toggleInput(chk, lbl) {
     // });
 
     email.style.border = '2px solid yellow';
+    email.style.padding = '22px';
 
     // pass.style.border = '2px solid yellow';
 
     // pass2.style.border = '2px solid yellow';
 
     crse.style.border = '2px solid yellow';
+    crse.style.padding = '22px';
 
     yl.style.border = '2px solid yellow';
+    yl.style.padding = '22px';
 
     sec.style.border = '2px solid yellow';
+    sec.style.padding = '22px';
 
     cn.style.border = '2px solid yellow';
+    cn.style.padding = '22px';
 
     cs.style.border = '2px solid yellow';
+    cs.style.padding = '22px';
 
     adrs.style.border = '2px solid yellow';
+    adrs.style.padding = '22px';
 
     fage.style.border = '2px solid yellow';
+    fage.style.padding = '22px';
 
     focc.style.border = '2px solid yellow';
+    focc.style.padding = '22px';
 
     fcn.style.border = '2px solid yellow';
+    fcn.style.padding = '22px';
 
     mage.style.border = '2px solid yellow';
+    mage.style.padding = '22px';
 
     mocc.style.border = '2px solid yellow';
+    mocc.style.padding = '22px';
 
     mcn.style.border = '2px solid yellow';
+    mcn.style.padding = '22px';
 
     gage.style.border = '2px solid yellow';
+    gage.style.padding = '22px';
 
     gocc.style.border = '2px solid yellow';
+    gocc.style.padding = '22px';
 
     gcn.style.border = '2px solid yellow';
+    gcn.style.padding = '22px';
 
     // Show buttons or perform other actions as needed
   
@@ -1651,5 +1711,6 @@ function verify(){
 
 
 
-
+<script src="assets/main.js"></script> 
 </body>
+</html>
