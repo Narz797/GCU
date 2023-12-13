@@ -415,7 +415,8 @@ $("#form_transact").on("submit", function (event) {
             row.append("<td>" + entry.year_level + "</td>");
             row.append("<td>" + entry.gender + "</td>");
             row.append("<td>" + entry.reason + "</td>");
-            row.append("<td>" + entry.date + "</td>");
+            row.append("<td>" + formatDateString(entry.date) + "</td>");
+
             row.append("<td>" + entry.status + "</td>");
 
 
@@ -440,7 +441,11 @@ $("#form_transact").on("submit", function (event) {
 }
     });
 
-
+    function formatDateString(dateString) {
+  const date = new Date(dateString);
+  const options = { year: 'numeric', month: 'short', day: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
+}
     function fetchData() {
 
     // Function to update the HTML elements
