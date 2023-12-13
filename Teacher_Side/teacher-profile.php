@@ -103,7 +103,6 @@ $_SESSION['transact_type'] = 'Referral';
     <button onclick="verify()" class="btnText1" id="Update"><span class="btnText">Update</span><i class="ri-edit-2-fill"></i></button>
     <button onclick="cancel()" class="btnText1" id="Cancel"><span class="btnText">Cancel</span><i class="ri-arrow-left-circle-line"></i></button>  
 </div>
-
 <div class="container-fluid mt--7">
       <div class="row">
       
@@ -260,7 +259,6 @@ $_SESSION['transact_type'] = 'Referral';
             </div>
           </div>
         </div>
-
 <footer id="topbar" class="topbar d-flex align-items-center" style="background-color:#008B8B; height: 50px; "></footer>
 </body>
 
@@ -497,28 +495,28 @@ function addHighlight(element) {
     
 
     email.style.border = '2px solid yellow';
-    email.style.padding = '22px';
+
 
     clg.style.border = '2px solid yellow';
-    clg.style.padding = '22px';
+
 
     gndr.style.border = '2px solid yellow';
-    gndr.style.padding = '22px';
+
 
     ln.style.border = '2px solid yellow';
-    ln.style.padding = '22px';
+
 
     cn.style.border = '2px solid yellow';
-    cn.style.padding = '22px';
+
 
     cs.style.border = '2px solid yellow';
-    cs.style.padding = '22px';
+
 
     fn.style.border = '2px solid yellow';
-    fn.style.padding = '22px';
+
 
     mn.style.border = '2px solid yellow';
-    mn.style.padding = '22px';
+
 
     
 }

@@ -1,594 +1,803 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<?php
+session_start();
+include '../../backend/log_audit2.php';
+  // Check if the session variable is empty
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'You already logged out',
+                text: 'Please login again'
+            }).then(function () {
+                window.location.href = '../../home';
+            });
+        });
+    </script>
+    <?php
+    exit;
+}
+$_SESSION['transact_type'] = 'ca'; //asign value to transact_type
+logAudit($_SESSION['session_id'], 'access_class admisison form', $_SESSION['session_id'] .' has accessed the class admission page');
+?>
+
+
+
+<html>
+
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Admission Slip</title>
-    <!-- Remix icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/slippage.css">
+  <meta charset="utf-8">
+  <title>Admission Slip</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="../assets/img/GCU_logo.png" rel="icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
-    <!-- Bootstrap CSS and JS -->
+   <!-- Bootstrap CSS and JS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- jQuery UI and Bootstrap Datepicker -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
+    <!-- DataTables CSS and JS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
+    <!-- Font Awesome and Remix Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
+    
 </head>
+<style>
 
-<body>
-  <header class="header">
-    <nav class="nav"> 
-        <div class="logo">
-        <img src="GCU_logo.png" alt="">
-        </div>
-        <div class="nav-mobile">
-            <div class="list">
-                <div class="list-item">
-                    <button onclick="goBack()" class="list-link current">BACK</button>
-                </div>
-            </div>
-        </div>
-        <div class="align-right">
-            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center" onclick="goBack()" class="list-link current">
-            <i class="ri-arrow-left-circle-line"></i>
-            </button>
-            <button class="icon-btn place-items-center" onclick="logout()">
-                <i class="ri-user-3-line"></i>
-            </button>
-        </div>
-    </nav>
-</header>
+label {
+    display: block;
+    margin-bottom: 5px;
+  }
 
-<section>
-    <section> <?php include '../banner.php' ?>
+  /* Style the date input */
+  input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 18px; /* Adjust the font size as needed */
+  }
 
-<section class="management-area">
-    <div class="management-area-container d-grid">
-        <div class="card">
-            <header class="card-header header-side">
-                <h2 class="title">Class Admission Slip</h2>
-                <small>Date is <u><?php echo date('F j, Y'); ?></u></small>
-            </header>
-            <hr>
-            <div class="info">
-                <p><b>Referral slips serve as a crucial tool for educators, enabling them to recommend students who may require additional support or guidance.</b> </p>
-                 <p><b>   It is imperative that teachers diligently complete the accompanying form, providing comprehensive information pertaining to the students 
-                    they wish to refer to the Guidance and Counseling Unit (GCU) of BSU.</b></p>
-            </div>
-        </div>
-        <div class="card-group d-grid">
-            <div class="card border one">
+  /* Hide the default file input button */
+input[type="file"] {
+  display: none;
+}
 
+/* Style the custom button */
+label[for="fileUpload"] {
+  background-color:#009000;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 18px; /* Adjust the font size as needed */
 
-<div class="card1" >
-<hr>
-<h1 style="font-family: fantasy; color: black; " id="Title" >Referral Slip</h1>
-<hr>
- <div class="card-body">
+}
 
+/* Optional: Add hover effect */
+label[for="fileUpload"]:hover {
+  background-color:#008080;
+  font-size: 18px; /* Adjust the font size as needed */
 
-   <form id="form_transact"  name="form2" method="post">
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+}
 
-    <p> <label for="Sid">Student ID:</label> </p> 
-    <p> <input class="form-control1" type="number" id="Sid" name="Sid" required onblur="search()"> </p>
-    <p> <label for="fname">Student's First Name:</label> </p>
-    <p> <input class="form-control1" type="text"  id="fname" name="fname" required> </p>
-    <p> <label for="mname">Student's Middle Name:</label> </p>
-    <p> <input class="form-control1" type="text" id="mname" name="mname" > </p>
-    <p> <label for="lname">Student's Last Name:</label> </p>
-    <p> <input class="form-control1" type="text" id="lname" name="lname" required> </p>
-    <p> <label for="yl">Year/Level:</label> </p>
-    <p> <input class="form-control1" type="text" id="yl" name="yl" required> </p>
-    <p> <label for="contact">Student's Contact Number:</label> </p>
-    <p>  <input class="form-control1" type="number" id="contact" name="contact" oninput="limitTo11Digits(event)"> </p>
-    <p> <label>Gender:</label>
-     <div class="semester-year-container">
-      <select id="genderr" required>
-      <option disabled selected>Select gender</option>
-                  <option>Male</option>
-                  <option>Female</option>
-      </select>
-    </div>
-    </p>
-    <p> <label for="crse">Course:</label>
-     <div class="semester-year-container">
-     <select type="text" name="textfield5" id="crse" autocomplete="off">
-                      <option disabled selected>Select Course</option>
-                                      <option value='BSAB'>Bachelor of Science in Agribusiness</option>
-                                      <option value='BSA'>Bachelor of Science in Agriculture</option>
-                                      <option value='BA Comm'>Bachelor of Arts in Communication</option>
-                                      <option value='BAEL'>Bachelor of Arts in English Language</option>
-                                      <option value='BAFL'>Bachelor of Arts in Filipino Language</option>
-                                      <option value='BSABE'>Bachelor of Science in Agriculture and Biosystems Engineering</option>
-                                      <option value='BSCE'>Bachelor of Science in Civil Engineering</option>
-                                      <option value='BSEE'>Bachelor of Science in Electrical Engineering</option>
-                                      <option value='BSIE'>Bachelor of Science in Industrial Engineering</option>
-                                      <option value='BSF'>Bachelor of Science in Forestry</option>
-                                      <option value='BSET'>Bachelor of Science in Entrepreneurship</option>
-                                      <option value='BSFT'>Bachelor of Science in Food Technology</option>
-                                      <option value='BSHM'>Bachelor of Science in Hospitality Management</option>
-                                      <option value='BSND'>Bachelor of Science in Nutrition and Dietetics</option>
-                                      <option value='BSTM'>Bachelor of Science in Tourism Management</option>
-                                      <option value='BPeD'>Bachelor of Physical Education</option>
-                                      <option value='BSESS'>Bachelor of Science in Exercise and Sports Sciences</option>
-                                      <option value='BLIS'>Bachelor in Library and Information Sciences</option>
-                                      <option value='BSDC'>Bachelor of Science in Development Communication</option>
-                                      <option value='BSIT'>Bachelor of Science in Information Technology</option>
-                                      <option value='BS Bio'>Bachelor of Science in Biology</option>
-                                      <option value='BS Chem'>Bachelor of Science in Chemistry</option>
-                                      <option value='BSES'>Bachelor of Science in Environmental Science</option>
-                                      <option value='BS Math'>Bachelor of Science in Mathematics</option>
-                                      <option value='BSS'>Bachelor of Science in Statistics</option>
-                                      <option value='BSN'>Bachelor of Science in Nursing</option>
-                                      <option value='BPA'>Bachelor of Public Administration</option>
-                                      <option value='BS Psych'>Bachelor of Science in Psychology</option>
-                                      <option value='BECED'>Bachelor of Early Childhood Education</option>
-                                      <option value='BEED'>Bachelor of Elementary Education</option>
-                                      <option value='BSED'>Bachelor of Secondary Education</option>
-                                      <option value='BTLED'>Bachelor of Technology and Livelihood Education</option>
-                                      <option value='DVM'>Doctor of Veterinary Medicine</option>
-                                      <option value='BA Hist'>Bachelor of Arts in History</option>
-      </select>
-    </div>
-    </p>
-    <p> <label>Reason:</label>
-     <div class="semester-year-container">
-     <select required id="reason">
-        <option disabled selected>Select reason for referral</option>
-        <option>Academic Deficiency/ies</option>
-        <option>Absent</option>
-        <option>Tardy</option>
-        <option>Others</option>
-        </select>
-    </div>
-    </p>
-    <div class="date-range-container" id="dates">
-                <label for="date">Days absent/tardy:</label>
-                <!-- id = date -->
-                <div class=" date form-group" id="datepicker">
-                <span class="input-group-addon" style="color:black; font-size:x-small;"><i class="glyphicon glyphicon-calendar"></i><span class="count"> </span></span>
-                  <input type="text" class="form-control1" id="Date" name="Date" placeholder="Select days" autocomplete="off"/>
-                 
-    </div>
-    </div>
-    <p id="rem"> <label for="remark">Remarks:</label>
-    <input class="form-control1" type="text"id="remark" name="remark">
-    </p>
+input[type="radio"] {
+  margin-right: 5px;
+}
 
-               <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-               <button type="submit" onclick="submitForm()"><span class="btnText">Submit</span></button>
-   </form>
+/* Optional: Add styles for selected radio button */
+input[type="radio"]:checked + span {
+  font-weight: bold;
+  color: #007bff; /* Change color as needed */
+}
 
- </div>
+    /* Your existing styles here */
+    body {
+      /* font-family: Arial, sans-serif; */
+      background-color: #fffdd0;
+      
+      padding: 0;
+     
+     
+      /* background: linear-gradient(
+    142deg,
+    green  0%,
+    black 100%
+  ); */
+ 
 
       
+    }
 
+    .card {
+      max-width: 800px;
+      margin: 50px auto;
+     background:white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      box-sizing: border-box;
+
+      
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 1); 
+      
+
+      animation: fadeInUp 1s ease-in-out; /* Animation */
+    }
+
+    .card-header {
+      background: #007bff;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size:18px;
+
+      font-family: "Century Gothic", sans-serif;
+    }
+
+    textarea {
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
+      width: 100%;
+      padding: 8px;
+      height:200px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      font-family: "Century Gothic", sans-serif;
+      font-size:18px;
+    }
+
+    /* .button {
+      text-align: center;
+    
+      
+    } */
+
+   /* button {
+      padding: 10px 20px;
+      background-color: green;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    } */
+
+
+    /* button:hover {
+      background-color: #008080;
+    } */
+
+
+    .button-container {
+      display: flex;
+   
+      
+      
+    }
+    .button {
+      margin-right: 10px; 
+    }
+
+
+
+    /* Define the fadeInUp animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo-container {
+      display: flex;
+      /* text-align: center; */
+      
+    
+      animation: fadeInUp 1s ease-in-out; /* Animation */
+    }
+
+    .logo-container img {
+      width: 80px;
+      height: 80px;
+    }
+    h1
+    {
+      margin-left:10px;
+      text-align: center;
+      font-family: "Century Gothic", sans-serif;
+      font-weight: bold;
+
+    }
+
+    /* Style for the label */
+/* label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 18px;
+} */
+
+/* Style for the container of date inputs */
+.date-range-container {
+  display: flex;
+  gap: 20px;
+}
+
+/* Style for each date input */
+.date-input {
+  flex: 1;
+}
+
+/* Style for date inputs */
+input[type="date"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 4px;
+  font-size:18px;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+
+}
+
+/* input[type="date"]:focus {
+  outline: none;
+  border-color: #007bff;
+  font-size:18px;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+} */
+
+/* Style for the container of the reason dropdown */
+.reason-dropdown-container {
+  margin-top: 8px;
+}
+
+/* Style for the reason dropdown */
+select {
+  padding: 8px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Style for the reason dropdown when focused */
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+    /* Create a two-column layout using flexbox */
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    /* Style for each column */
+ 
+    div {
+      margin-bottom: 10px;
+    }
+
+    .column {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    input {
+      margin-right: 5px; /* Optional: Add some space between the radio button and the label */
+      width: 20px; /* Set a fixed width for the radio button */
+    }
+
+    label {
+      flex-grow: 1; /* Allow labels to grow and take up remaining space */
+    }
+    .hidden {
+      display: none;
+    }
+
+    .reminder-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .icon {
+      font-size: 20px;
+      margin-right: 10px;
+      /* margin-right: 20px; */
+    }
+
+    .btn{
+      background-color: #0039a6;
+      color: white;
+    }
+
+    .btn:hover{
+      background-color: #318CE7;
+      color: white;
+    }
     
 
+
+   
+
+
+
+
+
+
+  
+ 
+
+</style>
+<body >
+  <div class="card">
+  <div class="logo-container" >
+    <img  src="../assets/img/GCU_logo.png" alt="GCU Logo">
+   
+   <!-- <h1  id="Title" style="font-family: Papyrus, fantasy;">Readmission Slip</h1> -->
+ 
+    <img  style="margin-left:auto" src="../assets/img/bsu.png" alt="BSU Logo">
+  </div>
+  <hr>
+
+  <h1 id="Title" style="font-family: fantasy; color: black; ">Class Admission Slip</h1>
+  <hr>
+
+    <div class="card-body">
+      <form id="form_transact" name="form1" action="../../backend/create_transaction.php" method="post" enctype="multipart/form-data">
+
+<b style="font-family: Century Gothic, sans-serif; font-size:18px;">Late Or Absent:</b><br>
+
+<div class="reason-dropdown-container">
+  <select name="textfield" id="refer">
+  <option disabled selected>Select</option>
+    <option value="Tardy">Late</option>
+    <option value="Absent">Absent</option>
+   
+  </select>
 </div>
 
-                 </div>
-            </div>
-        </div>
-    </div>
-</section> 
-<!-- This is the pop-up for the three buttons -->
-
-                <!-- <div class="overlay" id="divOne">
-                    <div class="wrapper">
-                        <h1>The referred student will be contacted. Clicking send will notify the teacher that the request was received.</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk"> -->
-
-<!-- Add a function here where the data will be stored -->
-<!-- 
-                                    <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div> -->
 <br>
+<p></p>
+<br>
+<div class="date-range-container" id="dates">
+  <div class="date-input">
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   <script>
-        function goBack() {
-            window.history.back();
-        }
-        function logout() {
-        $.ajax({
-            type: 'POST',
-            url: '../../backend/log_audit.php',
-            data: {
-              userId: tID,
-              action: 'logged out',
-              details: tID + ' Clicked log out'
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
-            window.location.href = '../home';
-        }
-
-    </script>
-
-<?php include 'includes/footer1.php' ?>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-  var tID = "<?php echo $_SESSION['session_id'];?>";
-  function limitTo11Digits(event) {
-  var input = event.target;
-  var inputValue = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-
-  if (inputValue.length > 11) {
-    input.value = inputValue.slice(0, 11);
-  }
-}
-function logout() {
-  $.ajax({
-            type: 'POST',
-            url: '../../backend/log_audit.php',
-            data: {
-              userId: tID,
-              action: 'logged out',
-              details: tID + ' Clicked log out'
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
-    window.location.href = '../home';
-}
-function search() {
-    var studentId = $("#Sid").val();
-
-    $.ajax({
-        url: '../backend/TS_search_student.php',
-        type: 'GET',
-        dataType: 'json',
-        data: { studentId: studentId }, // Pass the student ID to the server
-        success: function(data) {
-          if (data.length>0){
-            console.log(data);
-
-            for (var i = 0; i < data.length; i++) {
-                var entry = data[i];
-
-                var fnameInput = document.getElementById('fname');
-                var mnameInput = document.getElementById('mname');
-                var lnameInput = document.getElementById('lname');
-                var courseInput = document.getElementById('crse');
-                var contactInput = document.getElementById('contact');
-                 var genderInput = document.getElementById('genderr');
-
-                fnameInput.value = entry.first_name;
-                fnameInput.setAttribute('readonly', 'readonly');
-
-                mnameInput.value = entry.middle_name;
-                mnameInput.setAttribute('readonly', 'readonly');
-
-                lnameInput.value = entry.last_name;
-                lnameInput.setAttribute('readonly', 'readonly');
-
-                courseInput.value = entry.course;
-                courseInput.setAttribute('disabled', 'disabled');
-
-                contactInput.value = entry.Contact_number;
-                contactInput.setAttribute('readonly', 'readonly');
-
-                genderInput.value = entry.gender;
-                genderInput.setAttribute('disabled', 'disabled');
-           
-            }
-          }else{
-              
-
-                var fnameInput = document.getElementById('fname');
-                var mnameInput = document.getElementById('mname');
-                var lnameInput = document.getElementById('lname');
-                var courseInput = document.getElementById('crse');
-                var contactInput = document.getElementById('contact');
-                var genderInput = document.getElementById('genderr');
-
-                fnameInput.value = "";
-                fnameInput.removeAttribute('readonly');
-                mnameInput.value = "";
-                mnameInput.removeAttribute('readonly');
-                lnameInput.value = "";
-                lnameInput.removeAttribute('readonly');
-                courseInput.value = "";
-                courseInput.removeAttribute('disabled');
-                contactInput.value = "";
-                contactInput.removeAttribute('readonly');
-                genderInput.value = "";
-                genderInput.removeAttribute('disabled');
-          }
-        },
-        error: function(xhr, status, error) {
-            console.error('Error fetching data:', error);
-        }
-    });
-}
-var clg;
-var eID;
-var sID;
-var dc;
-var transID;
-var Temail;
-var cn;
+    <label for="Date">Number of Days:</label>
+    <div class="input-group date form-group" id="datepicker">
+            <input type="text" class="form-control" id="Date" name="Date" placeholder="Select days"  style="width: 50%;" autocomplete="off"/>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span class="count"></span></span>
+        </div>
+  </div>
+</div>
 
 
-$(document).ready(function() {
-  var LA = $("#dates");
+<div id="COA">
+<b style="font-family: Century Gothic, sans-serif; font-size:18px;">Reason:</b><br>
+    <input type="radio" id="health" name="concern" value="health"> Health-related concerns
+    <br>
+
+    <input type="radio" id="personal" name="concern" value="personal"> Personal Concerns
+    <br>
+
+    <input type="radio" id="socio-cultural" name="concern" value="socio-cultural">  Socio-Cultural Concerns
+    <br>
+
+    <input type="radio" id="behavioral" name="concern" value="behavioral"> Behavioral
+    <br>
+
+    <input type="radio" id="filial" name="concern" value="filial"> Filial Responsibilities
+    <br>
+
+    <input type="radio" id="environmentalRadio" name="concern" value="environmental"> Environmental
+    <br>
+
+    <input type="radio" id="officialActivityRadio" name="concern" value="officialActivity" > Official co/extra-curricular activity
+ 
+      <input type="text" id="officialActivitySpecify" class="hidden" name="specify" style="width: 100%;" placeholder="Please Specify">
+
+<br>
+    <input type="radio" id="otherRadio" name="concern" value="others" > Others
+
+    
+    <input type="text" id="otherSpecify" class="hidden" name="specify" style="width: 100%;"placeholder="Please Specify">
+    <br>
+</div>
+  <div class="form1" id="rem">
+          <label for="remark">Reason:</label><br>
+          <input type="text"id="remark" name="remark"  style="width: 100%;">
+
+
+        </div>
+  
+       
+<p></p>
+<br>
+<div class="reminder-container">
+  <p style="margin-top: 12px; font-size: 12px; font-weight: bold;">You must upload required files such as Excuse letter, Medical credentials, etc. before clicking Submit.</p>
+</div>
+      <label for="fileUpload">Upload Required Files</label>
+      <input type="file" id="fileUpload" name="fileUpload[]" required>
+      <br>
+   
+      <div class="reminder-container">
+  <i class="fas fa-exclamation-circle icon"></i>
+  <p style="margin-top: 12px; font-size: 12px; font-weight: bold; color:red;">Reminder: Zip multiple files before uploading them.</p>
+</div>
+
+
+  <br>
+  <br>
+          <br>
+
+  <div class="button-container">
+          <div class="button">
+            <p>
+              <!-- Change type from submit to button, and use onclick to handle the back button -->
+              <button type="button" class="btn btn-primary" onclick="window.history.back();">Back</button>
+            </p>
+          </div>
+         
+          <div class="button">
+            <p>
+              <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
+              <button type="submit" class="btn" id ="submit">Submit</button>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+      var sID = "<?php echo $_SESSION['session_id'];?>";
+      var LA = $("#dates");
     var AO = $("#rem");
+    var COA = $('#COA');
+    var selectedConcern;
+    var sID = "<?php echo $_SESSION['session_id'];?>";
+    
+    $(".hidden").hide();
     LA.hide();
     AO.hide();
+    COA.hide();
 
-    $("#reason").change(function() {
-      if ($(this).val() == "Absent" || $(this).val() == "Tardy") {
+    function validateForm() {
+        var fileInput = document.getElementById('fileUpload');
+
+        if (fileInput.files.length === 0) {
+            alert('Please select a file');
+            return false; // Prevent form submission
+        }
+
+        // Your additional validation logic can go here if needed
+
+        return true; // Allow form submission
+    }
+
+    function logSelectedConcern() {
+        var radioButtons = document.getElementsByName("concern");
+       
+    
+      
+        for (var i = 0; i < radioButtons.length; i++) {
+          if (radioButtons[i].checked) {
+            selectedConcern = radioButtons[i].value;
+            console.log("Selected concern: " + selectedConcern);
+
+            if (selectedConcern == "officialActivity"){
+              $("#officialActivitySpecify").show();
+              $("#otherSpecify").hide();
+              $("#otherSpecify").val("");
+
+            }else if (selectedConcern == "others"){
+              $("#otherSpecify").show();
+              $("#officialActivitySpecify").hide();
+              $("#officialActivitySpecify").val("");
+       
+            }
+            else{
+              $(".hidden").hide();
+              $("#officialActivitySpecify").val("");
+              $("#otherSpecify").val("");
+            }
+            return;
+          }
+        }
+
+        // If no radio button is checked
+        console.log("No concern selected");
+      }
+      
+      // Attach the function to the change event of the radio buttons
+      var radioButtons = document.getElementsByName("concern");
+      for (var i = 0; i < radioButtons.length; i++) {
+        radioButtons[i].addEventListener("change", logSelectedConcern);
+      }
+
+    $("#refer").change(function() {
+      
+      var dateInput = document.getElementById('Date');
+      var remInput = document.getElementById('remark');
+
+      if ($(this).val() == "Absent") {
         LA.show();
+        COA.show();
         AO.hide();
-      } else if ($(this).val() == "Academic Deficiency/ies" || $(this).val() == "Others") {
+        $("#remark").val("");
+        dateInput.setAttribute('required', 'required');
+        remInput.removeAttribute('required');
+      }
+      else if ($(this).val() == "Tardy") {
+        LA.show();
+        COA.hide();
+        AO.hide();
+        selectedConcern = "";
+        $("#officialActivitySpecify").val("");
+        $("#otherSpecify").val("");
+        $("#remark").val("");
+        dateInput.setAttribute('required', 'required');
+        remInput.removeAttribute('required');
+        var radioButtons = document.getElementsByName('concern');
+
+        for (var i = 0; i < radioButtons.length; i++) {
+            radioButtons[i].checked = false;}
+        
+            var textInputs = document.getElementsByName('specify');
+
+        for (var i = 0; i < textInputs.length; i++) {
+            textInputs[i].value = '';
+        }
+
+
+      } else if ($(this).val() == "Academic Deficiency/ies") {
         LA.hide();
+        COA.hide();
         AO.show();
+        $("#officialActivitySpecify").val("");
+        $("#otherSpecify").val("");
+        $("#Date").val("");
+        dateInput.removeAttribute('required');
+        remInput.setAttribute('required', 'required');
       } else {
         LA.hide();
+        COA.hide();
         AO.hide();
+        $("#remark").val("");
+        $("#officialActivitySpecify").val("");
+        $("#otherSpecify").val("");
+        $("#Date").val("");
       }
     });
 
-//check if student is available in database
+    function myFunction() {
+      var checkBox2 = document.getElementById("others");
+      var text2 = document.getElementById("oth");
+      if (checkBox2.checked == true) {
+        text2.style.display = "block";
+      } else {
+        text2.style.display = "none";
+      }
+    }
+  </script>
+  <script>
+     $("#refer").change(function () {
+      var selectedValue = $(this).val();
+
+      // Check if the selected value is "Absent"
+      if (selectedValue === "Absent") {
+        // Set "required" attribute for all radio buttons
+        $("input[name='concern']").prop("required", true);
+      } else {
+        // Remove "required" attribute for all radio buttons
+        $("input[name='concern']").prop("required", false);
+      }
+    });
 $("#form_transact").on("submit", function (event) {
-      event.preventDefault();
-
-      var transact_type = "Referral"
-      var studentContactNumber = document.getElementById("contact").value;
-      console.log($("#Sid").val());
-      $.ajax({
-        type: 'POST',
-        url: '../backend/check_student.php',
-        data: {
-                          sid: $("#Sid").val(),
-                          fname: $("#fname").val(),
-                          mname: $("#mname").val(),
-                          lname: $("#lname").val(),
-                          year_level: $("#yl").val(),
-                          gender: $("#genderr").val(),
-                          course: $("#crse").val(),
-                          cn: $("#contact").val(),
-                          reasons: $("#reason").val(),
-                          datee: $("#Date").val(),
-                          rem: $("#remark").val(),
-                          Tcn: cn,
-                          TeachEmail: Temail 
-                          
-                      },
-        success: function (data) {
-          console.log('Success!');
-          // alert(data);
-            Swal.fire({
-              icon: "success",
-              title: "Student reffered",
-              confirmButtonText: "OK",
-
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                           
-                   window.location.reload()
-                } 
-              });
-;
-          $.ajax({
-            type: 'POST',
-            url: '../backend/log_audit.php',
-            data: {
-              userId: tID,
-              action: 'reffered',
-              details: tID + ' reffered '+sID
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
-
-        },
-    error: function (xhr, status, error) {
-      alert("Error: " + error);
-    }
-      });
-    });
-
-    $("#form_edit").on("submit", function (event) {
-      event.preventDefault();
-      $.ajax({
-        type: 'POST',
-        url: '../backend/edit_teacher.php',
-        data: {
-                          tid: eID,
-                          colege: $("#clg_edit").val(),
-                          gender: $("#gnder_edit").val(),
-                          fname: $("#fname_edit").val(),
-                          mname: $("#mname_edit").val(),
-                          lname: $("#lname_edit").val(),
-                          cn: $("#cn_edit").val(),
-                          email: $("#email_edit").val(),
-                          cs: $("#cs_edit").val()
-                          
-                      },
-        success: function (data) {
-               Swal.fire({
-                icon: "success",
-              title: "Updated remarked",
-              confirmButtonText: "OK",
-
-            }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-
-          fetchData()
-          $.ajax({
-            type: 'POST',
-            url: '../backend/log_audit.php',
-            data: {
-              userId: tID,
-              action: 'edit info',
-              details: tID + ' edited their personal info'
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
-          window.location.href = "index.php";
-        } 
-              });
-        },
-    error: function (xhr, status, error) {
-      alert("Error: " + error);
-    }
-      });
-    });
-
-
-
-    // Fetch data using $.ajax
-    $.ajax({
-      
-        url: '../backend/referred_students.php',
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-           // const table = document.getElementById('data-table');
-           // const searchInput = document.getElementById('searchInput');
-            
-        console.log(data);
-        // if (data.status===0){
-        var tableBody = $("#dynamicTable tbody");
-
-        for (var i = 0; i < data.length; i++) {
-            
-            var entry = data[i];
-            dc =entry.date;
-            sID = entry.student_id;
-            
-            var tableToAppend = tableBody; // Determine which table to append to
-            var row = $("<tr></tr>");
-            row.append("<td>" + entry.student_id + "</td>");
-            row.append("<td>" + entry.first_name+" " + entry.last_name+"</td>");
-            row.append("<td>" + entry.course + "</td>");
-            row.append("<td>" + entry.year_level + "</td>");
-            row.append("<td>" + entry.gender + "</td>");
-            row.append("<td>" + entry.reason + "</td>");
-            row.append("<td>" + entry.date + "</td>");
-            row.append("<td>" + entry.status + "</td>");
-
-
-            // var statusCell = $("<td></td>");
-            // var statusLink = $("<a href='#divTwo'><button onclick='delete_stud( " + entry.transact_id + ")'><i class='ri-delete-bin-6-line'></i></button></a>");
-
-            // statusCell.append(statusLink);
-            // row.append(statusCell);
-
-            tableBody.append(row);
-            // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
-         }
-         console.log("data",data);
-         $('#dynamicTable').DataTable();
-
-
-
-    },
-    error: function(xhr, status, error) {
-    console.error('Error fetching data:', error);
-    console.log('Server response:', xhr.responseText);
-}
-    });
-
-
-    function fetchData() {
-
-    // Function to update the HTML elements
-    function updateValues(EmployeeId, college, name, cn, email , gender) {
-
-        $('#EId').text(EmployeeId);
-        $('#college').text(college);
-        $('#name').text(name);
-        $('#cn').text(cn);
-        $('#email').text(email);
-      
-    }
-
-
-console.log('AJAX request started');
-$.ajax({
-    type: 'GET',
-    url: '../backend/get_teacher.php',
-    dataType: 'json',
+    event.preventDefault();
     
-        // ...
+    var formData = new FormData(this);
+    var date = document.getElementById("Date").value;
+    var oth = selectedConcern;
+    var ECspecifics = $("#officialActivitySpecify").val();
+    var OTHspecifics = $("#otherSpecify").val(); 
+    var specifics;
+
+
+
+    // var lt = $("#refer").val();
+    // var hlth = document.getElementById('health');
+    // var prsnl = document.getElementById('personal');
+    // var sc = document.getElementById('socio-cultural');
+    // var bhv = document.getElementById('behavioral');
+    // var fl = document.getElementById('filial');
+    // var eR = document.getElementById('environmentalRadio');
+    // var oa = document.getElementById('officialActivityRadio');
+    // var oth = document.getElementById('otherRadio');
+    
+    // console.log("LT", lt);
+    // if (lt === 'Absent'){
+     
+    //   hlth.setAttribute('required', true);
+    //  prsnl.setAttribute('required', true);
+    //  sc.setAttribute('required', true);
+    //  bhv.setAttribute('required', true);
+    //  fl.setAttribute('required', true);
+    //  eR.setAttribute('required', true);
+    //  oa.setAttribute('required', true);
+    //  oth.setAttribute('required', true);
+    // }else if (lt === 'Tardy'){
+    //   hlth.setAttribute('required', false);
+    //  prsnl.setAttribute('required', false);
+    //  sc.setAttribute('required', false);
+    //  bhv.setAttribute('required', false);
+    //  fl.setAttribute('required', false);
+    //  eR.setAttribute('required', false);
+    //  oa.setAttribute('required', false);
+    //  oth.setAttribute('required', false);
+    // }
+
+
+    if (ECspecifics !== undefined && ECspecifics !== null && ECspecifics.trim() !== "") {
+                    // The variable 'rem' has a non-empty value
+                    console.log("Variable 'rem' has a non-empty value:", ECspecifics);
+                  specifics = ECspecifics
+                } else if (OTHspecifics !== undefined && OTHspecifics !== null && OTHspecifics.trim() !== ""){
+                    // The variable 'rem' is either undefined, null, or an empty string
+                    console.log("Variable 'rem' has a non-empty value:", OTHspecifics);
+                  specifics = OTHspecifics
+                }
+                else{
+                  specifics = "";
+                }
+
+    var student_id = <?php echo $_SESSION['session_id'] ?>;
+    var transact_type = "AT";
+    var selectedReasons = $("#refer").val();
+    var remarks = $("#remark").val();
+    console.log("Specs", specifics);
+    formData.append('date', date);
+    formData.append('transact_type', transact_type);
+    formData.append('selectedReasons', selectedReasons);
+    formData.append('COA', oth);
+    formData.append('specs', specifics);
+    formData.append('rem', remarks);
+    var files = document.getElementById('fileUpload').files;
+
+    // Loop through the selected files to determine their types
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const fileExtension = file.name.split('.').pop();
+
+        // Save the file extension to the FormData object
+        formData.append('file_' + i + '_extension', fileExtension);
+
+        // Determine the file type and add it to the FormData
+        let fileType;
+        if (fileExtension === 'pdf') {
+            fileType = 'application/pdf';
+        } else if (fileExtension === 'docx') {
+            fileType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        } else if (fileExtension === 'jpg' || fileExtension === 'jpeg') {
+            fileType = 'image/jpeg';
+        }else if (fileExtension === 'png') {
+            fileType = 'image/png';
+        } else if (fileExtension === 'rar') {
+            fileType = 'rar';
+        }else if (fileExtension === 'zip') {
+            fileType = 'zip';
+        }// Add more cases for other file types
+
+        if (fileType) {
+            formData.append('file_' + i, file, 'file_' + i + '.' + fileExtension);
+        } else {
+            console.log('Unsupported file:', file.name);
+        }
+    }
+    Swal.fire({
+      title: "Do you wish to proceed?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+    $.ajax({
+        type: 'POST',
+        url: '../../backend/create_transaction.php',
+        data: formData,
+        contentType: false,
+        processData: false,
         success: function (data) {
-            if (data.length > 0) {
-                  var EmployeeData = data[0]; // Assuming you expect a single row
-                    var EmployeeId = EmployeeData.employee_id;
-                    eID = EmployeeData.employee_id;
-                    var college = EmployeeData.college;
-                    var gender = EmployeeData.gender;
-                    var name = EmployeeData.last_name + ', '+ EmployeeData.first_name;
-                    cn = EmployeeData.contact_number;
-                    var email = EmployeeData.email;
-                    Temail = EmployeeData.email;
-                    // var cs = EmployeeData.civil_status;
-                    console.log("ID: ", gender);
-
-                    updateValues(EmployeeId, college, name, cn, email, gender);
-
-                } else {
-                // Handle the case when no results are found
-                // You can update the UI as needed
-                console.log('No results found');
+          $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: sID,
+              action: 'sent request',
+              details: sID + ' sent Class Admission request' 
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
             }
-    },
-    error: function (xhr, status, error) {
-        console.error('Error: ' + error);
-        console.error('Status: ' + status);
-        console.error('Response: ' + xhr.responseText);
+          });
+          // alert("Request Sent");
+          Swal.fire({
+    title: "Request Sent!",
+    icon: "success",
+    text: "Your request has been sent successfully.",
+    showConfirmButton: true,
+    confirmButtonText: "OK",
+}).then((result) => {
+    if (result.isConfirmed) {
+        // Redirect to the specified URL
+        window.location.href = "../trans.php";
     }
 });
-}
-fetchData();
 
-$('#datepicker').datepicker({
+        },
+        error: function (xhr, status, error) {
+            console.error('Error: ' + error);
+        }
+    });
+  }
+  });
+    
+});
+$(document).ready(function() {
+
+  $('#datepicker').datepicker({
         startDate: new Date(2000, 0, 1), // Update this to an earlier date
         multidate: true,
         format: "dd/mm/yyyy",
@@ -600,63 +809,11 @@ $('#datepicker').datepicker({
         // `e` here contains the extra attributes
         $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
     });
+});
+  </script>
 
-  });
-  function delete_stud (tid){
-    transID = tid;
-      // sID = id;
+<script>
 
-    }
-  function dlete()
-  {
-
-      console.log("Tid: ",transID);
-    $.ajax({
-          type: 'POST',
-          url: '../backend/del_stud.php',
-          data: {
-
-            Tid: transID
-          },
-          success: function (data) {
-            console.log("Remarked:", data);
-            document.getElementById("divTwo").style.display = "none";
-            window.location.href = "index.php";
-            $.ajax({
-            type: 'POST',
-            url: '../backend/log_audit.php',
-            data: {
-              userId: tID,
-              action: 'done',
-              details: tID + ' removed '+sID +' from table'
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
-          },
-          error: function (xhr, status, error) {
-            console.error("Error marking event as done:", error);
-            // alert("Error marking event as done: " + error);
-            Swal.fire({
-              icon: "error",
-              title: "Ooops...",
-              text: "Error removing student. Please try again",
-            });
-            window.location.href = "index.php";
-          },
-        });
-  }
-  function cancel()
-  {
-
-
-            console.log("Canceled");
-            document.getElementById("divTwo").style.display = "none";
-            fetchData();
-
-  }
-</script>
+  </script>
 </body>
 </html>

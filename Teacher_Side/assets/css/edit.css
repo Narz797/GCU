@@ -13,7 +13,7 @@
     --gray: #8898aa;
     --gray-dark: #32325d;
     --light: #ced4da;
-    --lighter: #e9ecef;
+    --lighter: #e9ecef; 
     --primary: #5e72e4;
     --secondary: #f7fafc;
     --success: #2dce89;
@@ -60,7 +60,7 @@
   .fa-eye, .fa-eye-slash{
   position: absolute;
   /* right: 10px; */
-  top: 44%;
+  top: 53%;
   right:5%;
   transform: translateY(-50%);
   cursor: pointer;

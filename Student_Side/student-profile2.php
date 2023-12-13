@@ -451,7 +451,7 @@ $siblings = $siblings->fetchAll();
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Contact Number</label>
                         <!-- Editable -->
-                        <input type="text" class="form-control form-control-alternative" id="CN" readonly value =  "<?php echo $pers_info[0]['Contact_number'] ?>" oninput="limitTo11Digits(event)">
+                        <input type="number" class="form-control form-control-alternative" id="CN" readonly value =  "<?php echo $pers_info[0]['Contact_number'] ?>" oninput="limitTo11Digits(event)">
                       </div>
                     </div>
 
@@ -1103,6 +1103,9 @@ $siblings = $siblings->fetchAll();
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     // Get the logout button element
+    function faq(){
+      window.location.href = '../dh_student.php';
+    }
     function goback() {
 
       // Display a confirmation prompt
@@ -1111,11 +1114,7 @@ $siblings = $siblings->fetchAll();
       // // Check if the user clicked "Yes"
       // if (confirmation) {
       // Redirect to appointment.php
-<<<<<<< Updated upstream
       window.location.href = 'index.php';
-=======
-      window.history.back();
->>>>>>> Stashed changes
       // } else {
       //   // The user clicked "No," you can add additional handling if needed
       //   console.log('Logout canceled');
@@ -1767,6 +1766,7 @@ function verify(){
     }
 
   </script>
+
 
 
 

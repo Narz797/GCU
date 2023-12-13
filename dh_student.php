@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8">
     <title> Digital Help </title>
-    <link rel="stylesheet" href="assets/contact.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -234,25 +234,14 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
     var tID = "<?php echo $_SESSION['session_id'];?>";
-    var eID = "<?php echo $_SESSION['session_id'];?>";
-function logout() {
-        Swal.fire({
-      title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
-      icon: "question",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        $.ajax({
+        function logout() {
+  $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
             data: {
-              userId: eID,
+              userId: tID,
               action: 'logged out',
-              details: eID + ' Clicked log out'
+              details: tID + ' Clicked log out'
             },
             success: function(response) {
               // Handle the response if needed
@@ -260,9 +249,6 @@ function logout() {
             }
           });
     window.location.href = 'home';
-
-}
-  });
 }
                     function goBack() {
             window.history.back();
