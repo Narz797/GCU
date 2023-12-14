@@ -451,7 +451,7 @@ $siblings = $siblings->fetchAll();
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Contact Number</label>
                         <!-- Editable -->
-                        <input type="text" class="form-control form-control-alternative" id="CN" readonly value =  "<?php echo $pers_info[0]['Contact_number'] ?>" oninput="limitTo11Digits(event)">
+                        <input type="number" class="form-control form-control-alternative" id="CN" readonly value =  "<?php echo $pers_info[0]['Contact_number'] ?>" oninput="limitTo11Digits(event)">
                       </div>
                     </div>
 
@@ -1070,6 +1070,8 @@ $siblings = $siblings->fetchAll();
                         <a class="btn btn-sm btn-primary" style="color: white;" onclick="update()" >Verify</a>
                     </div>
                     </form>
+                    <button class="btn btn-sm btn-primary" onclick="resend()">Resend Code</button>
+                    <button class="btn btn-sm btn-primary" onclick="cancel()">Cancel</button>
                 </div>
                 </div>
             </div>
@@ -1101,6 +1103,9 @@ $siblings = $siblings->fetchAll();
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     // Get the logout button element
+    function faq(){
+      window.location.href = '../dh_student.php';
+    }
     function goback() {
 
       // Display a confirmation prompt
@@ -1115,9 +1120,36 @@ $siblings = $siblings->fetchAll();
       //   console.log('Logout canceled');
       // }
     };
-    function logout() {
-      window.location.href = '../home';
-    }
+    var eID = "<?php echo $_SESSION['session_id'];?>";
+function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+    window.location.href = '../home';
+
+}
+  });
+}
   </script>
   
   <script>
@@ -1130,7 +1162,52 @@ $siblings = $siblings->fetchAll();
      pass.hide();
      pass2.hide();
 
+     function resend(){
+   
+          // Show loading spinner
+          Swal.fire({
+                title: 'Sending Email',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+                    willClose: () => {
+        // Set the display property of the element with ID "modal" to "block"
+        document.getElementById("modal").style.display = "block";
+    }
+            });
+        $.ajax({
+      type: 'POST',
+      url: '../backend/resend.php',
+      success: function(data) {
+                // Hide loading spinner on success
+                swal.close();
+
+                Swal.fire({
+              icon: "sucess",
+              title: "Code Sent!",
+              text: "Go to your email to retrieve the code",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  // window.location.reload();
+                } 
+              });
+   
+  
+
      
+        // add location to enter code
+      },
+                  error: function (xhr, status, error) {
+                    console.error("Error:", error);
+                    alert("Error: " + error);
+                  },
+    });
+    } 
 
      function togglePasswordVisibility(inputId) {
     var passwordInput = document.getElementById(inputId);
@@ -1364,18 +1441,23 @@ function cancel(){
 }
 
 function verify(){
-  document.getElementById("modal").style.display = "block";
-                // Show loading spinner
-                Swal.fire({
-                title: 'Sending Code',
-                text: "Please check your email for the code in order to procedd with the update",
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                didOpen: () => {
-                    Swal.showLoading();
-                    },
-            });
-    
+
+// Show loading spinner
+      Swal.fire({
+          title: 'Sending Code',
+          text: "Please check your email for the code in order to proceed with the update",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          didOpen: () => {
+              Swal.showLoading();
+          },
+          willClose: () => {
+        // Set the display property of the element with ID "modal" to "block"
+        document.getElementById("modal").style.display = "block";
+    }
+      });
+
+          
     console.log("performing ajax");
     $.ajax({
       type: 'POST',
@@ -1684,6 +1766,7 @@ function verify(){
     }
 
   </script>
+
 
 
 

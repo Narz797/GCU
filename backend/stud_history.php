@@ -7,7 +7,7 @@ $id=$_SESSION['session_id'] ;
 
 try {
     // SQL query to fetch data where status is 'done'
-    $doneTransactionsSql = "SELECT `transact_type`, `date_created`, `date_completed` FROM transact WHERE `status` != 'pending' AND `student_id` = :id AND `transact_type` != 'appointment'";
+    $doneTransactionsSql = "SELECT `transact_type`, `date_created`, `date_completed` FROM transact WHERE `status` != 'pending' AND `student_id` = :id";
     
     $stmt = $pdo->prepare($doneTransactionsSql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);

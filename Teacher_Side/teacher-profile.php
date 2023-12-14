@@ -109,6 +109,52 @@ $_SESSION['transact_type'] = 'Referral';
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
       var tID = "<?php echo $_SESSION['session_id'];?>";
+      function resend(){
+      // document.getElementById("modal").style.display = "none";
+          // Show loading spinner
+          Swal.fire({
+                title: 'Sending Email',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+                    willClose: () => {
+        // Set the display property of the element with ID "modal" to "block"
+        document.getElementById("modal").style.display = "block";
+    }
+            });
+        $.ajax({
+      type: 'POST',
+      url: '../backend/resend.php',
+      success: function(data) {
+                // Hide loading spinner on success
+                swal.close();
+
+                Swal.fire({
+              icon: "sucess",
+              title: "Code Sent!",
+              text: "Go to your email to retrieve the code",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  // window.location.reload();
+                } 
+              });
+   
+  
+
+     
+        // add location to enter code
+      },
+                  error: function (xhr, status, error) {
+                    console.error("Error:", error);
+                    alert("Error: " + error);
+                  },
+    });
+    } 
         function goBack() {
             window.history.back();
         }

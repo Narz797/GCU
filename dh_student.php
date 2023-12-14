@@ -248,7 +248,7 @@
               console.log("logged", response);
             }
           });
-    window.location.href = '../home';
+    window.location.href = 'home';
 }
                     function goBack() {
             window.history.back();
