@@ -344,7 +344,7 @@ $_SESSION['origin'] = 'Employee';
               console.log("logged", response);
             }
           });
-          window.location.href = "../Admin_Side/main.php";
+          window.location.href = "../Admin_Side/indexadmin.php";
         } else {
           $.ajax({
             type: 'POST',

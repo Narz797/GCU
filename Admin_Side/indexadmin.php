@@ -304,6 +304,6 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     <script src="./assets/main.js"></script>
     <script src="assets/js/table.js"></script>
 <script src="./assets/js/count.js"></script> 
-<?php include 'includes/footer1.php' ?>
+<?php include 'includes/footer.php' ?>
 </body>
 </html>

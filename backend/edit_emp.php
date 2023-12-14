@@ -23,7 +23,6 @@ $allowedFields = array(
     'email' => $_POST['email'],
     'contact' => $_POST['cn'],
     'position' => $_POST['position'],
-    'username' => $_POST['un'],
     'password' => $password 
 );
 
