@@ -299,7 +299,7 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
                                     <hr>
                                     <div class="tsk">
                                     <button class="yes" onclick ="app_remarks ()">Yes</button>
-                                    <button class="no" onclick ="closeModal()">No</button>
+                                    <button class="yes" onclick ="closeModal()">No</button>
                                     </div>
                                 </form>
                             </div>

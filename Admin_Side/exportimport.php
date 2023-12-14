@@ -131,7 +131,21 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
                                 <input type='file' name='import' accept=".sql">
                                 <br>
                                 <br>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Import</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" style="  font-size: 14px;
+     
+        align-items: center;
+        justify-content: center; 
+        height: 45px;
+        max-width: 200px;
+        width: 100%;
+        border: none;
+        outline: none;
+        color: #fff;
+        border-radius: 5px;
+        margin: 25px 0;
+        background-color: #4070f4;
+        transition: all 0.3s linear;
+        cursor: pointer;">Import</button>
                             </form>
                         </div>
                     </div>
@@ -144,7 +158,21 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
                             <form action="../backend/export_database.php">
                                 <br>
                                 <br>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Export</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" style="  font-size: 14px;
+     
+     align-items: center;
+     justify-content: center; 
+     height: 45px;
+     max-width: 200px;
+     width: 100%;
+     border: none;
+     outline: none;
+     color: #fff;
+     border-radius: 5px;
+     margin: 25px 0;
+     background-color: #4070f4;
+     transition: all 0.3s linear;
+     cursor: pointer;">Export</button>
                             </form>
                         </div>
                     </div>
@@ -152,7 +180,7 @@ logAudit($id, 'access_export import',  'Admin has accessed the export import pag
             </div>
         </div>
 
-        </div>
+        </div> 
 
     </section>
     <br>

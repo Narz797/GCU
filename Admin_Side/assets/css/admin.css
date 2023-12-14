@@ -8,12 +8,12 @@
     --light-color: #fff;
     --dark-color: black;
     --accent-color: #ecad00;
-    --body-background-color: #eef0f8;
+    --body-background-color:#eef0f8;
     --hover-color: #fde7b4;
     --banner-color: #F5F5DC;
-    --shadow-color: lightblue;
+    --shadow-color: dimgray;
     --font-color: #568203;
-    --title-color: #FEBE10;
+    --title-color:  darkgreen;
     --positive-color: #86e49d;
     --negative-color: #d893a3 ;
     --pending-color: #ebc474;
@@ -91,6 +91,9 @@ i{
     display: inline-flex !important;
     align-items: center;
     justify-content: center;}
+
+.d-grid{
+    display: grid;}
 
 
 /* Header */
@@ -174,7 +177,7 @@ i{
     margin-bottom: var(--margin-small);}
 .independent-title{
     font-size: var(--font-size-medium);
-    color: var(--dark-color);
+    color: var(--light-color);
     padding: 2.5rem 0 1.25rem;
     background-color: #008374;}
 .independent-title h2{
@@ -183,6 +186,7 @@ i{
     margin-left: 40px;}
 
 .card{
+    color: black;
     background-color: var(--light-color);
     padding: 2.5rem;
     border-radius: .5rem;
@@ -191,14 +195,11 @@ i{
     padding-block: 1rem;
     background-color: var(--body-background-color);}
 .card-header small{
-    padding: 10px;
     font-size: 1.2rem;
     color: var(--font-color);
     font-weight: bold;
     font-family: 'Georgia', serif;}
 .card-header .title{
-    padding: 10px;
-    color:black;
     margin-bottom: 0;
     font-size: 20px;}
 .card hr{
@@ -243,9 +244,15 @@ i{
 
 
 /* Management area */
-.management-area-container {
-    gap: var(--gap-medium);
-}
+.management-area{
+    padding-block: 2.5rem;}
+
+.management-area-container,
+.card-group{
+    gap: var(--gap-medium);}
+
+.management-area .card-header{
+    border-bottom: none;}
 
 .card-group .card{
     position: relative;
@@ -285,9 +292,8 @@ i{
     background-color: var(--hover-color);
     color: black;}
 
-    .border {
-        background-image: linear-gradient(225deg, var(--accent-color), transparent, var(--light-color));
-    }
+.border{
+    background-image: linear-gradient(225deg, var(--accent-color), transparent, var(--light-color));}
 .two, .three{
     box-shadow: 10px 10px 4px var(--shadow-color);}
 .card-group .title{
@@ -351,41 +357,22 @@ i{
     line-height: 0;}
 
 
+/* Footer */
+.footer{
+  background-color: var(--accent-color);
+  padding: 20px 0;
+  color: white;}
+.copyright{
+  text-align: center;}
+.footer .credits{
+  padding-top: 4px;
+  text-align: center;
+  font-size: 12px;
+  font-style: var(--font-primary);}
+.footer .credits a:hover{
+  color: skyblue;}
 
-    #dynamicTable_paginate .paginate_button:hover {
-        background-color: #34af6d; /* Change this to the desired hover color */
-        cursor: pointer;
-        border-radius: 10%;
-        color: black !important;
-      }
-      #dynamicTable_paginate .paginate_button {
-      
-        color: black ;
-      }
-      .btn1{
-        width: 50%;
-        margin-top: 8px;
-        padding: 7px;
-        cursor: pointer;
-        border-radius: 10px;
-        background: #34af6d;
-        border: 1px solid #4AD489;
-        font-size: 18px;
-      }
-       .btn1:hover{
-        background: #008000;
-        color: white;
-        transition: 0.5s;
-      }
-      .delivered {
-          background-color: #86e49d;
-          color: #006b21;}
-      .cancelled {
-          background-color: #d893a3;
-          color: #b30021;}
-      .pending {
-          background-color: #ebc474;}
-      
+
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 1rem;}
@@ -420,10 +407,6 @@ i{
         background-color: var(--hover-color);
         /* color: var(--dark-color);*/
     }
-    .d-grid{
-        display: grid;
-    }
-    
     .management-area-container{
         grid-template-columns: 35rem 1fr;}
     .card-group .list-link:hover{
@@ -488,4 +471,34 @@ i{
         background-color: var(--hover-color);}
     .footer .list-item:hover{
         color: var(--accent-color);}
+}
+@media screen and (max-width: 1024px){
+    .wrapper{
+        width: 60vw;}
+    .count{
+        height: 12vmin;
+        width: 26vmin;
+        font-size: 12px;
+        padding-bottom: 30px;}
+}
+@media screen and (max-width: 768px){
+    .wrapper{
+        width: 80vw;
+        flex-wrap: wrap;
+        gap: 30px;}
+    .count{
+        width: calc(50% - 40px);
+        font-size: 14px;
+        height: 14vmin;
+        padding: 0.5em 0;
+        padding-bottom: 20px;}
+}
+@media screen and (max-width:  480px){
+    .wrapper{
+        padding: 0;
+        left: 0;}
+    .count{
+        height: 23vmin;
+        width: 35vmin;
+        font-size: 8px;}
 }

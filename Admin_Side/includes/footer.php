@@ -3,7 +3,7 @@
 
 
 
-<section id="topbar" class="topbar d-flex align-items-center" style="background-color: #008374; height: auto; color:white;">
+<section id="topbar" class="topbar d-flex align-items-center" style="background-color: #008374; color:white;">
     <br>
     <br>
     <br>
@@ -12,10 +12,11 @@
     
         <br>
 
-        <p style="text-align: center; margin: 0; display: block;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>. Guidance and Counseling Unit. All rights reserved.</p>
+        <p style="text-align: center; display: block;">BENGUET STATE UNIVERSITY <br> &copy; <?php echo date("Y"); ?>. Guidance and Counseling Unit. All rights reserved.</p>
         <br>
         
     </footer>
 </section>
 
 </html>
+ 

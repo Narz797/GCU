@@ -181,10 +181,11 @@ input[type="submit"]:hover{
         cursor: pointer;
     }
     .yes:hover {
+        color: white;
         background-color: #265df2;
     }
     .yes i {
-        padding-right: 4px;
+        padding-right: 4px; 
         font-size: 14px;
         font-weight: 400;
     }

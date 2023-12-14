@@ -464,10 +464,11 @@ select:focus {
 <div class="reminder-container">
   <p style="margin-top: 12px; font-size: 12px; font-weight: bold;">You must upload required files such as Excuse letter, Medical credentials, etc. before clicking Submit.</p>
 </div>
+
       <label for="fileUpload">Upload Required Files</label>
       <input type="file" id="fileUpload" name="fileUpload[]" required>
       <br>
-   
+
       <div class="reminder-container">
   <i class="fas fa-exclamation-circle icon"></i>
   <p style="margin-top: 12px; font-size: 12px; font-weight: bold; color:red;">Reminder: Zip multiple files before uploading them.</p>

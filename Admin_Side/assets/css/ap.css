@@ -7,13 +7,13 @@
 :root{
     --light-color: #fff;
     --dark-color: black;
-    --accent-color: #ffc971;
+    --accent-color: #ecad00;
     --body-background-color: #202028;
-    --hover-color: #fde7b4;
+    --hover-color:#fde7b4;
     --banner-color: #F5F5DC;
     --shadow-color: dimgray;
     --font-color: #568203;
-    --title-color: #FEBE10;
+    --title-color: #dbab3b;
     --positive-color: #86e49d;
     --negative-color: #d893a3 ;
     --pending-color: #ebc474;
@@ -29,16 +29,6 @@
     --gap-small: 1rem;
     --gap-medium: 2.5rem;
 }
-.theme-light{
-    --light-color: black;
-    --dark-color: #fff;
-    --body-background-color: #eef0f8;
-    --shadow-color: lightblue;
-    --font-color:#32CD32;
-    --title-color: darkgreen;
-    --transparent-button-color: var(--accent-color);
-}
-
 
 /* Base styles */
 *,

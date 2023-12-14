@@ -331,7 +331,7 @@ echo "<script>console.log('$id');</script>";
                                     <br>
                                     
                                     <div class="tsk">
-                                    <a class="yes" onclick="reason()">Submit&nbsp<i class="ri-navigation-line"></i></i></a>
+                                    <a class="yes" onclick="reason()">Submit&nbsp<i class="ri-navigation-line"></i></a>
                                     </div>
                                 </form>
                             </div>
@@ -349,7 +349,43 @@ echo "<script>console.log('$id');</script>";
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 
 <script>
-  
+      function faq(){
+        window.location.href="../dh_student.php"
+    }
+
+     var eID = "<?php echo $_SESSION['session_id'];?>";
+
+
+
+    function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+    window.location.href = '../home';
+
+}
+  });
+}
         var id = "<?php echo $id; ?>";
         var aid;
         var reasons;

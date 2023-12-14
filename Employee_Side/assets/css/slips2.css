@@ -372,15 +372,32 @@ i{
     margin-top: 5rem;}
 .action button{
     padding: 2rem 6rem;}
-.yes{
-    margin: 10px;
-    font-size: var(--font-size-small);
-    background-color: green;
-    color: var(--dark-color);
-    padding: 1rem 1.5rem;}
-.yes:hover{
-    color: black;
-    background-color: var(--positive-color);}
+    .yes{
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        max-width: 200px;
+        width: 100%;
+        border: none;
+        outline: none;
+        color: #fff;
+        border-radius: 5px;
+        margin: 25px 0;
+        background-color: #4070f4;
+        transition: all 0.3s linear;
+        cursor: pointer;
+    }
+    .yes:hover {
+        color: white;
+        background-color: #265df2;
+    }
+    .yes i {
+        padding-right: 4px;
+        font-size: 14px;
+        font-weight: 400;
+    }
 .no{
     margin: 10px;
     font-size: var(--font-size-small);

@@ -359,7 +359,7 @@ function clearSearchResults2() {
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
                         var statusCell = $("<td></td>");
-                        var statusLink = $("<button class='no' onclick='del_emp(" + entry.employee_id + ")'>Delete</button>");
+                        var statusLink = $("<button class='yes' onclick='del_emp(" + entry.employee_id + ")'><i class='ri-delete-bin-5-line'></i></button>");
                         statusCell.append(statusLink);
                         row.append(statusCell);
                         tableBody.append(row);
@@ -599,7 +599,6 @@ function clearSearchResults2() {
     </script>
 
 
-<?php include 'includes/footer.php' ?>
 </body>
 
 </html>

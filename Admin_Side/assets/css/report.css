@@ -7,13 +7,13 @@
 :root{
     --light-color: #fff;
     --dark-color: black;
-    --accent-color: #ffc971;
+    --accent-color: #ecad00;
     --body-background-color: #202028;
-    --hover-color: #fde7b4;
+    --hover-color:#fde7b4;
     --banner-color: #F5F5DC;
     --shadow-color: dimgray;
     --font-color: #568203;
-    --title-color: #FEBE10;
+    --title-color: #dbab3b;
     --positive-color: #86e49d;
     --negative-color: #d893a3 ;
     --pending-color: #ebc474;
@@ -29,15 +29,7 @@
     --gap-small: 1rem;
     --gap-medium: 2.5rem;
 }
-.theme-light{
-    --light-color: black;
-    --dark-color: #fff;
-    --body-background-color: #eef0f8;
-    --shadow-color: lightblue;
-    --font-color:#32CD32;
-    --title-color: darkgreen;
-    --transparent-button-color: var(--accent-color);
-}
+
 
 
 /* Base styles */
@@ -74,9 +66,7 @@ button{
     border: none;
     border-radius: .4rem;
     cursor: pointer;}
-button:hover{
-    color: green;
-}
+
 i{
     font-size: var(--font-size-large);
     line-height: 0;}
@@ -136,7 +126,7 @@ i{
     color: var(--dark-color);
     background-color: var(--accent-color);}
 .current:hover{
-    background-color: #dbab3b;
+    background-color: var(--title-color);
     color: black;}
 .menu-toggle-close{
     background-color: var(--accent-color);
@@ -146,14 +136,16 @@ i{
 .current1:hover{
     background-color: var(--hover-color);
     color: var(--light-color);}
+    .icon-btn i:hover{
+        color:black;
+    } 
 .icon-btn{
     width: 3.5rem;
     height: 3.5rem;}
 .icon-btn:hover{
+    color: black;
     background-color: var(--hover-color);}
-.hov:hover{
-    background-color: var(--hover-color);
-    color: var(--dark-color);}
+
 .align-right{
     margin-left: auto;
     background-color: var(--accent-color);
@@ -422,22 +414,17 @@ thead th.active{
     color: black}
 tbody td.active {
     color: var(--accent-color);}
-.no{
-    background-color: red;
-    color: white;
-}
-.no:hover{
-    background-color: var(--negative-color);
-    color: black;
-}
-.yes{
-    background-color: green;
-    color: white;
-}
-.yes:hover{
-    background-color: var(--positive-color);
-    color: black;
-}
+
+    .yes:hover {
+        color: white;
+        background-color: #265df2;
+    }
+    .yes i {
+        padding-right: 4px; 
+        font-size: 14px;
+        font-weight: 400;
+    }
+
 
 /* Footer */
 .footer{
@@ -494,12 +481,13 @@ tbody td.active {
     .current1{
         color: white;}
     .current1:hover{
+        background-color: var(--hover-color);;
         color: black;} 
     .current{
         background-color: var(--accent-color);
         color: var(--light-color);}
     .current:hover{
-        background-color: #dbab3b;
+        background-color: var(--title-color);
         color: var(--dark-color);} 
     .footer hover{
         color: var(--accent-color);}

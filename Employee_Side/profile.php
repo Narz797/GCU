@@ -63,7 +63,7 @@ logAudit($id, 'access_profile', $id .' has accessed the profile page');
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
 
-            <!-- pagination -->
+            <!-- pagination --> 
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 

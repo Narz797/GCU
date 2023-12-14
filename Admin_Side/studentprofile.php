@@ -363,7 +363,7 @@ function logout() {
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
                         var statusCell = $("<td></td>");
-                        var statusLink = $("<button class='no' onclick='del_emp(" + entry.stud_user_id + ")'>Delete</button>" );
+                        var statusLink = $("<button class='yes' onclick='del_emp(" + entry.stud_user_id + ")'> <i class='ri-delete-bin-5-line'></i></button>" );
 
                         statusCell.append(statusLink);
                         row.append(statusCell);
@@ -643,7 +643,7 @@ function logout() {
     </script>
     <script src="./assets/main.js"></script>
     <!-- <script src="assets/js/table.js"></script>    -->
-    <?php include 'includes/footer.php' ?>
+
 </body>
 
 </html>

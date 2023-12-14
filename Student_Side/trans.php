@@ -111,7 +111,7 @@ logAudit($_SESSION['session_id'], 'access_transaction page', $_SESSION['session_
         <h2>FORMS</h2>
     </div>
     
-    <div class="container">
+    <div class="container"> 
     <div class="card">
             <header class="card-header">
                 <small>The following are the list of forms from the GCU. Today is</small>
@@ -141,7 +141,7 @@ logAudit($_SESSION['session_id'], 'access_transaction page', $_SESSION['session_
             <div class="content1">
                 <img src="./assets/images/read.jpg">
                 <h4>READMISSION SLIP</h4>
-                <h5>This document is designed for individuals who are in the process of re-enrolling in an educational institution</h5>
+                <h5>This document is designed for individuals who are in the process of re-enrolling in an educational institution.</h5>
                 <h7>OSS-GCU-F12</h7>
                 <a href="forms/readmission-slip">
                 <button class="buy-1">READ MORE</button></a>

@@ -120,9 +120,11 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
                 </button>
             </div>
             <div class="align-right">
+            </button>
+                <a href="addemployee.php"><button type=submit class="icon-btn place-items-center" ><i class="ri-add-circle-fill"></i></button></a>
+                </button>
                 <button class="icon-btn place-items-center" onclick="logout()">
                     <i class="ri-user-3-line"></i>
-                </button>
             </div>
         </nav>
     </header>
@@ -132,14 +134,8 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
    
         <!-- <div class="block">
         </div> -->
-        <div class="title independent-title" style="background:#008374;">
+        <div class="title independent-title" >
             <h2 style="color:black;">Employee Profiles</h2>
-            <br>
-            <div class="container"  style="display: flex; justify-content: flex-end;">
-            
-            <a href="addemployee.php"><button type=submit class="button">Add Employee Account</button></a>
-            </div>
-                       
         </div>
        
         <!-- Section -->
@@ -364,7 +360,7 @@ function logout() {
                         // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                         // var statusText = status == 'pending' ? 'Unread' : 'Read';
                         var statusCell = $("<td></td>");
-                        var statusLink = $("<button class ='yes' onclick='view_student(" + entry.admin_user_id + ")'>Edit</button> <button class='no' onclick='del_emp(" + entry.admin_user_id + ")'>Delete</button>");
+                        var statusLink = $("<button class ='yes' onclick='view_student(" + entry.admin_user_id + ")'><i class='ri-edit-2-fill'></i></button> <button class='yes' onclick='del_emp(" + entry.admin_user_id + ")'><i class='ri-delete-bin-5-line'></i></button>");
                         statusCell.append(statusLink);
                         row.append(statusCell);
                         tableBody.append(row);
@@ -638,7 +634,6 @@ function logout() {
         }
         
     </style>
-    <?php include 'includes/footer.php' ?>
 </body>
 
 </html>

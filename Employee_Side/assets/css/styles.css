@@ -281,7 +281,7 @@ i{
     background-color: #ecad00;
     margin-bottom: var(--margin-medium);
     padding: 1.5rem;
-    border-radius: 4rem;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     gap: var(--gap-small);

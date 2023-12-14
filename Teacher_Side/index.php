@@ -149,6 +149,7 @@ $_SESSION['transact_type'] = 'Referral';
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+  var eID = "<?php echo $_SESSION['session_id'];?>";
   var tID = "<?php echo $_SESSION['session_id'];?>";
   function limitTo11Digits(event) {
   var input = event.target;
@@ -159,13 +160,23 @@ $_SESSION['transact_type'] = 'Referral';
   }
 }
 function logout() {
-  $.ajax({
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
             data: {
-              userId: tID,
+              userId: eID,
               action: 'logged out',
-              details: tID + ' Clicked log out'
+              details: eID + ' Clicked log out'
             },
             success: function(response) {
               // Handle the response if needed
@@ -173,6 +184,9 @@ function logout() {
             }
           });
     window.location.href = '../home';
+
+}
+  });
 }
 function search() {
     var studentId = $("#Sid").val();

@@ -233,26 +233,48 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
-    var tID = "<?php echo $_SESSION['session_id'];?>";
-        function logout() {
-  $.ajax({
+    var eID = "<?php echo $_SESSION['session_id'];?>";
+     function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
             data: {
-              userId: tID,
+              userId: eID,
               action: 'logged out',
-              details: tID + ' Clicked log out'
+              details: eID + ' Clicked log out'
             },
             success: function(response) {
               // Handle the response if needed
               console.log("logged", response);
             }
           });
+<<<<<<< Updated upstream
     window.location.href = 'home';
+=======
+    window.location.href = '../home';
+
+>>>>>>> Stashed changes
 }
-                    function goBack() {
+  });
+}
+function goBack() {
             window.history.back();
         }
+
+        
+    var tID = "<?php echo $_SESSION['session_id'];?>";
+  
+
     let li = document.querySelectorAll(".faq-text li");
     for (var i = 0; i < li.length; i++) {
       li[i].addEventListener("click", (e)=>{

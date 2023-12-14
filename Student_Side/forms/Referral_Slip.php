@@ -26,6 +26,7 @@ logAudit($_SESSION['session_id'], 'access_class admisison form', $_SESSION['sess
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -63,12 +64,7 @@ logAudit($_SESSION['session_id'], 'access_class admisison form', $_SESSION['sess
     
 </head>
 <style>
- 
-/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Rock+Salt&display=swap');
-
-
-/* Custom properties */
 :root{
     --light-color: #fff;
     --dark-color: black; 
@@ -104,7 +100,6 @@ logAudit($_SESSION['session_id'], 'access_class admisison form', $_SESSION['sess
     --transparent-button-color: var(--accent-color);
 }
 
-
 /* Base styles */
 *,
 *::before,
@@ -112,34 +107,30 @@ logAudit($_SESSION['session_id'], 'access_class admisison form', $_SESSION['sess
     margin: 0;
     padding: 0;
     box-sizing: border-box;}
-
 html{
     font-size: 10px;}
-
 body{
     font-family: var(--font-family);
     font-size: var(--font-size-normal);
     color: var(--light-color);
     line-height: 1.5;
     background-color: var(--body-background-color);}
-
+.hidden {
+    display: none;}
 ul{
     list-style: none;}
 .info p{
-   padding: 10px;
-   font-weight: 200;
+    padding: 10px;
+    font-weight: 200;
     font-size:18px;
     color: black;
-    text-align: justify;
-}
+    text-align: justify;}
 a{
     text-decoration: none;
     color: var(--light-color);}
-
 img{
     max-width: 100%;
     display: block;}
-
 button{
     font: inherit;
     color: inherit;
@@ -148,7 +139,7 @@ button{
     border-radius: .4rem;
     cursor: pointer;}
 .form-control1{
-    width: 115%;
+    width: 25%;
     padding: 16px;
     display: block;
     font-weight: 400;
@@ -161,14 +152,12 @@ button{
     -moz-appearance: none;
     appearance: none;
     border-radius: 0.375rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
 
 /* Reusable classes */
 .container{
     margin: 0 auto;
     padding: 0 1.5rem;}
-
 .place-items-center{
     display: inline-flex !important;
     align-items: center;
@@ -178,17 +167,17 @@ button{
 .header{
     transition: all 0.5s;
     background-color:#008374;}
-  .nav{
+.nav{
     height: 7rem;
     display: flex;
     align-items: center;}
-  .logo img{
+ .logo img{
     display: flex;
     margin-left: 10px;
     width: 50px; 
     height:50px; 
     padding:2px;}
-  .nav-mobile{
+.nav-mobile{
     width: 100%;
     height: 100vh;
     background-color: var(--dark-color);
@@ -199,52 +188,48 @@ button{
     z-index: 999;
     transition: transform .5s;
     transform: translateX(-105%);}
-  .list{
+.list{
     display: flex;
     flex-direction: column;
     gap: var(--gap-small);} 
-    .list-link{
+  .list-link{
       display: inline-block;
       font-size: var(--font-size-small);
       padding: 1rem 1.5rem;}
-  .current{
+.current{
     background-color: var(--accent-color);}
-  .current:hover{
+.current:hover{
     color: var(--dark-color);
     background-color: var(--hover-color);}
-  .menu-toggle-close{
+.menu-toggle-close{
     background-color: var(--accent-color);
     position: absolute;
     top: 2.5rem;
     right: 2.5rem;}
-  .current1:hover{
+.current1:hover{
     background-color: var(--hover-color);
     color: var(--light-color);}
-  .icon-btn{
+.icon-btn{
     width: 3.5rem;
     height: 3.5rem;
-    color: white;
-  }
-  .icon-btn i{
-        font-size: var(--font-size-large);
-        line-height: 0;
-  }
-  .icon-btn:hover{
+    color: white;}
+.icon-btn i{
+    font-size: var(--font-size-large);
+    line-height: 0; }
+.icon-btn:hover{
     padding:10px;
     background-color: var(--hover-color);
-    color: black;
-  }
-  .hov:hover{
+    color: black;}
+.hov:hover{
     background-color: var(--hover-color);
     color: var(--dark-color);}
-  .align-right{
+.align-right{
     margin-left: auto;
     background-color: var(--accent-color);
     border-radius: .4rem;}
-  .theme-dark-icon{
+.theme-dark-icon{
     display: none;}
   
-
 /* Banner */
 .banner{
     background-color: var(--banner-color); 
@@ -276,11 +261,9 @@ button{
     font-size: 2vw;
     font-family: 'Garamond', serif;
     font-weight: bold;}
-
 .block{
     background-color: #008374; 
     height:50px;}
-
 
 /* First Section */
 .title{
@@ -296,16 +279,14 @@ button{
     font-weight: bold;
     margin-left: 40px;}
 .independent-title1 {
-        font-size: var(--font-size-medium);
-        color: var(--light-color);
-        padding: 2.5rem 0 1.25rem;
-        background-color: #008374;
-    }
+    font-size: var(--font-size-medium);
+    color: var(--light-color);
+    padding: 2.5rem 0 1.25rem;
+    background-color: #008374; }
 .independent-title1 h2 {
-        font-size: 25px;
-        font-weight: bold;
-        margin-left: 40px;
-    }
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 40px;}
 .card{
     background-color: var(--light-color);
     padding: 2.5rem;
@@ -350,8 +331,7 @@ button{
 .card-description1 span{
     color: var(--font-color);}
 .card-description1 b{
-    color: var(--accent-color);
-    }
+    color: var(--accent-color);}
 .card-description{
     font-size: 17px;
     margin-bottom: var(--margin-small);}
@@ -363,15 +343,11 @@ button{
     border-radius: 1%;
     margin-left: 0px;}
 
-
 /* Management area */
 .management-area {
-    padding-block: 2.5rem;
-}
+    padding-block: 2.5rem;}
 .management-area-container {
-    gap: var(--gap-medium);
-}
-
+    gap: var(--gap-medium);}
 .card-group .card{
     position: relative;
     display: flex;
@@ -387,12 +363,11 @@ button{
     right: -2px;
     z-index: -1;
     border-radius: inherit;}
-
 .header-side{
     text-align: center;}
 .header-side small{
-     font-family: 'Garamond', serif;
-     font-size: 15px;}
+    font-family: 'Garamond', serif;
+    font-size: 15px;}
 .card-body-link{
     font-size: var(--font-size-small);
     background-color: #ecad00;
@@ -402,15 +377,12 @@ button{
     display: flex;
     align-items: center;
     gap: var(--gap-small);
-    color: white;
-}
+    color: white;}
 .card-body-link:hover{
     background-color: var(--hover-color);
     color: black;}
-
-    .border {
-        background-image: linear-gradient(225deg, var(--accent-color), transparent, var(--light-color));
-    }
+.border {
+    background-image: linear-gradient(225deg, var(--accent-color), transparent, var(--light-color));}
 .two, .three{
     box-shadow: 10px 10px 4px var(--shadow-color);}
 .card-group .title{
@@ -421,22 +393,18 @@ button{
     margin-bottom: var(--margin-medium);}
 .card-description b{
     font-family:var(--font-primary);
-    font-size: 18px;
-
-}
+    font-size: 18px;}
 .list-link{
     margin: 10px;
     font-size: var(--font-size-small);
     background-color: var(--accent-color);
     padding: 1rem 1.5rem;
-    color: white;
-}
-    
+    color: white;}
 .list-link:hover{
     color: black;
     background-color: var(--hover-color);}
 .card-group .list-link:hover{
-        background-color: var(--hover-color);}
+    background-color: var(--hover-color);}
 .wrapper{
     position: absolute;
     width: 25vw;
@@ -449,8 +417,7 @@ button{
     flex-direction: column;
     justify-content: space-around;
     padding: 0.5em 0;
-    position: relative;
-    }
+    position: relative;}
 .count i{
     color: var(--title-color);
     text-align: center;
@@ -468,204 +435,170 @@ button{
     font-weight: 400;
     line-height: 0;}
 
+#dynamicTable_paginate .paginate_button:hover {
+    background-color: #34af6d;
+    border-radius: 10%;
+    color: black !important;}
+#dynamicTable_paginate .paginate_button {
+    color: black ;}
+.btn1{
+    width: 50%;
+    margin-top: 8px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #34af6d;
+    border: 1px solid #4AD489;
+    font-size: 18px;}
+.btn1:hover{
+    background: #008000;
+    color: white;
+    transition: 0.5s;}
+.delivered{
+    background-color: #86e49d;
+    color: #006b21;}
+.cancelled{
+    background-color: #d893a3;
+    color: #b30021;}
+.pending {
+    background-color: #ebc474;}
+.card1{
+    color: black;}
+ .card-body1{
+    padding: 20px;}
+label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size:18px;
+   font-family: "Century Gothic", sans-serif;}
+textarea {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
+    width: 100%;
+    padding: 8px;
+    height:200px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: "Century Gothic", sans-serif;
+    font-size:18px;}
+ .btnText {
+    padding-right: 4px;
+    font-size: 14px;
+    font-weight: 400;}
+.amen{
+    display: flex;
+    margin-right: 4.2rem;
+    margin-left: 4.2rem;
+    align-items: center;
+    justify-content: space-between;}
+.btnText1:hover{
+    background-color: #265df2; }
+.btnText1{
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #4070f4;
+    transition: all 0.3s linear;
+    cursor: pointer;}
+card1 button:hover {
+    background-color: #265df2;}
+.card1 button {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #4070f4;
+    transition: all 0.3s linear;
+    cursor: pointer; }
 
-
-    #dynamicTable_paginate .paginate_button:hover {
-        background-color: #34af6d; /* Change this to the desired hover color */
-        cursor: pointer;
-        border-radius: 10%;
-        color: black !important;
-      }
-      #dynamicTable_paginate .paginate_button {
+/* Define the fadeInUp animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);}
+  to {
+    opacity: 1;
+    transform: translateY(0);}
+}
+.card1 h1{
+    margin-left:10px;
+    text-align: center;
+    font-family: "Century Gothic", sans-serif;}
+.semester-year-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;}
       
-        color: black ;
-      }
-      .btn1{
-        width: 50%;
-        margin-top: 8px;
-        padding: 7px;
-        cursor: pointer;
-        border-radius: 10px;
-        background: #34af6d;
-        border: 1px solid #4AD489;
-        font-size: 18px;
-      }
-       .btn1:hover{
-        background: #008000;
-        color: white;
-        transition: 0.5s;
-      }
-      .delivered {
-          background-color: #86e49d;
-          color: #006b21;}
-      .cancelled {
-          background-color: #d893a3;
-          color: #b30021;}
-      .pending {
-          background-color: #ebc474;}
-      
-          .card1 {
-            color: black;
-            
-          }
-      
-          .card-body {
-            padding: 20px;
-          }
-      
-           label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            font-size:18px;
-      
-            font-family: "Century Gothic", sans-serif;
-          }
-      
-          textarea {
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
-            width: 100%;
-            padding: 8px;
-            height:200px;
-            margin-bottom: 16px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-            font-family: "Century Gothic", sans-serif;
-            font-size:18px;
-          }
-           .btnText {
-            padding-right: 4px;
-              font-size: 14px;
-              font-weight: 400;
-          }
-          .amen{
-            display: flex;
-            margin-right: 4.2rem;
-            margin-left: 4.2rem;
-            align-items: center;
-            justify-content: space-between;
-          }
-          .btnText1:hover {
-            background-color: #265df2;
-        }
-        .btnText1 {
-            font-size: 14px;
-            align-items: center;
-            justify-content: center;
-            height: 45px;
-            max-width: 200px;
-            width: 100%;
-            border: none;
-            outline: none;
-            color: #fff;
-            border-radius: 5px;
-            margin: 25px 0;
-            background-color: #4070f4;
-            transition: all 0.3s linear;
-            cursor: pointer;
-        }
-          .card1 button:hover {
-              background-color: #265df2;
-          }
-          .card1 button  {
-              font-size: 14px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              height: 45px;
-              max-width: 200px;
-              width: 100%;
-              border: none;
-              outline: none;
-              color: #fff;
-              border-radius: 5px;
-              margin: 25px 0;
-              background-color: #4070f4;
-              transition: all 0.3s linear;
-              cursor: pointer;
-          }
-        
-          /* Define the fadeInUp animation */
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-      
-          .card1 h1
-          {
-            margin-left:10px;
-            text-align: center;
-            font-family: "Century Gothic", sans-serif;
-          }
-       .semester-year-container {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-      }
-      
-      /* Style for the semester dropdown */
-      select {
-        color: black;
-          padding: 12px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 275px; /* Adjust the width as needed */
-        box-sizing: border-box;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
-      }
-      option{
-        font-family: "Century Gothic", sans-serif;
-        font-size: 16px;
-      
-      }
-      
-      /* Style for the container of year inputs */
-      .year-input-container {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-       
-      
-      }
-      
-      /* Style for the group of year inputs and label */
-      .year-input-group {
-        display: flex;
-        align-items: center;
-      }
-      
-      /* Style for the year labels */
-       label {
-        margin-right: 5px;
-      }
-      
-      /* Style for the year inputs */
-      .year-input {
-        padding: 8px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        width: 80px; /* Adjust the width as needed */
-        box-sizing: border-box;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
-      
-      }
-      
-      /* Style for the year inputs when focused */
-      .year-input:focus {
-        outline: none;
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-      }
+/* Style for the semester dropdown */
+select {
+  color: black;
+    padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 275px;
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 1);}
+option{
+  font-family: "Century Gothic", sans-serif;
+  font-size: 16px; }
+.year-input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;}
+.year-input-group {
+  display: flex;
+  align-items: center;}
+ label {
+  margin-right: 5px;}
+  .year-input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80px; 
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 1); }
+.year-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);}
+.reminder-container {
+    display: flex;
+      align-items: center;}
+input[type="file"] {
+  display: none;}
+label[for="fileUpload"] {
+  background-color:#009000;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 18px;}
+label[for="fileUpload"]:hover {
+  background-color:#008080;
+  font-size: 18px;}
 
 /* Scrollbar */
 ::-webkit-scrollbar {
@@ -677,104 +610,89 @@ button{
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--accent-color);}
 
-
 /* Media queries */
 @media screen and (min-width: 769px) {
-    .nav{
-        height: 7rem;}
-    .independent-title{
-        font-size: var(--font-size-large);
-        padding: 4rem 0 2rem;}
+.nav{
+  height: 7rem;}
+.independent-title{
+  font-size: var(--font-size-large);
+  padding: 4rem 0 2rem;}
     .card-body{
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
-        gap: var(--gap-medium);
-        padding-block: 2.5rem;}
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: var(--gap-medium);
+  padding-block: 2.5rem;}
     .card-image{
-        padding: 0;}
+  padding: 0;}
     .card-image img{
-        max-width: 80%;
-        margin: auto;}
+  max-width: 80%;
+  margin: auto;}
     .card-image1 img{
-        margin-left: 1%;}
+  margin-left: 1%;}
     .card-body-link:hover{
-        background-color: var(--hover-color);
-        /* color: var(--dark-color);*/
-    }
+  background-color: var(--hover-color);}
     .d-grid{
-        display: grid;
-    }
-    .form-control1{
-        width: 200%;
-    }
+  display: grid;}
     .management-area-container{
-        grid-template-columns: 35rem 1fr;}
+  grid-template-columns: 35rem 1fr;}
     .card-group .list-link:hover{
-            /* color: var(--dark-color); */
-        background-color: var(--hover-color);}
+  background-color: var(--hover-color);}
     .footer-container{
-        flex-direction: row;
-        align-items: center;}
+  flex-direction: row;
+  align-items: center;}
     .copyright-information{
-        order: 0}
+  order: 0}
     .footer .list{
-        flex-direction: row;
-        margin-left: auto;}
+  flex-direction: row;
+  margin-left: auto;}
     .footer .list-link{
-        padding-left: 1.5rem;}
+  padding-left: 1.5rem;}
     .footer .list-item:hover{
-        color: var(--accent-color);}
+  color: var(--accent-color);}
 }
 
 @media screen and (min-width: 1025px) {
     .menu-toggle-btn{
-        display: none !important;}
+  display: none !important;}
     .nav-mobile{
-        width: initial;
-        height: initial;
-        background-color: initial;
-        position: initial;
-        padding: initial;
-        transform: initial;
-        transition: initial;}
+  width: initial;
+  height: initial;
+  background-color: initial;
+  position: initial;
+  padding: initial;
+  transform: initial;
+  transition: initial;}
     .nav-mobile > .list{
-        flex-direction: row;
-        margin-left: 3rem;}
+  flex-direction: row;
+  margin-left: 3rem;}
     .list-link,
     .card-body-link{
-        transition: color .25s; background-color: .25s;}
+  transition: color .25s; 
+  background-color: .25s;}
     .nav-mobile .list-link{
-        border-radius: .4rem;}
+  border-radius: .4rem;}
     .card-image1 img{
-        margin-left: 1%;}
-
-        .form-control1{
-            width:300%;
-        }
-    .card-body-link:hover{
-        background-color: var(--hover-color);
-        /* color: var(--dark-color); */
-    }
-    .current:hover{
-        color: var(--dark-color);
-        background-color: var(--hover-color);}
+  margin-left: 1%;}
+.card-body-link:hover{
+  background-color: var(--hover-color);}
+.current:hover{
+  color: var(--dark-color);
+  background-color: var(--hover-color);}
     .card-group{
-        grid-template-columns: repeat(2, 1fr);}
+  grid-template-columns: repeat(2, 1fr);}
     .one{
-        grid-column: 1/-1;}
+  grid-column: 1/-1;}
     .two,
     .three{
-        grid-column: 1/2;
-            box-shadow: 10px 10px 4px var(--shadow-color);}
+  grid-column: 1/2;
+  box-shadow: 10px 10px 4px var(--shadow-color);}
     .four{
-        grid-column: 2/-1;
-        grid-row: 2/4;}
+  grid-column: 2/-1;
+  grid-row: 2/4;}
     .card-group .list-link:hover{
-        /* color: var(--dark-color); */
-        background-color: var(--hover-color);}
+  background-color: var(--hover-color);}
     .footer .list-item:hover{
-        color: var(--accent-color);}
-}
+  color: var(--accent-color);}}
 </style>
 
 <body>
@@ -809,118 +727,81 @@ button{
     <div class="management-area-container d-grid">
         <div class="card">
             <header class="card-header header-side">
-                <h2 class="title">REFERRAL Slip</h2>
+                <h2 class="title">Class Admission Slip</h2>
                 <small>Date is <u><?php echo date('F j, Y'); ?></u></small>
             </header>
             <hr>
             <div class="info">
-                <p><b>Referral slips serve as a crucial tool for educators, enabling them to recommend students who may require additional support or guidance.</b> </p>
-                 <p><b>   It is imperative that teachers diligently complete the accompanying form, providing comprehensive information pertaining to the students 
-                    they wish to refer to the Guidance and Counseling Unit (GCU) of BSU.</b></p>
+                 <p><b>   This document is designed for students who may be experiencing absences or tardiness.</b></p>
             </div>
         </div>
-        
+
         <div class="card-group d-grid">
             <div class="card border one">
-
-
 <div class="card1" >
 <hr>
-<h1 style="font-family: fantasy; color: black; " id="Title" >Referral Slip</h1>
+<h1 style="font-family: fantasy; color: black; " id="Title" >CLASS ADMISSION Slip</h1>
 <hr>
- <div class="card-body">
+ <div class="card-body1">
 
-
-   <form id="form_transact"  name="form2" method="post">
-
-    <p> <label for="Sid">* Student ID:</label> </p> 
-    <p> <input class="form-control1" type="number" id="Sid" name="Sid" required onblur="search()"> </p>
-    <p> <label for="fname">* Student's First Name:</label> </p>
-    <p> <input class="form-control1" type="text"  id="fname" name="fname" required> </p>
-    <p> <label for="mname">Student's Middle Name:</label> </p>
-    <p> <input class="form-control1" type="text" id="mname" name="mname" > </p>
-    <p> <label for="lname">* Student's Last Name:</label> </p>
-    <p> <input class="form-control1" type="text" id="lname" name="lname" required> </p>
-    <p> <label for="yl">* Year/Level:</label> </p>
-    <p> <input class="form-control1" type="text" id="yl" name="yl" required> </p>
-    <p> <label for="contact">Student's Contact Number:</label> </p>
-    <p>  <input class="form-control1" type="number" id="contact" name="contact" oninput="limitTo11Digits(event)"> </p>
-    <p> <label>Gender:</label>
-     <div class="semester-year-container">
-      <select id="genderr" required>
-      <option disabled selected>Select gender</option>
-                  <option>Male</option>
-                  <option>Female</option>
-      </select>
-    </div>
-    </p>
-    <p> <label for="crse">* Course:</label>
-     <div class="semester-year-container">
-     <select type="text" name="textfield5" id="crse" required>
-                      <option disabled selected>Select Course</option>
-                                      <option value='BSAB'>Bachelor of Science in Agribusiness</option>
-                                      <option value='BSA'>Bachelor of Science in Agriculture</option>
-                                      <option value='BA Comm'>Bachelor of Arts in Communication</option>
-                                      <option value='BAEL'>Bachelor of Arts in English Language</option>
-                                      <option value='BAFL'>Bachelor of Arts in Filipino Language</option>
-                                      <option value='BSABE'>Bachelor of Science in Agriculture and Biosystems Engineering</option>
-                                      <option value='BSCE'>Bachelor of Science in Civil Engineering</option>
-                                      <option value='BSEE'>Bachelor of Science in Electrical Engineering</option>
-                                      <option value='BSIE'>Bachelor of Science in Industrial Engineering</option>
-                                      <option value='BSF'>Bachelor of Science in Forestry</option>
-                                      <option value='BSET'>Bachelor of Science in Entrepreneurship</option>
-                                      <option value='BSFT'>Bachelor of Science in Food Technology</option>
-                                      <option value='BSHM'>Bachelor of Science in Hospitality Management</option>
-                                      <option value='BSND'>Bachelor of Science in Nutrition and Dietetics</option>
-                                      <option value='BSTM'>Bachelor of Science in Tourism Management</option>
-                                      <option value='BPeD'>Bachelor of Physical Education</option>
-                                      <option value='BSESS'>Bachelor of Science in Exercise and Sports Sciences</option>
-                                      <option value='BLIS'>Bachelor in Library and Information Sciences</option>
-                                      <option value='BSDC'>Bachelor of Science in Development Communication</option>
-                                      <option value='BSIT'>Bachelor of Science in Information Technology</option>
-                                      <option value='BS Bio'>Bachelor of Science in Biology</option>
-                                      <option value='BS Chem'>Bachelor of Science in Chemistry</option>
-                                      <option value='BSES'>Bachelor of Science in Environmental Science</option>
-                                      <option value='BS Math'>Bachelor of Science in Mathematics</option>
-                                      <option value='BSS'>Bachelor of Science in Statistics</option>
-                                      <option value='BSN'>Bachelor of Science in Nursing</option>
-                                      <option value='BPA'>Bachelor of Public Administration</option>
-                                      <option value='BS Psych'>Bachelor of Science in Psychology</option>
-                                      <option value='BECED'>Bachelor of Early Childhood Education</option>
-                                      <option value='BEED'>Bachelor of Elementary Education</option>
-                                      <option value='BSED'>Bachelor of Secondary Education</option>
-                                      <option value='BTLED'>Bachelor of Technology and Livelihood Education</option>
-                                      <option value='DVM'>Doctor of Veterinary Medicine</option>
-                                      <option value='BA Hist'>Bachelor of Arts in History</option>
-      </select>
-    </div>
-    </p>
-    <p> <label>* Reason:</label>
-     <div class="semester-year-container">
-     <select required id="reason">
-        <option disabled selected>Select reason for referral</option>
-        <option>Academic Deficiency/ies</option>
-        <option>Absent</option>
-        <option>Tardy</option>
-        <option>Others</option>
-        </select>
+ <form id="form_transact" name="form1" action="../../backend/create_transaction.php" method="post" enctype="multipart/form-data">
+    <p> <label>* Tardy or Absent:</label>
+    <div class="semester-year-container">
+    <select name="textfield" id="refer">
+        <option disabled selected>Select</option>
+        <option value="Tardy">Tardy</option>
+        <option value="Absent">Absent</option>
+    </select>
     </div>
     </p>
     <div class="date-range-container" id="dates">
-                <label for="date">* Days absent/tardy:</label>
-                <!-- id = date -->
-                <div class=" date form-group" id="datepicker">
-                <span class="input-group-addon" style="color:black; font-size:x-small;"><i class="glyphicon glyphicon-calendar"></i><span class="count"> </span></span>
-                  <input type="text" class="form-control1" id="Date" name="Date" placeholder="Select days" autocomplete="off"/>
-                 
+        <label for="Date">* Days absent/tardy:</label>
+        <div class=" date form-group" id="datepicker">
+        <span class="input-group-addon" style="color:black; font-size:x-small;"><i class="glyphicon glyphicon-calendar"></i><span class="count"> </span></span>
+        <input type="text" class="form-control1" id="Date" name="Date" placeholder="Select days" autocomplete="off"/>   
     </div>
     </div>
-    <p id="rem"> <label for="remark">Remarks:</label>
-    <input class="form-control1" type="text"id="remark" name="remark">
+
+    <p id="COA"> <label for="remark">* Remarks:</label>
+    <input type="radio" id="health" name="concern" value="health"> Health-related concerns
+    <br>
+    <input type="radio" id="personal" name="concern" value="personal"> Personal Concerns
+    <br>
+    <input type="radio" id="socio-cultural" name="concern" value="socio-cultural">  Socio-Cultural Concerns
+    <br>
+    <input type="radio" id="behavioral" name="concern" value="behavioral"> Behavioral
+    <br>
+    <input type="radio" id="filial" name="concern" value="filial"> Filial Responsibilities
+    <br>
+    <input type="radio" id="environmentalRadio" name="concern" value="environmental"> Environmental
+    <br>
+    <input type="radio" id="officialActivityRadio" name="concern" value="officialActivity" > Official co/extra-curricular activity
+    <br>
+    <input type="text" id="officialActivitySpecify" class="hidden form-control1" name="specify" style="width: 100%;" placeholder="Please Specify">
+    <input type="radio" id="otherRadio" name="concern" value="others" > Others
+    <input type="text" id="otherSpecify" class="hidden form-control1" name="specify" style="width: 100%;"placeholder="Please Specify">
+    <br>
+    </p>
+    <p id="rem"> 
+    <label for="remark">* Reason:</label>
+    <input class="form-control1" type="text" id="remark" name="remark">
+    </p>
+<br>
+    <div class="reminder-container">
+    <p style="margin-top: 12px; font-size: 12px; font-weight: bold;">You must upload required files such as Excuse letter, Medical credentials, etc. before clicking Submit.</p>
+    </div>
+    <p class=""> 
+    <label for="fileUpload">Upload Required Files</label>
+    <input type="file" id="fileUpload" name="fileUpload[]" required>
+    <br>
     </p>
 
+<div class="reminder-container">
+  <i class="fas fa-exclamation-circle icon"></i>
+  <p style="margin-top: 12px; font-size: 12px; font-weight: bold; color:red;">&nbspReminder: Zip multiple files before uploading them.</p>
+</div>
                <!-- Change type from submit to button and add onclick attribute to call the function to check the form before submitting -->
-               <button type="submit" onclick="submitForm()"><span class="btnText">Submit</span><i class="ri-navigation-line"></i></button>
+               <button type="submit" id ="submit" ><span class="btnText">Submit</span><i class="ri-navigation-line"></i></button>
    </form>
 
  </div>
@@ -937,30 +818,49 @@ button{
     </div>
 </section>     
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
+   function goBack() {
+            window.history.back();
+        }
+       
+function faq(){
+        window.location.href="../dh_student.php"
+    }
+
+     var eID = "<?php echo $_SESSION['session_id'];?>";
+
+    function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+    window.location.href = '../home';
+
+}
+  });
+}
+
+
       var sID = "<?php echo $_SESSION['session_id'];?>";
       var LA = $("#dates");
     var AO = $("#rem");

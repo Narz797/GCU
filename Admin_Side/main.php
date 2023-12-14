@@ -64,21 +64,145 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
 </head>
 
 <body style="background:white"> 
-    <!-- Header -->
-    <header class="header" >
-        <nav class="nav">
-            <div class="logo">
-            <img src="assets/images/GCU_logo.png" alt="">
-            </div>
-        
-        </nav>
-    </header>
-    <!-- Banner -->
-    <?php include '../includes/banner.php' ?>
-        <div class="title independent-title">
-            <h2> Welcom Back, Admin!</h2>
+ <!-- Header -->
+ <header class="header">
+    <nav class="nav">
+        <div class="logo">
+        <img src="GCU_logo.png" alt="">
+        <!-- <img src="assets/images/bsu.png" alt=""> -->
         </div>
+    </nav>
+</header>
+
+    <!-- Welcome-message -->
+<section> <?php include '../includes/banner.php' ?>
+<div class="title independent-title ">
+        <h2 >Dashboard </h2>
+    </div>
+    <div class="card">
+        <header class="card-header">
+            <small>Greetings!</small>
+<!-- call employee id 
+    number or 
+    profession = "Admin"-->
+            <h2 class="title">Welcome back, <span> Admin!</span></h2>
+        </header>
+        <hr>
+    </div>
+</section>
+<br>
+  <!-- Management-area -->
+ 
+  <div class="management-area-container d-grid">
+        <div class="card">
+            <header class="card-header header-side">
+                <h2 class="title">ACTIONS</h2>
+                <small>Choose what task to do today.</small>
+            </header>
+            <hr>
+            <div>
+            <a href="logreport.php" class="card-body-link">
+                        <i class="ri-folder-line"></i>Log Report
+                    </a>
+                    <a href="EmployeeProfiles.php" class="card-body-link">
+                        <i class="ri-server-line"></i>Employee Profiles
+                    </a>
+                    <a href="studentprofile.php" class="card-body-link">
+                        <i class="ri-server-line"></i>Student Accounts
+                    </a>
+                    <a href="teacherprofiles.php" class="card-body-link">
+                        <i class="ri-server-line"></i>Teacher Accounts
+                    </a>
+                    <a href="exportimport.php" class="card-body-link">
+                        <i class="ri-server-line"></i>Export/Import of Database
+                    </a>
+                    <a href="admin_profile.php" class="card-body-link">
+                        <i class="ri-server-line"></i>Edit Profile
+                    </a>
+                    
+                    <a onclick="logout()" class="card-body-link">
+                        <i class="ri-user-3-line"></i>Log-Out
+                    </a>
+            </div>
+        </div>
+<div class="container1 ">
+<section class="main  border">
+  <section class="attendance ">
+  <section>
+        <div class="title independent-title" >
+            <h2 style="color:black;">Export and Import of Database</h2>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-sm">
+                    <div class="card"  style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color:black;">
+                        <h2 class="card-title">Import Database</h2>
+                        <div class="card-body" >
+                            <p class="card-text">Import Back Up Database.</p>
+                            <form action="../backend/import_database.php" method="post" enctype="multipart/form-data">
+                                <input type='file' name='import' accept=".sql">
+                                <br>
+                                <br>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" style="  font-size: 14px;
+     
+        align-items: center;
+        justify-content: center; 
+        height: 45px;
+        max-width: 200px;
+        width: 100%;
+        border: none;
+        outline: none;
+        color: #fff;
+        border-radius: 5px;
+        margin: 25px 0;
+        background-color: #4070f4;
+        transition: all 0.3s linear;
+        cursor: pointer;">Import</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card"  style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color:black;">
+                        <h2 class="card-title">Export Database</h2>
+                        <div class="card-body">
+                            <p class="card-text">Export Back Up Database.</p>
+                            <form action="../backend/export_database.php">
+                                <br>
+                                <br>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" style="  font-size: 14px;
+     
+     align-items: center;
+     justify-content: center; 
+     height: 45px;
+     max-width: 200px;
+     width: 100%;
+     border: none;
+     outline: none;
+     color: #fff;
+     border-radius: 5px;
+     margin: 25px 0;
+     background-color: #4070f4;
+     transition: all 0.3s linear;
+     cursor: pointer;">Export</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div> 
+
     </section>
+  </section>
+</section>
+</div>
+</div>
+
+
+
+
     <!-- Management-area -->
     <section class="management-area" >
         <div class="management-area-container d-grid">
@@ -120,7 +244,7 @@ logAudit($id, 'access_admin main',  'Admin has accessed the admin home page');
                         <h2 class="title">TOTAL LOGINS FOR TODAY</h2>
                         <span class="num"><b id="total">loading...</b></span>
                     </div>
-
+ 
                 </div>
 
 

@@ -108,7 +108,9 @@ $_SESSION['transact_type'] = 'Referral';
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
+    var eID = "<?php echo $_SESSION['session_id'];?>";
       var tID = "<?php echo $_SESSION['session_id'];?>";
+<<<<<<< Updated upstream
       function resend(){
       // document.getElementById("modal").style.display = "none";
           // Show loading spinner
@@ -159,25 +161,42 @@ $_SESSION['transact_type'] = 'Referral';
             window.history.back();
         }
         function logout() {
+=======
+      function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+>>>>>>> Stashed changes
         $.ajax({
             type: 'POST',
             url: '../../backend/log_audit.php',
             data: {
-              userId: tID,
+              userId: eID,
               action: 'logged out',
-              details: tID + ' Clicked log out'
+              details: eID + ' Clicked log out'
             },
             success: function(response) {
               // Handle the response if needed
               console.log("logged", response);
             }
           });
-            window.location.href = '../home';
+    window.location.href = '../home';
+
+}
+  });
+}
+function goBack() {
+            window.history.back();
         }
 
     </script>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   var tID = "<?php echo $_SESSION['session_id'];?>";
   function limitTo11Digits(event) {
@@ -187,22 +206,6 @@ $_SESSION['transact_type'] = 'Referral';
   if (inputValue.length > 11) {
     input.value = inputValue.slice(0, 11);
   }
-}
-function logout() {
-  $.ajax({
-            type: 'POST',
-            url: '../../backend/log_audit.php',
-            data: {
-              userId: tID,
-              action: 'logged out',
-              details: tID + ' Clicked log out'
-            },
-            success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
-            }
-          });
-    window.location.href = '../home';
 }
 function faq(){
         window.location.href="../dh_teacher.php"
