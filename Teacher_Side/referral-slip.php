@@ -128,7 +128,15 @@ $_SESSION['transact_type'] = 'Referral';
     <p> <label for="lname">* Student's Last Name:</label> </p>
     <p> <input class="form-control1" type="text" id="lname" name="lname" required> </p>
     <p> <label for="yl">* Year/Level:</label> </p>
-    <p> <input class="form-control1" type="text" id="yl" name="yl" required> </p>
+    <p>                         <select select type="text" name='yl' id="yl" required>
+                                <option disabled selected>Year Level</option>
+                                <option value='1'>1st</option>
+                                <option value='2'>2nd</option>
+                                <option value='3'>3rd</option>
+                                <option value='4'>4th</option>
+                                <option value='5'>5th</option>
+                                <option value='6'>6th</option>
+                            </select> </p>
     <p> <label for="contact">Student's Contact Number:</label> </p>
     <p>  <input class="form-control1" type="number" id="contact" name="contact" oninput="limitTo11Digits(event)"> </p>
     <p> <label>Gender:</label>
@@ -355,11 +363,11 @@ function search() {
                 mnameInput.removeAttribute('readonly');
                 lnameInput.value = "";
                 lnameInput.removeAttribute('readonly');
-                courseInput.value = "";
+                courseInput.value = "Select Course";
                 courseInput.removeAttribute('disabled');
                 contactInput.value = "";
                 contactInput.removeAttribute('readonly');
-                genderInput.value = "";
+                genderInput.value = "Select gender";
                 genderInput.removeAttribute('disabled');
           }
         },

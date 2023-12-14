@@ -258,12 +258,7 @@
               console.log("logged", response);
             }
           });
-<<<<<<< Updated upstream
     window.location.href = 'home';
-=======
-    window.location.href = '../home';
-
->>>>>>> Stashed changes
 }
   });
 }

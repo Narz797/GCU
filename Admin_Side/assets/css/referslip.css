@@ -6,7 +6,7 @@
 /* Custom properties */
 :root{
     --light-color: #fff;
-    --dark-color: black;
+    --dark-color: black; 
     --accent-color: #ecad00;
     --body-background-color: #eef0f8;
     --hover-color: #fde7b4;
@@ -14,7 +14,7 @@
     --shadow-color: lightblue;
     --font-color: #568203;
     --title-color: #FEBE10;
-    --positive-color: #86e49d;
+    --positive-color: #86e49d; 
     --negative-color: #d893a3 ;
     --pending-color: #ebc474;
     --transparent-button-color: var(--accent-color);
@@ -60,7 +60,13 @@ body{
 
 ul{
     list-style: none;}
-
+.info p{
+   padding: 10px;
+   font-weight: 200;
+    font-size:18px;
+    color: black;
+    text-align: justify;
+}
 a{
     text-decoration: none;
     color: var(--light-color);}
@@ -76,11 +82,22 @@ button{
     border: none;
     border-radius: .4rem;
     cursor: pointer;}
-
-i{
-    font-size: var(--font-size-large);
-    line-height: 0;}
-
+.form-control1{
+    width: 115%;
+    padding: 16px;
+    display: block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 
 /* Reusable classes */
 .container{
@@ -92,44 +109,76 @@ i{
     align-items: center;
     justify-content: center;}
 
-
 /* Header */
 .header{
     transition: all 0.5s;
-    background-color: #008374;}
-.nav{
-    height: 10rem;
+    background-color:#008374;}
+  .nav{
+    height: 7rem;
     display: flex;
     align-items: center;}
-.logo img{
+  .logo img{
     display: flex;
     margin-left: 10px;
     width: 50px; 
     height:50px; 
     padding:2px;}
-.align-right{
-    margin-left: auto;
+  .nav-mobile{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--dark-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 2.5rem;
+    z-index: 999;
+    transition: transform .5s;
+    transform: translateX(-105%);}
+  .list{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-small);} 
+    .list-link{
+      display: inline-block;
+      font-size: var(--font-size-small);
+      padding: 1rem 1.5rem;}
+  .current{
+    background-color: var(--accent-color);}
+  .current:hover{
+    color: var(--dark-color);
+    background-color: var(--hover-color);}
+  .menu-toggle-close{
     background-color: var(--accent-color);
-    border-radius: .4rem;
-    padding: 2px;}
-.align-right:hover{
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;}
+  .current1:hover{
     background-color: var(--hover-color);
-    color:black;
-}
-.icon-btn{
+    color: var(--light-color);}
+  .icon-btn{
     width: 3.5rem;
     height: 3.5rem;
+    color: white;
+  }
+  .icon-btn i{
+        font-size: var(--font-size-large);
+        line-height: 0;
+  }
+  .icon-btn:hover{
+    padding:10px;
+    background-color: var(--hover-color);
     color: black;
-}
-.theme-dark-icon{
+  }
+  .hov:hover{
+    background-color: var(--hover-color);
+    color: var(--dark-color);}
+  .align-right{
+    margin-left: auto;
+    background-color: var(--accent-color);
+    border-radius: .4rem;}
+  .theme-dark-icon{
     display: none;}
-
-/* JavaScript styles */
-.theme-light .theme-dark-icon{
-    display: block;}
-.theme-light .theme-light-icon{
-    display: none;}
-
+  
 
 /* Banner */
 .banner{
@@ -181,7 +230,17 @@ i{
     font-size: 25px;
     font-weight: bold;
     margin-left: 40px;}
-
+.independent-title1 {
+        font-size: var(--font-size-medium);
+        color: var(--light-color);
+        padding: 2.5rem 0 1.25rem;
+        background-color: #008374;
+    }
+.independent-title1 h2 {
+        font-size: 25px;
+        font-weight: bold;
+        margin-left: 40px;
+    }
 .card{
     background-color: var(--light-color);
     padding: 2.5rem;
@@ -191,13 +250,11 @@ i{
     padding-block: 1rem;
     background-color: var(--body-background-color);}
 .card-header small{
-    padding: 10px;
     font-size: 1.2rem;
     color: var(--font-color);
     font-weight: bold;
     font-family: 'Georgia', serif;}
 .card-header .title{
-    padding: 10px;
     color:black;
     margin-bottom: 0;
     font-size: 20px;}
@@ -243,6 +300,9 @@ i{
 
 
 /* Management area */
+.management-area {
+    padding-block: 2.5rem;
+}
 .management-area-container {
     gap: var(--gap-medium);
 }
@@ -251,8 +311,6 @@ i{
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
     min-height: 17.5rem;
     border-radius: .4rem;}
 .card-group .card::after {
@@ -275,7 +333,7 @@ i{
     background-color: #ecad00;
     margin-bottom: var(--margin-medium);
     padding: 1.5rem;
-    border-radius: 5px;
+    border-radius: 4rem;
     display: flex;
     align-items: center;
     gap: var(--gap-small);
@@ -321,21 +379,16 @@ i{
     display: flex;
     left: 8%;}
 .count{
-    width: 15vmin;
-    height: 12vmin;
+    width: 15vmin; 
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 0.5em 0;
     position: relative;
-    left: 30%;
-    font-size: 16px;
-    border-radius: 1rem;
-    border-bottom: 10px solid var(--title-color);}
+    }
 .count i{
     color: var(--title-color);
     text-align: center;
-    font-size: 6rem;
     margin-bottom: 2rem;}
 .num{
     display: grid;
@@ -350,16 +403,7 @@ i{
     font-weight: 400;
     line-height: 0;}
 
-    .yes:hover {
-        font-size: 20px;
-        color: white;
-        background-color: #265df2;
-    }
-    .yes i {
-        padding-right: 4px; 
-        font-size: 17px;
-        font-weight: 400;
-    }
+
 
     #dynamicTable_paginate .paginate_button:hover {
         background-color: #34af6d; /* Change this to the desired hover color */
@@ -395,6 +439,169 @@ i{
       .pending {
           background-color: #ebc474;}
       
+          .card1 {
+            color: black;
+            
+          }
+      
+          .card-body {
+            padding: 20px;
+          }
+      
+           label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size:18px;
+      
+            font-family: "Century Gothic", sans-serif;
+          }
+      
+          textarea {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
+            width: 100%;
+            padding: 8px;
+            height:200px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            font-family: "Century Gothic", sans-serif;
+            font-size:18px;
+          }
+           .btnText {
+            padding-right: 4px;
+              font-size: 14px;
+              font-weight: 400;
+          }
+          .amen{
+            display: flex;
+            margin-right: 4.2rem;
+            margin-left: 4.2rem;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .btnText1:hover {
+            background-color: #265df2;
+        }
+        .btnText1 {
+            font-size: 14px;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            max-width: 200px;
+            width: 100%;
+            border: none;
+            outline: none;
+            color: #fff;
+            border-radius: 5px;
+            margin: 25px 0;
+            background-color: #4070f4;
+            transition: all 0.3s linear;
+            cursor: pointer;
+        }
+          .card1 button:hover {
+              background-color: #265df2;
+          }
+          .card1 button  {
+              font-size: 14px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 45px;
+              max-width: 200px;
+              width: 100%;
+              border: none;
+              outline: none;
+              color: #fff;
+              border-radius: 5px;
+              margin: 25px 0;
+              background-color: #4070f4;
+              transition: all 0.3s linear;
+              cursor: pointer;
+          }
+        
+          /* Define the fadeInUp animation */
+          @keyframes fadeInUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+      
+          .card1 h1
+          {
+            margin-left:10px;
+            text-align: center;
+            font-family: "Century Gothic", sans-serif;
+          }
+       .semester-year-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      
+      /* Style for the semester dropdown */
+      select {
+        color: black;
+          padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 275px; /* Adjust the width as needed */
+        box-sizing: border-box;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
+      }
+      option{
+        font-family: "Century Gothic", sans-serif;
+        font-size: 16px;
+      
+      }
+      
+      /* Style for the container of year inputs */
+      .year-input-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+       
+      
+      }
+      
+      /* Style for the group of year inputs and label */
+      .year-input-group {
+        display: flex;
+        align-items: center;
+      }
+      
+      /* Style for the year labels */
+       label {
+        margin-right: 5px;
+      }
+      
+      /* Style for the year inputs */
+      .year-input {
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 80px; /* Adjust the width as needed */
+        box-sizing: border-box;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 1); /* Solid black box shadow */
+      
+      }
+      
+      /* Style for the year inputs when focused */
+      .year-input:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 1rem;}
@@ -407,7 +614,7 @@ i{
 
 
 /* Media queries */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .nav{
         height: 7rem;}
     .independent-title{
@@ -432,7 +639,9 @@ i{
     .d-grid{
         display: grid;
     }
-    
+    .form-control1{
+        width: 200%;
+    }
     .management-area-container{
         grid-template-columns: 35rem 1fr;}
     .card-group .list-link:hover{
@@ -451,7 +660,8 @@ i{
     .footer .list-item:hover{
         color: var(--accent-color);}
 }
-@media screen and (min-width: 1024px) {
+
+@media screen and (min-width: 1025px) {
     .menu-toggle-btn{
         display: none !important;}
     .nav-mobile{
@@ -464,7 +674,7 @@ i{
         transition: initial;}
     .nav-mobile > .list{
         flex-direction: row;
-        margin-left: 4rem;}
+        margin-left: 3rem;}
     .list-link,
     .card-body-link{
         transition: color .25s; background-color: .25s;}
@@ -472,15 +682,17 @@ i{
         border-radius: .4rem;}
     .card-image1 img{
         margin-left: 1%;}
-    .current,
-    .nav-mobile .list-link:hover,
-    .nav-mobile .list-link:focus{
-        background-color: var(--accent-color);
-        color: var(--light-color);}
+
+        .form-control1{
+            width:300%;
+        }
     .card-body-link:hover{
         background-color: var(--hover-color);
         /* color: var(--dark-color); */
     }
+    .current:hover{
+        color: var(--dark-color);
+        background-color: var(--hover-color);}
     .card-group{
         grid-template-columns: repeat(2, 1fr);}
     .one{
@@ -498,3 +710,19 @@ i{
     .footer .list-item:hover{
         color: var(--accent-color);}
 }
+
+   
+.datapicker td, .datepicker th {
+padding: 2px;
+    font-size: 14px;
+    text-align: center;
+    width: 50px;
+    height: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: none;}
+
+
+
+

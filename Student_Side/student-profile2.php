@@ -341,7 +341,7 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6" id="ps">
                       <div class="form-group">
                         <label class="form-control-label" for="pass">Password</label>
-                        <input type="password"  class="form-control form-control-alternative" id="pass" style="border:2px solid yellow; padding:22px;">
+                        <input type="password"  class="form-control form-control-alternative" id="pass" style="border:2px solid yellow; padding: 1rem 0.75rem; height:auto;">
                         <i class="fas fa-eye" onclick="togglePasswordVisibility('pass')"></i>
                       </div>
                     </div>
@@ -349,7 +349,7 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6" id="ps2">
                       <div class="form-group">
                         <label class="form-control-label" for="pass">Verify Password</label>
-                        <input type="password"  class="form-control form-control-alternative" id="pass2" style="border:2px solid yellow; padding:22px;">
+                        <input type="password"  class="form-control form-control-alternative" id="pass2"  style="border:2px solid yellow; padding: 1rem 0.75rem; height:auto;">
                         <i class="fas fa-eye" onclick="togglePasswordVisibility('pass2')"></i>
                       </div>
                     </div>
@@ -1065,12 +1065,17 @@ $siblings = $siblings->fetchAll();
                     <form id="verify_code" method="post">
                     <h1>A verification code has been den to your email, please enter the code below to fully register your account</h1>
                     <div class="id">
-                        <label for="email" style="color:black;">Verification Code:</label>
+                        <label for="email" style="color:black;">Verification Code:</label> <br>
+                        <br>
                         <input type="number" id="code" name="code" oninput="validateInput(this)" required>
+                        <br>
                         <a class="btn btn-sm btn-primary" style="color: white;" onclick="update()" >Verify</a>
+                        <br>
                     </div>
-                    </form>
+                    </form><br>
                     <button class="btn btn-sm btn-primary" onclick="resend()">Resend Code</button>
+                    <br>
+                    <br>
                     <button class="btn btn-sm btn-primary" onclick="cancel()">Cancel</button>
                 </div>
                 </div>
@@ -1120,20 +1125,8 @@ $siblings = $siblings->fetchAll();
       //   console.log('Logout canceled');
       // }
     };
-<<<<<<< Updated upstream
     var eID = "<?php echo $_SESSION['session_id'];?>";
 function logout() {
-=======
-    function faq(){
-        window.location.href="../dh_student.php"
-    }
-
-     var eID = "<?php echo $_SESSION['session_id'];?>";
-
-
-
-    function logout() {
->>>>>>> Stashed changes
         Swal.fire({
       title: "Are you sure you want to logout?",
       // text: "Do you wish to proceed?",
@@ -1354,56 +1347,72 @@ function toggleInput(chk, lbl) {
     // });
 
     email.style.border = '2px solid yellow';
-    email.style.padding = '22px';
+    email.style.padding = '1rem 0.75rem';
+    email.style.height = 'auto';
 
     // pass.style.border = '2px solid yellow';
 
     // pass2.style.border = '2px solid yellow';
 
     crse.style.border = '2px solid yellow';
-    crse.style.padding = '22px';
+    crse.style.padding = '1rem 0.75rem';
+    crse.style.height = 'auto';
 
     yl.style.border = '2px solid yellow';
-    yl.style.padding = '22px';
+    yl.style.padding = '1rem 0.75rem';
+    yl.style.height = 'auto';
 
     sec.style.border = '2px solid yellow';
-    sec.style.padding = '22px';
+    sec.style.padding = '1rem 0.75rem';
+    sec.style.height = 'auto';
 
     cn.style.border = '2px solid yellow';
-    cn.style.padding = '22px';
+    cn.style.padding = '1rem 0.75rem';
+    cn.style.height = 'auto';
 
     cs.style.border = '2px solid yellow';
-    cs.style.padding = '22px';
+    cs.style.padding = '1rem 0.75rem';
+    cs.style.height = 'auto';
 
     adrs.style.border = '2px solid yellow';
-    adrs.style.padding = '22px';
+    adrs.style.padding = '1rem 0.75rem';
+    adrs.style.height = 'auto';
 
     fage.style.border = '2px solid yellow';
-    fage.style.padding = '22px';
+    fage.style.padding = '1rem 0.75rem';
+    fage.style.height = 'auto';
 
     focc.style.border = '2px solid yellow';
-    focc.style.padding = '22px';
+    focc.style.padding = '1rem 0.75rem';
+    focc.style.height = 'auto';
 
     fcn.style.border = '2px solid yellow';
-    fcn.style.padding = '22px';
+    fcn.style.padding = '1rem 0.75rem';
+    fcn.style.height = 'auto';
 
     mage.style.border = '2px solid yellow';
-    mage.style.padding = '22px';
+    mage.style.padding = '1rem 0.75rem';
+    mage.style.height = 'auto';
 
     mocc.style.border = '2px solid yellow';
-    mocc.style.padding = '22px';
+    mocc.style.padding = '1rem 0.75rem';
+    mocc.style.height = 'auto';
 
     mcn.style.border = '2px solid yellow';
-    mcn.style.padding = '22px';
+    mcn.style.padding = '1rem 0.75rem';
+    mcn.style.height = 'auto';
 
     gage.style.border = '2px solid yellow';
-    gage.style.padding = '22px';
+    gage.style.padding = '1rem 0.75rem';
+    gage.style.height = 'auto';
 
     gocc.style.border = '2px solid yellow';
-    gocc.style.padding = '22px';
+    gocc.style.padding = '1rem 0.75rem';
+    gocc.style.height = 'auto';
 
     gcn.style.border = '2px solid yellow';
-    gcn.style.padding = '22px';
+    gcn.style.padding = '1rem 0.75rem';
+    gcn.style.height = 'auto';
 
     // Show buttons or perform other actions as needed
   

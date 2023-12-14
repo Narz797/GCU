@@ -375,7 +375,7 @@ function clearSearchResults2() {
                     var statusText = status == 'pending' ? 'Unread' : 'Read';
                     
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", "+ entry.stud_user_id +")'>View</button>");
+                    var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", "+ entry.stud_user_id +")'><i class='ri-eye-fill'></i></button>");
                     statusCell.append(statusLink);
                     row.append(statusCell);
 

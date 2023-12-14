@@ -166,7 +166,7 @@ include '../../backend/log_audit2.php';
                 <br>
                 <br>
                 <br>
-                <button class="yes" onclick="status_update('Received')">Received</button>
+                <button class="yes" onclick="status_update('Received')">Received&nbsp<i class="ri-checkbox-circle-line"></i></button>
                  </div>
             </div>
         </div>

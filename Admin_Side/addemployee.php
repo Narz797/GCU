@@ -36,122 +36,241 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Employee Account</title>
-    <!-- Remix icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="icon" href="assets/images/GCU_logo.png">
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/ap.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <!-- Remix icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="../assets/img/GCU_logo.png" rel="icon">
+  <link rel="stylesheet" href="assets/css/edit.css">
+  <link rel="stylesheet" href="assets/css/referslip.css">
 
-    
+  <!-- Fontawesome CDN Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
-<body style="background:white;">
+    
+<style>
+</style>
 
-    <!-- Header -->
-    <header class="header" >
-    <nav class="nav" > 
+<!-- Header -->
+<header class="header">
+    <nav class="nav"> 
         <div class="logo">
-        <img src="assets/images/bsu.png" alt="">
+        <img src="GCU_logo.png" alt="">
         </div>
         <div class="nav-mobile">
-        <ul class="list">
-                <li class="list-item">
-                    <a href="../employee-home" class="list-link current">Home</a>
-                </li>
-                <li class="list-item hov">
-                    <a href="EmployeeProfiles.php" class="list-link current1">Back</a>
-                </li>
-            </ul>
-            <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
-                <i class="ri-close-line"></i>
-            </button>
-            </ul>
-            <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
-                <i class="ri-close-line"></i>
-            </button>
+            <div class="list">
+                <div class="list-item">
+                    <button onclick="goBack()" class="list-link current">BACK</button>
+                </div>
+            </div>
         </div>
         <div class="align-right">
-            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
-                <i class="ri-function-line"></i>
+            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center" onclick="goBack()" class="list-link current">
+            <i class="ri-arrow-left-circle-line"></i>
             </button>
+       
+            <!-- <button class="icon-btn place-items-center" onclick="faq()">
+                <i class="ri-question-mark"></i>
+            </button> -->
+        </div>
         </div>
     </nav>
 </header>
-    <div class="title independent-title" >
+<?php include '../includes/banner.php' ?>
+
+
+<body style="background:white;  ">
+
+    <section>
+
+
+    <div class="independent-title1">
     <h2>Add Employee Account</h2>
     </div>
     
-   
+    <div class="amen">
+    <button  onclick="add()" class="btnText1" id="Update"><span class="btnText">ADD</span><i class="ri-edit-2-fill"></i></button>
+    <button onclick="goBack()" class="btnText1" id="Cancel"><span class="btnText">Cancel</span><i class="ri-arrow-left-circle-line"></i></button>  
+</div>
 
-    <section  id="table" class="table-body">
-    <center>
-    <form method="post" action="../backend/register_user.php">
+<div class="container-fluid mt--7">
+      <div class="row">
+      
+
+
+        <div class="col-xl-8 order-xl-1">
+          <div class="card bg-secondary shadow">
+   
+            <div class="card-body" style="background-color:lightgray;">
+    <form method="post" id="addE" action="../backend/register_user.php">
         <br>
        
-        <div class="input-group1 input-group-lg">
-              <input type="number" class="form-control" name ='empID' placeholder="Employee ID No." 
-              aria-label="Employee ID No." aria-describedby="inputGroup-sizing-lg" required>
-              </div>
-        <br>
-        <div class="input-group1 input-group-lg" style="background:#fff5;">
-              <input type="text" class="form-control" placeholder="Last Name" 
-              aria-label="Last Name" name ='lname' aria-describedby="inputGroup-sizing-lg" required>
-              <input type="text" name ='mname' class="form-control" placeholder="Middle Name" 
-              aria-label="Middle Name" aria-describedby="inputGroup-sizing-lg" required>
-              <input type="text" name ='fname'class="form-control" placeholder="First Name" 
-              aria-label="First Name" aria-describedby="inputGroup-sizing-lg" required>
-        </div>
-        <br>
-        <div class="input-group1 input-group-lg" >
-            <label class="input-group-text" for="inputgroupselect">Sex</label>
-            <select class="form-select" name ='gender' id="inputgroupselect" required>
-                <option selected>Choose...</option>
-                <option value="Female">Female</option>
-                <option value="Male">Male</option>
-            </select>
-        </div>
-        <br>
-        <div class="input-group1 input-group-lg">
-              <input type="text" name='email' class="form-control" placeholder="Email" 
-              aria-label="Email" aria-describedby="inputGroup-sizing-lg" required>
-        </div>
-        <br>
-        <div class="input-group1 input-group-lg" >
-              <input type="text" name='contactnum' class="form-control" placeholder="Contact No." 
-              aria-label="Contact No." aria-describedby="inputGroup-sizing-lg" required>
-        </div>
-        <br>
-        <div class="input-group1 input-group-lg" >
-              <input type="text" name='position' class="form-control" placeholder="Position" 
-              aria-label="Position" aria-describedby="inputGroup-sizing-lg" required>
-        </div>
-        <br>
-        <div class="input-group1 input-group-lg" >
-              <input type="text" class="form-control" name='username' placeholder="Username" 
-              aria-label="Username" aria-describedby="inputGroup-sizing-lg" required>
-              <input type="text" class="form-control" name='password' placeholder="Password" 
-              aria-label="Password" aria-describedby="inputGroup-sizing-lg" required>
-        </div>
-</center>
-<br>
-<center>
-    <div class="addemployee">
-    
-    <button type="submit" class="button" value="Add Employee" >Add Employee Account </button><br>
-   
-    </div>
-</center>
-</form>
-    </section>
+        <div class="pl-lg-4">
+                 
+                    <div class="col-lg-6" style="width:90px; padding:0; ">
+                      <div class="form-group focused id1" >
+                        <label class="form-control-label" for="input-username" id="EId" name ='empID' >ID No.</label>
+                        <input type="number"  class="form-control form-control-alternative" id="id" name="empID" placeholder="Employee ID No." required >
+                      </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="email">Email</label>
+                        <input type="email"  class="form-control form-control-alternative" id="email" name='email' required>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6" id="ps">
+                      <div class="form-group">
+                        <label class="form-control-label" for="pass">Password</label>
+                        <input type="password"  class="form-control form-control-alternative" id="pass" name='password' required>
+                        <i class="fas fa-eye" onclick="togglePasswordVisibility('pass')"></i>
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Last Name</label>
+                        <input type="text"  class="form-control form-control-alternative" id="lname" name ='lname' required>
+                      </div>
+                    </div>
+      
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-first-name">First Name</label>
+                        <input type="text"  class="form-control form-control-alternative" id="fname" name ='fname' required>
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-last-name">Middle Name</label>
+                        <input type="text" class="form-control form-control-alternative" id="mname" name ='mname' required>
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-last-name">Contact Number</label>
+                        <!-- Editable -->
+                        <input type="text" class="form-control form-control-alternative" id="contact" name='contactnum' oninput="limitTo11Digits(event)" required>
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-last-name">Gender</label>
+                        <select class="form-control form-control-alternative" required id="inputgroupselect" name="gender" disabled>
+                                <option disabled selected>Select gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                            </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label  class="form-control-label" for="input-last-name">Position</label>
+                        <input type="text" class="form-control form-control-alternative" id="position"name='position' required>
+                     
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </form>
+                            
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+          
+
 <br>
     <?php include 'includes/footer.php' ?>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function togglePasswordVisibility(inputId) {
+    var passwordInput = document.getElementById(inputId);
+    var icon = document.querySelector('i[onclick="togglePasswordVisibility(\'' + inputId + '\')"]');
+  
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      icon.className = "fas fa-eye-slash";
+    } else {
+      passwordInput.type = "password";
+      icon.className = "fas fa-eye";
+    }
+  }
+</script>
+<script>
+          var eID = "<?php echo $_SESSION['session_id']; ?>";
+                            function goBack() {
+            window.history.back();
+        }
+            function logout() {
+        Swal.fire({
+      title: "Are you sure you want to logout?",
+      // text: "Do you wish to proceed?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+            type: 'POST',
+            url: '../../backend/log_audit.php',
+            data: {
+              userId: eID,
+              action: 'logged out',
+              details: eID + ' Clicked log out'
+            },
+            success: function(response) {
+              // Handle the response if needed
+              console.log("logged", response);
+            }
+          });
+    window.location.href = '../home';
+
+}
+  });
+}
+function limitTo11Digits(event) {
+  var input = event.target;
+  var inputValue = input.value.replace(/\D/g, ''); // Remove non-numeric characters
+
+  if (inputValue.length > 11) {
+    input.value = inputValue.slice(0, 11);
+  }
+}
+
+function add(){
+    $("#addE").submit();
+}
+</script>
 </html>

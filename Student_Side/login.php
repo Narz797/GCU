@@ -188,7 +188,7 @@ $_SESSION['origin'] = 'Student';
       width: 100%;
       height: 50px;
       background: #e7a10b;
-      border-radius: 25px;
+      border-radius: 5px;
       font-size: 18px;
       color: #000000;
       font-weight: 700;

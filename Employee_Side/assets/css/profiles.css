@@ -79,7 +79,7 @@ button{
     border-radius: .4rem;
     cursor: pointer;}
 
-i{
+.icon-btn i{
     font-size: var(--font-size-large);
     line-height: 0;}
 
@@ -333,24 +333,29 @@ main.table {
     border-radius: .6rem;
     overflow: auto;
     overflow: overlay;}
-.table-body button{
-    text-align: center;
-    font-size: 15px;
-    font-weight: bold;
-    width: 100%;
-    padding: 15px;
-    border: 0;
-    outline: none;
-    cursor: pointer;
-    margin-top: 5px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px; 
-    background-color: var(--accent-color);
-color: white;}
-.table-body button:hover{
-    color: black;
-    background-color: var(--hover-color);}
-
+    .table-body button {
+        color: white;
+        background-color: #4070f4;
+        transition: all 0.3s linear;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        width: 80%;
+        padding: 12px;
+        border-radius: 5px;
+        outline: none;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+    .yes:hover {
+        font-size: 20px;
+        color: white;
+        background-color: #265df2;
+    }
+    .yes i {
+        font-size: 17px;
+        font-weight: 400;
+    }
 
 .table-body::-webkit-scrollbar{
     width: 1rem;

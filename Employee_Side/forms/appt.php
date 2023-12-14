@@ -134,7 +134,7 @@ include '../../backend/log_audit2.php';
                 </div>
                 
 <div class="action">
-                 <a href="#"><button class="yes" onclick="status_update('accepted')">Accept</button></a>
+                 <a href="#"><button class="yes" onclick="status_update('accepted')">Accept&nbsp<i class="ri-checkbox-circle-line"></i></button></a>
                  <a href="#divTwo"><button class="no" >Reschedule</button></a>
                  </div>
             </div>

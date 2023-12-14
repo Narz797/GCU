@@ -359,7 +359,7 @@ function archive() {
                     var row = $("<tr></tr>");
                     var cell = $("<td></td>");
                     cell.append(image); // Append the image to the table cell
-                    cell.append("</br>" + entry.stud_user_id);
+                    cell.append("</br>" + entry.stud_user_id); 
                     row.append(cell);
                     row.append("<td>" + entry.last_name + "</td>");
                     row.append("<td>" + entry.first_name +"</td>");
@@ -372,7 +372,7 @@ function archive() {
                     // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
                     // var statusText = status == 'pending' ? 'Unread' : 'Read';
                     var statusCell = $("<td></td>");
-                    var statusLink = $("<button onclick='view_student(" + entry.stud_user_id + ")'>View</button>");
+                    var statusLink = $("<button onclick='view_student(" + entry.stud_user_id + ")'><i class='ri-eye-fill'></i></button>");
 
                     statusCell.append(statusLink);
                     row.append(statusCell);

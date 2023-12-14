@@ -42,7 +42,7 @@
   }
   .id input{
    
-    width: 90px;
+    width: 100%;
   }
   .id1 input{
    
@@ -644,8 +644,9 @@
 
   .form-control:disabled,
   .form-control[readonly] {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    height: auto;
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
     opacity: 1;
     background-color: #e9ecef;
   }

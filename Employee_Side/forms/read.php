@@ -148,8 +148,8 @@ include '../../backend/log_audit2.php';
 
 <!-- This will be a pop-up button -->
 
-                 <a href="#divOne"><button class="yes" onclick="status_update('done')">Accept</button></a>
-                 <a href="#divThree"><button class="no" onclick="status_update('reconsider')">Reconsider</button></a>
+                 <a href="#divOne"><button class="yes" onclick="status_update('done')">Accept&nbsp<i class="ri-checkbox-circle-line"></i></button></a>
+                 <a href="#divThree"><button class="no" onclick="status_update('reconsider')">Reconsider&nbsp<i class="ri-timer-2-line"></i></button></a>
                  </div>
             </div>
         </div>

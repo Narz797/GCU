@@ -157,7 +157,7 @@ include '../../backend/log_audit2.php';
                   <!-- <img src="" title="No Attached Document" id="attachment2">
                   <img src="" title="No Attached Document" id="attachment3"> -->
                   </div>
-                </div>
+                </div> 
                 </div>
 
                 <!-- <div>
@@ -169,9 +169,9 @@ include '../../backend/log_audit2.php';
                   <p class="card-description refer" id="rem">Remarks</p>
                 </div> -->
                 <div class="action">
-                 <button class="yes" onclick="status_update('Excused')">Excused</button>
-                 <button class="no" onclick="status_update('Unexcused')">Unexcused</button>
-                 <button class="pending" onclick="status_update('Lacking')">Lacking</button>
+                 <button class="yes" onclick="status_update('Excused')">Excused&nbsp<i class="ri-checkbox-circle-line"></i></button>
+                 <button class="no" onclick="status_update('Unexcused')">Unexcused&nbsp<i class="ri-timer-2-line"></i></button>
+                 <button class="pending" onclick="status_update('Lacking')">Lacking<i class="ri-restart-line"></i></button>
                  </div>
             </div>
         </div>

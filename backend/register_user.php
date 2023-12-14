@@ -455,9 +455,7 @@ try{
         if (isset($_POST['position'])) {
             $employee_position = $_POST['position'];
         }
-        if (isset($_POST['username'])) {
-            $employee_username = $_POST['username'];
-        }
+
         if (isset($_POST['password'])) {
             $employee_password = $_POST['password'];
         }
@@ -469,7 +467,7 @@ try{
 
         $sql = "INSERT INTO `admin_user`(`admin_user_id`, `first_name`, 
             `last_name`, `middle_name`, `gender`, `position`,`contact`, `date_joined`, `email`, 
-            `username`, `password`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            `password`) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(1, $employee_id);
@@ -481,7 +479,6 @@ try{
         $stmt->bindParam(7,$employee_contactnum);
         $stmt->bindParam(8, $joined_date);
         $stmt->bindParam(9, $employee_email);
-        $stmt->bindParam(10, $employee_username);
         $stmt->bindParam(11, $hashed_password);
         if ($stmt->execute()) {
             // Move the script tags to the end of the HTML body

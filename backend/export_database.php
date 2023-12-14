@@ -34,7 +34,7 @@ try {
         }
     });
     alert("Database Export Successfully!");
-    window.location.href="../Admin_Side/exportimport.php";
+    window.location.href="../Admin_Side/main.php";
 </script>
 HTML;
         exit;
@@ -42,7 +42,7 @@ HTML;
         echo <<<HTML
 <script>
     alert("Database Export Failed!");
-    window.location.href="../Admin_Side/exportimport.php";
+    window.location.href="../Admin_Side/main.php";
 </script>
 HTML;
     }

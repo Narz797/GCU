@@ -484,7 +484,7 @@ tbody td.active {
 .status {
     padding: 10px;
     margin-right: 10px;
-    border-radius: 2rem;
+    border-radius: 5px;
     text-align: center;}
 .status.delivered {
     background-color: var(--positive-color);

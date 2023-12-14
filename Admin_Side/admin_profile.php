@@ -46,94 +46,132 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Employee Account</title>
     <!-- Remix icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="icon" href="assets/images/GCU_logo.png">
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="assets/css/ap.css">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <!-- Remix icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="../assets/img/GCU_logo.png" rel="icon">
+  <link rel="stylesheet" href="assets/css/edit.css">
+  <link rel="stylesheet" href="assets/css/referslip.css">
 
-    <!-- Export -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
-    <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js" />
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+  <!-- Fontawesome CDN Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 <style>
 
+.fa-eye, .fa-eye-slash {
+    position: absolute;
+    /* right: 10px; */
+    top: 69%;
+    right: 5%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: black;
+}
 </style>
 
-<body style="background:white;">
+<!-- Header -->
+<header class="header">
+    <nav class="nav"> 
+        <div class="logo">
+        <img src="GCU_logo.png" alt="">
+        </div>
+        <div class="nav-mobile">
+            <div class="list">
+                <div class="list-item">
+                    <button onclick="goBack()" class="list-link current">BACK</button>
+                </div>
+            </div>
+        </div>
+        <div class="align-right">
+            <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center" onclick="goBack()" class="list-link current">
+            <i class="ri-arrow-left-circle-line"></i>
+            </button>
+            <button class="icon-btn place-items-center" onclick="edit()">
+              <i class="ri-edit-2-fill"></i>
+            </button>
+            <button class="icon-btn place-items-center" onclick="logout()">
+                <i class="ri-user-3-line"></i>
+            </button>
+            <!-- <button class="icon-btn place-items-center" onclick="faq()">
+                <i class="ri-question-mark"></i>
+            </button> -->
+        </div>
+        </div>
+    </nav>
+</header>
+<?php include '../includes/banner.php' ?>
 
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="logo">
-                <img src="assets/images/bsu.png" alt="">
-            </div>
-            <div class="nav-mobile">
-                <ul class="list">
-                    <li class="list-item">
-                        <a href="main.php" class="list-link current">Home</a>
-                    </li>
-                    <li class="list-item hov">
-                        <a onclick="goBack()" class="list-link current1">Back</a>
-                    </li>
-                </ul>
-                <button class="icon-btn menu-toggle-btn menu-toggle-close place-items-center">
-                    <i class="ri-close-line"></i>
-                </button>
-            </div>
-            <div class="align-right">
-                <button class="icon-btn place-items-center" onclick="logout()" >
-                    <i class="ri-user-3-line"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
-    <!-- Welcome-message -->
+
+<body style="background:white;  ">
 
     <section>
 
 
-        <div class="title independent-title">
+    <div class="independent-title1">
             <h2>Admin Profile Edit</h2>
         </div>
         <!-- Section -->
 
-            <section class="table-body" id="table">
+        <div class="amen">
+    <button  onclick="update()" class="btnText1" id="Update"><span class="btnText">Update</span><i class="ri-edit-2-fill"></i></button>
+    <button onclick="cancel()" class="btnText1" id="Cancel"><span class="btnText">Cancel</span><i class="ri-arrow-left-circle-line"></i></button>  
+</div>
+<div class="container-fluid mt--7">
+      <div class="row">
+      
 
-                <form id="edit_emp" name="edit_emp" method="post">
-                    <br>
-                    <center>
-                        <br>
-                        <div class="input-group1 ">
-                            <input type="text" class="form-control" name='username' placeholder="Email" id="username" aria-label="Username" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['uname'] ?>" >
-                            <input type="text" class="form-control" name='password' placeholder="Password" id="pass" aria-label="Password" aria-describedby="inputGroup-sizing-lg" >
+
+        <div class="col-xl-8 order-xl-1">
+          <div class="card bg-secondary shadow">
+   
+            <div class="card-body" style="background-color:lightgray;">
+
+                <form id="edit_emp" name="edit_emp" method="post" style="width:100%;">
+                 
+                <div class="pl-lg-4">
+                            <!-- <input type="text" class="form-control" name='username' placeholder="Email" id="username" aria-label="Username" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['uname'] ?>" > -->
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="email">Email</label>
+                                    <input type="email"  class="form-control form-control-alternative"  id="username" value="<?php echo $result[0]['uname'] ?>" >
+                                </div>
+                                </div>
+                            <!-- <input type="text" class="form-control" name='password' placeholder="Password" id="pass" aria-label="Password" aria-describedby="inputGroup-sizing-lg" > -->
+                            <div class="col-lg-6" id="ps">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="ps">Password</label>
+                                    <input type="password"  class="form-control form-control-alternative" id="pass">
+                                    <i class="fas fa-eye" onclick="togglePasswordVisibility('pass')"></i>
+                                </div>
+                                </div>
                         </div>
-                    </center>
+               
 
-                    <br>
-                    <button type="submit" value="Edit Employee">Edit Account</button>
+
+                    <!-- <button type="submit" value="Edit Employee">Edit Account</button> -->
+                    </div>
+                    </div>
+                  </div>
+                </div>
                 </form>
-            </section>
+            
+          </div>
+        </div>
+      </div>
+</div>
 
 
         <br>
@@ -141,6 +179,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- Script     -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
         <script>
             function logout() {
             Swal.fire({
@@ -172,6 +211,9 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
                            function goBack() {
             window.history.back();
+        }
+        function cancel(){
+            location.reload();
         }
             var eID = "<?php echo $_SESSION['session_id']; ?>";
             $("#edit_emp").on("submit", function(event) {
@@ -230,7 +272,21 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
             });
         </script>
-        <script src="./assets/main.js"></script>
+            <script>
+  function togglePasswordVisibility(inputId) {
+    var passwordInput = document.getElementById(inputId);
+    var icon = document.querySelector('i[onclick="togglePasswordVisibility(\'' + inputId + '\')"]');
+  
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      icon.className = "fas fa-eye-slash";
+    } else {
+      passwordInput.type = "password";
+      icon.className = "fas fa-eye";
+    }
+  }
+</script>
+        <!-- <script src="./assets/main.js"></script> -->
 </body>
 
 </html>
