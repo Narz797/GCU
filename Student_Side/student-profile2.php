@@ -1120,8 +1120,20 @@ $siblings = $siblings->fetchAll();
       //   console.log('Logout canceled');
       // }
     };
+<<<<<<< Updated upstream
     var eID = "<?php echo $_SESSION['session_id'];?>";
 function logout() {
+=======
+    function faq(){
+        window.location.href="../dh_student.php"
+    }
+
+     var eID = "<?php echo $_SESSION['session_id'];?>";
+
+
+
+    function logout() {
+>>>>>>> Stashed changes
         Swal.fire({
       title: "Are you sure you want to logout?",
       // text: "Do you wish to proceed?",
