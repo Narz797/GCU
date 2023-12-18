@@ -42,9 +42,7 @@ $_SESSION['origin'] = 'Teacher';
     top: 12px;
     cursor: pointer;
   }
-    /* .field{ */
-    /* background: -webkit-linear-gradient(left, #fefefe, #61c6be); */
-    /* } */
+
     #logo-gcu {
       width: 60%;
       margin: auto;
@@ -79,15 +77,9 @@ $_SESSION['origin'] = 'Teacher';
       }
     }
     .right-column {
-      /* margin-top: 2%; */
-      /* flex: 2; */
-      /* background-color: -webkit-linear-gradient(left, #fefefe, #96ded8); */
+
       padding: 5px;
-      /* border-radius: 10px; */
-    }
-    .logo {
-      /* width: 100px;
-            height: auto; */
+
     }
     @-webkit-keyframes mover {
       0% {
@@ -129,7 +121,6 @@ $_SESSION['origin'] = 'Teacher';
     }
     form .txt_field {
       position: relative;
-      /* border-bottom: 2px solid #050505; */
       margin: 30px 0;
     }
     .txt_field input {
@@ -138,9 +129,7 @@ $_SESSION['origin'] = 'Teacher';
       height: 40px;
       font-size: 16px;
       border: 1px solid #ccc;
-      /* Add a border around the input */
       border-radius: 5px;
-      /* Add rounded corners to the border */
       outline: none;
     }
     .txt_field label {
@@ -166,7 +155,6 @@ $_SESSION['origin'] = 'Teacher';
     .txt_field input:focus~label,
     .txt_field input:valid~label {
       top: -10px;
-      /* color: #000000; */
     }
     .txt_field input:focus~span::before,
     .txt_field input:valid~span::before {
@@ -193,12 +181,9 @@ $_SESSION['origin'] = 'Teacher';
       outline: none;
       transition: 0.5s;
       border: none;
-      /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
-      /* background: -webkit-linear-gradient(left, #e7e7e2 , #0c4401); */
     }
     input[type="submit"]:hover {
       background: #ffe2a5;
-      /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
     }
     .signup_link {
       margin: 30px 0;
@@ -317,7 +302,7 @@ $_SESSION['origin'] = 'Teacher';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
           window.location.href = "index.php";
@@ -332,7 +317,7 @@ $_SESSION['origin'] = 'Teacher';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("error logged", response); 
+              // console.log("error logged", response); 
             }
           });
           // alert('Error, teacher not registered');

@@ -1,9 +1,7 @@
 <?php 
 session_start();
 include '../backend/log_audit2.php';
-  // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
-    // Redirect to the desired location
     ?>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -20,7 +18,6 @@ include '../backend/log_audit2.php';
     <?php
     exit;
 }
-// include 'formstyle.php';
 
 logAudit($_SESSION['session_id'], 'access_transaction page', $_SESSION['session_id'] .' has accessed the transaction page');
 ?>
@@ -115,8 +112,7 @@ logAudit($_SESSION['session_id'], 'access_transaction page', $_SESSION['session_
     <div class="card">
             <header class="card-header">
                 <small>The following are the list of forms from the GCU. Today is</small>
-                <!-- get current date
-    M/D/Y-->
+
     <h2 class="title"><?php echo date('F j, Y'); ?></h2>
             </header>
             <hr>
@@ -178,7 +174,6 @@ logAudit($_SESSION['session_id'], 'access_transaction page', $_SESSION['session_
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -196,7 +191,7 @@ logAudit($_SESSION['session_id'], 'access_transaction page', $_SESSION['session_
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -209,5 +204,4 @@ logAudit($_SESSION['session_id'], 'access_transaction page', $_SESSION['session_
 
 </script>  
 <script src="assets/main.js"></script> 
-
 </html>

@@ -300,16 +300,12 @@
                 } 
               });
         console.log("data",data)
-        // window.location.href = "verify_code.php";
-        
 
-        // add location to enter code
       },
       error: function(xhr, status, error) {
         // Hide loading spinner on error
-        $("#loading-spinner").hide();
-        
-        console.error("Error:", error);
+        swal.close();
+   console.error("Error:", error);
         alert("Error: " + error);
       },
     });

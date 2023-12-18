@@ -53,7 +53,6 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     <nav class="nav">
         <div class="logo">
         <img src="assets/images/GCU_logo.png" alt="">
-        <!-- <img src="assets/images/bsu.png" alt=""> -->
         </div>
         <div class="align-right">
         <button class="icon-btn theme-toggle-btn place-items-center">
@@ -68,17 +67,12 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     <!-- Banner -->
 <section>
 <?php include '../includes/banner.php' ?>
-    <!-- <div class="block"></div> -->
-    <!-- First Section -->
     <div class="title independent-title ">
         <h2 > Control Panel</h2>
     </div>
     <div class="card">
         <header class="card-header">
             <small>Profile Account</small>
-<!-- call employee id 
-    number or 
-    profession = "Admin"-->
             <h2 class="title">Welcome back, <span id="position"></span></h2>
         </header>
         <hr>
@@ -87,8 +81,6 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
                 <img src="" alt="">
             </div>
             <div class="card-information">
-<!-- call employee 
-    registered data -->
                 <h1 class="title main-title"><span class="title-lastname main-title" id="lname">uchiha,</span>, <span id="fname"> Verlyn Rizz M.</span></h1>
                 <p class="card-description1">Joined at <b id="date_joined"></b><br></p>
                 <p class="card-description">
@@ -140,9 +132,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
                     <h2 class="title">LATEST Requested Forms</h2>
                     <p class="card-description2"><b id="studentId"></b> has requested a <b id="transactType"></b> form.</p>
                 </div>
-                <!-- <a href="./request-forms"> -->
                     <button class="list-link" onclick = "goto_recent()">Read More</button>
-                <!-- </a> -->
             </div>
             <div class="card border two">
                 <div>
@@ -194,7 +184,6 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -212,7 +201,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -259,7 +248,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     }
     // Function to fetch data from get_transaction.php
     function fetchData() {
-        console.log('AJAX request started');
+        // console.log('AJAX request started');
     $.ajax({
         type: 'GET',
         url: '../backend/get_transaction.php',
@@ -279,14 +268,12 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     // Function to process the retrieved data
 function processData(data) {
     if (data.latest_data && data.latest_data.length > 0) {
-        // Process the data and perform necessary actions
          sid = data.latest_data[0].student_id;
         var fname = data.latest_data[0].first_name;
         var lname = data.latest_data[0].last_name;
         var transactType = data.latest_data[0].transact_type;
          tt = data.latest_data[0].transact_type;
          tid = data.latest_data[0].transact_id;
-        //  teachid = data.latest_data[0].transact_id;
         var total = data.total_pending_transactions;
         var totalAppointments = data.total_appointments;
         var employee_email = data.adminUserData[0].email;
@@ -319,7 +306,7 @@ function processData(data) {
 
         countAppointments(totalAppointments);
         countForms(total);
-        console.log('No results found');
+        // console.log('No results found');
     }
 }
 // Function to update the card description with data
@@ -334,16 +321,14 @@ function updateCardDescription(data) {
         cardDescription.text('No finished transactions.');
     }
 }
-// Function to fetch data from get_transaction.php
 function HistoryData() {
-    console.log('AJAX request started');
+    // console.log('AJAX request started');
     $.ajax({
         type: 'GET',
         url: '../backend/get_done_transaction.php',
         dataType: 'json',
-        // ...
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             updateCardDescription(data);
         },
         error: function (xhr, status, error) {
@@ -357,15 +342,15 @@ function HistoryData() {
 function goto_recent(){
     if (tt === 'Referral')
     {
-        console.log("student", sid);
-        console.log("transact", tid);
+        // console.log("student", sid);
+        // console.log("transact", tid);
 
 
                     window.location.href = 'subpage/rs-forms';
           
     }else if(tt === 'Readmission'){
-        console.log("student", sid);
-        console.log("transact", tid);
+        // console.log("student", sid);
+        // console.log("transact", tid);
 
                     // Send stud_id to the server using an AJAX request
                     $.ajax({
@@ -374,14 +359,14 @@ function goto_recent(){
                 data: { stud_id: sid, tran_id: tid, ttype: tt},
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = 'forms/read.php';
                 }
             });
 
     }else if(tt === 'Withdrawing Enrollment'){
-        console.log("student", sid);
-        console.log("transact", tid);
+        // console.log("student", sid);
+        // console.log("transact", tid);
         var type = 'withdrawal';
 
                     // Send stud_id to the server using an AJAX request
@@ -391,14 +376,14 @@ function goto_recent(){
                 data: { stud_id: sid, tran_id: tid, ttype: type },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = 'forms/w.php';
                 }
             });
 
     }else if(tt === 'Dropping Subjects'){
-        console.log("student", sid);
-        console.log("transact", tid);
+        // console.log("student", sid);
+        // console.log("transact", tid);
         var type = 'withdrawal';
 
                     // Send stud_id to the server using an AJAX request
@@ -408,14 +393,14 @@ function goto_recent(){
                 data: { stud_id: sid, tran_id: tid, ttype: type},
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = 'forms/d.php';
                 }
             });
 
     }else if(tt === 'Shifting'){
-        console.log("student", sid);
-        console.log("transact", tid);
+        // console.log("student", sid);
+        // console.log("transact", tid);
         var type = 'withdrawal';
 
                     // Send stud_id to the server using an AJAX request
@@ -425,14 +410,14 @@ function goto_recent(){
                 data: { stud_id: sid, tran_id: tid, ttype: type},
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = 'forms/s.php';
                 }
             });
 
     }else if(tt === 'Leave Of Absence'){
-        console.log("student", sid);
-        console.log("transact", tid);
+        // console.log("student", sid);
+        // console.log("transact", tid);
         var type = 'Leave Of Absence';
 
                     // Send stud_id to the server using an AJAX request
@@ -442,14 +427,13 @@ function goto_recent(){
                 data: { stud_id: sid, tran_id: tid, ttype: type},
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = 'forms/loa.php';
                 }
             });
 
     }else if(tt === 'Absent' || tt === 'Tardy'){
-        console.log("student", sid);
-        console.log("transact", tid);
+
         var type = 'admission';
 
                     // Send stud_id to the server using an AJAX request
@@ -459,7 +443,7 @@ function goto_recent(){
                 data: { stud_id: sid, tran_id: tid, ttype: type},
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = 'forms/ca.php';
                 }
             });

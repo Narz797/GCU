@@ -188,7 +188,6 @@ logAudit($id, 'access_LOA page', $id .' has accessed the LOA page');
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -206,7 +205,7 @@ logAudit($id, 'access_LOA page', $id .' has accessed the LOA page');
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -299,8 +298,7 @@ function clearSearchResults2() {
             dataType: "json",
             success: function (data) {
 
-                console.log("data",data);
-                // if (data.status===0){
+                // console.log("data",data);
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
                 var noHistoryMessage1 = $("#noHistoryMessage1"); 
@@ -308,7 +306,7 @@ function clearSearchResults2() {
  
 
                 for (var i = 0; i < data.length; i++) {
-                    console.log("data",data);
+                    // console.log("data",data);
                     var entry = data[i];
                     var status = entry.status;
                     var tableToAppend = tableBody; // Determine which table to append to
@@ -358,32 +356,6 @@ function clearSearchResults2() {
                     } else {
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
-
-        
-
-                // $("td a").click(function () {
-                //     var contentElement = $(this).closest("tr");
-                //     // var studUserId = contentElement.data("stud-user-id");
-                //     var studUserId = contentElement.find("td:first-child").text();
-
-                //     $.ajax({
-                //         url: "../backend/update_status.php",
-                //         type: "POST",
-                //         data: { stud_user_id: studUserId },
-                //         success: function (response) {
-                //             console.log(response);
-                //             console.log("Status updated in the database");
-                //         },
-                //         error: function (xhr, status, error) {
-                //             console.error("AJAX Error:");
-                //             console.error("Status: " + status);
-                //             console.error("Error: " + error);
-                //             console.error("Response Text: " + xhr.responseText);
-                //         }
-                //     });
-                    
-                //     //location.reload();
-                // });
                 
                     // Add Sorting Event Listeners
                     const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
@@ -417,8 +389,7 @@ function clearSearchResults2() {
     });
 
     function view_form(tid, sid){
-        console.log("student", sid);
-        console.log("transact", tid);
+
 
                     // Send stud_id to the server using an AJAX request
                     $.ajax({
@@ -427,7 +398,7 @@ function clearSearchResults2() {
                 data: { stud_id: sid, tran_id: tid },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = '../forms/loa.php';
                 }
             });
@@ -467,7 +438,6 @@ function exportToExcel() {
 
 </script>
 <script src="../assets/main.js"></script>
- <!-- <script src="assets/js/table.js"></script>    -->
  <?php include '../includes/footer1.php' ?>
 </body>
 </html>

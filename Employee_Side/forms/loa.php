@@ -1,9 +1,6 @@
 <?php
 session_start();
 include '../../backend/log_audit2.php';
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
-  // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     ?>
@@ -173,7 +170,6 @@ include '../../backend/log_audit2.php';
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -191,7 +187,7 @@ include '../../backend/log_audit2.php';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -210,7 +206,7 @@ function archive() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../subpage/archive.php';
@@ -233,7 +229,7 @@ function archive() {
 
         }
     function fetchData() {
-    console.log('AJAX request started');
+    // console.log('AJAX request started');
     $.ajax({
     type: 'GET',
     url: '../../backend/get_form.php',
@@ -259,12 +255,12 @@ function archive() {
             var end = studentData.end_year;
             var reason = studentData.reason;
             var leave = studentData.leave;
-            console.log(fname);
+            // console.log(fname);
             updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, sem, start, end, reason, leave);
                         
         } else {
             // Handle the case when no results are found
-            console.log('No results found');
+            // console.log('No results found');
         }
     },
     error: function (xhr, status, error) {
@@ -286,7 +282,7 @@ function archive() {
             tid: tid
           },
           success: function (data) {
-            console.log("Remarked:", data);
+            // console.log("Remarked:", data);
 
             Swal.fire({
                 icon: "success",
@@ -307,7 +303,7 @@ function archive() {
                     },
                     success: function(response) {
                     // Handle the response if needed
-                    console.log("logged", response);
+                    // console.log("logged", response);
                     }
                 });
                 } 

@@ -4,7 +4,7 @@ session_start();
 include '../../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
-    // Redirect to the desired location
+
     ?>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -21,7 +21,7 @@ include '../../backend/log_audit2.php';
     <?php
     exit;
 }
-// include 'formstyle.php';
+
 $_SESSION['transact_type']='Leave Of Absence';//asign value to transact_type 
 logAudit($_SESSION['session_id'], 'access_leave_of_absence form', $_SESSION['session_id'] .' has accessed the leave_of_absence page');
 ?>
@@ -834,7 +834,7 @@ function faq(){
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -889,7 +889,7 @@ function faq(){
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
 

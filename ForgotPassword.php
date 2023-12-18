@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-// $randomNumber = $_SESSION['random_number'];
+
 $origin = $_SESSION['origin'];
 
  ?>
@@ -54,8 +54,7 @@ $origin = $_SESSION['origin'];
     }
 
     #reset:hover {
-      /* background-color: #2980b9; */
-      /* color:green; */
+
       transform: scale(1.1);
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
@@ -159,7 +158,5 @@ $origin = $_SESSION['origin'];
     });
   });
 </script>
-<?php
-// unset($_SESSION['random_number']);//it shold clear once used for verification
-?>
+
 </html>

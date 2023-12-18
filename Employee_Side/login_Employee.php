@@ -1,7 +1,5 @@
 <?php
 session_start();
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
 $_SESSION['origin'] = 'Employee';
 // logAudit('Employee login', 'Login_attemp', 'Employee side');
 ?>
@@ -82,15 +80,7 @@ $_SESSION['origin'] = 'Employee';
       }
     }
     .right-column {
-      /* margin-top: 2%; */
-      /* flex: 2; */
-      /* background-color: -webkit-linear-gradient(left, #fefefe, #96ded8); */
       padding: 5px;
-      /* border-radius: 10px; */
-    }
-    .logo {
-      /* width: 100px;
-            height: auto; */
     }
     @-webkit-keyframes mover {
       0% {
@@ -132,7 +122,7 @@ $_SESSION['origin'] = 'Employee';
     }
     form .txt_field {
       position: relative;
-      /* border-bottom: 2px solid #050505; */
+   
       margin: 30px 0;
     }
     .txt_field input {
@@ -169,7 +159,6 @@ $_SESSION['origin'] = 'Employee';
     .txt_field input:focus~label,
     .txt_field input:valid~label {
       top: -10px;
-      /* color: #000000; */
     }
     .txt_field input:focus~span::before,
     .txt_field input:valid~span::before {
@@ -196,12 +185,9 @@ $_SESSION['origin'] = 'Employee';
       outline: none;
       transition: 0.5s;
       border: none;
-      /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
-      /* background: -webkit-linear-gradient(left, #e7e7e2 , #0c4401); */
     }
     input[type="submit"]:hover {
       background: #ffe2a5;
-      /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
     }
     .signup_link {
       margin: 30px 0;
@@ -235,12 +221,6 @@ $_SESSION['origin'] = 'Employee';
       }
     }
 
-    /* Add this CSS to your existing styles or in a separate style tag or file */
-
-/* Add this CSS to your existing styles or in a separate style tag or file */
-
-/* Add this CSS to your existing styles or in a separate style tag or file */
-
 .back-to-home-button {
     display: inline-block;
     padding: 10px 20px;
@@ -258,7 +238,6 @@ $_SESSION['origin'] = 'Employee';
     color: #fff;
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    /* Add any additional styles for hover effect */
 }
 
 
@@ -270,7 +249,6 @@ $_SESSION['origin'] = 'Employee';
   <div class="container">
     <div class="row">
       <div class="column">
-        <!-- <img id="logo-gcu" src="../assets/img -->
         <img id="logo-gcu" src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
       </div>
       <div class="column">
@@ -288,13 +266,9 @@ $_SESSION['origin'] = 'Employee';
             <span></span>
             <label>Password</label>
           </div>
-          <!-- <div class="pass"><a href="../ForgotPassword.php"><b>Forgot Password?</b></a></div> -->
           <input type="submit" value="Login" id="submitButton" />
-          <!-- <div class="signup_link">Not a member? <a href="Stud_registration/agreement.php"><b>Signup</b></a></div> -->
-        
         </form>
         <div><a href="../home" class="back-to-home-button">BACK TO HOME</a></div>
-        <!-- <a</a> -->
       </div>
     </div>
   </div>
@@ -325,7 +299,7 @@ $_SESSION['origin'] = 'Employee';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
           window.location.href = "../Employee_Side/employee-home";
@@ -341,7 +315,7 @@ $_SESSION['origin'] = 'Employee';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
           window.location.href = "../Admin_Side/main.php";
@@ -356,7 +330,7 @@ $_SESSION['origin'] = 'Employee';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("error logged", response); 
+              // console.log("error logged", response); 
             }
           });
           // alert("Invalid username or password.");

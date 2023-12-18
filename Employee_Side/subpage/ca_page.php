@@ -166,50 +166,7 @@ logAudit($id, 'access_class_admission page', $id .' has accessed the class_admis
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td> 1234567 </td>
-                        <td> <img src="../assets/images/male.jpg" alt="">Rizzler</td> 
-                        <td>Chad</td>
-                        <td>4th Year</td>
-                        <td>Psychology </td>
-                        <td>CIS </td>
-                        <td>0987-6543-211 </td>
-                        <td>0912-3456-789 </td>
-                        <td> <a href="../forms/ca.php"><button>View</button></a></td>
-                    </tr>
-                    <tr>
-                        <td> 2234567 </td>
-                        <td> <img src="../assets/images/female.jpg" alt="">Akla</td> 
-                        <td>Armatyse</td>
-                        <td>1st Year</td>
-                        <td>Computer Science </td>
-                        <td>CIS </td>
-                        <td>0987-6543-211 </td>
-                        <td>0912-3456-789 </td>
-                        <td> <a href="../forms/ca.php"><button>View</button></a></td>
-                    </tr>
-                    <tr>
-                        <td> 3456789 </td>
-                        <td> <img src="../assets/images/male.jpg" alt="">Ramelton</td> 
-                        <td>Crown Vale</td>
-                        <td>2nd Year</td>
-                        <td>Architecture </td>
-                        <td>CIS </td>
-                        <td>0987-6543-211 </td>
-                        <td>0912-3456-789 </td>
-                        <td> <a href="../forms/ca.php"><button>View</button></a></td>
-                    </tr>
-                    <tr>
-                        <td> 4455001 </td>
-                        <td> <img src="../assets/images/female.jpg" alt="">Suzune</td> 
-                        <td>Mina</td>
-                        <td>3rd Year</td>
-                        <td>Computer Science </td>
-                        <td>CIS </td>
-                        <td>0987-6543-211 </td>
-                        <td>0912-3456-789 </td>
-                        <td> <a href="../forms/ca.php"><button>View</button></a></td>
-                    </tr> -->
+                  
                 </tbody>
             </table>
             <p id="noHistoryMessage1">No items available.</p>
@@ -229,7 +186,6 @@ logAudit($id, 'access_class_admission page', $id .' has accessed the class_admis
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -247,7 +203,7 @@ logAudit($id, 'access_class_admission page', $id .' has accessed the class_admis
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -342,7 +298,7 @@ function clearSearchResults2() {
             dataType: "json",
             success: function (data) {
 
-                console.log("data",data);
+                // console.log("data",data);
                 // if (data.status===0){
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
@@ -379,23 +335,11 @@ function clearSearchResults2() {
                     statusCell.append(statusLink);
                     row.append(statusCell);
 
-                    // var statusCell = $("<td></td>");
-                    // var statusLink = $("<a href='#'></a>").addClass(statusClass).text(statusText);
-                    // statusCell.append(statusLink);
-                    // row.append(statusCell);
-
-                    // var deleteCell = $("<td></td>");
-                    // var deleteLink = $("<a href='#'></a>").html('<i class="ri-delete-bin-6-line"></i>');
-                    // deleteCell.append(deleteLink);
-                    // row.append(deleteCell);
-
-                    // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                     
                     
                     if (status == 'pending') {
                         tableBody.append(row);
                     }
-                    // else if (status == 'done') {
                     //     historyTableBody.append(row); // Append row to history table body
                     // }
 
@@ -416,32 +360,6 @@ function clearSearchResults2() {
                     } else {
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
-
-
-
-                // $("td a").click(function () {
-                //     var contentElement = $(this).closest("tr");
-                //     // var studUserId = contentElement.data("stud-user-id");
-                //     var studUserId = contentElement.find("td:first-child").text();
-
-                //     $.ajax({
-                //         url: "../backend/update_status.php",
-                //         type: "POST",
-                //         data: { stud_user_id: studUserId },
-                //         success: function (response) {
-                //             console.log(response);
-                //             console.log("Status updated in the database");
-                //         },
-                //         error: function (xhr, status, error) {
-                //             console.error("AJAX Error:");
-                //             console.error("Status: " + status);
-                //             console.error("Error: " + error);
-                //             console.error("Response Text: " + xhr.responseText);
-                //         }
-                //     });
-                    
-                //     //location.reload();
-                // });
                 
                     // Add Sorting Event Listeners
                     const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
@@ -475,8 +393,7 @@ function clearSearchResults2() {
     });
 
     function view_form(tid, sid){
-        console.log("student", sid);
-        console.log("transact", tid);
+ 
 
                     // Send stud_id to the server using an AJAX request
                     $.ajax({
@@ -485,7 +402,7 @@ function clearSearchResults2() {
                 data: { stud_id: sid, tran_id: tid },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                    window.location.href = '../forms/ca.php';
                 }
             });
@@ -523,7 +440,6 @@ function exportToExcel() {
 
 </script>
 <script src="../assets/main.js"></script>
-<!-- <script src="../assets/js/table.js"></script>    -->
 <?php include '../includes/footer1.php' ?>
 </body>
 </html>

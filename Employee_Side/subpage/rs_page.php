@@ -191,7 +191,6 @@ logAudit($id, 'access_referral slip page', $id .' has accessed the referral slip
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -209,7 +208,7 @@ logAudit($id, 'access_referral slip page', $id .' has accessed the referral slip
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -303,8 +302,7 @@ function clearSearchResults2() {
             dataType: "json",
             success: function (data) {
 
-                console.log(data);
-                // if (data.status===0){
+                // console.log(data);
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
                 var noHistoryMessage1 = $("#noHistoryMessage1"); 
@@ -316,7 +314,7 @@ function clearSearchResults2() {
                     var status = entry.status;
                     var tableToAppend = tableBody;
                     var reg = entry.reg; 
-                    console.log("reg", reg);
+                    // console.log("reg", reg);
                     
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.stud_user_id + "</td>");
@@ -324,7 +322,6 @@ function clearSearchResults2() {
                     row.append("<td>" + entry.first_name +"</td>");
                     row.append("<td>" + entry.Year_level +"</td>");
                     row.append("<td>" + entry.course + "</td>");
-                    // row.append("<td>" + entry.RUR + "</td>");
                     if (reg == 'Registered') {
                             row.append("<td><p class='status'>Registered</p></td>");
                         } else if (reg == 'Unregistered') {
@@ -339,19 +336,6 @@ function clearSearchResults2() {
                     var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", "+ entry.stud_user_id +", "+ entry.teacher_id +")'><i class='ri-eye-fill'></i></button>");
                     statusCell.append(statusLink);
                     row.append(statusCell);
-
-                    // var statusCell = $("<td></td>");
-                    // var statusLink = $("<a href='#'></a>").addClass(statusClass).text(statusText);
-                    // statusCell.append(statusLink);
-                    // row.append(statusCell);
-
-                    // var deleteCell = $("<td></td>");
-                    // var deleteLink = $("<a href='#'></a>").html('<i class="ri-delete-bin-6-line"></i>');
-                    // deleteCell.append(deleteLink);
-                    // row.append(deleteCell);
-
-                    // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
-                    
                     
                     if (status == 'pending') {
                         tableBody.append(row);
@@ -377,31 +361,6 @@ function clearSearchResults2() {
                     } else {
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
-
-
-                // $("td a").click(function () {
-                //     var contentElement = $(this).closest("tr");
-                //     // var studUserId = contentElement.data("stud-user-id");
-                //     var studUserId = contentElement.find("td:first-child").text();
-
-                //     $.ajax({
-                //         url: "../../backend/update_status.php",
-                //         type: "POST",
-                //         data: { stud_user_id: studUserId },
-                //         success: function (response) {
-                //             console.log(response);
-                //             console.log("Status updated in the database");
-                //         },
-                //         error: function (xhr, status, error) {
-                //             console.error("AJAX Error:");
-                //             console.error("Status: " + status);
-                //             console.error("Error: " + error);
-                //             console.error("Response Text: " + xhr.responseText);
-                //         }
-                //     });
-                    
-                //     //location.reload();
-                // });
                 
                     // Add Sorting Event Listeners
                     const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
@@ -434,9 +393,6 @@ function clearSearchResults2() {
         });
     });
     function view_form(tid, sid, teachid){
-        console.log("student", sid);
-        console.log("transact", tid);
-        console.log("transact", teachid);
 
                     // Send stud_id to the server using an AJAX request
                     $.ajax({
@@ -445,7 +401,7 @@ function clearSearchResults2() {
                 data: { stud_id: sid, tran_id: tid, teachid: teachid },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = '../forms/ref.php';
                 }
             });

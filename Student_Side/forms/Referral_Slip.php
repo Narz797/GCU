@@ -833,7 +833,6 @@ function faq(){
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -851,7 +850,7 @@ function faq(){
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -881,8 +880,6 @@ function faq(){
             return false; // Prevent form submission
         }
 
-        // Your additional validation logic can go here if needed
-
         return true; // Allow form submission
     }
 
@@ -894,7 +891,7 @@ function faq(){
         for (var i = 0; i < radioButtons.length; i++) {
           if (radioButtons[i].checked) {
             selectedConcern = radioButtons[i].value;
-            console.log("Selected concern: " + selectedConcern);
+            // console.log("Selected concern: " + selectedConcern);
 
             if (selectedConcern == "officialActivity"){
               $("#officialActivitySpecify").show();
@@ -917,7 +914,7 @@ function faq(){
         }
 
         // If no radio button is checked
-        console.log("No concern selected");
+        // console.log("No concern selected");
       }
       
       // Attach the function to the change event of the radio buttons
@@ -1015,47 +1012,13 @@ $("#form_transact").on("submit", function (event) {
     var specifics;
 
 
-
-    // var lt = $("#refer").val();
-    // var hlth = document.getElementById('health');
-    // var prsnl = document.getElementById('personal');
-    // var sc = document.getElementById('socio-cultural');
-    // var bhv = document.getElementById('behavioral');
-    // var fl = document.getElementById('filial');
-    // var eR = document.getElementById('environmentalRadio');
-    // var oa = document.getElementById('officialActivityRadio');
-    // var oth = document.getElementById('otherRadio');
-    
-    // console.log("LT", lt);
-    // if (lt === 'Absent'){
-     
-    //   hlth.setAttribute('required', true);
-    //  prsnl.setAttribute('required', true);
-    //  sc.setAttribute('required', true);
-    //  bhv.setAttribute('required', true);
-    //  fl.setAttribute('required', true);
-    //  eR.setAttribute('required', true);
-    //  oa.setAttribute('required', true);
-    //  oth.setAttribute('required', true);
-    // }else if (lt === 'Tardy'){
-    //   hlth.setAttribute('required', false);
-    //  prsnl.setAttribute('required', false);
-    //  sc.setAttribute('required', false);
-    //  bhv.setAttribute('required', false);
-    //  fl.setAttribute('required', false);
-    //  eR.setAttribute('required', false);
-    //  oa.setAttribute('required', false);
-    //  oth.setAttribute('required', false);
-    // }
-
-
     if (ECspecifics !== undefined && ECspecifics !== null && ECspecifics.trim() !== "") {
                     // The variable 'rem' has a non-empty value
-                    console.log("Variable 'rem' has a non-empty value:", ECspecifics);
+                    // console.log("Variable 'rem' has a non-empty value:", ECspecifics);
                   specifics = ECspecifics
                 } else if (OTHspecifics !== undefined && OTHspecifics !== null && OTHspecifics.trim() !== ""){
                     // The variable 'rem' is either undefined, null, or an empty string
-                    console.log("Variable 'rem' has a non-empty value:", OTHspecifics);
+                    // console.log("Variable 'rem' has a non-empty value:", OTHspecifics);
                   specifics = OTHspecifics
                 }
                 else{
@@ -1066,7 +1029,7 @@ $("#form_transact").on("submit", function (event) {
     var transact_type = "AT";
     var selectedReasons = $("#refer").val();
     var remarks = $("#remark").val();
-    console.log("Specs", specifics);
+    // console.log("Specs", specifics);
     formData.append('date', date);
     formData.append('transact_type', transact_type);
     formData.append('selectedReasons', selectedReasons);
@@ -1107,7 +1070,6 @@ $("#form_transact").on("submit", function (event) {
     }
     Swal.fire({
       title: "Do you wish to proceed?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -1132,7 +1094,7 @@ $("#form_transact").on("submit", function (event) {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
           // alert("Request Sent");
@@ -1164,9 +1126,6 @@ $(document).ready(function() {
         startDate: new Date(2000, 0, 1), // Update this to an earlier date
         multidate: true,
         format: "dd/mm/yyyy",
-
-        // Remove or adjust the following line if needed
-        // datesDisabled: ['31/08/2017'],
         language: 'en'
     }).on('changeDate', function(e) {
         // `e` here contains the extra attributes

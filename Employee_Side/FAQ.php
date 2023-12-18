@@ -209,7 +209,6 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
      function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -227,7 +226,7 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -264,7 +263,7 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
                     },
             });
     
-    console.log("performing ajax");
+    // console.log("performing ajax");
     $.ajax({
       type: 'POST',
       url: '../backend/send_help.php',
@@ -276,8 +275,6 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
       success: function(data) {
         // Hide loading spinner on success
         swal.close();
-  
-          // alert("The code to change your password is sent to your email")
           Swal.fire({
               icon: "sucess",
               title: "Help Sent!",
@@ -300,11 +297,8 @@ logAudit($id, 'access_FAQ', $id .' has accessed the FAQ appointment page');
                           }
                 } 
               });
-        console.log("data",data)
-        // window.location.href = "verify_code.php";
-        
+        // console.log("data",data)
 
-        // add location to enter code
       },
       error: function(xhr, status, error) {
         // Hide loading spinner on error

@@ -1,9 +1,6 @@
 <?php
 session_start();
 include '../../backend/log_audit2.php';
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
-  // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     ?>
@@ -141,74 +138,6 @@ include '../../backend/log_audit2.php';
     </div>
 </section>
 
-<!-- This is the pop-up for the three buttons -->
-
-                <!-- <div class="overlay" id="divOne">
-                    <div class="wrapper">
-                        <h1>The student's form for dropping subject/s is <u class="One">ACCEPTED</u> .</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk"> -->
-
-<!-- Add a function here where the data will be stored -->
-
-                                    <!-- <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="overlay" id="divTwo">
-                    <div class="wrapper">
-                        <h1>The student's form for dropping subject/s is being <u class="Two">Reconsidered</u> .</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk"> -->
-
-<!-- Add a function here where the data will be stored -->
-
-                                    <!-- <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="overlay" id="divThree">
-                    <div class="wrapper">
-                        <h1>The student's form for dropping subject/s is <u class="Three">LACKING</u> .</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk"> -->
-
-<!-- Add a function here where the data will be stored -->
-
-                                    <!-- <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div> -->
 <br>
 
     <!-- Script     -->
@@ -222,7 +151,6 @@ include '../../backend/log_audit2.php';
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -240,7 +168,7 @@ include '../../backend/log_audit2.php';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -259,7 +187,7 @@ function archive() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../subpage/archive.php';
@@ -282,8 +210,8 @@ function archive() {
 
             }
             function fetchData() {
-            console.log('AJAX request started');
-            console.log('<?php echo $form?>');
+            // console.log('AJAX request started');
+            // console.log('<?php echo $form?>');
             $.ajax({
             type: 'GET',
             url: '../../backend/get_form.php',
@@ -306,13 +234,13 @@ function archive() {
                 var relation = studentData.Relation;
                 var reason = studentData.explain;
 
-                console.log(fname);
+                // console.log(fname);
                 updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason);
 
 
             } else {
                 // Handle the case when no results are found
-                console.log('No results found');
+                // console.log('No results found');
             }
             },
             error: function (xhr, status, error) {
@@ -335,10 +263,6 @@ function archive() {
                 tid: tid
             },
             success: function (data) {
-                // console.log("Remarked:", data);
-                // window.location.href = "../subpage/wds-forms";
-                // alert(data);
-
             Swal.fire({
                 icon: "success",
               title: "transaction remarked",
@@ -357,7 +281,7 @@ function archive() {
                     },
                     success: function(response) {
                     // Handle the response if needed
-                    console.log("logged", response);
+                    // console.log("logged", response);
                     }
                 });
                 window.location.href = "../subpage/wds-forms";

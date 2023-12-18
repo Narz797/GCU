@@ -3,7 +3,7 @@ session_start();
 $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 ?>
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - codingnepalweb.com -->
+
 <html lang="en">
 
 <head>
@@ -11,12 +11,11 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-    <!----======== CSS ======== -->
+
     <link rel="stylesheet" href="style.css">
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <!-- <link rel="stylesheet" href="../assets/css/stud_reg.css"> -->
+
     <link href="../assets/img/GCU_logo.png" rel="icon">
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -24,24 +23,13 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 
     <title>Student Regisration Form </title>
 
-
-    <!-- <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script> -->
 </head>
 <style>
  
 </style>
 
 <body>
-    <!-- <div class="left-column">
-        <img src="assets/img/GCU_logo.png" alt="Logo" class="logo">
-    </div>
-     -->
+
     <div class="container">
         <header>STUDENT REGISTRATION FORM</header>
         <form action="page2.php" method="POST" id="registrationForm" enctype="multipart/form-data">
@@ -130,21 +118,10 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <label>Contact Number*</label>
                             <input type="text" id="cn" name="cn" value="09" oninput="formatPhoneNumber(this);" placeholder="Please enter only numbers." required>
                         </div>
-                        <!-- <div class="input-field">
-                            <label>Email</label>
-                            <input type="text" id="email" name="email" required>
-                        </div> -->
                         <div class="input-field">
                             <label>Year Enrolled*</label>
-                            <!-- <input type="text" class="form-control" id="year_enroll" name="year_enroll" required/> -->
-
-                            <!-- <input type="text" class="form-control" name="datepicker" id="datepicker"  required/> -->
                             <input type="text" id="year_enroll" name="year_enroll"  required autocomplete="off">
                         </div>
-                        <!-- <div class="input-field">
-                            <label>Section</label>
-                            <input type="data" id="section" name="section" required>
-                        </div> -->
                         <div class="input-field">
                             <label for="section">Section*</label>
                             <input type="text" id="section" name="section" oninput="capitalizeInput()" required>
@@ -341,7 +318,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             <table id="siblingsTable" name='siblings' class="responsive-table">
                                 <thead>
                                     <tr>
-                                        <!-- <th>No.</th> -->
+            
                                         <th>Last Name</th>
                                         <th>First Name</th>
                                         <th>Middle Name</th>
@@ -356,7 +333,6 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                             </table>
                         </div>
 
-                        <!-- <div class="buttons"> -->
                 <button class="backBtn" onclick="goback()">
                     <i class="uil uil-navigator"></i>
                     <span class="btnText">Back</span>
@@ -373,14 +349,6 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
 
     </div>
 
-    <!-- <script>
-    $("#year_enroll").datepicker({
-    format: "yyyy",
-    viewMode: "years", 
-    minViewMode: "years",
-    autoclose:true 
-});
-    </script> -->
 
     <script>
         function goback(){
@@ -414,23 +382,19 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                     var row = table.insertRow(i + 1);
                     var names = [{
                             name: 'sib_lname[]',
-                            // pattern: /^[a-zA-Z\s]+$/,
-                            // placeholder: 'Last Name'
+
                         },
                         {
                             name: 'sib_fname[]',
-                            // pattern: /^[a-zA-Z\s]+$/,
-                            // placeholder: 'First Name'
+
                         },
                         {
                             name: 'sib_mname[]',
-                            // pattern: /^[a-zA-Z\s]+$/,
-                            // placeholder: 'Middle Name'
+
                         },
                         {
                             name: 'sib_age[]',
-                            // pattern: /^[0-9]+$/,
-                            // oninput: onlyNumbersInput
+
                         },
                         {
                             name: 'sib_educ_attainment[]',
@@ -459,9 +423,7 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
                         } else {
                             input.type = "text";
                             input.name = names[j].name;
-                            // input.pattern = names[j].pattern;
-                            // input.pattern = /^[a-zA-Z\s]+$/;
-                            // input.addEventListener("input", names[j].oninput);
+
                             cell.appendChild(input);
                         }
                     }
@@ -496,17 +458,6 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
             // The rest of your AJAX code
         }
     </script>
-
-
-
-    <!-- <script>
-        function goToPage2() {
-            document.getElementById('next').addEventListener('click', function() {
-                getTableValues();
-            });
-
-        }
-    </script> -->
 
     <script>
         function showParentsInput() {
@@ -649,25 +600,6 @@ $_SESSION['origin'] = 'Student_Register'; //for register_user.php
             }
     </script>
 
-    
-<!-- <script>
-alert
-
-          swal({
-                    title: 'pag error',
-                    icon: 'error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-          swal({
-                    title: 'Page success',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-    
-
-</script> -->
 
 
 </body>

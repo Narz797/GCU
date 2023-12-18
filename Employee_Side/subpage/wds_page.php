@@ -253,7 +253,7 @@ logAudit($id, 'access_wds page', $id .' has accessed the wds page');
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -378,8 +378,8 @@ function exportToExcel(tableId) {
             dataType: "json",
             success: function (data) {
 
-                console.log(data);
-                // if (data.status===0){
+                // console.log(data);
+
                 var tableBody = $("#dynamicTable1 tbody");
                 var tableBody2 = $("#dynamicTable2 tbody");
                 var historyTableBody = $("#historyTableBody tbody");
@@ -532,29 +532,7 @@ function exportToExcel(tableId) {
                         noHistoryMessage2.show(); // Show the no history message if no data
                     }
 
-                // $("td a").click(function () {
-                //     var contentElement = $(this).closest("tr");
-                //     // var studUserId = contentElement.data("stud-user-id");
-                //     var studUserId = contentElement.find("td:first-child").text();
 
-                //     $.ajax({
-                //         url: "../backend/update_status.php",
-                //         type: "POST",
-                //         data: { stud_user_id: studUserId },
-                //         success: function (response) {
-                //             console.log(response);
-                //             console.log("Status updated in the database");
-                //         },
-                //         error: function (xhr, status, error) {
-                //             console.error("AJAX Error:");
-                //             console.error("Status: " + status);
-                //             console.error("Error: " + error);
-                //             console.error("Response Text: " + xhr.responseText);
-                //         }
-                //     });
-                    
-                //     //location.reload();
-                // });
         },
         error: function (xhr, status, error) {
     console.error("AJAX Error:");
@@ -567,9 +545,7 @@ function exportToExcel(tableId) {
     });
     
     function view_form(tid, sid, type){
-        console.log("student", sid);
-        console.log("transact", tid);
-        console.log("type", type);
+  
 
                     // Send stud_id to the server using an AJAX request
         if (type == 'Withdrawing Enrollment'){
@@ -579,7 +555,7 @@ function exportToExcel(tableId) {
                 data: { stud_id: sid, tran_id: tid },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = '../forms/w.php';
                 }
             });
@@ -590,7 +566,7 @@ function exportToExcel(tableId) {
                 data: { stud_id: sid, tran_id: tid },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = '../forms/d.php';
                 }
             });
@@ -601,7 +577,7 @@ function exportToExcel(tableId) {
                 data: { stud_id: sid, tran_id: tid },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = '../forms/s.php';
                 }
             });

@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Include the log_audit.php file
 include '../backend/log_audit2.php';
 include '../backend/connect_database.php';
 // Check if the session variable is empty
@@ -27,7 +26,6 @@ $id = $_SESSION['session_id'];
 // Log audit entry for accessing the home page
 logAudit($id, 'access_edit profile',  'Admin has accessed the edit profile page');
 
-// $emp_id = $_SESSION['user_id'];
 $stmt = $pdo->prepare("SELECT * FROM `admin_admin` WHERE `admin_id`=:admin_id");
 $stmt->bindParam(':admin_id', $id);
 $stmt->execute();
@@ -67,13 +65,13 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
   <!-- Boxicons CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  
 
 </head>
 <style>
 
 .fa-eye, .fa-eye-slash {
     position: absolute;
-    /* right: 10px; */
     top: 69%;
     right: 5%;
     transform: translateY(-50%);
@@ -105,9 +103,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
-            <!-- <button class="icon-btn place-items-center" onclick="faq()">
-                <i class="ri-question-mark"></i>
-            </button> -->
         </div>
         </div>
     </nav>
@@ -123,7 +118,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="independent-title1">
             <h2>Admin Profile Edit</h2>
         </div>
-        <!-- Section -->
 
         <div class="amen">
     <button  onclick="update()" class="btnText1" id="Update"><span class="btnText">Update</span><i class="ri-edit-2-fill"></i></button>
@@ -142,14 +136,12 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <form id="edit_emp" name="edit_emp" method="post" style="width:100%;">
                  
                 <div class="pl-lg-4">
-                            <!-- <input type="text" class="form-control" name='username' placeholder="Email" id="username" aria-label="Username" aria-describedby="inputGroup-sizing-lg" value="<?php echo $result[0]['uname'] ?>" > -->
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="email">Email</label>
                                     <input type="email"  class="form-control form-control-alternative"  id="username" value="<?php echo $result[0]['uname'] ?>" >
                                 </div>
                                 </div>
-                            <!-- <input type="text" class="form-control" name='password' placeholder="Password" id="pass" aria-label="Password" aria-describedby="inputGroup-sizing-lg" > -->
                             <div class="col-lg-6" id="ps">
                                 <div class="form-group">
                                     <label class="form-control-label" for="ps">Password</label>
@@ -158,10 +150,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                 </div>
                         </div>
-               
-
-
-                    <!-- <button type="submit" value="Edit Employee">Edit Account</button> -->
                     </div>
                     </div>
                   </div>
@@ -177,14 +165,12 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <br>
         </div>
 
-        <!-- Script     -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
         <script>
             function logout() {
             Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -201,8 +187,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
               details: eID + 'Admin Clicked log out'
             },
             success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
             window.location.href = '../home';
@@ -219,7 +204,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $("#edit_emp").on("submit", function(event) {
                 event.preventDefault();
 
-                console.log($("#Sid").val());
+                // console.log($("#Sid").val());
                 Swal.fire({
           title: "Are Sure?",
           text: "Do you wish to proceed?",
@@ -232,7 +217,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (result.isConfirmed) {
                 $.ajax({
                     type: 'POST',
-                    url: '../backend/edit_adm.php',//change
+                    url: '../backend/edit_adm.php',
                     data: {
                         id: $("#id").val(),
                         un: $("#username").val(),
@@ -240,8 +225,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     },
                     success: function(data) {
-                        console.log('Success!');
-                        console.log(data);
+                        // console.log('Success!');
+                        // console.log(data);
                         alert("Edited Successfully");
 
                         window.location.href = "main.php";
@@ -254,8 +239,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 details: 'Admin edited profile'.$("#id").val()
                             },
                             success: function(response) {
-                                // Handle the response if needed
-                                console.log("logged", response);
+                                // console.log("logged", response);
                             }
                         });
 
@@ -286,7 +270,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
   }
 </script>
-        <!-- <script src="./assets/main.js"></script> -->
 </body>
 
 </html>

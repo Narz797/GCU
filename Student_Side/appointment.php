@@ -2,9 +2,7 @@
 
 session_start();
 include '../backend/log_audit2.php';
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
-  // Check if the session variable is empty
+
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     ?>
@@ -25,7 +23,7 @@ include '../backend/log_audit2.php';
 }
 $id = $_SESSION['session_id'];
 logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
-echo "<script>console.log('$id');</script>";
+
  ?>
 
 <!DOCTYPE html>
@@ -45,7 +43,6 @@ echo "<script>console.log('$id');</script>";
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <!-- icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/apmt.css">
@@ -243,19 +240,7 @@ echo "<script>console.log('$id');</script>";
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr>
-                            <td> 1 </td>
-                            <td> Counseling</td>
-                            <td> 17 Dec, 2022 </td>
 
-                        </tr>
-                        <tr>
-                            <td> 2 </td>
-                            <td> Readmission</td>
-                            <td> 27 Aug, 2023 </td>
-
-                        </tr>
-                  -->
                     </tbody>
                 </table>
               
@@ -286,17 +271,7 @@ echo "<script>console.log('$id');</script>";
                         </tr>
                     </thead>
                     <tbody >
-                        <!-- <tr>
-                            <td> 1 </td>
-                            <td> Counseling</td>
-                            <td> 17 Dec, 2022 </td>
-                        </tr>
-                        <tr>
-                            <td> 2 </td>
-                            <td> Readmission</td>
-                            <td> 27 Aug, 2023 </td>
-                        </tr>
-                  -->
+
                     </tbody>
                 </table>
     
@@ -306,8 +281,7 @@ echo "<script>console.log('$id');</script>";
         </div>
     </div>
 </section>
-<!-- <section id="topbar" class="topbar d-flex align-items-center" style="background-color: primary; height: 50px; "></section>  -->
-<!-- popup -->
+
 <div class="overlay" id="divOne">
                     <div class="wrapper">
                         <a href="#" class="close">&times;</a>
@@ -360,7 +334,6 @@ echo "<script>console.log('$id');</script>";
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -378,7 +351,7 @@ echo "<script>console.log('$id');</script>";
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -398,7 +371,6 @@ echo "<script>console.log('$id');</script>";
 function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -416,7 +388,7 @@ function logout() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -428,7 +400,7 @@ function logout() {
           {
             var selectInput = document.getElementById('refer').value;
 
-            console.log('selected: ', selectInput);
+            // console.log('selected: ', selectInput);
         
         // Check if the select input has a value
         if (selectInput !== "Select") {
@@ -448,16 +420,15 @@ function logout() {
               if (checkbox.checked) {
                 // If checked, get the value
                ref = checkbox.value;
-                console.log("Checkbox is checked. Value: " + ref);
+                // console.log("Checkbox is checked. Value: " + ref);
               } else {
                 ref = checkbox.value;
-                console.log("Checkbox is not checked.");
+                // console.log("Checkbox is not checked.");
               }
             reasons = document.getElementById("refer").value;
 
             Swal.fire({
       title: "Do you wish to proceed?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -477,7 +448,7 @@ function logout() {
                     reffered: ref
                   },
                   success: function (data) {
-                    console.log("slot taken:", data);
+                    // console.log("slot taken:", data);
        
                     document.getElementById("divOne").style.display = "none";
                     $.ajax({
@@ -490,7 +461,7 @@ function logout() {
                         },
                         success: function(response) {
                           // Handle the response if needed
-                          console.log("logged", response);
+                          // console.log("logged", response);
                           
                         }
                       });
@@ -537,7 +508,7 @@ function logout() {
             type: "GET",
             dataType: "json",
             success: function (data) {
-                console.log(data);
+                // console.log(data);
                 // if (data.status===0){
                 var tableBody = $("#dynamicTable tbody");
                 var tableBody2 = $("#dynamicTable2 tbody");
@@ -558,7 +529,7 @@ function logout() {
 
                     tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
-                    console.log("data",data);
+                    // console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage.hide(); // Hide the no history message if there is data
@@ -652,5 +623,4 @@ function logout() {
     
     });
     </script> 
-    <script src="assets/main.js"></script> 
     </html>

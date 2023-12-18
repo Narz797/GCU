@@ -1,9 +1,6 @@
 <?php
 session_start();
 include '../../backend/log_audit2.php';
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
-  // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     ?>
@@ -133,10 +130,6 @@ include '../../backend/log_audit2.php';
                 <div class="main-box">
                 <div class="box">
                   <h2 class="title">  Reason for refferral:</h2>
-                  <!-- <p class="card-description refer">Counseling</p>
-                  <p class="card-description refer">Academic Deficiency/ies</p>
-                  <p class="card-description refer">Absent on October 5 - 8, 2025</p>
-                  <p class="card-description refer">Tardy on October 5, 2025</p> -->
                   <p class="card-description refer" id="reason">Counseling</p>
                 </div>
                 <br>
@@ -144,25 +137,17 @@ include '../../backend/log_audit2.php';
 
                 <div>
                   <h2 class="title" id="DAT">Dates Absent/Tardy:</h2>
-                  <!-- <p class="card-description refer">Counseling</p>
-                  <p class="card-description refer">Academic Deficiency/ies</p>
-                  <p class="card-description refer">Absent on October 5 - 8, 2025</p>
-                  <p class="card-description refer">Tardy on October 5, 2025</p> -->
                   <p class="card-description refer" id="dates">Counseling</p>
                 </div>
                 <br>
 
                 <div>
                   <h2 class="title" id="TR">Teacher's Remarks</h2>
-                  <!-- <p class="card-description refer">Counseling</p>
-                  <p class="card-description refer">Academic Deficiency/ies</p>
-                  <p class="card-description refer">Absent on October 5 - 8, 2025</p>
-                  <p class="card-description refer">Tardy on October 5, 2025</p> -->
                   <p class="card-description refer" id="rem">Teacher's Remarks</p>
                 </div>
-                <!-- <div class="action"> -->
+
                 </div>
-<!--This will be pop-up-->
+
                 <br>
                 <br>
                 <br>
@@ -172,30 +157,6 @@ include '../../backend/log_audit2.php';
         </div>
     </div>
 </section> 
-<!-- This is the pop-up for the three buttons -->
-
-                <!-- <div class="overlay" id="divOne">
-                    <div class="wrapper">
-                        <h1>The referred student will be contacted. Clicking send will notify the teacher that the request was received.</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk"> -->
-
-<!-- Add a function here where the data will be stored -->
-<!-- 
-                                    <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div> -->
 <br>
 
     <!-- Script     -->
@@ -209,7 +170,6 @@ include '../../backend/log_audit2.php';
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -227,7 +187,7 @@ include '../../backend/log_audit2.php';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -246,7 +206,7 @@ function archive() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../subpage/archive.php';
@@ -299,14 +259,14 @@ function archive() {
 
             }
             function fetchData() {
-            console.log('AJAX request started');
-            console.log('<?php echo $form?>');
+            // console.log('AJAX request started');
+            // console.log('<?php echo $form?>');
             $.ajax({
             type: 'GET',
             url: '../../backend/get_form.php',
             dataType: 'json',
             success: function (data) {
-                console.log(data);
+                // console.log(data);
             if (data.length > 0) {
                 var studentData = data[0]; // Assuming you expect a single row
                 var id = studentData.stud_user_id;
@@ -330,27 +290,27 @@ function archive() {
                 var Tfname = studentData.Tfname;
                 var Tlname = studentData.Tlname;
                 var Tcn = studentData.Tcn;
-
-                console.log(fname);
+// 
+                // console.log(fname);
                 updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, rem, date_AT, referred, Temail, Tfname, Tlname, Tcn);
 
                 var rem = studentData.remarks;
 
                 if (rem !== undefined && rem !== null && rem.trim() !== "") {
                     // The variable 'rem' has a non-empty value
-                    console.log("Variable 'rem' has a non-empty value:", rem);
+                    // console.log("Variable 'rem' has a non-empty value:", rem);
 
                 } else {
                     // The variable 'rem' is either undefined, null, or an empty string
-                    console.log("Variable 'rem' is either undefined, null, or an empty string.");
+                    // console.log("Variable 'rem' is either undefined, null, or an empty string.");
                     $('#TR').hide();
                 }
                 if (date_AT !== undefined && date_AT !== null && date_AT.trim() !== "") {
                     // The variable 'rem' has a non-empty value
-                    console.log("Variable 'Date' has a non-empty value:", date_AT);
+                    // console.log("Variable 'Date' has a non-empty value:", date_AT);
                 } else {
                     // The variable 'rem' is either undefined, null, or an empty string
-                    console.log("Variable 'Date' is either undefined, null, or an empty string.");
+                    // console.log("Variable 'Date' is either undefined, null, or an empty string.");
                     $('#DAT').hide();
                     $('#dates').hide();
                 }
@@ -358,7 +318,7 @@ function archive() {
                 
             } else {
                 // Handle the case when no results are found
-                console.log('No results found');
+                // console.log('No results found');
             }
             },
             error: function (xhr, status, error) {
@@ -381,7 +341,7 @@ function archive() {
                 tid: tid
             },
             success: function (data) {
-                console.log("Remarked:", data);
+                // console.log("Remarked:", data);
 
             Swal.fire({
                 icon: "success",
@@ -402,7 +362,7 @@ function archive() {
                     },
                     success: function(response) {
                     // Handle the response if needed
-                    console.log("logged", response);
+                    // console.log("logged", response);
                     }
                 });
                 } 

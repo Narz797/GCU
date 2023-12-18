@@ -1,7 +1,5 @@
 <?php
 session_start();
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
 $_SESSION['origin'] = 'Student';
 
 
@@ -19,7 +17,6 @@ $_SESSION['origin'] = 'Student';
       font-family: 'Roboto', sans-serif;
       background: rgb(51, 138, 11);
       background: -webkit-linear-gradient(331deg, #0c4401, #ebeeeb); 
-      /* background-image: linear-gradient(225deg, #0c4401, transparent, #ebeeeb); */
       display: flex;
       height: 110vh;
       justify-content: center;
@@ -28,7 +25,6 @@ $_SESSION['origin'] = 'Student';
     }
     .fa-eye {
   position: absolute;
-  /* right: 10px; */
   top: 40%;
   right:1%;
  
@@ -45,9 +41,6 @@ $_SESSION['origin'] = 'Student';
     top: 12px;
     cursor: pointer;
   }
-    /* .field{ */
-    /* background: -webkit-linear-gradient(left, #fefefe, #61c6be); */
-    /* } */
     #logo-gcu {
       width: 60%;
       margin: auto;
@@ -82,15 +75,8 @@ $_SESSION['origin'] = 'Student';
       }
     }
     .right-column {
-      /* margin-top: 2%; */
-      /* flex: 2; */
-      /* background-color: -webkit-linear-gradient(left, #fefefe, #96ded8); */
       padding: 5px;
       /* border-radius: 10px; */
-    }
-    .logo {
-      /* width: 100px;
-            height: auto; */
     }
     @-webkit-keyframes mover {
       0% {
@@ -132,7 +118,6 @@ $_SESSION['origin'] = 'Student';
     }
     form .txt_field {
       position: relative;
-      /* border-bottom: 2px solid #050505; */
       margin: 30px 0;
     }
     .txt_field input {
@@ -169,7 +154,6 @@ $_SESSION['origin'] = 'Student';
     .txt_field input:focus~label,
     .txt_field input:valid~label {
       top: -10px;
-      /* color: #000000; */
     }
     .txt_field input:focus~span::before,
     .txt_field input:valid~span::before {
@@ -196,12 +180,9 @@ $_SESSION['origin'] = 'Student';
       outline: none;
       transition: 0.5s;
       border: none;
-      /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
-      /* background: -webkit-linear-gradient(left, #e7e7e2 , #0c4401); */
     }
     input[type="submit"]:hover {
       background: #ffe2a5;
-      /* background: -webkit-linear-gradient(left, #f3e302 , #f6f8f5); */
     }
     .signup_link {
       margin: 30px 0;
@@ -270,7 +251,6 @@ $_SESSION['origin'] = 'Student';
   <!-- <fieldset style="width:80%;"> -->
   
   <div class="container">
-  <!-- <a id='back_button' class="btn btn-primary" href="/gcu/home" role="button">Back</a> -->
     <div class="row">
       <div class="column">
         <img id='logo-gcu' src="../assets/img/GCU_logo.png" alt="Logo" class="logo">
@@ -325,7 +305,7 @@ $_SESSION['origin'] = 'Student';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
           window.location.href = "index.php";
@@ -341,7 +321,7 @@ $_SESSION['origin'] = 'Student';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("error logged", response); 
+              // console.log("error logged", response); 
             }
           });
           Swal.fire({

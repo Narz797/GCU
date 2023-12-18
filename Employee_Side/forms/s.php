@@ -1,9 +1,6 @@
 <?php
 session_start();
 include '../../backend/log_audit2.php';
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
-  // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     ?>
@@ -130,14 +127,8 @@ include '../../backend/log_audit2.php';
 
 <!-- Get student fill-up form data -->
 
-                  <p class="card-description" id="reason">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
-                  <!-- <div class="center-attached"> -->
+                  <p class="card-description" id="reason">loading.. </p>
 
-<!-- Get any uplaoded file or the real-time image -->
-
-                  <!-- <img src="" title="No Attached Document">
-                  <img src="" title="No Attached Document"> -->
-                  <!-- </div> -->
                 </div>
                 </div>
                 <div class="action">
@@ -150,74 +141,6 @@ include '../../backend/log_audit2.php';
     </div>
 </section>
 
-<!-- This is the pop-up for the three buttons -->
-<!-- 
-                <div class="overlay" id="divOne">
-                    <div class="wrapper">
-                        <h1>The student's form for shifting will be <u class="One">ACCEPTED</u> .</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk"> -->
-
-<!-- Add a function here where the data will be stored -->
-
-                                    <!-- <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="overlay" id="divTwo">
-                    <div class="wrapper">
-                        <h1>The student's form for  shifting is being <u class="Two">Reconsidered</u> .</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk"> -->
-
-<!-- Add a function here where the data will be stored -->
-<!-- 
-                                    <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="overlay" id="divThree">
-                    <div class="wrapper">
-                        <h1>The student's form for shifting is <u class="Three">LACKING</u> .</h1>
-                        <a href="#" class="close">&times;</a>
-                        <div class="popup">
-                            <div class="popup2">
-                                <form>
-                                    <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name">
-                                    <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..."></textarea>
-                                    <div class="tsk"> -->
-
-<!-- Add a function here where the data will be stored -->
-<!-- 
-                                    <input type="submit" value="send">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                 </div> -->
 <br>
 
     <!-- Script     -->
@@ -231,7 +154,6 @@ include '../../backend/log_audit2.php';
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -249,7 +171,7 @@ include '../../backend/log_audit2.php';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -268,7 +190,7 @@ function archive() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../subpage/archive.php';
@@ -291,8 +213,8 @@ function archive() {
 
             }
             function fetchData() {
-            console.log('AJAX request started');
-            console.log('<?php echo $form?>');
+            // console.log('AJAX request started');
+            // console.log('<?php echo $form?>');
             $.ajax({
             type: 'GET',
             url: '../../backend/get_form.php',
@@ -317,13 +239,13 @@ function archive() {
                 var from = studentData.shift_from;
                 var to = studentData.shift_to;
 
-                console.log(fname);
+                // console.log(fname);
                 updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, from, to);
 
 
             } else {
                 // Handle the case when no results are found
-                console.log('No results found');
+                // console.log('No results found');
             }
             },
             error: function (xhr, status, error) {
@@ -355,7 +277,7 @@ function archive() {
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    console.log("Remarked:", data);
+                    // console.log("Remarked:", data);
                 window.location.href = "../subpage/wds-forms";
                 $.ajax({
                     type: 'POST',
@@ -367,7 +289,7 @@ function archive() {
                     },
                     success: function(response) {
                     // Handle the response if needed
-                    console.log("logged", response);
+                    // console.log("logged", response);
                     }
                 });
                 } 

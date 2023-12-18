@@ -82,6 +82,7 @@ logAudit($id, 'access_readmission page', $id .' has accessed the readmission pag
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 </head>
 
+
 <body>
     <!-- Header -->
 <header class="header">
@@ -189,7 +190,6 @@ logAudit($id, 'access_readmission page', $id .' has accessed the readmission pag
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -207,7 +207,7 @@ logAudit($id, 'access_readmission page', $id .' has accessed the readmission pag
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -300,7 +300,7 @@ function clearSearchResults2() {
             dataType: "json",
             success: function (data) {
 
-                console.log(data);
+                // console.log(data);
                 // if (data.status===0){
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
@@ -329,20 +329,6 @@ function clearSearchResults2() {
                     var statusLink = $("<button onclick='view_form(" + entry.transact_id + ", "+ entry.stud_user_id +")'><i class='ri-eye-fill'></i></button>");
                     statusCell.append(statusLink);
                     row.append(statusCell);
-
-                    // var statusCell = $("<td></td>");
-                    // var statusLink = $("<a href='#'></a>").addClass(statusClass).text(statusText);
-                    // statusCell.append(statusLink);
-                    // row.append(statusCell);
-
-                    // var deleteCell = $("<td></td>");
-                    // var deleteLink = $("<a href='#'></a>").html('<i class="ri-delete-bin-6-line"></i>');
-                    // deleteCell.append(deleteLink);
-                    // row.append(deleteCell);
-
-                    // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
-                    
-                    
                     if (status == 'pending') {
                         tableBody.append(row);
                     } else if (status == 'done') {
@@ -365,33 +351,6 @@ function clearSearchResults2() {
                     } else {
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
-
-
-
-                // $("td a").click(function () {
-                //     var contentElement = $(this).closest("tr");
-                //     // var studUserId = contentElement.data("stud-user-id");
-                //     var studUserId = contentElement.find("td:first-child").text();
-
-                //     $.ajax({
-                //         url: "../backend/update_status.php",
-                //         type: "POST",
-                //         data: { stud_user_id: studUserId },
-                //         success: function (response) {
-                //             console.log(response);
-                //             console.log("Status updated in the database");
-                //         },
-                //         error: function (xhr, status, error) {
-                //             console.error("AJAX Error:");
-                //             console.error("Status: " + status);
-                //             console.error("Error: " + error);
-                //             console.error("Response Text: " + xhr.responseText);
-                //         }
-                //     });
-                    
-                //     //location.reload();
-                // });
-                
                     // Add Sorting Event Listeners
                     const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
                 const tableHeadings = document.querySelectorAll('#dynamicTable th');
@@ -424,8 +383,7 @@ function clearSearchResults2() {
     });
 
     function view_form(tid, sid){
-        console.log("student", sid);
-        console.log("transact", tid);
+
 
                     // Send stud_id to the server using an AJAX request
                     $.ajax({
@@ -434,7 +392,7 @@ function clearSearchResults2() {
                 data: { stud_id: sid, tran_id: tid },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                    window.location.href = '../forms/read.php';
                 }
             });

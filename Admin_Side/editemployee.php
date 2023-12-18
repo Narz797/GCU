@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Include the log_audit.php file
 include '../backend/log_audit2.php';
 include '../backend/connect_database.php';
 // Check if the session variable is empty
@@ -72,7 +71,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </style>
 
-<!-- Header -->
 <header class="header">
     <nav class="nav"> 
         <div class="logo">
@@ -95,9 +93,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <button class="icon-btn place-items-center" onclick="logout()">
                 <i class="ri-user-3-line"></i>
             </button>
-            <!-- <button class="icon-btn place-items-center" onclick="faq()">
-                <i class="ri-question-mark"></i>
-            </button> -->
         </div>
         </div>
     </nav>
@@ -113,7 +108,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="independent-title1">
             <h2>Edit Employee Account</h2>
         </div>
-        <!-- Section -->
 
         <div class="amen">
     <button  onclick="update()" class="btnText1" id="Update"><span class="btnText">Update</span><i class="ri-edit-2-fill"></i></button>
@@ -184,7 +178,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Contact Number</label>
-                        <!-- Editable -->
                         <input type="text" class="form-control form-control-alternative" id="contact" value="<?php echo $result[0]['contact'] ?>" oninput="limitTo11Digits(event)" readonly>
                       </div>
                     </div>
@@ -234,7 +227,7 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-        <!-- Script     -->
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
   function togglePasswordVisibility(inputId) {
@@ -258,7 +251,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -275,7 +267,6 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
               details: eID + ' Clicked log out'
             },
             success: function(response) {
-              // Handle the response if needed
               console.log("logged", response);
             }
           });
@@ -301,10 +292,10 @@ var upd = $("#Update");
      pass.hide();
      pass2.hide();
      function update(){
-      console.log("Upd btn clicked");
+      // console.log("Upd btn clicked");
                 event.preventDefault();
 
-                console.log($("#Sid").val());
+                // console.log($("#Sid").val());
                 Swal.fire({
           title: "Are Sure?",
           text: "Do you wish to proceed?",
@@ -332,8 +323,8 @@ var upd = $("#Update");
 
                     },
                     success: function(data) {
-                        console.log('Success!');
-                        console.log(data);
+                        // console.log('Success!');
+                        // console.log(data);
                         Swal.fire({
               icon: "success",
               title: "Information Updated!",
@@ -352,8 +343,7 @@ var upd = $("#Update");
                                 details: 'Admin edited employee'.$("#id").val()
                             },
                             success: function(response) {
-                                // Handle the response if needed
-                                console.log("logged", response);
+                                // console.log("logged", response);
                             }
                         });
                     } 
@@ -371,7 +361,7 @@ var upd = $("#Update");
             }
 
 
-            // ----------------------------------------
+   
             function addHighlight(element) {
             element.classList.add('highlight');
         }
@@ -381,19 +371,19 @@ var upd = $("#Update");
             element.classList.remove('highlight');
         }
             function edit() {
-    console.log("Edit btn clicked");
+    // console.log("Edit btn clicked");
     cnl.show();
     upd.show();
     pass.show();
     pass2.show();
     // Get the select and input elements by their IDs
-    var email = document.getElementById('email');//
-    var ln = document.getElementById('lname');//
-    var fn = document.getElementById('fname');//
-    var mn = document.getElementById('mname');//
-    var gndr = document.getElementById('inputgroupselect');//
-    var cn = document.getElementById('contact');//
-    var pos = document.getElementById('position');//
+    var email = document.getElementById('email');
+    var ln = document.getElementById('lname');
+    var fn = document.getElementById('fname');
+    var mn = document.getElementById('mname');
+    var gndr = document.getElementById('inputgroupselect');
+    var cn = document.getElementById('contact');
+    var pos = document.getElementById('position');
   
 
 
@@ -440,13 +430,13 @@ var upd = $("#Update");
 }
 
 function cancel(){
-    var email = document.getElementById('email');//
-    var ln = document.getElementById('lname');//
-    var fn = document.getElementById('fname');//
-    var mn = document.getElementById('mname');//
-    var gndr = document.getElementById('inputgroupselect');//
-    var cn = document.getElementById('contact');//
-    var pos = document.getElementById('position');//
+    var email = document.getElementById('email');
+    var ln = document.getElementById('lname');
+    var fn = document.getElementById('fname');
+    var mn = document.getElementById('mname');
+    var gndr = document.getElementById('inputgroupselect');
+    var cn = document.getElementById('contact');
+    var pos = document.getElementById('position');
 
 
 gndr.disabled = true;
@@ -487,7 +477,7 @@ location.reload();
      pass2.hide();
 }
         </script>
-        <script src="./assets/main.js"></script>
+
         <?php include 'includes/footer.php' ?>
 </body>
 

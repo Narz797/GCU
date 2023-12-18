@@ -1,6 +1,5 @@
 <?php 
 session_start();
-// Include the log_audit.php file
 include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
@@ -53,7 +52,6 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js" />
-    <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -111,19 +109,9 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
             <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
                 <i class="ri-function-line"></i>
             </button>
-            <!-- <button class="icon-btn theme-toggle-btn place-items-center">
-                <i class="ri-sun-line theme-light-icon"></i>
-                <i class="ri-moon-line theme-dark-icon"></i>
-            </button> -->
             <button class="icon-btn place-items-center" onclick="logout()" >
                 <i class="ri-user-3-line" > </i>
             </button>
-
-            <!-- <button class="icon-btn place-items-center" onclick="logout()" style="margin-right: 150px; background:yellow;">
-            <i class="ri-user-3-line" style="background:yellow;" ></i> 
-            </button> -->
-
-
         </div>
     </nav>
 </header>
@@ -190,16 +178,6 @@ logAudit($id, 'access_log report',  'Admin has accessed the log report page');
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
  var eID = "<?php echo $_SESSION['session_id'];?>";
-//responsive date
-// function updateCurrentDate(){
-//     const currentDateElement = document.getElementById("currentDate");
-//     const currentDate = new Date();
-//     const options = { year: 'numeric', month: 'long', day:'numeric'};
-//     const formattedDate = currentDate.toLocaleDateString('en-US',options);
-//     currentDateElement.textContent = formattedDate; 
-// }
-// updateCurrentDate();
-// setInterval(updateCurrentDate, 1000);
 function searchTable() {
     var input, filter, table, tr, th, td, i, j, txtValue;
     input = document.getElementById("searchInput");
@@ -279,7 +257,6 @@ function clearSearchResults2() {
 function logout() {
             Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -297,7 +274,7 @@ function logout() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
             window.location.href = '../home';
@@ -310,8 +287,7 @@ $(document).ready(function () {
             type: "GET",
             dataType: "json",
             success: function (data) {
-                console.log(data);
-                // if (data.status===0){
+                // console.log(data);
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
                 var noHistoryMessage2 = $("#noHistoryMessage2"); 
@@ -344,7 +320,6 @@ $(document).ready(function () {
                 
 
                     tableBody.append(row);
-                    // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                  }
 
                                                  // Initialize DataTables for pagination
@@ -356,7 +331,7 @@ $(document).ready(function () {
                                 pageLength: 5, // Initial number of rows per page
                             });
 
-                 console.log("data",data);
+                //  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage2.hide(); // Hide the no history message if there is data
@@ -422,19 +397,6 @@ function exportToExcel() {
     // Export the workbook to an Excel file
     XLSX.writeFile(workbook, "Employee_log.xlsx");
     
-    // $.ajax({
-    //         type: 'POST',
-    //         url: '../backend/log_audit.php',
-    //         data: {
-    //           userId: eID,
-    //           action: 'clicked export',
-    //           details: eID + 'clicked export apopinment table to excel'
-    //         },
-    //         success: function(response) {
-    //           // Handle the response if needed
-    //           console.log("logged", response);
-    //         }
-    //       });
 }
 
 
@@ -483,7 +445,7 @@ function exportToPDF() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
 }
@@ -518,7 +480,7 @@ function dl_log() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     }
@@ -526,8 +488,7 @@ function dl_log() {
 }
 
 
-</script>  
-<script src="./assets/main.js"></script> 
+</script>   
 </body>
 
 </html>

@@ -146,13 +146,6 @@ if (isset($_POST['total_number'])) {
     $_SESSION['total_number'] = $_POST['total_number'];
 }
 
-// if (isset($_POST['siblings'])) {
-//     $siblingsDataJSON = $_SESSION['siblings'];
-
-//     // Decode the JSON string into a PHP associative array
-//     $siblingsData = json_decode($siblingsDataJSON, true);
-//     $sessionDataJSON = json_encode($_SESSION);
-// }
 
 
 ?>
@@ -162,7 +155,7 @@ if (isset($_POST['total_number'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="style.css">
     <!----===== Iconscout CSS ===== -->
@@ -233,11 +226,9 @@ if (isset($_POST['total_number'])) {
         position: relative;
         max-width: 900px;
         width: 100%;
-        /* border-radius: 0px;  */
         padding: 10px;
         margin: 0 15px;
-        /* background-color: #fff; */
-        /* box-shadow: 0 5px 10px rgba(0,0,0,0.1); */
+
     }
 
     .container header {
@@ -262,13 +253,11 @@ if (isset($_POST['total_number'])) {
         position: relative;
         margin-top: 16px;
         min-height: 1500px;
-        /* background-color: #fff; */
         overflow: hidden;
     }
 
     .container form .form {
         position: absolute;
-        /* background-color: #fff; */
         transition: 0.3s ease;
     }
 
@@ -316,7 +305,6 @@ if (isset($_POST['total_number'])) {
     form .fields .input-field1 {
         display: flex;
         width: 100%;
-        /* width: calc(100% / 3 - 15px); */
         flex-direction: column;
 
     }
@@ -330,7 +318,6 @@ if (isset($_POST['total_number'])) {
     form .fields .input-field2 {
         display: flex;
         width: 100%;
-        /* width: calc(100% / 3 - 15px); */
         flex-direction: column;
         margin: 4px 0;
     }
@@ -345,7 +332,6 @@ if (isset($_POST['total_number'])) {
     select {
         outline: none;
         font-size: 14px;
-        /* font-style: italic; */
         font-weight: 400;
         color: #333;
         border-radius: 5px;
@@ -365,7 +351,6 @@ if (isset($_POST['total_number'])) {
     select {
         outline: none;
         font-size: 14px;
-        /* font-style: italic; */
         font-weight: 400;
         color: #333;
         border-radius: 5px;
@@ -379,7 +364,6 @@ if (isset($_POST['total_number'])) {
     select {
         outline: none;
         font-size: 14px;
-        /* font-style: italic; */
         font-weight: 400;
         color: #333;
         border-radius: 5px;
@@ -469,19 +453,6 @@ if (isset($_POST['total_number'])) {
         }
     }
 
-    /* .left-column img {
-             
-            
-            margin-left: 20%;
-            width: 50%;
-            -webkit-animation: mover 2s infinite alternate;
-            animation: mover 1s infinite alternate;
-        }
-    .logo {
-            width: 80%;
-            height: 80%;
-        } */
-
     @-webkit-keyframes mover {
         0% {
             transform: translateY(0);
@@ -502,24 +473,11 @@ if (isset($_POST['total_number'])) {
         }
     }
 
-    /* .fieldset-column {
-            flex: 1;
-            margin-right: 20px; 
-        } */
     fieldset {
         flex: 1;
-        /* Equal size for all fieldsets */
-        /* border: 1px solid #000000; */
-        /* padding: 10px; */
-        /* margin-right: 10px; */
-        /* Add some spacing between fieldsets */
     }
 
     .fieldset-container {
-        /* display: flex; */
-        /* flex-wrap: wrap; */
-        /* justify-content: space-between; */
-        /* Distribute fieldsets evenly */
         display: block;
         position: relative;
         padding-left: 35px;
@@ -600,12 +558,10 @@ if (isset($_POST['total_number'])) {
     }
 
     .check-group label {
-        /* display: block; */
         margin-right: 30px;
     }
 
     .radio-group label {
-        /* display: block; */
         margin-right: 30px;
     }
 
@@ -642,7 +598,6 @@ if (isset($_POST['total_number'])) {
         width: 100%;
         box-sizing: border-box;
         border: none;
-        /* border-bottom: 1px solid #000; */
         padding: 0;
         margin: 0;
         background-color: transparent;
@@ -672,7 +627,6 @@ if (isset($_POST['total_number'])) {
     .indigenousInfo {
         outline: none;
         font-size: 14px;
-        /* font-style: italic; */
         font-weight: 400;
         color: #333;
         border-radius: 5px;
@@ -690,7 +644,6 @@ if (isset($_POST['total_number'])) {
     .underline-input input {
         border: none;
         border-bottom: 1px solid #000;
-        /* Add a bottom border for the underline effect */
         background: none;
         outline: none;
         width: 100%;
@@ -701,9 +654,6 @@ if (isset($_POST['total_number'])) {
         display: none;
     }
 
-    /* .input-field input:required {
-    border: 1px solid red;
-} */
     #textBox {
         width: 200px;
         /* Adjust the width as needed */
@@ -740,10 +690,6 @@ if (isset($_POST['total_number'])) {
 
 
 <body>
-    <!-- <div class="left-column">
-        <img src="assets/img/GCU_logo.png" alt="Logo" class="logo">
-    </div>
-     -->
     <div class="container">
         <header>STUDENT REGISTRATION FORM - EDUCATIONAL BACKGROUND</header>
         <br>
@@ -760,7 +706,6 @@ if (isset($_POST['total_number'])) {
                     <label>Year Graduated:* </label>
                     <input  style="width:100%;" type="text" class="form-control" name="senyear" id="senyear"  required autocomplete="off"/>
 
-                    <!-- <input type="text" id="address" name="datepicker" id="datepicker" required> -->
                 </div>
                 <div class="input-field1">
                     <label for="awards">Awards Received:</label>
@@ -780,7 +725,6 @@ if (isset($_POST['total_number'])) {
                 </div>
                 <div class="input-field1">
                     <label>Year Graduated:* </label>
-                    <!-- <input style="width:100%;" type="text" id="address" name="junyear" required> -->
                     <input  style="width:100%;" type="text" class="form-control" name="junyear" id="junyear"  required autocomplete="off"/>
 
                 </div>
@@ -802,7 +746,6 @@ if (isset($_POST['total_number'])) {
                 </div>
                 <div class="input-field1">
                     <label>Year Graduated:* </label>
-                    <!-- <input type="text" id="address" name="elemyear" required> -->
                     <input  style="width:100%;" type="text" class="form-control" name="elemyear" id="elemyear"  required autocomplete="off"/>
 
                 </div>
@@ -812,8 +755,6 @@ if (isset($_POST['total_number'])) {
                 </div>
             </div>
             <br>
-            <!-- <input type="checkbox" id="otherSchoolCheckbox" name='otherSchool'>
-            <label for="otherSchoolCheckbox">Other School Attended</label> -->
             <input type="checkbox" id="otherSchoolCheckbox" name='otherSchool'>
             <label for="otherSchoolCheckbox" id="otherSchoolLabel">Other School Attended</label>
             <br>
@@ -828,7 +769,6 @@ if (isset($_POST['total_number'])) {
                     </div>
                     <div class="input-field1">
                         <label>Year Graduated: </label>
-                        <!-- <input type="text" id="address" name="othyear"> -->
                         <input  style="width:100%;" type="text" class="form-control" name="othyear" id="othyear" autocomplete="off" />
 
                     </div>
@@ -856,34 +796,7 @@ if (isset($_POST['total_number'])) {
 </body>
 
 <script>
-            // Retrieve insertStatements from sessionStorage
-            // const storedInsertStatements = JSON.parse(sessionStorage.getItem('insertStatements'));
 
-            // // Now you can use storedInsertStatements on this page
-            // console.log(storedInsertStatements);
-            //         // Now you can use storedInsertStatements in your AJAX call or anywhere else in this page
-            //         if (storedInsertStatements) {
-            //             // Your AJAX call
-            //             $.ajax({
-            //                 url: '../backend/sibling.php', // Replace with your endpoint URL
-            //                 type: 'POST', // Or 'GET' based on your requirements
-            //                 data: { insertStatements: storedInsertStatements },
-            //                 success: function(response) {
-            //                     // Handle the response here
-            //                 },
-            //                 error: function(error) {
-            //                     // Handle any errors
-            //                 }
-            //             });
-            //         }
-
-    // function goToPage1() {
-    //     window.location.href = "page1.php";
-    // }
-
-    // function goToPage3() {
-    //     window.location.href = "page3.php";
-    // }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
@@ -892,8 +805,7 @@ if (isset($_POST['total_number'])) {
     }
 
     function goToPage3() {
-        // Check if there are empty inputs before redirecting
-        // If no empty inputs, redirect to page3.php
+
         window.location.href = "page3.php";
     }
 </script>
@@ -962,21 +874,3 @@ $("#othyear").datepicker({
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-<!-- <script>
-alert
-
-          swal({
-                    title: 'pag error',
-                    icon: 'error',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-          swal({
-                    title: 'Page success',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-    
-
-</script> -->

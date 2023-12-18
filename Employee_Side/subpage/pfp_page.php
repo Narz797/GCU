@@ -1,9 +1,6 @@
 <?php
 session_start();
 include '../../backend/log_audit2.php';
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
-  // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     ?>
@@ -27,7 +24,7 @@ $id = $_SESSION['session_id'];
 
 // Log audit entry for accessing the home page
 logAudit($id, 'access_sudent_profile', $id .' has accessed the sudent_profile page');
-echo"<script>console.log('$id')</script>";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,13 +37,6 @@ echo"<script>console.log('$id')</script>";
     <!-- Remix icons -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <!-- Vendor CSS Files -->
-    <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="../assets/css/view.css">
 </head>
 
@@ -188,8 +178,6 @@ color: white;
     <!-- Banner -->
 <section>
 <?php include '../../includes/banner.php' ?>
-   <!-- <div class="block"> 
-    </div> -->
     <div class="title independent-title">
         <h2> STUDENT PROFILE</h2>
     </div>
@@ -218,10 +206,6 @@ color: white;
                 </p>
             </div>
             <div class="card-image1">
-
-<!-- get student 
-	real-time signature
- 	or ID picture-->
 
             <img src="" alt="ID" id="idd">
             </div>
@@ -377,21 +361,16 @@ color: white;
                 <hr>
                     <p class="card-description">
 
-<!-- the table header(thead) are the general 
-    sortable script-->
 
         <table class="table-sortable" id="dynamicTable">
         <thead>
             <tr>
                 <th>Date of Transaction</th>
                 <th>Form / Slip</th>
-                <!-- <th>Reason/s</th> -->
                 <th>Action Taken</th>
                 <th>Last Updated</th>
                 <th>Remarks</th>
 
-<!-- you can find the design on the subpage
-titled: remark_design.php-->
 
                 <th>Add Remarks</th>
             </tr>
@@ -436,8 +415,6 @@ titled: remark_design.php-->
                 <th>Action Taken</th>
                 <th>Latest Update</th>
 
-<!-- you can find the design on the subpage
-titled: edit_design.php-->
 
                 <th>Edit</th>
             </tr>
@@ -466,7 +443,6 @@ titled: edit_design.php-->
                 </div>
             </div>
             </div>
-        <!--  -->
                 </p>
                 </div>
             </div>
@@ -477,9 +453,6 @@ titled: edit_design.php-->
 // Retrieve stud_id from the session
 $student = $_SESSION['stud_user_id'];
 
-// $student_transacts = $_SESSION['ST_id'];
-
-// echo "<script>alert('$student_transacts')</script>";
 ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Script -->
@@ -490,10 +463,239 @@ var stud_name
 var app_id
 var tID
 var eID = '<?php echo $id;?>';
+ // Function to update the HTML elements
+ function updateValues(fname, lname, email, year_level, course, gender, college, cn, address, year_enrolled, cs, bday, bplace, nat, ig, pwd, studpar, marit, src, mfname, mlname, mocc, medu, mcn, mage, ffname, flname, focc,fedu, fcn, fage, gfname, glname, gocc, gedu, gcn, gage, hs, hs_yg, js, js_yg, es, es_yg, os, os_yg, frst, scnd, thrd, ggoal, afather, amother, closest, bcoz, child, tch, dkt, ftr, pgn, pgname, relation) {
+
+const genderImageMap = {
+    'male': '../assets/images/male.jpg',
+    'female': '../assets/images/female.jpg'
+};
+
+const image = document.createElement('img');
+image.style.display = 'block'; // Display the image above the text
+
+if (gender === 'Male') {
+    image.src = genderImageMap['male'];
+} else if (gender === 'Female') {
+    image.src = genderImageMap['female'];
+}
+
+$('#lname').text(lname+ ', ');
+$('#fname').text(fname);
+$('#year_level').text(year_level+ ' ');
+$('#email').text(' '+email);
+$('#number').text(' '+cn);
+// 
+$('#address').text(' '+address);
+$('#yr_enrolled').text(' '+year_enrolled);
+$('#cs').text(' '+cs);
+$('#DOB').text(' '+bday);
+$('#BP').text(' '+bplace);
+$('#nationality').text(' '+nat);
+$('#mom').text(' '+mfname +' '+mlname);
+$('#mage').text(' '+mage);
+$('#mom_cn').text(' '+mcn);
+$('#mom_occ').text(' '+mocc);
+$('#mom_school').text(' '+medu);
+$('#dad').text(' '+ffname +' '+flname);
+$('#fage').text(' '+fage);
+$('#dad_cn').text(' '+fcn);
+$('#dad_occ').text(' '+focc);
+$('#dad_school').text(' '+fedu);
+$('#grd').text(' '+gfname +' '+glname);
+$('#gage').text(' '+gage);
+$('#grd_cn').text(' '+gcn);
+$('#grd_occ').text(' '+gocc);
+$('#grd_school').text(' '+gedu);
+
+$('#HS').text(' '+hs);
+$('#HS_YG').text(' '+hs_yg);
+$('#JS').text(' '+js);
+$('#JS_YG').text(' '+js_yg);
+$('#ES').text(' '+es);
+$('#ES_YG').text(' '+es_yg);
+$('#OS').text(' '+os);
+$('#OS_YG').text(' '+os_yg);
+
+$('#IG').text(' '+ig);
+$('#PWD').text(' '+pwd);
+$('#SP').text(' '+studpar);
+$('#FS').text(' '+src);
+$('#MS').text(' '+marit);
+
+
+$('#guardian').text(' '+pgname);
+$('#relation').text(' '+relation);
+$('#guardian_number').text(' '+pgn);
+$('#college').text(college+ ' ');
+$('#course').text(course);
+
+$('#1').text(' '+frst);
+$('#2').text(' '+scnd);
+$('#3').text(' '+thrd);
+$('#goal').text(' '+ggoal);
+$('#fis').text(' '+afather);
+$('#mis').text(' '+amother);
+$('#closest').text(' '+closest);
+$('#coz').text(' '+bcoz);
+$('#when_child').text(' '+child);
+$('#teachers_are').text(' '+tch);
+$('#dont_know').text(' '+dkt);
+$('#future').text(' '+ftr);
+// Replace the content of the #gender div with the created image
+const genderElement = document.getElementById('gender');
+genderElement.innerHTML = ''; // Clear existing content
+genderElement.appendChild(image);
+
+}
+function fetchData() {
+// console.log('AJAX request started');
+$.ajax({
+type: 'GET',
+url: '../../backend/get_student.php',
+dataType: 'json',
+success: function (data) {
+  // console.log(data);
+
+    if (data.length > 0) {
+        var studentData = data[0]; // Assuming you expect a single row
+        var fname = studentData.first_name;
+        stud_name = studentData.first_name + ' ' + studentData.last_name;
+        var lname = studentData.last_name;
+        var email = studentData.email;
+        var year_level = studentData.Year_level;
+        var course = studentData.course;
+        var gender = studentData.gender;
+        var college = studentData.Colleges;
+        var cn = studentData.Contact_number;
+        var address =studentData.Address;
+        var year_enrolled =studentData.year_enrolled;
+        var cs =studentData.Civil_status;
+        var bday =studentData.birth_date;
+        var bplace =studentData.Birth_place;
+        var nat =studentData.Nationality;
+        var ig =studentData.IG;
+        var pwd =studentData.PWD;
+        var studpar =studentData.Student_parent;
+        var marit =studentData.Marital_status_of_parents;
+        var src =studentData.source;
+        var mfname =studentData.mfname;
+        var mlname =studentData.mlname;
+        var mocc =studentData.mocc;
+        var medu =studentData.medu;
+        var mcn =studentData.mcn;
+        var mage =studentData.mage;
+        var ffname =studentData.ffname;
+        var flname =studentData.flname;
+        var focc =studentData.focc;
+        var fedu =studentData.fedu;
+        var fcn =studentData.fcn;
+        var fage =studentData.fage;
+        var gfname =studentData.gfname;
+        var glname =studentData.glname;
+        var gocc =studentData.gocc;
+        var gedu =studentData.gedu;
+        var gcn =studentData.gcn;
+        var gage =studentData.gage;
+        var hs = studentData.HS;
+        var hs_yg =studentData.HS_YG;
+        var js =studentData.JS;
+        var js_yg =studentData.JS_YG;
+        var es =studentData.ES;
+        var es_yg =studentData.ES_YG;
+        var os =studentData.OS;
+        var os_yg = studentData.OS_YG;
+        var frst =studentData.first;
+        var scnd =studentData.second;
+        var thrd =studentData.third;
+        var ggoal =studentData.goal;
+        var afather = studentData.fis;
+        var amother = studentData.mis;
+        var closest =studentData.kapatid;
+        var bcoz =studentData.kap_res;
+        var child =studentData.whenChild;
+        var tch =studentData.teachAre;
+        var dkt = studentData.friendsDuno;
+        var ftr = studentData.future;
+        var pgn = studentData.ParentGuardianNumber;
+        var pgname = studentData.ParentGuardianName;
+        var relation = studentData.Relation;
+        var sign = studentData.sign;
+        var idd = studentData.id;
+        // console.log(fname);
+        updateValues(fname, lname, email, year_level, course, gender, college, cn, address, year_enrolled, cs, bday, bplace, nat, ig, pwd, studpar, marit, src, mfname, mlname, mocc, medu, mcn, mage, ffname, flname, focc,fedu, fcn, fage, gfname, glname, gocc, gedu, gcn, gage, hs, hs_yg, js, js_yg, es, es_yg, os, os_yg, frst, scnd, thrd, ggoal, afather, amother, closest, bcoz, child, tch, dkt, ftr, pgn, pgname, relation);
+                    
+        const id = <?php echo $_SESSION['stud_user_id']; ?>;
+
+        const pers_info = lname;
+
+        displayBlobAsImage(sign, 'sig'); // Pass the image data and an element ID
+       displayBlobAsImage(idd, 'idd'); // Pass the image data and an element ID
+
+
+       function displayBlobAsImage(blobData, elementId) {
+    if (blobData) {
+        var imgElement = document.getElementById(elementId);
+        if (imgElement) {
+            imgElement.src = 'data:image/jpeg;base64,' + blobData; // Assuming JPEG format
+        }
+    }
+}
+
+        var ma = $("#ma");
+        var fa = $("#da");
+        var gua = $("#gd");
+        var oth = $("#OTH");
+        // Combine mother's information
+        var motherInfo = [mfname, mlname, mocc, medu, mcn, mage].join(' ').trim();
+        if (motherInfo === '') {
+            // Handle the case where any of the mother's information is null, undefined, or empty
+            // console.log("ma empty");
+
+            ma.hide();
+        }
+
+        // Combine father's information
+        var fatherInfo = [ffname, flname, focc, fedu, fcn, fage].join(' ').trim();
+        if (fatherInfo === '') {
+            // Handle the case where any of the father's information is null, undefined, or empty
+
+            // console.log("da empty");
+            fa.hide();
+        }
+
+        // Combine guardian's information
+        var guardianInfo = [gfname, glname, gocc, gedu, gcn, gage].join(' ').trim();
+        if (guardianInfo === '') {
+            // Handle the case where any of the guardian's information is null, undefined, or empty
+            // console.log("gua  empty");
+            gua.hide();
+
+        }
+        if ((os === '' || os_yg === '') || (os === 'None' || os_yg === '0')) {
+            // Handle the case where any of the guardian's information is null, undefined, or empty
+            // console.log("oth  empty");
+            oth.hide();
+
+        }
+
+    } else {
+        // Handle the case when no results are found
+        // console.log('No results found');
+    }
+},
+error: function (xhr, status, error) {
+    console.error('Error: ' + error);
+    console.error('Status: ' + status);
+    console.error('Response: ' + xhr.responseText);     
+}
+});
+
+
+}
 function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -511,7 +713,7 @@ function logout() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -533,7 +735,7 @@ function archive() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = 'archive.php';
@@ -541,7 +743,7 @@ function archive() {
 // remarks
 function openModal(id) {
     document.getElementById("modal").style.display = "block";
-    console.log(id);
+    // console.log(id);
     trans_id = id;
   }
 
@@ -562,9 +764,9 @@ function openModal(id) {
 
 function openModal2(id) {
     document.getElementById("modal2").style.display = "block";
-    console.log(id);
+    // console.log(id);
     app_id=id;
-    console.log("tid:", tID);
+    // console.log("tid:", tID);
 
   }
 
@@ -586,9 +788,7 @@ function openModal2(id) {
       
         var textareaValue = document.getElementById("editTextarea").value;
         var textareaValue2 = document.getElementById("editTextarea2").value;
-        console.log("ID:", app_id);
-        console.log("Remarks:", textareaValue);
-        console.log("Remarks:", textareaValue2);
+
         $.ajax({
           type: 'POST',
           url: '../../backend/appointment_remark.php',
@@ -617,17 +817,21 @@ function openModal2(id) {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
-            console.log("Remarked:", data);
+            // console.log("Remarked:", data);
+            console.log("Before fetchData()");
+              document.getElementById("modal2").style.display = "none";
+              location.reload();
+              console.log("After fetchData()");
                 } 
+               
               });
 
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
-            // alert("Error marking event as done: " + error);
             Swal.fire({
                 icon: "error",
               title: "Something went wrong",
@@ -647,8 +851,7 @@ function openModal2(id) {
   //transact
   function add_remarks() {
     var textareaValue = document.getElementById("remarksTextarea").value;
-    console.log("ID:", trans_id);
-    console.log("Remarks:", textareaValue);
+
             $.ajax({
           type: 'POST',
           url: '../../backend/student_remark.php',
@@ -679,10 +882,12 @@ function openModal2(id) {
                     },
                     success: function(response) {
                       // Handle the response if needed
-                      console.log("logged", response);
+                      // console.log("logged", response);
                     }
                   });
-                    console.log("Remarked:", data);
+                    // console.log("Remarked:", data);
+                    document.getElementById("modal").style.display = "none";
+                    location.reload();
                 } 
               });
 
@@ -705,304 +910,7 @@ function openModal2(id) {
         });
         }
 
-    // Function to update the HTML elements
-    function updateValues(fname, lname, email, year_level, course, gender, college, cn, address, year_enrolled, cs, bday, bplace, nat, ig, pwd, studpar, marit, src, mfname, mlname, mocc, medu, mcn, mage, ffname, flname, focc,fedu, fcn, fage, gfname, glname, gocc, gedu, gcn, gage, hs, hs_yg, js, js_yg, es, es_yg, os, os_yg, frst, scnd, thrd, ggoal, afather, amother, closest, bcoz, child, tch, dkt, ftr, pgn, pgname, relation) {
-
-        const genderImageMap = {
-            'male': '../assets/images/male.jpg',
-            'female': '../assets/images/female.jpg'
-        };
-
-        const image = document.createElement('img');
-        image.style.display = 'block'; // Display the image above the text
-
-        if (gender === 'Male') {
-            image.src = genderImageMap['male'];
-        } else if (gender === 'Female') {
-            image.src = genderImageMap['female'];
-        }
-
-        $('#lname').text(lname+ ', ');//
-        $('#fname').text(fname);//
-        $('#year_level').text(year_level+ ' ');//
-        $('#email').text(' '+email);//
-        $('#number').text(' '+cn);//
-        // 
-        $('#address').text(' '+address);//
-        $('#yr_enrolled').text(' '+year_enrolled);//
-        $('#cs').text(' '+cs);//
-        $('#DOB').text(' '+bday);//
-        $('#BP').text(' '+bplace);//
-        $('#nationality').text(' '+nat);//
-        $('#mom').text(' '+mfname +' '+mlname);//
-        $('#mage').text(' '+mage);//
-        $('#mom_cn').text(' '+mcn);//
-        $('#mom_occ').text(' '+mocc);//
-        $('#mom_school').text(' '+medu);//
-        $('#dad').text(' '+ffname +' '+flname);//
-        $('#fage').text(' '+fage);//
-        $('#dad_cn').text(' '+fcn);//
-        $('#dad_occ').text(' '+focc);//
-        $('#dad_school').text(' '+fedu);//
-        $('#grd').text(' '+gfname +' '+glname);//
-        $('#gage').text(' '+gage);//
-        $('#grd_cn').text(' '+gcn);//
-        $('#grd_occ').text(' '+gocc);//
-        $('#grd_school').text(' '+gedu);//
-        
-        $('#HS').text(' '+hs);//
-        $('#HS_YG').text(' '+hs_yg);//
-        $('#JS').text(' '+js);//
-        $('#JS_YG').text(' '+js_yg);//
-        $('#ES').text(' '+es);//
-        $('#ES_YG').text(' '+es_yg);//
-        $('#OS').text(' '+os);//
-        $('#OS_YG').text(' '+os_yg);//
-
-        $('#IG').text(' '+ig);//
-        $('#PWD').text(' '+pwd);//
-        $('#SP').text(' '+studpar);//
-        $('#FS').text(' '+src);//
-        $('#MS').text(' '+marit);//
-
-        // 
-        $('#guardian').text(' '+pgname);
-        $('#relation').text(' '+relation);
-        $('#guardian_number').text(' '+pgn);
-        $('#college').text(college+ ' ');//
-        $('#course').text(course);//
-
-        $('#1').text(' '+frst);//
-        $('#2').text(' '+scnd);//
-        $('#3').text(' '+thrd);//
-        $('#goal').text(' '+ggoal);//
-        $('#fis').text(' '+afather);//
-        $('#mis').text(' '+amother);//
-        $('#closest').text(' '+closest);//
-        $('#coz').text(' '+bcoz);//
-        $('#when_child').text(' '+child);//
-        $('#teachers_are').text(' '+tch);//
-        $('#dont_know').text(' '+dkt);//
-        $('#future').text(' '+ftr);//
-        // Replace the content of the #gender div with the created image
-        const genderElement = document.getElementById('gender');
-        genderElement.innerHTML = ''; // Clear existing content
-        genderElement.appendChild(image);
    
-    }
-    function fetchData() {
-    console.log('AJAX request started');
-    $.ajax({
-        type: 'GET',
-        url: '../../backend/get_student.php',
-        dataType: 'json',
-        success: function (data) {
-          console.log(data);
-
-            if (data.length > 0) {
-                var studentData = data[0]; // Assuming you expect a single row
-                var fname = studentData.first_name;
-                stud_name = studentData.first_name + ' ' + studentData.last_name;
-                var lname = studentData.last_name;
-                var email = studentData.email;
-                var year_level = studentData.Year_level;
-                var course = studentData.course;
-                var gender = studentData.gender;
-                var college = studentData.Colleges;
-                var cn = studentData.Contact_number;
-                var address =studentData.Address;
-                var year_enrolled =studentData.year_enrolled;
-                var cs =studentData.Civil_status;
-                var bday =studentData.birth_date;
-                var bplace =studentData.Birth_place;
-                var nat =studentData.Nationality;
-                var ig =studentData.IG;
-                var pwd =studentData.PWD;
-                var studpar =studentData.Student_parent;
-                var marit =studentData.Marital_status_of_parents;
-                var src =studentData.source;
-                var mfname =studentData.mfname;
-                var mlname =studentData.mlname;
-                var mocc =studentData.mocc;
-                var medu =studentData.medu;
-                var mcn =studentData.mcn;
-                var mage =studentData.mage;
-                var ffname =studentData.ffname;
-                var flname =studentData.flname;
-                var focc =studentData.focc;
-                var fedu =studentData.fedu;
-                var fcn =studentData.fcn;
-                var fage =studentData.fage;
-                var gfname =studentData.gfname;
-                var glname =studentData.glname;
-                var gocc =studentData.gocc;
-                var gedu =studentData.gedu;
-                var gcn =studentData.gcn;
-                var gage =studentData.gage;
-                var hs = studentData.HS;
-                var hs_yg =studentData.HS_YG;
-                var js =studentData.JS;
-                var js_yg =studentData.JS_YG;
-                var es =studentData.ES;
-                var es_yg =studentData.ES_YG;
-                var os =studentData.OS;
-                var os_yg = studentData.OS_YG;
-                var frst =studentData.first;
-                var scnd =studentData.second;
-                var thrd =studentData.third;
-                var ggoal =studentData.goal;
-                var afather = studentData.fis;
-                var amother = studentData.mis;
-                var closest =studentData.kapatid;
-                var bcoz =studentData.kap_res;
-                var child =studentData.whenChild;
-                var tch =studentData.teachAre;
-                var dkt = studentData.friendsDuno;
-                var ftr = studentData.future;
-                var pgn = studentData.ParentGuardianNumber;
-                var pgname = studentData.ParentGuardianName;
-                var relation = studentData.Relation;
-                var sign = studentData.sign;
-                var idd = studentData.id;
-                console.log(fname);
-                updateValues(fname, lname, email, year_level, course, gender, college, cn, address, year_enrolled, cs, bday, bplace, nat, ig, pwd, studpar, marit, src, mfname, mlname, mocc, medu, mcn, mage, ffname, flname, focc,fedu, fcn, fage, gfname, glname, gocc, gedu, gcn, gage, hs, hs_yg, js, js_yg, es, es_yg, os, os_yg, frst, scnd, thrd, ggoal, afather, amother, closest, bcoz, child, tch, dkt, ftr, pgn, pgname, relation);
-                            
-                const id = <?php echo $_SESSION['stud_user_id']; ?>;
-
-                const pers_info = lname;
-
-                displayBlobAsImage(sign, 'sig'); // Pass the image data and an element ID
-               displayBlobAsImage(idd, 'idd'); // Pass the image data and an element ID
-
-
-               function displayBlobAsImage(blobData, elementId) {
-            if (blobData) {
-                var imgElement = document.getElementById(elementId);
-                if (imgElement) {
-                    imgElement.src = 'data:image/jpeg;base64,' + blobData; // Assuming JPEG format
-                }
-            }
-        }
-
-                // const filePath_jpg = `../../backend/uploads/id_${id}_${pers_info}.jpg`;
-                // const filePath_png = `../../backend/uploads/id_${id}_${pers_info}.png`;
-                // const filePath_jpeg = `../../backend/uploads/id_${id}_${pers_info}.jpeg`;
-
-                // const imgElement = document.getElementById('idd');
-                // // imgElement.style.width = '50%';
-                // // imgElement.style.height = '50%';
-
-                // if (fileExists(filePath_jpg)) {
-                //   // Display the image
-                //   imgElement.src = filePath_jpg;
-                //   imgElement.alt = 'Photo';
-                // } else if (fileExists(filePath_png)) {
-                //   // Display the image
-                //   imgElement.src = filePath_png;
-                //   imgElement.alt = 'Photo';
-                // } else if (fileExists(filePath_jpeg)) {
-                //   // Display the image
-                //   imgElement.src = filePath_jpeg;
-                //   imgElement.alt = 'Photo';
-                // } else {
-                //   console.log('File not found.');
-                // }
-
-                // function fileExists(url) {
-                //   var http = new XMLHttpRequest();
-                //   http.open('HEAD', url, false);
-                //   http.send();
-                //   return http.status !== 404;
-                // }
-
-
-
-
-                // const filePath2_jpg = `../../backend/uploads/sign_${id}_${pers_info}.jpg`;
-                // const filePath2_png = `../../backend/uploads/sign_${id}_${pers_info}.png`;
-                // const filePath2_jpeg = `../../backend/uploads/sign_${id}_${pers_info}.jpeg`;
-
-                // const imgElement2 = document.getElementById('sig');
-                // // imgElement.style.width = '50%';
-                // // imgElement.style.height = '50%';
-
-                // if (fileExists(filePath2_jpg)) {
-                //   // Display the image
-                //   imgElement2.src = filePath2_jpg;
-                //   imgElement2.alt = 'Photo';
-                // } else if (fileExists(filePath2_png)) {
-                //   // Display the image
-                //   imgElement2.src = filePath2_png;
-                //   imgElement2.alt = 'Photo';
-                // } else if (fileExists(filePath2_jpeg)) {
-                //   // Display the image
-                //   imgElement2.src = filePath2_jpeg;
-                //   imgElement2.alt = 'Photo';
-                // } else {
-                //   console.log('File not found.');
-                // }
-
-                // function fileExists(url) {
-                //   var http = new XMLHttpRequest();
-                //   http.open('HEAD', url, false);
-                //   http.send();
-                //   return http.status !== 404;
-                // }
-
-                var ma = $("#ma");
-                var fa = $("#da");
-                var gua = $("#gd");
-                var oth = $("#OTH");
-                // Combine mother's information
-                var motherInfo = [mfname, mlname, mocc, medu, mcn, mage].join(' ').trim();
-                if (motherInfo === '') {
-                    // Handle the case where any of the mother's information is null, undefined, or empty
-                    console.log("ma empty");
-
-                    ma.hide();
-                }
-
-                // Combine father's information
-                var fatherInfo = [ffname, flname, focc, fedu, fcn, fage].join(' ').trim();
-                if (fatherInfo === '') {
-                    // Handle the case where any of the father's information is null, undefined, or empty
-
-                    console.log("da empty");
-                    fa.hide();
-                }
-
-                // Combine guardian's information
-                var guardianInfo = [gfname, glname, gocc, gedu, gcn, gage].join(' ').trim();
-                if (guardianInfo === '') {
-                    // Handle the case where any of the guardian's information is null, undefined, or empty
-                    console.log("gua  empty");
-                    gua.hide();
-
-                }
-                // var oth_schl = [os, os_yg].join(' ').trim();
-                if ((os === '' || os_yg === '') || (os === 'None' || os_yg === '0')) {
-                    // Handle the case where any of the guardian's information is null, undefined, or empty
-                    console.log("oth  empty");
-                    oth.hide();
-
-                }
-
-                console.log("os", os);
-                console.log("os_yg", os_yg);
-            } else {
-                // Handle the case when no results are found
-                console.log('No results found');
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error('Error: ' + error);
-            console.error('Status: ' + status);
-            console.error('Response: ' + xhr.responseText);     
-        }
-    });
-
-
-}
 
 
     
@@ -1017,8 +925,7 @@ function openModal2(id) {
                     const searchInput = document.getElementById('searchInput');
                     
                     
-                console.log(data);
-                // if (data.status===0){
+                // console.log(data);
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
                 var noHistoryMessage1 = $("#noHistoryMessage1"); 
@@ -1030,20 +937,14 @@ function openModal2(id) {
                     var status = entry.status;
                     var tableToAppend = tableBody; 
 
-                    // console.log("transact", S_transact);
                     var row = $("<tr></tr>");
                     row.append("<td>" + entry.date_created + "</td>");
                     row.append("<td>" + entry.transact_type +"</td>");
-                    // row.append("<td>" + entry.reason +"</td>");
                     row.append("<td>" + entry.status + "</td>");
                     var latest =entry.date_edited ? entry.date_edited:"None";
                     row.append("<td>" + latest + "</td>");
-                    // row.append("<td>" + entry.date_edited + "</td>");
                     var rem =entry.remarks ? entry.remarks:"None";
                     row.append("<td>" + rem + "</td>");
-                    // row.append("<td>" + entry.remarks + "</td>");
-                    // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
-                    // var statusText = status == 'pending' ? 'Unread' : 'Read';
                     var statusCell = $("<td></td>");
                     var statusLink = $("<button class='add' onclick='openModal("+entry.transact_id+")'><i class='ri-menu-add-line'></i></button>");
                     statusCell.append(statusLink);
@@ -1052,15 +953,13 @@ function openModal2(id) {
             
                     
                  }
-                 console.log("data",data);
+                //  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage1.hide(); // Hide the no history message if there is data
                     } else {
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
-                    // Initial table population
-                    // filterData();
 
             },
             error: function(xhr, status, error) {
@@ -1070,7 +969,7 @@ function openModal2(id) {
 
 
         });
-// 
+
         $(document).ready(function() {
             // Fetch data using $.ajax
             $.ajax({
@@ -1082,8 +981,7 @@ function openModal2(id) {
                     const searchInput = document.getElementById('searchInput');
                     
                     
-                console.log(data);
-                // if (data.status===0){
+                // console.log(data);
                 var tableBody = $("#dynamicTable2 tbody");
                 var historyTableBody = $("#historyTableBody tbody");
                 var noHistoryMessage1 = $("#noHistoryMessage1"); 
@@ -1103,8 +1001,6 @@ function openModal2(id) {
                     row.append("<td>" + act+ "</td>");
                     var lates =entry.latest_update ? entry.latest_update:"None";
                     row.append("<td>" + lates + "</td>");
-                    // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
-                    // var statusText = status == 'pending' ? 'Unread' : 'Read';
                     var statusCell = $("<td></td>");
                     var statusLink = $("<button class='edit' onclick='openModal2("+entry.appointment_id+")'><i class='ri-pencil-line'></i></button>");
 
@@ -1114,15 +1010,13 @@ function openModal2(id) {
             
                     
                  }
-                 console.log("data",data);
+                //  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage1.hide(); // Hide the no history message if there is data
                     } else {
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
-                    // Initial table population
-                    // filterData();
 
             },
             error: function(xhr, status, error) {

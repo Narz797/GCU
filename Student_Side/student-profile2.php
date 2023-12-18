@@ -206,62 +206,20 @@ $siblings = $siblings->fetchAll();
       <div class="row">
         <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
           <div class="card card-profile shadow">
-              <!-- <div class="row justify-content-center">
-                <div class="col-lg-3 order-lg-2">
-                  <div class="card-profile-image">
-                    <a href="#">
-                      <img src="../assets/img/GCU_logo.png" alt="" width="450px" height="180px" class="rounded-circle">
-                    
-                    </a>
-                  </div>
-                </div>
-              </div> -->
-            <!-- <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-              <div class="d-flex justify-content-between">
-              <a href="#" ></a>
-                
-                <a href="#" class="btn btn-sm btn-default float-right" onclick="logout()">Back</a>
-              </div>
-            </div> -->
 
             <div class="card-body pt-0 pt-md-4">
          
 
               <div class="text-center">
         
-               
-                <!-- <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p> -->
+
                 <?php
-                // $filePath_jpg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
-                // $filePath_png = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.png';
-                // $filePath_jpeg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpeg';
-                // if (file_exists($filePath_jpg)) {
-                //   // Display the image
-                //   echo '<img src="' . $filePath_jpg . '" alt="Photo" style="width: 50%; height: 50% ">';
-                // } elseif (file_exists($filePath_jpg)) {
-                //   // Display the image
-                //   echo '<img src="' . $filePath_png . '" alt="Photo" style="width: 50%; height: 50%">';
-                // } elseif (file_exists($filePath_jpeg)) {
-                //   // Display the image
-                //   echo '<img src="' . $filePath_jpeg . '" alt="Photo" style="width: 50%; height: 50%">';
-                // } else {
-                //   echo 'File not found.';
-                // }
 
                 $stmt = $pdo->prepare("SELECT * FROM photos WHERE stud_user_id = :id");
                 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
                 $stmt->execute();
-                
-                // while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                //   // $filename = $row['filename'];
-                //   $id_type = $row['sign_type'];
-                //   $id_data = $row['sign'];
 
-                //   // Display the image
-                //   echo '<img src="data:' . $id_type . ';base64,' . base64_encode($id_data) . '" alt="id">';
-                // }
                 $photo = $stmt->fetch(PDO::FETCH_ASSOC);
-                // echo '<img src="data:' . $photo['sign_type'] . ';base64,' . base64_encode($photo['sign']) . '" alt="id">';
                 echo '<img src="data:' . $photo['sign_type'] . ';base64,' . base64_encode($photo['sign']) . '" alt="id" style="width: 100%; height: auto;">';
 
                 ?>
@@ -271,36 +229,11 @@ $siblings = $siblings->fetchAll();
                 <hr style=" border-width: 3px; background-color:black;">
                 <br>
                 <?php
-                // $filePath_jpg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpg';
-                // $filePath_png = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.png';
-                // $filePath_jpeg = '../backend/uploads/id_' . $id . '_' . $pers_info[0]['last_name'] . '.jpeg';
-                // if (file_exists($filePath_jpg)) {
-                //   // Display the image
-                //   echo '<img src="' . $filePath_jpg . '" alt="Photo" style="width: 50%; height: 50%">';
-                // }
-                // elseif(file_exists($filePath_jpg)) {
-                //   // Display the image
-                //   echo '<img src="' . $filePath_png . '" alt="Photo" style="width: 50%; height: 50%">';
-                // }
-                // elseif(file_exists($filePath_jpeg)) {
-                //   // Display the image
-                //   echo '<img src="' . $filePath_jpeg . '" alt="Photo" style="width: 50%; height: 50%">';
-                // }
-                // else {
-                //   echo 'File not found.';                      
-                // }
+
                 $stmt = $pdo->prepare("SELECT * FROM photos WHERE stud_user_id = :id");
                 $stmt->bindParam(":id", $id, PDO::PARAM_INT);
                 $stmt->execute();
 
-                // while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                //   // $filename = $row['filename'];
-                //   $id_type = $row['image_type'];
-                //   $id_data = $row['id'];
-
-                //   // Display the image
-                //   echo '<img src="data:' . $id_type . ';base64,' . base64_encode($id_data) . '" alt="id">';
-                // }
                 $photo = $stmt->fetch(PDO::FETCH_ASSOC);
                 echo '<img src="data:' . $photo['image_type'] . ';base64,' . base64_encode($photo['id']) . '" alt="id" style="width: 100%; height: auto;">';
 
@@ -380,8 +313,6 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Course</label>
-                        <!-- Editable -->
-                        <!-- <input type="text" class="form-control form-control-alternative" id="crse" readonly value =  "<?php echo $pers_info[0]['course'] ?>"> -->
                         <select name='course' class="form-control form-control-alternative" id="crse" disabled>
                                 <option disabled selected><?php echo $pers_info[0]['course']; ?></option>
                                 <option value='BSAB'>Bachelor of Science in Agribusiness</option>
@@ -425,8 +356,6 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Year Level</label>
-                        <!-- Editable -->
-                        <!-- <input type="text" class="form-control form-control-alternative" id="YL" readonly value =  ""> -->
                         <select class="form-control form-control-alternative" name='year_level' id="YL" disabled>
                                 <option disabled selected><?php echo $pers_info[0]['Year_level']; ?></option>
                                 <option value='1'>1st</option>
@@ -442,7 +371,6 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Section</label>
-                        <!-- Editable -->
                         <input type="text" class="form-control form-control-alternative" id="sec" readonly value =  "<?php echo $pers_info[0]['Section'] ?>" oninput="limitToSingleCharacter(event)">
                       </div>
                     </div>
@@ -450,7 +378,6 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Contact Number</label>
-                        <!-- Editable -->
                         <input type="number" class="form-control form-control-alternative" id="CN" readonly value =  "<?php echo $pers_info[0]['Contact_number'] ?>" oninput="limitTo11Digits(event)">
                       </div>
                     </div>
@@ -458,8 +385,7 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Civil Status</label>
-                        <!-- Editable -->
-                        <!-- <input type="text" class="form-control form-control-alternative" id="CS" readonly value =  "<?php echo $pers_info[0]['Civil_status'] ?>"> -->
+
                         <select class="form-control form-control-alternative" id="CS"  name='civil_status' disabled>
                                 <option disabled selected><?php echo $pers_info[0]['Civil_status'];?></option>
                                 <option>Single</option>
@@ -498,7 +424,6 @@ $siblings = $siblings->fetchAll();
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">House#/St./Brgy./Municipality/Province/Zip Code</label>
-                        <!-- Editable -->
                         <input type="text" class="form-control form-control-alternative" id="address" readonly value =  "<?php echo $pers_info[0]['Address'] ?>">
                       </div>
                     </div>
@@ -506,7 +431,6 @@ $siblings = $siblings->fetchAll();
                   </div>
                 </div>
                 <hr class="my-4">
-                <!-- Family Bacground -->
                 <h3>FAMILY BACKGROUND</h3>
                 <div id='parents'>
                   <h1 class="heading-small text-muted mb-4">FATHER</h1>
@@ -514,15 +438,7 @@ $siblings = $siblings->fetchAll();
 
 
                   <div class="pl-lg-4">
-                    <!-- <div class="row">
-    <div class="col-md-12">
-      <div class="form-group focused">
-        <label class="form-control-label" for="input-address">Parents (Father)</label>
-        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
-      
-      </div>
-    </div>
-  </div> -->
+
 
                     <div class="row">
 
@@ -548,14 +464,14 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-city">Age</label>
-                          <!-- Editable -->
+
                           <input type="number"  class="form-control form-control-alternative" id="Fage" readonly value =  "<?php echo $father_info[0]['age'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-country">Occupation</label>
-                          <!-- Editable -->
+   
                           <input type="text"  class="form-control form-control-alternative" id="Focc" readonly value =  "<?php echo $father_info[0]['occupation'] ?>">
                         </div>
                       </div>
@@ -569,7 +485,7 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Contact Number</label>
-                          <!-- Editable -->
+      
                           <input type="number"  class="form-control form-control-alternative" id="Fcn" readonly value =  "<?php echo $father_info[0]['contact'] ?>" oninput="limitTo11Digits(event)">
                         </div>
                       </div>
@@ -582,15 +498,7 @@ $siblings = $siblings->fetchAll();
 
 
                   <div class="pl-lg-4">
-                    <!-- <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group focused">
-                        <label class="form-control-label" for="input-address">Parents (Father)</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
-                      
-                      </div>
-                    </div>
-                  </div> -->
+    
                     <div class="row">
 
                       <div class="col-lg-4">
@@ -615,14 +523,14 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-city">Age</label>
-                          <!-- Editable -->
+    
                           <input type="number"  class="form-control form-control-alternative" id="Mage" readonly value =  "<?php echo $mother_info[0]['age'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-country">Occupation</label>
-                          <!-- Editable -->
+                 
                           <input type="text"  class="form-control form-control-alternative" id="Mocc" readonly value = "<?php echo $mother_info[0]['occupation'] ?>">
                         </div>
                       </div>
@@ -635,7 +543,7 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Contact Number</label>
-                          <!-- Editable -->
+ 
                           <input type="number" class="form-control form-control-alternative" id="Mcn" readonly value = "<?php echo $mother_info[0]['contact'] ?>" oninput="limitTo11Digits(event)">
                         </div>
                       </div>
@@ -652,15 +560,7 @@ $siblings = $siblings->fetchAll();
 
 
                   <div class="pl-lg-4">
-                    <!-- <div class="row">
-      <div class="col-md-12">
-        <div class="form-group focused">
-          <label class="form-control-label" for="input-address">Parents (Father)</label>
-          <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
-        
-        </div>
-      </div>
-    </div> -->
+
                     <div class="row">
 
                       <div class="col-lg-4">
@@ -685,14 +585,14 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-city">Age</label>
-                          <!-- Editable -->
+
                           <input type="number" class="form-control form-control-alternative" id="Gage" readonly value =  "<?php echo $guardian_info[0]['age'] ?>">
                         </div>
                       </div>
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-country">Occupation</label>
-                          <!-- Editable -->
+
                           <input type="text"  class="form-control form-control-alternative" id="Gocc" readonly value =  "<?php echo $guardian_info[0]['occupation'] ?>">
                         </div>
                       </div>
@@ -706,7 +606,7 @@ $siblings = $siblings->fetchAll();
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country"> Contact Number</label>
-                          <!-- Editable -->
+       
                           <input type="number"  class="form-control form-control-alternative" id="Gcn" readonly value =  "<?php echo $guardian_info[0]['contact'] ?>" oninput="limitTo11Digits(event)">
                         </div>
                       </div>
@@ -718,7 +618,7 @@ $siblings = $siblings->fetchAll();
                 </div>
 
                 <hr class="my-4">
-                <!-- Description -->
+        
                 <h6 class="heading-small text-muted mb-4">SIBLINGS</h6>
 
                 <div class="scrollable-table">
@@ -748,7 +648,7 @@ $siblings = $siblings->fetchAll();
                 </div>
 
                 <hr class="my-4">
-                <!-- Description -->
+              
                 <h3>EDUCATIONAL BACKGROUND</h3>
                 <h6 class="heading-small text-muted mb-4">SENIOR HIGHSCHOOL</h6>
 
@@ -881,10 +781,7 @@ $siblings = $siblings->fetchAll();
                         <label class="form-control-label" for="input-username">Are you a member of an Indigenous group?</label>
                         <input type="text" id="indige" class="form-control form-control-alternative" readonly value="<?php echo $pers_info[0]['IG'] ?>  <?php echo $pers_info[0]['specificIG'] ?>">
 
-                        <!-- If yes, specify ilagay mo nalang beside yes example (Yes-Tas anong indigenous group belong) -->
-                        <!-- <br>
-                          <input type="text" id="s_name" class="form-control form-control-alternative">Yes -->
-
+                
 
                       </div>
                     </div>
@@ -911,51 +808,44 @@ $siblings = $siblings->fetchAll();
             </div>
           </div>
 
-          <!-- <div class="pl-lg-4">
-                  <div class="form-group focused">
-                  <label >Are you a student parent?</label>
-                    <input class="form-control form-control-alternative" >No
-                  </div>
-                </div> -->
 
           <hr class="my-4">
           <!-- Description -->
-          <!-- Editable -->
+
           <h3 class="heading-small " style="color:black; font-weight: bold">SOURCES OF FINANCIAL SUPPORT</h3>
 
 
           <input type="checkbox" id="FS_parent" value="Parents" disabled <?php echo $checkedOption1 ?>>
-          <!-- <i class="fa fa-check"></i> -->
+
           <label for="checkbox1" class="custom-checkbox-label">Parent</label>
           <br>
 
           <input type="checkbox" id="FS_ss" value="Self" disabled <?php echo $checkedOption2; ?>>
-          <!-- <i class="fa fa-check"></i> -->
+
           <label for="checkbox2">Self Supporting</label>
           <br>
 
           <input type="checkbox" id="FS_rg" value="Relatives" disabled <?php echo $checkedOption3; ?>>
-          <!-- <i class="fa fa-check"></i> -->
+    
           <label for="checkbox3">Relative and/or Guardian</label>
           <br>
 
           <input type="checkbox" id="FS_sch" onchange="toggleInput('FS_sch', 'FS_sch2')" value="Scholarship" disabled <?php echo $checkedOption4; ?>>
-          <!-- <i class="fa fa-check"></i> -->
+ 
           <label for="checkbox4">Scholarship - <input id="FS_sch2"  readonly value="<?php if ($oth_info[0]['specific_scholar']) {
                                                                     echo $oth_info[0]['specific_scholar'];
                                                                   } ?>"></label>
           <br>
 
           <input type="checkbox" id="FS_oth" onchange="toggleInput('FS_oth', 'FS_oth2')" value="Others" disabled <?php echo $checkedOption5; ?>>
-          <!-- <i class="fa fa-check"></i> -->
+ 
           <label for="checkbox5">Others - <input id="FS_oth2"  readonly value="<?php if ($oth_info[0]['specific_other']) {
                                                                 echo $oth_info[0]['specific_other'];
                                                               } ?>"></label>
 
 
           <hr class="my-4">
-          <!-- Description -->
-          <!-- Editable -->
+   
           <h6 class="heading-small" style="color:black; font-weight: bold">MARITAL STATUS OF PARENT</h6>
 
 
@@ -978,11 +868,10 @@ $siblings = $siblings->fetchAll();
           <input type="radio" name="MS" id="MS_wid" value="widow" disabled <?php echo $checkmarital6; ?>>
           <label for="checkbox1" class="custom-checkbox-label">Widow/widower.</label>
 
-          <!-- </div> -->
-          <!-- </div> -->
+
 
           <hr class="my-4">
-          <!-- Description -->
+
           <h6 class="heading-small" style="color:black; font-weight: bold">More About Me</h6>
           <div class="pl-lg-4">
             <div class="form-group focused ok">
@@ -1035,20 +924,7 @@ $siblings = $siblings->fetchAll();
               <span id="MAM_goal"><?php echo $oth_info[0]['goal'] ?>.</span>
 
             </div>
-            <!-- <div class="fixed-buttons">
-            <div class="col-4 text-right">
-                  <a class="btn btn-sm btn-primary" id="Update" style="color: white;" onclick="verify()">
-                    <i class="fa fa-pencil"></i> Update
-                  </a>
-                </div>
 
-                <div class="col-4 text-right">
-                  <a class="btn btn-sm btn-primary" id="Cancel" style="color: white;" onclick="cancel()">
-                    <i class="fa fa-pencil"></i> Cancel
-                  </a>
-                </div>
-                                                            </div> -->
-            <!-- <button id="Update" onclick="upd()">Update</button> -->
 
             </form>
 
@@ -1092,15 +968,6 @@ $siblings = $siblings->fetchAll();
     <button onclick="cancel()" class="btnText1" id="Cancel"><span class="btnText">Cancel</span>&nbsp<i class="ri-arrow-left-circle-line"></i></button>  
 </div>
   <div id="topbar" class="topbar d-flex align-items-center" style="background-color:#008B8B; height: 50px; "> </div>
-  <!-- <footer class="footer">
-    <div class="row align-items-center justify-content-xl-between">
-      <div class="col-xl-6 m-auto text-center">
-        <div class="copyright">
-          <p>Made with <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank">Argon Dashboard</a> by Creative Tim</p>
-        </div>
-      </div>
-    </div>
-  </footer> -->
 
   <!-- Add this script tag to your HTML file -->
 
@@ -1113,23 +980,14 @@ $siblings = $siblings->fetchAll();
     }
     function goback() {
 
-      // Display a confirmation prompt
-      // var confirmation = confirm('Are you sure you want to log out?');
-
-      // // Check if the user clicked "Yes"
-      // if (confirmation) {
-      // Redirect to appointment.php
       window.location.href = 'index.php';
-      // } else {
-      //   // The user clicked "No," you can add additional handling if needed
-      //   console.log('Logout canceled');
-      // }
+
     };
     var eID = "<?php echo $_SESSION['session_id'];?>";
 function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
+  
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -1147,7 +1005,7 @@ function logout() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -1196,16 +1054,15 @@ function logout() {
               confirmButtonText: "OK",
 
             }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
+             
                 if (result.isConfirmed) {
-                  // window.location.reload();
+              
                 } 
               });
    
   
 
-     
-        // add location to enter code
+
       },
                   error: function (xhr, status, error) {
                     console.error("Error:", error);
@@ -1262,7 +1119,7 @@ function toggleInput(chk, lbl) {
             element.classList.remove('highlight');
         }
         function edit() {
-    console.log("Edit btn clicked");
+    // console.log("Edit btn clicked");
     cnl.show();
     upd.show();
     pass.show();
@@ -1341,18 +1198,10 @@ function toggleInput(chk, lbl) {
      ps.removeAttribute('disabled');
      wid.removeAttribute('disabled');
 
-    // Add event listeners for focus and blur events
-    // email.addEventListener('focus', function () {
-    //     addHighlight(email);
-    // });
 
     email.style.border = '2px solid yellow';
     email.style.padding = '1rem 0.75rem';
     email.style.height = 'auto';
-
-    // pass.style.border = '2px solid yellow';
-
-    // pass2.style.border = '2px solid yellow';
 
     crse.style.border = '2px solid yellow';
     crse.style.padding = '1rem 0.75rem';
@@ -1419,41 +1268,6 @@ function toggleInput(chk, lbl) {
 }
 function cancel(){
 
-  // email.style.border = '';
-
-  //       crse.style.border = '';
-
-  //       yl.style.border = '';
-
-        
-  //       sec.style.border = '';
-
-  //       cn.style.border = '';
-
-  //       cs.style.border = '';
-
-  //       adrs.style.border = '';
-
-  //       fage.style.border = '';
-
-  //       focc.style.border = '';
-
-  //       fcn.style.border = '';
-
-  //       mage.style.border = '';
-
-  //       mocc.style.border = '';
-
-  //       mcn.style.border = '';
-
-  //       gage.style.border = '';
-
-  //       gocc.style.border = '';
-
-  //       gcn.style.border = '';
-
-
-
   location.reload();
   cnl.hide();
   upd.hide();
@@ -1479,7 +1293,7 @@ function verify(){
       });
 
           
-    console.log("performing ajax");
+    // console.log("performing ajax");
     $.ajax({
       type: 'POST',
       url: '../backend/forgot_pass.php',
@@ -1519,6 +1333,7 @@ function verify(){
       success: function(data) {
         // Hide loading spinner on success
         swal.close();
+        // console.log(data);
         if (data === "unregistered") {
 
           
@@ -1534,7 +1349,7 @@ function verify(){
                       
                     } 
                   });
-          console.log(data);
+          // console.log(data);
           
         } else {
             Swal.fire({
@@ -1549,7 +1364,7 @@ function verify(){
                 
                 } 
               });
-              console.log("Success",data)
+              // console.log("Success",data)
 
 
         }
@@ -1585,7 +1400,7 @@ function verify(){
                 
                 } 
               });
-              console.log("Success",data)
+              // console.log("Success",data)
 
 
         }
@@ -1605,7 +1420,7 @@ function verify(){
 
 }
     function update(){
-      console.log("Upd btn clicked");
+      // console.log("Upd btn clicked");
                     // Get the select element by its ID
                     // student_user
                     var email = document.getElementById('email').value;
@@ -1657,10 +1472,6 @@ function verify(){
                               break;
                           }
                       }
-                    console.log("id: ", id);
-                    console.log("crse: ", crse);
-                    console.log("chk: ", checkboxValues);
-                    console.log("MS: ", selectedValue);
 
                     
               $.ajax({
@@ -1709,11 +1520,8 @@ function verify(){
           });
             }
             else{
-            console.log("Server Response:", data);
-            // Swal.fire({
-            //   icon: "success",
-            //   title: "Information Updated!"
-            // });
+            // console.log("Server Response:", data);
+  
             Swal.fire({
               icon: "success",
               title: "Information Updated!",
@@ -1736,29 +1544,11 @@ function verify(){
             success: function(response) {
               // Handle the response if needed
             
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
-            console.log("Updated:", data);
-            // crse.disabled = true;
+            // console.log("Updated:", data);
 
-            // 
-            // yl.setAttribute('readonly', true);
-            //   sec.setAttribute('readonly', true);
-            //   cn.setAttribute('readonly', true);
-            //   cs.setAttribute('readonly', true);
-            //   adrs.setAttribute('readonly', true);
-            //   fage.setAttribute('readonly', true);
-            //   focc.setAttribute('readonly', true);
-            //   fcn.setAttribute('readonly', true);
-            //   mage.setAttribute('readonly', true);
-            //   mocc.setAttribute('readonly', true);
-            //   mcn.setAttribute('readonly', true);
-            //   gage.setAttribute('readonly', true);
-            //   gocc.setAttribute('readonly', true);
-            //   gcn.setAttribute('readonly', true);
-
-            // 
             cnl.hide();
             upd.hide();
      pass.hide();
@@ -1779,22 +1569,10 @@ function verify(){
         });
     
 
-                      // Remove the 'disabled' attribute
-      //                 crse.disabled = true;
-
-      // upd.hide();
 
     }
 
   </script>
 
-
-
-
-
-
-
-
-<script src="assets/main.js"></script> 
 </body>
 </html>

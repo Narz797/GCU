@@ -233,7 +233,6 @@ function clearSearchResults2() {
 function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -251,7 +250,7 @@ function logout() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -269,8 +268,7 @@ function logout() {
             type: "GET",
             dataType: "json",
             success: function (data) {
-                console.log(data);
-                // if (data.status===0){
+                // console.log(data);
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
                 var noHistoryMessage2 = $("#noHistoryMessage2"); 
@@ -296,10 +294,6 @@ function logout() {
                         }
                    
                     row.append("<td>" + entry.date_edited + "</td>");
-                    
-
-                    // row.append("<td>" + entry.status + "</td>");
-                     // Check the value of entry.status and set the class and text accordingly
 
                     tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
@@ -312,7 +306,7 @@ function logout() {
                                 lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
                                 pageLength: 5, // Initial number of rows per page
                             });
-                 console.log("data",data);
+                //  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage2.hide(); // Hide the no history message if there is data
@@ -382,7 +376,6 @@ function exportToExcel() {
 
 
     </script>
-<script src="../assets/main.js"></script>
 <script src="../assets/js/count.js"></script>   
 <?php include '../includes/footer1.php' ?>
 </body>

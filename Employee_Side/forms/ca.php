@@ -1,9 +1,6 @@
 <?php
 session_start();
 include '../../backend/log_audit2.php';
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
-  // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     ?>
@@ -128,10 +125,6 @@ include '../../backend/log_audit2.php';
                   
                   <div>
                   <h2 class="title" id="DAT"> Dates Absent/Tardy:</h2>
-                  <!-- <p class="card-description refer">Counseling</p>
-                  <p class="card-description refer">Academic Deficiency/ies</p>
-                  <p class="card-description refer">Absent on October 5 - 8, 2025</p>
-                  <p class="card-description refer">Tardy on October 5, 2025</p> -->
                   <p class="card-description refer" id="dates">Counseling</p>
                   
                   <br>
@@ -141,7 +134,6 @@ include '../../backend/log_audit2.php';
                 </div>
                   
                   <div class="center-attached">
-                  <!-- <img src="" title="No Attached Document" id="attachment1"> -->
                   <br>
                   <br>
                   <br>
@@ -153,21 +145,9 @@ include '../../backend/log_audit2.php';
                   <div id="attachmentContainer" class="DA" >
                   <i class="ri-file-4-fill"></i>
                   </div>
-
-                  <!-- <img src="" title="No Attached Document" id="attachment2">
-                  <img src="" title="No Attached Document" id="attachment3"> -->
                   </div>
                 </div> 
                 </div>
-
-                <!-- <div>
-                  <h2 class="title" id="TR">Remarks</h2>
-                  <p class="card-description refer">Counseling</p>
-                  <p class="card-description refer">Academic Deficiency/ies</p>
-                  <p class="card-description refer">Absent on October 5 - 8, 2025</p>
-                  <p class="card-description refer">Tardy on October 5, 2025</p>
-                  <p class="card-description refer" id="rem">Remarks</p>
-                </div> -->
                 <div class="action">
                  <button class="yes" onclick="status_update('Excused')">Excused&nbsp<i class="ri-checkbox-circle-line"></i></button>
                  <button class="no" onclick="status_update('Unexcused')">Unexcused&nbsp<i class="ri-timer-2-line"></i></button>
@@ -194,7 +174,6 @@ include '../../backend/log_audit2.php';
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -212,7 +191,7 @@ include '../../backend/log_audit2.php';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -231,7 +210,7 @@ function archive() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../subpage/archive.php';
@@ -284,8 +263,7 @@ function archive() {
 
 }
 function fetchData() {
-console.log('AJAX request started');
-console.log('<?php echo $form?>');
+
 $.ajax({
 type: 'GET',
 url: '../../backend/get_form.php',
@@ -326,7 +304,7 @@ if (data.length > 0) {
     var specs = studentData.specifics;
     var rem = studentData.remarks;
     var AOT = studentData.date_of_AbsentOrTardy;
-    console.log(fname);
+    // console.log(fname);
     updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, reason, coa, specs, rem, AOT);
 
     // Display the blob data as images
@@ -334,43 +312,43 @@ if (data.length > 0) {
 
     if (rem !== undefined && rem !== null && rem.trim() !== "") {
                     // The variable 'rem' has a non-empty value
-                    console.log("Variable 'rem' has a non-empty value:", rem);
+                    // console.log("Variable 'rem' has a non-empty value:", rem);
 
                 } else {
                     // The variable 'rem' is either undefined, null, or an empty string
-                    console.log("Variable 'rem' is either undefined, null, or an empty string.");
+                    // console.log("Variable 'rem' is either undefined, null, or an empty string.");
                     $('#TR').hide();
                 }
                 if (AOT !== undefined && AOT !== null && AOT.trim() !== "") {
                     // The variable 'rem' has a non-empty value
-                    console.log("Variable 'AOT' has a non-empty value:", AOT);
+                    // console.log("Variable 'AOT' has a non-empty value:", AOT);
                 } else {
                     // The variable 'rem' is either undefined, null, or an empty string
-                    console.log("Variable 'AOT' is either undefined, null, or an empty string.");
+                    // console.log("Variable 'AOT' is either undefined, null, or an empty string.");
                     $('#DAT').hide();
                     $('#dates').hide();
                 }
                 if (specs !== undefined && AOT !== null && specs.trim() !== "") {
                     // The variable 'rem' has a non-empty value
-                    console.log("Variable 'Specs' has a non-empty value:", specs);
+                    // console.log("Variable 'Specs' has a non-empty value:", specs);
                 } else {
                     // The variable 'rem' is either undefined, null, or an empty string
-                    console.log("Variable 'Specs' is either undefined, null, or an empty string.");
+                    // console.log("Variable 'Specs' is either undefined, null, or an empty string.");
                     $('#specs').hide();
                   
                 }  if (coa !== undefined && AOT !== null && coa.trim() !== "") {
                     // The variable 'rem' has a non-empty value
-                    console.log("Variable 'coa' has a non-empty value:", coa);
+                    // console.log("Variable 'coa' has a non-empty value:", coa);
                 } else {
                     // The variable 'rem' is either undefined, null, or an empty string
-                    console.log("Variable 'coa' is either undefined, null, or an empty string.");
+                    // console.log("Variable 'coa' is either undefined, null, or an empty string.");
                     $('#cause').hide();
                   
                 }
   
 } else {
     // Handle the case when no results are found
-    console.log('No results found', data);
+    // console.log('No results found', data);
 }
 },
 error: function (xhr, status, error) {
@@ -453,7 +431,7 @@ function displayBlobFiles(studentData) {
 
 function status_update(status){
     // update status to pendig here
-    console.log("Updating status");
+    // console.log("Updating status");
     $.ajax({
   type: 'POST',
   url: '../../backend/update_forms/update_ca.php',
@@ -465,7 +443,7 @@ function status_update(status){
     rsn: rsn
   },
   success: function (data) {
-    console.log("Remarked:", data);
+    // console.log("Remarked:", data);
 
     
             Swal.fire({
@@ -487,7 +465,7 @@ function status_update(status){
                     },
                     success: function(response) {
                     // Handle the response if needed
-                    console.log("logged", response);
+                    // console.log("logged", response);
                     }
                 });
                 } 

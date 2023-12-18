@@ -2,7 +2,7 @@
 session_start();
 // include '../backend/register_user.php';
 // include '../backend/connect_database.php';
-$_SESSION['origin'] = 'Teacher_Register';
+$_SESSION['origin'] = 'Teacher';
 ?>
 
 <!DOCTYPE html>
@@ -363,7 +363,7 @@ success: function(data) {
                     },
             });
     
-    console.log("performing ajax");
+    // console.log("performing ajax");
     $.ajax({
       type: 'POST',
       url: '../backend/email_verify.php',
@@ -386,7 +386,7 @@ success: function(data) {
                       
                     } 
                   });
-          console.log(data);
+        //   console.log(data);
           
         } else {
             Swal.fire({
@@ -401,7 +401,7 @@ success: function(data) {
                 
                 } 
               });
-              console.log("Success",data)
+            //   console.log("Success",data)
 
                 // verify();
 
@@ -429,7 +429,7 @@ success: function(data) {
                     // ----------------------------------------------
              function verify() {
                     event.preventDefault();
-                    console.log("performing ajax for code verify");
+                    // console.log("performing ajax for code verify");
                     $.ajax({
                     type: 'POST',
                     url: '../backend/verify.php',
@@ -437,7 +437,7 @@ success: function(data) {
                         code: $("#code").val()
                     },
                     success: function(data) {
-                        console.log("code recieved", data)
+                        // console.log("code recieved", data)
                         if (data === "Code Verified") {
                             Swal.fire({
                                 icon: "sucess",
@@ -449,7 +449,7 @@ success: function(data) {
                                     if (result.isConfirmed) {
                                 
                            
-                        console.log("verified",data)
+                        // console.log("verified",data)
                         
                             
                                     // code to fully register
@@ -487,7 +487,7 @@ success: function(data) {
                                                                     /* Read more about isConfirmed, isDenied below */
                                                                     if (result.isConfirmed) {
                                                                         document.getElementById("modal").style.display = "none";
-                                                                         console.log("Error",data);
+                                                                        //  console.log("Error",data);
                                                                     } 
                                                                 });
                                         
@@ -503,7 +503,7 @@ success: function(data) {
                                                                     if (result.isConfirmed) {
                                                                         // document.getElementById("modal").style.display = "none";
                                         
-                                                                        console.log("Error",data);
+                                                                        // console.log("Error",data);
                                                                     } 
                                                                 });
 
@@ -530,7 +530,7 @@ success: function(data) {
           
                 } 
               });
-                        console.log(data);
+                        // console.log(data);
                         }
                     
                         // add location to enter code

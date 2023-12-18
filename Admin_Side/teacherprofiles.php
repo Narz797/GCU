@@ -1,6 +1,5 @@
 <?php 
 session_start();
-// Include the log_audit.php file
 include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
@@ -114,22 +113,15 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
                 <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center">
                     <i class="ri-function-line"></i>
                 </button>
-                <!-- <button class="icon-btn theme-toggle-btn place-items-center">
-                    <i class="ri-sun-line theme-light-icon"></i>
-                    <i class="ri-moon-line theme-dark-icon"></i>
-                </button> -->
                 <button class="icon-btn place-items-center" onclick="logout()">
                     <i class="ri-user-3-line"></i>
                 </button>
             </div>
         </nav>
     </header>
-    <!-- Welcome-message -->
+
 
     <section>
-   
-        <!-- <div class="block">
-        </div> -->
         <div class="title independent-title"  >
             <h2>Teacher Accounts</h2>
             <br>
@@ -194,8 +186,6 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
     <br>
     
     <!-- Script     -->
-    <script src="assets/main.js"></script>
-    <!-- <script src="assets/js/table.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>var eID = "<?php echo $_SESSION['session_id'];?>";
@@ -279,7 +269,6 @@ function clearSearchResults2() {
         function logout() {
             Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -297,7 +286,7 @@ function clearSearchResults2() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
             window.location.href = '../home';
@@ -308,7 +297,6 @@ function clearSearchResults2() {
 
         $(document).ready(function() {
             function get_data(){
-            // Fetch data using $.ajax
             $.ajax({
                 url: "../backend/search_teacher.php",
                 type: 'GET',
@@ -320,8 +308,7 @@ function clearSearchResults2() {
                         'male': './assets/images/male.jpg',
                         'female': './assets/images/female.jpg'
                     };
-                    console.log(data);
-                    // if (data.status===0){
+                    // console.log(data);
                     var tableBody = $("#dynamicTable tbody");
                     var historyTableBody = $("#historyTableBody tbody");
                     var noHistoryMessage1 = $("#noHistoryMessage1");
@@ -347,17 +334,15 @@ function clearSearchResults2() {
                         var row = $("<tr></tr>");
                         var cell = $("<td></td>");
                         cell.append(image); 
-                        cell.append("</br>" + entry.employee_id);//
+                        cell.append("</br>" + entry.employee_id);
                         row.append(cell);
-                        row.append("<td>" + entry.last_name + "</td>");//
-                        row.append("<td>" + entry.first_name + "</td>");//
+                        row.append("<td>" + entry.last_name + "</td>");
+                        row.append("<td>" + entry.first_name + "</td>");
                         row.append("<td>" + entry.middle_name + "</td>");
-                        row.append("<td>" + entry.gender + "</td>");//
-                        row.append("<td>" + entry.email + "</td>");//
-                        row.append("<td>" + entry.contact_number + "</td>");//
-                        row.append("<td>" + entry.college + "</td>");//college
-                        // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
-                        // var statusText = status == 'pending' ? 'Unread' : 'Read';
+                        row.append("<td>" + entry.gender + "</td>");
+                        row.append("<td>" + entry.email + "</td>");
+                        row.append("<td>" + entry.contact_number + "</td>");
+                        row.append("<td>" + entry.college + "</td>");
                         var statusCell = $("<td></td>");
                         var statusLink = $("<button class='yes' onclick='del_emp(" + entry.employee_id + ")'><i class='ri-delete-bin-5-line'></i></button>");
                         statusCell.append(statusLink);
@@ -369,16 +354,13 @@ function clearSearchResults2() {
   
 
                     
-                    console.log("data", data);
+                    // console.log("data", data);
                     var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                         noHistoryMessage1.hide(); // Hide the no history message if there is data
                     } else {
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
-                    // Initial table population
-                    // filterData();
-
                     // Add Sorting Event Listeners
                     const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
                     const tableHeadings = document.querySelectorAll('#dynamicTable th');
@@ -447,7 +429,7 @@ function clearSearchResults2() {
                                     location.reload();
                                 } 
                             });
-                        console.log(response);
+                        // console.log(response);
                    
 
                         
@@ -461,7 +443,7 @@ function clearSearchResults2() {
                             },
                             success: function(response) {
                             // Handle the response if needed
-                            console.log("logged", response);
+                            // console.log("logged", response);
                             }
                         });
                     },
@@ -480,24 +462,6 @@ function clearSearchResults2() {
   });
 
             }
-
-        // function view_student(stud_id) {
-        //     // alert(stud_id);
-
-        //     // Send stud_id to the server using an AJAX request
-        //     $.ajax({
-        //         type: 'POST', // You can use POST to send data securely
-        //         url: '../backend/session_teach.php', // PHP script that sets the session variable
-        //         data: {
-        //             user_id: stud_id
-        //         },
-        //         success: function(response) {
-        //             // Handle the response from the server, if needed
-        //             console.log(response);
-        //             window.location.href = 'editteach.php';
-        //         }
-        //     });
-        // }
 
 
         // export to excel
@@ -539,7 +503,7 @@ function clearSearchResults2() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
         }
@@ -590,7 +554,7 @@ function clearSearchResults2() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
         }

@@ -1,6 +1,5 @@
 <?php 
 session_start();
-// Include the log_audit.php file
 include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
@@ -56,33 +55,19 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js" />
-    <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
-
     <!-- pagination -->
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
-
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <!-- DataTables JS -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
-
-
-
-
-
-
-
 </head>
 <style>
 </style>
@@ -128,12 +113,10 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
             </div>
         </nav>
     </header>
-    <!-- Welcome-message -->
+
 
     <section>
-   
-        <!-- <div class="block">
-        </div> -->
+
         <div class="title independent-title" >
             <h2 style="color:black;">Employee Profiles</h2>
         </div>
@@ -196,7 +179,6 @@ logAudit($id, 'access_empoyee profile',  'Admin has accessed the empoyee profile
     
     <!-- Script     -->
     <script src="assets/main.js"></script>
-    <!-- <script src="assets/js/table.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>var eID = "<?php echo $_SESSION['session_id'];?>";
@@ -280,7 +262,6 @@ function clearSearchResults2() {
 function logout() {
             Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -297,7 +278,6 @@ function logout() {
               details: eID + 'Admin Clicked log out'
             },
             success: function(response) {
-              // Handle the response if needed
               console.log("logged", response);
             }
           });
@@ -309,7 +289,6 @@ function logout() {
 
         $(document).ready(function() {
             function get_data(){
-            // Fetch data using $.ajax
             $.ajax({
                 url: "../backend/search_employee.php",
                 type: 'GET',
@@ -321,8 +300,7 @@ function logout() {
                         'male': './assets/images/male.jpg',
                         'female': './assets/images/female.jpg'
                     };
-                    console.log(data);
-                    // if (data.status===0){
+                    // console.log(data);
                     var tableBody = $("#dynamicTable tbody");
                     var historyTableBody = $("#historyTableBody tbody");
                     var noHistoryMessage1 = $("#noHistoryMessage1");
@@ -334,8 +312,6 @@ function logout() {
                         var entry = data[i];
                         var status = entry.status;
                         var tableToAppend = tableBody;
-                        // Determine which table to append to
-                        // Create an image element based on gender
 
                         const image = document.createElement('img');
                         image.style.display = 'block'; // Display the image above the text
@@ -357,8 +333,6 @@ function logout() {
                         row.append("<td>" + entry.email + "</td>");
                         row.append("<td>" + entry.contact + "</td>");
                         row.append("<td>" + entry.position + "</td>");
-                        // var statusClass = status == 'pending' ? 'status delivered' : 'status cancelled';
-                        // var statusText = status == 'pending' ? 'Unread' : 'Read';
                         var statusCell = $("<td></td>");
                         var statusLink = $("<button class ='yes' onclick='view_student(" + entry.admin_user_id + ")'><i class='ri-edit-2-fill'></i></button> <button class='yes' onclick='del_emp(" + entry.admin_user_id + ")'><i class='ri-delete-bin-5-line'></i></button>");
                         statusCell.append(statusLink);
@@ -367,7 +341,7 @@ function logout() {
 
 
                     }
-                                      console.log("data", data);      // Initialize DataTables for pagination
+                                    //   console.log("data", data);      // Initialize DataTables for pagination
                             $('#dynamicTable').DataTable({
                                 paging: true,
                                 searching: false,
@@ -382,8 +356,6 @@ function logout() {
                     } else {
                         noHistoryMessage1.show(); // Show the no history message if no data
                     }
-                    // Initial table population
-                    // filterData();
 
                     // Add Sorting Event Listeners
                     const table_rows = document.querySelectorAll('#dynamicTable tbody tr');
@@ -440,12 +412,11 @@ function logout() {
                             confirmButtonText: "OK",
 
                             }).then((result) => {
-                                /* Read more about isConfirmed, isDenied below */
                                 if (result.isConfirmed) {
                                     location.reload();
                                 } 
                             });
-                        console.log(response);
+                        // console.log(response);
                        
 
                         
@@ -459,7 +430,7 @@ function logout() {
                             },
                             success: function(response) {
                             // Handle the response if needed
-                            console.log("logged", response);
+                            // console.log("logged", response);
                             }
                         });
                     },
@@ -475,8 +446,6 @@ function logout() {
             }
 
         function view_student(stud_id) {
-            // alert(stud_id);
-
             // Send stud_id to the server using an AJAX request
             $.ajax({
                 type: 'POST', // You can use POST to send data securely
@@ -486,7 +455,7 @@ function logout() {
                 },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = 'editemployee.php';
                 }
             });
@@ -532,7 +501,7 @@ function logout() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
         }
@@ -583,12 +552,10 @@ function logout() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
         }
-
-        //moving arrow
     </script>
 
 

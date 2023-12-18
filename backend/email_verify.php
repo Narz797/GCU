@@ -81,7 +81,7 @@ require 'D:\xampp\htdocs\GCU\phpmailer\phpmailer\vendor\autoload.php';
                 echo "Error: " . $e->getMessage();
             }
         }
-        }  elseif ($origin === 'Teacher_Register') {
+        }  elseif ($origin === 'Teacher') {
             if (isset($_POST['email'])) {
                 $email = $_POST['email'];
                 $_SESSION['FP_email'] = $email;

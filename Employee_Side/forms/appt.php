@@ -1,9 +1,6 @@
 <?php
 session_start();
 include '../../backend/log_audit2.php';
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
-  // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     ?>
@@ -120,7 +117,7 @@ include '../../backend/log_audit2.php';
                 </div>
                 <div class="main-box">
                 <div class="box">
-                  <p class="card-description" id="reason">Those actually got pretty long. Not the longest, but still pretty long. I hope this one won't get lost somehow. Anyways, let's talk about WAFFLES! I like waffles. Waffles are cool. Waffles is a funny word. There's a Teen Titans Go episode called "Waffles" where the word "Waffles" is said a hundred-something times. It's pretty annoying. There's also a Teen Titans Go episode about Pig Latin. Don't know what Pig Latin is? It's a language where you take all the consonants before the first vowel, move them to the end, and add '-ay' to the end. If the word begins with a vowel, you just add '-way' to the end. For example, "Waffles" becomes "Afflesway". I've been speaking Pig Latin fluently since the fourth grade, so it surprised me when I saw the episode for the first time. I speak Pig Latin with my sister sometimes. It's pretty fun. I like speaking it in public so that everyone around us gets confused. That's never actually happened before, but if it ever does, 'twill be pretty funny. By the way, "'twill" is a word I invented recently, and it's a contraction of "it will". I really hope it gains popularity in the near future, because "'twill" is WAY more fun than saying "it'll". "It'll" is too boring. Nobody likes boring. This is nowhere near being the longest text ever, but eventually it will be! I might still be writing this a decade later, who knows? But right now, it's not very long. </p>
+                  <p class="card-description" id="reason">loading.. </p>
                 </div>
                 </div>
 
@@ -151,17 +148,12 @@ include '../../backend/log_audit2.php';
                         <div class="popup">
                             <div class="popup2">
                                 <form class = "mid">
-                                    <!-- <label>Attending Personnel</label>
-                                    <input type="text" placeholder="Your Name"> -->
-                                    <!-- <label>Remarks</label>
-                                    <textarea placeholder="Type here if you have remarks..." id="remarks"></textarea> -->
                                     <label>Rescheduled Date and Time:</label>
                                     <input type="datetime-local" id="date">
                                     <br>
                                     <div class="tsk">
                                         <br>
                                     <button class="yes" onclick="resched()"> Apply </button>
-                                    <!-- <input type="submit" value="Apply"> -->
                                     </div>
                                 </form>
                             </div>
@@ -181,7 +173,6 @@ include '../../backend/log_audit2.php';
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -199,7 +190,7 @@ include '../../backend/log_audit2.php';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../../home';
@@ -218,7 +209,7 @@ function archive() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../subpage/archive.php';
@@ -234,7 +225,7 @@ function archive() {
         var formattedDate = dateFromDatabase.toLocaleDateString('en-US', options);
 
         // Display the result
-        console.log(formattedDate);
+        // console.log(formattedDate);
 
         $('#id_no').text(id);
         $('#name').text(fname+ ' '+ lname);
@@ -247,14 +238,14 @@ function archive() {
 
         }
     function fetchData() {
-    console.log('AJAX request started');
+    // console.log('AJAX request started');
     $.ajax({
     type: 'GET',
     url: '../../backend/get_form.php',
     dataType: 'json',
     success: function (data) {
         if (data.length > 0) {
-            var studentData = data[0]; // Assuming you expect a single row
+            var studentData = data[0];
             var id = studentData.stud_user_id;
             sid = studentData.stud_user_id;
             tid = studentData.transact_id;
@@ -273,12 +264,12 @@ function archive() {
             var dat = studentData.date;
             res = studentData.Reason;
 
-            console.log(fname);
+            // console.log(fname);
             updateValues(id, fname, lname, email, year_level, course, gender, cn, pgn, pgname, relation, reason, dat);
                         
         } else {
             // Handle the case when no results are found
-            console.log('No results found');
+            // console.log('No results found');
         }
     },
     error: function (xhr, status, error) {
@@ -302,7 +293,7 @@ function archive() {
             res:res
           },
           success: function (data) {
-            console.log("Remarked:", data);
+            // console.log("Remarked:", data);
             Swal.fire({
               icon: "success",
               title: "appointment remarked",
@@ -327,7 +318,7 @@ function archive() {
                     },
                     success: function(response) {
                     // Handle the response if needed
-                    console.log("logged", response);
+                    // console.log("logged", response);
                     }
                 });
                 } 
@@ -336,12 +327,6 @@ function archive() {
           },
           error: function (xhr, status, error) {
             console.error("Error marking event as done:", error);
-            // Swal.fire({
-            //   icon: "error",
-            //   title: "Something went wrong",
-            //   text: "Please try again",
-            //   timer: 1500
-            // });
             Swal.fire({
                 icon: "error",
               title: "Something went wrong",
@@ -372,15 +357,13 @@ function archive() {
             var time = selectedDate.toTimeString().slice(0, 8);
 
             // Display the separated date and time
-            console.log("Date: " + date);
-            console.log("Time: " + time);
+            // console.log("Date: " + date);
+            // console.log("Time: " + time);
         } else {
-            console.log("Please select a date and time");
+            // console.log("Please select a date and time");
         }
 
-        console.log("ID:", aid);
-        // console.log("Remarks:", textareaValue);
-        // console.log("Remarks:", textareaValue2);
+        // console.log("ID:", aid);
         $.ajax({
           type: 'POST',
           url: '../../backend/app_resched.php',
@@ -391,7 +374,7 @@ function archive() {
             time: time
           },
           success: function (data) {
-            console.log("Remarked:", data);
+            // console.log("Remarked:", data);
 
             Swal.fire({
                 icon: "success",
@@ -414,7 +397,7 @@ function archive() {
                     },
                     success: function(response) {
                     // Handle the response if needed
-                    console.log("logged", response);
+                    // console.log("logged", response);
                     }
                 });
                 } 

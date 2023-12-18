@@ -21,7 +21,7 @@ include '../../backend/log_audit2.php';
     <?php
     exit;
 } 
-// include 'formstyle.php';
+
 $_SESSION['transact_type']='Readmission';//asign value to transact_type 
 logAudit($_SESSION['session_id'], 'access_readmission form', $_SESSION['session_id'] .' has accessed the readmission page');
 ?>
@@ -817,7 +817,6 @@ function faq(){
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -835,7 +834,7 @@ function faq(){
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -864,33 +863,16 @@ function faq(){
         event.preventDefault();
         var datepickerValue = $("#datepicker").val();
       var datepicker2Value = $("#datepicker2").val();
-        // Check if the form is filled before submitting
-        // if (($('#reason_stop').val() === '' || $('#motivation_enroll').val() === '')||(!datepickerValue || !datepicker2Value)) {
-        //   alert('Please fill out all fields before submitting.');
-        // } else {
-          // If the form is filled, proceed with AJAX submission
-    //       Swal.fire({
-    //   title: "Are you sure?",
-    //   text: "Do you wish to proceed?",
-    //   icon: "question",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#3085d6",
-    //   cancelButtonColor: "#d33",
-    //   confirmButtonText: "Yes"
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-      console.log('from',$("#datepicker").val())
-      console.log('to',$("#datepicker2").val())
+
       Swal.fire({
       title: "Do you wish to proceed?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes"
      
-              // })
+              
     }).then((result) => {
       if (result.isConfirmed) {
           $.ajax({
@@ -904,12 +886,7 @@ function faq(){
               to:$("#datepicker2").val()
             },
             success: function (data) {
-              // swal({
-              //         title:'Form requested',
-              //         icon: 'success',
-              //         showConfirmButton: false,
-              //         timer:1500
-              // })
+
 
  
 
@@ -924,7 +901,7 @@ function faq(){
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
           Swal.fire({
@@ -943,7 +920,7 @@ function faq(){
           });
         }
         });
-        // }
+
       });
       }
     </script>

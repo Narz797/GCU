@@ -1,6 +1,6 @@
 <?php 
 session_start();
-// Include the log_audit.php file
+
 include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
@@ -81,10 +81,7 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
             <button class="icon-btn menu-toggle-btn menu-toggle-open place-items-center" onclick="goBack()" class="list-link current">
             <i class="ri-arrow-left-circle-line"></i>
             </button>
-       
-            <!-- <button class="icon-btn place-items-center" onclick="faq()">
-                <i class="ri-question-mark"></i>
-            </button> -->
+
         </div>
         </div>
     </nav>
@@ -234,7 +231,6 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
             function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -251,8 +247,7 @@ logAudit($id, 'access_add employee',  'Admin has accessed the add employee page'
               details: eID + ' Clicked log out'
             },
             success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = '../home';

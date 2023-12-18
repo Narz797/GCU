@@ -1,9 +1,6 @@
 <?php
 session_start();
 include '../backend/log_audit2.php';
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
-  // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     ?>
@@ -52,7 +49,6 @@ logAudit($id, 'access_profile', $id .' has accessed the profile page');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>  
     <link href="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"/>
-    <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"></script> -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -295,7 +291,7 @@ function clearSearchResults2() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -335,7 +331,7 @@ function archive() {
                     'female': './assets/images/female.jpg'
                 };
                     
-                console.log(data);
+                // console.log(data);
                 // if (data.status===0){
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
@@ -388,7 +384,7 @@ function archive() {
                                 lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
                                 pageLength: 5, // Initial number of rows per page
                             });
-                 console.log("data",data);
+                //  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage1.hide(); // Hide the no history message if there is data
@@ -437,7 +433,7 @@ function archive() {
                 data: { stud_user_id: stud_id },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = 'subpage/pfp_page.php';
                 }
             });
@@ -483,7 +479,7 @@ function exportToExcel() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
 }
@@ -534,7 +530,7 @@ function exportToPDF() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
 }

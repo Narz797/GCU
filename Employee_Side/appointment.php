@@ -114,8 +114,6 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
       <!-- Welcome-message -->
 <section>
 <?php include '../includes/banner.php' ?>
-    <!-- <div class="block"> 
-    </div> -->
     <div class="title independent-title">
         <h2>APPOINTMENT SCHEDULES</h2>
     </div>
@@ -163,12 +161,6 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
             <i class="fas fa-times close"></i>
           </div>
           <div class="add-event-body">
-            <!-- <div class="add-event-input">
-              <input type="text" placeholder="Event Name" class="event-name" />
-            </div> -->
-            <!-- <div class="add-event-input">
-              <input type="text" placeholder="Student Name" class="event-student-name"/>
-            </div> -->
             <label for="from">From: </label>
             <div class="add-event-input">
               <input
@@ -192,36 +184,6 @@ logAudit($id, 'access_appointment', $id .' has accessed the appointment page');
             <button class="add-event-btn">Add Event</button>
           </div>
         </div>
-        <!-- for edit -->
-        <!-- <div class="edit-event-wrapper">
-          <div class="edit-event-header">
-            <div class="title">Add Event</div>
-            <i class="fas fa-times close"></i>
-          </div>
-          <div class="edit-event-body">
-            <div class="edit-event-input">
-              <input type="text" placeholder="Event Name" class="edit-event-name" />
-            </div>
-            <div class="edit-event-input">
-              <input type="text" placeholder="Student Name" class="edit-event-student-name"/>
-            </div>
-            <div class="edit-event-input">
-              <input
-                type="text"
-                placeholder="Event Time From: 00:00"
-                class="edit-event-time-from"
-              />
-            </div>
-            <div class="edit-event-input">
-              <input
-                type="text"
-                placeholder="Event Time To: 00:00"
-                class="edit-event-time-to"
-              />
-            </div>
-          </div>
-        </div> -->
-        <!--  -->
       </div>
       <button class="add-event">
         <i class="fas fa-plus"></i>
@@ -320,12 +282,11 @@ function faq(){
     }
 var eid = "<?php echo $eid; ?>";
 var eID = "<?php echo $_SESSION['session_id'];?>";
-console.log(eid);
+
   var sessionID = <?php echo json_encode($_SESSION['session_id']); ?>;
   function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -342,8 +303,8 @@ console.log(eid);
               details: eID + ' Clicked log out'
             },
             success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
+  
+              // console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -362,7 +323,7 @@ function archive() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = './subpage/archive.php';
@@ -451,8 +412,7 @@ $(document).ready(function () {
             type: "GET",
             dataType: "json",
             success: function (data) {
-                console.log(data);
-                // if (data.status===0){
+                // console.log(data);
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
                 var noHistoryMessage2 = $("#noHistoryMessage2"); 
@@ -484,7 +444,7 @@ $(document).ready(function () {
                     tableBody.append(row);
                     // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
                  }
-                 console.log("data ",data);
+                //  console.log("data ",data);
                  $('#dynamicTable').DataTable({
                                 paging: true,
                                 searching: false,
@@ -572,14 +532,13 @@ $(document).ready(function () {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
 
 }
     function view_form(tid, sid){
-        console.log("student", sid);
-        console.log("transact", tid);
+
 
                     // Send stud_id to the server using an AJAX request
                     $.ajax({
@@ -588,7 +547,7 @@ $(document).ready(function () {
                 data: { stud_id: sid, tran_id: tid },
                 success: function(response) {
                     // Handle the response from the server, if needed
-                    console.log(response);
+                    // console.log(response);
                     window.location.href = 'forms/appt.php';
                 }
             });
@@ -615,9 +574,7 @@ $(document).ready(function () {
                 });
     function app_remarks() {
   var textareaValue = document.getElementById("remarksTextarea").value;
-  console.log("TID:", trans_id);
-  console.log("AID:", app_id);
-  console.log("Remarks:", textareaValue);
+
     $.ajax({
       type: 'POST',
       url: '../backend/mad.php',
@@ -639,7 +596,7 @@ $(document).ready(function () {
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                  console.log("Event marked as done:", data);
+                  // console.log("Event marked as done:", data);
        
         $.ajax({
             type: 'POST',
@@ -651,7 +608,7 @@ $(document).ready(function () {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
                 } 
@@ -681,9 +638,7 @@ $(document).ready(function () {
       
 </script>
 <script src="assets/main.js"></script>   
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="assets/js/calendar.js"></script> 
-<!-- <script src="./assets/js/table.js"></script>    -->
 <style>
   
 </style>

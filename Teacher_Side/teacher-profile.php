@@ -24,6 +24,7 @@ session_start();
 $id = $_SESSION['session_id'];
 logAudit($id, 'access_teacher', $id .' has accessed the teacher profile page');
 $_SESSION['transact_type'] = 'Referral';
+$_SESSION['origin'] = 'Teacher';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -227,10 +228,6 @@ $_SESSION['transact_type'] = 'Referral';
                   </div>
             </form>
 
-<!-- 
-            <button onclick="verify()" class="list-link current" id="Update">UPDATE</button>
-                  <button onclick="cancel()" class="list-link current" id="Cancel">CANCEL</button> -->
-
             <div id="modal" class="modal">
             <div class="modal_content">
                 <div class="body">
@@ -251,7 +248,6 @@ $_SESSION['transact_type'] = 'Referral';
                 </div>
             </div>
             </div>
-                    <!-- fasdfas -->
                     </form>
                 
                 </div>
@@ -266,7 +262,6 @@ $_SESSION['transact_type'] = 'Referral';
    <script>
       var tID = "<?php echo $_SESSION['session_id'];?>";
       function resend(){
-      // document.getElementById("modal").style.display = "none";
           // Show loading spinner
           Swal.fire({
                 title: 'Sending Email',
@@ -296,7 +291,6 @@ $_SESSION['transact_type'] = 'Referral';
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                  // window.location.reload();
                 } 
               });
    
@@ -325,7 +319,7 @@ $_SESSION['transact_type'] = 'Referral';
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
             window.location.href = '../home';
@@ -358,7 +352,7 @@ function logout() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -418,7 +412,7 @@ function updateValues(EmployeeId, college, lname, fname, mname, cn, email , gend
 }
 
 
-console.log('AJAX request started');
+// console.log('AJAX request started');
 $.ajax({
 type: 'GET',
 url: '../backend/get_teacher.php',
@@ -426,7 +420,7 @@ dataType: 'json',
 
     // ...
     success: function (data) {
-      console.log(data);
+      // console.log(data);
         if (data.length > 0) {
               var EmployeeData = data[0]; // Assuming you expect a single row
                 var EmployeeId = EmployeeData.employee_id;
@@ -440,15 +434,14 @@ dataType: 'json',
                 var cs = EmployeeData.civil_status;
                 var email = EmployeeData.email;
                 Temail = EmployeeData.email;
-                // var cs = EmployeeData.civil_status;
-                console.log("ID: ", gender);
+
 
                 updateValues(EmployeeId, college, lname, fname, mname, cn, email, gender, cs);
 
             } else {
             // Handle the case when no results are found
             // You can update the UI as needed
-            console.log('No results found');
+            // console.log('No results found');
         }
 },
 error: function (xhr, status, error) {
@@ -470,31 +463,31 @@ function addHighlight(element) {
             element.classList.remove('highlight');
         }
         function edit() {
-    console.log("Edit btn clicked");
+    // console.log("Edit btn clicked");
     cnl.show();
     upd.show();
     pass.show();
     pass2.show();
     // Get the select and input elements by their IDs
-    var email = document.getElementById('email');//
-    var clg = document.getElementById('college');//
-    var ln = document.getElementById('lname');//
-    var fn = document.getElementById('fname');//
-    var mn = document.getElementById('mname');//
-    var gndr = document.getElementById('gender');//
-    var cn = document.getElementById('CN');//
-    var cs = document.getElementById('stat');//
+    var email = document.getElementById('email');
+    var clg = document.getElementById('college');
+    var ln = document.getElementById('lname');
+    var fn = document.getElementById('fname');
+    var mn = document.getElementById('mname');
+    var gndr = document.getElementById('gender');
+    var cn = document.getElementById('CN');
+    var cs = document.getElementById('stat');
   
 
 
-    clg.disabled = false;//
-    gndr.disabled = false;//
-    email.removeAttribute('readonly');//
-    ln.removeAttribute('readonly');//
-    fn.removeAttribute('readonly');//
-    cs.disabled = false;//
-    mn.removeAttribute('readonly');//
-    cn.removeAttribute('readonly');//
+    clg.disabled = false;
+    gndr.disabled = false;
+    email.removeAttribute('readonly');
+    ln.removeAttribute('readonly');
+    fn.removeAttribute('readonly');
+    cs.disabled = false;
+    mn.removeAttribute('readonly');
+    cn.removeAttribute('readonly');
     
 
     email.style.border = '2px solid yellow';
@@ -601,7 +594,7 @@ function verify(){
     }
             });
     
-    console.log("performing ajax");
+    // console.log("performing ajax");
     $.ajax({
       type: 'POST',
       url: '../backend/forgot_pass.php',
@@ -656,7 +649,7 @@ function verify(){
                       
                     } 
                   });
-          console.log(data);
+          // console.log(data);
           
         } else {
             Swal.fire({
@@ -671,7 +664,7 @@ function verify(){
                 
                 } 
               });
-              console.log("Success",data)
+              // console.log("Success",data)
 
 
         }
@@ -707,7 +700,7 @@ function verify(){
                 
                 } 
               });
-              console.log("Success",data)
+              // console.log("Success",data)
 
 
         }
@@ -727,7 +720,7 @@ function verify(){
 
 }
 function update(){
-      console.log("Upd btn clicked");
+      // console.log("Upd btn clicked");
                     // Get the select element by its ID
                     // student_user
                     var id = "<?php echo $_SESSION['session_id']; ?>";
@@ -741,7 +734,7 @@ function update(){
                     var cs = document.getElementById('stat').value;//
                     var pass = document.getElementById('pass').value;
                     var pass2 = document.getElementById('pass2').value;
-                    console.log("id: ", id);
+                    // console.log("id: ", id);
 
 
                     
@@ -778,11 +771,7 @@ function update(){
           });
             }
             else{
-            console.log("Server Response:", data);
-            // Swal.fire({
-            //   icon: "success",
-            //   title: "Information Updated!"
-            // });
+            // console.log("Server Response:", data);
             Swal.fire({
               icon: "success",
               title: "Information Updated!",
@@ -805,10 +794,10 @@ function update(){
             success: function(response) {
               // Handle the response if needed
             
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
-            console.log("Updated:", data);
+            // console.log("Updated:", data);
             cancel()
           } 
               });
@@ -825,11 +814,6 @@ function update(){
           },
         });
     
-
-                      // Remove the 'disabled' attribute
-      //                 crse.disabled = true;
-
-      // upd.hide();
 
     }
 </script>

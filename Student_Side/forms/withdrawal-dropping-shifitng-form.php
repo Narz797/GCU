@@ -868,7 +868,6 @@ function faq(){
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -886,7 +885,7 @@ function faq(){
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+              // console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -926,8 +925,6 @@ $("#form_transact").on("submit", function (event) {
   event.preventDefault();
   var student_id = <?php echo $_SESSION['session_id']?>;
   var transact_type = "withdrawal";
-  // var course_frm = dropdown.value === 'Shifting' ? courseSelect.value : null;
-  // var course_to = dropdown.value === 'Shifting' ? textfield5.value : null;
  
   Swal.fire({
       title: "Are you sure?",
@@ -960,7 +957,7 @@ $("#form_transact").on("submit", function (event) {
   },
   success: function(response) {
     // Handle the response if needed
-    console.log("logged", response);
+    // console.log("logged", response);
   }
     });
     Swal.fire({
@@ -982,55 +979,6 @@ $("#form_transact").on("submit", function (event) {
   });
 });
    
-
-//      // autcomplete
-//      function showSuggestions(inputId, suggestionContainerId) {
-//     var input = document.getElementById(inputId);
-//     var inputValue = input.value;
-//     var suggestionsDiv = document.getElementById(suggestionContainerId);
-//     if (inputValue.length === 0) {
-//   suggestionsDiv.style.display = "none";
-//   return;
-//     }
-//     var xmlhttp = new XMLHttpRequest();
-//     xmlhttp.onreadystatechange = function () {
-//   if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-//   var suggestions = JSON.parse(xmlhttp.responseText); // Assuming your suggestions are returned as a JSON array
-//   displaySuggestions(suggestions, suggestionsDiv, input);
-//   }
-//     };
-//     xmlhttp.open("GET", "../../backend/autocomplete.php?input=" + inputValue, true);
-//     xmlhttp.send();
-// }
-// function displaySuggestions(suggestions, suggestionsDiv, input) {
-//     if (suggestions.length === 0) {
-//   suggestionsDiv.style.display = "none";
-//   return;
-//     }
-//     suggestionsDiv.innerHTML = ""; // Clear previous suggestions
-//     var ul = document.createElement("ul");
-//     suggestions.forEach(function (suggestion) {
-//   var li = document.createElement("li");
-//   li.textContent = suggestion;
-//   li.addEventListener("click", function () {
-//   input.value = suggestion; // Fill in the input field with the selected suggestion
-//   suggestionsDiv.style.display = "none"; // Hide the suggestions
-//   });
-//   ul.appendChild(li);
-//     });
-//     suggestionsDiv.appendChild(ul);
-//     suggestionsDiv.style.display = "block"; // Show the suggestions
-// }
-// // Add an event listener to textfield4
-// var textfield4 = document.getElementById('textfield4');
-// textfield4.addEventListener('input', function () {
-//     this.value = this.value.toUpperCase();
-// });
-// // Add an event listener to textfield5
-// var textfield5 = document.getElementById('textfield5');
-// textfield5.addEventListener('input', function () {
-//     this.value = this.value.toUpperCase();
-// });
   </script>
 
 

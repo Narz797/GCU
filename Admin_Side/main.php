@@ -1,6 +1,5 @@
 <?php 
 session_start();
-// Include the log_audit.php file
 include '../backend/log_audit2.php';
   // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
@@ -53,7 +52,6 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     <nav class="nav">
         <div class="logo">
         <img src="assets/images/GCU_logo.png" alt="">
-        <!-- <img src="assets/images/bsu.png" alt=""> -->
         </div>
        
     </nav>
@@ -61,17 +59,12 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
     <!-- Banner -->
 <section>
 <?php include '../includes/banner.php' ?>
-    <!-- <div class="block"></div> -->
-    <!-- First Section -->
     <div class="title independent-title ">
         <h2 > Control Panel</h2>
     </div>
     <div class="card">
         <header class="card-header">
             <small>Profile Account</small>
-<!-- call employee id 
-    number or 
-    profession = "Admin"-->
             <h2 class="title">Welcome back, <span> Admin!</span></h2>
         </header>
         <hr>
@@ -126,31 +119,29 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
             <div class="card border two">
                 <div>
                     <h2 class="title">Import Database</h2>
-                    <div class="card-body" >
-                            <form action="../backend/import_database.php" method="post" enctype="multipart/form-data">
-                                
-                            <p class="card-text">Import Back Up Database.</p>
-                            <input type='file' name='import' accept=".sql">
-                            
-                                <button type="submit" class=" yes" style="  font-size: 14px;
-     
-                                    align-items: center;
-                                    justify-content: center; 
-                                    height: 45px;
-                                    max-width: 200px;
-                                    width: 100%;
-                                    border: none;
-                                    outline: none;
-                                    color: #fff;
-                                    border-radius: 5px;
-                                    margin: 25px 0;
-                                    background-color: #4070f4;
-                                    transition: all 0.3s linear;
-                                    cursor: pointer;">Import&nbsp<i class="ri-export-line"></i></button>
-                            </form>
-                        </div>
+                    <div class="card-body">
+                        <form action="../backend/import_database.php" method="post" enctype="multipart/form-data">
+                            <p class="card-text">Import Backup Database.</p>
+                            <input type="file" name="import_file" accept=".sql">
+                            <button type="submit" class="yes" style="font-size: 14px;
+                                                                    align-items: center;
+                                                                    justify-content: center;
+                                                                    height: 45px;
+                                                                    max-width: 200px;
+                                                                    width: 100%;
+                                                                    border: none;
+                                                                    outline: none;
+                                                                    color: #fff;
+                                                                    border-radius: 5px;
+                                                                    margin: 25px 0;
+                                                                    background-color: #4070f4;
+                                                                    transition: all 0.3s linear;
+                                                                    cursor: pointer;">Import&nbsp;<i class="ri-export-line"></i></button>
+                        </form>
+                    </div>
                 </div>
             </div>
+
             <div class="card border three">
                 <div>
                     <h2 class="title">Export Database</h2>
@@ -198,7 +189,6 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
                 function logout() {
             Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -215,8 +205,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
               details: eID + 'Admin Clicked log out'
             },
             success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
             window.location.href = '../home';
@@ -225,25 +214,14 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
         }
         function updateValues(total, employee_email) {
 
-            console.log("logins2 ", total);
+            // console.log("logins2 ", total);
 
             $('#total').text(total); //
             $('#employee_email').text(employee_email);
-            //    $('#employee_position').text(employee_position);
-            //    $('#date_joined').text(employee_date_joined);
-            //    $('#totalAppointments').text(totalAppointments);
-            //    $('#position').text(ePosition);//
-            //    $('#fname').text(eFname);
-            //    $('#lname').text(eLname);
-
-            // Replace the content of the #gender div with the created image
-            //    const genderElement = document.getElementById('gender');
-            //    genderElement.innerHTML = ''; // Clear existing content
-            //    genderElement.appendChild(image);
         }
         // Function to fetch data from get_transaction.php
         function fetchData() {
-            console.log('AJAX request started');
+            // console.log('AJAX request started');
             $.ajax({
                 type: 'GET',
                 url: '../backend/get_transaction_admin.php',
@@ -264,7 +242,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
 
         // Function to process the retrieved data
         function processData(data) {
-            console.log('Response Data:', data.total_logins);
+            // console.log('Response Data:', data.total_logins);
             if (data.total_logins !== undefined) {
 
                 var total = data.total_logins;
@@ -273,7 +251,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
 
 
                 updateValues(total, employee_email);
-                console.log("logins:", total)
+                // console.log("logins:", total)
                 //    countAppointments(totalAppointments);
 
 
@@ -286,7 +264,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
 
                 updateValues(total, employee_email);
 
-                console.log('No results found');
+                // console.log('No results found');
             }
         }
 
@@ -303,14 +281,14 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
         }
         // Function to fetch data from get_transaction.php
         function HistoryData() {
-            console.log('AJAX request started');
+            // console.log('AJAX request started');
             $.ajax({
                 type: 'GET',
                 url: '../backend/get_done_transaction.php',
                 dataType: 'json',
                 // ...
                 success: function(data) {
-                    console.log(data);
+                    // console.log(data);
                     updateCardDescription(data);
                 },
                 error: function(xhr, status, error) {
@@ -350,7 +328,7 @@ logAudit($id, 'access_employee', $id .' has accessed the employee home page');
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
             window.location.href = '../home';

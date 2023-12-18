@@ -65,8 +65,6 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- DataTables JS -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
@@ -118,8 +116,6 @@ logAudit($id, 'access_form', $id .' has accessed the form page');
     <!-- Welcome-message -->
 <section>
 <?php include '../includes/banner.php' ?>
-    <!-- <div class="block"> 
-    </div> -->
     <div class="title independent-title">
         <h2>REQUESTED FORMS</h2>
     </div>
@@ -350,7 +346,6 @@ function clearSearchResults2() {
     function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -368,7 +363,7 @@ function clearSearchResults2() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -387,13 +382,13 @@ function archive() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = './subpage/archive.php';
         }
 function fetchData() { //getting total
-        console.log('AJAX request started');
+        // console.log('AJAX request started');
         $.ajax({
             type: 'GET',
             url: '../backend/get_transaction.php',
@@ -401,20 +396,16 @@ function fetchData() { //getting total
             
                 // ...
                 success: function (data) {
-                    console.log(data.latest_data);
+         
                     if (data.latest_data && data.latest_data.length > 0) {
                             var totalCA = data.total_pending_CA;
                             var totalLOA = data.total_pending_LOA;
                             var totalRA = data.total_pending_RA;
                             var totalRS = data.total_pending_RS;
                             var totalWDS = data.total_pending_WDS;
-                            console.log("CA",totalCA);
-                            console.log("LOA",totalLOA);
-                            console.log("RA",totalRA);
-                            console.log("LOA",totalRS);
-                            console.log("RS",totalLOA);
+       
                             updateValues(totalCA, totalLOA, totalRA, totalRS, totalWDS);
-                            console.log(totalLOA);
+                        
 
                         } else {
                             var totalCA = 0;
@@ -422,13 +413,9 @@ function fetchData() { //getting total
                             var totalRA = 0;
                             var totalRS = 0;
                             var totalWDS = 0;
-                            console.log("LOA",totalLOA);
-                            console.log("RA",totalRA);
-                            console.log("LOA",totalRS);
-                            console.log("RS",totalLOA);
+
                             updateValues(totalCA, totalLOA, totalRA, totalRS, totalWDS);
-                            console.log(totalLOA);
-                        console.log('No results found');
+              
                     }
             },
             error: function (xhr, status, error) {
@@ -444,7 +431,7 @@ function fetchData() { //getting total
             type: "GET",
             dataType: "json",
             success: function (data) {
-                console.log(data);
+                // console.log(data);
                 // if (data.status===0){
                 var tableBody = $("#dynamicTable tbody");
                 var historyTableBody = $("#historyTableBody tbody");
@@ -476,7 +463,7 @@ function fetchData() { //getting total
                                 lengthMenu: [5, 10, 15, 20], // Customize the number of rows per page
                                 pageLength: 5, // Initial number of rows per page
                             });
-                 console.log("data",data);
+                //  console.log("data",data);
                 var dynamicTableRowCount1 = $("#dynamicTable tbody tr").length;
                     if (dynamicTableRowCount1 > 0) {
                     noHistoryMessage2.hide(); // Hide the no history message if there is data
@@ -555,7 +542,7 @@ function exportToExcel() {
             },
             success: function(response) {
               // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
 }
@@ -563,7 +550,5 @@ function exportToExcel() {
 
 
 </script>  
-<script src="./assets/main.js"></script> 
-<!-- <script src="assets/js/table.js"></script>  -->
-<!-- <script src="./assets/js/count.js"></script>  -->
+
 </html>

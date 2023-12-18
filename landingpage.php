@@ -34,18 +34,7 @@
         }
     }
 
-/* .mobile-nav-show {
-    color: transparent;
-   
-  }
 
-  .mobile-nav-show:hover{
-    color: #f7b801;
-  }
-  
-  .mobile-nav-hide {
-    color: transparent;
-  } */
 
 
 .scroll-top .hover-text {
@@ -79,9 +68,7 @@ li a:hover {
   <header id="header" class="header d-flex align-items-center"  >
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between" >
       <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!--  <img src="/GCU.png" alt="">  -->
-        <!-- <h1>Impact<span>.</span></h1> -->
+
       </a>
       <nav id="navbar" class="navbar" >
         <ul >
@@ -106,8 +93,7 @@ li a:hover {
 
             </ul>
           </li>
-          <!-- <li class="dropdown"><li class="login-register"><a href="./Student_Side/Stud_registration/page1.html">
-            REGISTER</a></li> -->
+
           <li class="dropdown" ><a style=" background: linear-gradient(to right,#ede0d4,#ffc971  ) ; color: black;" ><span >REGISTER</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul style="background-color: transparent; ">
             <li><a href="./Student_Side/Stud_registration/agreement.php" style="background-color:#ffd166; color:black;">STUDENT</a></li>
@@ -126,18 +112,7 @@ li a:hover {
   <?php
   include 'includes/banner.php';
   ?>
-  <!-- Header section -->
-  <!-- <section id="topbar" class="topbar d-flex align-items-center" style="height: auto; ">
-    <div class="social-links d-none d-md-flex align-items-center" style="margin-left: 1400px;">
-      <style>
-      </style>
-  </section> -->
-  <!-- End Top Bar -->
- 
 
-
-
-  <!-- <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
 
   <div id="preloader"></div>
   <!-- Vendor JS Files -->

@@ -703,7 +703,7 @@ $_SESSION['origin'] = 'Student';
 <body>
     <script>
         var session = eval('(<?php echo json_encode($_SESSION) ?>)');
-        console.log(session);
+
     </script>
     <!-- <div class="left-column">
         <img src="assets/img/GCU_logo.png" alt="Logo" class="logo">
@@ -966,6 +966,8 @@ $_SESSION['origin'] = 'Student';
                         <label for="code" style="color: black;">Verification Code:</label>
                         <input type="number" id="code" name="code" class="code" required>
                         <button onclick="verify()" style="background-color:black;color:white;">Verify</button>
+                        <button onclick="back()" style="background-color:black;color:white;">Cancel</button>
+                        <button onclick="resend()" style="background-color:black;color:white;">Resend</button>
                     </div>
                 </form>
             </div>
@@ -983,40 +985,20 @@ $_SESSION['origin'] = 'Student';
          window.location.replace(document.referrer);
         }
     </script>
-    <!-- <script>
-    function goToPage2() {
-      
-        var requiredFields = ['field1', 'field2', 'field3'];
 
-       
-        for (var i = 0; i < requiredFields.length; i++) {
-            var field = document.getElementById(requiredFields[i]);
-            if (field.value.trim() === '') {
-                alert('Please fill out all required fields before proceeding to page2.php');
-                proceed = false;
-                break;
-            }
-        }
-
-       
-        if (proceed) {
-            window.location.href = 'page2.php';
-        }
-    }
-</script> -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     // --------------FOR EMAIL VERIFICATION--------------------
     function add_remarks(){
-console.log("Email", $("#email").val())
+
 
 
 // Disable scrolling for touch events
             document.getElementById("modal").style.display = "block";
-            window.addEventListener('wheel', preventDefault, { passive: false });
+            // window.addEventListener('wheel', preventDefault, { passive: false });
     
-    window.addEventListener('touchmove', preventDefault, { passive: false });
-    document.attachEvent('onmousewheel', preventDefault);
+    // window.addEventListener('touchmove', preventDefault, { passive: false });
+    // document.attachEvent('onmousewheel', preventDefault);
     document.body.style.overflow = 'hidden';
 // 
 
@@ -1030,7 +1012,7 @@ console.log("Email", $("#email").val())
                     },
             });
     
-    console.log("performing ajax");
+     console.log("performing ajax");
     $.ajax({
       type: 'POST',
       url: '../../backend/email_verify.php',
@@ -1039,6 +1021,7 @@ console.log("Email", $("#email").val())
       },
       success: function(data) {
         // Hide loading spinner on success
+        console.log(data);
         swal.close();
         if (data === "unregistered") {
         //   alert("This Email is already registered")
@@ -1054,7 +1037,7 @@ console.log("Email", $("#email").val())
                         window.location.href = "page3.php";
                     } 
                   });
-          console.log(data);
+        //   console.log(data);
           
         } else {
         //   alert("The verification code has sent to your email.")
@@ -1070,7 +1053,7 @@ console.log("Email", $("#email").val())
                 
                 } 
               });
-        console.log("Success",data)
+        // console.log("Success",data)
 
                 // verify();
 
@@ -1093,12 +1076,56 @@ console.log("Email", $("#email").val())
 
 
 }
+function resend(){
+          // Show loading spinner
+          Swal.fire({
+                title: 'Sending Email',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                    },
+            });
+        $.ajax({
+      type: 'POST',
+      url: '../../backend/resend.php',
+      success: function(data) {
+                // Hide loading spinner on success
+                swal.close();
+
+                Swal.fire({
+              icon: "sucess",
+              title: "Code Sent!",
+              text: "Go to your email to retrieve the code",
+              confirmButtonText: "OK",
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                } 
+              });
+   
+  
+
+     
+        // add location to enter code
+      },
+                  error: function (xhr, status, error) {
+                    console.error("Error:", error);
+                    alert("Error: " + error);
+                  },
+    });
+    }
+
+    function back(){
+        location.reload();
+    }
 
                    // Send code verificaion
                     // ----------------------------------------------
                     function verify() {
                     event.preventDefault();
-                    console.log("performing ajax for code verify");
+                    // console.log("performing ajax for code verify");
                     $.ajax({
                     type: 'POST',
                     url: '../../backend/verify.php',
@@ -1106,7 +1133,7 @@ console.log("Email", $("#email").val())
                         code: $("#code").val()
                     },
                     success: function(data) {
-                        console.log("code received", data);
+                        // console.log("code received", data);
                         if (data === "Code Verified") {
                             Swal.fire({
                                 icon: "sucess",
@@ -1116,7 +1143,7 @@ console.log("Email", $("#email").val())
                                 }).then((result) => {
                                     /* Read more about isConfirmed, isDenied below */
                                     if (result.isConfirmed) {
-                            console.log("verified", data);
+                            // console.log("verified", data);
 
                             // code to fully register
                             // --------------------------------------
@@ -1140,7 +1167,7 @@ console.log("Email", $("#email").val())
           
                 } 
               });
-                            console.log(data);
+                            // console.log(data);
                         }
 
                         // add location to enter code

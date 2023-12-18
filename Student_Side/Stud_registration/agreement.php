@@ -37,17 +37,9 @@
   
 
     body {
-      /* font-family: Arial, sans-serif; */
       background-color: #f4f4f4;
       
       padding: 0;
-     
-     
-      /* background: linear-gradient(
-    142deg,
-    green  0%,
-    black 100%
-  ); */
 }
 
   .card {
@@ -196,14 +188,6 @@ p {
             margin: 0; /* Remove default margin to ensure full centering */
         }
 
-   
-        /* img {
-            position: absolute;
-            height: 10%;
-            width: auto;
-           
-        } */
-
         img {
       max-width: 10%;
       height: auto;
@@ -262,7 +246,6 @@ p {
       <div  >
         
     <img   src="../assets/img/bsu.png"  alt="BSU Logo">
-    <!-- <img src="../assets/img/GCU_logo.png" alt="GCU Logo" style="margin-left:31%;"> -->
 <br>
     <p>Republic of the Philippines</p>
     <p>Benguet State University</p>

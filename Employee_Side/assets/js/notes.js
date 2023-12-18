@@ -99,12 +99,13 @@ function deleteNote(id) {
         console.log("deleted",data);
          // Refresh notes or handle success
     });
-    showNotes();
+   
     Swal.fire({
         title: "Deleted!",
         text: "Your file has been deleted.",
         icon: "success"
       });
+      showNotes();
 }
 });
 }

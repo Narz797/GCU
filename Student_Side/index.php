@@ -2,9 +2,6 @@
 
 session_start();
 include '../backend/log_audit2.php';
-// include '../backend/validate_user.php';
-// include '../backend/connect_database.php';
-  // Check if the session variable is empty
   if (empty($_SESSION['session_id'])) {
     // Redirect to the desired location
     ?>
@@ -26,7 +23,6 @@ include '../backend/log_audit2.php';
   
 $id = $_SESSION['session_id'];
 logAudit($id, 'access_transaction', $id .' has accessed the transaction page');
-  echo "<script>console.log('$id');</script>";
  ?>
 
 
@@ -58,7 +54,6 @@ logAudit($id, 'access_transaction', $id .' has accessed the transaction page');
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
 </head>
 
@@ -68,7 +63,6 @@ logAudit($id, 'access_transaction', $id .' has accessed the transaction page');
     <nav class="nav">
         <div class="logo">
         <img src="GCU_logo.png" alt="">
-        <!-- <img src="assets/images/bsu.png" alt=""> -->
         </div>
     </nav>
 </header>
@@ -81,9 +75,6 @@ logAudit($id, 'access_transaction', $id .' has accessed the transaction page');
     <div class="card">
         <header class="card-header">
             <small>Greetings!</small>
-<!-- call employee id 
-    number or 
-    profession = "Admin"-->
             <h2 class="title">Welcome back, <span> Dear Student!</span></h2>
         </header>
         <hr>
@@ -150,7 +141,6 @@ logAudit($id, 'access_transaction', $id .' has accessed the transaction page');
  function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -167,8 +157,7 @@ logAudit($id, 'access_transaction', $id .' has accessed the transaction page');
               details: eID + ' Clicked log out'
             },
             success: function(response) {
-              // Handle the response if needed
-              console.log("logged", response);
+            //   console.log("logged", response);
             }
           });
     window.location.href = '../home';
@@ -181,44 +170,10 @@ function goBack() {
         }
 
     $(document).ready(function () {
-        // Function to load data from the database via Ajax
-        // function loadDataFromDatabase() {
-        //     $.ajax({
-        //         url: '../backend/stud_history.php',
-        //         method: 'GET',
-        //         dataType: 'json', // Set the expected data type to JSON
-        //         success: function (data) {
-        //             // Store the data in a variable accessible to the search function
-        //             window.originalData = data;
 
-        //             // Display the data
-        //             displayData(data);
-        //         },
-        //         error: function (error) {
-        //             console.error('Error fetching data: ' + error);
-        //         }
-        //     });
-        // }
-
-        // Function to display data in the scrollable container
         function displayData() {
-            // Clear the existing content
-            // $('#scrollable-container').empty();
 
-            // // Iterate through the JSON data and append it to the scrollable container
-            // data.forEach(function (item) {
-            //     // Create the HTML structure for each data item
-            //     var content = '<div class="post-item mt-3">';
-            //     content += '<img src="assets/img/form.png" alt="" style="height:60px; ">';
-            //     content += '<div>';
-            //     content += '<h4><p>' + item.transact_type + '</p></h4>';
-            //     content += '<time datetime="2020-01-01">' + item.date_completed + '</time>';
-            //     content += '</div>';
-            //     content += '</div>';
-            //     content += '<br>';
-            //     content += '<hr>';
-            //     $('#scrollable-container').append(content);
-            // });
+      
 
 
             $.ajax({
@@ -227,11 +182,9 @@ function goBack() {
       type: 'GET',
       dataType: 'json',
       success: function(data) {
-         // const table = document.getElementById('data-table');
-         // const searchInput = document.getElementById('searchInput');
           
-      console.log(data);
-      // if (data.status===0){
+    //   console.log(data);
+ 
       var tableBody = $("#dynamicTable tbody");
  
       for (var i = 0; i < data.length; i++) {
@@ -247,7 +200,7 @@ function goBack() {
           tableBody.append(row);
           // Append the row to a table (you should have a reference to the target table, e.g., tableBody or historyTableBody)
        }
-       console.log("data",data);
+    //    console.log("data",data);
        $('#dynamicTable').DataTable();
 
 
@@ -267,33 +220,6 @@ function goBack() {
 
         }
 
-        // Function to search the table based on user input
-        // window.searchTable = function () {
-        //     // Get the search input value
-        //     var searchInput = $('#searchInput').val().toLowerCase();
-
-        //     // Filter the original data based on the search input
-        //     var filteredData = window.originalData.filter(function (item) {
-        //         return item.transact_type.toLowerCase().includes(searchInput);
-        //     });
-
-        //     // Display the filtered data
-        //     displayData(filteredData);
-        // };
-        // // Function to search the table based on user input
-        // window.searchTable = function () {
-        //     var searchInput = $('#searchInput').val().toLowerCase();
-        //     var filteredData = originalData.filter(function (item) {
-        //         return item.transact_type.toLowerCase().includes(searchInput);
-        //     });
-        //     displayData(filteredData);
-        // };
-
-        // // Function to clear search results
-        // window.clearSearchResults = function () {
-        //     $('#searchInput').val('');
-        //     displayData(originalData);
-        // };
         function searchTable() {
     var input, filter, table, tr, th, td, i, j, txtValue;
     input = document.getElementById("searchInput");
@@ -370,8 +296,6 @@ function clearSearchResults2() {
     }
 }
 
-        // Call the function to load data when the page loads
-        // loadDataFromDatabase();
          displayData();
     });
 

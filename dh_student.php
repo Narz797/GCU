@@ -1,7 +1,28 @@
-<?php
-  session_start();
-  
-?> 
+<?php 
+session_start();
+  // Check if the session variable is empty
+  include 'backend/log_audit2.php';
+  if (empty($_SESSION['session_id'])) {
+    // Redirect to the desired location
+    ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'You already logged out',
+                text: 'Please login again'
+            }).then(function () {
+                window.location.href = '../home';
+            });
+        });
+    </script>
+    <?php
+    exit; 
+}
+$id = $_SESSION['session_id'];
+logAudit($id, 'access_FAQ', $id .' has accessed the FAQ page');
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -179,7 +200,6 @@
           <i class="fas fa-phone-alt"></i>
           <div class="topic" style="font-family: 'Poppins' , sans-serif;">Phone</div>
           <div class="text-one" style="font-family: 'Poppins' , sans-serif;">+63907 905 0664</div>
-          <!-- <div class="text-two">+0096 3434 5678</div> -->
         </div>
         <div class="email details">
           <i class="fas fa-envelope"></i>
@@ -212,14 +232,6 @@
     </div>
     </div>
   </div>
-<!-- <footer id="footer" class="footer" style="background: #007f5f;">
-    <div class="foot" id="footercopyright">
-        <div class="copyright">
-           
-        </div>
-        <div class="credits">Designed by <a class="dev" href="https://www.facebook.com/BSUCollegeofInformationSciences">BSIT</a></div>
-    </div>
-</footer> -->
 
 <footer class="d-flex justify-content-center" style="width: 100%; background:  #007f5f;">
     
@@ -237,7 +249,6 @@
      function logout() {
         Swal.fire({
       title: "Are you sure you want to logout?",
-      // text: "Do you wish to proceed?",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -254,7 +265,6 @@
               details: eID + ' Clicked log out'
             },
             success: function(response) {
-              // Handle the response if needed
               console.log("logged", response);
             }
           });
@@ -308,8 +318,6 @@ function goBack() {
       success: function(data) {
         // Hide loading spinner on success
         swal.close();
-  
-          // alert("The code to change your password is sent to your email")
           Swal.fire({
               icon: "sucess",
               title: "Help Sent!",
@@ -334,14 +342,13 @@ function goBack() {
                 } 
               });
         console.log("data",data)
-        // window.location.href = "verify_code.php";
-        
 
         // add location to enter code
       },
       error: function(xhr, status, error) {
         // Hide loading spinner on error
-        $("#loading-spinner").hide();
+        swal.close();
+  
         
         console.error("Error:", error);
         alert("Error: " + error);
